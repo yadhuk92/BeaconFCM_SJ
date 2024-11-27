@@ -1,0 +1,7 @@
+[INFO ] 2024-11-27 18:03:36.420 [main] Log - *** Running test method Core application login...
+[INFO ] 2024-11-27 18:03:46.490 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2024-11-27 18:05:11.759 [main] Log - Title is displayed : BeaconICnRM
+[INFO ] 2024-11-27 18:05:12.783 [main] Log - Entered IBU0000028 in user name field
+[INFO ] 2024-11-27 18:05:13.104 [main] Log - Entered ses@987 in password field
+[INFO ] 2024-11-27 18:05:13.490 [main] Log - Clicked on login button
+[INFO ] 2024-11-27 18:05:13.491 [main] Log - Login successful!

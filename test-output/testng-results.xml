@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="102164" started-at="2024-11-27T12:33:35Z" finished-at="2024-11-27T12:35:17Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="102164" started-at="2024-11-27T12:33:35Z" finished-at="2024-11-27T12:35:17Z">
+      <class name="com.test.LoginTest.CoreLoginTest">
+        <test-method status="PASS" signature="reference()[pri:0, instance:com.test.LoginTest.CoreLoginTest@6fb554cc]" name="reference" is-config="true" duration-ms="2031" started-at="2024-11-27T18:03:33Z" finished-at="2024-11-27T18:03:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- reference -->
+        <test-method status="PASS" signature="RUNALL(org.testng.ITestContext)[pri:0, instance:com.test.LoginTest.CoreLoginTest@6fb554cc]" name="RUNALL" duration-ms="102068" started-at="2024-11-27T18:03:35Z" finished-at="2024-11-27T18:05:17Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@69453e37]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RUNALL -->
+      </class> <!-- com.test.LoginTest.CoreLoginTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
