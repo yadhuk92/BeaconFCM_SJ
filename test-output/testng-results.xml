@@ -2,26 +2,37 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="102164" started-at="2024-11-27T12:33:35Z" finished-at="2024-11-27T12:35:17Z">
+  <suite name="Default suite" duration-ms="130923" started-at="2024-12-06T10:48:04Z" finished-at="2024-12-06T10:50:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="102164" started-at="2024-11-27T12:33:35Z" finished-at="2024-11-27T12:35:17Z">
+    <test name="Default test" duration-ms="130923" started-at="2024-12-06T10:48:04Z" finished-at="2024-12-06T10:50:14Z">
       <class name="com.test.LoginTest.CoreLoginTest">
-        <test-method status="PASS" signature="reference()[pri:0, instance:com.test.LoginTest.CoreLoginTest@6fb554cc]" name="reference" is-config="true" duration-ms="2031" started-at="2024-11-27T18:03:33Z" finished-at="2024-11-27T18:03:35Z">
+        <test-method status="PASS" signature="reference()[pri:0, instance:com.test.LoginTest.CoreLoginTest@396a51ab]" name="reference" is-config="true" duration-ms="1293" started-at="2024-12-06T16:18:02Z" finished-at="2024-12-06T16:18:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reference -->
-        <test-method status="PASS" signature="RUNALL(org.testng.ITestContext)[pri:0, instance:com.test.LoginTest.CoreLoginTest@6fb554cc]" name="RUNALL" duration-ms="102068" started-at="2024-11-27T18:03:35Z" finished-at="2024-11-27T18:05:17Z">
+        <test-method status="PASS" signature="RUNALL(org.testng.ITestContext)[pri:0, instance:com.test.LoginTest.CoreLoginTest@396a51ab]" name="RUNALL" duration-ms="130897" started-at="2024-12-06T16:18:04Z" finished-at="2024-12-06T16:20:14Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@69453e37]]>
+                <![CDATA[org.testng.TestRunner@548e6d58]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- RUNALL -->
+        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:com.test.LoginTest.CoreLoginTest@396a51ab]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2024-12-06T16:20:14Z" finished-at="2024-12-06T16:20:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=RUNALL status=SUCCESS method=CoreLoginTest.RUNALL(org.testng.ITestContext)[pri:0, instance:com.test.LoginTest.CoreLoginTest@396a51ab] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
       </class> <!-- com.test.LoginTest.CoreLoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

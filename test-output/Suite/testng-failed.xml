@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="none">
+  <test thread-count="5" name="Test">
     <classes>
-      <class name="com.test.user.TicketModule.AllScenarios_Ticket_Dashboard">
-        <methods>
-          <include name="RUNALL" invocation-numbers="0"/>
-          <include name="reference"/>
-        </methods>
-      </class> <!-- com.test.user.TicketModule.AllScenarios_Ticket_Dashboard -->
+      <class name="com.test.LoginTest.CoreLoginTest"/>
+      <class name="Core.SecurityManagement.BannedCustomerTest"/>
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- Test -->
 </suite> <!-- Failed suite [Suite] -->

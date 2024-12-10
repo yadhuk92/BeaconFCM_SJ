@@ -1,7 +1,14 @@
-[INFO ] 2024-11-27 18:03:36.420 [main] Log - *** Running test method Core application login...
-[INFO ] 2024-11-27 18:03:46.490 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2024-11-27 18:05:11.759 [main] Log - Title is displayed : BeaconICnRM
-[INFO ] 2024-11-27 18:05:12.783 [main] Log - Entered IBU0000028 in user name field
-[INFO ] 2024-11-27 18:05:13.104 [main] Log - Entered ses@987 in password field
-[INFO ] 2024-11-27 18:05:13.490 [main] Log - Clicked on login button
-[INFO ] 2024-11-27 18:05:13.491 [main] Log - Login successful!
+[INFO ] 2024-12-06 16:18:04.319 [main] Log - *** Running Beacon FCM core application login...
+[INFO ] 2024-12-06 16:18:13.298 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2024-12-06 16:19:11.083 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2024-12-06 16:19:11.705 [main] Log - Entered IBU0000028 in user name field
+[INFO ] 2024-12-06 16:19:12.022 [main] Log - Entered ses@987 in password field
+[INFO ] 2024-12-06 16:19:12.324 [main] Log - Clicked on login button
+[INFO ] 2024-12-06 16:19:22.212 [main] Log - Entered IBU0000028 in user name field
+[INFO ] 2024-12-06 16:19:22.433 [main] Log - Entered ses@987 in password field
+[INFO ] 2024-12-06 16:19:22.584 [main] Log - Clicked on login button
+[INFO ] 2024-12-06 16:19:22.584 [main] Log - Clicked on already login yes button and logged in again with valid credentials
+[INFO ] 2024-12-06 16:19:32.037 [main] Log - Clicked on Go collection button
+[INFO ] 2024-12-06 16:19:57.151 [main] Log - UserID in Dashboard: IBU0000028
+[INFO ] 2024-12-06 16:19:58.397 [main] Log - Org Name: Mumbai, Org Type Name: Zone/CO
+[INFO ] 2024-12-06 16:20:10.570 [main] Log - Login successful!

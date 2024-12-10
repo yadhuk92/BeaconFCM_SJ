@@ -39,7 +39,7 @@ public class ExtentManager {
 	        //Set environment details
 			extent.setSystemInfo("OS", "Windows");
 			extent.setSystemInfo("AUT", "QA");
-			extent.setSystemInfo("Author", "Linita Shivalkar");
+			//extent.setSystemInfo("Author", "Linita Shivalkar");
 	 
 	        return extent;
 	    }

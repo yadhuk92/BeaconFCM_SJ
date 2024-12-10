@@ -2,9 +2,12 @@ package com.BasePackage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.time.Duration;
 import java.util.Properties;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,8 +15,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.Page_Repositary.LoginPageRepo;
 import com.Utility.Log;
 
@@ -40,8 +43,6 @@ public class Base_Class {
 		
 		String Browser = configloader().getProperty("Browser");
 		String Url = configloader().getProperty("URL");
-		//String UserName = configloader().getProperty("UserName");
-		//String Password = configloader().getProperty("Password");
 		
 		switch (Browser.toUpperCase()) {
 
@@ -71,110 +72,77 @@ public class Base_Class {
 		Log.info("Title is displayed : "+Pagetitle);
 	}
 
-	public static  void input(By element, String Value) throws InterruptedException {
-
-		WebDriverWait wait2 = new WebDriverWait(driver, 30);
-		wait2.until(ExpectedConditions.presenceOfElementLocated(element)).sendKeys(Value);
-
+	public static Connection OracleDBConnection() throws IOException {
+		
+		Connection connection = null;
+        try {
+        	String DB_URL = configloader().getProperty("DatabaseURL");
+        	String DB_UserName = configloader().getProperty("DB_UserName");
+        	String DB_Password = configloader().getProperty("DB_Password");
+        	
+            // JDBC URL for Oracle database
+            String URL = "jdbc:oracle:thin:@"+ DB_URL.trim();
+            String username = DB_UserName.trim();
+            String password = DB_Password.trim();
+            // Establish connection
+            System.out.println("URL="+URL);
+            System.out.println("username="+username);
+            System.out.println("password="+password);
+            connection = DriverManager.getConnection(URL, username, password);
+            
+            if (connection != null) {
+                System.out.println("Connected to the database!");
+            } else {
+                System.out.println("Failed to make connection!");
+            }
+        } catch (SQLException e) {
+            System.err.println("Connection failed!");
+            e.printStackTrace();
+        } 
+		return connection;
+		
 	}
-
+	
 	public static  void click(By element) throws InterruptedException {
 
 		Thread.sleep(2000);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Updated constructor
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 		Thread.sleep(2000);
 
 	}
-
-	public static void select(String value,By element) {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		Select selWeekDayDropDown = new Select(driver.findElement(element));
-		selWeekDayDropDown.selectByVisibleText(value);
+	
+	public static void ForLoopClick(By ClickElement) {
+		try
+		{
+			for(int i=0; i<60; i++)
+			{
+				try
+				{
+					WebElement element = driver.findElement(ClickElement);
+					if (element.isDisplayed() == true)
+					{
+						element.click();
+						element.click();
+						System.out.println("ForLoopWaitPlusClick: Element clicked");
+						break;
+					}
+					else
+					{
+						System.out.println("Element to be click is not found");
+					}
+				}
+				catch(Exception e1)
+				{
+					System.out.println("Catch exception");
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error occurred: " + e);
+		}
 		
 	}
-
-	public static void clear(By element)throws InterruptedException
-	{
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(element)).clear();
-		Thread.sleep(2000);
-	}
-
-	public static void AcceptAlert()
-	{
-		driver.switchTo().alert().accept();
-		//driver.switchTo().alert().dismiss();
-
-		
-	}
-
-	public static  void INclick(By element) throws InterruptedException {
-
-		//Thread.sleep(2000);
-		WebDriverWait wait = new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
-		//Thread.sleep(2000);
-
-	}
 	
-	public static void SwitchToFrame(By frameName)
-	{
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
-	}
-	
-	public static void ScrollUntilElementVisible(By locator)
-	{ 
-		WebElement element = driver.findElement(locator);
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView();", element);
-	}
-
-	public static boolean ElementDisplayed(By locator)
-	{
-		WebElement element = driver.findElement(locator);
-		Boolean flag = element.isDisplayed();
-		return flag;
-	}
-	
-	public static boolean ElementEnabled(By locator)
-	{
-		WebElement element = driver.findElement(locator);
-		Boolean flag = element.isEnabled();
-		return flag;
-	}
-	
-	public static void UploadFile(By locator, String path)
-	{
-		WebElement uploadElement = driver.findElement(locator);
-		String path1=System.getProperty("user.dir");
-		Log.info("path is :" + path1);
-		uploadElement.sendKeys(path1 + path);
-		
-	}
-
-	public static boolean ElementEnableOrDisable(By locator)
-	{
-		WebElement element = driver.findElement(locator);
-		Boolean flag = element.isEnabled();
-		return flag;
-	}
-	
-	public static boolean CheckElementDisable(By locator)
-	{  
-		//disable
-		WebElement element = driver.findElement(locator);
-		Boolean flag = element.isEnabled();	
-		
-		if (flag==false) {
-			flag=true;
-		}else if(flag==true)
-			flag=false;
-		
-		return flag;
-	}
-	
-
 }

@@ -21,7 +21,20 @@ public static void endTest() {
 
 public static ExtentTest startTest(String testName) {
 	ExtentTest test = extent.createTest(testName);
+			 //.assignAuthor("QA Team");
 	extentTestMap.put((int) (long) (Thread.currentThread().getId()), test);
 	return test;
+}
+
+public static void addPreconditions(String... preconditions) {
+    ExtentTest currentTest = getTest(); // Get the current test
+    if (currentTest == null) {
+        throw new IllegalStateException("No test started. Please start a test before adding preconditions.");
+    }
+    
+    ExtentTest preconditionNode = currentTest.createNode("Preconditions");
+    for (String precondition : preconditions) {
+        preconditionNode.info(precondition);
+    }
 }
 }

@@ -3,7 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.test.user.TimesheetModule.CoreLoginTest"/>
+      <class name="com.test.LoginTest.CoreLoginTest"/>
+      <class name="Core.SecurityManagement.BannedCustomerTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
