@@ -1,14 +1,36 @@
-[INFO ] 2024-12-06 16:18:04.319 [main] Log - *** Running Beacon FCM core application login...
-[INFO ] 2024-12-06 16:18:13.298 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2024-12-06 16:19:11.083 [main] Log - Title is displayed: BeaconICnRM
-[INFO ] 2024-12-06 16:19:11.705 [main] Log - Entered IBU0000028 in user name field
-[INFO ] 2024-12-06 16:19:12.022 [main] Log - Entered ses@987 in password field
-[INFO ] 2024-12-06 16:19:12.324 [main] Log - Clicked on login button
-[INFO ] 2024-12-06 16:19:22.212 [main] Log - Entered IBU0000028 in user name field
-[INFO ] 2024-12-06 16:19:22.433 [main] Log - Entered ses@987 in password field
-[INFO ] 2024-12-06 16:19:22.584 [main] Log - Clicked on login button
-[INFO ] 2024-12-06 16:19:22.584 [main] Log - Clicked on already login yes button and logged in again with valid credentials
-[INFO ] 2024-12-06 16:19:32.037 [main] Log - Clicked on Go collection button
-[INFO ] 2024-12-06 16:19:57.151 [main] Log - UserID in Dashboard: IBU0000028
-[INFO ] 2024-12-06 16:19:58.397 [main] Log - Org Name: Mumbai, Org Type Name: Zone/CO
-[INFO ] 2024-12-06 16:20:10.570 [main] Log - Login successful!
+[INFO ] 2024-12-27 21:36:55.059 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2024-12-27 21:37:27.319 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2024-12-27 21:37:27.542 [main] Log - Entered IBU0000028 in user name field
+[INFO ] 2024-12-27 21:37:27.623 [main] Log - Entered ses@987 in password field
+[INFO ] 2024-12-27 21:37:27.710 [main] Log - Clicked on login button
+[INFO ] 2024-12-27 21:37:31.245 [main] Log - Entered IBU0000028 in user name field
+[INFO ] 2024-12-27 21:37:31.313 [main] Log - Entered ses@987 in password field
+[INFO ] 2024-12-27 21:37:31.390 [main] Log - Clicked on login button
+[INFO ] 2024-12-27 21:37:31.390 [main] Log - Clicked on already login yes button and logged in again with valid credentials
+[INFO ] 2024-12-27 21:37:32.553 [main] Log - Module selection page not appeared
+[INFO ] 2024-12-27 21:37:49.235 [main] Log - UserID in Dashboard: IBU0000028
+[INFO ] 2024-12-27 21:37:49.726 [main] Log - Org Name: Mumbai, Org Type Name: Zone/CO
+[INFO ] 2024-12-27 21:37:53.575 [main] Log - ****Navigation_to_User_Management_Page****
+[INFO ] 2024-12-27 21:37:53.575 [main] Log - ***Navigation to User Management Page***
+[INFO ] 2024-12-27 21:37:53.575 [main] Log - Login successful !
+[INFO ] 2024-12-27 21:37:57.711 [main] Log - 1. Click on Security Management menu
+[INFO ] 2024-12-27 21:38:01.899 [main] Log - 2. Click on User Management submenutrue
+[INFO ] 2024-12-27 21:39:02.654 [main] Log - All elements in UserManagementPage displayed : true
+[INFO ] 2024-12-27 21:39:02.656 [main] Log - ****User_search_page__Default_State_of_IsActive_Checkbox****
+[INFO ] 2024-12-27 21:39:02.656 [main] Log - Check the default state of 'Is Active' checkbox.
+[INFO ] 2024-12-27 21:39:02.665 [main] Log - IsActive Checkbox Selected by default
+[INFO ] 2024-12-27 21:39:02.667 [main] Log - ****User_search_page__Pagination_of_Active_users****
+[INFO ] 2024-12-27 21:39:02.720 [main] Log - Displayed UserManagement PreviousBtn : true
+[INFO ] 2024-12-27 21:39:02.769 [main] Log - Displayed UserManagement FirstPageBtn : true
+[INFO ] 2024-12-27 21:39:02.818 [main] Log - Displayed UserManagement SecondPageBtn : true
+[INFO ] 2024-12-27 21:39:02.864 [main] Log - Displayed UserManagement NextBtn : true
+[INFO ] 2024-12-27 21:39:02.914 [main] Log - Displayed User search page - Pagination of Active users : true
+[INFO ] 2024-12-27 21:39:02.916 [main] Log - ****User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking****
+[INFO ] 2024-12-27 21:39:07.076 [main] Log - Click on the '2' button in pagination showing under active users grid :true
+[INFO ] 2024-12-27 21:39:07.077 [main] Log - ****User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking****
+[INFO ] 2024-12-27 21:39:11.544 [main] Log - Clicked on the '>>' button in paginationtrue
+[INFO ] 2024-12-27 21:39:11.545 [main] Log - ****User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking****
+[INFO ] 2024-12-27 21:39:25.408 [main] Log - Should navigate into 1st page of the active users list : true
+[INFO ] 2024-12-27 21:39:25.409 [main] Log - ****Test_Redirect_to_Add_New_User_Page****
+[INFO ] 2024-12-27 21:40:37.831 [main] Log - 1. Click on Add User button
+[INFO ] 2024-12-27 21:40:37.831 [main] Log - Expected result --> Page redirects to 'Add New User' page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Submit buttons are visible.

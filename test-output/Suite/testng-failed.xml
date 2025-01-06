@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="none">
-  <test thread-count="5" name="Test">
+  <test thread-count="1" name="Test">
     <classes>
-      <class name="com.test.LoginTest.CoreLoginTest"/>
+      <class name="Core.SecurityManagement.UserManagement_TC"/>
       <class name="Core.SecurityManagement.BannedCustomerTest"/>
     </classes>
   </test> <!-- Test -->
+  <test name="Test(failed)" parallel="none">
+    <classes>
+      <class name="Core.SecurityManagement.UserManagement_TC">
+        <methods>
+          <include name="User_search_page__Pagination_of_Active_users"/>
+          <include name="reference"/>
+          <include name="takeScreenshotOnFailure"/>
+          <include name="AfterClass"/>
+          <include name="ExtentTestManagerStartTest"/>
+        </methods>
+      </class> <!-- Core.SecurityManagement.UserManagement_TC -->
+      <class name="Core.SecurityManagement.BannedCustomerTest">
+        <methods>
+          <include name="reference"/>
+          <include name="AfterClass"/>
+          <include name="takeScreenshotOnFailure"/>
+        </methods>
+      </class> <!-- Core.SecurityManagement.BannedCustomerTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
