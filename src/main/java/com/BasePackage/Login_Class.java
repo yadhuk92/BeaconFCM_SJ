@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import com.BasePackage.Base_Class;
-import com.Page_Repositary.LoginPageRepo;
+import com.Page_Repository.LoginPageRepo;
 import com.Utility.Log;
 import io.github.bonigarcia.wdm.WebDriverManager;
 

@@ -1,0 +1,143 @@
+package com.Utility;
+
+import java.io.IOException;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.BasePackage.Base_Class;
+
+import oracle.jdbc.OracleTypes;
+
+public class DBUtils {
+
+    public static String fetchSingleValueFromDB(String query) 
+    		throws SQLException, ClassNotFoundException, IOException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String result = null;
+
+        try {
+            // Establish the database connection
+            con = Base_Class.OracleDBConnection();
+
+            // Prepare the SQL statement
+            pstmt = con.prepareStatement(query);
+
+            // Execute the query
+            rs = pstmt.executeQuery();
+
+            // Retrieve the single value from the result set
+            if (rs.next()) {
+                result = rs.getString(1); // Assuming the result is in the first column
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e; // Rethrow exception to handle it further up the chain
+        } finally {
+            // Close resources
+            if (rs != null) {
+                rs.close();
+            }
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        /*try {
+            // Example usage
+            String query = "SELECT Default_URL FROM acc_users WHERE user_id = 'IBU0000028'";
+            String defaultURL = fetchSingleValueFromDB(query);
+            System.out.println("Default URL: " + defaultURL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+        
+    	String procedureCall = "{CALL SP_GET_USER_OTHERBRANCH_ACCOUNTS(?, ?)}";
+        String userId = "IBU0001196"; // Input parameter
+
+        try {
+            List<String> AcNo = callStoredProcedureWithRefCursor(procedureCall, userId);
+            String AccoutNumber = String.join(", ", AcNo);
+            System.out.println("User Branch Account Number: " + AccoutNumber);
+        } catch (Exception e) {
+            System.err.println("Failed to execute stored procedure: " + e.getMessage());
+        }
+    	
+    }
+    
+    public static List<String> callStoredProcedureWithRefCursor(String procedureCall, String parameter)
+            throws SQLException, ClassNotFoundException, IOException {
+        Connection con = null;
+        CallableStatement cstmt = null;
+        ResultSet rs = null;
+        List<String> results = new ArrayList<>();
+
+        try {
+            // Establish the database connection
+            con = Base_Class.OracleDBConnection();
+
+            // Prepare the callable statement
+            cstmt = con.prepareCall(procedureCall);
+
+            // Validate and set the input parameter
+            if (parameter != null) {
+                cstmt.setString(1, parameter); // Set the first parameter as input
+            } else {
+                cstmt.setNull(1, java.sql.Types.VARCHAR); // Handle null input
+            }
+
+            // Register the output parameter as a REF_CURSOR
+            cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+
+            // Execute the callable statement
+            cstmt.execute();
+
+            // Retrieve the REF_CURSOR
+            rs = (ResultSet) cstmt.getObject(2);
+
+            // Process the result set
+            while (rs.next()) {
+                // Assuming the result contains a column 'ACCOUNT_NO'
+                results.add(rs.getString("ACCOUNT_NO"));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error while calling stored procedure: " + e.getMessage());
+            throw e; // Propagate the exception
+        } finally {
+            // Ensure resources are closed to prevent memory leaks
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ignored) {
+                }
+            }
+            if (cstmt != null) {
+                try {
+                    cstmt.close();
+                } catch (SQLException ignored) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ignored) {
+                }
+            }
+        }
+        return results;
+    }
+
+}

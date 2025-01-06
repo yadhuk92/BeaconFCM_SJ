@@ -17,7 +17,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.Page_Repositary.LoginPageRepo;
+import com.Page_Repository.LoginPageRepo;
 import com.Utility.Log;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -85,9 +85,9 @@ public class Base_Class {
             String username = DB_UserName.trim();
             String password = DB_Password.trim();
             // Establish connection
-            System.out.println("URL="+URL);
-            System.out.println("username="+username);
-            System.out.println("password="+password);
+            //System.out.println("URL="+URL);
+            //System.out.println("username="+username);
+            //System.out.println("password="+password);
             connection = DriverManager.getConnection(URL, username, password);
             
             if (connection != null) {
@@ -145,4 +145,74 @@ public class Base_Class {
 		
 	}
 	
+	public WebElement waitVisibility(By by) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(12));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+	}
+	
+	public static boolean ElementDisplayed(By locator)
+	{   
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		WebElement element = driver.findElement(locator);
+		Boolean flag = element.isDisplayed();
+		return flag;
+	}
+	
+	public static void input(By element, String Value) throws InterruptedException {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(20));
+		wait2.until(ExpectedConditions.presenceOfElementLocated(element)).sendKeys(Value);
+	}
+	
+	public void SelectActiveDropdown(By by, String value) throws InterruptedException {
+
+		if (ElementDisplayed(by)) {
+			//JavascriptExecutor Js=driver;
+			//Js.executeScript("arguments[0].click();", by);
+            click(by);
+
+			Thread.sleep(3000); 
+
+			By options = By.xpath("//*[text()='"+ value +"']//parent::li");
+
+			if (ElementDisplayed(options)) {
+
+				click(options);
+
+				Log.info("Successfully user found and clicked on the " + value + " value inside the dropdown ");
+
+			}else {
+				waitVisibility(options);
+				if (ElementDisplayed(options)) {
+
+					click(options);
+
+					Log.info("Successfully user found and clicked on the " + value + " value inside the dropdown ");
+
+				}else {
+					Log.error("Unsuccessfully user not able to find and clicked on the " + value + " value inside the dropdown ");
+				}
+				
+			}
+
+		} else {
+
+			Log.info("UnSuccessfully user not found and clicked on the " + value + " value inside the dropdown ");
+
+		}
+
+	}
+
+	public static void clear(By element)throws InterruptedException
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.elementToBeClickable(element)).clear();
+		Thread.sleep(2000);
+	}
+	
+	public static boolean isCheckboxSelectedByDefault(WebDriver driver, By locator) {
+        WebElement checkbox = driver.findElement(locator);
+        return checkbox.isSelected();
+    }
+
 }

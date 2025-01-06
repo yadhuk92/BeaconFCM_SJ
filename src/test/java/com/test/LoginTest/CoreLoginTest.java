@@ -41,8 +41,7 @@ public class CoreLoginTest extends Base_Class {
             
             ExtentTestManager.getTest().log(Status.INFO,
                     "Preconditions: 1. User must have valid credentials \n" +
-                    "2. Application must be accessible"
-                );
+                    "2. Application must be accessible");
             Log.info("*** Running Beacon FCM core application login...");
             context.setAttribute("fileName", "Login");
             
