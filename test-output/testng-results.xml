@@ -2,38 +2,32 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="130923" started-at="2024-12-06T10:48:04Z" finished-at="2024-12-06T10:50:14Z">
+  <suite name="Default suite" duration-ms="352578" started-at="2025-01-09T09:45:56Z" finished-at="2025-01-09T09:51:49Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="130923" started-at="2024-12-06T10:48:04Z" finished-at="2024-12-06T10:50:14Z">
-      <class name="com.test.LoginTest.CoreLoginTest">
-        <test-method status="PASS" signature="reference()[pri:0, instance:com.test.LoginTest.CoreLoginTest@396a51ab]" name="reference" is-config="true" duration-ms="1293" started-at="2024-12-06T16:18:02Z" finished-at="2024-12-06T16:18:04Z">
+    <test name="Default test" duration-ms="352578" started-at="2025-01-09T09:45:56Z" finished-at="2025-01-09T09:51:49Z">
+      <class name="com.CollectionAgency.SecurityManagement.RoleManagement_Test">
+        <test-method status="PASS" signature="reference()[pri:0, instance:com.CollectionAgency.SecurityManagement.RoleManagement_Test@4c70fda8]" name="reference" is-config="true" duration-ms="484" started-at="2025-01-09T15:15:56Z" finished-at="2025-01-09T15:15:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reference -->
-        <test-method status="PASS" signature="RUNALL(org.testng.ITestContext)[pri:0, instance:com.test.LoginTest.CoreLoginTest@396a51ab]" name="RUNALL" duration-ms="130897" started-at="2024-12-06T16:18:04Z" finished-at="2024-12-06T16:20:14Z">
+        <test-method status="PASS" signature="RUNALL(java.util.Map, org.testng.ITestContext)[pri:0, instance:com.CollectionAgency.SecurityManagement.RoleManagement_Test@4c70fda8]" name="RUNALL" duration-ms="351844" started-at="2025-01-09T15:15:57Z" data-provider="TestData" finished-at="2025-01-09T15:21:49Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@548e6d58]]>
+                <![CDATA[{AlphanumericName=Role25, Role Name=Newman19, Run=Yes, specialCharacters=^%$, TestScenario=TC_ProcessSheet_CollectionAgency}]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@2a640157]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- RUNALL -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:com.test.LoginTest.CoreLoginTest@396a51ab]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2024-12-06T16:20:14Z" finished-at="2024-12-06T16:20:14Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=RUNALL status=SUCCESS method=CoreLoginTest.RUNALL(org.testng.ITestContext)[pri:0, instance:com.test.LoginTest.CoreLoginTest@396a51ab] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-      </class> <!-- com.test.LoginTest.CoreLoginTest -->
+      </class> <!-- com.CollectionAgency.SecurityManagement.RoleManagement_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

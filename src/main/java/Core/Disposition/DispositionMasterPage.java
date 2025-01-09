@@ -1,24 +1,22 @@
 package Core.Disposition;
 
-
 import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import com.BasePackage.Common;
+import com.Page_Repository.DispositionMasterPageRepo;
 import com.Utility.Log;
 
 public class DispositionMasterPage {
 	
-	WebDriver driver;
+	private WebDriver driver;
 	
 	// Constructor
 	public DispositionMasterPage(WebDriver driver) {
@@ -27,131 +25,58 @@ public class DispositionMasterPage {
         Log.info("DispositionMasterPage initialized.");
     }
 	
-	@FindBy(xpath = "//span[contains(text(), 'Disposition')]")
-	private WebElement dispositionMainMenu;
-
-	@FindBy(xpath = "//a[@title='Disposition Master']")
-	private WebElement dispositionMasterSubMenu;
-
-	// Web element locator for checking if "Disposition Master" page is active
-	@FindBy(xpath = "//div[@class='main']")
-	WebElement dispositionMasterHeader;
-
-	@FindBy(xpath = "//span[contains(text(),'Disposition')]")
-	private WebElement Disposition;
-
-	@FindBy(xpath = "//span[contains(text(),'Sub-Disposition')]")
-	private WebElement Sub_Disposition;
-
-	@FindBy(xpath = "((//div[contains(text(),'Action Owner')])[1]//following::div//div)[1]")
-	private WebElement actionOwnerDropdown;
-
-	@FindBy(xpath = "(//li[contains(@aria-label,'Call Centre')])[2]")
-	private WebElement callCentreOption;
-
-	@FindBy(xpath = "(//li[contains(@aria-label,'Collection Agency')])[2]")
-	private WebElement collectionAgencyOption;
-
-	@FindBy(xpath = "(//li[contains(@aria-label,'Internal User')])[2]")
-	private WebElement internalUserOption;
-
-	By isActiveCheckbox = By.xpath("(//input[@type='checkbox' and @value='true'])[1]");
-
-	@FindBy(xpath = "(//button[@id='dropdownMenu2'])[1]")
-	private WebElement actionColumnButton;
-
-	@FindBy(xpath = "//tr[contains(@class,'rz-datatable')]//td[3]//span//i") List<WebElement> statusIcons;
-
-
-	@FindBy(xpath="(//div[@class='table-footerpagination'])[1]//div//nav")
-    private WebElement pagination;
-	
-	@FindBy(xpath="(//li[@class='page-item  '])[2]//span")
-    private WebElement paginationNextButton;
-	public static By paginationNextButton1 = By.xpath("(//li[@class='page-item  '])[2]//span");
-	
-	@FindBy(xpath = "(//li[@class='page-item  '])[1]//span")
-    private WebElement page2;
-	
-	@FindBy(xpath="(//li[@class='page-item  ']//span)[2]")
-    private WebElement previousButton;
-	
-	@FindBy(xpath="(//li[@class='page-item  '])[3]//span")
-    private WebElement lastPageButton;
-	
-	@FindBy(xpath="(//li[@class='page-item disabled '])[1]")
-    private WebElement nextButton;
-	
-	@FindBy(xpath="(//li[@class='page-item  '])[2]")
-    private WebElement previouspage;
-	
-	@FindBy(xpath="(//li[@class='page-item  '])[1]")
-    private WebElement firstpage;
-	
-	@FindBy(id = "//button[contains(text(),'Add Disposition')]")
-    private WebElement addDispositionButton;
-
-    @FindBy(id = "//label[contains(text(),'Action Owner')]//following::div[1]")
-    private WebElement actionOwnerField;
-
-    @FindBy(id = "(//input[@name='Name'])[1]")
-    private WebElement nameField;
-
-    @FindBy(id = "(//label[contains(text(),'Asset Category')]//following::div//div[@class='rz-helper-hidden-accessible']//input//following::label)[1]")
-    private WebElement assetCategoryField;
-
-    @FindBy(id = "//button[contains(text(),'Submit')]")
-    private WebElement submitButton;
-
-    @FindBy(id = "//div[@class='rz-dialog-titlebar']//a")
-    private WebElement closeButton;
-    
-    
-    
 	public WebElement getDispositionMainMenu() {
-	    return dispositionMainMenu;
+		WebElement mainmenu = driver.findElement(DispositionMasterPageRepo.dispositionMainMenu);
+	    return mainmenu;
 	}
-	
 
 	public void clickOnDispositionMainMenu() throws InterruptedException {
+		WebElement mainmenu = driver.findElement(DispositionMasterPageRepo.dispositionMainMenu);
 		Log.info("Clicking on the Disposition.");
-		dispositionMainMenu.click();
+		mainmenu.click();
 		Log.info("Successfully clicked on the Disposition.");
 		Thread.sleep(10000);
 	}
 
 	public void clickOnDispositionMasterSubMenu() throws InterruptedException {
+		WebElement submenu = driver.findElement(DispositionMasterPageRepo.dispositionMasterSubMenu);
 		Log.info("Clicking on the Disposition Master.");
-		dispositionMasterSubMenu.click();
+		submenu.click();
 		Log.info("Successfully clicked on the Disposition Master.");
 		Thread.sleep(30000);
 	}
 
 	//Method to verify if the Disposition Master page is loaded
 	public boolean isDispositionMasterPageDisplayed() {
-		return dispositionMasterHeader.isDisplayed();
+		WebElement masterheader = driver.findElement(DispositionMasterPageRepo.dispositionMasterHeader);
+		return masterheader.isDisplayed();
 	}
 
 	public boolean isDispositionDisplayed() {
-		return Disposition.isDisplayed();
+		WebElement disposition = driver.findElement(DispositionMasterPageRepo.dispositionMainMenu);
+		return disposition.isDisplayed();
 	}
 
 	public boolean isSubDispositionDisplayed() {
-		return Sub_Disposition.isDisplayed();
+		WebElement subdisposition = driver.findElement(DispositionMasterPageRepo.Sub_Disposition);
+		return subdisposition.isDisplayed();
 	}
 	public int getActiveDispositionsCount() throws InterruptedException {
 		// Replace the locator below with the actual locator for active disposition rows
 		Thread.sleep(30000);
-		String activeDispositionsXpath = "//div[@class='rz-data-grid-data']//tr[contains(@class, 'rz-datatable-even')]";
 
 		// Find all active disposition rows
-		return driver.findElements(By.xpath(activeDispositionsXpath)).size();
+		return driver.findElements(DispositionMasterPageRepo.subDispositionList).size();
 	}
 
 	//Method to select Action Owner from dropdown
 	public void selectActionOwnerOptions() {
+		WebElement actionownerdropdown = driver.findElement(DispositionMasterPageRepo.actionOwnerDropdown);
 		Log.info("Opening the Action Owner dropdown.");
-		actionOwnerDropdown.click();
+		actionownerdropdown.click();
+		WebElement callCentreOption = driver.findElement(DispositionMasterPageRepo.callCentreOption);
+		WebElement collectionAgencyOption = driver.findElement(DispositionMasterPageRepo.collectionAgencyOption);
+		WebElement internalUserOption = driver.findElement(DispositionMasterPageRepo.internalUserOption);
 		Log.info("Selecting 'Call Centre' option.");
 		callCentreOption.click();
 		Log.info("Selecting 'Collection Agency' option.");
@@ -162,24 +87,22 @@ public class DispositionMasterPage {
 	}
 
 	public boolean isIsActiveCheckboxChecked() {
-		return driver.findElement(isActiveCheckbox).isSelected();
+		WebElement activecheckbox = driver.findElement(DispositionMasterPageRepo.isActiveCheckbox);
+		return activecheckbox.isSelected();
 	}
 
 	// Method to verify action column options
 	public boolean verifyActionOptions() {
+		WebElement actioncolumnbutton = driver.findElement(DispositionMasterPageRepo.actionColumnButton);
 
-
-		actionColumnButton.click();
+		actioncolumnbutton.click();
 		// Check for Edit and Activate/Deactivate options
-		By editOption = By.xpath("(//button[contains(text(),'Edit')])[1]");
-		By activateDeactivateOption = By.xpath("(//button[contains(text(),'Activate/De-activate')])[1]");
 
-		// Wait for the options to appear
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		try {
-			WebElement editElement = wait.until(ExpectedConditions.presenceOfElementLocated(editOption));
-			WebElement activateDeactivateElement = wait.until(ExpectedConditions.presenceOfElementLocated(activateDeactivateOption));
-
+			// Wait for the options to appear
+			WebElement editElement = wait.until(ExpectedConditions.presenceOfElementLocated(DispositionMasterPageRepo.editOption));
+			WebElement activateDeactivateElement = wait.until(ExpectedConditions.presenceOfElementLocated(DispositionMasterPageRepo.activateDeactivateOption));
 			// Verify both options are displayed
 			return editElement.isDisplayed() && activateDeactivateElement.isDisplayed();
 		} catch (Exception e) {
@@ -189,7 +112,9 @@ public class DispositionMasterPage {
 	}
 
 	public boolean areAllStatusIconsGreenTicks() {
-		//List<WebElement> statusIcons = driver.findElements(By.xpath("//tr[contains(@class,'rz-datatable')]//td[3]//span//i"));
+		
+		List<WebElement> statusIcons = driver.findElements(DispositionMasterPageRepo.statusIconslist);
+		
 		for (WebElement icon : statusIcons) {
 			if (!icon.getAttribute("style").contains("color: green")) {
 				System.out.println("Icon is not in a green tick: " + icon.getAttribute("style"));
@@ -197,18 +122,21 @@ public class DispositionMasterPage {
 			}
 			else {
 				System.out.println("All items are in a green tick: ");
+				
 			}
 
 		}
-		return true; 
+		return true;
 
 	}
 	
 	public boolean isPaginationCorrect() {
-		WebElement previousButton = pagination.findElement(By.xpath("(//li[@class='page-item disabled '])[1]"));
-        WebElement page1Button = pagination.findElement(By.xpath("(//li[@class='page-item  active'])[1]//span"));
-        WebElement nextButton = pagination.findElement(By.xpath("(//li[@class='page-item  '])[2]//span"));
-        WebElement doubleArrowButton = pagination.findElement(By.xpath("(//li[@class='page-item  '])[3]//span"));
+		WebElement pagination = driver.findElement(DispositionMasterPageRepo.pagination);
+		
+		WebElement previousButton = pagination.findElement(DispositionMasterPageRepo.nextButton);
+        WebElement page1Button = pagination.findElement(DispositionMasterPageRepo.page1Button);
+        WebElement nextButton = pagination.findElement(DispositionMasterPageRepo.paginationNextButton);
+        WebElement doubleArrowButton = pagination.findElement(DispositionMasterPageRepo.lastPageButton);
      // Get the 'class' attribute of the element
         String classAttribute = previousButton.getAttribute("class");
      // Check if the class contains the specific class name
@@ -227,20 +155,18 @@ public class DispositionMasterPage {
     }
 	
 	public void clickNextPagination() throws InterruptedException {
-		WebElement page2Button = paginationNextButton.findElement(By.xpath("(//li[@class='page-item  '])[1]//span"));
-		WebElement previousButton = paginationNextButton.findElement(By.xpath("(//li[@class='page-item  ']//span)[2]"));
-		WebElement nextButton = paginationNextButton.findElement(By.xpath("(//li[@class='page-item  '])[2]//span"));
-        WebElement nextdoubleArrowButton = paginationNextButton.findElement(By.xpath("(//li[@class='page-item  '])[3]//span"));
-        WebElement previousdoubleArrowButton = paginationNextButton.findElement(By.xpath("(//li[@class='page-item  '])[1]"));
-        
-        Common.fluentWait("paginationNextButton", paginationNextButton1);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebElement paginationnextbutton = driver.findElement(DispositionMasterPageRepo.paginationNextButton);
+		WebElement page2Button = paginationnextbutton.findElement(DispositionMasterPageRepo.page2);
+        WebElement previousButton = paginationnextbutton.findElement(DispositionMasterPageRepo.previousButton);
+        WebElement nextButton = paginationnextbutton.findElement(DispositionMasterPageRepo.paginationNextButton);
+        WebElement nextdoubleArrowButton = paginationnextbutton.findElement(DispositionMasterPageRepo.lastPageButton);
+        WebElement previousdoubleArrowButton = paginationnextbutton.findElement(DispositionMasterPageRepo.firstpage);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", paginationnextbutton);
         Thread.sleep(500);
-        driver.findElement(paginationNextButton1).click();
-        /*JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", paginationNextButton);*/
-        //Thread.sleep(500);
-        //paginationNextButton.click();
-        Thread.sleep(500);
+        paginationnextbutton.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
      // Verify Page 2 is selected
         Assert.assertTrue(page2Button.isDisplayed(), "Page 2 button is not selected.");
      // Verify Previous button is enabled
@@ -255,14 +181,17 @@ public class DispositionMasterPage {
 	}
 
 	public void clickPreviousPagination() {
-		WebElement page1 = previousButton.findElement(By.xpath("(//li[@class='page-item  active'])[1]//span"));
-		WebElement previousBut = previousButton.findElement(By.xpath("(//li[@class='page-item disabled '])[1]"));
-		WebElement nextButton = previousButton.findElement(By.xpath("(//li[@class='page-item  '])[2]//span"));
-        WebElement nextdoubleArrowButton = previousButton.findElement(By.xpath("(//li[@class='page-item  '])[3]//span"));
-        //WebElement previousdoubleArrowButton = previousButton.findElement(By.xpath("(//li[@class='page-item  '])[1]"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebElement previousbutton = driver.findElement(DispositionMasterPageRepo.previousButton);
+		WebElement paginationNextButton = driver.findElement(DispositionMasterPageRepo.paginationNextButton);
+		WebElement page1 = previousbutton.findElement(DispositionMasterPageRepo.page1Button);
+        WebElement previousBut = previousbutton.findElement(DispositionMasterPageRepo.nextButton);
+        WebElement nextButton = previousbutton.findElement(DispositionMasterPageRepo.paginationNextButton);
+        WebElement nextdoubleArrowButton = previousbutton.findElement(DispositionMasterPageRepo.lastPageButton);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", paginationNextButton);
-        previousButton.click();
+        previousbutton.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
      // Verify Page 1 is selected
         Assert.assertTrue(page1.isDisplayed(), "Page 1 is not selected.");
      // Verify Previous button is enabled
@@ -277,7 +206,7 @@ public class DispositionMasterPage {
      // Verify Double Arrow (>>) button is enabled
         Assert.assertTrue(nextdoubleArrowButton.isEnabled(), "Next Double Arrow button is not enabled.");
      /// Verify Double Arrow (<<) button is not visible
-        List<WebElement> previousdoubleArrowButtons = driver.findElements(By.xpath("//li[@class='page-item  ']//span[contains(text(),'<<')]"));
+        List<WebElement> previousdoubleArrowButtons = driver.findElements(DispositionMasterPageRepo.previousDoubleArrowButtons);
         if (previousdoubleArrowButtons.isEmpty()) {
             // Element is not in the DOM
             System.out.println("The '<<' button is not present in the DOM.");
@@ -289,7 +218,13 @@ public class DispositionMasterPage {
 	}
 	
 	public void clickLastPageButton() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebElement lastPageButton = driver.findElement(DispositionMasterPageRepo.lastPageButton);
         lastPageButton.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+		WebElement nextButton = driver.findElement(DispositionMasterPageRepo.nextButton);
+		WebElement previouspage = driver.findElement(DispositionMasterPageRepo.previouspage);
+		WebElement firstpage = driver.findElement(DispositionMasterPageRepo.firstpage);
      // Verify Next button is enabled
         String classAttribute = nextButton.getAttribute("class");
         // Check if the class contains the specific class name
@@ -298,13 +233,13 @@ public class DispositionMasterPage {
         // Assert that the class does contain the specific class name
            Assert.assertTrue(containsClassName, "Element contains the undesired class");
            
-           List<WebElement> lastpageArrowButtons = driver.findElements(By.xpath("(//li[@class='page-item  '])[3]//span[contains(text(),'>>')]"));
-           if (lastpageArrowButtons.isEmpty()) {
+           List<WebElement> lastPageArrowButtons = driver.findElements(DispositionMasterPageRepo.lastPageArrowButton);
+           if (lastPageArrowButtons.isEmpty()) {
                // Element is not in the DOM
                System.out.println("The '>>' button is not present in the DOM.");
            } else {
                // Element exists; check visibility
-               Assert.assertFalse(lastpageArrowButtons.get(0).isDisplayed(), "'>>' button is visible, but it should not be.");
+               Assert.assertFalse(lastPageArrowButtons.get(0).isDisplayed(), "'>>' button is visible, but it should not be.");
            }
            
         // Verify Previous button is enabled
@@ -316,8 +251,14 @@ public class DispositionMasterPage {
     }
 	
 	public void clickFirstPageButton() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebElement firstpage = driver.findElement(DispositionMasterPageRepo.firstpage);
+		WebElement previousButton = driver.findElement(DispositionMasterPageRepo.previousButton);
+		WebElement nextButton = driver.findElement(DispositionMasterPageRepo.nextButton);
+		WebElement lastPageButton = driver.findElement(DispositionMasterPageRepo.lastPageButton);
 		firstpage.click();
-		WebElement previousBut = previousButton.findElement(By.xpath("(//li[@class='page-item disabled '])[1]"));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+		WebElement previousBut = previousButton.findElement(DispositionMasterPageRepo.nextButton);
 		// Verify Previous button is enabled
         String classAttribute = previousBut.getAttribute("class");
         // Check if the class contains the specific class name
@@ -326,7 +267,7 @@ public class DispositionMasterPage {
         // Assert that the class does contain the specific class name
            Assert.assertTrue(containsClassName, "Element contains the undesired class");
            
-           List<WebElement> previousdoubleArrowButtons = driver.findElements(By.xpath("//li[@class='page-item  ']//span[contains(text(),'<<')]"));
+           List<WebElement> previousdoubleArrowButtons = driver.findElements(DispositionMasterPageRepo.previousdoubleArrowButtons);
            if (previousdoubleArrowButtons.isEmpty()) {
                // Element is not in the DOM
                System.out.println("The '<<' button is not present in the DOM.");
@@ -343,25 +284,19 @@ public class DispositionMasterPage {
     }
 	
 	public void clickAddDispositionButton() {
-		
-		By addDispositionButton =By.xpath("//button[contains(text(),'Add Disposition')]");
-		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		//WebElement editElement = wait.until(ExpectedConditions.presenceOfElementLocated(addDispositionButton));
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, 0);"); 
-		 WebElement addDispositionButton2 =  driver.findElement(addDispositionButton);
-		 addDispositionButton2.click();
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+    	js.executeScript("window.scrollBy(0,-500);");
+		 driver.findElement(DispositionMasterPageRepo.addDispositionButton).click();
     }
 	
 	public boolean isPopupDisplayed() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='rz-dialog-content']")));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    try {
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Action Owner')]//following::div[1]")));
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@name='Name'])[1]")));
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//label[contains(text(),'Asset Category')]//following::div//div[@class='rz-helper-hidden-accessible']//input//following::label)[1]")));
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]")));
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='rz-dialog-titlebar']//a")));
+	    	wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerField));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.nameField));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.assetCategoryField));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.submitButton));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.closeButton));
 	        return true;
 	    } catch (Exception e) {
 	        System.err.println("Popup elements not displayed: " + e.getMessage());
@@ -371,121 +306,788 @@ public class DispositionMasterPage {
 	
 	// Method to close the Add Disposition popup
     public void closeAddDispositionPopup() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	WebElement close = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='rz-dialog-titlebar']//a")));
-    	//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='rz-dialog-titlebar']//a")));
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement close = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.closeButton));
     	close.click();
     }
 
     // Method to verify that popup is closed
     public boolean isPopupClosed() {
-        try {
-            return !closeButton.isDisplayed(); // Assumes the close button is not visible after closing
-        } catch (Exception e) {
-            return true; // If element not found, it's assumed to be closed
+        // Check if the close button is visible, or use other checks if necessary
+        List<WebElement> closeButtonList = driver.findElements(DispositionMasterPageRepo.closeButton);
+
+        // If the close button is not found in the DOM, it is assumed the popup is closed
+        if (closeButtonList.isEmpty()) {
+            return true;
         }
+
+        // If the close button is found, check if it's visible
+        WebElement closeButton = closeButtonList.get(0);
+        return !closeButton.isDisplayed();
     }
     
  // Method to select action owner
     public void selectActionOwner(String actionOwner) {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	By addDispositionButton =By.xpath("//button[contains(text(),'Add Disposition')]");
-    	WebElement addDispositionButton2 =  driver.findElement(addDispositionButton);
-		 addDispositionButton2.click();
-    	By actionownerpath =By.xpath("//label[contains(text(),'Action Owner')]//following::div[1]");
-    	WebElement dropdown =  driver.findElement(actionownerpath);
-        dropdown.click();
-        WebElement ccelement =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='rz-multiselect-items-wrapper'])[5]//ul//li[@aria-label='" + actionOwner + "']")));
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement addDisposition = driver.findElement(DispositionMasterPageRepo.addDispositionButton);
+    	addDisposition.click();
+    	WebElement actionOwnerElement = driver.findElement(DispositionMasterPageRepo.actionOwnerField);
+    	actionOwnerElement.click();
+    	WebElement ccelement = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerOption(actionOwner)));
         ccelement.click();
     }
 
     // Method to enter disposition name
     public void enterName(String name) {
-    	By namepath =By.xpath("(//input[@name='Name'])[1]");
-        driver.findElement(namepath).sendKeys(name);
+    	WebElement nameInputField = driver.findElement(DispositionMasterPageRepo.nameField);
+    	nameInputField.sendKeys(name);
     }
 
     // Method to select asset category
     public void selectAssetCategory(String category) {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	By assetpath =By.xpath("(//label[contains(text(),'Asset Category')]//following::div//div[@class='rz-helper-hidden-accessible']//input//following::label)[1]");
-        WebElement dropdown = driver.findElement(assetpath);
-        dropdown.click();
-        WebElement ccelement =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='rz-multiselect-items-wrapper']//ul//li[@aria-label='" + category + "']")));
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement assetCategoryElement = driver.findElement(DispositionMasterPageRepo.assetCategoryField);
+        assetCategoryElement.click();
+        WebElement ccelement = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.assetCategoryOption(category)));
         ccelement.click();
     }
 
     // Method to click the submit button
     public void clickSubmit() {
-    	
-    	By submitbuttonpath =By.xpath("//button[contains(text(),'Submit')]");
-    	WebElement submit =  driver.findElement(submitbuttonpath);
-    	submit.click();
+    	Common.fluentWait("submitButton", DispositionMasterPageRepo.submitButton);
+    	WebElement submitButton = driver.findElement(DispositionMasterPageRepo.submitButton);
+    	submitButton.click();
     	
     }
     
     public void clickOnActionOwnerDropdown() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	//By addDispositionButton =By.xpath("//button[contains(text(),'Add Disposition')]");
-    	WebElement addDispositionButton2 =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add Disposition')]")));
-		 addDispositionButton2.click();
-		 By spinner = By.xpath("//div[@class='spinner']");
-		 wait.until(ExpectedConditions.invisibilityOfElementLocated(spinner));
-    	By actionownerpath =By.xpath("//label[contains(text(),'Action Owner')]//following::div[1]");
-    	WebElement dropdown =  driver.findElement(actionownerpath);
-        dropdown.click();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	 WebElement addDispositionButton = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.addDispositionButton));
+    	 addDispositionButton.click();
+    	 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	 WebElement actionOwnerElement = driver.findElement(DispositionMasterPageRepo.actionOwnerField);
+    	 actionOwnerElement.click();
     }
     
     public void selectActionOwners(String actionOwner) {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         // Locate the dropdown option by visible text or a unique attribute
-        //WebElement option = driver.findElement(By.xpath("(//div[@class='rz-multiselect-items-wrapper'])[5]//ul//li[@aria-label='" + actionOwner + "']"));
-        WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='rz-multiselect-items-wrapper'])[5]//ul//li[@aria-label='" + actionOwner + "']")));
-        option.click(); // Select the option
+    	 WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerOption(actionOwner)));
+    	    option.click();  // Select the option
     }
     
     public void clickAssetCategoryDropdown() {
     	
     	//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	By assetpath =By.xpath("(//label[contains(text(),'Asset Category')]//following::div//div[@class='rz-helper-hidden-accessible']//input//following::label)[1]");
-        WebElement dropdown = driver.findElement(assetpath);
-        dropdown.click();
+    	WebElement assetCategoryElement = driver.findElement(DispositionMasterPageRepo.assetCategoryField);
+        assetCategoryElement.click();
         
     }
     
     public void AssetCategory(String category) {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	 WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='rz-multiselect-items-wrapper']//ul//li[@aria-label='" + category + "']")));
-         option.click(); // Select the option
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.assetCategoryOption(category)));
+        option.click(); // Select the option
         
         }
     
     public void clickActionOwnerDropdown() {
-    	By popclosebuttonpath =By.xpath("//div[@class='rz-dialog-titlebar']//a");
-    	WebElement popclose =  driver.findElement(popclosebuttonpath);
-    	popclose.click();
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	WebElement addDispositionButton2 =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add Disposition')]")));
-    	addDispositionButton2.click();
-    	//By actionownerpath =By.xpath("//label[contains(text(),'Action Owner')]//following::div[1]");
-    	WebElement dropdown =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Action Owner')]//following::div[1]")));
+    	WebElement popCloseButton = driver.findElement(DispositionMasterPageRepo.closeButton);
+    	popCloseButton.click();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement addDispositionButton = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.addDispositionButton));
+    	addDispositionButton.click();
+    	WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerField));
         dropdown.click();
     }
     
     public void selectAllActionOwners() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	By spinner = By.xpath("//div[@class='spinner']");
-    	By selectAllOptionpath = By.xpath("(//div//div[@class='rz-chkbox'])[5]"); 
-    	WebElement selectAllOption =  driver.findElement(selectAllOptionpath);	
-    	wait.until(ExpectedConditions.invisibilityOfElementLocated(spinner));
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement selectAllOption = driver.findElement(DispositionMasterPageRepo.selectAllOptionpath); 
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
     	selectAllOption.click();
     	
     }
     
     public void deselectAllActionOwners() {
-    	By deselectAllOptionpath = By.xpath("(//div//div[@class='rz-chkbox'])[5]"); 
-    	WebElement deselectAllOption =  driver.findElement(deselectAllOptionpath);
+    	WebElement deselectAllOption = driver.findElement(DispositionMasterPageRepo.selectAllOptionpath);
+    	deselectAllOption.click();
+    }
+ 
+ // Method to click on "Select All" option
+    public void clickSelectAllAssetCategory() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	 WebElement selectAllOption = driver.findElement(DispositionMasterPageRepo.selectAllOptionpath); 	
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	selectAllOption.click();
+    	
+    }
+    
+ // Method to uncheck the "Select All" checkbox
+    public void uncheckSelectAllAssetCategory() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement deselectAllOption = driver.findElement(DispositionMasterPageRepo.selectAllOptionpath);	
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
     	deselectAllOption.click();
     }
     
- }
+ // Method to click on Add Disposition button
+    public void clickAddDisposition() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement close = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.closeButton));
+    	close.click();
+    	
+    	WebElement addDispositionButtonElement = driver.findElement(DispositionMasterPageRepo.addDispositionButton);
+    	addDispositionButtonElement.click();
+    }
+    
+    public void clickSubmitButton() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement submitButtonElement = driver.findElement(DispositionMasterPageRepo.submitButton);
+    	submitButtonElement.click();
+    }
+    
+ // Method to get error message for name field
+    public String getNameErrorMessage() {
+    	WebElement nameErrorMessage = driver.findElement(DispositionMasterPageRepo.nameErrorMessage);
+        return nameErrorMessage.getText();
+        
+    }
+    
+    // Method to verify if a disposition row is visible
+    public boolean isDispositionVisible(String name) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	 return driver.findElement(DispositionMasterPageRepo.dispositionByName(name)).isDisplayed();
+    }
+
+    // Method to get action owner text
+    public String getActionOwnerText(String ActionOwner) {
+    	
+    	return driver.findElement(DispositionMasterPageRepo.actionOwnerText(ActionOwner)).getText();
+    }
+
+    // Method to verify if status is a green tick
+    public boolean isStatusGreenTick() {
+    	WebElement statusIcon = driver.findElement(DispositionMasterPageRepo.statusIcon);
+        return statusIcon.isDisplayed();
+    }
+
+    // Method to check the presence of the action button
+    public boolean isActionButtonPresent() {
+    	WebElement actionButton = driver.findElement(DispositionMasterPageRepo.actionColumnButton);
+        return actionButton.isDisplayed();
+    }
+    
+ // Method to get the error message text
+    public String getErrorMessageText() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement errorPopUp = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.errorMessage));
+        return errorPopUp.getText();
+    }
+    
+ // Method to click the three-dot button
+    public void clickThreeDotButton() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement actionColumnButton = driver.findElement(DispositionMasterPageRepo.actionColumnButton);
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.errorMessage));
+    	WebElement close = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.closeButton));
+    	close.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	actionColumnButton.click();
+    }
+
+    // Method to click the edit button
+    public void clickEditButton() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement editButton = driver.findElement(DispositionMasterPageRepo.editButton);
+        editButton.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+
+    // Method to verify the popup elements are displayed
+    public boolean isEditPopupDisplayed() {
+    	WebElement actionOwnerDropdowninpop = driver.findElement(DispositionMasterPageRepo.actionOwnerDropdowninpop);
+    	WebElement nameFieldinpop = driver.findElement(DispositionMasterPageRepo.nameFieldinpop);
+    	WebElement assetCategoryDropdowninpop = driver.findElement(DispositionMasterPageRepo.assetCategoryDropdowninpop);
+    	WebElement updateButton = driver.findElement(DispositionMasterPageRepo.updateButton);
+        return actionOwnerDropdowninpop.isDisplayed() &&
+        		nameFieldinpop.isDisplayed() &&
+        		assetCategoryDropdowninpop.isDisplayed() &&
+               updateButton.isDisplayed();
+    }
+ 
+ // Method to click on the update button
+    public void clickUpdateButton() {
+    	WebElement updateButton = driver.findElement(DispositionMasterPageRepo.updateButton);
+        updateButton.click();
+    }
+    
+    // Method to verify success message
+    public boolean isSuccessMessageDisplayed() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement successPopupElement = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.successMessage));
+        return successPopupElement.isDisplayed() && successPopupElement.getText().equals("Saved Successfully");
+    }
+    
+    public void selectAllActionOwnersdropdown() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerDropdown));
+        dropdown.click();
+        Common.fluentWait("Action Owner Dropdown", DispositionMasterPageRepo.selectAllOptionpath);
+        WebElement selectAllOption = driver.findElement(DispositionMasterPageRepo.selectAllOptionpath); 
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	selectAllOption.click();
+        }
+    
+    public void enterDispositionName(String name) {
+    	WebElement nameField = driver.findElement(DispositionMasterPageRepo.nameField);
+    	nameField.sendKeys(name);
+    }
+    
+    public void selectAllAssetCategories() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement assetField = driver.findElement(DispositionMasterPageRepo.assetCategoryField);
+    	assetField.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement selectAllOption = driver.findElement(DispositionMasterPageRepo.selectAllOptionpath); 
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	selectAllOption.click();
+    	
+        }
+    public boolean SuccessMessageDisplayed() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement successpop = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.successMessage));
+        return successpop.isDisplayed() && successpop.getText().equals("Saved Successfully");
+    }
+    
+    public void ThreeDotButton() {
+    	WebElement actionColumnButton = driver.findElement(DispositionMasterPageRepo.actionColumnButton);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	actionColumnButton.click();
+    	
+    }
+    
+ // Method to change the name field to a given value
+    public void changeNameField(String name) {
+    	//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    	WebElement nameFieldElement = driver.findElement(DispositionMasterPageRepo.nameField);
+    	nameFieldElement.clear();
+    	nameFieldElement.sendKeys(name);
+    	WebElement outsideElementWebElement = driver.findElement(DispositionMasterPageRepo.outsideElement); // Assuming the <body> tag is safe to click
+    	outsideElementWebElement.click();
+    }
+    
+    public void UpdateButton() {
+    	WebElement updateButton = driver.findElement(DispositionMasterPageRepo.updateButton);
+        updateButton.click();
+    }
+    
+ // Method to get the error message text
+    public String getErrorMessage() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement existingmsgpop =  wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.errorMessage));
+        return existingmsgpop.getText();
+    }
+    
+    public void toUpdateclickThreeDotButton() {
+    	WebElement actionColumnButton = driver.findElement(DispositionMasterPageRepo.actionColumnButton);
+    	WebElement editButton = driver.findElement(DispositionMasterPageRepo.editButton);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.errorMessage));
+    	WebElement close = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.closeButton));
+    	close.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	actionColumnButton.click();
+    	 editButton.click();
+    	 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+ // Method to change Action Owner
+    public void setActionOwner(String actionOwner) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement clearValue = driver.findElement(DispositionMasterPageRepo.clearValueIcon);
+    	clearValue.click();
+    	WebElement actionOwnerElement = driver.findElement(DispositionMasterPageRepo.actionOwnerField);
+    	actionOwnerElement.click();
+    	 WebElement ccelement = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerOption4(actionOwner)));
+    	    ccelement.click();
+        WebElement outsideElement = driver.findElement(DispositionMasterPageRepo.outsideElement); // Assuming the <body> tag is safe to click
+        outsideElement.click();
+    }
+
+    // Method to change Name
+    public void setName(String name) {
+    	WebElement nameField = driver.findElement(DispositionMasterPageRepo.nameField);
+        nameField.clear();
+        nameField.sendKeys(name);
+        WebElement outsideElement = driver.findElement(DispositionMasterPageRepo.outsideElement); // Assuming the <body> tag is safe to click
+        outsideElement.click();
+    }
+
+    // Method to change Asset Category
+    public void setAssetCategory(String assetCategory) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement clearValueButton = driver.findElement(DispositionMasterPageRepo.clearvaluepath);
+    	clearValueButton.click();
+    	WebElement assetLabel = driver.findElement(DispositionMasterPageRepo.assetCategoryField);
+    	assetLabel.click();
+    	WebElement ccelement = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.assetCategoryOption2(assetCategory)));
+        ccelement.click();
+        WebElement outsideElement = driver.findElement(DispositionMasterPageRepo.outsideElement); // Assuming the <body> tag is safe to click
+        outsideElement.click();
+    }
+
+    // Method to verify success message
+    public boolean isUpdateSuccessMessageDisplayed() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.successMessage));
+        return successMessage.isDisplayed();
+    }
+    
+ // Method to click on the three-dot action button
+    public void clkThreeDotButton() {
+    	WebElement actionColumnButton = driver.findElement(DispositionMasterPageRepo.actionColumnButton);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	actionColumnButton.click();
+    }
+
+    // Method to click on the Activate/De-activate option
+    public void clickActivateDeactivateOption() {
+    	WebElement activateDeactivateOption = driver.findElement(DispositionMasterPageRepo.activateDeactivateOption);
+        activateDeactivateOption.click();
+    }
+    
+ // Method to select action owner as Call centre
+    public void selActionOwner(String actionOwner) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+    	js.executeScript("window.scrollBy(0,-500);");
+    	WebElement clearValueButton = driver.findElement(DispositionMasterPageRepo.clearvaluepath2);
+    	clearValueButton.click();
+    	WebElement actionOwnerDropdown = driver.findElement(DispositionMasterPageRepo.actionownerdropdownpath);
+    	actionOwnerDropdown.click();
+    	WebElement ccelement = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerOption3(actionOwner)));
+        ccelement.click();
+      WebElement outsideElement = driver.findElement(DispositionMasterPageRepo.outsideElementPath2); // Assuming the <body> tag is safe to click
+      outsideElement.click();
+    }
+    
+ // Method to untick Is active checkbox
+    public void untickIsActiveCheckbox() {
+    	WebElement checkbox = driver.findElement(DispositionMasterPageRepo.isActiveCheckbox2);
+       checkbox.click();
+
+        }
+    
+ // Method to click on the search button
+    public void clickSearchButton() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement searchButton = driver.findElement(DispositionMasterPageRepo.searchButton);
+        searchButton.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+ // Method to verify the deactivated disposition icon
+    public boolean isDeactivatedDispositionVisible() {
+    	
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+        
+    	List<WebElement> statusIcons = driver.findElements(DispositionMasterPageRepo.statusIconslist);
+		for (WebElement icon : statusIcons) {
+			if (!icon.getAttribute("style").contains("color: red")) {
+				System.out.println("Icon is not in a red tick: " + icon.getAttribute("style"));
+				return false;
+			}
+			else {
+				System.out.println("All items are in a red tick: ");
+				
+			}
+
+		}
+		return true;
+    }
+    
+    public boolean isActiveDispositionShown() {
+    	Common.fluentWait("Status icon list", DispositionMasterPageRepo.statusIconslist);
+    	List<WebElement> statusIcons = driver.findElements(DispositionMasterPageRepo.statusIconslist);
+		for (WebElement icon : statusIcons) {
+			if (!icon.getAttribute("style").contains("color: green")) {
+				System.out.println("Icon is not in a green tick: " + icon.getAttribute("style"));
+				return false;
+			}
+			else {
+				System.out.println("All items are in a green tick: ");
+				
+			}
+
+		}
+		return true;
+    }
+    
+ // Method to navigate to Sub-Disposition tab
+    public void navigateToSubDispositionTab() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+    	js.executeScript("window.scrollBy(0,-500);");
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement subDispositionElement = driver.findElement(DispositionMasterPageRepo.subDispositionOption);
+    	subDispositionElement.click();
+    }
+    
+    // Method to verify UI elements
+    public boolean verifyUIElements() {
+    	List<WebElement> subDispositionList = driver.findElements(DispositionMasterPageRepo.subDispositionList);
+    	WebElement subActionOwnerDropdown = driver.findElement(DispositionMasterPageRepo.subactionOwnerDropdown);
+    	WebElement dispositionSearchField = driver.findElement(DispositionMasterPageRepo.dispositionSearchField);
+    	WebElement subIsActiveCheckbox = driver.findElement(DispositionMasterPageRepo.subisActiveCheckbox);
+    	WebElement subSearchButton = driver.findElement(DispositionMasterPageRepo.subsearchButton);
+    	WebElement addSubDispositionButton = driver.findElement(DispositionMasterPageRepo.addSubDispositionButton);
+    	
+        return subActionOwnerDropdown.isDisplayed() &&
+               dispositionSearchField.isDisplayed() &&
+               subIsActiveCheckbox.isSelected() &&
+               subSearchButton.isDisplayed() &&
+               addSubDispositionButton.isDisplayed() &&
+               subDispositionList.size() <= 10;
+    }
+    
+ // Method to click on Add Sub-Disposition button
+    public void clickAddSubDispositionButton() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	Common.fluentWait("addSubDispositionButton", DispositionMasterPageRepo.addSubDispositionButton);
+    	WebElement addSubDispositionButton = driver.findElement(DispositionMasterPageRepo.addSubDispositionButton);
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+        addSubDispositionButton.click();
+    }
+
+    // Method to verify popup elements are present
+    public boolean issubdispositionPopupelementsDisplayed() {
+    	
+    	WebElement subPopupActionOwnerDropdownElement = driver.findElement(DispositionMasterPageRepo.actionOwnerDropdown);
+    	WebElement subPopupDispositionDropdownElement = driver.findElement(DispositionMasterPageRepo.subPopupDispositionDropdown);
+    	WebElement subPopupSubDispositionNameFieldElement = driver.findElement(DispositionMasterPageRepo.subpopupsubDispositionNameField);
+    	WebElement subPopupSubmitButtonElement = driver.findElement(DispositionMasterPageRepo.submitButton);
+    	WebElement subPopupClosePopupButtonElement = driver.findElement(DispositionMasterPageRepo.subpopupclosePopupButton);
+    	
+        return subPopupActionOwnerDropdownElement.isDisplayed()
+            && subPopupDispositionDropdownElement.isDisplayed()
+            && subPopupSubDispositionNameFieldElement.isDisplayed()
+            && subPopupSubmitButtonElement.isDisplayed()
+            && subPopupClosePopupButtonElement.isDisplayed();
+    }
+    
+ // Method to click the close button in the popup
+    public void clickCloseButton() {
+    	WebElement subPopupClosePopupButtonElement = driver.findElement(DispositionMasterPageRepo.subpopupclosePopupButton);
+    	subPopupClosePopupButtonElement.click();
+    }
+    
+ // Method to select an action owner
+    public void selectsubdispositionActionOwner(String owner) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+        // Implement logic to select the required option
+    	Common.fluentWait("actionOwnerDropdown", DispositionMasterPageRepo.actionOwnerDropdown);
+    	WebElement subPopupClosePopupButtonElement = driver.findElement(DispositionMasterPageRepo.actionOwnerDropdown);
+    	subPopupClosePopupButtonElement.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	Common.fluentWait("subDispositionActionOwnerOption", DispositionMasterPageRepo.subDispositionActionOwnerOption(owner));
+        By subpopupactionOwnerDropdownvaluepath = DispositionMasterPageRepo.subDispositionActionOwnerOption(owner);
+        WebElement subpopupactionOwnervalue = driver.findElement(subpopupactionOwnerDropdownvaluepath);
+        subpopupactionOwnervalue.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+
+    // Method to enter disposition
+    public void enterDisposition(String disposition) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+        // Implement logic to select the required option
+    	Common.fluentWait("subPopupDispositionDropdown", DispositionMasterPageRepo.subPopupDispositionDropdown);
+    	WebElement subpopupdispositionDropdown = driver.findElement(DispositionMasterPageRepo.subPopupDispositionDropdown);
+    	subpopupdispositionDropdown.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	Common.fluentWait("subPopupDispositionOption", DispositionMasterPageRepo.subPopupDispositionOption(disposition));
+        By subpopupDispositionOption = DispositionMasterPageRepo.subPopupDispositionOption(disposition);
+        WebElement subpopupactionOwnervalue = driver.findElement(subpopupDispositionOption);
+        subpopupactionOwnervalue.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+
+    // Method to enter sub-disposition
+    public void enterSubDisposition(String subDisposition) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	Common.fluentWait("subpopupsubDispositionNameField", DispositionMasterPageRepo.subpopupsubDispositionNameField);
+    	WebElement subpopupsubDispositionNameField = driver.findElement(DispositionMasterPageRepo.subpopupsubDispositionNameField);
+    	subpopupsubDispositionNameField.sendKeys(subDisposition);
+    }
+
+    // Method to click submit button
+    public void addsubdisposistionSubmit() {
+    	WebElement submitButton = driver.findElement(DispositionMasterPageRepo.submitButton);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+        submitButton.click();
+    }
+    
+ // Method to verify if success message is displayed
+    public boolean isSuccessMessageDisplayedforsubdisposition() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement successmsg =  wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.successMessage2));
+        return successmsg.getText().equals("Saved Successfully");
+    }
+    
+ 
+    // Method to verify if success message is displayed
+    public boolean iserrorMessageDisplayedforsubdisposition() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement errormsg =  wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.errorMessageforsubdispostion));
+        return errormsg.getText().equals("This Sub-Disposition Already Exist");
+    }
+    
+ // Method to open edit dialog
+    public void openEditPopup() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.errorMessageforsubdispostion));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement subpopupclosePopupButton = driver.findElement(DispositionMasterPageRepo.subpopupclosePopupButton);
+    	subpopupclosePopupButton.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement actionButton = driver.findElement(DispositionMasterPageRepo.actionButton);
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	actionButton.click();
+    	WebElement subdispoeditButton = driver.findElement(DispositionMasterPageRepo.subdispoeditButton);
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	subdispoeditButton.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+
+    // Method to click update without any changes
+    public void clickUpdateWithoutChanges() {
+    	WebElement subdispoupdateButton = driver.findElement(DispositionMasterPageRepo.subdispoupdateButton);
+    	subdispoupdateButton.click();
+    }
+    
+ // Method to verify success message
+    public boolean isSuccessMessageDisplayedforsubdispos() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.successMessage2));
+        return successMessage.isDisplayed();
+    }
+    
+    public void openEditPopuptoupdate() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	Common.fluentWait("actionButton", DispositionMasterPageRepo.actionButton);
+    	WebElement actionButton = driver.findElement(DispositionMasterPageRepo.actionButton);
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	actionButton.click();
+    	Common.fluentWait("subdispoeditButton", DispositionMasterPageRepo.subdispoeditButton);
+    	WebElement subdispoeditButton = driver.findElement(DispositionMasterPageRepo.subdispoeditButton);
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	subdispoeditButton.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+    public void enterSubDispositionName(String name) {
+    	Common.fluentWait("subpopupsubDispositionNameField", DispositionMasterPageRepo.subpopupsubDispositionNameField);
+    	WebElement nameFieldElement = driver.findElement(DispositionMasterPageRepo.subpopupsubDispositionNameField);
+    	nameFieldElement.clear();
+    	nameFieldElement.sendKeys(name);
+    	Common.fluentWait("outsideElementPath3", DispositionMasterPageRepo.outsideElementPath3);
+    	WebElement outsideElementWebElement = driver.findElement(DispositionMasterPageRepo.outsideElementPath3); // Assuming the <body> tag is safe to click
+    	outsideElementWebElement.click();
+    }
+    
+    public void clickUpdateWithexistingname() {
+    	Common.fluentWait("subdispoupdateButton", DispositionMasterPageRepo.subdispoupdateButton);
+    	WebElement subdispoupdateButton = driver.findElement(DispositionMasterPageRepo.subdispoupdateButton);
+    	subdispoupdateButton.click();
+    }
+    
+    public String getErrorMessageforexistingnameupdate() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement existingmsgpop =  wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.errorMessage2));
+        return existingmsgpop.getText();
+    }
+    
+    public void openEditPopuptoupdateexistingname() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.errorMessage2));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	Common.fluentWait("subpopupclosePopupButton", DispositionMasterPageRepo.subpopupclosePopupButton);
+    	WebElement subPopupClosePopupButtonElement = driver.findElement(DispositionMasterPageRepo.subpopupclosePopupButton);
+    	subPopupClosePopupButtonElement.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	Common.fluentWait("actionButton", DispositionMasterPageRepo.actionButton);
+    	WebElement actionButton = driver.findElement(DispositionMasterPageRepo.actionButton);
+    	actionButton.click();
+    	Common.fluentWait("subdispoeditButton", DispositionMasterPageRepo.subdispoeditButton);
+    	WebElement subdispoeditButton = driver.findElement(DispositionMasterPageRepo.subdispoeditButton);
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	subdispoeditButton.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+    public void clkThreeDotButtonofsubdisposition() {
+    	WebElement actionColumnButton = driver.findElement(DispositionMasterPageRepo.actionColumnButton2);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.successMessage2));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	actionColumnButton.click();
+    }
+    
+ // Method to click on the Activate/De-activate option
+    public void clickActivateDeactivateOptionofsubdisposition() {
+    	WebElement activateDeactivateOption = driver.findElement(DispositionMasterPageRepo.activateDeactivateOption2);
+        activateDeactivateOption.click();
+    }
+    
+ // Method to select action owner as Call centre
+    public void selActionOwnerforsubdispositionsearch(String actionOwner) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement actionOwnerDropdown = driver.findElement(DispositionMasterPageRepo.subPopupDispositionDropdown);
+    	actionOwnerDropdown.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	 By actionOwnerOption = DispositionMasterPageRepo.actionOwnerOption3(actionOwner);
+    	    WebElement ccelement = wait.until(ExpectedConditions.visibilityOfElementLocated(actionOwnerOption));
+    	    ccelement.click();
+      wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+      WebElement outsideElement = driver.findElement(DispositionMasterPageRepo.outsideElementPath2); // Assuming the <body> tag is safe to click
+      outsideElement.click();
+      wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+ // Method to select action owner as Call centre
+    public void seldispositionforsubdispositionsearch(String dispostion) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement dispositionDropdown = driver.findElement(DispositionMasterPageRepo.dispositionSearchField);
+    	dispositionDropdown.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	 By dispositionOption = DispositionMasterPageRepo.subDispositionOption(dispostion);
+    	    WebElement subpopupDispositionValue = driver.findElement(dispositionOption);
+    	    subpopupDispositionValue.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+      WebElement outsideElement = driver.findElement(DispositionMasterPageRepo.outsideElementPath2); // Assuming the <body> tag is safe to click
+      outsideElement.click();
+      wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+ // Method to untick Is active checkbox
+    public void untickIsActiveCheckboxforsubdispositionsearch() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement checkbox = driver.findElement(DispositionMasterPageRepo.isActiveCheckbox3);
+       checkbox.click();
+       wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+
+        } 
+    
+ // Method to click on the search button
+    public void clickSearchButtonforsubdispositionsearch() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement searchButton = driver.findElement(DispositionMasterPageRepo.searchButton2);
+        searchButton.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+ // Method to verify the deactivated disposition icon
+    public boolean isDeactivatedDispositionVisibleforsubdispositionsearch() {
+    	
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+        
+    	List<WebElement> statusIcons = driver.findElements(DispositionMasterPageRepo.statusIconslist2);
+		for (WebElement icon : statusIcons) {
+			if (!icon.getAttribute("style").contains("color: red")) {
+				System.out.println("Icon is not in a red tick: " + icon.getAttribute("style"));
+				return false;
+			}
+			else {
+				System.out.println("All items are in a red tick: ");
+				
+			}
+
+		}
+		return true;
+    }
+    
+ // Method to click on the three-dot action button
+    public void clkThreeDotButtonfordeactivatingsubdisposition() {
+    	Common.fluentWait("actionColumnButton2", DispositionMasterPageRepo.actionColumnButton2);
+    	WebElement actionColumnButton = driver.findElement(DispositionMasterPageRepo.actionColumnButton2);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	actionColumnButton.click();
+    }
+    
+ // Method to click on the Activate/De-activate option
+    public void clickActivateDeactivateOptionfordeactivatingsubdisposition() {
+    	Common.fluentWait("activateDeactivateOption2", DispositionMasterPageRepo.activateDeactivateOption2);
+    	WebElement activateDeactivateOption = driver.findElement(DispositionMasterPageRepo.activateDeactivateOption2);
+        activateDeactivateOption.click();
+    }
+    
+ // Method to select action owner as Call centre
+    public void selActionOwnerforactivesubdispositionsearch(String actionOwner) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	WebElement clearValueButton = driver.findElement(DispositionMasterPageRepo.clearvaluepath3);
+    	clearValueButton.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement actionOwnerDropdown = driver.findElement(DispositionMasterPageRepo.subPopupDispositionDropdown);
+    	actionOwnerDropdown.click();
+    	By actionOwnerLocator = DispositionMasterPageRepo.actionOwnerOption3(actionOwner);
+        WebElement ccelement = wait.until(ExpectedConditions.visibilityOfElementLocated(actionOwnerLocator));
+        ccelement.click();
+      wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+      WebElement outsideElement = driver.findElement(DispositionMasterPageRepo.outsideElementPath2); // Assuming the <body> tag is safe to click
+      outsideElement.click();
+      wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+ // Method to select action owner as Call centre
+    public void seldispositionforactivesubdispositionsearch(String dispostion) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	WebElement dispositionDropdown = driver.findElement(DispositionMasterPageRepo.dispositionSearchField);
+    	dispositionDropdown.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	By dispositionLocator = DispositionMasterPageRepo.dispositionOption(dispostion);
+        WebElement subpopupactionOwnervalue = driver.findElement(dispositionLocator);
+        subpopupactionOwnervalue.click();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+      WebElement outsideElement = driver.findElement(DispositionMasterPageRepo.outsideElementPath2); // Assuming the <body> tag is safe to click
+      outsideElement.click();
+      wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    }
+    
+ // Method to verify the deactivated disposition icon
+    public boolean isActiveDispositionVisibleforsubdispositionsearch() {
+    	
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+        
+    	List<WebElement> statusIcons = driver.findElements(DispositionMasterPageRepo.statusIconslist2);
+		for (WebElement icon : statusIcons) {
+			if (!icon.getAttribute("style").contains("color: green")) {
+				System.out.println("Icon is not in a green tick: " + icon.getAttribute("style"));
+				return false;
+			}
+			else {
+				System.out.println("All items are in a green tick: ");
+				
+			}
+
+		}
+		return true;
+    }
+}

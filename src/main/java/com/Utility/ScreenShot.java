@@ -46,14 +46,14 @@ public class ScreenShot {
 	    	File testDirectory = new File(path);
 	        if (!testDirectory.exists()) {
 	        	if (testDirectory.mkdir()) {
-	                System.out.println("Directory: " + path + " is created!" );
+	                //System.out.println("Directory: " + path + " is created!" );
 	                return reportFileLocation;
 	            } else {
 	                System.out.println("Failed to create directory: " + path);
 	                return System.getProperty("user.dir");
 	            }
 	        } else {
-	            System.out.println("Directory already exists: " + path);
+	            //System.out.println("Directory already exists: " + path);
 	        }
 			return reportFileLocation;
 	    }

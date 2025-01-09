@@ -2,7 +2,7 @@ package Core.SecurityManagement;
 
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
-import com.Page_Repositary.BannedCustomerPageRepo;
+import com.Page_Repository.BannedCustomerPageRepo;
 import com.aventstack.extentreports.Status;
 import com.extentReports.ExtentTestManager;
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -113,9 +114,13 @@ public class BannedCustomerTest extends Base_Class {
 	    }
 	}
 	
-	@AfterSuite
-	 public void afterEachTest() {
+	@AfterClass
+	public void AfterClass() {
 	     ExtentManager.getInstance().flush();
+	  // Close the browser
+	        if (driver != null) {
+	            driver.quit();
+	        }
 	 }
 	
 }

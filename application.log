@@ -1,14 +1,46 @@
-[INFO ] 2024-12-06 16:18:04.319 [main] Log - *** Running Beacon FCM core application login...
-[INFO ] 2024-12-06 16:18:13.298 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2024-12-06 16:19:11.083 [main] Log - Title is displayed: BeaconICnRM
-[INFO ] 2024-12-06 16:19:11.705 [main] Log - Entered IBU0000028 in user name field
-[INFO ] 2024-12-06 16:19:12.022 [main] Log - Entered ses@987 in password field
-[INFO ] 2024-12-06 16:19:12.324 [main] Log - Clicked on login button
-[INFO ] 2024-12-06 16:19:22.212 [main] Log - Entered IBU0000028 in user name field
-[INFO ] 2024-12-06 16:19:22.433 [main] Log - Entered ses@987 in password field
-[INFO ] 2024-12-06 16:19:22.584 [main] Log - Clicked on login button
-[INFO ] 2024-12-06 16:19:22.584 [main] Log - Clicked on already login yes button and logged in again with valid credentials
-[INFO ] 2024-12-06 16:19:32.037 [main] Log - Clicked on Go collection button
-[INFO ] 2024-12-06 16:19:57.151 [main] Log - UserID in Dashboard: IBU0000028
-[INFO ] 2024-12-06 16:19:58.397 [main] Log - Org Name: Mumbai, Org Type Name: Zone/CO
-[INFO ] 2024-12-06 16:20:10.570 [main] Log - Login successful!
+[INFO ] 2025-01-09 15:15:57.353 [main] Log - *** Running test method TC_ProcessSheet_CollectionAgency...
+[INFO ] 2025-01-09 15:16:01.061 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-01-09 15:16:24.092 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2025-01-09 15:16:24.294 [main] Log - Entered AGY0001219 in user name field
+[INFO ] 2025-01-09 15:16:24.405 [main] Log - Entered ses@987 in password field
+[INFO ] 2025-01-09 15:16:24.510 [main] Log - Clicked on login button
+[INFO ] 2025-01-09 15:16:27.936 [main] Log - Entered AGY0001219 in user name field
+[INFO ] 2025-01-09 15:16:27.995 [main] Log - Entered ses@987 in password field
+[INFO ] 2025-01-09 15:16:28.061 [main] Log - Clicked on login button
+[INFO ] 2025-01-09 15:16:28.062 [main] Log - Clicked on already login yes button and logged in again with valid credentials
+[INFO ] 2025-01-09 15:16:34.062 [main] Log - Login successful !
+[INFO ] 2025-01-09 15:16:34.220 [main] Log - ******Verify Role Management Page Navigation******
+[INFO ] 2025-01-09 15:16:53.712 [main] Log - clicked Security Management Menu : true
+[INFO ] 2025-01-09 15:16:53.714 [main] Log - Application link with Admin/LevelPermissions is displayed:true
+[INFO ] 2025-01-09 15:16:53.714 [main] Log - ******Verify Role Management Page Elements Visibility******
+[INFO ] 2025-01-09 15:16:57.824 [main] Log - Role Management Page Elements is displayed:true
+[INFO ] 2025-01-09 15:16:57.824 [main] Log - ******Add New Role - Validation for Empty Role Name******
+[INFO ] 2025-01-09 15:17:43.303 [main] Log - Validation for Empty Role Name is displayed:true
+[INFO ] 2025-01-09 15:17:43.303 [main] Log - ******Cancel Role Addition******
+[INFO ] 2025-01-09 15:18:01.180 [main] Log - Cancel Role Addition is successful:true
+[INFO ] 2025-01-09 15:18:01.180 [main] Log - ******Add New Role with Valid Data******
+[INFO ] 2025-01-09 15:19:07.709 [main] Log - New Role with Valid Date is displayed:true
+[INFO ] 2025-01-09 15:19:07.709 [main] Log - ******Search for Existing Role******
+[INFO ] 2025-01-09 15:19:18.016 [main] Log - 2. Click Search button.true
+[INFO ] 2025-01-09 15:19:26.834 [main] Log - Existing Role is displayed:true
+[INFO ] 2025-01-09 15:19:26.834 [main] Log - ******Verify Edit Option for Role******
+[INFO ] 2025-01-09 15:19:30.997 [main] Log - Edit Option is displayed:true
+[INFO ] 2025-01-09 15:19:33.009 [main] Log - ******Edit Role and Save Changes******
+[INFO ] 2025-01-09 15:20:11.875 [main] Log - Updated Role Name Success message is displayed:true
+[INFO ] 2025-01-09 15:20:11.875 [main] Log - ******Role Name Field - ECP Validations******
+[INFO ] 2025-01-09 15:20:40.802 [main] Log - Alphanumeric Role Name is displayed:true
+[INFO ] 2025-01-09 15:20:42.803 [main] Log - ******Error guessing - Empty Roles Search******
+[INFO ] 2025-01-09 15:21:01.861 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[1]
+[INFO ] 2025-01-09 15:21:03.925 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[3]
+[INFO ] 2025-01-09 15:21:05.987 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[5]
+[INFO ] 2025-01-09 15:21:08.043 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[7]
+[INFO ] 2025-01-09 15:21:10.096 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[9]
+[INFO ] 2025-01-09 15:21:12.156 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[11]
+[INFO ] 2025-01-09 15:21:14.196 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[13]
+[INFO ] 2025-01-09 15:21:16.239 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[15]
+[INFO ] 2025-01-09 15:21:18.293 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[17]
+[INFO ] 2025-01-09 15:21:20.332 [main] Log - System able to found the element :By.xpath: (//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//td[@rowspan='1']//span[@class='rz-cell-data'])[19]
+[INFO ] 2025-01-09 15:21:22.343 [main] Log - Empty Roles Search:true
+[INFO ] 2025-01-09 15:21:37.643 [main] Log - No Records to display:true
+[INFO ] 2025-01-09 15:21:48.875 [main] Log - Logout is done!
+[INFO ] 2025-01-09 15:21:49.181 [main] Log - *** Test Suite TC_ProcessSheet_CollectionAgency ending ***
