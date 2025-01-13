@@ -34,6 +34,32 @@ import com.listeners.TestListener;
 import static org.junit.Assert.assertTrue;
 
 public class UserManagement_TC extends Base_Class {
+	
+	public String AddNewUserNameBtn;
+	public String AddNewUserEmailBtn;
+	public String AddNewUserPhoneNumberBtn;
+	public String AddNewUserRole;
+	public String AddNewUserOrganizationType;
+	public String AddNewUserOrganizationType2;
+	public String AddNewUserOrganizationType3;
+	public String AddNewUserOrganizationType4;
+	public String AddNewUserHeadOffice;
+	public String InvalidEmailId; 
+	public String InvalidEmailIdWithoutDomain;
+	public String InvalidPhoneNumberWithLetters;
+	public String InvalidPhoneNumberWithEightDigits;
+	public String NamewithNumericInput;
+	public String NamewithAlphaNumericInput;
+	public String AddNewUserZoneCO;
+	public String AddNewUserRegion; 
+	public String InvalidUserName;
+	public String AddNewUserBranch; 
+	public String username;
+	public String UserManagementPageRole; 
+	public String UsernameInUNPage;  
+	public String UNOriginal; 
+	public String PwdOriginal;
+	
 	WebDriver driver;
 	com.Utility.ExcelReader ExcelReader;
 	Base_Class baseclass;
@@ -50,7 +76,7 @@ public class UserManagement_TC extends Base_Class {
 	public void reference() throws Exception {
 		baseclass = new Base_Class();
 		CoreAppLogin = new Login_Class();
-		ExcelReader = new com.Utility.ExcelReader("UserManagementModule");
+		ExcelReader = new com.Utility.ExcelReader("CoreUserManagement");
 		log = new Log();
 		TestListener = new TestListener();
 		CoreAppLogin.CoreLogin();
@@ -232,42 +258,41 @@ public class UserManagement_TC extends Base_Class {
 		
 	}
 
-				
-			
-			/*	
-				
-				String AddNewUserNameBtn = testdata.get("Name").toString();
-				String AddNewUserEmailBtn = testdata.get("Email").toString();
-				String AddNewUserPhoneNumberBtn = testdata.get("Phonenumber").toString();
-				String AddNewUserRole = testdata.get("Testrole").toString();
-				String AddNewUserOrganizationType = testdata.get("OrganizationType").toString();
-				String AddNewUserOrganizationType2 = testdata.get("OrganizationType2").toString();
-				String AddNewUserOrganizationType3 = testdata.get("OrganizationType3").toString();
-				String AddNewUserOrganizationType4 = testdata.get("OrganizationType4").toString();
-				String AddNewUserHeadOffice = testdata.get("HeadOffice").toString();
-				String InvalidEmailId = testdata.get("InvalidEmailId").toString(); 
-				String InvalidEmailIdWithoutDomain = testdata.get("EmailWithoutDomain").toString();
-				String InvalidPhoneNumberWithLetters = testdata.get("NumberWithLetters").toString();
-				String InvalidPhoneNumberWithEightDigits = testdata.get("NumberEightDigits").toString();
-				String NamewithNumericInput = testdata.get("NumericInputName").toString();
-				String NamewithAlphaNumericInput = testdata.get("AlphaNumericInputName").toString();
-				String AddNewUserZoneCO = testdata.get("ZoneCO").toString();
-				String AddNewUserRegion = testdata.get("Region").toString(); 
-				String InvalidUserName = testdata.get("InvalidUserName").toString();
-				String AddNewUserBranch = testdata.get("Branch").toString(); 
+	@Test(priority = 8, dataProvider = "TestData")
+	public void Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown(Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+				AddNewUserNameBtn = testdata.get("Name").toString();
+				AddNewUserEmailBtn = testdata.get("Email").toString();
+				AddNewUserPhoneNumberBtn = testdata.get("Phonenumber").toString();
+				AddNewUserRole = testdata.get("Testrole").toString();
+				AddNewUserOrganizationType = testdata.get("OrganizationType").toString();
+				AddNewUserOrganizationType2 = testdata.get("OrganizationType2").toString();
+				AddNewUserOrganizationType3 = testdata.get("OrganizationType3").toString();
+				AddNewUserOrganizationType4 = testdata.get("OrganizationType4").toString();
+				AddNewUserHeadOffice = testdata.get("HeadOffice").toString();
+				InvalidEmailId = testdata.get("InvalidEmailId").toString(); 
+				InvalidEmailIdWithoutDomain = testdata.get("EmailWithoutDomain").toString();
+				InvalidPhoneNumberWithLetters = testdata.get("NumberWithLetters").toString();
+				InvalidPhoneNumberWithEightDigits = testdata.get("NumberEightDigits").toString();
+				NamewithNumericInput = testdata.get("NumericInputName").toString();
+				NamewithAlphaNumericInput = testdata.get("AlphaNumericInputName").toString();
+				AddNewUserZoneCO = testdata.get("ZoneCO").toString();
+				AddNewUserRegion = testdata.get("Region").toString(); 
+				InvalidUserName = testdata.get("InvalidUserName").toString();
+				AddNewUserBranch = testdata.get("Branch").toString(); 
 				FakerValue newData = new FakerValue();
-				String username = newData.getFirstName();
-				String UserManagementPageRole= testdata.get("UserManagementPageRole").toString(); 
-				String UsernameInUNPage = testdata.get("UsernameInUNPage").toString();  
-				String UNOriginal= testdata.get("UNOriginal").toString(); 
-				String PwdOriginal= testdata.get("PwdOriginal").toString(); 
+				username = newData.getFirstName();
+				UserManagementPageRole= testdata.get("UserManagementPageRole").toString(); 
+				UsernameInUNPage = testdata.get("UsernameInUNPage").toString();  
+				UNOriginal= testdata.get("UNOriginal").toString(); 
+				PwdOriginal= testdata.get("PwdOriginal").toString(); 
 				
-				ExtentTestManager.startTest("Add new user page - Organization Type Selection as Head office - Display Head Office Dropdown ");
+				//ExtentTestManager.startTest("Add new user page - Organization Type Selection as Head office - Display Head Office Dropdown ");
 				boolean EnterName = User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
 				ExtentTestManager.getTest().log(Status.PASS, "1.Enter name=kishan");
-                Log.info("Entered valid Name is showing : " + EnterName);
-                
-                boolean EnterEmail = User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+		        Log.info("Entered valid Name is showing : " + EnterName);
+		        
+		        boolean EnterEmail = User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
                 ExtentTestManager.getTest().log(Status.PASS, "2.Enter email=kishan@gmail.com");
                 Log.info("Entered valid Email is showing : " + EnterEmail);
                 
@@ -275,9 +300,20 @@ public class UserManagement_TC extends Base_Class {
                 ExtentTestManager.getTest().log(Status.PASS, "3.Enter phone number=8089889900");
                 Log.info("Entered valid Phonenumber is showing : " + EnterPhonenumber);
                 
-                boolean SelectTestrole = User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-                ExtentTestManager.getTest().log(Status.PASS, "4. Select role=TestRole");
-                Log.info("Selected valid Testrole : " + SelectTestrole);
+                //boolean SelectTestrole = User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+                /*boolean Selectrole = User_UserManagementPage.SelectRole(AddNewUserRole);
+                ExtentTestManager.getTest().log(Status.PASS, "4. Select role="+AddNewUserRole+": "+Selectrole);
+                Log.info("Selected valid Testrole : " + Selectrole);*/
+                
+                boolean Selectrole = User_UserManagementPage.SelectRole(AddNewUserRole);
+                if (Selectrole) {
+                    ExtentTestManager.getTest().log(Status.PASS, "4. Select role=" + AddNewUserRole + ": " + Selectrole);
+                    Log.info("Selected valid Testrole: " + Selectrole);
+                } else {
+                    ExtentTestManager.getTest().log(Status.FAIL, "4. Failed to select role=" + AddNewUserRole);
+                    Log.error("Failed to select role: " + AddNewUserRole);
+                }
+
                 
                 boolean SelectOrganizationtype = User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
                 ExtentTestManager.getTest().log(Status.PASS, "5. Select organization type=Head office");
@@ -287,135 +323,206 @@ public class UserManagement_TC extends Base_Class {
                 ExtentTestManager.getTest().log(Status.PASS, " 6. Observe if there is any new field is appeared in the page");
                 ExtentTestManager.getTest().log(Status.PASS, "Should show Head office drop down field in the add new user page : " + flag16);
                 Log.info("Displayed Add New User Headoffice option : " + flag16);
-                
-                ExtentTestManager.startTest("Add new user page - Organization Type Selection as Zone/Co - Display Head office and Zone/CO drop down fields ");
-                User_UserManagementPage.SelectOrganizationTypeDropdown2(AddNewUserOrganizationType2);
-                ExtentTestManager.getTest().log(Status.PASS, "1.Enter name=kishan");
-                ExtentTestManager.getTest().log(Status.PASS, "2.Enter email=kishan@gmail.com");
-                ExtentTestManager.getTest().log(Status.PASS, "3.Enter phone number=8089889900");
-                ExtentTestManager.getTest().log(Status.PASS, "4. Select role=TestRole");
-                ExtentTestManager.getTest().log(Status.PASS, "5. Select organization type=Zone/CO");
-                boolean flag18 = User_UserManagementPage.DisplayAddNewUserHeadofficeBtn();
-                ExtentTestManager.getTest().log(Status.INFO, " Head office field is displayed");
-                Log.info("Head office should display: " + flag18);
-                boolean flag19 = User_UserManagementPage.DisplayAddNewUserZoneCOBtn();
-                ExtentTestManager.getTest().log(Status.PASS, " 6. Observe if there is any new field is appeared in the page");
-                ExtentTestManager.getTest().log(Status.PASS, "Head office and Zone/CO dropdown fields should display : " + flag19);
-                Log.info("Displayed AddNewUser ZoneCOField : " + flag19);
-                
-				ExtentTestManager.startTest("Add new user page - Organization Type Selection as Region - Display Head office, Zone/CO and Region drop down fields");
-                User_UserManagementPage.SelectOrganizationTypeDropdown3(AddNewUserOrganizationType3);
-                ExtentTestManager.getTest().log(Status.PASS, "1.Enter name=kishan");
-                ExtentTestManager.getTest().log(Status.PASS, "2.Enter email=kishan@gmail.com");
-                ExtentTestManager.getTest().log(Status.PASS, "3.Enter phone number=8089889900");
-                ExtentTestManager.getTest().log(Status.PASS, "4. Select role=TestRole");
-                ExtentTestManager.getTest().log(Status.PASS, "5. Select organization type=Region");
-				boolean flag20 = User_UserManagementPage.DisplayAddNewUserHeadofficeBtn();
-				Log.info("Displayed AddNewUser HeadofficeField : " + flag20);
-				ExtentTestManager.getTest().log(Status.INFO, " Head office field is displayed");
-				boolean flag21 = User_UserManagementPage.DisplayAddNewUserZoneCOBtn();
-				ExtentTestManager.getTest().log(Status.INFO, " Zone/CO field is displayed");
-				Log.info("Displayed AddNewUser ZoneCOField : " + flag21);
-				boolean flag22 = User_UserManagementPage.DisplayAddNewUserRegionBtn();
-				ExtentTestManager.getTest().log(Status.PASS, " 6. Observe if there is any new field is appeared in the page");
-				ExtentTestManager.getTest().log(Status.PASS, "Head office, Zone/CO and Region dropdown fields should display : " + flag22);
-				Log.info("Displayed AddNewUser RegionField : " + flag22);
-				
-				ExtentTestManager.startTest("Add new user page - Organization Type Selection as Branch - Display Head office, Zone/CO, Region and Branch drop down fields");
-				//Base_Class.input(L_signout, InvalidUserName);
-				User_UserManagementPage.SelectOrganizationTypeDropdown4(AddNewUserOrganizationType4);
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter name=kishan");
-	            ExtentTestManager.getTest().log(Status.PASS, "2.Enter email=kishan@gmail.com");
-	            ExtentTestManager.getTest().log(Status.PASS, "3.Enter phone number=8089889900");
-	            ExtentTestManager.getTest().log(Status.PASS, "4. Select role=TestRole");
-				ExtentTestManager.getTest().log(Status.PASS, "5. Select organization type=Branch");
-				boolean flag23 = User_UserManagementPage.DisplayAddNewUserHeadofficeBtn();
-				Log.info("Displayed AddNewUser HeadofficeField : " + flag23);
-				ExtentTestManager.getTest().log(Status.INFO, " Head office field is displayed");
-				boolean flag24 = User_UserManagementPage.DisplayAddNewUserZoneCOBtn();
-				ExtentTestManager.getTest().log(Status.INFO, " Zone/CO field is displayed");
-				Log.info("Displayed AddNewUser ZoneCOField : " + flag24);
-				boolean flag25 = User_UserManagementPage.DisplayAddNewUserRegionBtn();
-				Log.info("Displayed AddNewUser RegionField : " + flag25);
-				ExtentTestManager.getTest().log(Status.INFO, " Region field is displayed");
-				boolean flag26 = User_UserManagementPage.DisplayAddNewUserBranchBtn();
-				ExtentTestManager.getTest().log(Status.PASS, " 6. Observe if there is any new field is appeared in the page");
-				ExtentTestManager.getTest().log(Status.PASS, "Head office, Zone/CO, Region and Branch dropdown fields should display : " + flag26);
-				Log.info("Displayed AddNewUser BranchField : " + flag26);
-				
-				ExtentTestManager.startTest("Add new user page - Submit Without Inputs ");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				boolean flag27 = User_UserManagementPage.ClickAddNewUserSubmitBtn();
-				ExtentTestManager.getTest().log(Status.PASS, "1. Leave Name, Email, Phone number fields empty on");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Do not select any option for Role and Organization type dropdowns");
-				ExtentTestManager.getTest().log(Status.PASS, "Clicked AddNewUser SubmitBtn : " + flag27);
-				Log.info("Clicked AddNewUser SubmitBtn : " + flag27);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Submit button");
-				boolean flag28 = User_UserManagementPage.ErrormessageforAdduserPage();
-				ExtentTestManager.getTest().log(Status.PASS, "Error messages: \"Name is required\", \"Email is required\", \"Phone number is required\", \"Role is required\", \"Organization type is required\" are displayed under corresponding fields : " + flag28);
-				Log.info("Error message for AdduserPage displayed : " + flag28);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 9)
+	public void Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields () throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Add new user page - Organization Type Selection as Zone/Co - Display Head office and Zone/CO drop down fields ");
+            User_UserManagementPage.SelectOrganizationTypeDropdown2(AddNewUserOrganizationType2);
+            ExtentTestManager.getTest().log(Status.PASS, "1.Enter name=kishan");
+            ExtentTestManager.getTest().log(Status.PASS, "2.Enter email=kishan@gmail.com");
+            ExtentTestManager.getTest().log(Status.PASS, "3.Enter phone number=8089889900");
+            ExtentTestManager.getTest().log(Status.PASS, "4. Select role=TestRole");
+            ExtentTestManager.getTest().log(Status.PASS, "5. Select organization type=Zone/CO");
+            boolean flag18 = User_UserManagementPage.DisplayAddNewUserHeadofficeBtn();
+            ExtentTestManager.getTest().log(Status.INFO, " Head office field is displayed");
+            Log.info("Head office should display: " + flag18);
+            boolean flag19 = User_UserManagementPage.DisplayAddNewUserZoneCOBtn();
+            ExtentTestManager.getTest().log(Status.PASS, " 6. Observe if there is any new field is appeared in the page");
+            ExtentTestManager.getTest().log(Status.PASS, "Head office and Zone/CO dropdown fields should display : " + flag19);
+            Log.info("Displayed AddNewUser ZoneCOField : " + flag19);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 10)
+	public void Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields () throws Throwable {
+		try {
+            User_UserManagementPage.SelectOrganizationTypeDropdown3(AddNewUserOrganizationType3);
+            ExtentTestManager.getTest().log(Status.PASS, "1.Enter name=kishan");
+            ExtentTestManager.getTest().log(Status.PASS, "2.Enter email=kishan@gmail.com");
+            ExtentTestManager.getTest().log(Status.PASS, "3.Enter phone number=8089889900");
+            ExtentTestManager.getTest().log(Status.PASS, "4. Select role=TestRole");
+            ExtentTestManager.getTest().log(Status.PASS, "5. Select organization type=Region");
+			boolean flag20 = User_UserManagementPage.DisplayAddNewUserHeadofficeBtn();
+			Log.info("Displayed AddNewUser HeadofficeField : " + flag20);
+			ExtentTestManager.getTest().log(Status.INFO, " Head office field is displayed");
+			boolean flag21 = User_UserManagementPage.DisplayAddNewUserZoneCOBtn();
+			ExtentTestManager.getTest().log(Status.INFO, " Zone/CO field is displayed");
+			Log.info("Displayed AddNewUser ZoneCOField : " + flag21);
+			boolean flag22 = User_UserManagementPage.DisplayAddNewUserRegionBtn();
+			ExtentTestManager.getTest().log(Status.PASS, " 6. Observe if there is any new field is appeared in the page");
+			ExtentTestManager.getTest().log(Status.PASS, "Head office, Zone/CO and Region dropdown fields should display : " + flag22);
+			Log.info("Displayed AddNewUser RegionField : " + flag22);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 11)
+	public void Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields () throws Throwable {
+		try {
+			User_UserManagementPage.SelectOrganizationTypeDropdown4(AddNewUserOrganizationType4);
+			ExtentTestManager.getTest().log(Status.PASS, "1.Enter name=kishan");
+            ExtentTestManager.getTest().log(Status.PASS, "2.Enter email=kishan@gmail.com");
+            ExtentTestManager.getTest().log(Status.PASS, "3.Enter phone number=8089889900");
+            ExtentTestManager.getTest().log(Status.PASS, "4. Select role=TestRole");
+			ExtentTestManager.getTest().log(Status.PASS, "5. Select organization type=Branch");
+			boolean flag23 = User_UserManagementPage.DisplayAddNewUserHeadofficeBtn();
+			Log.info("Displayed AddNewUser HeadofficeField : " + flag23);
+			ExtentTestManager.getTest().log(Status.INFO, " Head office field is displayed");
+			boolean flag24 = User_UserManagementPage.DisplayAddNewUserZoneCOBtn();
+			ExtentTestManager.getTest().log(Status.INFO, " Zone/CO field is displayed");
+			Log.info("Displayed AddNewUser ZoneCOField : " + flag24);
+			boolean flag25 = User_UserManagementPage.DisplayAddNewUserRegionBtn();
+			Log.info("Displayed AddNewUser RegionField : " + flag25);
+			ExtentTestManager.getTest().log(Status.INFO, " Region field is displayed");
+			boolean flag26 = User_UserManagementPage.DisplayAddNewUserBranchBtn();
+			ExtentTestManager.getTest().log(Status.PASS, " 6. Observe if there is any new field is appeared in the page");
+			ExtentTestManager.getTest().log(Status.PASS, "Head office, Zone/CO, Region and Branch dropdown fields should display : " + flag26);
+			Log.info("Displayed AddNewUser BranchField : " + flag26);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 12)
+	public void Add_new_user_page___Submit_Without_Inputs () throws Throwable {
+		try {
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			boolean flag27 = User_UserManagementPage.ClickAddNewUserSubmitBtn();
+			ExtentTestManager.getTest().log(Status.PASS, "1. Leave Name, Email, Phone number fields empty on");
+			ExtentTestManager.getTest().log(Status.PASS, "2. Do not select any option for Role and Organization type dropdowns");
+			ExtentTestManager.getTest().log(Status.PASS, "Clicked AddNewUser SubmitBtn : " + flag27);
+			Log.info("Clicked AddNewUser SubmitBtn : " + flag27);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Click on Submit button");
+			boolean flag28 = User_UserManagementPage.ErrormessageforAdduserPage();
+			ExtentTestManager.getTest().log(Status.PASS, "Error messages: \"Name is required\", \"Email is required\", \"Phone number is required\", \"Role is required\", \"Organization type is required\" are displayed under corresponding fields : " + flag28);
+			Log.info("Error message for AdduserPage displayed : " + flag28);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 13, dataProvider = "TestData")
+	public void Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			ExtentTestManager.getTest().log(Status.PASS, "1. Keep the Name field blank");
+            User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+            ExtentTestManager.getTest().log(Status.PASS, "2.Enter valid inputs for Email and Phone number");
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid option for Role");
+            User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+            ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Organization type=Head office");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            ExtentTestManager.getTest().log(Status.PASS, "5. Select option for Head office=Mumbai");
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
+			boolean flag29  = User_UserManagementPage.ErrormessageforNameField();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Name is required\" is displayed under Name field : " + flag29);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 14, dataProvider = "TestData")
+	public void Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter a valid name");
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "2.Leave the Email field blank");
+			ExtentTestManager.getTest().log(Status.PASS, "3. Enter a valid phone number");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			ExtentTestManager.getTest().log(Status.PASS, "4. Select valid option for Role");
+            User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+            ExtentTestManager.getTest().log(Status.PASS, "5. Select option for Organization type=Head office.");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            ExtentTestManager.getTest().log(Status.PASS, "6. Select option for Head office=Mumbai");
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "7.Click on Submit button");
+			boolean flag30  = User_UserManagementPage.ErrormessageforEmailField();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Error message for EmailField" + " is displayed under Email field.: " + flag30);
+			Log.info("Error message for EmailField displayed : " + flag30);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 15, dataProvider = "TestData")
+	public void Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter a valid name and Email");
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			ExtentTestManager.getTest().log(Status.PASS, "2. Leave the Phone number field");
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid option for Role");
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			 ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Organization type=Head office");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            ExtentTestManager.getTest().log(Status.PASS, "5. Select option for Head office=Mumbai");
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
+			boolean flag31  = User_UserManagementPage.ErrormessageforPhoneNumberField();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Phone number is required\" is displayed under Phone number field : " + flag31);
+			Log.info("Error message for PhoneNumberField displayed : " + flag31);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
 			
-				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except Name Field and click on submit button");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				ExtentTestManager.getTest().log(Status.PASS, "1. Keep the Name field blank");
-                User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-                ExtentTestManager.getTest().log(Status.PASS, "2.Enter valid inputs for Email and Phone number");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid option for Role");
-                User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-                ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Organization type=Head office");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "5. Select option for Head office=Mumbai");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
-				boolean flag29  = User_UserManagementPage.ErrormessageforNameField();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Name is required\" is displayed under Name field : " + flag29);
-				
-		        ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except Email Field and click on submit button");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter a valid name");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2.Leave the Email field blank");
-				ExtentTestManager.getTest().log(Status.PASS, "3. Enter a valid phone number");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select valid option for Role");
-                User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-                ExtentTestManager.getTest().log(Status.PASS, "5. Select option for Organization type=Head office.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "6. Select option for Head office=Mumbai");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "7.Click on Submit button");
-				boolean flag30  = User_UserManagementPage.ErrormessageforEmailField();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message for EmailField" + " is displayed under Email field.: " + flag30);
-				Log.info("Error message for EmailField displayed : " + flag30);
-			
-				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except Phone number Field and click on submit button");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter a valid name and Email");
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Leave the Phone number field");
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid option for Role");
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				 ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Organization type=Head office");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "5. Select option for Head office=Mumbai");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
-				boolean flag31  = User_UserManagementPage.ErrormessageforPhoneNumberField();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Phone number is required\" is displayed under Phone number field : " + flag31);
-				Log.info("Error message for PhoneNumberField displayed : " + flag31);
-				
+			/*	
 				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except role drop down and click on submit button");
 				User_UserManagementPage.ClickAddNewUserCloseBtn();
 				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
