@@ -39,7 +39,10 @@ public class Common {
         }
     }
     
-    public static void waitForSpinnerToDisappear(WebDriver driver, String WebElementName, By element) {
+    public static void waitForSpinnerToDisappear(String WebElementName, By element) {
+    	if (driver == null) {
+            throw new IllegalArgumentException("WebDriver instance is null");
+        }
         // Define the FluentWait
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30)) // Maximum wait time

@@ -113,6 +113,15 @@ public class UserManagement_Locators
 	public By OrganizationType = By.xpath("(//label[@class='rz-dropdown-label rz-inputtext ']) [2]");
 	public By IsActiveChecked = By.xpath("//span[@class='rz-chkbox-icon rzi rzi-check']");
 	public By IsActiveNotChecked = By.xpath("//div[@class='rz-chkbox-box']");
+	public By OrganizationTypeDDL = By.xpath("(//label[@class='rz-dropdown-label rz-inputtext  rz-placeholder' and text()='Select'])[2]");
+	public By RoleDDL = By.xpath("(//label[@class='rz-dropdown-label rz-inputtext  rz-placeholder' and text()='Select'])[1]");
+	public By RoleDDLSearchField = By.xpath("(//input[@class='rz-dropdown-filter rz-inputtext   ' and @type='text'])[2]");
+	
+	public By RoleDDLSearchedValue (String RoleName) {
+		String xpathExpression;
+		xpathExpression = "//li[normalize-space(span)='"+RoleName+"']";
+		return By.xpath(xpathExpression);
+	}
 	
 	
 }

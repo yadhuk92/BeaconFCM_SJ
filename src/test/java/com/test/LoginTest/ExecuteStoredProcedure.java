@@ -1,73 +1,98 @@
 package com.test.LoginTest;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import com.BasePackage.Base_Class;
 
 public class ExecuteStoredProcedure {
 
-    // Method to execute the stored procedure and return DBMS_OUTPUT lines
-    public static String callLoadAndValidateAccountsSP() throws IOException {
-        Connection conn = null;
+    // Custom class to store the result
+    public static class ProcedureResult {
+        private String accountNo;
+        private String mobileNo;
+        private String message;
+
+        public ProcedureResult(String accountNo, String mobileNo, String message) {
+            this.accountNo = accountNo;
+            this.mobileNo = mobileNo;
+            this.message = message;
+        }
+
+        public String getAccountNo() {
+            return accountNo;
+        }
+
+        public String getMobileNo() {
+            return mobileNo;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
+
+    public static ProcedureResult executeStoredProcedure(String mobileNumber) throws IOException {
+        Connection con = null;
         CallableStatement callableStatement = null;
-        CallableStatement enableDbmsOutput = null;
-        CallableStatement getLineStmt = null;
-        StringBuilder result = new StringBuilder();
+        String accountNo = null;
+        String updatedMobileNo = null;
+        String resultMessage = "";
 
         try {
-            // Step 1: Use the existing database connection
-            conn = Base_Class.OracleDBConnection();
+            // Get the database connection
+            con = Base_Class.OracleDBConnection();
 
-            // Step 2: Enable DBMS_OUTPUT
-            String enableOutputSQL = "BEGIN DBMS_OUTPUT.ENABLE(1000000); END;";
-            enableDbmsOutput = conn.prepareCall(enableOutputSQL);
-            enableDbmsOutput.execute();
+            // Prepare the stored procedure call
+            String procedureCall = "{call SP_CHECK_INVALID_MOBILE_ACCOUNT_FILTERATION(?, ?, ?)}";
+            callableStatement = con.prepareCall(procedureCall);
 
-            // Step 3: Execute the stored procedure
-            String callSP = "{ CALL load_and_validate_accounts }";
-            callableStatement = conn.prepareCall(callSP);
+            // Set the input parameter
+            callableStatement.setString(1, mobileNumber);
+
+            // Register the output parameters
+            callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR); // o_account_no
+            callableStatement.registerOutParameter(3, java.sql.Types.VARCHAR); // o_mob_no
+
+            // Execute the stored procedure
             callableStatement.execute();
 
-            // Step 4: Fetch DBMS_OUTPUT using DBMS_OUTPUT.GET_LINE
-            String getLineSQL = "BEGIN DBMS_OUTPUT.GET_LINE(?, ?); END;";
-            getLineStmt = conn.prepareCall(getLineSQL);
+            // Retrieve the output parameters
+            accountNo = callableStatement.getString(2);
+            updatedMobileNo = callableStatement.getString(3);
 
-            while (true) {
-                getLineStmt.registerOutParameter(1, Types.VARCHAR); // Line content
-                getLineStmt.registerOutParameter(2, Types.INTEGER); // Status
-                getLineStmt.execute();
-
-                String line = getLineStmt.getString(1);
-                int status = getLineStmt.getInt(2);
-
-                if (status != 0) { // No more lines to read
-                    break;
-                }
-                if (line != null) {
-                    result.append(line).append("\n");
-                }
+            if (accountNo != null && updatedMobileNo != null) {
+                resultMessage = "Procedure executed successfully.";
+            } else {
+                resultMessage = "No data found for the provided mobile number.";
             }
+
         } catch (SQLException e) {
-            e.printStackTrace();
-            result.append("Error: ").append(e.getMessage());
+            // Handle SQL exceptions
+            resultMessage = "SQL Exception occurred: " + e.getMessage();
         } finally {
-            // Step 5: Close resources
+            // Close resources
             try {
-                if (getLineStmt != null) getLineStmt.close();
                 if (callableStatement != null) callableStatement.close();
-                if (enableDbmsOutput != null) enableDbmsOutput.close();
-                // Do not close `conn` if it is managed by Base_Class
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                resultMessage = "Error while closing resources: " + e.getMessage();
             }
         }
-        return result.toString().trim();
+
+        // Return results encapsulated in the custom object
+        return new ProcedureResult(accountNo, updatedMobileNo, resultMessage);
     }
 
     public static void main(String[] args) throws IOException {
-        // Example usage
-        String report = callLoadAndValidateAccountsSP();
-        System.out.println(report);
+        // Example usage of the method
+        ProcedureResult result = executeStoredProcedure("812990465A");
+
+        // Accessing individual values
+        System.out.println("Message: " + result.getMessage());
+        System.out.println("Account No: " + result.getAccountNo());
+        System.out.println("Mobile No: " + result.getMobileNo());
     }
 }

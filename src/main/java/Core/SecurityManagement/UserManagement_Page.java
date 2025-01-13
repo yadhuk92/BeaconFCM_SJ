@@ -2,19 +2,16 @@ package Core.SecurityManagement;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
 import com.Page_Repository.UserManagement_Locators;
-import com.Utility.Log;
 import com.aventstack.extentreports.Status;
 import com.extentReports.ExtentTestManager;
 
@@ -33,7 +30,7 @@ public class UserManagement_Page extends Base_Class
 	public boolean GoCollectionModule() throws InterruptedException 
 	{
 		//Thread.sleep(10000);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.loginSelectionSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.loginSelectionSpinner);
 		Common.fluentWait("GoCollection", UserManagement_Locators.GoCollection);
 		Thread.sleep(5000);
 		click(UserManagement_Locators.GoCollection);
@@ -43,7 +40,7 @@ public class UserManagement_Page extends Base_Class
 	
 	public boolean SelectSecurityManagementMenu() throws InterruptedException 
 	{
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.moduleSelectionSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.moduleSelectionSpinner);
 		Common.fluentWait("SecurityManagementMenu", PageRepository.SecurityManagementMenu);
 		click(PageRepository.SecurityManagementMenu);
 		return true;
@@ -52,7 +49,7 @@ public class UserManagement_Page extends Base_Class
 	{
 		Common.fluentWait("UserManagementMenu", PageRepository.UserManagementMenu);
 		click(PageRepository.UserManagementMenu);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.moduleSelectionSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.moduleSelectionSpinner);
 		return true;
 	}
 	
@@ -66,7 +63,7 @@ public class UserManagement_Page extends Base_Class
 	        ElementDisplayed(PageRepository.UserManagementPageMobilenumber);
 	        ElementDisplayed(PageRepository.UserManagementPageEmailId);
 	        ElementDisplayed(PageRepository.UserManagementPageRole);
-	        ElementDisplayed(PageRepository.UserManagementPageIsActive);
+	        ElementDisplayed(UserManagement_Locators.UserManagementPageIsActive);
 	        ElementDisplayed(PageRepository.UserManagementPageSearch);
 	        ElementDisplayed(UserManagement_Locators.UserManagementPageAddUser);
 
@@ -92,7 +89,7 @@ public class UserManagement_Page extends Base_Class
 	public boolean UserManagementSearchBtn() throws InterruptedException 
 	{
 		click(PageRepository.UserManagementPageSearch);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
 		Common.fluentWait("Previous button", PageRepository.UserPrevious);
 		return true;
 	}
@@ -149,14 +146,14 @@ public class UserManagement_Page extends Base_Class
 	public boolean DisplayUserManagementLastArrowBtn() throws InterruptedException {
 		Common.fluentWait("UserManagementNextArrowBtn", PageRepository.UserManagementNextArrowBtn);
         ElementDisplayed(PageRepository.UserManagementNextArrowBtn);
-        //Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+        //Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
         return true;
     }
 	
 	public boolean ClickUserManagementLastArrowBtn() throws InterruptedException {
         Common.fluentWait("UserManagementNextArrowBtn", PageRepository.UserManagementNextArrowBtn);
 		ElementDisplayed(PageRepository.UserManagementNextArrowBtn);
-        //Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+        //Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
         return true;
 
     }
@@ -165,7 +162,7 @@ public class UserManagement_Page extends Base_Class
 	{
 		Common.fluentWait("UserManagementSecondPageBtn", PageRepository.UserManagementSecondPageBtn);
 		click(PageRepository.UserManagementSecondPageBtn);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
 		ExtentTestManager.getTest().log(Status.PASS, "Click on the '2' button in pagination showing under active users grid");
 		return true;
 	}
@@ -176,7 +173,7 @@ public class UserManagement_Page extends Base_Class
 		click(PageRepository.UserManagementPreviousArrowBtn);
 		Common.fluentWait("UserManagementFirstPageBtn", PageRepository.UserManagementFirstPageBtn);
 		Thread.sleep(6000);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
 		return true;
 	}
 	
@@ -184,14 +181,22 @@ public class UserManagement_Page extends Base_Class
 	{
 		Common.fluentWait("UserManagementPageAddUser", UserManagement_Locators.UserManagementPageAddUser);
 		click(UserManagement_Locators.UserManagementPageAddUser);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+		System.out.println("Clicked on add user button");
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+		System.out.println("Spinner disappeared");
+		Thread.sleep(3000);
+		/*Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+		Thread.sleep(3000);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);*/
+		/*Common.fluentWait("OrganizationTypeDDL", PageRepository.OrganizationTypeDDL);
+		click(PageRepository.OrganizationTypeDDL);
 		Common.fluentWait("OrganisationFirstOption", PageRepository.HeadOfficeOption);
-		Thread.sleep(10000);
 		Common.fluentWait("AddNewUserOrganizationType", PageRepository.AddNewUserOrganizationType);
 		click(PageRepository.AddNewUserOrganizationType);
-		Common.fluentWait("OrganisationFirstOption", PageRepository.HeadOfficeOption);
-		Common.fluentWait("AddNewUserOrganizationType", PageRepository.AddNewUserOrganizationType);
-		click(PageRepository.AddNewUserOrganizationType);
+		Common.fluentWait("RoleDDL", PageRepository.RoleDDL);
+		click(PageRepository.RoleDDL);
+		Common.fluentWait("RoleFirstOption", PageRepository.RoleFirstOption);
+		click(PageRepository.RoleFirstOption);*/
 		return true;
 	}
 	public boolean AddNewUserPageElementsDisplayed() throws InterruptedException {
@@ -210,58 +215,103 @@ public class UserManagement_Page extends Base_Class
 
 	public boolean EnterAddNewUserName(String AddNewUserNameBtn) throws InterruptedException 
 	{
-	
-		input(PageRepository.AddNewUserNameBtn,AddNewUserNameBtn );
-		return true;
+		try {
+			input(PageRepository.AddNewUserNameBtn,AddNewUserNameBtn );
+			return true;
+		}catch(Exception e){
+			System.out.println("Error: "+e);
+			return false;
+		}
 	}
 	   
 	public boolean EnterAddNewUserEmail(String AddNewUserEmailBtn) throws InterruptedException 
 	{
-		
-		input(PageRepository.AddNewUserEmailBtn, AddNewUserEmailBtn);
-		
-		return true;
+		try {
+			input(PageRepository.AddNewUserEmailBtn, AddNewUserEmailBtn);
+			
+			return true;
+		}catch(Exception e){
+			System.out.println("Error: "+e);
+			return false;
+		}
 	}
 	
 	public boolean EnterAddNewUserPhoneNumber(String AddNewUserPhoneNumberBtn) throws InterruptedException 
 	{
-		
-		input(PageRepository.AddNewUserPhoneNumberBtn , AddNewUserPhoneNumberBtn);
-		
-		return true;
+		try{
+				input(PageRepository.AddNewUserPhoneNumberBtn , AddNewUserPhoneNumberBtn);
+				
+				return true;
+			}catch(Exception e){
+				System.out.println("Error: "+e);
+				return false;
+			}
 	}
 	
 	public boolean SelectRoleDropdown(String value) throws InterruptedException {
-		SelectActiveDropdown(PageRepository.AddNewUserRole, value);
-		
-		return true;
+		try{
+			SelectActiveDropdown(PageRepository.AddNewUserRole, value);
+			return true;
+		}catch(Exception e){
+			System.out.println("Error: "+e);
+			return false;
+		}
 	}
+	
+	public boolean SelectRole(String value) throws InterruptedException {
+		try{
+			Common.fluentWait("OrganizationTypeDDL", PageRepository.OrganizationTypeDDL);
+			click(PageRepository.OrganizationTypeDDL);
+			Common.fluentWait("OrganisationFirstOption", PageRepository.HeadOfficeOption);
+			Common.fluentWait("AddNewUserOrganizationType", PageRepository.AddNewUserOrganizationType);
+			click(PageRepository.AddNewUserOrganizationType);
+			Common.fluentWait("RoleDDL", PageRepository.RoleDDL);
+			click(PageRepository.RoleDDL);
+			/*Common.fluentWait("RoleFirstOption", PageRepository.RoleFirstOption);
+			click(PageRepository.RoleFirstOption);*/
+			
+			/*Common.fluentWait("RoleDDL", PageRepository.RoleDDL);
+			click(PageRepository.RoleDDL);*/
+			Common.fluentWait("RoleDDLSearchField", PageRepository.RoleDDLSearchField);
+			input(PageRepository.RoleDDLSearchField, value);
+			Common.fluentWait("RoleDDLSearchedValue: "+value, PageRepository.RoleDDLSearchedValue(value));
+			click(PageRepository.RoleDDLSearchedValue(value));
+			return true;
+		}catch(Exception e){
+			System.out.println("Error: "+e);
+			return false;
+		}
+	}
+	
 	public boolean SelectOrganizationTypeDropdown(String value) throws InterruptedException {
-		SelectActiveDropdown(PageRepository.AddNewUserOrganizationType, value);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
-		
-		return true;
+		try{
+			SelectActiveDropdown(PageRepository.AddNewUserOrganizationType, value);
+			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+			return true;
+		}catch(Exception e){
+			System.out.println("Error: "+e);
+			return false;
+		}
 	}
 	
 	public boolean SelectOrganizationTypeDropdown2(String value ) throws InterruptedException 
 	{
-		
 		SelectActiveDropdown( PageRepository.AddNewUserOrganizationType, value);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		return true;
 	}
 	public boolean SelectOrganizationTypeDropdown3(String value ) throws InterruptedException 
 	{
 		
 		SelectActiveDropdown(PageRepository.AddNewUserOrganizationType, value);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		return true;
 	}
 	public boolean SelectOrganizationTypeDropdown4(String value ) throws InterruptedException 
 	{
 		
 		SelectActiveDropdown(PageRepository.AddNewUserOrganizationType, value);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		return true;
 	}
 	public boolean SelectHeadOfficeDropdown(String value ) throws InterruptedException 
@@ -269,14 +319,18 @@ public class UserManagement_Page extends Base_Class
 		
 		SelectActiveDropdown(PageRepository.HeadOfficeDropdown, value);
 		Thread.sleep(2000);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		return true;
 	}
 	
 	public boolean DisplayAddNewUserHeadofficeBtn() throws InterruptedException {
+		try{
 	       ElementDisplayed(PageRepository.AddNewUserHeadofficeBtn);
-	       
 	       return true;
+		}catch(Exception e){
+			System.out.println("Error: "+e);
+			return false;
+		}
 	}
 	
 	public boolean DisplayAddNewUserZoneCOBtn() throws InterruptedException {
@@ -306,7 +360,7 @@ public class UserManagement_Page extends Base_Class
 	{ 
               
 		click(PageRepository.AddNewUserSubmitBtn);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
         return true;
 	}
 	
@@ -340,9 +394,9 @@ public class UserManagement_Page extends Base_Class
     public boolean ClickAddNewUserCloseBtn() throws InterruptedException 
 	{
     	Common.fluentWait("AddNewUserCloseBtn",PageRepository.AddNewUserCloseBtn);
-    	Common.fluentWait("AddNewUserCloseBtn",PageRepository.UserManagementNextBtn);
     	click(PageRepository.AddNewUserCloseBtn);
-    	Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+    	Common.fluentWait("UserManagementNextBtn",PageRepository.UserManagementNextBtn);
+    	Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
     	ExtentTestManager.getTest().log(Status.INFO, " Close button is clicked");
 		return true;
 	}
@@ -417,7 +471,7 @@ public class UserManagement_Page extends Base_Class
     	Common.fluentWait("Ahmedabad", PageRepository.Ahmedabad);
     	click(PageRepository.AddNewUserZoneCO);
 		SelectActiveDropdown(PageRepository.AddNewUserZoneCO, value);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		Thread.sleep(5000);
 		return true;
 	}
@@ -426,7 +480,7 @@ public class UserManagement_Page extends Base_Class
     	Common.fluentWait("Indore", PageRepository.Indore);
     	click(PageRepository.AddNewUserRegion);
 		SelectActiveDropdown(PageRepository.AddNewUserRegion, value);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		Thread.sleep(5000);
 
 		return true;
@@ -436,7 +490,7 @@ public class UserManagement_Page extends Base_Class
     	Common.fluentWait("Indore I", PageRepository.IndoreI);
     	click(PageRepository.AddNewUserBranch);
   		SelectActiveDropdown(PageRepository.AddNewUserBranch, value);
-  		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.AddUserSpinner);
+  		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
         //Thread.sleep(10000);
   		return true;
   	}
@@ -493,7 +547,7 @@ public class UserManagement_Page extends Base_Class
 	}
     public boolean ClickUserManagementPageSearchBtn() throws InterruptedException {
 		click(PageRepository.UserManagementPageSearch);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
 		Common.fluentWait("Previous button", PageRepository.UserPrevious);
 		Thread.sleep(6000);
 		return true;
@@ -543,7 +597,7 @@ public class UserManagement_Page extends Base_Class
         ExtentTestManager.getTest().log(Status.PASS, "3. Select Activate/De-activate");
         ElementDisplayed(PageRepository.SuccessMessageUserCreation);
         ExtentTestManager.getTest().log(Status.INFO, "SuccessMessage");
-        Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+        Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
         Common.fluentWait("Previous button", PageRepository.UserPrevious);
         Thread.sleep(5000);
         return true;
@@ -551,7 +605,7 @@ public class UserManagement_Page extends Base_Class
     public boolean DisplayDeactivateRedStatus() throws InterruptedException {
     	 click(PageRepository.UserManagementPageActiveUnCheck);
     	 click(PageRepository.UserManagementPageSearch);
-         Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+         Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
          Thread.sleep(2000);
     	 ElementDisplayed(PageRepository.DeactivateRedStatus);
     	 ExtentTestManager.getTest().log(Status.PASS, "Red Status is displayed");
@@ -565,7 +619,7 @@ public class UserManagement_Page extends Base_Class
          ExtentTestManager.getTest().log(Status.PASS, "3. Select Activate/De-activate");
          ElementDisplayed(PageRepository.SuccessMessageUserCreation);
          ExtentTestManager.getTest().log(Status.INFO, "SuccessMessage");
-         Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+         Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
          Common.fluentWait("Previous button", PageRepository.UserPrevious);
          Thread.sleep(5000);
          return true;
@@ -573,7 +627,7 @@ public class UserManagement_Page extends Base_Class
     public boolean DisplayActivateGreenStatus() throws InterruptedException {
     	 click(PageRepository.UserManagementPageActiveCheck);
     	 click(PageRepository.UserManagementPageSearch);
-    	 Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+    	 Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
     	 ElementDisplayed(PageRepository.ActivateGreenStatus);
     	 ExtentTestManager.getTest().log(Status.PASS, "Green Status is displayed");
 		 return true;
@@ -582,7 +636,7 @@ public class UserManagement_Page extends Base_Class
     	click(PageRepository.UserManagementPageThreeDotBtn);
     	ExtentTestManager.getTest().log(Status.PASS, "2. Click on three-dot menu in ACTION column");
     	click(PageRepository.ResetPassword);
-    	Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+    	Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
     	ElementDisplayed(PageRepository.ResetPasswordMsg);
     	Common.fluentWait("ResetPasswordMsg", PageRepository.ResetPasswordMsg);
     	ExtentTestManager.getTest().log(Status.PASS, "3. Select Reset Password");
@@ -594,7 +648,7 @@ public class UserManagement_Page extends Base_Class
     	ExtentTestManager.getTest().log(Status.PASS, "2. Click on three-dot menu in ACTION column");
     	click(PageRepository.EditBtn);
     	ExtentTestManager.getTest().log(Status.PASS, "3. Select Edit");
-    	Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepository.UserManagementSpinner);
+    	Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
     	Thread.sleep(2000);
     	ElementDisplayed(PageRepository.EditPageName);
     	ElementDisplayed(PageRepository.EditPageEmail);

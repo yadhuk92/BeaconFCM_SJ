@@ -23,14 +23,14 @@ public class RoleManagement extends Base_Class {
 		click(PageRepositry.SecurityManagementMenu);
 		Common.fluentWait("RoleManagementOption", PageRepositry.RoleManagementOption);
 		click(PageRepositry.RoleManagementOption);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 		Thread.sleep(5000);
 		return true;
 	}
 	public boolean RoleNameSearchField() throws InterruptedException {
 		click( PageRepositry.RoleNameSearch);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		return true;
 	
 	}
@@ -38,7 +38,7 @@ public class RoleManagement extends Base_Class {
 	try{
 		Common.fluentWait("SearchBtn", PageRepositry.SearchBtn);
 		click( PageRepositry.SearchBtn);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 		//Thread.sleep(5000);
 		return true;
@@ -63,32 +63,32 @@ public class RoleManagement extends Base_Class {
 		Thread.sleep(5000);
 		Common.fluentWait("checkbox", PageRepositry.checkbox);
 		Common.fluentWait("CloseBtn", PageRepositry.CloseBtn);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		click(PageRepositry.CloseBtn);
 		Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 		Common.fluentWait("AddNewRoleBtn", PageRepositry.AddNewRoleBtn);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Thread.sleep(5000);
 		click(PageRepositry.AddNewRoleBtn);
 		Thread.sleep(3000);
 		Common.fluentWait("checkbox", PageRepositry.checkbox);
 		click(PageRepositry.checkbox);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		//Thread.sleep(2000);
 		return true;
 		
 	}
 		
 	public boolean RolePermissionSave() throws InterruptedException {
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Common.fluentWait("RolePermissionSave", PageRepositry.RolePermissionSave);
 		click(PageRepositry.RolePermissionSave);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		return true;
 	}
 	public boolean RoleNameErrorMsg() throws InterruptedException {
 		ElementDisplayed(PageRepositry.RoleNameErrorMsg);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		return true;	
 	}
 	
@@ -105,9 +105,9 @@ public class RoleManagement extends Base_Class {
     }
 	public boolean ClickCancelRole() throws InterruptedException {
 		click(PageRepositry.CancelRole);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		zoomIn(driver);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Thread.sleep(3000);
 		Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 		Thread.sleep(5000);
@@ -131,10 +131,10 @@ public class RoleManagement extends Base_Class {
 		Common.fluentWait("checkbox", PageRepositry.checkbox);
 		Common.fluentWait("CloseBtn", PageRepositry.CloseBtn);
 		/*click(PageRepositry.CloseBtn);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Common.fluentwait("Next Btn", PageRepositry.NextBtn);
 		Common.fluentwait("AddNewRoleBtn", PageRepositry.AddNewRoleBtn);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Thread.sleep(5000);
 		Common.fluentwait("AddNewRoleBtn", PageRepositry.AddNewRoleBtn);
 		click(PageRepositry.AddNewRoleBtn);
@@ -147,20 +147,20 @@ public class RoleManagement extends Base_Class {
 	public boolean ClickCheckbox() throws InterruptedException {
 		Common.fluentWait("checkbox", PageRepositry.checkbox);
 		click(PageRepositry.checkbox);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		return true;
 	}
     	 
 	public boolean RoleNameSuccessMsg() throws InterruptedException {
 		Common.fluentWait("RoleNameSuccessMsg", PageRepositry.RoleNameSuccessMsg);
 		ElementDisplayed(PageRepositry.RoleNameSuccessMsg);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 		return true;
 	}
 	
 	public boolean InputSearchField(String SearchName) throws InterruptedException {
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 		Thread.sleep(5000);
 		input(PageRepositry.RoleNameSearch, SearchName);
@@ -171,7 +171,7 @@ public class RoleManagement extends Base_Class {
 	public boolean DisplayAddedRoleName(String RoleName) throws InterruptedException {
 		try{
 			Common.fluentWait("RoleSearchResultCheck", CollectionAgencyRoleManagement_Locators.RoleSearchResultCheck(RoleName));
-			Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 			Thread.sleep(3000);
 			ElementDisplayed(PageRepositry.ThreedotButton);
 			ElementDisplayed(PageRepositry.ActionColumn);
@@ -187,7 +187,7 @@ public class RoleManagement extends Base_Class {
 			Common.fluentWait("ThreedotButton", PageRepositry.ThreedotButton);
 			click(PageRepositry.ThreedotButton);
 			ElementDisplayed(PageRepositry.EditBtn);
-			//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+			//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 			//Common.fluentwait("Next Btn", PageRepositry.NextBtn);
 			return true;
 		}catch(Exception e){
@@ -200,19 +200,19 @@ public class RoleManagement extends Base_Class {
 		Common.fluentWait("EditBtn", PageRepositry.EditBtn);
 		click(PageRepositry.EditBtn);
 		Thread.sleep(3000);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Common.fluentWait("checkbox", PageRepositry.checkbox);
 		Thread.sleep(3000);
 		click(PageRepositry.checkbox);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		click(PageRepositry.DispositionCheckbox);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		return true;
 	}
 	
 	public boolean UpdateRoleSuccessMsg() throws InterruptedException {
 		ElementDisplayed(PageRepositry.UpdateRoleSuccessMsg);
-		Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 		Thread.sleep(2000);
 		return true;
@@ -220,14 +220,14 @@ public class RoleManagement extends Base_Class {
      
 	public boolean clickSearchButton(String RoleName) throws InterruptedException {
 		try {
-			//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+			//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 			Common.fluentWait("NextBtn", PageRepositry.NextBtn);
 			Thread.sleep(3000);
 			Common.fluentWait("SearchBtn", PageRepositry.SearchBtn);
 			Common.fluentWait(RoleName, CollectionAgencyRoleManagement_Locators.RoleSearchFirstValue(RoleName));
 			Thread.sleep(3000);
 			click(PageRepositry.SearchBtn);
-			//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+			//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 			Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 			Thread.sleep(5000);
 			return true;
@@ -239,13 +239,13 @@ public class RoleManagement extends Base_Class {
 	
 	public boolean clickSearchButton2() throws InterruptedException {
 		try{
-			//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+			//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 			Common.fluentWait("NextBtn", PageRepositry.NextBtn);
 			Thread.sleep(3000);
 			Common.fluentWait("SearchBtn", PageRepositry.SearchBtn);
 			Thread.sleep(3000);
 			click(PageRepositry.SearchBtn);
-			//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+			//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 			Common.fluentWait("Next Btn", PageRepositry.NextBtn);
 			Thread.sleep(5000);
 			return true;
@@ -284,7 +284,7 @@ public class RoleManagement extends Base_Class {
 		click(PageRepositry.SupportRequestCheckbox);
 		Common.fluentWait("SupportRequestStatusCheckbox", PageRepositry.SupportRequestStatusCheckbox);
 		click(PageRepositry.SupportRequestStatusCheckbox);
-		//Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.waitSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepositry.waitSpinner);
 		Thread.sleep(3000);
 		return true;
 	}

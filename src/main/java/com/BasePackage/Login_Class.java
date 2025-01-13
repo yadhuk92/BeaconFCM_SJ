@@ -84,7 +84,7 @@ public class Login_Class extends Base_Class {
                     // Perform the desired action on the element
                     clickableElement.click();
                     //driver.findElement(LoginPageRepo.AlreadyLoginPopupYesButton).click();
-                    Common.waitForSpinnerToDisappear(driver, "Loading Spinner", LoginPageRepo.Spinner);
+                    Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
                     
                     Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
                     Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
@@ -114,7 +114,7 @@ public class Login_Class extends Base_Class {
             //if (Common.waitForElementToBeClickable(driver, LoginPageRepo.GoCollectionButton, Duration.ofSeconds(30)) != null) {
             if (defaultURL == null) {
             	System.out.println("Entered into module selection page if condition");
-                Common.waitForSpinnerToDisappear(driver, "Loading Spinner", LoginPageRepo.Spinner);
+                Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
                 Common.fluentWait("SetAsDefaultRadioButton", LoginPageRepo.SetAsDefaultRadioButton);
                 Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
                 Thread.sleep(3000);
@@ -251,7 +251,7 @@ public class Login_Class extends Base_Class {
 
                 if (clickableElement != null) {
                     clickableElement.click();
-                    Common.waitForSpinnerToDisappear(driver, "Loading Spinner", LoginPageRepo.Spinner);
+                    Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
                     
                     Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
                     Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
