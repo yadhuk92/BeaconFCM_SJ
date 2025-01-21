@@ -54,7 +54,7 @@ public class DBUtils {
         return result;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
         /*try {
             // Example usage
             String query = "SELECT Default_URL FROM acc_users WHERE user_id = 'IBU0000028'";
@@ -64,7 +64,7 @@ public class DBUtils {
             e.printStackTrace();
         }*/
         
-    	String procedureCall = "{CALL SP_GET_USER_OTHERBRANCH_ACCOUNTS(?, ?)}";
+    	/*String procedureCall = "{CALL SP_GET_USER_OTHERBRANCH_ACCOUNTS(?, ?)}";
         String userId = "IBU0001196"; // Input parameter
 
         try {
@@ -73,7 +73,17 @@ public class DBUtils {
             System.out.println("User Branch Account Number: " + AccoutNumber);
         } catch (Exception e) {
             System.err.println("Failed to execute stored procedure: " + e.getMessage());
-        }
+        }*/
+    	
+    	 // Example usage with a SELECT statement
+        /*String selectQuery = "SELECT column_name FROM table_name WHERE condition";
+        String selectResult = executeSQLStatement(selectQuery);
+        System.out.println("Select Query Result: " + selectResult);*/
+
+        // Example usage with a TRUNCATE statement
+        String truncateQuery = "TRUNCATE TABLE mst_callcentre_accounts";
+        String truncateResult = executeSQLStatement(truncateQuery);
+        System.out.println("Truncate Query Result: " + truncateResult);
     	
     }
     
@@ -139,5 +149,54 @@ public class DBUtils {
         }
         return results;
     }
+    
+    public static String executeSQLStatement(String query) 
+            throws SQLException, ClassNotFoundException, IOException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String result = null;
 
+        try {
+            // Establish the database connection
+            con = Base_Class.OracleDBConnection();
+
+            // Prepare the SQL statement
+            pstmt = con.prepareStatement(query);
+
+            // Determine the type of SQL query
+            if (query.trim().toLowerCase().startsWith("select")) {
+                // Execute the query if it's a SELECT statement
+                rs = pstmt.executeQuery();
+
+                // Retrieve the single value from the result set
+                if (rs.next()) {
+                    result = rs.getString(1); // Assuming the result is in the first column
+                }
+            } else if (query.trim().toLowerCase().startsWith("truncate")) {
+                // Execute TRUNCATE statement
+                pstmt.executeUpdate(); // TRUNCATE does not return affected rows
+                result = "TRUNCATE command executed successfully.";
+            } else {
+                // Execute other non-query statements (like INSERT, UPDATE, DELETE)
+                int affectedRows = pstmt.executeUpdate();
+                result = "Query executed successfully. Rows affected: " + affectedRows;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e; // Rethrow exception to handle it further up the chain
+        } finally {
+            // Close resources
+            if (rs != null) {
+                rs.close();
+            }
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
 }
