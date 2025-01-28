@@ -50,10 +50,10 @@ public class Login_Class extends Base_Class {
             // Load the application URL
             driver.get(CoreAppUrl);
             Common.setDriver(driver);
-            Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
-
-            //ExtentTestManager.getTest().log(Status.INFO, CoreAppUrl + " loaded successfully!");
-            Thread.sleep(9000);
+//            Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+//
+//            ExtentTestManager.getTest().log(Status.INFO, CoreAppUrl + " loaded successfully!");
+//            Thread.sleep(9000);
 
             Pagetitle = driver.getTitle();
             Log.info("Title is displayed: " + Pagetitle);
@@ -83,7 +83,7 @@ public class Login_Class extends Base_Class {
                 if (clickableElement != null) {
                     // Perform the desired action on the element
                     clickableElement.click();
-                    //driver.findElement(LoginPageRepo.AlreadyLoginPopupYesButton).click();
+                    driver.findElement(LoginPageRepo.AlreadyLoginPopupYesButton).click();
                     Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
                     
                     Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
@@ -112,28 +112,28 @@ public class Login_Class extends Base_Class {
             
             // Redirect to the module selection page
             //if (Common.waitForElementToBeClickable(driver, LoginPageRepo.GoCollectionButton, Duration.ofSeconds(30)) != null) {
-            if (defaultURL == null) {
-            	System.out.println("Entered into module selection page if condition");
-                Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
-                Common.fluentWait("SetAsDefaultRadioButton", LoginPageRepo.SetAsDefaultRadioButton);
-                Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
-                Thread.sleep(3000);
-                //driver.findElement(LoginPageRepo.GoCollectionButton).click();
-                ForLoopClick(LoginPageRepo.GoCollectionButton);
-                Log.info("Clicked on Go collection button");
-            } else {
-                Log.info("Module selection page not appeared");
-            }
+//            if (defaultURL == null) {
+//            	System.out.println("Entered into module selection page if condition");
+//                Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+//                Common.fluentWait("SetAsDefaultRadioButton", LoginPageRepo.SetAsDefaultRadioButton);
+//                Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
+//                Thread.sleep(3000);
+//                //driver.findElement(LoginPageRepo.GoCollectionButton).click();
+//                ForLoopClick(LoginPageRepo.GoCollectionButton);
+//                Log.info("Clicked on Go collection button");
+//            } else {
+//                Log.info("Module selection page not appeared");
+//            }
 
             // Fetch and display user organization details
-            Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
+            //Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
             String UserIDInDashboard = driver.findElement(LoginPageRepo.UserIDInDashboard).getText();
             Log.info("UserID in Dashboard: " + UserIDInDashboard);
 
-            GetUserORGDetailsFromDB(UserIDInDashboard);
-            Log.info("Org Name: " + orgName + ", Org Type Name: " + orgTypeName);
-
-            Common.fluentWait("UserORGDetails", LoginPageRepo.getORGDetailsinLoginLandingPage(orgName, orgTypeName));
+//            GetUserORGDetailsFromDB(UserIDInDashboard);
+//            Log.info("Org Name: " + orgName + ", Org Type Name: " + orgTypeName);
+//
+//            Common.fluentWait("UserORGDetails", LoginPageRepo.getORGDetailsinLoginLandingPage(orgName, orgTypeName));
 
         } catch (Exception e) {
             Log.error("An error occurred in CoreLogin: " + e.getMessage());

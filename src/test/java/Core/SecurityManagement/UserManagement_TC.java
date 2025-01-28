@@ -95,9 +95,9 @@ public class UserManagement_TC extends Base_Class {
         extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Core - User management");
         Log.info("****" + method.getName() + "****");
     }
-	
+
 	@Test(priority = 1)
-	public void Navigation_to_User_Management_Page() throws Throwable {
+	public void Access_User_Management_Page() throws Throwable {
 			try {
 				Log.info("***Navigation to User Management Page***");
 				//CoreAppLogin.CoreLogin();
@@ -444,7 +444,7 @@ public class UserManagement_TC extends Base_Class {
             User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
             ExtentTestManager.getTest().log(Status.PASS, "2.Enter valid inputs for Email and Phone number");
 			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
 			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid option for Role");
             User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
             ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Organization type=Head office");
@@ -473,7 +473,7 @@ public class UserManagement_TC extends Base_Class {
 			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
 			ExtentTestManager.getTest().log(Status.PASS, "2.Leave the Email field blank");
 			ExtentTestManager.getTest().log(Status.PASS, "3. Enter a valid phone number");
-			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
 			ExtentTestManager.getTest().log(Status.PASS, "4. Select valid option for Role");
             User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
             ExtentTestManager.getTest().log(Status.PASS, "5. Select option for Organization type=Head office.");
@@ -501,7 +501,7 @@ public class UserManagement_TC extends Base_Class {
 			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
 			ExtentTestManager.getTest().log(Status.PASS, "1. Enter a valid name and Email");
 			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
 			ExtentTestManager.getTest().log(Status.PASS, "2. Leave the Phone number field");
 			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid option for Role");
 			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
@@ -521,676 +521,675 @@ public class UserManagement_TC extends Base_Class {
 		        throw e;
 		}
 	}
-			
-			/*	
-				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except role drop down and click on submit button");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name, Email, and Phone number");
-				ExtentTestManager.getTest().log(Status.PASS, "2.Do not select any option for Role");
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select option for Organization type=Head office");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Head office=Mumbai");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
-				boolean flag32  = User_UserManagementPage.ErrormessageforRoleField();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Role is required\" is displayed under Role dropdown: " + flag32);
-				Log.info("Error message for RoleField displayed : " + flag32);
-			
-			
-				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except organization type drop down and click on submit button");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name, Email, and Phone number");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select valid option for Role");
-				ExtentTestManager.getTest().log(Status.PASS, "3. Do not select any option for Organization type");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag33  = User_UserManagementPage.ErrormessageforOrganizationTypeField();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Organization type is required\" is displayed under Organization type dropdown : " + flag33);
-				Log.info("Error message for OrganizationTypeField displayed : " + flag33);
-				
-				
-				ExtentTestManager.startTest("Add new user page - Invalid Email Format-missing '@ and domain'");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(InvalidEmailId);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Phone number");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an invalid email format (e.g., missing '@' )");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag34  = User_UserManagementPage.ErrormessageforInvalidEmailId();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Email Id with @': " + flag34);
-				Log.info("Error message for Invalid Email Id is displayed : " + flag34);
-				
-		
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(InvalidEmailIdWithoutDomain);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Phone number");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an invalid email format (e.g., missing 'domain' )");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag35  = User_UserManagementPage.ErrormessageforInvalidEmailId();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Email Id' with domain : " + flag35);
-				Log.info("Error message for Invalid Email Format is displayed : " + flag35);
-				
-				ExtentTestManager.startTest("Add new user page -Invalid Phone Number Format- with letters and digits");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(InvalidPhoneNumberWithLetters);
-				ExtentTestManager.getTest().log(Status.PASS, " 2. Enter an invalid phone number format (e.g:letters)");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag36  = User_UserManagementPage.ClickAddNewUserSubmitBtn();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message \"\"Invalid Mobile Number\" with letters: " + flag36);
-				Log.info("Error message for Invalid PhoneNumber with letters is displayed : " + flag36);
-				
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(InvalidPhoneNumberWithEightDigits);
-				ExtentTestManager.getTest().log(Status.PASS, " 2. Enter an invalid phone number format (e.g:8 digits)");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag37  = User_UserManagementPage.ErrormessageforInvalidPhoneNumber();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Mobile Number' with 8 digits : " + flag37);
-				Log.info("Error message for Invalid PhoneNumber is displayed : " + flag37);
-				
-				
-				ExtentTestManager.startTest("Add new user - Name Field - ECP Validations(Alphabetic inputs)");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(username);
-				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with Alphabets characters");
-                Thread.sleep(5000);
-                Common.fluentWait("submit btn", PageRepositry.AddNewUserSubmitBtn);
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-				boolean flag38  = User_UserManagementPage.ClickAddNewUserSubmitBtn();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Alphabetic inputs are allowed.<br>Other inputs prompt error message \"Invalid Name\": " + flag38);
-				Log.info("User created with Alphabetic inputs successfully: " + flag38);
-				
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(NamewithNumericInput);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with  Numeric characters");
-                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-				boolean flag39  = User_UserManagementPage.ErrormessageforInvalidName();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Numeric inputs prompt error message 'Invalid Name': " + flag39);
-				Log.info("Error message Invalid Name for numeric inputs is displayed: " + flag39);
-				
-				
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(NamewithAlphaNumericInput);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with  AlphaNumeric characters");
-                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                Thread.sleep(5000);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-				boolean flag40  = User_UserManagementPage.ErrormessageforInvalidName();
-				ExtentTestManager.getTest().log(Status.PASS, "Alpha Numeric inputs prompt error message 'Invalid Name' : " + flag40);
-				Log.info("Error message Invalid Name for alphanumeric inputs is displayed: " + flag40);		
-				
-				ExtentTestManager.startTest("Create Head Office User - No Head Office Selected - Error message validation");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs in Name, Email, and Phone number fields");
-                User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				Thread.sleep(5000);
-				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
-                ExtentTestManager.getTest().log(Status.PASS, "3. Do not select any value from Head office dropdown");
-                ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-				boolean flag41  = User_UserManagementPage.ErrormessageforEmptyHeadoffice();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message \"Head office is Required\" should show and the user is not created : " + flag41);
-				Log.info("Error message for Empty HeadOffice is displayed: " + flag41);
-				
-				ExtentTestManager.startTest("Create Head Office User - Valid Inputs - Successful user creation ");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-			    User_UserManagementPage.EnterAddNewUserName(username);
-				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select a valid value from Head office dropdown");
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
-				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-                boolean flag43  = User_UserManagementPage.SuccessMessage();
-				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results : " + flag43);
-				Log.info("Success message for user creation is displayed: " + flag43);
-				assertTrue("The table name value does not match the expected button name", 
-				           User_UserManagementPage.FetchTableNameValue().equals(username));
-				String message = User_UserManagementPage.GetUserNameandPassowrd(); 
-		
-				ExtentTestManager.startTest("Add new user - User already exists case");
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid same inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select a valid value from Head office dropdown");
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
-				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-                boolean flag42  = User_UserManagementPage.ErrorMessageExistUserCreation();
-                User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Already User Exist' " + flag42);
-				Log.info("Error message on creating existing user is displayed: " + flag42);				 
-		
-				ExtentTestManager.startTest("Create Head Office User - Login with newly created user");
-				User_UserManagementPage.ClickLogoutOption();
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
-				Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
-				Thread.sleep(5000);
-			    String UNHeadoffice = message.substring(message.lastIndexOf(":") + 1, message.indexOf("is")).replaceAll(" ", "");
-			    String PwdHeadoffice = message.substring(message.lastIndexOf("is") + 2).replaceAll(" ", "");
-			    System.out.println(UNHeadoffice);
-			    System.out.println(PwdHeadoffice);
-				User_UserManagementPage.EnterLoginPageCredential(UNHeadoffice, PwdHeadoffice);
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter user Name of Head office user in User Name field");
-				ExtentTestManager.getTest().log(Status.PASS, "2.Enter Password of Head office user in Password field");
-				User_UserManagementPage.ClickLoginBtn();
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
-				Thread.sleep(5000);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Login button");
-				User_UserManagementPage.ModuleSelectionEltDisplayed();
-				assertTrue("The UserName value does not match the expected button name", 
-				           User_UserManagementPage.FetchUserName().equals(UNHeadoffice));
-				assertTrue("The UserID value does not match the expected button name", 
-				           User_UserManagementPage.UserId().equals(username));
-                boolean flag44  = User_UserManagementPage.SetasDefaulNotSelected();
-				ExtentTestManager.getTest().log(Status.PASS, "Should redirect to module selection page and should show Go Collection button, Set as Default checkbox, Go Recovery button and Set as Default checkbox. Also should show User ID and User name on top of left side: " + flag44);
-				Log.info("Successfully redirect to module selection page with Headoffice credentials " + flag44);
-
-				ExtentTestManager.startTest("Create Zone/CO User - No Zone/Co Selected - Error message validation");
-				User_UserManagementPage.GoCollectionModule();
-				User_UserManagementPage.SelectSecurityManagementMenu();
-				User_UserManagementPage.SelectUserManagementMenu();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid same inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown2(AddNewUserOrganizationType2);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Zone/CO' from Organization type dropdown");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select any value from Head office dropdown");
-				ExtentTestManager.getTest().log(Status.PASS, "4. Do not select any value from Zone/CO dropdown.");
-				ExtentTestManager.getTest().log(Status.PASS, "5. Select a valid input from Role dropdown");
-				Common.fluentWait("Zone/CO", PageRepositry.ZoneCO);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
-                boolean flag45  = User_UserManagementPage.ErrorMessageForZoneCO();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message 'Zone/CO is Required' should show and the user is not created : " + flag45);
-				Log.info("Error message Zone/CO Required is displayed: " + flag45);
-			
-				
-				ExtentTestManager.startTest("Create Zone/CO User - Valid Inputs - Successful user creation");
-				Log.info("***Create Zone/CO User - Valid Inputs - Successful user creation***");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(username);
-				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown2(AddNewUserOrganizationType2); 
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Zone/CO' from Organization type dropdown.");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select any value from Head office dropdown.");
-				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Zone/CO dropdown");
-				ExtentTestManager.getTest().log(Status.PASS, "5. Select a valid input from Role dropdown");
-				Common.fluentWait("Submit btn",PageRepositry.AddNewUserSubmitBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                boolean flag46  = User_UserManagementPage.SuccessMessage();
-				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results. : " + flag46);
-				String ZONECOmessage = User_UserManagementPage.GetUserNameandPassowrd();
-				Log.info("Success message for user creation is displayed with Zone/CO inputs: " + flag46);
-				assertTrue("The table name value does not match the expected button name", 
-				           User_UserManagementPage.FetchTableNameValue().equals(username));
-		
-				ExtentTestManager.startTest("Create Zone/CO User - Login with newly created user ");
-				User_UserManagementPage.ClickLogoutOption();
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
-				Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
-				Thread.sleep(5000);
-			    String UNZoneCO = ZONECOmessage.substring(ZONECOmessage.lastIndexOf(":") + 1, ZONECOmessage.indexOf("is")).replaceAll(" ", "");
-			    String PwdZoneCO = ZONECOmessage.substring(ZONECOmessage.lastIndexOf("is") + 2).replaceAll(" ", "");
-			    System.out.println(UNZoneCO);
-			    System.out.println(PwdZoneCO);
-			    Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
-			    Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
-				Thread.sleep(5000);
-				User_UserManagementPage.EnterLoginPageCredential(UNZoneCO, PwdZoneCO);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter user Name of Zone/Co user in User Name field.");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter Password of Zone/CO user in Password field");
-				User_UserManagementPage.ClickLoginBtn();
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
-				Thread.sleep(5000);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Login button.");
-				Thread.sleep(2000);
-				User_UserManagementPage.ModuleSelectionEltDisplayed();
-				assertTrue("The UserName value does not match the expected button name", 
-				           User_UserManagementPage.FetchUserName().equals(UNZoneCO));
-				assertTrue("The UserID value does not match the expected button name", 
-				           User_UserManagementPage.UserId().equals(username));
-                boolean flag47 = User_UserManagementPage.SetasDefaulNotSelected();
-				ExtentTestManager.getTest().log(Status.PASS, "Should redirect to module selection page and should show Go Collection button, Set as Default checkbox, Go Recovery button and Set as Default checkbox. Also should show User ID and User name on top of left side. " + flag47);
-  			    Log.info("Successfully redirect to module selection page with ZoneCO credentials" + flag47);
-				
-				ExtentTestManager.startTest("Create Region User - No Region Selected - Error message validation ");
-				User_UserManagementPage.GoCollectionModule();
-				User_UserManagementPage.SelectSecurityManagementMenu();
-				User_UserManagementPage.SelectUserManagementMenu();   
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select a valid input from Role dropdown");
-				User_UserManagementPage.SelectOrganizationTypeDropdown3(AddNewUserOrganizationType3);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select 'Region' from Organization type dropdown.");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Head office dropdown.");
-				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
-				ExtentTestManager.getTest().log(Status.PASS, "5. Select any value from Zone/CO dropdown.");
-				ExtentTestManager.getTest().log(Status.PASS, "6. Do not select any value from Region drop down.");
-				Common.fluentWait("Region", PageRepositry.Region);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "7. Click on Submit button");
-                boolean flag48  = User_UserManagementPage.ErrorMessageForRegion();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message 'Region is Required' should show and the user is not created. " + flag48);
-				Log.info("Error message Region Required is displayed: " + flag48);
-			
-				ExtentTestManager.startTest("Create Region User - Valid Inputs - Successful user creation");
-				User_UserManagementPage.ClickAddNewUserCloseBtn(); 
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(username);
-				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select a valid input from Role dropdown");
-				User_UserManagementPage.SelectOrganizationTypeDropdown3(AddNewUserOrganizationType3);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select 'Region' from Organization type dropdown.");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Head office dropdown.");
-				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
-				ExtentTestManager.getTest().log(Status.PASS, "5. Select any value from Zone/CO dropdown.");
-				ExtentTestManager.getTest().log(Status.PASS, "6. Do not select any value from Region drop down.");
-				User_UserManagementPage.SelectAddNewUserRegion(AddNewUserRegion);
-				Common.fluentWait("Submit btn",PageRepositry.AddNewUserSubmitBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "7. Click on Submit button");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                boolean flag49  = User_UserManagementPage.SuccessMessage();
-				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results.: " + flag49);
-				String Regionmessage = User_UserManagementPage.GetUserNameandPassowrd();
-				Log.info("Success message for user creation is displayed with Region inputs: " + flag49);
-				assertTrue("The table name value does not match the expected button name", 
-				           User_UserManagementPage.FetchTableNameValue().equals(username));
-				
-				ExtentTestManager.startTest("Create Region User - Login with newly created user ");
-				User_UserManagementPage.ClickLogoutOption();
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
-				Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
-				Thread.sleep(5000);
-			    String UNRegion = Regionmessage.substring(Regionmessage.lastIndexOf(":") + 1, Regionmessage.indexOf("is")).replaceAll(" ", "");
-			    String PwdRegion = Regionmessage.substring(Regionmessage.lastIndexOf("is") + 2).replaceAll(" ", "");
-			    System.out.println(UNRegion);
-			    System.out.println(PwdRegion);
-				User_UserManagementPage.EnterLoginPageCredential(UNRegion, PwdRegion);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter user Name of Region user in User Name field");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter Password of Region user in Password field.");
-				User_UserManagementPage.ClickLoginBtn();
-				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Login button.");
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
-				Thread.sleep(5000);
-				User_UserManagementPage.ModuleSelectionEltDisplayed();
-				assertTrue("The UserName value does not match the expected button name", 
-				           User_UserManagementPage.FetchUserName().equals(UNRegion));
-				assertTrue("The UserID value does not match the expected button name", 
-				           User_UserManagementPage.UserId().equals(username));
-                boolean flag50 = User_UserManagementPage.SetasDefaulNotSelected();
-				ExtentTestManager.getTest().log(Status.PASS, "Should redirect to module selection page and should show Go Collection button, Set as Default checkbox, Go Recovery button and Set as Default checkbox. Also should show User ID and User name on top of left side." + flag50);
-				Log.info("Successfully redirect to module selection page with Region credentials " + flag50);
-			
-				ExtentTestManager.startTest("Create Branch User - No Branch Selected - Error message validation ");
-				User_UserManagementPage.GoCollectionModule();
-				User_UserManagementPage.SelectSecurityManagementMenu();
-				User_UserManagementPage.SelectUserManagementMenu();   
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select a valid input from Role dropdown");
-				User_UserManagementPage.SelectOrganizationTypeDropdown4(AddNewUserOrganizationType4);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select 'Region' from Organization type dropdown.");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Head office dropdown.");
-				Common.fluentWait("ZoneCO", PageRepositry.ZoneCO);
-				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
-				ExtentTestManager.getTest().log(Status.PASS, "5. Select any value from Zone/CO dropdown.");
-				ExtentTestManager.getTest().log(Status.PASS, "6. Select any value from Region drop down.");
-				Common.fluentWait("Region", PageRepositry.Region);
-				User_UserManagementPage.SelectAddNewUserRegion(AddNewUserRegion);
-				ExtentTestManager.getTest().log(Status.PASS, "7. Do not select any value from Region drop down.");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "8. Click on Submit button");
-                boolean flag51  = User_UserManagementPage.ErrorMessageForBranch();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message Branch Required should show and the user is not created: " + flag51);
-				Log.info("Error message Branch Required is displayed: " + flag51);
-		
-				ExtentTestManager.startTest("Create Branch User - Valid Inputs - Successful user creation");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(username);
-				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select a valid input from Role dropdown");
-				User_UserManagementPage.SelectOrganizationTypeDropdown4(AddNewUserOrganizationType4);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select 'Branch' from Organization type dropdown.");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Head office dropdown.");
-				Common.fluentWait("ZoneCO", PageRepositry.ZoneCO);
-				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
-				Thread.sleep(2000);
-				ExtentTestManager.getTest().log(Status.PASS, "5. Select any value from Zone/CO dropdown.");
-				Common.fluentWait("Region", PageRepositry.Region);
-				User_UserManagementPage.SelectAddNewUserRegion(AddNewUserRegion);
-				Thread.sleep(2000);
-				ExtentTestManager.getTest().log(Status.PASS, "6. Select any value from Region drop down.");
-				Common.fluentWait("Branch", PageRepositry.Branch);
-				User_UserManagementPage.SelectAddNewUserBranch(AddNewUserBranch);
-				Thread.sleep(2000);
-				ExtentTestManager.getTest().log(Status.PASS, "7. Select any value from Branch drop down.");
-				Common.fluentWait("Submit btn",PageRepositry.AddNewUserSubmitBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "8. Click on Submit button");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                boolean flag52  = User_UserManagementPage.SuccessMessage();
-                String Branchmessage = User_UserManagementPage.GetUserNameandPassowrd();
-				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results: " + flag52);
-				Log.info("Success message for user creation is displayed with Branch inputs: " + flag52);
-				assertTrue("The table name value does not match the expected button name", 
-				           User_UserManagementPage.FetchTableNameValue().equals(username));
-			
-				ExtentTestManager.startTest("Create Branch User - Login with newly created user ");
-				User_UserManagementPage.ClickLogoutOption();
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
-				Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
-				Thread.sleep(8000);
-			    String UNBranch = Branchmessage.substring(Branchmessage.lastIndexOf(":") + 1, Branchmessage.indexOf("is")).replaceAll(" ", "");
-			    String PwdBranch = Branchmessage.substring(Branchmessage.lastIndexOf("is") + 2).replaceAll(" ", "");
-			    System.out.println(UNBranch);
-			    System.out.println(PwdBranch);
-			    Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
-				Thread.sleep(6000);
-				User_UserManagementPage.EnterLoginPageCredential(UNBranch, PwdBranch);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter user Name of Branch user in User Name field.");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter Password of Branch user in Password field.");
-				User_UserManagementPage.ClickLoginBtn();
-				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Login button.");
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
-				Thread.sleep(5000);
-				User_UserManagementPage.ModuleSelectionEltDisplayed();
-				assertTrue("The UserName value does not match the expected button name", 
-				           User_UserManagementPage.FetchUserName().equals(UNBranch));
-				assertTrue("The UserID value does not match the expected button name", 
-				           User_UserManagementPage.UserId().equals(username));
-				boolean flag53 = User_UserManagementPage.SetasDefaulNotSelected();
-                ExtentTestManager.getTest().log(Status.PASS, "Should redirect to module selection page and should show Go Collection button, Set as Default checkbox, Go Recovery button and Set as Default checkbox. Also should show User ID and User name on top of left side. : " + flag53);
-				Log.info("Successfully redirect to module selection page with Branch credentials :" + flag53);
-				
-				ExtentTestManager.startTest("User search page - Search with Valid User Name");
-				User_UserManagementPage.ClickLogoutOption();
-				ExtentTestManager.getTest().log(Status.PASS, "Click logout button");
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
-				Thread.sleep(6000);
-				User_UserManagementPage.EnterLoginPageCredential(UNOriginal, PwdOriginal);
-				User_UserManagementPage.ClickLoginBtn();
-				ExtentTestManager.getTest().log(Status.PASS, "Click login button");
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
-				Thread.sleep(5000);
-				User_UserManagementPage.SelectSecurityManagementMenu();
-				Thread.sleep(1000);
-				User_UserManagementPage.SelectUserManagementMenu(); 
-				ExtentTestManager.getTest().log(Status.PASS, "Land to UserManagement page");
-				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
-				User_UserManagementPage.EnterUsernameInUNPage(UsernameInUNPage);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field");
-				User_UserManagementPage.ClickUserManagementPageSearchBtn();
-				ExtentTestManager.getTest().log(Status.PASS, "2. Click on Search button");
-				boolean flag54 = User_UserManagementPage.FetchTableUsername();
-                ExtentTestManager.getTest().log(Status.PASS, "Search result displays user with columns: SL NO, USER NAME, NAME, ROLE, MOBILE NO, EMAIL ID, STATUS, ACTION with status green tick.: " + flag54);
-				Log.info("User search page - Valid Username row is displayed" + flag54);
-				
-				ExtentTestManager.startTest("User search page - Role Dropdown Selection ");
-				User_UserManagementPage.ClearUsernameInUNPage(); 
-				Thread.sleep(1000);
-				User_UserManagementPage.SelectUserManagementPageRole(UserManagementPageRole);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Select Admin Role from the role drop-down.");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Leave all other fields empty");
-				User_UserManagementPage.ClickUserManagementPageSearchBtn();
-				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Search button");
-				boolean flag55 = User_UserManagementPage.FetchHeaderRole();
-                ExtentTestManager.getTest().log(Status.PASS, "Users matching the selected role are displayed. : " + flag55);
-				Log.info("User search page - Role DropDown Selection is displayed" + flag55);			
-			
-				ExtentTestManager.startTest("User search page - Search with Invalid User Name ");
-				User_UserManagementPage.ClearUserManagementPageRole();
-				User_UserManagementPage.UsernameInput(InvalidUserName);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"InvalidUser\" into User Name field");
-				User_UserManagementPage.UserManagementSearchBtn();
-				ExtentTestManager.getTest().log(Status.PASS, "2. Click on Search button");
-                boolean flag56  = User_UserManagementPage.UserManagementInvalidSearchMsg();
-				ExtentTestManager.getTest().log(Status.PASS, "System displays \"No records to display.\" message. : " + flag56);
-				Log.info("Error message No records to display is displayed: " + flag56);
-							
-				ExtentTestManager.startTest("User search page - Activate/Deactivate selection of an Active User ");
-				User_UserManagementPage.ClearUsernameInUNPage(); 
-				User_UserManagementPage.EnterUsernameInUNPage(UsernameInUNPage);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field and click on Search button.");
-				User_UserManagementPage.ClickUserManagementPageSearchBtn();
-				boolean flag57  = User_UserManagementPage.StepsOnDeactivateOptn();
-				Log.info("Success Status changed message is displayed: " + flag57);
-                boolean flag58  = User_UserManagementPage.DisplayDeactivateRedStatus(); ;
-				ExtentTestManager.getTest().log(Status.PASS, "\"Success Status Changed\" message appears. User is deactivated. Status changes to red cross on re-search with \"Is Active\" unchecked. : " + flag58);
-				Log.info("Record deactivated, Red cross is displayed: " + flag58);
-				Thread.sleep(1000);
-				
-				ExtentTestManager.startTest("User search page  - Activate/Deactivate selection of an Inactive User ");
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field and click on Search button with \"Is Active\" unchecked\"");
-				boolean flag59  = User_UserManagementPage.StepsOnActivateOptn(); 
-				Log.info("Success Status changed message is displayed: " + flag59);
-                boolean flag60  = User_UserManagementPage.DisplayActivateGreenStatus(); ;
-				ExtentTestManager.getTest().log(Status.PASS, "Record Activated, Green cross" + " is displayed : " + flag60);
-				Log.info("Record Activated, Green cross is displayed: " + flag60);
-				
-				ExtentTestManager.startTest("User search page  - Reset Password");
-				User_UserManagementPage.ClearUsernameInUNPage();
-				User_UserManagementPage.EnterUsernameInUNPage(UsernameInUNPage);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field and click on Search button.");
-				User_UserManagementPage.ClickUserManagementPageSearchBtn();
-				boolean flag61  = User_UserManagementPage.ResetPassword(); 
-				ExtentTestManager.getTest().log(Status.PASS, "'The password has been reset successfully. Present password for the user IBU0001192 is xxxxxxx' message is displayed : " + flag61);
-				Log.info("Reset Password changed Status message is displayed: " + flag61);
-				
-				ExtentTestManager.startTest("User search page  -  Edit User Details");
-				User_UserManagementPage.ClearUsernameInUNPage(); 
-				User_UserManagementPage.EnterUsernameInUNPage(UsernameInUNPage);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field and click on Search button.");
-				User_UserManagementPage.ClickUserManagementPageSearchBtn();
-				boolean flag62  = User_UserManagementPage.EditUserDetails(); 
-				ExtentTestManager.getTest().log(Status.PASS, "User is redirected to edit page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Update buttons. : " + flag62);
-				Log.info("Edit User Details elements is displayed:" + flag62);
-				
-               	 
-			// Logout  
-			//ExtentTestManager.startTest("Application Logout Initiated.");
-			context.setAttribute("fileName", "Logout");
-			click(userDropDown);
-			click(L_signout);
-			Thread.sleep(2000);
-			driver.quit();
-			//ExtentTestManager.getTest().log(Status.PASS, "Application Logout");
-			Log.info("Logout is done!");
-
-			// EndTest
-			System.out.println(("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***"));
-			ExtentTestManager.endTest();
-			ExtentManager.getInstance().flush();
-			Log.info("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***");
-
-			}
-
-		} catch (Exception e) {
-			System.out.println("*** Test execution " + testdata.get("TestScenario").toString() + " failed...");
-			Log.error("*** Test execution " + testdata.get("TestScenario").toString() + " failed...");
-			Log.error("" + e.getMessage());
-			String fileName = (String) context.getAttribute("fileName");
-
-			try {
-				File file = new com.Utility.ScreenShot(driver).takeScreenShot(fileName,
-						testdata.get("TestScenario").toString());
-				ExtentTestManager.getTest().fail(e.getMessage(),
-						MediaEntityBuilder.createScreenCaptureFromPath(file.toString()).build());
-			} catch (Exception e1) {
-				System.out.println("File not found " + e1);
-			}
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed");
-
-			// Logout
-			context.setAttribute("fileName", "Logout");
-			driver.quit();
-			ExtentTestManager.getTest().log(Status.PASS, "Application Logout");
-			Log.info("Logout is done");
-
-			// EndTest
-			System.out.println(("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***"));
-			ExtentTestManager.endTest();
-			ExtentManager.getInstance().flush();
-			Log.info("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***");
-			
-		} catch (AssertionError e) {
-			System.out.println("*** Test execution " + testdata.get("TestScenario").toString() + " failed...");
-			Log.error("*** Test execution " + testdata.get("TestScenario").toString() + " failed...");
-			Log.error("" + e.getMessage());
-			String fileName = (String) context.getAttribute("fileName");
-
-			try {
-				File file = new com.Utility.ScreenShot(driver).takeScreenShot(fileName,
-						testdata.get("TestScenario").toString());
-				ExtentTestManager.getTest().fail(e.getMessage(),
-						MediaEntityBuilder.createScreenCaptureFromPath(file.toString()).build());
-			} catch (Exception e1) {
-				System.out.println("File not found " + e1);
-			}
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed");
-
-			//Logout
-			context.setAttribute("fileName", "Logout");
-			driver.quit();
-			ExtentTestManager.getTest().log(Status.PASS, "Application Logout");
-			Log.info("Logout is done");
-
-			ExtentTestManager.endTest();
-			ExtentManager.getInstance().flush();
-			Log.info("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***");
-		}
-
-	}*/
+//			
+//				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except role drop down and click on submit button");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name, Email, and Phone number");
+//				ExtentTestManager.getTest().log(Status.PASS, "2.Do not select any option for Role");
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select option for Organization type=Head office");
+//                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//                ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Head office=Mumbai");
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
+//				boolean flag32  = User_UserManagementPage.ErrormessageforRoleField();
+//				User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Role is required\" is displayed under Role dropdown: " + flag32);
+//				Log.info("Error message for RoleField displayed : " + flag32);
+//			
+//			
+//				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except organization type drop down and click on submit button");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name, Email, and Phone number");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select valid option for Role");
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Do not select any option for Organization type");
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+//				boolean flag33  = User_UserManagementPage.ErrormessageforOrganizationTypeField();
+//				User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Organization type is required\" is displayed under Organization type dropdown : " + flag33);
+//				Log.info("Error message for OrganizationTypeField displayed : " + flag33);
+//				
+//				
+//				ExtentTestManager.startTest("Add new user page - Invalid Email Format-missing '@ and domain'");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(InvalidEmailId);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Phone number");
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an invalid email format (e.g., missing '@' )");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type");
+//                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+//				boolean flag34  = User_UserManagementPage.ErrormessageforInvalidEmailId();
+//				User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Email Id with @': " + flag34);
+//				Log.info("Error message for Invalid Email Id is displayed : " + flag34);
+//				
+//		
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(InvalidEmailIdWithoutDomain);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Phone number");
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an invalid email format (e.g., missing 'domain' )");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type");
+//                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+//				boolean flag35  = User_UserManagementPage.ErrormessageforInvalidEmailId();
+//				User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Email Id' with domain : " + flag35);
+//				Log.info("Error message for Invalid Email Format is displayed : " + flag35);
+//				
+//				ExtentTestManager.startTest("Add new user page -Invalid Phone Number Format- with letters and digits");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Email");
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(InvalidPhoneNumberWithLetters);
+//				ExtentTestManager.getTest().log(Status.PASS, " 2. Enter an invalid phone number format (e.g:letters)");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+//                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+//				boolean flag36  = User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//				User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Should show error message \"\"Invalid Mobile Number\" with letters: " + flag36);
+//				Log.info("Error message for Invalid PhoneNumber with letters is displayed : " + flag36);
+//				
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Email");
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(InvalidPhoneNumberWithEightDigits);
+//				ExtentTestManager.getTest().log(Status.PASS, " 2. Enter an invalid phone number format (e.g:8 digits)");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+//                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+//				boolean flag37  = User_UserManagementPage.ErrormessageforInvalidPhoneNumber();
+//				User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Mobile Number' with 8 digits : " + flag37);
+//				Log.info("Error message for Invalid PhoneNumber is displayed : " + flag37);
+//				
+//				
+//				ExtentTestManager.startTest("Add new user - Name Field - ECP Validations(Alphabetic inputs)");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(username);
+//				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with Alphabets characters");
+//                Thread.sleep(5000);
+//                Common.fluentWait("submit btn", PageRepositry.AddNewUserSubmitBtn);
+//                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+//				boolean flag38  = User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//				User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Alphabetic inputs are allowed.<br>Other inputs prompt error message \"Invalid Name\": " + flag38);
+//				Log.info("User created with Alphabetic inputs successfully: " + flag38);
+//				
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(NamewithNumericInput);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+//                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with  Numeric characters");
+//                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+//				boolean flag39  = User_UserManagementPage.ErrormessageforInvalidName();
+//				User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Numeric inputs prompt error message 'Invalid Name': " + flag39);
+//				Log.info("Error message Invalid Name for numeric inputs is displayed: " + flag39);
+//				
+//				
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(NamewithAlphaNumericInput);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+//                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with  AlphaNumeric characters");
+//                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+//                Thread.sleep(5000);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+//				boolean flag40  = User_UserManagementPage.ErrormessageforInvalidName();
+//				ExtentTestManager.getTest().log(Status.PASS, "Alpha Numeric inputs prompt error message 'Invalid Name' : " + flag40);
+//				Log.info("Error message Invalid Name for alphanumeric inputs is displayed: " + flag40);		
+//				
+//				ExtentTestManager.startTest("Create Head Office User - No Head Office Selected - Error message validation");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs in Name, Email, and Phone number fields");
+//                User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				Thread.sleep(5000);
+//				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
+//                ExtentTestManager.getTest().log(Status.PASS, "3. Do not select any value from Head office dropdown");
+//                ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+//				boolean flag41  = User_UserManagementPage.ErrormessageforEmptyHeadoffice();
+//				ExtentTestManager.getTest().log(Status.PASS, "Error message \"Head office is Required\" should show and the user is not created : " + flag41);
+//				Log.info("Error message for Empty HeadOffice is displayed: " + flag41);
+//				
+//				ExtentTestManager.startTest("Create Head Office User - Valid Inputs - Successful user creation ");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//			    User_UserManagementPage.EnterAddNewUserName(username);
+//				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs in Name, Email, and Phone number fields");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
+//				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select a valid value from Head office dropdown");
+//				ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
+//				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+//                boolean flag43  = User_UserManagementPage.SuccessMessage();
+//				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results : " + flag43);
+//				Log.info("Success message for user creation is displayed: " + flag43);
+//				assertTrue("The table name value does not match the expected button name", 
+//				           User_UserManagementPage.FetchTableNameValue().equals(username));
+//				String message = User_UserManagementPage.GetUserNameandPassowrd(); 
+//		
+//				ExtentTestManager.startTest("Add new user - User already exists case");
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid same inputs in Name, Email, and Phone number fields");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
+//				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select a valid value from Head office dropdown");
+//				ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
+//				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+//                boolean flag42  = User_UserManagementPage.ErrorMessageExistUserCreation();
+//                User_UserManagementPage.AddNewUserSpinner();
+//				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Already User Exist' " + flag42);
+//				Log.info("Error message on creating existing user is displayed: " + flag42);				 
+//		
+//				ExtentTestManager.startTest("Create Head Office User - Login with newly created user");
+//				User_UserManagementPage.ClickLogoutOption();
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
+//				Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
+//				Thread.sleep(5000);
+//			    String UNHeadoffice = message.substring(message.lastIndexOf(":") + 1, message.indexOf("is")).replaceAll(" ", "");
+//			    String PwdHeadoffice = message.substring(message.lastIndexOf("is") + 2).replaceAll(" ", "");
+//			    System.out.println(UNHeadoffice);
+//			    System.out.println(PwdHeadoffice);
+//				User_UserManagementPage.EnterLoginPageCredential(UNHeadoffice, PwdHeadoffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "1.Enter user Name of Head office user in User Name field");
+//				ExtentTestManager.getTest().log(Status.PASS, "2.Enter Password of Head office user in Password field");
+//				User_UserManagementPage.ClickLoginBtn();
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
+//				Thread.sleep(5000);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Login button");
+//				User_UserManagementPage.ModuleSelectionEltDisplayed();
+//				assertTrue("The UserName value does not match the expected button name", 
+//				           User_UserManagementPage.FetchUserName().equals(UNHeadoffice));
+//				assertTrue("The UserID value does not match the expected button name", 
+//				           User_UserManagementPage.UserId().equals(username));
+//                boolean flag44  = User_UserManagementPage.SetasDefaulNotSelected();
+//				ExtentTestManager.getTest().log(Status.PASS, "Should redirect to module selection page and should show Go Collection button, Set as Default checkbox, Go Recovery button and Set as Default checkbox. Also should show User ID and User name on top of left side: " + flag44);
+//				Log.info("Successfully redirect to module selection page with Headoffice credentials " + flag44);
+//
+//				ExtentTestManager.startTest("Create Zone/CO User - No Zone/Co Selected - Error message validation");
+//				User_UserManagementPage.GoCollectionModule();
+//				User_UserManagementPage.SelectSecurityManagementMenu();
+//				User_UserManagementPage.SelectUserManagementMenu();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid same inputs in Name, Email, and Phone number fields");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown2(AddNewUserOrganizationType2);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Zone/CO' from Organization type dropdown");
+//				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select any value from Head office dropdown");
+//				ExtentTestManager.getTest().log(Status.PASS, "4. Do not select any value from Zone/CO dropdown.");
+//				ExtentTestManager.getTest().log(Status.PASS, "5. Select a valid input from Role dropdown");
+//				Common.fluentWait("Zone/CO", PageRepositry.ZoneCO);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
+//                boolean flag45  = User_UserManagementPage.ErrorMessageForZoneCO();
+//				ExtentTestManager.getTest().log(Status.PASS, "Error message 'Zone/CO is Required' should show and the user is not created : " + flag45);
+//				Log.info("Error message Zone/CO Required is displayed: " + flag45);
+//			
+//				
+//				ExtentTestManager.startTest("Create Zone/CO User - Valid Inputs - Successful user creation");
+//				Log.info("***Create Zone/CO User - Valid Inputs - Successful user creation***");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(username);
+//				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
+//				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				User_UserManagementPage.SelectOrganizationTypeDropdown2(AddNewUserOrganizationType2); 
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Zone/CO' from Organization type dropdown.");
+//				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select any value from Head office dropdown.");
+//				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
+//				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Zone/CO dropdown");
+//				ExtentTestManager.getTest().log(Status.PASS, "5. Select a valid input from Role dropdown");
+//				Common.fluentWait("Submit btn",PageRepositry.AddNewUserSubmitBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                boolean flag46  = User_UserManagementPage.SuccessMessage();
+//				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results. : " + flag46);
+//				String ZONECOmessage = User_UserManagementPage.GetUserNameandPassowrd();
+//				Log.info("Success message for user creation is displayed with Zone/CO inputs: " + flag46);
+//				assertTrue("The table name value does not match the expected button name", 
+//				           User_UserManagementPage.FetchTableNameValue().equals(username));
+//		
+//				ExtentTestManager.startTest("Create Zone/CO User - Login with newly created user ");
+//				User_UserManagementPage.ClickLogoutOption();
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
+//				Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
+//				Thread.sleep(5000);
+//			    String UNZoneCO = ZONECOmessage.substring(ZONECOmessage.lastIndexOf(":") + 1, ZONECOmessage.indexOf("is")).replaceAll(" ", "");
+//			    String PwdZoneCO = ZONECOmessage.substring(ZONECOmessage.lastIndexOf("is") + 2).replaceAll(" ", "");
+//			    System.out.println(UNZoneCO);
+//			    System.out.println(PwdZoneCO);
+//			    Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
+//			    Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
+//				Thread.sleep(5000);
+//				User_UserManagementPage.EnterLoginPageCredential(UNZoneCO, PwdZoneCO);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter user Name of Zone/Co user in User Name field.");
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Enter Password of Zone/CO user in Password field");
+//				User_UserManagementPage.ClickLoginBtn();
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
+//				Thread.sleep(5000);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Login button.");
+//				Thread.sleep(2000);
+//				User_UserManagementPage.ModuleSelectionEltDisplayed();
+//				assertTrue("The UserName value does not match the expected button name", 
+//				           User_UserManagementPage.FetchUserName().equals(UNZoneCO));
+//				assertTrue("The UserID value does not match the expected button name", 
+//				           User_UserManagementPage.UserId().equals(username));
+//                boolean flag47 = User_UserManagementPage.SetasDefaulNotSelected();
+//				ExtentTestManager.getTest().log(Status.PASS, "Should redirect to module selection page and should show Go Collection button, Set as Default checkbox, Go Recovery button and Set as Default checkbox. Also should show User ID and User name on top of left side. " + flag47);
+//  			    Log.info("Successfully redirect to module selection page with ZoneCO credentials" + flag47);
+//				
+//				ExtentTestManager.startTest("Create Region User - No Region Selected - Error message validation ");
+//				User_UserManagementPage.GoCollectionModule();
+//				User_UserManagementPage.SelectSecurityManagementMenu();
+//				User_UserManagementPage.SelectUserManagementMenu();   
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select a valid input from Role dropdown");
+//				User_UserManagementPage.SelectOrganizationTypeDropdown3(AddNewUserOrganizationType3);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select 'Region' from Organization type dropdown.");
+//				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Head office dropdown.");
+//				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
+//				ExtentTestManager.getTest().log(Status.PASS, "5. Select any value from Zone/CO dropdown.");
+//				ExtentTestManager.getTest().log(Status.PASS, "6. Do not select any value from Region drop down.");
+//				Common.fluentWait("Region", PageRepositry.Region);
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "7. Click on Submit button");
+//                boolean flag48  = User_UserManagementPage.ErrorMessageForRegion();
+//				ExtentTestManager.getTest().log(Status.PASS, "Error message 'Region is Required' should show and the user is not created. " + flag48);
+//				Log.info("Error message Region Required is displayed: " + flag48);
+//			
+//				ExtentTestManager.startTest("Create Region User - Valid Inputs - Successful user creation");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn(); 
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(username);
+//				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
+//				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select a valid input from Role dropdown");
+//				User_UserManagementPage.SelectOrganizationTypeDropdown3(AddNewUserOrganizationType3);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select 'Region' from Organization type dropdown.");
+//				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Head office dropdown.");
+//				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
+//				ExtentTestManager.getTest().log(Status.PASS, "5. Select any value from Zone/CO dropdown.");
+//				ExtentTestManager.getTest().log(Status.PASS, "6. Do not select any value from Region drop down.");
+//				User_UserManagementPage.SelectAddNewUserRegion(AddNewUserRegion);
+//				Common.fluentWait("Submit btn",PageRepositry.AddNewUserSubmitBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "7. Click on Submit button");
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                boolean flag49  = User_UserManagementPage.SuccessMessage();
+//				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results.: " + flag49);
+//				String Regionmessage = User_UserManagementPage.GetUserNameandPassowrd();
+//				Log.info("Success message for user creation is displayed with Region inputs: " + flag49);
+//				assertTrue("The table name value does not match the expected button name", 
+//				           User_UserManagementPage.FetchTableNameValue().equals(username));
+//				
+//				ExtentTestManager.startTest("Create Region User - Login with newly created user ");
+//				User_UserManagementPage.ClickLogoutOption();
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
+//				Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
+//				Thread.sleep(5000);
+//			    String UNRegion = Regionmessage.substring(Regionmessage.lastIndexOf(":") + 1, Regionmessage.indexOf("is")).replaceAll(" ", "");
+//			    String PwdRegion = Regionmessage.substring(Regionmessage.lastIndexOf("is") + 2).replaceAll(" ", "");
+//			    System.out.println(UNRegion);
+//			    System.out.println(PwdRegion);
+//				User_UserManagementPage.EnterLoginPageCredential(UNRegion, PwdRegion);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter user Name of Region user in User Name field");
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Enter Password of Region user in Password field.");
+//				User_UserManagementPage.ClickLoginBtn();
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Login button.");
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
+//				Thread.sleep(5000);
+//				User_UserManagementPage.ModuleSelectionEltDisplayed();
+//				assertTrue("The UserName value does not match the expected button name", 
+//				           User_UserManagementPage.FetchUserName().equals(UNRegion));
+//				assertTrue("The UserID value does not match the expected button name", 
+//				           User_UserManagementPage.UserId().equals(username));
+//                boolean flag50 = User_UserManagementPage.SetasDefaulNotSelected();
+//				ExtentTestManager.getTest().log(Status.PASS, "Should redirect to module selection page and should show Go Collection button, Set as Default checkbox, Go Recovery button and Set as Default checkbox. Also should show User ID and User name on top of left side." + flag50);
+//				Log.info("Successfully redirect to module selection page with Region credentials " + flag50);
+//			
+//				ExtentTestManager.startTest("Create Branch User - No Branch Selected - Error message validation ");
+//				User_UserManagementPage.GoCollectionModule();
+//				User_UserManagementPage.SelectSecurityManagementMenu();
+//				User_UserManagementPage.SelectUserManagementMenu();   
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+//				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select a valid input from Role dropdown");
+//				User_UserManagementPage.SelectOrganizationTypeDropdown4(AddNewUserOrganizationType4);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select 'Region' from Organization type dropdown.");
+//				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Head office dropdown.");
+//				Common.fluentWait("ZoneCO", PageRepositry.ZoneCO);
+//				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
+//				ExtentTestManager.getTest().log(Status.PASS, "5. Select any value from Zone/CO dropdown.");
+//				ExtentTestManager.getTest().log(Status.PASS, "6. Select any value from Region drop down.");
+//				Common.fluentWait("Region", PageRepositry.Region);
+//				User_UserManagementPage.SelectAddNewUserRegion(AddNewUserRegion);
+//				ExtentTestManager.getTest().log(Status.PASS, "7. Do not select any value from Region drop down.");
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                ExtentTestManager.getTest().log(Status.PASS, "8. Click on Submit button");
+//                boolean flag51  = User_UserManagementPage.ErrorMessageForBranch();
+//				ExtentTestManager.getTest().log(Status.PASS, "Error message Branch Required should show and the user is not created: " + flag51);
+//				Log.info("Error message Branch Required is displayed: " + flag51);
+//		
+//				ExtentTestManager.startTest("Create Branch User - Valid Inputs - Successful user creation");
+//				User_UserManagementPage.ClickAddNewUserCloseBtn();
+//				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//				User_UserManagementPage.EnterAddNewUserName(username);
+//				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
+//				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
+//				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid inputs in Name, Email, and Phone number fields");
+//				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Select a valid input from Role dropdown");
+//				User_UserManagementPage.SelectOrganizationTypeDropdown4(AddNewUserOrganizationType4);
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Select 'Branch' from Organization type dropdown.");
+//				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+//				ExtentTestManager.getTest().log(Status.PASS, "4. Select any value from Head office dropdown.");
+//				Common.fluentWait("ZoneCO", PageRepositry.ZoneCO);
+//				User_UserManagementPage.SelectAddNewUserZoneCO(AddNewUserZoneCO);
+//				Thread.sleep(2000);
+//				ExtentTestManager.getTest().log(Status.PASS, "5. Select any value from Zone/CO dropdown.");
+//				Common.fluentWait("Region", PageRepositry.Region);
+//				User_UserManagementPage.SelectAddNewUserRegion(AddNewUserRegion);
+//				Thread.sleep(2000);
+//				ExtentTestManager.getTest().log(Status.PASS, "6. Select any value from Region drop down.");
+//				Common.fluentWait("Branch", PageRepositry.Branch);
+//				User_UserManagementPage.SelectAddNewUserBranch(AddNewUserBranch);
+//				Thread.sleep(2000);
+//				ExtentTestManager.getTest().log(Status.PASS, "7. Select any value from Branch drop down.");
+//				Common.fluentWait("Submit btn",PageRepositry.AddNewUserSubmitBtn);
+//				ExtentTestManager.getTest().log(Status.PASS, "8. Click on Submit button");
+//                User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//                boolean flag52  = User_UserManagementPage.SuccessMessage();
+//                String Branchmessage = User_UserManagementPage.GetUserNameandPassowrd();
+//				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results: " + flag52);
+//				Log.info("Success message for user creation is displayed with Branch inputs: " + flag52);
+//				assertTrue("The table name value does not match the expected button name", 
+//				           User_UserManagementPage.FetchTableNameValue().equals(username));
+//			
+//				ExtentTestManager.startTest("Create Branch User - Login with newly created user ");
+//				User_UserManagementPage.ClickLogoutOption();
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
+//				Common.fluentWait("L_SignIn", LoginPageRepo.LoginButton);
+//				Thread.sleep(8000);
+//			    String UNBranch = Branchmessage.substring(Branchmessage.lastIndexOf(":") + 1, Branchmessage.indexOf("is")).replaceAll(" ", "");
+//			    String PwdBranch = Branchmessage.substring(Branchmessage.lastIndexOf("is") + 2).replaceAll(" ", "");
+//			    System.out.println(UNBranch);
+//			    System.out.println(PwdBranch);
+//			    Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
+//				Thread.sleep(6000);
+//				User_UserManagementPage.EnterLoginPageCredential(UNBranch, PwdBranch);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter user Name of Branch user in User Name field.");
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Enter Password of Branch user in Password field.");
+//				User_UserManagementPage.ClickLoginBtn();
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Login button.");
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
+//				Thread.sleep(5000);
+//				User_UserManagementPage.ModuleSelectionEltDisplayed();
+//				assertTrue("The UserName value does not match the expected button name", 
+//				           User_UserManagementPage.FetchUserName().equals(UNBranch));
+//				assertTrue("The UserID value does not match the expected button name", 
+//				           User_UserManagementPage.UserId().equals(username));
+//				boolean flag53 = User_UserManagementPage.SetasDefaulNotSelected();
+//                ExtentTestManager.getTest().log(Status.PASS, "Should redirect to module selection page and should show Go Collection button, Set as Default checkbox, Go Recovery button and Set as Default checkbox. Also should show User ID and User name on top of left side. : " + flag53);
+//				Log.info("Successfully redirect to module selection page with Branch credentials :" + flag53);
+//				
+//				ExtentTestManager.startTest("User search page - Search with Valid User Name");
+//				User_UserManagementPage.ClickLogoutOption();
+//				ExtentTestManager.getTest().log(Status.PASS, "Click logout button");
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);
+//				Thread.sleep(6000);
+//				User_UserManagementPage.EnterLoginPageCredential(UNOriginal, PwdOriginal);
+//				User_UserManagementPage.ClickLoginBtn();
+//				ExtentTestManager.getTest().log(Status.PASS, "Click login button");
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
+//				Thread.sleep(5000);
+//				User_UserManagementPage.SelectSecurityManagementMenu();
+//				Thread.sleep(1000);
+//				User_UserManagementPage.SelectUserManagementMenu(); 
+//				ExtentTestManager.getTest().log(Status.PASS, "Land to UserManagement page");
+//				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.moduleSelectionSpinner);
+//				User_UserManagementPage.EnterUsernameInUNPage(UsernameInUNPage);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field");
+//				User_UserManagementPage.ClickUserManagementPageSearchBtn();
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Click on Search button");
+//				boolean flag54 = User_UserManagementPage.FetchTableUsername();
+//                ExtentTestManager.getTest().log(Status.PASS, "Search result displays user with columns: SL NO, USER NAME, NAME, ROLE, MOBILE NO, EMAIL ID, STATUS, ACTION with status green tick.: " + flag54);
+//				Log.info("User search page - Valid Username row is displayed" + flag54);
+//				
+//				ExtentTestManager.startTest("User search page - Role Dropdown Selection ");
+//				User_UserManagementPage.ClearUsernameInUNPage(); 
+//				Thread.sleep(1000);
+//				User_UserManagementPage.SelectUserManagementPageRole(UserManagementPageRole);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Select Admin Role from the role drop-down.");
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Leave all other fields empty");
+//				User_UserManagementPage.ClickUserManagementPageSearchBtn();
+//				ExtentTestManager.getTest().log(Status.PASS, "3. Click on Search button");
+//				boolean flag55 = User_UserManagementPage.FetchHeaderRole();
+//                ExtentTestManager.getTest().log(Status.PASS, "Users matching the selected role are displayed. : " + flag55);
+//				Log.info("User search page - Role DropDown Selection is displayed" + flag55);			
+//			
+//				ExtentTestManager.startTest("User search page - Search with Invalid User Name ");
+//				User_UserManagementPage.ClearUserManagementPageRole();
+//				User_UserManagementPage.UsernameInput(InvalidUserName);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"InvalidUser\" into User Name field");
+//				User_UserManagementPage.UserManagementSearchBtn();
+//				ExtentTestManager.getTest().log(Status.PASS, "2. Click on Search button");
+//                boolean flag56  = User_UserManagementPage.UserManagementInvalidSearchMsg();
+//				ExtentTestManager.getTest().log(Status.PASS, "System displays \"No records to display.\" message. : " + flag56);
+//				Log.info("Error message No records to display is displayed: " + flag56);
+//							
+//				ExtentTestManager.startTest("User search page - Activate/Deactivate selection of an Active User ");
+//				User_UserManagementPage.ClearUsernameInUNPage(); 
+//				User_UserManagementPage.EnterUsernameInUNPage(UsernameInUNPage);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field and click on Search button.");
+//				User_UserManagementPage.ClickUserManagementPageSearchBtn();
+//				boolean flag57  = User_UserManagementPage.StepsOnDeactivateOptn();
+//				Log.info("Success Status changed message is displayed: " + flag57);
+//                boolean flag58  = User_UserManagementPage.DisplayDeactivateRedStatus(); ;
+//				ExtentTestManager.getTest().log(Status.PASS, "\"Success Status Changed\" message appears. User is deactivated. Status changes to red cross on re-search with \"Is Active\" unchecked. : " + flag58);
+//				Log.info("Record deactivated, Red cross is displayed: " + flag58);
+//				Thread.sleep(1000);
+//				
+//				ExtentTestManager.startTest("User search page  - Activate/Deactivate selection of an Inactive User ");
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field and click on Search button with \"Is Active\" unchecked\"");
+//				boolean flag59  = User_UserManagementPage.StepsOnActivateOptn(); 
+//				Log.info("Success Status changed message is displayed: " + flag59);
+//                boolean flag60  = User_UserManagementPage.DisplayActivateGreenStatus(); ;
+//				ExtentTestManager.getTest().log(Status.PASS, "Record Activated, Green cross" + " is displayed : " + flag60);
+//				Log.info("Record Activated, Green cross is displayed: " + flag60);
+//				
+//				ExtentTestManager.startTest("User search page  - Reset Password");
+//				User_UserManagementPage.ClearUsernameInUNPage();
+//				User_UserManagementPage.EnterUsernameInUNPage(UsernameInUNPage);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field and click on Search button.");
+//				User_UserManagementPage.ClickUserManagementPageSearchBtn();
+//				boolean flag61  = User_UserManagementPage.ResetPassword(); 
+//				ExtentTestManager.getTest().log(Status.PASS, "'The password has been reset successfully. Present password for the user IBU0001192 is xxxxxxx' message is displayed : " + flag61);
+//				Log.info("Reset Password changed Status message is displayed: " + flag61);
+//				
+//				ExtentTestManager.startTest("User search page  -  Edit User Details");
+//				User_UserManagementPage.ClearUsernameInUNPage(); 
+//				User_UserManagementPage.EnterUsernameInUNPage(UsernameInUNPage);
+//				ExtentTestManager.getTest().log(Status.PASS, "1. Enter \"IBU0001192\" into User Name field and click on Search button.");
+//				User_UserManagementPage.ClickUserManagementPageSearchBtn();
+//				boolean flag62  = User_UserManagementPage.EditUserDetails(); 
+//				ExtentTestManager.getTest().log(Status.PASS, "User is redirected to edit page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Update buttons. : " + flag62);
+//				Log.info("Edit User Details elements is displayed:" + flag62);
+//				
+//               	 
+//			// Logout  
+//			//ExtentTestManager.startTest("Application Logout Initiated.");
+//			context.setAttribute("fileName", "Logout");
+//			click(userDropDown);
+//			click(L_signout);
+//			Thread.sleep(2000);
+//			driver.quit();
+//			//ExtentTestManager.getTest().log(Status.PASS, "Application Logout");
+//			Log.info("Logout is done!");
+//
+//			// EndTest
+//			System.out.println(("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***"));
+//			ExtentTestManager.endTest();
+//			ExtentManager.getInstance().flush();
+//			Log.info("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***");
+//
+//			}
+//
+//		} catch (Exception e) {
+//			System.out.println("*** Test execution " + testdata.get("TestScenario").toString() + " failed...");
+//			Log.error("*** Test execution " + testdata.get("TestScenario").toString() + " failed...");
+//			Log.error("" + e.getMessage());
+//			String fileName = (String) context.getAttribute("fileName");
+//
+//			try {
+//				File file = new com.Utility.ScreenShot(driver).takeScreenShot(fileName,
+//						testdata.get("TestScenario").toString());
+//				ExtentTestManager.getTest().fail(e.getMessage(),
+//						MediaEntityBuilder.createScreenCaptureFromPath(file.toString()).build());
+//			} catch (Exception e1) {
+//				System.out.println("File not found " + e1);
+//			}
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed");
+//
+//			// Logout
+//			context.setAttribute("fileName", "Logout");
+//			driver.quit();
+//			ExtentTestManager.getTest().log(Status.PASS, "Application Logout");
+//			Log.info("Logout is done");
+//
+//			// EndTest
+//			System.out.println(("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***"));
+//			ExtentTestManager.endTest();
+//			ExtentManager.getInstance().flush();
+//			Log.info("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***");
+//			
+//		} catch (AssertionError e) {
+//			System.out.println("*** Test execution " + testdata.get("TestScenario").toString() + " failed...");
+//			Log.error("*** Test execution " + testdata.get("TestScenario").toString() + " failed...");
+//			Log.error("" + e.getMessage());
+//			String fileName = (String) context.getAttribute("fileName");
+//
+//			try {
+//				File file = new com.Utility.ScreenShot(driver).takeScreenShot(fileName,
+//						testdata.get("TestScenario").toString());
+//				ExtentTestManager.getTest().fail(e.getMessage(),
+//						MediaEntityBuilder.createScreenCaptureFromPath(file.toString()).build());
+//			} catch (Exception e1) {
+//				System.out.println("File not found " + e1);
+//			}
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed");
+//
+//			//Logout
+//			context.setAttribute("fileName", "Logout");
+//			driver.quit();
+//			ExtentTestManager.getTest().log(Status.PASS, "Application Logout");
+//			Log.info("Logout is done");
+//
+//			ExtentTestManager.endTest();
+//			ExtentManager.getInstance().flush();
+//			Log.info("*** Test Suite " + testdata.get("TestScenario").toString() + " ending ***");
+//		}
+//
+//	}
 	
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {

@@ -20,12 +20,12 @@ public class UserManagement_Page extends Base_Class
 	 UserManagement_Locators PageRepository= new UserManagement_Locators();
 	 private WebDriver driver;
 	 
-	 /*public UserManagement_Page(WebDriver driver) {
-	        this.driver = driver;
-	        Log.info("WebDriver assigned to UserManagement_Page.");
-	        PageFactory.initElements(driver, this); // Initialize WebElements
-	        Log.info("DispositionMasterPage initialization completed.");
-	    }*/
+//	 public UserManagement_Page(WebDriver driver) {
+//	        this.driver = driver;
+//	        Log.info("WebDriver assigned to UserManagement_Page.");
+//	        PageFactory.initElements(driver, this); // Initialize WebElements
+//	        Log.info("DispositionMasterPage initialization completed.");
+//	    }
 
 	public boolean GoCollectionModule() throws InterruptedException 
 	{
@@ -41,13 +41,13 @@ public class UserManagement_Page extends Base_Class
 	public boolean SelectSecurityManagementMenu() throws InterruptedException 
 	{
 		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.moduleSelectionSpinner);
-		Common.fluentWait("SecurityManagementMenu", PageRepository.SecurityManagementMenu);
+		//Common.fluentWait("SecurityManagementMenu", PageRepository.SecurityManagementMenu);
 		click(PageRepository.SecurityManagementMenu);
 		return true;
 	}
 	public boolean SelectUserManagementMenu() throws InterruptedException 
 	{
-		Common.fluentWait("UserManagementMenu", PageRepository.UserManagementMenu);
+		//Common.fluentWait("UserManagementMenu", PageRepository.UserManagementMenu);
 		click(PageRepository.UserManagementMenu);
 		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.moduleSelectionSpinner);
 		return true;
@@ -55,10 +55,11 @@ public class UserManagement_Page extends Base_Class
 	
 	
 	public boolean LocatorDisplayed() throws InterruptedException {
-	    	Common.fluentWait("UserManagementNextBtn", PageRepository.UserManagementNextBtn);
-	    	Thread.sleep(5000);
+	 //   	Common.fluentWait("UserManagementNextBtn", PageRepository.UserManagementNextBtn);
+	 //   	Thread.sleep(5000);
 		    waitVisibility(UserManagement_Locators.UserManagementPageUsername);
 	        ElementDisplayed(UserManagement_Locators.UserManagementPageUsername);
+	        ElementDisplayed(UserManagement_Locators.UserManagementExecutiveID);
 	        ElementDisplayed(PageRepository.UserManagementPageName);
 	        ElementDisplayed(PageRepository.UserManagementPageMobilenumber);
 	        ElementDisplayed(PageRepository.UserManagementPageEmailId);
@@ -66,7 +67,6 @@ public class UserManagement_Page extends Base_Class
 	        ElementDisplayed(UserManagement_Locators.UserManagementPageIsActive);
 	        ElementDisplayed(PageRepository.UserManagementPageSearch);
 	        ElementDisplayed(UserManagement_Locators.UserManagementPageAddUser);
-
 	        return true; 
 	}
 	public boolean FetchTableHeaderName() throws InterruptedException {
@@ -195,39 +195,52 @@ public class UserManagement_Page extends Base_Class
 		click(PageRepository.AddNewUserOrganizationType);
 		Common.fluentWait("RoleDDL", PageRepository.RoleDDL);
 		click(PageRepository.RoleDDL);
-		Common.fluentWait("RoleFirstOption", PageRepository.RoleFirstOption);
-		click(PageRepository.RoleFirstOption);*/
+		Common.fluentWait("RoleFclickirstOption", PageRepository.RoleFirstOption);
+		(PageRepository.RoleFirstOption);*/
 		return true;
 	}
 	public boolean AddNewUserPageElementsDisplayed() throws InterruptedException {
 	  
-	    
+		    ElementDisplayed(UserManagement_Locators.UserManagementExecutiveID);
 	        ElementDisplayed(PageRepository.AddNewUserNameBtn);
 	        ElementDisplayed(PageRepository.AddNewUserEmailBtn);
 	        ElementDisplayed(PageRepository.AddNewUserPhoneNumberBtn);
 	        ElementDisplayed(PageRepository.AddNewUserRole);
-	        ElementDisplayed(PageRepository.AddNewUserOrganizationType);
+	     //   ElementDisplayed(PageRepository.AddNewUserOrganizationType);
 	        ElementDisplayed(PageRepository.AddNewUserCloseBtn);
 	        ElementDisplayed(PageRepository.AddNewUserSubmitBtn);
 	        ExtentTestManager.getTest().log(Status.INFO, " All elements of Add new user page displayed");
 	        return true;
 	}
-
-	public boolean EnterAddNewUserName(String AddNewUserNameBtn) throws InterruptedException 
+	
+	public boolean EnterUserManagementExecutiveID(String ExecutiveID) throws InterruptedException 
+	{
+		try{
+			//	System.out.println("Executive ID: "+ExecutiveID);
+				input(UserManagement_Locators.UserManagementaddExecutiveID,ExecutiveID);
+				return true;
+			}catch(Exception e){
+				System.out.println("Error: "+e);
+				return false;
+			}
+	}
+	
+	public boolean EnterAddNewUserName(String Name) throws InterruptedException 
 	{
 		try {
-			input(PageRepository.AddNewUserNameBtn,AddNewUserNameBtn );
+			input(PageRepository.AddNewUserNameBtn,Name );
 			return true;
 		}catch(Exception e){
 			System.out.println("Error: "+e);
 			return false;
 		}
+		
 	}
 	   
-	public boolean EnterAddNewUserEmail(String AddNewUserEmailBtn) throws InterruptedException 
+	public boolean EnterAddNewUserEmail(String Email) throws InterruptedException 
 	{
 		try {
-			input(PageRepository.AddNewUserEmailBtn, AddNewUserEmailBtn);
+			input(PageRepository.AddNewUserEmailBtn, Email);
 			
 			return true;
 		}catch(Exception e){
@@ -236,10 +249,10 @@ public class UserManagement_Page extends Base_Class
 		}
 	}
 	
-	public boolean EnterAddNewUserPhoneNumber(String AddNewUserPhoneNumberBtn) throws InterruptedException 
+	public boolean EnterAddNewUserPhoneNumber(String Phone) throws InterruptedException 
 	{
 		try{
-				input(PageRepository.AddNewUserPhoneNumberBtn , AddNewUserPhoneNumberBtn);
+				input(PageRepository.AddNewUserPhoneNumberBtn , Phone);
 				
 				return true;
 			}catch(Exception e){
@@ -248,16 +261,25 @@ public class UserManagement_Page extends Base_Class
 			}
 	}
 	
-	public boolean SelectRoleDropdown(String value) throws InterruptedException {
+	public void SelectRoleDropdown(WebDriver driver) throws InterruptedException {
 		try{
-			SelectActiveDropdown(PageRepository.AddNewUserRole, value);
-			return true;
-		}catch(Exception e){
+			click(PageRepository.NewUserRoleType);
+			List<WebElement> dropdownValues = driver.findElements(PageRepository.RoleDropdownValues);	
+			for(WebElement values : dropdownValues)
+			{
+				if(values.getText().equals("CallCentreRole")){
+					values.click();
+				}
+			}
+		}
+		catch (Exception e) {
 			System.out.println("Error: "+e);
-			return false;
 		}
 	}
-	
+//	public boolean isUserPresentInGrid(String username) {
+//        return userGridTable.findElement(By.xpath(".//td[contains(text(),'" + username + "')]")).isDisplayed();
+//    }
+//	
 	public boolean SelectRole(String value) throws InterruptedException {
 		try{
 			Common.fluentWait("OrganizationTypeDDL", PageRepository.OrganizationTypeDDL);
@@ -381,11 +403,14 @@ public class UserManagement_Page extends Base_Class
 	        ElementDisplayed(PageRepository.EmailErrorMessage);
 	        ElementDisplayed(PageRepository.phonenumberErrorMessage);
 	        ElementDisplayed(PageRepository.roleErrorMessage);
-	        ElementDisplayed(PageRepository.OrganizationTypeErrorMessage);
+	   //     ElementDisplayed(PageRepository.OrganizationTypeErrorMessage);
 	        
 	        return true;
 	}
-
+	public boolean ErrormessageforExecutiveID() throws InterruptedException {
+        ElementDisplayed(PageRepository.ExecutiveIDErrorMessage);
+        return true;
+ }
     public boolean ErrormessageforNameField() throws InterruptedException {
            ElementDisplayed(PageRepository.NameErrorMessage);
            return true;
@@ -395,7 +420,7 @@ public class UserManagement_Page extends Base_Class
 	{
     	Common.fluentWait("AddNewUserCloseBtn",PageRepository.AddNewUserCloseBtn);
     	click(PageRepository.AddNewUserCloseBtn);
-    	Common.fluentWait("UserManagementNextBtn",PageRepository.UserManagementNextBtn);
+//    	Common.fluentWait("UserManagementNextBtn",PageRepository.UserManagementNextBtn);
     	Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
     	ExtentTestManager.getTest().log(Status.INFO, " Close button is clicked");
 		return true;
@@ -412,10 +437,10 @@ public class UserManagement_Page extends Base_Class
         ElementDisplayed(PageRepository.roleErrorMessage);
         return true;
     }
-    public boolean ErrormessageforOrganizationTypeField() throws InterruptedException {
-        ElementDisplayed(PageRepository.OrganizationTypeErrorMessage);
-        return true;
-    }
+//    public boolean ErrormessageforOrganizationTypeField() throws InterruptedException {
+//        ElementDisplayed(PageRepository.OrganizationTypeErrorMessage);
+//        return true;
+//    }
     public boolean ErrormessageforInvalidEmailId() throws InterruptedException {
         ElementDisplayed(PageRepository.InvalidEmailId);
         return true;
@@ -428,10 +453,10 @@ public class UserManagement_Page extends Base_Class
         ElementDisplayed(PageRepository.InvalidName);
         return true;
     }
-    public boolean ErrormessageforEmptyHeadoffice() throws InterruptedException {
-        ElementDisplayed(PageRepository.EmptyHeadofficeErrorMsg);
-        return true;
-    }
+//    public boolean ErrormessageforEmptyHeadoffice() throws InterruptedException {
+//        ElementDisplayed(PageRepository.EmptyHeadofficeErrorMsg);
+//        return true;
+//    }
    
     public boolean SuccessMessage() throws InterruptedException 
    	{

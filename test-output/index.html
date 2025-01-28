@@ -5,8 +5,9 @@
   <meta charset='utf-8'>
   <title>TestNG reports</title>
 
-    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
-    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="testng-reports.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type='text/javascript'>
@@ -23,21 +24,22 @@
   <body>
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
       <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
         <span>All suites</span>
-        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
-          <img class="collapse-all-icon" src="collapseall.gif">
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
           </img> <!-- collapse-all-icon -->
         </a> <!-- collapse-all-link -->
       </div> <!-- navigator-suite-header -->
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" class="navigator-link" panel-name="suite-Default_suite">
+            <a href="#" panel-name="suite-Default_suite" class="navigator-link">
               <span class="suite-name border-passed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
@@ -48,37 +50,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\yadhukrishnan.p\AppData\Local\Temp\testng-eclipse--473943302\testng-customsuite.xml</span>
+                  <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
+                    <span>C:\Users\ajith.krishna\AppData\Local\Temp\testng-eclipse-506113092\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="testlist-Default_suite">
+                  <a href="#" panel-name="testlist-Default_suite" class="navigator-link ">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="group-Default_suite">
+                  <a href="#" panel-name="group-Default_suite" class="navigator-link ">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="times-Default_suite">
+                  <a href="#" panel-name="times-Default_suite" class="navigator-link ">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="reporter-Default_suite">
+                  <a href="#" panel-name="reporter-Default_suite" class="navigator-link ">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="ignored-methods-Default_suite">
+                  <a href="#" panel-name="ignored-methods-Default_suite" class="navigator-link ">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="chronological-Default_suite">
+                  <a href="#" panel-name="chronological-Default_suite" class="navigator-link ">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -91,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">15 methods,   15 passed</span>
+                    <span class="method-stats">11 methods,   11 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,78 +103,58 @@
                     </span>
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)">Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Access_Add_New_User_Page">Access_Add_New_User_Page</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Access_User_Management_Page">Access_User_Management_Page</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Add_User_Page_Empty_Save_Attempt">Add_User_Page_Empty_Save_Attempt</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Add_new_user_page__Enter_inputs_for_Email({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">Add_new_user_page__Enter_inputs_for_Email({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields">Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Add_new_user_page__Enter_inputs_for_ExecutiveID({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">Add_new_user_page__Enter_inputs_for_ExecutiveID({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields">Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Add_new_user_page__Enter_inputs_for_Name({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">Add_new_user_page__Enter_inputs_for_Name({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields">Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Add_new_user_page__Enter_inputs_for_PhoneNumber({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">Add_new_user_page__Enter_inputs_for_PhoneNumber({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Add_new_user_page___Submit_Without_Inputs">Add_new_user_page___Submit_Without_Inputs</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Add_new_user_page__Enter_inputs_for_RoleType({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">Add_new_user_page__Enter_inputs_for_RoleType({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Navigation_to_User_Management_Page">Navigation_to_User_Management_Page</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Click_Submit_button_and_Create_New_User">Click_Submit_button_and_Create_New_User</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="Test_Redirect_to_Add_New_User_Page">Test_Redirect_to_Add_New_User_Page</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Login_to_Beacon_FCM">Login_to_Beacon_FCM</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking">User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking">User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking">User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="User_search_page__Default_State_of_IsActive_Checkbox">User_search_page__Default_State_of_IsActive_Checkbox</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.UserManagement_TC" hash-for-method="User_search_page__Pagination_of_Active_users">User_search_page__Pagination_of_Active_users</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Core.SecurityManagement.CallCentre_UserManagement" class="method navigator-link" hash-for-method="Validate_User_Management_Page_Elements">Validate_User_Management_Page_Elements</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -190,116 +172,89 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">Core.SecurityManagement.UserManagement_TC</span>
+              <span class="class-name">Core.SecurityManagement.CallCentre_UserManagement</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)">
-                  </a> <!-- Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...) -->
-                  <span class="method-name">Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown</span>
-                  <span class="parameters">({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.com, EmailWithoutDomain=kishan@, HeadOffice=Mumbai, InvalidEmailId=kishangmail.com, InvalidUserName=InvalidUser, Name=Ahuja, NumberEightDigits=90089257, NumberWithLetters=AbCd, NumericInputName=12345, OrganizationType=Head office, OrganizationType2=Zone/CO, OrganizationType3=Region, OrganizationType4=Branch, Phonenumber=8089889900, PwdOriginal=test@123, Region=Indore, Run=Yes, Testrole=NewrolePlaywright, TestScenario=User_UserManagment, UNOriginal=IBU0001195, UserManagementPageRole=Admin, UsernameInUNPage=IBU0001192, ZoneCo=Ahmedabad}, org.testng.TestRunner@1f963035)</span>
+                  <a name="Access_Add_New_User_Page">
+                  </a> <!-- Access_Add_New_User_Page -->
+                  <span class="method-name">Access_Add_New_User_Page</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)">
-                  </a> <!-- Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...) -->
-                  <span class="method-name">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button</span>
-                  <span class="parameters">({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.com, EmailWithoutDomain=kishan@, HeadOffice=Mumbai, InvalidEmailId=kishangmail.com, InvalidUserName=InvalidUser, Name=Ahuja, NumberEightDigits=90089257, NumberWithLetters=AbCd, NumericInputName=12345, OrganizationType=Head office, OrganizationType2=Zone/CO, OrganizationType3=Region, OrganizationType4=Branch, Phonenumber=8089889900, PwdOriginal=test@123, Region=Indore, Run=Yes, Testrole=NewrolePlaywright, TestScenario=User_UserManagment, UNOriginal=IBU0001195, UserManagementPageRole=Admin, UsernameInUNPage=IBU0001192, ZoneCo=Ahmedabad}, org.testng.TestRunner@1f963035)</span>
+                  <a name="Access_User_Management_Page">
+                  </a> <!-- Access_User_Management_Page -->
+                  <span class="method-name">Access_User_Management_Page</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)">
-                  </a> <!-- Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...) -->
-                  <span class="method-name">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button</span>
-                  <span class="parameters">({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.com, EmailWithoutDomain=kishan@, HeadOffice=Mumbai, InvalidEmailId=kishangmail.com, InvalidUserName=InvalidUser, Name=Ahuja, NumberEightDigits=90089257, NumberWithLetters=AbCd, NumericInputName=12345, OrganizationType=Head office, OrganizationType2=Zone/CO, OrganizationType3=Region, OrganizationType4=Branch, Phonenumber=8089889900, PwdOriginal=test@123, Region=Indore, Run=Yes, Testrole=NewrolePlaywright, TestScenario=User_UserManagment, UNOriginal=IBU0001195, UserManagementPageRole=Admin, UsernameInUNPage=IBU0001192, ZoneCo=Ahmedabad}, org.testng.TestRunner@1f963035)</span>
+                  <a name="Add_User_Page_Empty_Save_Attempt">
+                  </a> <!-- Add_User_Page_Empty_Save_Attempt -->
+                  <span class="method-name">Add_User_Page_Empty_Save_Attempt</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)">
-                  </a> <!-- Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...) -->
-                  <span class="method-name">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button</span>
-                  <span class="parameters">({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.com, EmailWithoutDomain=kishan@, HeadOffice=Mumbai, InvalidEmailId=kishangmail.com, InvalidUserName=InvalidUser, Name=Ahuja, NumberEightDigits=90089257, NumberWithLetters=AbCd, NumericInputName=12345, OrganizationType=Head office, OrganizationType2=Zone/CO, OrganizationType3=Region, OrganizationType4=Branch, Phonenumber=8089889900, PwdOriginal=test@123, Region=Indore, Run=Yes, Testrole=NewrolePlaywright, TestScenario=User_UserManagment, UNOriginal=IBU0001195, UserManagementPageRole=Admin, UsernameInUNPage=IBU0001192, ZoneCo=Ahmedabad}, org.testng.TestRunner@1f963035)</span>
+                  <a name="Add_new_user_page__Enter_inputs_for_Email({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">
+                  </a> <!-- Add_new_user_page__Enter_inputs_for_Email({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...) -->
+                  <span class="method-name">Add_new_user_page__Enter_inputs_for_Email</span>
+                  <span class="parameters">({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutDomain=, ExecutiveID=8080, HeadOffice=, InvalidEmailId=, InvalidUserName=, Name=callcentreyou, NumberEightDigits=, NumberWithLetters=, NumericInputName=, OrganizationType=, OrganizationType2=, OrganizationType3=, OrganizationType4=, Phone=9876756456, PwdOriginal=, Region=, Run=Yes, Testrole=, TestScenario=CallCentre_UserManagment, UNOriginal=, UserManagementPageRole=, UsernameInUNPage=, ZoneCo=}, org.testng.TestRunner@6f25ed2b)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields">
-                  </a> <!-- Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields -->
-                  <span class="method-name">Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields</span>
+                  <a name="Add_new_user_page__Enter_inputs_for_ExecutiveID({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">
+                  </a> <!-- Add_new_user_page__Enter_inputs_for_ExecutiveID({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...) -->
+                  <span class="method-name">Add_new_user_page__Enter_inputs_for_ExecutiveID</span>
+                  <span class="parameters">({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutDomain=, ExecutiveID=8080, HeadOffice=, InvalidEmailId=, InvalidUserName=, Name=callcentreyou, NumberEightDigits=, NumberWithLetters=, NumericInputName=, OrganizationType=, OrganizationType2=, OrganizationType3=, OrganizationType4=, Phone=9876756456, PwdOriginal=, Region=, Run=Yes, Testrole=, TestScenario=CallCentre_UserManagment, UNOriginal=, UserManagementPageRole=, UsernameInUNPage=, ZoneCo=}, org.testng.TestRunner@6f25ed2b)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields">
-                  </a> <!-- Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields -->
-                  <span class="method-name">Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields</span>
+                  <a name="Add_new_user_page__Enter_inputs_for_Name({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">
+                  </a> <!-- Add_new_user_page__Enter_inputs_for_Name({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...) -->
+                  <span class="method-name">Add_new_user_page__Enter_inputs_for_Name</span>
+                  <span class="parameters">({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutDomain=, ExecutiveID=8080, HeadOffice=, InvalidEmailId=, InvalidUserName=, Name=callcentreyou, NumberEightDigits=, NumberWithLetters=, NumericInputName=, OrganizationType=, OrganizationType2=, OrganizationType3=, OrganizationType4=, Phone=9876756456, PwdOriginal=, Region=, Run=Yes, Testrole=, TestScenario=CallCentre_UserManagment, UNOriginal=, UserManagementPageRole=, UsernameInUNPage=, ZoneCo=}, org.testng.TestRunner@6f25ed2b)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields">
-                  </a> <!-- Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields -->
-                  <span class="method-name">Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields</span>
+                  <a name="Add_new_user_page__Enter_inputs_for_PhoneNumber({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">
+                  </a> <!-- Add_new_user_page__Enter_inputs_for_PhoneNumber({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...) -->
+                  <span class="method-name">Add_new_user_page__Enter_inputs_for_PhoneNumber</span>
+                  <span class="parameters">({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutDomain=, ExecutiveID=8080, HeadOffice=, InvalidEmailId=, InvalidUserName=, Name=callcentreyou, NumberEightDigits=, NumberWithLetters=, NumericInputName=, OrganizationType=, OrganizationType2=, OrganizationType3=, OrganizationType4=, Phone=9876756456, PwdOriginal=, Region=, Run=Yes, Testrole=, TestScenario=CallCentre_UserManagment, UNOriginal=, UserManagementPageRole=, UsernameInUNPage=, ZoneCo=}, org.testng.TestRunner@6f25ed2b)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Add_new_user_page___Submit_Without_Inputs">
-                  </a> <!-- Add_new_user_page___Submit_Without_Inputs -->
-                  <span class="method-name">Add_new_user_page___Submit_Without_Inputs</span>
+                  <a name="Add_new_user_page__Enter_inputs_for_RoleType({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)">
+                  </a> <!-- Add_new_user_page__Enter_inputs_for_RoleType({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...) -->
+                  <span class="method-name">Add_new_user_page__Enter_inputs_for_RoleType</span>
+                  <span class="parameters">({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutDomain=, ExecutiveID=8080, HeadOffice=, InvalidEmailId=, InvalidUserName=, Name=callcentreyou, NumberEightDigits=, NumberWithLetters=, NumericInputName=, OrganizationType=, OrganizationType2=, OrganizationType3=, OrganizationType4=, Phone=9876756456, PwdOriginal=, Region=, Run=Yes, Testrole=, TestScenario=CallCentre_UserManagment, UNOriginal=, UserManagementPageRole=, UsernameInUNPage=, ZoneCo=}, org.testng.TestRunner@6f25ed2b)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Navigation_to_User_Management_Page">
-                  </a> <!-- Navigation_to_User_Management_Page -->
-                  <span class="method-name">Navigation_to_User_Management_Page</span>
+                  <a name="Click_Submit_button_and_Create_New_User">
+                  </a> <!-- Click_Submit_button_and_Create_New_User -->
+                  <span class="method-name">Click_Submit_button_and_Create_New_User</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="Test_Redirect_to_Add_New_User_Page">
-                  </a> <!-- Test_Redirect_to_Add_New_User_Page -->
-                  <span class="method-name">Test_Redirect_to_Add_New_User_Page</span>
+                  <a name="Login_to_Beacon_FCM">
+                  </a> <!-- Login_to_Beacon_FCM -->
+                  <span class="method-name">Login_to_Beacon_FCM</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking">
-                  </a> <!-- User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking -->
-                  <span class="method-name">User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking">
-                  </a> <!-- User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking -->
-                  <span class="method-name">User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking">
-                  </a> <!-- User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking -->
-                  <span class="method-name">User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="User_search_page__Default_State_of_IsActive_Checkbox">
-                  </a> <!-- User_search_page__Default_State_of_IsActive_Checkbox -->
-                  <span class="method-name">User_search_page__Default_State_of_IsActive_Checkbox</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="User_search_page__Pagination_of_Active_users">
-                  </a> <!-- User_search_page__Pagination_of_Active_users -->
-                  <span class="method-name">User_search_page__Pagination_of_Active_users</span>
+                  <a name="Validate_User_Management_Page_Elements">
+                  </a> <!-- Validate_User_Management_Page_Elements -->
+                  <span class="method-name">Validate_User_Management_Page_Elements</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -307,16 +262,16 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\yadhukrishnan.p\AppData\Local\Temp\testng-eclipse--473943302\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\ajith.krishna\AppData\Local\Temp\testng-eclipse-506113092\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
-  &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;Core.SecurityManagement.UserManagement_TC&quot;/&gt;
+      &lt;class name=&quot;Core.SecurityManagement.CallCentre_UserManagement&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -356,72 +311,56 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(15);
+data.addRows(11);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button')
-data.setCell(0, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(0, 3, 72126);
+data.setCell(0, 1, 'Add_User_Page_Empty_Save_Attempt')
+data.setCell(0, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(0, 3, 33915);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button')
-data.setCell(1, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(1, 3, 71446);
+data.setCell(1, 1, 'Validate_User_Management_Page_Elements')
+data.setCell(1, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(1, 3, 28398);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button')
-data.setCell(2, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(2, 3, 69178);
+data.setCell(2, 1, 'Add_new_user_page__Enter_inputs_for_ExecutiveID')
+data.setCell(2, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(2, 3, 25455);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown')
-data.setCell(3, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(3, 3, 36012);
+data.setCell(3, 1, 'Access_User_Management_Page')
+data.setCell(3, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(3, 3, 9465);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'Navigation_to_User_Management_Page')
-data.setCell(4, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(4, 3, 33042);
+data.setCell(4, 1, 'Access_Add_New_User_Page')
+data.setCell(4, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(4, 3, 7354);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'Add_new_user_page___Submit_Without_Inputs')
-data.setCell(5, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(5, 3, 27088);
+data.setCell(5, 1, 'Add_new_user_page__Enter_inputs_for_RoleType')
+data.setCell(5, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(5, 3, 4981);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields')
-data.setCell(6, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(6, 3, 15581);
+data.setCell(6, 1, 'Click_Submit_button_and_Create_New_User')
+data.setCell(6, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(6, 3, 4219);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields')
-data.setCell(7, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(7, 3, 14562);
+data.setCell(7, 1, 'Add_new_user_page__Enter_inputs_for_PhoneNumber')
+data.setCell(7, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(7, 3, 133);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking')
-data.setCell(8, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(8, 3, 13229);
+data.setCell(8, 1, 'Add_new_user_page__Enter_inputs_for_Email')
+data.setCell(8, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(8, 3, 128);
 data.setCell(9, 0, 9)
-data.setCell(9, 1, 'Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields')
-data.setCell(9, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(9, 3, 11391);
+data.setCell(9, 1, 'Add_new_user_page__Enter_inputs_for_Name')
+data.setCell(9, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(9, 3, 110);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'Test_Redirect_to_Add_New_User_Page')
-data.setCell(10, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(10, 3, 7268);
-data.setCell(11, 0, 11)
-data.setCell(11, 1, 'User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking')
-data.setCell(11, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(11, 3, 4266);
-data.setCell(12, 0, 12)
-data.setCell(12, 1, 'User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking')
-data.setCell(12, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(12, 3, 3044);
-data.setCell(13, 0, 13)
-data.setCell(13, 1, 'User_search_page__Pagination_of_Active_users')
-data.setCell(13, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(13, 3, 365);
-data.setCell(14, 0, 14)
-data.setCell(14, 1, 'User_search_page__Default_State_of_IsActive_Checkbox')
-data.setCell(14, 2, 'Core.SecurityManagement.UserManagement_TC')
-data.setCell(14, 3, 0);
+data.setCell(10, 1, 'Login_to_Beacon_FCM')
+data.setCell(10, 2, 'Core.SecurityManagement.CallCentre_UserManagement')
+data.setCell(10, 3, 10);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -447,198 +386,107 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">Core.SecurityManagement.UserManagement_TC</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">Core.SecurityManagement.CallCentre_UserManagement</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">reference</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Navigation_to_User_Management_Page() throws ja...)</span>
-                <span class="method-start">73737 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Login_to_Beacon_FCM() throws java.lang...)</span>
+                <span class="method-start">70466 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">Navigation_to_User_Management_Page</span>
-                <span class="method-start">73841 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Navigation_to_User_Management_Page status=SUCCESS method=UserManagement_TC.Navigati...)</span>
-                <span class="method-start">106883 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.User_search_page__Default_State_of_IsActive_Ch...)</span>
-                <span class="method-start">106884 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">User_search_page__Default_State_of_IsActive_Checkbox</span>
-                <span class="method-start">106884 ms</span>
+                <span class="method-name">Login_to_Beacon_FCM</span>
+                <span class="method-start">70708 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.User_search_page__Pagination_of_Active_users()...)</span>
-                <span class="method-start">106900 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Access_User_Management_Page() throws j...)</span>
+                <span class="method-start">70721 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">User_search_page__Pagination_of_Active_users</span>
-                <span class="method-start">106900 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=User_search_page__Default_State_of_IsActive_Checkbox status=SUCCESS method=UserMana...)</span>
-                <span class="method-start">106900 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.User_search_page_Pagination_of_Active_users_Se...)</span>
-                <span class="method-start">107280 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking</span>
-                <span class="method-start">107280 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=User_search_page__Pagination_of_Active_users status=SUCCESS method=UserManagement_T...)</span>
-                <span class="method-start">107280 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.User_search_page_Pagination_of_Active_users_La...)</span>
-                <span class="method-start">111547 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_da...)</span>
-                <span class="method-start">111547 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking</span>
-                <span class="method-start">111548 ms</span>
+                <span class="method-name">Access_User_Management_Page</span>
+                <span class="method-start">70722 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.User_search_page_Pagination_of_Active_users_Pr...)</span>
-                <span class="method-start">114592 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Validate_User_Management_Page_Elements...)</span>
+                <span class="method-start">80189 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking</span>
-                <span class="method-start">114592 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data...)</span>
-                <span class="method-start">114592 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Test_Redirect_to_Add_New_User_Page() throws ja...)</span>
-                <span class="method-start">127822 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_...)</span>
-                <span class="method-start">127822 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">Test_Redirect_to_Add_New_User_Page</span>
-                <span class="method-start">127823 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Test_Redirect_to_Add_New_User_Page status=SUCCESS method=UserManagement_TC.Test_Red...)</span>
-                <span class="method-start">135091 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)</span>
-                <span class="method-start">135946 ms</span>
+                <span class="method-name">Validate_User_Management_Page_Elements</span>
+                <span class="method-start">80189 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page_Organization_Type_Selection_...)</span>
-                <span class="method-start">135946 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Access_Add_New_User_Page() throws java...)</span>
+                <span class="method-start">108589 ms</span>
               </div> <!-- configuration-method before -->
-              <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Organization_Type_Selection...)</span>
-                <span class="method-start">171959 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dr...)</span>
-                <span class="method-start">171959 ms</span>
-              </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields</span>
-                <span class="method-start">171960 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_...)</span>
-                <span class="method-start">183351 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields</span>
-                <span class="method-start">183352 ms</span>
+                <span class="method-name">Access_Add_New_User_Page</span>
+                <span class="method-start">108589 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Organization_Type_Selection...)</span>
-                <span class="method-start">183352 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Add_User_Page_Empty_Save_Attempt() thr...)</span>
+                <span class="method-start">115944 ms</span>
               </div> <!-- configuration-method before -->
-              <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Organization_Type_Selection...)</span>
-                <span class="method-start">198934 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneC...)</span>
-                <span class="method-start">198934 ms</span>
-              </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields</span>
-                <span class="method-start">198935 ms</span>
+                <span class="method-name">Add_User_Page_Empty_Save_Attempt</span>
+                <span class="method-start">115945 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page___Submit_Without_Inputs() th...)</span>
-                <span class="method-start">213512 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Add_new_user_page__Enter_inputs_for_Ex...)</span>
+                <span class="method-start">152075 ms</span>
               </div> <!-- configuration-method before -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneC...)</span>
-                <span class="method-start">213512 ms</span>
-              </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">Add_new_user_page___Submit_Without_Inputs</span>
-                <span class="method-start">213513 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Add_new_user_page___Submit_Without_Inputs status=SUCCESS method=UserManagement_TC.A...)</span>
-                <span class="method-start">240601 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)</span>
-                <span class="method-start">240675 ms</span>
+                <span class="method-name">Add_new_user_page__Enter_inputs_for_ExecutiveID({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</span>
+                <span class="method-start">152076 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for...)</span>
-                <span class="method-start">240675 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Add_new_user_page__Enter_inputs_for_Na...)</span>
+                <span class="method-start">177592 ms</span>
               </div> <!-- configuration-method before -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_cli...)</span>
-                <span class="method-start">312121 ms</span>
-              </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)</span>
-                <span class="method-start">312184 ms</span>
+                <span class="method-name">Add_new_user_page__Enter_inputs_for_Name({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</span>
+                <span class="method-start">177592 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for...)</span>
-                <span class="method-start">312184 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Add_new_user_page__Enter_inputs_for_Em...)</span>
+                <span class="method-start">177792 ms</span>
               </div> <!-- configuration-method before -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_cl...)</span>
-                <span class="method-start">384314 ms</span>
-              </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button({AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.c...)</span>
-                <span class="method-start">384362 ms</span>
+                <span class="method-name">Add_new_user_page__Enter_inputs_for_Email({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</span>
+                <span class="method-start">177793 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for...)</span>
-                <span class="method-start">384362 ms</span>
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Add_new_user_page__Enter_inputs_for_Ph...)</span>
+                <span class="method-start">177978 ms</span>
               </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Add_new_user_page__Enter_inputs_for_PhoneNumber({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</span>
+                <span class="method-start">177979 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Add_new_user_page__Enter_inputs_for_Ro...)</span>
+                <span class="method-start">178174 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Add_new_user_page__Enter_inputs_for_RoleType({AlphabeticInputName=, AlphaNumericInputName=, Branch=, Email=callcentreyou@gmail.com, EmailWithoutD...)</span>
+                <span class="method-start">178175 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CallCentre_UserManagement.Click_Submit_button_and_Create_New_Use...)</span>
+                <span class="method-start">183157 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Click_Submit_button_and_Create_New_User</span>
+                <span class="method-start">183158 ms</span>
+              </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">AfterClass</span>
-                <span class="method-start">453556 ms</span>
+                <span class="method-start">187378 ms</span>
               </div> <!-- configuration-class after -->
-              <div class="configuration-method after">
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field...)</span>
-                <span class="method-start">453556 ms</span>
-              </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
     </div> <!-- wrapper -->
   </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
 </html>

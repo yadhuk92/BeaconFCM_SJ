@@ -6,8 +6,11 @@ public class UserManagement_Locators
 {
 	public static By GoCollection= By.xpath("//button[text()='Go Collection']");
 	public By SecurityManagementMenu= By.xpath("//span[text()= 'Security Management']");
-	public By UserManagementMenu= By.xpath("//a[@title='User Management']");
+	public By UserManagementMenu= By.xpath("//a[@href='Admin/UserManagement']");
+	public static By UserManagementExecutiveID= By.xpath("//label[text()='Executive ID']//following-sibling::input[@type='search']");
+	public static By UserManagementaddExecutiveID= By.xpath("//label[text()='Executive ID']//following-sibling::input[@name='Name']");
 	public static By UserManagementPageUsername= By.xpath("(//input[@class='searchinput form-control'])[1]");
+	public static By UserManagementPageRoleType= By.xpath("(//span[normalize-space()=CallCentreRole]");
 	public By UserManagementPageName= By.xpath("(//input[@class='searchinput form-control']) [2]");
 	public By UserManagementPageMobilenumber= By.xpath("//input[@class='rz-textbox valid searchinput form-control']");
 	public By UserManagementPageEmailId= By.xpath("(//input[@class='searchinput form-control']) [3]");
@@ -22,7 +25,7 @@ public class UserManagement_Locators
 	public By UserManagementNextBtn= By.xpath("(//span[@class='page-link']) [4]");
 	public By UserManagementNextArrowBtn= By.xpath("//li/span[text()='>>']");
 	public By UserManagementPreviousArrowBtn= By.xpath("//li/span[text()='<<']"); 
-	public By AddNewUserNameBtn= By.xpath("//input[@name='Name']");
+	public By AddNewUserNameBtn= By.xpath("//label[.='Name']/following::input[1]");
 	public By AddNewUserEmailBtn =  By.xpath("//input[@name='Email']");
 	public By AddNewUserPhoneNumberBtn =  By.xpath("//input[@name='Mobile']");
 	public By AddNewUserRole =  By.xpath("(//div[@class='rz-dropdown valid rz-clear form-control mandatory-color']) [1]");
@@ -33,11 +36,12 @@ public class UserManagement_Locators
 	public By AddNewUserZoneCOBtn =  By.xpath("//label[@class='rz-dropdown-label rz-inputtext  rz-placeholder']");
 	public By AddNewUserRegionBtn =  By.xpath("(//label[contains(.,'Region')]/following-sibling::div)[2]");
 	public By AddNewUserBranchOption=  By.xpath("(//label[contains(.,'Branch')]/following-sibling::div) [2]");
-	public By NameErrorMessage=  By.xpath("//*[@class='my-form-group form-group']//div[.='Name is required']");
-	public By EmailErrorMessage=  By.xpath("//*[@class='my-form-group form-group']//div[.='Email is required']");
-	public By phonenumberErrorMessage=  By.xpath("//*[@class='my-form-group form-group']//div[.='Phone number is required']");
-	public By roleErrorMessage=  By.xpath("//*[@class='my-form-group form-group']//div[.='Role is required']");
-	public By OrganizationTypeErrorMessage=  By.xpath("//*[@class='my-form-group form-group']//div[.='Organization type is required']");
+	public By ExecutiveIDErrorMessage=  By.xpath("//div[normalize-space()=\"Executive id is required\"]");
+	public By NameErrorMessage=  By.xpath("//div[normalize-space()=\"Name is required\"]");
+	public By EmailErrorMessage=  By.xpath("//div[normalize-space()=\"Email is required\"]");
+	public By phonenumberErrorMessage=  By.xpath("//div[normalize-space()=\"Phone number is required\"]");
+	public By roleErrorMessage=  By.xpath("//div[normalize-space()=\"Role is required\"]");
+	//public By OrganizationTypeErrorMessage=  By.xpath("//*[@class='my-form-group form-group']//div[.='Organization type is required']");
 	public By HeadOfficeDropdown =  By.xpath("(//label[contains(.,'Head office')]/following-sibling::div) [2]");
 	public By InvalidEmailId =  By.xpath("//*[@class='rz-notification']//p[.='Invalid Email Id']");
 	public By InvalidPhoneNumber =  By.xpath("//*[@class='rz-notification']//p[.='Invalid Mobile Number']");
@@ -116,6 +120,9 @@ public class UserManagement_Locators
 	public By OrganizationTypeDDL = By.xpath("(//label[@class='rz-dropdown-label rz-inputtext  rz-placeholder' and text()='Select'])[2]");
 	public By RoleDDL = By.xpath("(//label[@class='rz-dropdown-label rz-inputtext  rz-placeholder' and text()='Select'])[1]");
 	public By RoleDDLSearchField = By.xpath("(//input[@class='rz-dropdown-filter rz-inputtext   ' and @type='text'])[2]");
+	public By NewUserRoleType = By.xpath("//div[@class='rz-dropdown valid rz-clear form-control mandatory-color']//span[contains(@class,\"rzi rzi-chevron-down\")]");
+	public By RoleDropdownValues = By.xpath("//div[@class='rz-dropdown-panel rz-popup']/child::div[2]/ul/li/span");
+	public By UserGridTable = By.xpath("//table[@class='rz-grid-table rz-grid-table-fixed']");
 	
 	public By RoleDDLSearchedValue (String RoleName) {
 		String xpathExpression;

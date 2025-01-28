@@ -1,76 +1,27 @@
-[INFO ] 2025-01-13 16:19:58.285 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2025-01-13 16:20:38.195 [main] Log - Title is displayed: BeaconICnRM
-[INFO ] 2025-01-13 16:20:38.476 [main] Log - Entered IBU0000028 in user name field
-[INFO ] 2025-01-13 16:20:38.592 [main] Log - Entered ses@987 in password field
-[INFO ] 2025-01-13 16:20:38.718 [main] Log - Clicked on login button
-[INFO ] 2025-01-13 16:20:43.066 [main] Log - Entered IBU0000028 in user name field
-[INFO ] 2025-01-13 16:20:43.160 [main] Log - Entered ses@987 in password field
-[INFO ] 2025-01-13 16:20:43.245 [main] Log - Clicked on login button
-[INFO ] 2025-01-13 16:20:43.245 [main] Log - Clicked on already login yes button and logged in again with valid credentials
-[INFO ] 2025-01-13 16:20:44.449 [main] Log - Module selection page not appeared
-[INFO ] 2025-01-13 16:21:01.044 [main] Log - UserID in Dashboard: IBU0000028
-[INFO ] 2025-01-13 16:21:01.503 [main] Log - Org Name: Mumbai, Org Type Name: Zone/CO
-[INFO ] 2025-01-13 16:21:07.616 [main] Log - ****Navigation_to_User_Management_Page****
-[INFO ] 2025-01-13 16:21:07.616 [main] Log - ***Navigation to User Management Page***
-[INFO ] 2025-01-13 16:21:07.631 [main] Log - Login successful !
-[INFO ] 2025-01-13 16:21:11.812 [main] Log - 1. Click on Security Management menu
-[INFO ] 2025-01-13 16:21:16.107 [main] Log - 2. Click on User Management submenutrue
-[INFO ] 2025-01-13 16:21:40.643 [main] Log - All elements in UserManagementPage displayed : true
-[INFO ] 2025-01-13 16:21:40.659 [main] Log - ****User_search_page__Default_State_of_IsActive_Checkbox****
-[INFO ] 2025-01-13 16:21:40.659 [main] Log - Check the default state of 'Is Active' checkbox.
-[INFO ] 2025-01-13 16:21:40.659 [main] Log - IsActive Checkbox Selected by default
-[INFO ] 2025-01-13 16:21:40.675 [main] Log - ****User_search_page__Pagination_of_Active_users****
-[INFO ] 2025-01-13 16:21:40.740 [main] Log - Displayed UserManagement PreviousBtn : true
-[INFO ] 2025-01-13 16:21:40.818 [main] Log - Displayed UserManagement FirstPageBtn : true
-[INFO ] 2025-01-13 16:21:40.896 [main] Log - Displayed UserManagement SecondPageBtn : true
-[INFO ] 2025-01-13 16:21:40.974 [main] Log - Displayed UserManagement NextBtn : true
-[INFO ] 2025-01-13 16:21:41.040 [main] Log - Displayed User search page - Pagination of Active users : true
-[INFO ] 2025-01-13 16:21:41.055 [main] Log - ****User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking****
-[INFO ] 2025-01-13 16:21:45.321 [main] Log - Click on the '2' button in pagination showing under active users grid :true
-[INFO ] 2025-01-13 16:21:45.323 [main] Log - ****User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking****
-[INFO ] 2025-01-13 16:21:48.367 [main] Log - Clicked on the '>>' button in paginationtrue
-[INFO ] 2025-01-13 16:21:48.367 [main] Log - ****User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking****
-[INFO ] 2025-01-13 16:22:01.596 [main] Log - Should navigate into 1st page of the active users list : true
-[INFO ] 2025-01-13 16:22:01.597 [main] Log - ****Test_Redirect_to_Add_New_User_Page****
-[INFO ] 2025-01-13 16:22:08.865 [main] Log - 1. Click on Add User button
-[INFO ] 2025-01-13 16:22:08.866 [main] Log - Expected result --> Page redirects to 'Add New User' page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Submit buttons are visible.
-[INFO ] 2025-01-13 16:22:09.721 [main] Log - ****Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown****
-[INFO ] 2025-01-13 16:22:10.494 [main] Log - Entered valid Name is showing : true
-[INFO ] 2025-01-13 16:22:11.754 [main] Log - Entered valid Email is showing : true
-[INFO ] 2025-01-13 16:22:13.151 [main] Log - Entered valid Phonenumber is showing : true
-[INFO ] 2025-01-13 16:22:31.255 [main] Log - Selected valid Testrole: true
-[INFO ] 2025-01-13 16:22:42.605 [main] Log - Successfully user found and clicked on the Head office value inside the dropdown 
-[INFO ] 2025-01-13 16:22:42.621 [main] Log - Head office dropdown is selected : true
-[INFO ] 2025-01-13 16:22:45.733 [main] Log - Displayed Add New User Headoffice option : true
-[INFO ] 2025-01-13 16:22:45.734 [main] Log - ****Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields****
-[INFO ] 2025-01-13 16:22:57.053 [main] Log - Successfully user found and clicked on the Zone/CO value inside the dropdown 
-[INFO ] 2025-01-13 16:22:57.095 [main] Log - Head office should display: true
-[INFO ] 2025-01-13 16:22:57.126 [main] Log - Displayed AddNewUser ZoneCOField : true
-[INFO ] 2025-01-13 16:22:57.127 [main] Log - ****Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields****
-[INFO ] 2025-01-13 16:23:08.466 [main] Log - Successfully user found and clicked on the Region value inside the dropdown 
-[INFO ] 2025-01-13 16:23:08.508 [main] Log - Displayed AddNewUser HeadofficeField : true
-[INFO ] 2025-01-13 16:23:08.543 [main] Log - Displayed AddNewUser ZoneCOField : true
-[INFO ] 2025-01-13 16:23:12.708 [main] Log - Displayed AddNewUser RegionField : true
-[INFO ] 2025-01-13 16:23:12.709 [main] Log - ****Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields****
-[INFO ] 2025-01-13 16:23:24.048 [main] Log - Successfully user found and clicked on the Branch value inside the dropdown 
-[INFO ] 2025-01-13 16:23:24.099 [main] Log - Displayed AddNewUser HeadofficeField : true
-[INFO ] 2025-01-13 16:23:24.131 [main] Log - Displayed AddNewUser ZoneCOField : true
-[INFO ] 2025-01-13 16:23:24.166 [main] Log - Displayed AddNewUser RegionField : true
-[INFO ] 2025-01-13 16:23:27.272 [main] Log - Displayed AddNewUser BranchField : true
-[INFO ] 2025-01-13 16:23:27.287 [main] Log - ****Add_new_user_page___Submit_Without_Inputs****
-[INFO ] 2025-01-13 16:23:54.189 [main] Log - Clicked AddNewUser SubmitBtn : true
-[INFO ] 2025-01-13 16:23:54.375 [main] Log - Error message for AdduserPage displayed : true
-[INFO ] 2025-01-13 16:23:54.450 [main] Log - ****Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button****
-[INFO ] 2025-01-13 16:24:33.034 [main] Log - Successfully user found and clicked on the NewrolePlaywright value inside the dropdown 
-[INFO ] 2025-01-13 16:24:44.509 [main] Log - Successfully user found and clicked on the Head office value inside the dropdown 
-[INFO ] 2025-01-13 16:24:59.595 [main] Log - Successfully user found and clicked on the Mumbai value inside the dropdown 
-[INFO ] 2025-01-13 16:25:05.959 [main] Log - ****Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button****
-[INFO ] 2025-01-13 16:25:45.221 [main] Log - Successfully user found and clicked on the NewrolePlaywright value inside the dropdown 
-[INFO ] 2025-01-13 16:25:56.716 [main] Log - Successfully user found and clicked on the Head office value inside the dropdown 
-[INFO ] 2025-01-13 16:26:11.760 [main] Log - Successfully user found and clicked on the Mumbai value inside the dropdown 
-[INFO ] 2025-01-13 16:26:18.085 [main] Log - Error message for EmailField displayed : true
-[INFO ] 2025-01-13 16:26:18.137 [main] Log - ****Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button****
-[INFO ] 2025-01-13 16:26:54.468 [main] Log - Successfully user found and clicked on the NewrolePlaywright value inside the dropdown 
-[INFO ] 2025-01-13 16:27:05.955 [main] Log - Successfully user found and clicked on the Head office value inside the dropdown 
-[INFO ] 2025-01-13 16:27:20.999 [main] Log - Successfully user found and clicked on the Mumbai value inside the dropdown 
-[INFO ] 2025-01-13 16:27:27.315 [main] Log - Error message for PhoneNumberField displayed : true
+[INFO ] 2025-01-28 12:18:06.838 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-01-28 12:18:42.895 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2025-01-28 12:18:47.860 [main] Log - Entered CCR0001144 in user name field
+[INFO ] 2025-01-28 12:18:47.970 [main] Log - Entered lr9&45 in password field
+[INFO ] 2025-01-28 12:18:48.092 [main] Log - Clicked on login button
+[INFO ] 2025-01-28 12:19:10.508 [main] Log - UserID in Dashboard: CCR0001144
+[INFO ] 2025-01-28 12:19:10.848 [main] Log - ****Login_to_Beacon_FCM****
+[INFO ] 2025-01-28 12:19:10.854 [main] Log - ***Navigation to User Management Page***
+[INFO ] 2025-01-28 12:19:10.859 [main] Log - Login successful !
+[INFO ] 2025-01-28 12:19:10.862 [main] Log - ****Access_User_Management_Page****
+[INFO ] 2025-01-28 12:19:14.978 [main] Log - 1. Click on Security Management menu
+[INFO ] 2025-01-28 12:19:20.328 [main] Log - User Management page appearstrue
+[INFO ] 2025-01-28 12:19:20.330 [main] Log - ****Validate_User_Management_Page_Elements****
+[INFO ] 2025-01-28 12:19:48.727 [main] Log - All elements in UserManagementPage displayed : true
+[INFO ] 2025-01-28 12:19:48.730 [main] Log - ****Access_Add_New_User_Page****
+[INFO ] 2025-01-28 12:19:56.083 [main] Log - 1. Click on Add User button
+[INFO ] 2025-01-28 12:19:56.084 [main] Log - Expected result --> Page redirects to 'Add New User' page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Submit buttons are visible.
+[INFO ] 2025-01-28 12:19:56.086 [main] Log - ****Add_User_Page_Empty_Save_Attempt****
+[INFO ] 2025-01-28 12:20:29.831 [main] Log - Clicked AddNewUser SubmitBtn : true
+[INFO ] 2025-01-28 12:20:30.001 [main] Log - Error message for AdduserPage displayed : true
+[INFO ] 2025-01-28 12:20:32.216 [main] Log - ****Add_new_user_page__Enter_inputs_for_ExecutiveID****
+[INFO ] 2025-01-28 12:20:57.733 [main] Log - ****Add_new_user_page__Enter_inputs_for_Name****
+[INFO ] 2025-01-28 12:20:57.934 [main] Log - ****Add_new_user_page__Enter_inputs_for_Email****
+[INFO ] 2025-01-28 12:20:58.119 [main] Log - ****Add_new_user_page__Enter_inputs_for_PhoneNumber****
+[INFO ] 2025-01-28 12:20:58.315 [main] Log - ****Add_new_user_page__Enter_inputs_for_RoleType****
+[INFO ] 2025-01-28 12:21:03.299 [main] Log - ****Click_Submit_button_and_Create_New_User****
+[INFO ] 2025-01-28 12:21:07.517 [main] Log - Clicked AddNewUser SubmitBtn : true
