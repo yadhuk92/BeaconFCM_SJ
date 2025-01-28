@@ -1,24 +1,41 @@
 package Core.SecurityManagement;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
+import com.BasePackage.Login_Class;
+import com.BasePackage.PropertiesFileUtil;
 import com.Page_Repository.UserManagement_Locators;
+import com.Utility.Log;
 import com.aventstack.extentreports.Status;
 import com.extentReports.ExtentTestManager;
+import com.listeners.TestListener;
 
 public class UserManagement_Page extends Base_Class
 {
 	 UserManagement_Locators PageRepository= new UserManagement_Locators();
 	 private WebDriver driver;
+	 
+	 com.Utility.ExcelReader ExcelReader;
+	 
+	 @BeforeSuite
+		public void reference() throws Exception {
+			ExcelReader = new com.Utility.ExcelReader("CoreUserManagement");
+		}
 	 
 	 /*public UserManagement_Page(WebDriver driver) {
 	        this.driver = driver;
@@ -358,9 +375,9 @@ public class UserManagement_Page extends Base_Class
 	
 	public boolean ClickAddNewUserSubmitBtn() throws InterruptedException 
 	{ 
-              
+        Common.fluentWait("AddNewUserSubmitBtn", PageRepository.AddNewUserSubmitBtn);
 		click(PageRepository.AddNewUserSubmitBtn);
-		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+		//Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
         return true;
 	}
 	
@@ -435,12 +452,17 @@ public class UserManagement_Page extends Base_Class
    
     public boolean SuccessMessage() throws InterruptedException 
    	{
+    	Common.fluentWait("UserManagementNextBtn", PageRepository.UserManagementNextBtn);
+    	Thread.sleep(3000);
     	ElementDisplayed(PageRepository.SuccessMessage);
+    	Common.fluentWait("SuccessAlertForUserCreation", PageRepository.SuccessAlertForUserCreation);
    		return true;
    	}
     public String FetchTableNameValue() throws InterruptedException {
-        String Name = driver.findElement(PageRepository.TableNameValue).getText(); // Assign value to 'Name'
-        System.out.println(Name); // Print value to console, if necessary
+    	Common.fluentWait("UserSearchOutputFirstEntryNameColumn", PageRepository.TableNameValue);
+        String Name = driver.findElement(PageRepository.TableNameValue).getAttribute("title"); // Assign value to 'Name'
+    	//String Name = driver.findElement(PageRepository.UserNameInFirstRowOfSearchResult(UserName)).getAttribute("title");
+        System.out.println("UserSearchOutputFirstEntryNameColumn: "+Name); // Print value to console, if necessary
         ExtentTestManager.getTest().log(Status.INFO, "Fetch table header value");
         return Name; // Return the fetched value
     }
@@ -450,8 +472,24 @@ public class UserManagement_Page extends Base_Class
     }
     
     public String GetUserNameandPassowrd() {
-    	String message = driver.findElement(PageRepository.SuccessMessage).getText();
-    	ExtentTestManager.getTest().log(Status.INFO, "Getting username and password");
+    	Common.fluentWait("GetUserNameandPassowrd_SuccessAlertForUserCreation", PageRepository.SuccessAlertForUserCreation);
+    	String message = driver.findElement(PageRepository.SuccessAlertForUserCreation).getText();
+    	if (message == null || message.trim().isEmpty()) {
+    	    System.out.println("No visible text in the element");
+    	    return null;
+    	}
+    	/*String message = driver.findElement(PageRepository.SuccessAlertForUserCreation).getText();
+    	if (message == null || message.isEmpty()) {
+    	    // Handle the case where no message is returned
+    	    System.out.println("No message found");
+    	} */
+    	else {
+    	    // Handle the case where a message is returned
+    	    System.out.println("Message: " + message);
+    	}
+    	System.out.println(message);
+    	Log.info(message);
+    	//ExtentTestManager.getTest().log(Status.INFO, "Getting username and password");
     	return message;
     }
     public boolean ErrorMessageForZoneCO() throws InterruptedException {
@@ -666,6 +704,111 @@ public class UserManagement_Page extends Base_Class
 	     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); 
 	     wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("(//*[contains(@class,card-header)]//*[@class='spinner']) [1]"))); 
 	}
+    
+    public void CoreUserManagement_HO_User_Creation(String AddNewUserNameBtn, String AddNewUserEmailBtn,
+    		String AddNewUserPhoneNumberBtn, String AddNewUserRole, String AddNewUserOrganizationType,String AddNewUserHeadOffice) throws Throwable{
+    	try {
+    		Common.fluentWait("SecurityManagementMenu", PageRepository.SecurityManagementMenu);
+    		click(PageRepository.SecurityManagementMenu);
+    		Log.info("Clicked on Security Management main menu");
+    		
+    		Common.fluentWait("UserManagementMenu", PageRepository.UserManagementMenu);
+    		click(PageRepository.UserManagementMenu);
+    		Log.info("Clicked on User Management sub menu");
+    		
+    		Common.fluentWait("UserManagementNextBtn", PageRepository.UserManagementNextBtn);
+	    	Thread.sleep(5000);
+	    	Log.info("Next button found using fluent wait");
+	    	
+	    	Common.fluentWait("UserManagementPageAddUser", UserManagement_Locators.UserManagementPageAddUser);
+			click(UserManagement_Locators.UserManagementPageAddUser);
+			System.out.println("Clicked on add user button");
+			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+			System.out.println("Spinner disappeared");
+			Thread.sleep(3000);
+			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+			Log.info("Clicked on add user button and managed spinner");
+			
+			Common.fluentWait("OrganizationTypeDDL", PageRepository.OrganizationTypeDDL);
+			click(PageRepository.OrganizationTypeDDL);
+			Log.info("Clicked on Organization Type DDL");
+			
+			Common.fluentWait("OrganisationFirstOption", PageRepository.HeadOfficeOption);
+			Log.info("Organisation type First Option visibility checking using fluent wait in Organization Type DDL");
+			
+			Common.fluentWait("AddNewUserOrganizationType", PageRepository.AddNewUserOrganizationType);
+			click(PageRepository.AddNewUserOrganizationType);
+			Log.info("Clicked on Organization Type DDL to close the DDL");
+			
+			Common.fluentWait("RoleDDL", PageRepository.RoleDDL);
+			click(PageRepository.RoleDDL);
+			Common.fluentWait("RoleFirstOption", PageRepository.RoleFirstOption);
+			click(PageRepository.RoleDDL);
+			Log.info("Clicked on Role DDL to check the Role options visibility and closed it");
+			
+			EnterAddNewUserName(AddNewUserNameBtn);
+			Log.info("Entered valid user name: "+AddNewUserNameBtn);
+			
+			EnterAddNewUserEmail(AddNewUserEmailBtn);
+			Log.info("Entered valid Email address: "+AddNewUserEmailBtn);
+			
+			input(PageRepository.AddNewUserPhoneNumberBtn , AddNewUserPhoneNumberBtn);
+			Log.info("Entered valid Phone number: "+AddNewUserPhoneNumberBtn);
+			
+			Common.fluentWait("RoleDDL", PageRepository.RoleDDL);
+			click(PageRepository.RoleDDL);
+			Common.fluentWait("RoleDDLSearchField", PageRepository.RoleDDLSearchField);
+			input(PageRepository.RoleDDLSearchField, AddNewUserRole);
+			Common.fluentWait("RoleDDLSearchedValue: "+AddNewUserRole, PageRepository.RoleDDLSearchedValue(AddNewUserRole));
+			click(PageRepository.RoleDDLSearchedValue(AddNewUserRole));
+			Log.info("Selected Role as: "+AddNewUserRole);
+			
+			Common.fluentWait("AddNewUserOrganizationType", PageRepository.AddNewUserOrganizationType);
+			click(PageRepository.AddNewUserOrganizationType);
+			Common.fluentWait("OrganisationFirstOption", PageRepository.HeadOfficeOption);
+			click(PageRepository.RoleDDLSearchField);
+			input(PageRepository.RoleDDLSearchField , AddNewUserOrganizationType);
+			Common.fluentWait("OrganisationFirstOption", PageRepository.OrganizationTypeDDLSearchResult(AddNewUserOrganizationType));
+			click(PageRepository.OrganizationTypeDDLSearchResult(AddNewUserOrganizationType));
+			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+			Log.info("Selected oraganization type as: "+AddNewUserOrganizationType);
+			
+			Common.fluentWait("AddNewUserHeadofficeBtn", PageRepository.AddNewUserHeadofficeBtn);
+			SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+			Log.info("Selected Head office drop down as: "+AddNewUserHeadOffice);
+			
+			ClickAddNewUserSubmitBtn();
+			Log.info("Clicked on Submit button in Add new user page");
+			
+			SuccessMessage();
+			Log.info("User creation success message validation");
+			
+			String message = GetUserNameandPassowrd();
+			System.out.println(message);
+			Log.info(message);
+			
+			//Save newly created userID and password into data file for future use
+			Base_Class.ExtractImportantContentFromASentenceInternalUse(driver,message,59,69);
+			String HO_USERID =  Base_Class.SplitString;
+			System.out.println(HO_USERID);
+			
+			Base_Class.ExtractImportantContentFromASentenceInternalUse(driver,message,73,79);
+			String HO_USER_PASSWORD =  Base_Class.SplitString;
+			System.out.println(HO_USER_PASSWORD);
+			Log.info("HO_USERID: "+HO_USERID);
+			Log.info("HO_USER_PASSWORD: "+HO_USER_PASSWORD);
+			
+			String fileName = "CoreHOUserCredentials_CoreUserManagement_HO_User_Creation.properties";
+			PropertiesFileUtil.updateProperty(fileName,"HO_USERID: ", HO_USERID);
+			PropertiesFileUtil.updateProperty(fileName,"HO_USER_PASSWORD: ", HO_USER_PASSWORD);
+    		
+	    } catch (AssertionError | Exception e) {
+			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e);
+	        Log.info("****Test Failed in method: " + testName + " --> " + e);
+	        throw e;
+		}	
+    }
 
 }
 

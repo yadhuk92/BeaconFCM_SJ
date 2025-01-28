@@ -1,459 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="15" passed="15">
+<testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="381225" started-at="2025-01-13T10:51:07Z" finished-at="2025-01-13T10:57:28Z">
+  <suite name="Default suite" duration-ms="187460" started-at="2025-01-24T16:44:48Z" finished-at="2025-01-24T16:47:55Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="381225" started-at="2025-01-13T10:51:07Z" finished-at="2025-01-13T10:57:28Z">
-      <class name="Core.SecurityManagement.UserManagement_TC">
-        <test-method status="PASS" signature="reference()[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="reference" is-config="true" duration-ms="73728" started-at="2025-01-13T16:19:53Z" finished-at="2025-01-13T16:21:07Z">
+    <test name="Default test" duration-ms="187460" started-at="2025-01-24T16:44:48Z" finished-at="2025-01-24T16:47:55Z">
+      <class name="Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test">
+        <test-method status="PASS" signature="reference()[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="reference" is-config="true" duration-ms="453" started-at="2025-01-24T22:14:47Z" finished-at="2025-01-24T22:14:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reference -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="104" started-at="2025-01-13T16:21:07Z" finished-at="2025-01-13T16:21:07Z">
+        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="16" started-at="2025-01-24T22:14:49Z" finished-at="2025-01-24T22:14:49Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Navigation_to_User_Management_Page() throws java.lang.Throwable]]>
+                <![CDATA[public void Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(java.util.Map,org.testng.ITestContext) throws java.lang.Throwable]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="Navigation_to_User_Management_Page()[pri:1, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Navigation_to_User_Management_Page" duration-ms="33042" started-at="2025-01-13T16:21:07Z" finished-at="2025-01-13T16:21:40Z">
+        <test-method status="FAIL" signature="Navigation_to_User_Management_Page(java.util.Map, org.testng.ITestContext)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="Navigation_to_User_Management_Page" duration-ms="186502" started-at="2025-01-24T22:14:49Z" data-provider="TestData" finished-at="2025-01-24T22:17:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonenumber=8089889900, Run=Yes, Testrole=NewrolePlaywright}]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@6d9f7a80]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at Core.SecurityManagement.UserManagement_Page.CoreUserManagement_HO_User_Creation(UserManagement_Page.java:801)
+	at Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(CoreUserManagement_HO_User_Creation_Test.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1246)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1171)
+	at org.testng.TestNG.run(TestNG.java:1066)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Navigation_to_User_Management_Page -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:40Z" finished-at="2025-01-13T16:21:40Z">
+        <test-method status="FAIL" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-24T22:17:55Z" finished-at="2025-01-24T22:17:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Navigation_to_User_Management_Page status=SUCCESS method=UserManagement_TC.Navigation_to_User_Management_Page()[pri:1, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
+                <![CDATA[[TestResult name=Navigation_to_User_Management_Page status=FAILURE method=CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(java.util.Map, org.testng.ITestContext)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e] output={null}]]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at com.Utility.ScreenShot.takeScreenShot(ScreenShot.java:29)
+	at Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.takeScreenshotOnFailure(CoreUserManagement_HO_User_Creation_Test.java:102)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:514)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:215)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:707)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1246)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1171)
+	at org.testng.TestNG.run(TestNG.java:1066)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="User_search_page__Default_State_of_IsActive_Checkbox()[pri:2, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="User_search_page__Default_State_of_IsActive_Checkbox" duration-ms="0" started-at="2025-01-13T16:21:40Z" finished-at="2025-01-13T16:21:40Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- User_search_page__Default_State_of_IsActive_Checkbox -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:40Z" finished-at="2025-01-13T16:21:40Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.User_search_page__Default_State_of_IsActive_Checkbox() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:40Z" finished-at="2025-01-13T16:21:40Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.User_search_page__Pagination_of_Active_users() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:40Z" finished-at="2025-01-13T16:21:40Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=User_search_page__Default_State_of_IsActive_Checkbox status=SUCCESS method=UserManagement_TC.User_search_page__Default_State_of_IsActive_Checkbox()[pri:2, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="User_search_page__Pagination_of_Active_users()[pri:3, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="User_search_page__Pagination_of_Active_users" duration-ms="365" started-at="2025-01-13T16:21:40Z" finished-at="2025-01-13T16:21:41Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- User_search_page__Pagination_of_Active_users -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:41Z" finished-at="2025-01-13T16:21:41Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=User_search_page__Pagination_of_Active_users status=SUCCESS method=UserManagement_TC.User_search_page__Pagination_of_Active_users()[pri:3, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:41Z" finished-at="2025-01-13T16:21:41Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking()[pri:4, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking" duration-ms="4266" started-at="2025-01-13T16:21:41Z" finished-at="2025-01-13T16:21:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="1" started-at="2025-01-13T16:21:45Z" finished-at="2025-01-13T16:21:45Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:45Z" finished-at="2025-01-13T16:21:45Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking status=SUCCESS method=UserManagement_TC.User_search_page_Pagination_of_Active_users_Second_page_button_functionality_and_data_checking()[pri:4, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking()[pri:5, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking" duration-ms="3044" started-at="2025-01-13T16:21:45Z" finished-at="2025-01-13T16:21:48Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:48Z" finished-at="2025-01-13T16:21:48Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking status=SUCCESS method=UserManagement_TC.User_search_page_Pagination_of_Active_users_Last_page_button_functionality_and_data_checking()[pri:5, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking()[pri:6, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking" duration-ms="13229" started-at="2025-01-13T16:21:48Z" finished-at="2025-01-13T16:22:01Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:21:48Z" finished-at="2025-01-13T16:21:48Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="1" started-at="2025-01-13T16:22:01Z" finished-at="2025-01-13T16:22:01Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Test_Redirect_to_Add_New_User_Page() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:22:01Z" finished-at="2025-01-13T16:22:01Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking status=SUCCESS method=UserManagement_TC.User_search_page_Pagination_of_Active_users_Previous_page_button_functionality_and_data_checking()[pri:6, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="Test_Redirect_to_Add_New_User_Page()[pri:7, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Test_Redirect_to_Add_New_User_Page" duration-ms="7268" started-at="2025-01-13T16:22:01Z" finished-at="2025-01-13T16:22:08Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Test_Redirect_to_Add_New_User_Page -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:22:08Z" finished-at="2025-01-13T16:22:08Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Test_Redirect_to_Add_New_User_Page status=SUCCESS method=UserManagement_TC.Test_Redirect_to_Add_New_User_Page()[pri:7, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown(java.util.Map, org.testng.ITestContext)[pri:8, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown" duration-ms="36012" started-at="2025-01-13T16:22:09Z" data-provider="TestData" finished-at="2025-01-13T16:22:45Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.com, EmailWithoutDomain=kishan@, HeadOffice=Mumbai, InvalidEmailId=kishangmail.com, InvalidUserName=InvalidUser, Name=Ahuja, NumberEightDigits=90089257, NumberWithLetters=AbCd, NumericInputName=12345, OrganizationType=Head office, OrganizationType2=Zone/CO, OrganizationType3=Region, OrganizationType4=Branch, Phonenumber=8089889900, PwdOriginal=test@123, Region=Indore, Run=Yes, Testrole=NewrolePlaywright, TestScenario=User_UserManagment, UNOriginal=IBU0001195, UserManagementPageRole=Admin, UsernameInUNPage=IBU0001192, ZoneCo=Ahmedabad}]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@1f963035]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:22:09Z" finished-at="2025-01-13T16:22:09Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown(java.util.Map,org.testng.ITestContext) throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="1" started-at="2025-01-13T16:22:45Z" finished-at="2025-01-13T16:22:45Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:22:45Z" finished-at="2025-01-13T16:22:45Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown status=SUCCESS method=UserManagement_TC.Add_new_user_page_Organization_Type_Selection_as_Head_office_Display_Head_Office_Dropdown(java.util.Map, org.testng.ITestContext)[pri:8, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields()[pri:9, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields" duration-ms="11391" started-at="2025-01-13T16:22:45Z" finished-at="2025-01-13T16:22:57Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:22:57Z" finished-at="2025-01-13T16:22:57Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields status=SUCCESS method=UserManagement_TC.Add_new_user_page__Organization_Type_Selection_as_Zone_Co__Display_Head_office_and_Zone_CO_drop_down_fields()[pri:9, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields()[pri:10, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields" duration-ms="15581" started-at="2025-01-13T16:22:57Z" finished-at="2025-01-13T16:23:12Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:22:57Z" finished-at="2025-01-13T16:22:57Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:23:12Z" finished-at="2025-01-13T16:23:12Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields status=SUCCESS method=UserManagement_TC.Add_new_user_page__Organization_Type_Selection_as_Region__Display_Head_office_ZoneCO_and_Region_drop_down_fields()[pri:10, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="1" started-at="2025-01-13T16:23:12Z" finished-at="2025-01-13T16:23:12Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields()[pri:11, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields" duration-ms="14562" started-at="2025-01-13T16:23:12Z" finished-at="2025-01-13T16:23:27Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:23:27Z" finished-at="2025-01-13T16:23:27Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields status=SUCCESS method=UserManagement_TC.Add_new_user_page__Organization_Type_Selection_as_Branch__Display_Head_office_ZoneCO_Region_and_Branch_drop_down_fields()[pri:11, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="1" started-at="2025-01-13T16:23:27Z" finished-at="2025-01-13T16:23:27Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page___Submit_Without_Inputs() throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="Add_new_user_page___Submit_Without_Inputs()[pri:12, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Add_new_user_page___Submit_Without_Inputs" duration-ms="27088" started-at="2025-01-13T16:23:27Z" finished-at="2025-01-13T16:23:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Add_new_user_page___Submit_Without_Inputs -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:23:54Z" finished-at="2025-01-13T16:23:54Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Add_new_user_page___Submit_Without_Inputs status=SUCCESS method=UserManagement_TC.Add_new_user_page___Submit_Without_Inputs()[pri:12, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:23:54Z" finished-at="2025-01-13T16:23:54Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button(java.util.Map,org.testng.ITestContext) throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button(java.util.Map, org.testng.ITestContext)[pri:13, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button" duration-ms="71446" started-at="2025-01-13T16:23:54Z" data-provider="TestData" finished-at="2025-01-13T16:25:05Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.com, EmailWithoutDomain=kishan@, HeadOffice=Mumbai, InvalidEmailId=kishangmail.com, InvalidUserName=InvalidUser, Name=Ahuja, NumberEightDigits=90089257, NumberWithLetters=AbCd, NumericInputName=12345, OrganizationType=Head office, OrganizationType2=Zone/CO, OrganizationType3=Region, OrganizationType4=Branch, Phonenumber=8089889900, PwdOriginal=test@123, Region=Indore, Run=Yes, Testrole=NewrolePlaywright, TestScenario=User_UserManagment, UNOriginal=IBU0001195, UserManagementPageRole=Admin, UsernameInUNPage=IBU0001192, ZoneCo=Ahmedabad}]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@1f963035]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:25:05Z" finished-at="2025-01-13T16:25:05Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button status=SUCCESS method=UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Name_Field_and_click_on_submit_button(java.util.Map, org.testng.ITestContext)[pri:13, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button(java.util.Map, org.testng.ITestContext)[pri:14, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button" duration-ms="72126" started-at="2025-01-13T16:25:05Z" data-provider="TestData" finished-at="2025-01-13T16:26:18Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.com, EmailWithoutDomain=kishan@, HeadOffice=Mumbai, InvalidEmailId=kishangmail.com, InvalidUserName=InvalidUser, Name=Ahuja, NumberEightDigits=90089257, NumberWithLetters=AbCd, NumericInputName=12345, OrganizationType=Head office, OrganizationType2=Zone/CO, OrganizationType3=Region, OrganizationType4=Branch, Phonenumber=8089889900, PwdOriginal=test@123, Region=Indore, Run=Yes, Testrole=NewrolePlaywright, TestScenario=User_UserManagment, UNOriginal=IBU0001195, UserManagementPageRole=Admin, UsernameInUNPage=IBU0001192, ZoneCo=Ahmedabad}]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@1f963035]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:25:05Z" finished-at="2025-01-13T16:25:05Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button(java.util.Map,org.testng.ITestContext) throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:26:18Z" finished-at="2025-01-13T16:26:18Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button status=SUCCESS method=UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Email_Field_and_click_on_submit_button(java.util.Map, org.testng.ITestContext)[pri:14, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="0" started-at="2025-01-13T16:26:18Z" finished-at="2025-01-13T16:26:18Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SecurityManagement.UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button(java.util.Map,org.testng.ITestContext) throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="PASS" signature="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button(java.util.Map, org.testng.ITestContext)[pri:15, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button" duration-ms="69178" started-at="2025-01-13T16:26:18Z" data-provider="TestData" finished-at="2025-01-13T16:27:27Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{AlphabeticInputName=Mahalinga, AlphaNumericInputName=John1234, Branch=Indore I, Email=ahuja@gmail.com, EmailWithoutDomain=kishan@, HeadOffice=Mumbai, InvalidEmailId=kishangmail.com, InvalidUserName=InvalidUser, Name=Ahuja, NumberEightDigits=90089257, NumberWithLetters=AbCd, NumericInputName=12345, OrganizationType=Head office, OrganizationType2=Zone/CO, OrganizationType3=Region, OrganizationType4=Branch, Phonenumber=8089889900, PwdOriginal=test@123, Region=Indore, Run=Yes, Testrole=NewrolePlaywright, TestScenario=User_UserManagment, UNOriginal=IBU0001195, UserManagementPageRole=Admin, UsernameInUNPage=IBU0001192, ZoneCo=Ahmedabad}]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@1f963035]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button -->
-        <test-method status="PASS" signature="AfterClass()[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="AfterClass" is-config="true" duration-ms="1397" started-at="2025-01-13T16:27:27Z" finished-at="2025-01-13T16:27:28Z">
+        <test-method status="SKIP" signature="AfterClass()[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="AfterClass" is-config="true" duration-ms="0" started-at="2025-01-24T22:17:55Z" finished-at="2025-01-24T22:17:55Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AfterClass -->
-        <test-method status="PASS" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-13T16:27:27Z" finished-at="2025-01-13T16:27:27Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button status=SUCCESS method=UserManagement_TC.Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_Phone_number_Field_and_click_on_submit_button(java.util.Map, org.testng.ITestContext)[pri:15, instance:Core.SecurityManagement.UserManagement_TC@2a2d45ba] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-      </class> <!-- Core.SecurityManagement.UserManagement_TC -->
+      </class> <!-- Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

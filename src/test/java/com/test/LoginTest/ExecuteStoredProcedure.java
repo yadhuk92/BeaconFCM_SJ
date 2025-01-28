@@ -34,7 +34,7 @@ public class ExecuteStoredProcedure {
         }
     }
 
-    public static ProcedureResult executeStoredProcedure(String mobileNumber) throws IOException {
+    public static ProcedureResult executeStoredProcedure(String mobileNumber, String OSBAL) throws IOException {
         Connection con = null;
         CallableStatement callableStatement = null;
         String accountNo = null;
@@ -46,22 +46,23 @@ public class ExecuteStoredProcedure {
             con = Base_Class.OracleDBConnection();
 
             // Prepare the stored procedure call
-            String procedureCall = "{call SP_CHECK_INVALID_MOBILE_ACCOUNT_FILTERATION(?, ?, ?)}";
+            String procedureCall = "{call SP_CHECK_INVALID_MOBILE_ACCOUNT_FILTERATION(?, ?, ?, ?)}";
             callableStatement = con.prepareCall(procedureCall);
 
             // Set the input parameter
             callableStatement.setString(1, mobileNumber);
+            callableStatement.setString(2, OSBAL);
 
             // Register the output parameters
-            callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR); // o_account_no
-            callableStatement.registerOutParameter(3, java.sql.Types.VARCHAR); // o_mob_no
+            callableStatement.registerOutParameter(3, java.sql.Types.VARCHAR); // o_account_no
+            callableStatement.registerOutParameter(4, java.sql.Types.VARCHAR); // o_mob_no
 
             // Execute the stored procedure
             callableStatement.execute();
 
             // Retrieve the output parameters
-            accountNo = callableStatement.getString(2);
-            updatedMobileNo = callableStatement.getString(3);
+            accountNo = callableStatement.getString(3);
+            updatedMobileNo = callableStatement.getString(4);
 
             if (accountNo != null && updatedMobileNo != null) {
                 resultMessage = "Procedure executed successfully.";
@@ -88,7 +89,7 @@ public class ExecuteStoredProcedure {
 
     public static void main(String[] args) throws IOException {
         // Example usage of the method
-        ProcedureResult result = executeStoredProcedure("812990465A");
+        ProcedureResult result = executeStoredProcedure("812990465A","12345");
 
         // Accessing individual values
         System.out.println("Message: " + result.getMessage());

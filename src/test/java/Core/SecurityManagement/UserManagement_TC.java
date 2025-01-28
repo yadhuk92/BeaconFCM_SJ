@@ -149,8 +149,8 @@ public class UserManagement_TC extends Base_Class {
             }
 		} catch (AssertionError | Exception e) {
 			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
-	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e);
+	        Log.info("****Test Failed in method: " + testName + " --> " + e);
 	        throw e;
 		}		
 	}
@@ -521,247 +521,331 @@ public class UserManagement_TC extends Base_Class {
 		        throw e;
 		}
 	}
+	
+	@Test(priority = 16, dataProvider = "TestData")
+	public void Add_new_user_page___Enter_and_select_inputs_for_all_fields_except_role_drop_down_and_click_on_submit_button (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except role drop down and click on submit button");
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name, Email, and Phone number");
+			ExtentTestManager.getTest().log(Status.PASS, "2.Do not select any option for Role");
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select option for Organization type=Head office");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Head office=Mumbai");
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
+			boolean flag32  = User_UserManagementPage.ErrormessageforRoleField();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Role is required\" is displayed under Role dropdown: " + flag32);
+			Log.info("Error message for RoleField displayed : " + flag32);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 17, dataProvider = "TestData")
+	public void Add_new_user_page__Enter_and_select_inputs_for_all_fields_except_organization_type_drop_down_and_click_on_submit_button (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except organization type drop down and click on submit button");
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name, Email, and Phone number");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			ExtentTestManager.getTest().log(Status.PASS, "2. Select valid option for Role");
+			ExtentTestManager.getTest().log(Status.PASS, "3. Do not select any option for Organization type");
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+			boolean flag33  = User_UserManagementPage.ErrormessageforOrganizationTypeField();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Organization type is required\" is displayed under Organization type dropdown : " + flag33);
+			Log.info("Error message for OrganizationTypeField displayed : " + flag33);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 18, dataProvider = "TestData")
+	public void Add_new_user_page___Invalid_Email_Format_missing_At_Or_DomainName (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Add new user page - Invalid Email Format-missing '@ and domain'");
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			User_UserManagementPage.EnterAddNewUserEmail(InvalidEmailId);
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Phone number");
+			ExtentTestManager.getTest().log(Status.PASS, "2. Enter an invalid email format (e.g., missing '@' )");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+			boolean flag34  = User_UserManagementPage.ErrormessageforInvalidEmailId();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Email Id with @': " + flag34);
+			Log.info("Error message for Invalid Email Id is displayed : " + flag34);
+			
+	
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			User_UserManagementPage.EnterAddNewUserEmail(InvalidEmailIdWithoutDomain);
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Phone number");
+			ExtentTestManager.getTest().log(Status.PASS, "2. Enter an invalid email format (e.g., missing 'domain' )");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+			boolean flag35  = User_UserManagementPage.ErrormessageforInvalidEmailId();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Email Id' with domain : " + flag35);
+			Log.info("Error message for Invalid Email Format is displayed : " + flag35);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 19, dataProvider = "TestData")
+	public void Add_new_user_page__Invalid_Phone_Number_Format__with_letters_and_digits (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Add new user page -Invalid Phone Number Format- with letters and digits");
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Email");
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(InvalidPhoneNumberWithLetters);
+			ExtentTestManager.getTest().log(Status.PASS, " 2. Enter an invalid phone number format (e.g:letters)");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+			boolean flag36  = User_UserManagementPage.ClickAddNewUserSubmitBtn();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Should show error message \"\"Invalid Mobile Number\" with letters: " + flag36);
+			Log.info("Error message for Invalid PhoneNumber with letters is displayed : " + flag36);
+			
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Email");
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(InvalidPhoneNumberWithEightDigits);
+			ExtentTestManager.getTest().log(Status.PASS, " 2. Enter an invalid phone number format (e.g:8 digits)");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
+			boolean flag37  = User_UserManagementPage.ErrormessageforInvalidPhoneNumber();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Mobile Number' with 8 digits : " + flag37);
+			Log.info("Error message for Invalid PhoneNumber is displayed : " + flag37);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 20, dataProvider = "TestData")
+	public void Add_new_user___Name_Field___ECP_Validations_Alphabetic_inputs (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Add new user - Name Field - ECP Validations(Alphabetic inputs)");
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(username);
+			FakerValue newData = new FakerValue();
+			User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with Alphabets characters");
+            Thread.sleep(5000);
+            Common.fluentWait("submit btn", PageRepositry.AddNewUserSubmitBtn);
+            ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+			boolean flag38  = User_UserManagementPage.ClickAddNewUserSubmitBtn();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Alphabetic inputs are allowed.<br>Other inputs prompt error message \"Invalid Name\": " + flag38);
+			Log.info("User created with Alphabetic inputs successfully: " + flag38);
+			
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(NamewithNumericInput);
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with  Numeric characters");
+            Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+			boolean flag39  = User_UserManagementPage.ErrormessageforInvalidName();
+			//User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Numeric inputs prompt error message 'Invalid Name': " + flag39);
+			Log.info("Error message Invalid Name for numeric inputs is displayed: " + flag39);
+			
+			
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(NamewithAlphaNumericInput);
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
+            User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+            ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with  AlphaNumeric characters");
+            Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+            Thread.sleep(5000);
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+			boolean flag40  = User_UserManagementPage.ErrormessageforInvalidName();
+			ExtentTestManager.getTest().log(Status.PASS, "Alpha Numeric inputs prompt error message 'Invalid Name' : " + flag40);
+			Log.info("Error message Invalid Name for alphanumeric inputs is displayed: " + flag40);	
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 21, dataProvider = "TestData")
+	public void Create_Head_Office_User___No_Head_Office_Selected___Error_message_validation (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Create Head Office User - No Head Office Selected - Error message validation");
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs in Name, Email, and Phone number fields");
+            User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			Thread.sleep(5000);
+			Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
+            ExtentTestManager.getTest().log(Status.PASS, "3. Do not select any value from Head office dropdown");
+            ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+			boolean flag41  = User_UserManagementPage.ErrormessageforEmptyHeadoffice();
+			ExtentTestManager.getTest().log(Status.PASS, "Error message \"Head office is Required\" should show and the user is not created : " + flag41);
+			Log.info("Error message for Empty HeadOffice is displayed: " + flag41);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 22, dataProvider = "TestData")
+	public void Create_Head_Office_User___Valid_Inputs___Successful_user_creation (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Create Head Office User - Valid Inputs - Successful user creation");
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+		    User_UserManagementPage.EnterAddNewUserName(username);
+		    FakerValue newData = new FakerValue();
+			User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
+			ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs in Name, Email, and Phone number fields");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
+			User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select a valid value from Head office dropdown");
+			ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
+			Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+            boolean flag43  = User_UserManagementPage.SuccessMessage();
+			ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results : " + flag43);
+			Log.info("Success message for user creation is displayed: " + flag43);
+			//User_UserManagementPage.FetchTableNameValue();
+			/*assertTrue("The table name value does not match the expected button name", 
+			           User_UserManagementPage.FetchTableNameValue().equals(username));*/
+			String message = null;
+			User_UserManagementPage.GetUserNameandPassowrd();
+			Log.info("HO user details: " + message);
+			System.out.println("HO user details: " + message);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Failed: " + e);
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
+	
+	@Test(priority = 23, dataProvider = "TestData")
+	public void Add_new_user___User_already_exists_case (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+		try {
+			//ExtentTestManager.startTest("Add new user - User already exists case");
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
+			User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
+			User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
+			ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid same inputs in Name, Email, and Phone number fields");
+			User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
+			User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
+			ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
+			User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
+			ExtentTestManager.getTest().log(Status.PASS, "3. Select a valid value from Head office dropdown");
+			ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
+			Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
+            User_UserManagementPage.ClickAddNewUserSubmitBtn();
+            ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
+            boolean flag42  = User_UserManagementPage.ErrorMessageExistUserCreation();
+            //User_UserManagementPage.AddNewUserSpinner();
+			ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Already User Exist' " + flag42);
+			Log.info("Error message on creating existing user is displayed: " + flag42);
+		} catch (AssertionError | Exception e) {
+				String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+		}
+	}
 			
 			/*	
-				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except role drop down and click on submit button");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name, Email, and Phone number");
-				ExtentTestManager.getTest().log(Status.PASS, "2.Do not select any option for Role");
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select option for Organization type=Head office");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "4. Select option for Head office=Mumbai");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "6.Click on Submit button");
-				boolean flag32  = User_UserManagementPage.ErrormessageforRoleField();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Role is required\" is displayed under Role dropdown: " + flag32);
-				Log.info("Error message for RoleField displayed : " + flag32);
-			
-			
-				ExtentTestManager.startTest("Add new user page - Enter and select inputs for all fields except organization type drop down and click on submit button");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name, Email, and Phone number");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select valid option for Role");
-				ExtentTestManager.getTest().log(Status.PASS, "3. Do not select any option for Organization type");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag33  = User_UserManagementPage.ErrormessageforOrganizationTypeField();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message: \"Organization type is required\" is displayed under Organization type dropdown : " + flag33);
-				Log.info("Error message for OrganizationTypeField displayed : " + flag33);
 				
-				
-				ExtentTestManager.startTest("Add new user page - Invalid Email Format-missing '@ and domain'");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(InvalidEmailId);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Phone number");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an invalid email format (e.g., missing '@' )");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag34  = User_UserManagementPage.ErrormessageforInvalidEmailId();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Email Id with @': " + flag34);
-				Log.info("Error message for Invalid Email Id is displayed : " + flag34);
-				
-		
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(InvalidEmailIdWithoutDomain);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Phone number");
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an invalid email format (e.g., missing 'domain' )");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag35  = User_UserManagementPage.ErrormessageforInvalidEmailId();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Email Id' with domain : " + flag35);
-				Log.info("Error message for Invalid Email Format is displayed : " + flag35);
-				
-				ExtentTestManager.startTest("Add new user page -Invalid Phone Number Format- with letters and digits");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(InvalidPhoneNumberWithLetters);
-				ExtentTestManager.getTest().log(Status.PASS, " 2. Enter an invalid phone number format (e.g:letters)");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag36  = User_UserManagementPage.ClickAddNewUserSubmitBtn();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message \"\"Invalid Mobile Number\" with letters: " + flag36);
-				Log.info("Error message for Invalid PhoneNumber with letters is displayed : " + flag36);
-				
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs for Name and Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(InvalidPhoneNumberWithEightDigits);
-				ExtentTestManager.getTest().log(Status.PASS, " 2. Enter an invalid phone number format (e.g:8 digits)");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "4.Click on Submit button");
-				boolean flag37  = User_UserManagementPage.ErrormessageforInvalidPhoneNumber();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Invalid Mobile Number' with 8 digits : " + flag37);
-				Log.info("Error message for Invalid PhoneNumber is displayed : " + flag37);
-				
-				
-				ExtentTestManager.startTest("Add new user - Name Field - ECP Validations(Alphabetic inputs)");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(username);
-				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with Alphabets characters");
-                Thread.sleep(5000);
-                Common.fluentWait("submit btn", PageRepositry.AddNewUserSubmitBtn);
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-				boolean flag38  = User_UserManagementPage.ClickAddNewUserSubmitBtn();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Alphabetic inputs are allowed.<br>Other inputs prompt error message \"Invalid Name\": " + flag38);
-				Log.info("User created with Alphabetic inputs successfully: " + flag38);
-				
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(NamewithNumericInput);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with  Numeric characters");
-                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-				boolean flag39  = User_UserManagementPage.ErrormessageforInvalidName();
-				User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Numeric inputs prompt error message 'Invalid Name': " + flag39);
-				Log.info("Error message Invalid Name for numeric inputs is displayed: " + flag39);
-				
-				
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(NamewithAlphaNumericInput);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid Email");
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Enter an valid phone number format.");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select valid options for Role and Organization type.");
-                User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-                ExtentTestManager.getTest().log(Status.PASS, "4. For the Name field, test inputs with  AlphaNumeric characters");
-                Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                Thread.sleep(5000);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-				boolean flag40  = User_UserManagementPage.ErrormessageforInvalidName();
-				ExtentTestManager.getTest().log(Status.PASS, "Alpha Numeric inputs prompt error message 'Invalid Name' : " + flag40);
-				Log.info("Error message Invalid Name for alphanumeric inputs is displayed: " + flag40);		
-				
-				ExtentTestManager.startTest("Create Head Office User - No Head Office Selected - Error message validation");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs in Name, Email, and Phone number fields");
-                User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				Thread.sleep(5000);
-				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
-                ExtentTestManager.getTest().log(Status.PASS, "3. Do not select any value from Head office dropdown");
-                ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-				boolean flag41  = User_UserManagementPage.ErrormessageforEmptyHeadoffice();
-				ExtentTestManager.getTest().log(Status.PASS, "Error message \"Head office is Required\" should show and the user is not created : " + flag41);
-				Log.info("Error message for Empty HeadOffice is displayed: " + flag41);
-				
-				ExtentTestManager.startTest("Create Head Office User - Valid Inputs - Successful user creation ");
-				User_UserManagementPage.ClickAddNewUserCloseBtn();
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-			    User_UserManagementPage.EnterAddNewUserName(username);
-				User_UserManagementPage.EnterAddNewUserEmail(newData.getEmail());
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(newData.getPhone());
-				ExtentTestManager.getTest().log(Status.PASS, "1. Enter valid inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select a valid value from Head office dropdown");
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
-				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-                boolean flag43  = User_UserManagementPage.SuccessMessage();
-				ExtentTestManager.getTest().log(Status.PASS, "Page redirects to user search page and should show Success message displays: \"User created successfully. Present password for the user: IBU000xxxx is xxxxxx\" and Newly created user appears at the top of the search results : " + flag43);
-				Log.info("Success message for user creation is displayed: " + flag43);
-				assertTrue("The table name value does not match the expected button name", 
-				           User_UserManagementPage.FetchTableNameValue().equals(username));
-				String message = User_UserManagementPage.GetUserNameandPassowrd(); 
-		
-				ExtentTestManager.startTest("Add new user - User already exists case");
-				User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-				User_UserManagementPage.EnterAddNewUserName(AddNewUserNameBtn);
-				User_UserManagementPage.EnterAddNewUserEmail(AddNewUserEmailBtn);
-				User_UserManagementPage.EnterAddNewUserPhoneNumber(AddNewUserPhoneNumberBtn);
-				ExtentTestManager.getTest().log(Status.PASS, "1.Enter valid same inputs in Name, Email, and Phone number fields");
-				User_UserManagementPage.SelectRoleDropdown(AddNewUserRole);
-				User_UserManagementPage.SelectOrganizationTypeDropdown(AddNewUserOrganizationType);
-				ExtentTestManager.getTest().log(Status.PASS, "2. Select 'Head Office' from Organization type dropdown");
-				User_UserManagementPage.SelectHeadOfficeDropdown(AddNewUserHeadOffice);
-				ExtentTestManager.getTest().log(Status.PASS, "3. Select a valid value from Head office dropdown");
-				ExtentTestManager.getTest().log(Status.PASS, "4. Select a valid input from Role dropdown");
-				Common.fluentWait("SubmitBtn", PageRepositry.AddNewUserSubmitBtn);
-                User_UserManagementPage.ClickAddNewUserSubmitBtn();
-                ExtentTestManager.getTest().log(Status.PASS, "5.Click on Submit button");
-                boolean flag42  = User_UserManagementPage.ErrorMessageExistUserCreation();
-                User_UserManagementPage.AddNewUserSpinner();
-				ExtentTestManager.getTest().log(Status.PASS, "Should show error message 'Already User Exist' " + flag42);
-				Log.info("Error message on creating existing user is displayed: " + flag42);				 
-		
 				ExtentTestManager.startTest("Create Head Office User - Login with newly created user");
 				User_UserManagementPage.ClickLogoutOption();
 				Common.waitForSpinnerToDisappear(driver, "Loading Spinner", PageRepositry.loginSelectionSpinner);

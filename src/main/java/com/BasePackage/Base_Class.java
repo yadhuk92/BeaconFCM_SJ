@@ -27,6 +27,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Base_Class {
 
 	public static RemoteWebDriver driver = null;
+	public static String SplitString;
 	
 	public WebDriver getDriver() {
 		return driver;
@@ -255,5 +256,10 @@ public class Base_Class {
 	    
 	     return randomWord.toString();
 	 }
+	
+	public static void ExtractImportantContentFromASentenceInternalUse (WebDriver driver,String SentenceToSplit, int StartingIndex, int EndingIndex) throws ClassNotFoundException, SQLException, IOException
+	{
+		SplitString=SentenceToSplit.substring(StartingIndex, EndingIndex);
+	}
 
 }

@@ -50,7 +50,12 @@ public class Login_Class extends Base_Class {
             // Load the application URL
             driver.get(CoreAppUrl);
             Common.setDriver(driver);
-            Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+            
+            String LoginBannerQuery = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=1 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
+            String CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
+            //System.out.println("BANNER_DETAILS: " + CORE_LOGIN_BANNER_DETAILS);
+            
+            Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
 
             //ExtentTestManager.getTest().log(Status.INFO, CoreAppUrl + " loaded successfully!");
             Thread.sleep(9000);

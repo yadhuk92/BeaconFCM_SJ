@@ -46,7 +46,7 @@ public class UserManagement_Locators
 	public By UserManagementPageThreeDotBtn = By.xpath("(//button[@class='btn btn-light morebtn']) [1]");
 	public By EdituserPageEmailField = By.xpath("(//input[@class='form-control mandatory-color valid']) [2]");
 	public By EdituserPagePhoneNumberField = By.xpath("//input[@class='rz-textbox valid form-control mandatory-color']");
-	public By SuccessMessage = By.xpath("//strong[contains(text(), 'User created successfully . Present password for the user')]");
+	public By SuccessMessage = By.xpath("//strong[contains(text(), 'User created successfully . Present password for the user:')]");
 	public By SuccessMessageUserCreation = By.xpath("//span[.='Success ']/following-sibling::p[.='Status Changed']");
 	public By TableNameValue = By.xpath("(//tr[@class='rz-datatable-even  ']//td[3])[1]//span");
 	public By ErrorMessageExistUserCreation = By.xpath("//*[@class='rz-growl-message']//p[.='Already User Exist ']");
@@ -94,7 +94,7 @@ public class UserManagement_Locators
 	public By AddUserSpinner =By.xpath("//*[contains(@class,'mycard-header')]//*[@class='spinner']");
 	public By UserManagementSpinner = By.xpath("(//*[contains(@class,card-header)]//*[@class='spinner']) [1]");
 	public By loginSelectionSpinner = By.xpath("//div[@class='spinner']");
-	public By RoleFirstOption = By.xpath("(//li[@aria-label='>!@']) [1]");
+	public By RoleFirstOption = By.xpath("(//li[@role='option' and @class='rz-dropdown-item '])[5]");
 	public By OrganisationFirstOption = By.xpath("//div[@class=\"col-sm-12 col-md-4 col-lg-3 formcol\"]//label[text()=\"Organization Type\"]");
 	public By HeadOfficeOption = By.xpath("//span[contains(.,'Head office')]");
 	public By HeadOffice = By.xpath("(//label[contains(.,'Head office')]) [2]");
@@ -123,6 +123,19 @@ public class UserManagement_Locators
 		return By.xpath(xpathExpression);
 	}
 	
+	public By UserNameInFirstRowOfSearchResult (String UserName) {
+		String xpathExpression;
+		xpathExpression = "(//span[@class='rz-cell-data' and @title='"+UserName+"'])[1]";
+		return By.xpath(xpathExpression);
+	}
+	
+	public By OrganizationTypeDDLSearchResult (String OrgType) {
+		String xpathExpression;
+		xpathExpression = "//span[text()='"+OrgType+"']";
+		return By.xpath(xpathExpression);
+	}
+	
+	public By SuccessAlertForUserCreation = By.xpath("//strong[contains(text(), 'User created successfully') and contains(., 'Present password for the user:')]");
 	
 }
 	
