@@ -41,7 +41,7 @@ public class Base_Class {
 		return properties;
 	}
 
-	public void SetUp() throws IOException, InterruptedException {
+	public void SetUp() throws IOException, InterruptedException, Exception {
 		
 		String Browser = configloader().getProperty("Browser");
 		String Url = configloader().getProperty("URL");
