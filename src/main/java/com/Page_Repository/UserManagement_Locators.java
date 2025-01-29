@@ -120,7 +120,7 @@ public class UserManagement_Locators
 	public By OrganizationTypeDDL = By.xpath("(//label[@class='rz-dropdown-label rz-inputtext  rz-placeholder' and text()='Select'])[2]");
 	public By RoleDDL = By.xpath("(//label[@class='rz-dropdown-label rz-inputtext  rz-placeholder' and text()='Select'])[1]");
 	public By RoleDDLSearchField = By.xpath("(//input[@class='rz-dropdown-filter rz-inputtext   ' and @type='text'])[2]");
-	public By NewUserRoleType = By.xpath("//div[@class='rz-dropdown valid rz-clear form-control mandatory-color']//span[contains(@class,\"rzi rzi-chevron-down\")]");
+	public By NewUserRoleType = By.xpath("//label[text()='Role']//following-sibling::div");
 	public By RoleDropdownValues = By.xpath("//div[@class='rz-dropdown-panel rz-popup']/child::div[2]/ul/li/span");
 	public By UserGridTable = By.xpath("//table[@class='rz-grid-table rz-grid-table-fixed']");
 	

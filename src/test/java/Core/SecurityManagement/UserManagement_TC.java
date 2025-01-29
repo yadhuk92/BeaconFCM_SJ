@@ -81,7 +81,7 @@ public class UserManagement_TC extends Base_Class {
 		TestListener = new TestListener();
 		CoreAppLogin.CoreLogin();
 		driver = baseclass.getDriver();
-		if (driver == null) {
+	if (driver == null) {
 		    throw new RuntimeException("WebDriver is not initialized!");
 		}
 		screenShot = new com.Utility.ScreenShot(driver);

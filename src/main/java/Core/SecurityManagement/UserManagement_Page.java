@@ -179,12 +179,13 @@ public class UserManagement_Page extends Base_Class
 	
 	public boolean ClickUserManagementPageAddUserBtn() throws InterruptedException 
 	{
-		Common.fluentWait("UserManagementPageAddUser", UserManagement_Locators.UserManagementPageAddUser);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+	//	Common.fluentWait("UserManagementPageAddUser", UserManagement_Locators.UserManagementPageAddUser);
 		click(UserManagement_Locators.UserManagementPageAddUser);
-		System.out.println("Clicked on add user button");
+		System.out.println("Clicked on Add user button");
 		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		System.out.println("Spinner disappeared");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		/*Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		Thread.sleep(3000);
 		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);*/
@@ -206,7 +207,7 @@ public class UserManagement_Page extends Base_Class
 	        ElementDisplayed(PageRepository.AddNewUserEmailBtn);
 	        ElementDisplayed(PageRepository.AddNewUserPhoneNumberBtn);
 	        ElementDisplayed(PageRepository.AddNewUserRole);
-	     //   ElementDisplayed(PageRepository.AddNewUserOrganizationType);
+	   //   ElementDisplayed(PageRepository.AddNewUserOrganizationType);
 	        ElementDisplayed(PageRepository.AddNewUserCloseBtn);
 	        ElementDisplayed(PageRepository.AddNewUserSubmitBtn);
 	        ExtentTestManager.getTest().log(Status.INFO, " All elements of Add new user page displayed");
@@ -216,7 +217,7 @@ public class UserManagement_Page extends Base_Class
 	public boolean EnterUserManagementExecutiveID(String ExecutiveID) throws InterruptedException 
 	{
 		try{
-			//	System.out.println("Executive ID: "+ExecutiveID);
+			    System.out.println("Executive ID: "+ExecutiveID);
 				input(UserManagement_Locators.UserManagementaddExecutiveID,ExecutiveID);
 				return true;
 			}catch(Exception e){
@@ -236,7 +237,15 @@ public class UserManagement_Page extends Base_Class
 		}
 		
 	}
-	   
+	
+//	public static boolean isValidExecutiveId(String executiveId) {
+//		if (executiveId != null && executiveId.matches("[0-9]+")) {
+//            return true;  // Valid numeric ID
+//        } else {
+//            return false; // Invalid ID (contains non-numeric characters)
+//        }
+//    }
+//	
 	public boolean EnterAddNewUserEmail(String Email) throws InterruptedException 
 	{
 		try {
@@ -418,10 +427,11 @@ public class UserManagement_Page extends Base_Class
     
     public boolean ClickAddNewUserCloseBtn() throws InterruptedException 
 	{
+    	Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
     	Common.fluentWait("AddNewUserCloseBtn",PageRepository.AddNewUserCloseBtn);
     	click(PageRepository.AddNewUserCloseBtn);
 //    	Common.fluentWait("UserManagementNextBtn",PageRepository.UserManagementNextBtn);
-    	Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
+//    	Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
     	ExtentTestManager.getTest().log(Status.INFO, " Close button is clicked");
 		return true;
 	}

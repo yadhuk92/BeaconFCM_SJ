@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -62,13 +63,21 @@ public class CallCentre_UserManagement extends Base_Class {
 	public String AddNewUserRoleType;
 	public String userGridPage;
 	
-	WebDriver driver;
+//	public static boolean isValidExecutiveId(String executiveId) {
+//        // Regular expression to match only numeric digits (0-9)
+//        if (executiveId != null && executiveId.matches("[0-9]+")) {
+//            return true;  // Valid numeric ID
+//        } else {
+//            return false; // Invalid ID (contains non-numeric characters)
+//        }
+//	}
+	static WebDriver driver;
 	com.Utility.ExcelReader ExcelReader;
 	Base_Class baseclass;
 	Log log;
 	TestListener TestListener;
 	com.Utility.ScreenShot screenShot;
-	UserManagement_Page User_UserManagementPage;
+	static UserManagement_Page User_UserManagementPage;
 	UserManagement_Locators PageRepositry;;
 	LoginPageRepo LoginPageRepositry;
 	ExtentTest extenttest;
@@ -154,7 +163,7 @@ public void Access_Add_New_User_Page() throws Throwable {
 	try {
 		
 			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-			ExtentTestManager.getTest().log(Status.PASS, "1. Click on Add User button");
+			ExtentTestManager.getTest().log(Status.PASS, "Click on Add User button");
 			Log.info("1. Click on Add User button");
 			ExtentTestManager.getTest().log(Status.PASS, "Expected result --> Page redirects to 'Add New User' page showing Executive ID, Name, Email, Phone number field, Role Type dropdown, Close and Submit buttons are visible.");
 			Log.info("Expected result --> Page redirects to 'Add New User' page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Submit buttons are visible.");
@@ -165,6 +174,7 @@ public void Access_Add_New_User_Page() throws Throwable {
         throw e;
 	}	
 }
+
 @Test(priority = 5)
 public void Add_User_Page_Empty_Save_Attempt () throws Throwable {
 	try {
@@ -173,12 +183,13 @@ public void Add_User_Page_Empty_Save_Attempt () throws Throwable {
 		boolean flag27 = User_UserManagementPage.ClickAddNewUserSubmitBtn();
 		ExtentTestManager.getTest().log(Status.PASS, "1. Leave Executive ID, Name, Email, Phone number fields empty on");
 		ExtentTestManager.getTest().log(Status.PASS, "2. Do not select any option for Role type dropdown");
-		ExtentTestManager.getTest().log(Status.PASS, "Clicked AddNewUser SubmitBtn : " + flag27);
+		ExtentTestManager.getTest().log(Status.PASS, "3.Clicked AddNewUser SubmitBtn : " + flag27);
 		Log.info("Clicked AddNewUser SubmitBtn : " + flag27);
-		ExtentTestManager.getTest().log(Status.PASS, "3. Click on Submit button");
+		//ExtentTestManager.getTest().log(Status.PASS, "3. Click on Submit button");
 		boolean flag28 = User_UserManagementPage.ErrormessageforAdduserPage();
 		ExtentTestManager.getTest().log(Status.PASS, "4. Error messages: \"Executive ID is required\", \"Name is required\", \"Email is required\", \"Phone number is required\", \"Role is required\" are displayed under corresponding fields : " + flag28);
 		Log.info("Error message for AdduserPage displayed : " + flag28);
+		User_UserManagementPage.ClickAddNewUserCloseBtn();
 	} catch (AssertionError | Exception e) {
 			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
 	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
@@ -189,14 +200,13 @@ public void Add_User_Page_Empty_Save_Attempt () throws Throwable {
 @Test(priority = 6, dataProvider = "TestData")
 public void Add_new_user_page__Enter_inputs_for_ExecutiveID (Map<Object, Object> testdata, ITestContext context) throws Throwable {
 	try {
-		User_UserManagementPage.ClickAddNewUserCloseBtn();
 		User_UserManagementPage.ClickUserManagementPageAddUserBtn();
 		if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
 		{
 			String value1 = testdata.get("ExecutiveID").toString();
 		    User_UserManagementPage.EnterUserManagementExecutiveID(value1);
 		}
-		ExtentTestManager.getTest().log(Status.PASS, "1. ExecutiveID is entered successfully");
+		ExtentTestManager.getTest().log(Status.PASS, "ExecutiveID is entered successfully");
 		
 } catch (AssertionError | Exception e) {
 			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
@@ -215,8 +225,8 @@ public void Add_new_user_page__Enter_inputs_for_Name (Map<Object, Object> testda
 		}
 		ExtentTestManager.getTest().log(Status.PASS, "Name is entered successfully");
 } catch (AssertionError | Exception e) {
-			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); 
+			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
 	}
@@ -282,45 +292,6 @@ public void Click_Submit_button_and_Create_New_User () throws Throwable {
 	        throw e;
 	}
 }
-//@Test(priority = 12, dataProvider = "TestData")
-//public void Check_for_Newly_created_User_In_the_Grid () throws Throwable {
-//	try {
-//		String username = ;
-//		User_UserManagementPage.isUserPresentInGrid();
-//		boolean userPresent = userGridPage.isUserPresentInGrid(username);
-//		ExtentTestManager.getTest().log(Status.PASS, "Newly created user is displayed on the grid");
-//} catch (AssertionError | Exception e) {
-//			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-//	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
-//	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//	        throw e;
-//	}
-//}
-//@Test(priority = 13)
-//public void ExecutiveID_ECP_Validation() throws Throwable {
-//	try {
-//		User_UserManagementPage.SelectSecurityManagementMenu();
-//		User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-//		User_UserManagementPage.EnterUserManagementExecutiveID("123456");
-//	    ExtentTestManager.getTest().log(Status.PASS, "Entered Numeric input on Executive ID field");
-//		User_UserManagementPage.ClickAddNewUserSubmitBtn();
-//		ExtentTestManager.getTest().log(Status.PASS, "Expected result --> The Executive ID field does not throw any error messages");
-//		Log.info("Expected result - The Executive ID field does not throw any errors");
-//		User_UserManagementPage.ClickAddNewUserCloseBtn();
-//		User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-//		User_UserManagementPage.EnterUserManagementExecutiveID("abc123");
-//	    ExtentTestManager.getTest().log(Status.PASS, "Entered Alphanumeric input on Executive ID field");
-//		User_UserManagementPage.ClickAddNewUserSubmitBtn();
-//		ExtentTestManager.getTest().log(Status.PASS, "Expected result -->Invalid input: Only numeric characters allowed");
-//		Log.info("Expected result - Invalid input: Only numeric characters allowed");
-//	} catch (AssertionError | Exception e) {
-//		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-//        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
-//        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//        throw e;
-//	}
-//}
-
 @DataProvider(name = "TestData")
 public static Object[][] gettestdate() throws IOException {
 
@@ -337,10 +308,11 @@ public static Object[][] gettestdate() throws IOException {
 @AfterClass
 public void AfterClass() {
      ExtentManager.getInstance().flush();
-  // Close the browser
-        if (driver != null) {
-            driver.quit();
-        }
+//  // Close the browser
+//        if (driver != null) {
+//            driver.quit();
+//        }
  }
+
 }
 

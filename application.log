@@ -1,27 +1,2 @@
-[INFO ] 2025-01-28 12:18:06.838 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2025-01-28 12:18:42.895 [main] Log - Title is displayed: BeaconICnRM
-[INFO ] 2025-01-28 12:18:47.860 [main] Log - Entered CCR0001144 in user name field
-[INFO ] 2025-01-28 12:18:47.970 [main] Log - Entered lr9&45 in password field
-[INFO ] 2025-01-28 12:18:48.092 [main] Log - Clicked on login button
-[INFO ] 2025-01-28 12:19:10.508 [main] Log - UserID in Dashboard: CCR0001144
-[INFO ] 2025-01-28 12:19:10.848 [main] Log - ****Login_to_Beacon_FCM****
-[INFO ] 2025-01-28 12:19:10.854 [main] Log - ***Navigation to User Management Page***
-[INFO ] 2025-01-28 12:19:10.859 [main] Log - Login successful !
-[INFO ] 2025-01-28 12:19:10.862 [main] Log - ****Access_User_Management_Page****
-[INFO ] 2025-01-28 12:19:14.978 [main] Log - 1. Click on Security Management menu
-[INFO ] 2025-01-28 12:19:20.328 [main] Log - User Management page appearstrue
-[INFO ] 2025-01-28 12:19:20.330 [main] Log - ****Validate_User_Management_Page_Elements****
-[INFO ] 2025-01-28 12:19:48.727 [main] Log - All elements in UserManagementPage displayed : true
-[INFO ] 2025-01-28 12:19:48.730 [main] Log - ****Access_Add_New_User_Page****
-[INFO ] 2025-01-28 12:19:56.083 [main] Log - 1. Click on Add User button
-[INFO ] 2025-01-28 12:19:56.084 [main] Log - Expected result --> Page redirects to 'Add New User' page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Submit buttons are visible.
-[INFO ] 2025-01-28 12:19:56.086 [main] Log - ****Add_User_Page_Empty_Save_Attempt****
-[INFO ] 2025-01-28 12:20:29.831 [main] Log - Clicked AddNewUser SubmitBtn : true
-[INFO ] 2025-01-28 12:20:30.001 [main] Log - Error message for AdduserPage displayed : true
-[INFO ] 2025-01-28 12:20:32.216 [main] Log - ****Add_new_user_page__Enter_inputs_for_ExecutiveID****
-[INFO ] 2025-01-28 12:20:57.733 [main] Log - ****Add_new_user_page__Enter_inputs_for_Name****
-[INFO ] 2025-01-28 12:20:57.934 [main] Log - ****Add_new_user_page__Enter_inputs_for_Email****
-[INFO ] 2025-01-28 12:20:58.119 [main] Log - ****Add_new_user_page__Enter_inputs_for_PhoneNumber****
-[INFO ] 2025-01-28 12:20:58.315 [main] Log - ****Add_new_user_page__Enter_inputs_for_RoleType****
-[INFO ] 2025-01-28 12:21:03.299 [main] Log - ****Click_Submit_button_and_Create_New_User****
-[INFO ] 2025-01-28 12:21:07.517 [main] Log - Clicked AddNewUser SubmitBtn : true
+[INFO ] 2025-01-29 12:01:12.720 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-01-29 12:02:58.270 [main] Log - Title is displayed: BeaconICnRM
