@@ -5,11 +5,21 @@
     <classes>
       <class name="Core.SecurityManagement.CallCentre_UserManagement">
         <methods>
-          <include name="Click_Submit_button_and_Create_New_User"/>
+          <include name="Access_Add_New_User_Page"/>
+          <include name="Add_new_user_page__Enter_inputs_for_RoleType"/>
           <include name="ExtentTestManagerStartTest"/>
+          <include name="Add_new_user_page__Enter_inputs_for_PhoneNumber"/>
+          <include name="Access_User_Management_Page"/>
           <include name="reference"/>
-          <include name="Add_User_Page_Empty_Save_Attempt"/>
+          <include name="Add_new_user_page__Enter_inputs_for_ExecutiveID"/>
+          <include name="Add_new_user_page__Enter_inputs_for_Email"/>
           <include name="Validate_User_Management_Page_Elements"/>
+          <include name="Login_to_Beacon_FCM"/>
+          <include name="AfterClass"/>
+          <include name="Click_Submit_button_and_Create_New_User"/>
+          <include name="Add_new_user_page__Enter_inputs_for_Name"/>
+          <include name="Check_for_Newly_created_User_In_the_Grid"/>
+          <include name="Add_User_Page_Empty_Save_Attempt"/>
         </methods>
       </class> <!-- Core.SecurityManagement.CallCentre_UserManagement -->
     </classes>

@@ -123,7 +123,7 @@ public class UserManagement_Locators
 	public By NewUserRoleType = By.xpath("//label[text()='Role']//following-sibling::div");
 	public By RoleDropdownValues = By.xpath("//div[@class='rz-dropdown-panel rz-popup']/child::div[2]/ul/li/span");
 	public By UserGridTable = By.xpath("//table[@class='rz-grid-table rz-grid-table-fixed']");
-	
+	public By UserGridRow = By.xpath("//tbody/tr[1]/td[3]/span");
 	public By RoleDDLSearchedValue (String RoleName) {
 		String xpathExpression;
 		xpathExpression = "//li[normalize-space(span)='"+RoleName+"']";

@@ -110,8 +110,7 @@ public class CallCentre_UserManagement extends Base_Class {
 
 @Test(priority = 1)
 public void Login_to_Beacon_FCM() throws Throwable {
-		try {
-			Log.info("***Navigation to User Management Page***");
+		try {	
 			//CoreAppLogin.CoreLogin();
 			ExtentTestManager.getTest().log(Status.INFO, "Login successful");
 			Log.info("Login successful !");
@@ -145,8 +144,6 @@ public void Validate_User_Management_Page_Elements() throws Throwable {
 			//CoreAppLogin.CoreLogin();
 			boolean flag2=User_UserManagementPage.LocatorDisplayed();
 			Log.info("All elements in UserManagementPage displayed : " + flag2);
-			//boolean flag4=User_UserManagementPage.FetchTableHeaderName();
-			//Log.info("Table headers is displayed : " + flag4);
 			ExtentTestManager.getTest().log(Status.PASS, "User management page is displayed with search inputs,buttons and active roles grid.\n"
 					+ "\n"
 					+ "Confirm presence of Executive ID, User Name, Name, Mobile Number, Email ID, Role drop down, Is Active checkbox, Search button, Add User button.\n"
@@ -189,7 +186,6 @@ public void Add_User_Page_Empty_Save_Attempt () throws Throwable {
 		boolean flag28 = User_UserManagementPage.ErrormessageforAdduserPage();
 		ExtentTestManager.getTest().log(Status.PASS, "4. Error messages: \"Executive ID is required\", \"Name is required\", \"Email is required\", \"Phone number is required\", \"Role is required\" are displayed under corresponding fields : " + flag28);
 		Log.info("Error message for AdduserPage displayed : " + flag28);
-		User_UserManagementPage.ClickAddNewUserCloseBtn();
 	} catch (AssertionError | Exception e) {
 			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
 	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
@@ -200,6 +196,7 @@ public void Add_User_Page_Empty_Save_Attempt () throws Throwable {
 @Test(priority = 6, dataProvider = "TestData")
 public void Add_new_user_page__Enter_inputs_for_ExecutiveID (Map<Object, Object> testdata, ITestContext context) throws Throwable {
 	try {
+		User_UserManagementPage.ClickAddNewUserCloseBtn();
 		User_UserManagementPage.ClickUserManagementPageAddUserBtn();
 		if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
 		{
@@ -292,6 +289,23 @@ public void Click_Submit_button_and_Create_New_User () throws Throwable {
 	        throw e;
 	}
 }
+@Test(priority = 12, dataProvider = "TestData")
+public void Check_for_Newly_created_User_In_the_Grid (Map<Object, Object> testdata, ITestContext context) throws Throwable {
+	try {
+		if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
+		{
+		String Value2 = testdata.get("ExecutiveID").toString();
+		User_UserManagementPage.isUserPresentInGrid(Value2);
+		ExtentTestManager.getTest().log(Status.PASS, "Newly created user is displayed on the grid");
+		}
+} catch (AssertionError | Exception e) {
+			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+	        throw e;
+	}
+}
+
 @DataProvider(name = "TestData")
 public static Object[][] gettestdate() throws IOException {
 
