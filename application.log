@@ -1,1 +1,13 @@
-[INFO ] 2025-01-29 16:35:46.078 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-01-30 10:28:10.768 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-01-30 10:28:15.778 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2025-01-30 10:28:40.690 [main] Log - Entered CCR0001144 in user name field
+[INFO ] 2025-01-30 10:28:40.789 [main] Log - Entered lr9&45 in password field
+[INFO ] 2025-01-30 10:28:40.898 [main] Log - Clicked on login button
+[INFO ] 2025-01-30 10:29:06.181 [main] Log - UserID in Dashboard: CCR0001144
+[INFO ] 2025-01-30 10:29:06.998 [main] Log - ****Login_to_Beacon_FCM****
+[INFO ] 2025-01-30 10:29:07.009 [main] Log - Login successful !
+[INFO ] 2025-01-30 10:29:07.306 [main] Log - ****Access_User_Management_Page****
+[INFO ] 2025-01-30 10:29:11.408 [main] Log - 1. Click on Security Management menu
+[INFO ] 2025-01-30 10:29:15.735 [main] Log - User Management page appearstrue
+[INFO ] 2025-01-30 10:29:17.707 [main] Log - ****ExecutiveID_ECP_Validations****
+[INFO ] 2025-01-30 10:29:28.589 [main] Log - ****Test Failed in method: ExecutiveID_ECP_Validations --> Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "this.driver" is null

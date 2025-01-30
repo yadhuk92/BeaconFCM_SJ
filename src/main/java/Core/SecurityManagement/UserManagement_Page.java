@@ -186,8 +186,7 @@ public class UserManagement_Page extends Base_Class {
 
 		// Common.fluentWait("UserManagementPageAddUser",
 		// UserManagement_Locators.UserManagementPageAddUser);
-		// Common.waitForSpinnerToDisappear("Loading Spinner",
-		// PageRepository.AddUserSpinner);
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		click(UserManagement_Locators.UserManagementPageAddUser);
 		System.out.println("Clicked on Add user button");
 		// Common.waitForSpinnerToDisappear("Loading Spinner",
@@ -231,7 +230,8 @@ public class UserManagement_Page extends Base_Class {
 
 	public boolean EnterUserManagementExecutiveID(String ExecutiveID) throws InterruptedException {
 		try {
-		//	Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.loginSelectionSpinner);
+			// Common.waitForSpinnerToDisappear("Loading Spinner",
+			// PageRepository.loginSelectionSpinner);
 			Common.fluentWait("UserManagementaddExecutiveID", PageRepository.UserManagementaddExecutiveID);
 			Thread.sleep(2000);
 			System.out.println("Executive ID: " + ExecutiveID);
@@ -289,20 +289,20 @@ public class UserManagement_Page extends Base_Class {
 			click(PageRepository.NewUserRoleType);
 			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.loginSelectionSpinner);
 			List<WebElement> dropdownValues = driver.findElements(PageRepository.RoleDropdownValues);
-			for (WebElement values : dropdownValues)
-				 {
-				 if(values.getText().equals("CallCentreRole")){
-				values.click();
-			 }
-			 }
+			for (WebElement values : dropdownValues) {
+				if (values.getText().equals("CallCentreRole")) {
+					values.click();
+				}
+			}
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}
 	}
 
 	public boolean isUserPresentInGrid(String value2) throws InterruptedException {
-		
-		WebElement ExecutiveID = driver.findElement(By.xpath("//tbody/tr[1]/td[3]/span"));
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
+		Common.fluentWait("UserGridRow", PageRepository.UserGridRow);
+		WebElement ExecutiveID = driver.findElement(PageRepository.UserGridRow);
 		String ID = ExecutiveID.getText();
 		if (ID.equals(value2)) {
 			return true;
@@ -387,6 +387,21 @@ public class UserManagement_Page extends Base_Class {
 			System.out.println("Error: " + e);
 			return false;
 		}
+	}
+
+	public boolean ECPValidationAlphabets() throws InterruptedException {
+		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
+		WebElement executiveIdField = driver.findElement(UserManagement_Locators.UserManagementaddExecutiveID);
+		executiveIdField.clear();
+		executiveIdField.sendKeys("ABCDEF");
+		ExtentTestManager.getTest().log(Status.PASS, "Entered Alphabetic input on Executive ID field");
+		WebElement nameField = driver.findElement(PageRepository.AddNewUserNameBtn);
+		nameField.sendKeys("John Doe");
+		WebElement emailField = driver.findElement(PageRepository.AddNewUserEmailBtn);
+		emailField.sendKeys("johndoe@example.com");
+		WebElement phoneField = driver.findElement(PageRepository.AddNewUserPhoneNumberBtn);
+		phoneField.sendKeys("1234567890");
+		return true;
 	}
 
 	public boolean DisplayAddNewUserZoneCOBtn() throws InterruptedException {

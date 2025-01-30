@@ -1,4 +1,5 @@
 package Core.SecurityManagement;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -34,7 +35,7 @@ import com.listeners.TestListener;
 import static org.junit.Assert.assertTrue;
 
 public class CallCentre_UserManagement extends Base_Class {
-	
+
 	public String AddNewUserNameBtn;
 	public String UserManagementExecutiveID;
 	public String AddNewUserEmailBtn;
@@ -45,24 +46,24 @@ public class CallCentre_UserManagement extends Base_Class {
 	public String AddNewUserOrganizationType3;
 	public String AddNewUserOrganizationType4;
 	public String AddNewUserHeadOffice;
-	public String InvalidEmailId; 
+	public String InvalidEmailId;
 	public String InvalidEmailIdWithoutDomain;
 	public String InvalidPhoneNumberWithLetters;
 	public String InvalidPhoneNumberWithEightDigits;
 	public String NamewithNumericInput;
 	public String NamewithAlphaNumericInput;
 	public String AddNewUserZoneCO;
-	public String AddNewUserRegion; 
+	public String AddNewUserRegion;
 	public String InvalidUserName;
-	public String AddNewUserBranch; 
+	public String AddNewUserBranch;
 	public String username;
-	public String UserManagementPageRole; 
-	public String UsernameInUNPage;  
-	public String UNOriginal; 
+	public String UserManagementPageRole;
+	public String UsernameInUNPage;
+	public String UNOriginal;
 	public String PwdOriginal;
 	public String AddNewUserRoleType;
 	public String userGridPage;
-	
+
 //	public static boolean isValidExecutiveId(String executiveId) {
 //        // Regular expression to match only numeric digits (0-9)
 //        if (executiveId != null && executiveId.matches("[0-9]+")) {
@@ -82,7 +83,7 @@ public class CallCentre_UserManagement extends Base_Class {
 	LoginPageRepo LoginPageRepositry;
 	ExtentTest extenttest;
 	Login_Class CoreAppLogin;
-	
+
 	@BeforeSuite
 	public void reference() throws Exception {
 		baseclass = new Base_Class();
@@ -94,105 +95,125 @@ public class CallCentre_UserManagement extends Base_Class {
 		driver = baseclass.getDriver();
 //		userGridPage = new UserGridPage(driver);
 		if (driver == null) {
-		    throw new RuntimeException("WebDriver is not initialized!");
+			throw new RuntimeException("WebDriver is not initialized!");
 		}
 		screenShot = new com.Utility.ScreenShot(driver);
-		User_UserManagementPage= new UserManagement_Page();
-		PageRepositry= new UserManagement_Locators();
+		User_UserManagementPage = new UserManagement_Page();
+		PageRepositry = new UserManagement_Locators();
 	}
-	
-	@BeforeMethod
-    public void ExtentTestManagerStartTest(Method method) {
-        // Start a new ExtentTest for the current test method
-        extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Core - User management");
-        Log.info("****" + method.getName() + "****");
-    }
 
-@Test(priority = 1)
-public void Login_to_Beacon_FCM() throws Throwable {
-		try {	
-			//CoreAppLogin.CoreLogin();
+	@BeforeMethod
+	public void ExtentTestManagerStartTest(Method method) {
+		// Start a new ExtentTest for the current test method
+		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Core - User management");
+		Log.info("****" + method.getName() + "****");
+	}
+
+	@Test(priority = 1)
+	public void Login_to_Beacon_FCM() throws Throwable {
+		try {
+			// CoreAppLogin.CoreLogin();
 			ExtentTestManager.getTest().log(Status.INFO, "Login successful");
 			Log.info("Login successful !");
-	}catch (AssertionError | Exception e) {
-			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
-	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-	        throw e;
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
 		}
-}	
-@Test(priority = 2)
-public void Access_User_Management_Page() throws Throwable {
+	}
+
+	@Test(priority = 2)
+	public void Access_User_Management_Page() throws Throwable {
 		try {
-			//CoreAppLogin.CoreLogin();
+			// CoreAppLogin.CoreLogin();
 			User_UserManagementPage.SelectSecurityManagementMenu();
 			ExtentTestManager.getTest().log(Status.PASS, "1. Click on Security Management menu");
 			Log.info("1. Click on Security Management menu");
 			boolean flag1 = User_UserManagementPage.SelectUserManagementMenu();
 			ExtentTestManager.getTest().log(Status.PASS, "2. Click on User Management submenu");
-			Log.info("User Management page appears"+flag1);
-		}catch (AssertionError | Exception e) {
-			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
-	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-	        throw e;
+			Log.info("User Management page appears" + flag1);
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
 		}
-}
-@Test(priority = 3)
-public void Validate_User_Management_Page_Elements() throws Throwable {
+	}
+
+	@Test(priority = 3)
+	public void Validate_User_Management_Page_Elements() throws Throwable {
 		try {
-			//CoreAppLogin.CoreLogin();
-			boolean flag2=User_UserManagementPage.LocatorDisplayed();
+			// CoreAppLogin.CoreLogin();
+			boolean flag2 = User_UserManagementPage.LocatorDisplayed();
 			Log.info("All elements in UserManagementPage displayed : " + flag2);
-			ExtentTestManager.getTest().log(Status.PASS, "User management page is displayed with search inputs,buttons and active roles grid.\n"
-					+ "\n"
-					+ "Confirm presence of Executive ID, User Name, Name, Mobile Number, Email ID, Role drop down, Is Active checkbox, Search button, Add User button.\n"
-					+ "Confirm list columns: SL NO, USER NAME, Executive ID, NAME, ROLE, MOBILE NO, EMAIL ID, STATUS, ACTION: " + flag2);
-		}catch (AssertionError | Exception e) {
-			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
-	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-	        throw e;
+			ExtentTestManager.getTest().log(Status.PASS,
+					"User management page is displayed with search inputs,buttons and active roles grid.\n" + "\n"
+							+ "Confirm presence of Executive ID, User Name, Name, Mobile Number, Email ID, Role drop down, Is Active checkbox, Search button, Add User button.\n"
+							+ "Confirm list columns: SL NO, USER NAME, Executive ID, NAME, ROLE, MOBILE NO, EMAIL ID, STATUS, ACTION: "
+							+ flag2);
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
 		}
-}
-@Test(priority = 4)
-public void Access_Add_New_User_Page() throws Throwable {
-	try {
-		
+	}
+
+	@Test(priority = 4)
+	public void Access_Add_New_User_Page() throws Throwable {
+		try {
+
 			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
 			ExtentTestManager.getTest().log(Status.PASS, "Click on Add User button");
 			Log.info("1. Click on Add User button");
-			ExtentTestManager.getTest().log(Status.PASS, "Expected result --> Page redirects to 'Add New User' page showing Executive ID, Name, Email, Phone number field, Role Type dropdown, Close and Submit buttons are visible.");
-			Log.info("Expected result --> Page redirects to 'Add New User' page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Submit buttons are visible.");
-	} catch (AssertionError | Exception e) {
-		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
-        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-        throw e;
-	}	
-}
-
-@Test(priority = 5)
-public void Add_User_Page_Empty_Save_Attempt () throws Throwable {
-	try {
-		User_UserManagementPage.ClickAddNewUserCloseBtn();
-		User_UserManagementPage.ClickUserManagementPageAddUserBtn();
-		boolean flag27 = User_UserManagementPage.ClickAddNewUserSubmitBtn();
-		ExtentTestManager.getTest().log(Status.PASS, "1. Leave Executive ID, Name, Email, Phone number fields empty on");
-		ExtentTestManager.getTest().log(Status.PASS, "2. Do not select any option for Role type dropdown");
-		ExtentTestManager.getTest().log(Status.PASS, "3.Clicked AddNewUser SubmitBtn : " + flag27);
-		Log.info("Clicked AddNewUser SubmitBtn : " + flag27);
-		//ExtentTestManager.getTest().log(Status.PASS, "3. Click on Submit button");
-		boolean flag28 = User_UserManagementPage.ErrormessageforAdduserPage();
-		ExtentTestManager.getTest().log(Status.PASS, "4. Error messages: \"Executive ID is required\", \"Name is required\", \"Email is required\", \"Phone number is required\", \"Role is required\" are displayed under corresponding fields : " + flag28);
-		Log.info("Error message for AdduserPage displayed : " + flag28);
-	} catch (AssertionError | Exception e) {
-			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
-	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-	        throw e;
+			ExtentTestManager.getTest().log(Status.PASS,
+					"Expected result --> Page redirects to 'Add New User' page showing Executive ID, Name, Email, Phone number field, Role Type dropdown, Close and Submit buttons are visible.");
+			Log.info(
+					"Expected result --> Page redirects to 'Add New User' page showing Name, Email, Phone number fields, Role and Organization Type drop-downs, Close and Submit buttons are visible.");
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
 	}
-}
+
+	@Test(priority = 5)
+	public void Add_User_Page_Empty_Save_Attempt() throws Throwable {
+		try {
+			User_UserManagementPage.ClickAddNewUserCloseBtn();
+			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+			boolean flag27 = User_UserManagementPage.ClickAddNewUserSubmitBtn();
+			ExtentTestManager.getTest().log(Status.PASS,
+					"1. Leave Executive ID, Name, Email, Phone number fields empty on");
+			ExtentTestManager.getTest().log(Status.PASS, "2. Do not select any option for Role type dropdown");
+			ExtentTestManager.getTest().log(Status.PASS, "3.Clicked AddNewUser SubmitBtn : " + flag27);
+			Log.info("Clicked AddNewUser SubmitBtn : " + flag27);
+			// ExtentTestManager.getTest().log(Status.PASS, "3. Click on Submit button");
+			boolean flag28 = User_UserManagementPage.ErrormessageforAdduserPage();
+			ExtentTestManager.getTest().log(Status.PASS,
+					"4. Error messages: \"Executive ID is required\", \"Name is required\", \"Email is required\", \"Phone number is required\", \"Role is required\" are displayed under corresponding fields : "
+							+ flag28);
+			Log.info("Error message for AdduserPage displayed : " + flag28);
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+
 @Test(priority = 6, dataProvider = "TestData")
 public void Add_new_user_page__Enter_inputs_for_ExecutiveID (Map<Object, Object> testdata, ITestContext context) throws Throwable {
 	try {
@@ -305,28 +326,52 @@ public void Check_for_Newly_created_User_In_the_Grid (Map<Object, Object> testda
 	        throw e;
 	}
 }
+//	@Test(priority = 13, dataProvider = "TestData")
+//	public void ExecutiveID_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
+//		try {
+//			User_UserManagementPage.SelectSecurityManagementMenu();
+//			User_UserManagementPage.ClickUserManagementPageAddUserBtn();
+//			User_UserManagementPage.ECPValidationAlphabets();
+//			if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
+//				{
+//					String value1 = testdata.get("ExecutiveID").toString();
+//				    User_UserManagementPage.EnterUserManagementExecutiveID(value1);
+//				}
+//				ExtentTestManager.getTest().log(Status.PASS, "ExecutiveID is entered successfully");
+//			User_UserManagementPage.ClickAddNewUserSubmitBtn();
+//			ExtentTestManager.getTest().log(Status.PASS,"Expected result --> The Executive ID field must throw an error message");
+//			User_UserManagementPage.ClickAddNewUserCloseBtn();
+//		} catch (AssertionError | Exception e) {
+//			String testName = new Object() {
+//			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+//			ExtentTestManager.getTest().log(Status.FAIL,
+//					"Test Failed in method: " + testName + " --> " + e.getMessage());
+//			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+//			throw e;
+//		}
+//	}
 
-@DataProvider(name = "TestData")
-public static Object[][] gettestdate() throws IOException {
+	@DataProvider(name = "TestData")
+	public static Object[][] gettestdate() throws IOException {
 
-	Object[][] objectarry = null;
-	java.util.List<Map<String, String>> completedata = com.Utility.ExcelReader.getdata();
+		Object[][] objectarry = null;
+		java.util.List<Map<String, String>> completedata = com.Utility.ExcelReader.getdata();
 
-	objectarry = new Object[completedata.size()][1];
+		objectarry = new Object[completedata.size()][1];
 
-	for (int i = 0; i < completedata.size(); i++) {
-		objectarry[i][0] = completedata.get(i);
+		for (int i = 0; i < completedata.size(); i++) {
+			objectarry[i][0] = completedata.get(i);
+		}
+		return objectarry;
 	}
-	return objectarry;
-}
-@AfterClass
-public void AfterClass() {
-     ExtentManager.getInstance().flush();
-//  // Close the browser
-//        if (driver != null) {
-//            driver.quit();
-//        }
- }
+
+	@AfterClass
+	public void AfterClass() {
+		ExtentManager.getInstance().flush();
+  // Close the browser
+        if (driver != null) {
+            driver.quit();
+        }
+	}
 
 }
-
