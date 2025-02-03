@@ -105,7 +105,7 @@ public class CallCentre_Locators {
 	public By ClearUserManagementPageRole = By.xpath("//i[@class='rz-dropdown-clear-icon rzi rzi-times']");
 	public By AddUserSpinner = By.xpath("//*[contains(@class,'mycard-header')]//*[@class='spinner']");
 	public static By UserMgmtSpinner = By.xpath("//div[@class=\"table-wrapper-inner\"]//div[@class=\"spinner\"]");
-	public static By AddUserMgmtSpinner = By.xpath("//body/div[@id=\"app\"]/div[2]");
+	public static By AddUserMgmtSpinner = By.xpath("//div[@class=\"table-wrapper-inner\"]//div[@class=\"spinner\"]");
 	public By UserManagementSpinner = By.xpath("(//*[contains(@class,card-header)]//*[@class='spinner']) [1]");
 	public By loginSelectionSpinner = By.xpath("//div[@class='spinner']");
 	public By RoleFirstOption = By.xpath("(//li[@aria-label='>!@']) [1]");

@@ -2,7 +2,6 @@ package CallCentre.UserManagement;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -37,14 +36,14 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 		// CallCentre_Locators.UserMgmtSpinner);
 		Common.fluentWait("SecurityManagementMenu", CallCentre_Locators.SecurityManagementMenu);
 		// PageRepository.SecurityManagementMenu);
-		click(PageRepository.SecurityManagementMenu);
+		click(CallCentre_Locators.SecurityManagementMenu);
 		return true;
 	}
 
 	public boolean SelectUserManagementMenu() throws InterruptedException {
 //		Common.waitForSpinnerToDisappear("Loading Spinner", CallCentre_Locators.UserMgmtSpinner);
 		Common.fluentWait("UserManagementMenu", CallCentre_Locators.UserManagementMenu);
-		click(PageRepository.UserManagementMenu);
+		click(CallCentre_Locators.UserManagementMenu);
 		// Common.waitForSpinnerToDisappear("Loading Spinner",
 		// PageRepository.moduleSelectionSpinner);
 		return true;
@@ -91,7 +90,7 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 	}
 
 	public boolean UserManagementSearchBtn() throws InterruptedException {
-		click(PageRepository.UserManagementPageSearch);
+		click(CallCentre_Locators.UserManagementPageSearch);
 		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
 		Common.fluentWait("Previous button", PageRepository.UserPrevious);
 		return true;
@@ -228,7 +227,7 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 		ElementDisplayed(PageRepository.AddNewUserRole);
 		// ElementDisplayed(PageRepository.AddNewUserOrganizationType);
 		ElementDisplayed(PageRepository.AddNewUserCloseBtn);
-		ElementDisplayed(PageRepository.AddNewUserSubmitBtn);
+		ElementDisplayed(CallCentre_Locators.AddNewUserSubmitBtn);
 		ExtentTestManager.getTest().log(Status.INFO, " All elements of Add new user page displayed");
 		return true;
 	}
@@ -245,14 +244,14 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 		}
 	}
 
-	public boolean EnterUserManagementExecutiveIDDup(String ExecutiveID) throws InterruptedException {
+	public boolean EnterUserManagementExecutiveID_Dup(String ExecutiveIDDup) throws InterruptedException {
 		try {
 			// Common.waitForSpinnerToDisappear("Loading Spinner",
 			// PageRepository.loginSelectionSpinner);
 			Common.fluentWait("UserManagementaddExecutiveID", CallCentre_Locators.UserManagementaddExecutiveID);
 			Thread.sleep(2000);
 //			System.out.println("Executive ID: " + ExecutiveID);
-			input(CallCentre_Locators.UserManagementaddExecutiveID, ExecutiveID);
+			input(CallCentre_Locators.UserManagementaddExecutiveID, ExecutiveIDDup);
 			return true;
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
@@ -270,9 +269,9 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 		}
 	}
 
-	public boolean EnterAddNewUserNameDup(String Name) throws InterruptedException {
+	public boolean EnterAddNewUserNameDup(String NameDup) throws InterruptedException {
 		try {
-			input(PageRepository.AddNewUserNameBtn, Name);
+			input(PageRepository.AddNewUserNameBtn, NameDup);
 			return true;
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
@@ -299,10 +298,9 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 		}
 	}
 
-	public boolean EnterAddNewUserEmailDup(String Email) throws InterruptedException {
+	public boolean EnterAddNewUserEmailDup(String EmailDup) throws InterruptedException {
 		try {
-			input(PageRepository.AddNewUserEmailBtn, Email);
-
+			input(PageRepository.AddNewUserEmailBtn, EmailDup);
 			return true;
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
@@ -313,7 +311,6 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 	public boolean EnterAddNewUserPhoneNumber(String Phone) throws InterruptedException {
 		try {
 			input(PageRepository.AddNewUserPhoneNumberBtn, Phone);
-
 			return true;
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
@@ -321,10 +318,9 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 		}
 	}
 
-	public boolean EnterAddNewUserPhoneNumberDup(String Phone) throws InterruptedException {
+	public boolean EnterAddNewUserPhoneNumberDup(String PhoneDup) throws InterruptedException {
 		try {
-			input(PageRepository.AddNewUserPhoneNumberBtn, Phone);
-
+			input(PageRepository.AddNewUserPhoneNumberBtn, PhoneDup);
 			return true;
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
@@ -347,13 +343,28 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 		}
 	}
 
-	public boolean isUserPresentInGrid(String value2) throws InterruptedException {
-//		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
-//		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
+	public void SelectRole(WebDriver driver) throws InterruptedException {
+		try {
+//			Common.fluentWait("NewUserRoleType", PageRepository.NewUserRoleType);
+			click(PageRepository.NewUserRoleType);
+			List<WebElement> dropdownValues = driver.findElements(PageRepository.RoleDropdownValues);
+			for (WebElement values : dropdownValues) {
+//				if (values.getText().equals("CallCentreRole")) {
+				values.click();
+			}
+//			}
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
+	}
+
+	public boolean isUserPresentInGrid(String value, WebDriver driver) throws InterruptedException {
+		Common.waitForSpinnerToDisappear("Loading Spinner", CallCentre_Locators.AddUserMgmtSpinner);
 		Common.fluentWait("UserGridRow", PageRepository.UserGridRow);
 		WebElement ExecutiveID = driver.findElement(PageRepository.UserGridRow);
 		String ID = ExecutiveID.getText();
-		if (ID.equals(value2)) {
+		System.out.println("Executive ID: " + ID);
+		if (value.equals(ID)) {
 			return true;
 		} else {
 			return false;
@@ -440,7 +451,6 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 
 	public void ECPValidationExecutiveID(WebDriver driver) throws InterruptedException {
 		try {
-//			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserMgmtSpinner);
 			WebElement nameField = driver.findElement(PageRepository.AddNewUserNameBtn);
 			nameField.clear();
 			nameField.sendKeys("John Doe");
@@ -454,21 +464,27 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 			phoneField.sendKeys("1234567890");
 
 			WebElement executiveIdField = driver.findElement(CallCentre_Locators.UserManagementaddExecutiveID);
-			Common.fluentWait("UserManagementaddExecutiveID", PageRepository.UserManagementaddExecutiveID);
+			Common.fluentWait("UserManagementaddExecutiveID", CallCentre_Locators.UserManagementaddExecutiveID);
 			executiveIdField.clear();
 //			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserMgmtSpinner);
+			Thread.sleep(1000);
 			executiveIdField.sendKeys("ABCDEF");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"Alphabetic input, the system throws an error message on the ExecutiveID field");
 			executiveIdField.clear();
 //			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserMgmtSpinner);
+			Thread.sleep(1000);
 			executiveIdField.sendKeys("ABC123");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"AlphaNumeric input, the system throws an error message on the ExecutiveID field");
 			executiveIdField.clear();
+			Thread.sleep(1000);
 			executiveIdField.sendKeys("532344");
+			Common.fluentWait("AddNewUserSubmitBtn", CallCentre_Locators.AddNewUserSubmitBtn);
+			click(CallCentre_Locators.AddNewUserSubmitBtn);
 			ExtentTestManager.getTest().log(Status.PASS,
 					"Numeric input, the system accepts the input on the ExecutiveID field");
+
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}
@@ -485,15 +501,18 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 			Common.fluentWait("AddNewUserNameBtn", PageRepository.AddNewUserNameBtn);
 			nameField.clear();
 //			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserMgmtSpinner);
+			Thread.sleep(1000);
 			nameField.sendKeys("532344");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.1 Numeric input, the system throws an error message on the Name field");
 			nameField.clear();
 //			Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserMgmtSpinner);
+			Thread.sleep(1000);
 			nameField.sendKeys("ABC123");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.2 Alphanumeric input, the system throws an error message on the Name field");
 			nameField.clear();
+			Thread.sleep(1000);
 			nameField.sendKeys("ABCDEFGH");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.3 Alphabetic input, the system accepts the input on the ExecutiveID field");
@@ -517,6 +536,16 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 			executiveIdField.clear();
 			executiveIdField.sendKeys("53556");
 
+			click(PageRepository.AddNewUserNameBtn);
+			WebElement executiveIdValidationmsg = driver
+					.findElement(By.xpath("//label[text()='Email']/following-sibling::div"));
+			String Validationmsg = executiveIdValidationmsg.getText();
+			if (Validationmsg.equals("Invalid Executice ID")) {
+				ExtentTestManager.getTest().log(Status.PASS, "Validation displayed");
+			} else {
+				ExtentTestManager.getTest().log(Status.FAIL, "Validation NOT displayed");
+			}
+
 			WebElement nameField = driver.findElement(PageRepository.AddNewUserNameBtn);
 			nameField.clear();
 			nameField.sendKeys("New Rojer");
@@ -524,14 +553,17 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 			WebElement emailField = driver.findElement(PageRepository.AddNewUserEmailBtn);
 			Common.fluentWait("AddNewUserEmailBtn", PageRepository.AddNewUserEmailBtn);
 			emailField.clear();
+			Thread.sleep(1000);
 			emailField.sendKeys("johndttttttttoe@example.com");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.1 Alphabetic input, the system accepts the input on the Email ID field");
 			emailField.clear();
+			Thread.sleep(1000);
 			emailField.sendKeys("johnd55ttoe@example.com");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.2 Alphanumeric input, the system accepts the input on the Email ID field");
 			emailField.clear();
+			Thread.sleep(1000);
 			emailField.sendKeys("666666565656@example.com");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.3 Numeric input, the system accepts the input on the Email ID field");
@@ -562,14 +594,17 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 			WebElement phoneField = driver.findElement(PageRepository.AddNewUserPhoneNumberBtn);
 			Common.fluentWait("AddNewUserPhoneNumberBtn", PageRepository.AddNewUserPhoneNumberBtn);
 			phoneField.clear();
+			Thread.sleep(1000);
 			phoneField.sendKeys("123455AAAA");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.1 Alphanumeric input, the system throws an error message on the Phone Number field");
 			phoneField.clear();
+			Thread.sleep(1000);
 			phoneField.sendKeys("RRRYYYAAAA");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.2 Alphabetic input, the system throws an error message  on the Phone Number field");
 			phoneField.clear();
+			Thread.sleep(1000);
 			phoneField.sendKeys("3455553232");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1.3 Numeric input, the system accepts the input on the Phone Number field");
@@ -601,7 +636,7 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 	public boolean ClickAddNewUserSubmitBtn() throws InterruptedException {
 //		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.AddUserSpinner);
 		Common.fluentWait("AddNewUserSubmitBtn", CallCentre_Locators.AddNewUserSubmitBtn);
-		click(PageRepository.AddNewUserSubmitBtn);
+		click(CallCentre_Locators.AddNewUserSubmitBtn);
 		return true;
 	}
 
@@ -798,7 +833,7 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 	}
 
 	public boolean SelectUserManagementPageRole(String value) throws InterruptedException {
-		SelectActiveDropdown(PageRepository.UserManagementPageRole, value);
+		SelectActiveDropdown(CallCentre_Locators.UserManagementPageRole, value);
 		return true;
 	}
 
@@ -809,7 +844,7 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 	}
 
 	public boolean ClickUserManagementPageSearchBtn() throws InterruptedException {
-		click(PageRepository.UserManagementPageSearch);
+		click(CallCentre_Locators.UserManagementPageSearch);
 		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
 		Common.fluentWait("Previous button", PageRepository.UserPrevious);
 		Thread.sleep(6000);
@@ -869,7 +904,7 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 
 	public boolean DisplayDeactivateRedStatus() throws InterruptedException {
 		click(PageRepository.UserManagementPageActiveUnCheck);
-		click(PageRepository.UserManagementPageSearch);
+		click(CallCentre_Locators.UserManagementPageSearch);
 		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
 		Thread.sleep(2000);
 		ElementDisplayed(PageRepository.DeactivateRedStatus);
@@ -893,7 +928,7 @@ public class CallCentre_UserManagement_Page extends Base_Class {
 
 	public boolean DisplayActivateGreenStatus() throws InterruptedException {
 		click(PageRepository.UserManagementPageActiveCheck);
-		click(PageRepository.UserManagementPageSearch);
+		click(CallCentre_Locators.UserManagementPageSearch);
 		Common.waitForSpinnerToDisappear("Loading Spinner", PageRepository.UserManagementSpinner);
 		ElementDisplayed(PageRepository.ActivateGreenStatus);
 		ExtentTestManager.getTest().log(Status.PASS, "Green Status is displayed");
