@@ -783,16 +783,26 @@ public class UserManagement_Page extends Base_Class
 			SuccessMessage();
 			Log.info("User creation success message validation");
 			
-			String message = GetUserNameandPassowrd();
+			/*String message = GetUserNameandPassowrd();
 			System.out.println(message);
-			Log.info(message);
+			Log.info(message);*/
+			
+			Common.fluentWait("GetUserNameandPassowrd_SuccessAlertForUserCreation", PageRepository.SuccessAlertForUserCreation);
+			Thread.sleep(5000);
+	    	String UserCred = driver.findElement(PageRepository.SuccessAlertForUserCreation).getText();
+	    	if (UserCred == null || UserCred.trim().isEmpty()) {
+	    	    System.out.println("No visible text in the element");
+	    	}else {
+	    	    System.out.println("Message: " + UserCred);
+	    	}
+	    	Log.info(UserCred);
 			
 			//Save newly created userID and password into data file for future use
-			Base_Class.ExtractImportantContentFromASentenceInternalUse(driver,message,59,69);
+			Base_Class.ExtractImportantContentFromASentenceInternalUse(driver,UserCred,59,69);
 			String HO_USERID =  Base_Class.SplitString;
 			System.out.println(HO_USERID);
 			
-			Base_Class.ExtractImportantContentFromASentenceInternalUse(driver,message,73,79);
+			Base_Class.ExtractImportantContentFromASentenceInternalUse(driver,UserCred,73,79);
 			String HO_USER_PASSWORD =  Base_Class.SplitString;
 			System.out.println(HO_USER_PASSWORD);
 			Log.info("HO_USERID: "+HO_USERID);
