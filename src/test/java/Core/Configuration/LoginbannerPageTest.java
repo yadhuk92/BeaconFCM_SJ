@@ -21,6 +21,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.BasePackage.Base_Class;
+import com.BasePackage.Common;
 import com.BasePackage.Login_Class;
 import com.Page_Repository.LoginBannerConfiRepo;
 import com.Page_Repository.LoginPageRepo;
@@ -173,27 +174,26 @@ public class LoginbannerPageTest {
         
        //Click on Usertypedropdown and validate the dropdown values
         
-        @Test(priority = 4,dataProvider="TestData")
-        public void SelectInternalUserType(Map<Object, Object> testdata) throws Throwable {
+        @Test(priority = 4)
+        public void SelectInternalUserType() throws Throwable {
         	 
-        	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+        	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 	    	 wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
         	try
        	{
-        		
-       	
-       		ExtentTestManager.getTest().log(Status.PASS,"1.Click on Usertype dropdown");
+    		ExtentTestManager.getTest().log(Status.PASS,"1.Click on Usertype dropdown");
         		loginbanner.clickuserdropdown();
         		ExtentTestManager.getTest().log(Status.PASS,"2.Internal user , call centre user , collection agency user displayed in dropdown ");
         		
-               if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
+//               if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
             	   
-        		String usertype=testdata.get("UserType").toString();
-        		System.out.println(usertype);
-        		loginbanner.selectinternaluser(usertype);
+ //       		String usertype=testdata.get("UserType").toString();
+ //       		System.out.println(usertype);
+        		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
+        		loginbanner.selectinternaluser();
         		ExtentTestManager.getTest().log(Status.PASS, "3.\"Internal user\" is selected in the user type field.");
                 
-            }
+           
           	}
            catch(AssertionError|Exception e) {
                		
@@ -203,12 +203,10 @@ public class LoginbannerPageTest {
        		        throw e;
        	    	}
                }
- 
-
 	// Select Banner Type
-        @Test (priority=5,enabled=false)
+        @Test (priority=5)
         public void SelectInformationtype() throws InterruptedException {
-        	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(30));
+        	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
         	try
         	{
            ExtentTestManager.getTest().log(Status.PASS, "1.Click on \"Bannertype dropdown\"");
@@ -216,6 +214,7 @@ public class LoginbannerPageTest {
         
         //select Information from bannertype dropdown	
         	   ExtentTestManager.getTest().log(Status.PASS, "Expected result-2. Select \"Information\" from the ' Banner Type' dropdown.");
+        	   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(200));
         	   loginbanner.clickInfo();
         	   ExtentTestManager.getTest().log(Status.PASS, "Actual result-\"Information\" is selected in the banner type field.");
         	}
@@ -229,15 +228,18 @@ public class LoginbannerPageTest {
         }
      
        //select Header1 from Section dropdown
-        @Test(priority=6,enabled=false)
+        @Test(priority=6)
         public void SelectHeader1() throws InterruptedException {
-        	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	
+        	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(200));
         	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+//        	Common.fluentWait("wait till spinner to dissappear", PageRepository.spinner);
+        	
         	try
         	{
         	ExtentTestManager.getTest().log(Status.PASS, "1.Click on Section Dropdown");
         	loginbanner.clickSectiondropdown();
-        	WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
         	//select Header1 
         	ExtentTestManager.getTest().log(Status.PASS, "Expected Result-2.Select Header1 from Section dropdown");
         	loginbanner.selectheader1();
@@ -252,7 +254,7 @@ public class LoginbannerPageTest {
 	    	}
         }      	
         //Enter Heading
-        @Test(priority=7,dataProvider="TestData",enabled=false)
+        @Test(priority=7,dataProvider="TestData")
         public void InputHeadingField(Map<Object, Object> testdata) {
         	try {
         		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
@@ -269,7 +271,7 @@ public class LoginbannerPageTest {
         	  // Assert that the entered text length does not exceed 35 characters
         	
               Assert.assertTrue(ActualInput.length()<=35); 
-              ExtentTestManager.getTest().log(Status.PASS, "Actaul result-2.Entered Headingfield input is less than 35 character");
+              ExtentTestManager.getTest().log(Status.PASS, "Actaul result-2.Entered input in Headingfield  is less than 35 character");
           
         }
         	}
@@ -284,7 +286,7 @@ public class LoginbannerPageTest {
         }
         
         //Enter Details
-        @Test(priority=8,dataProvider="TestData",enabled=false)
+        @Test(priority=8,dataProvider= "TestData")
         public void InputDetailField( Map<Object,Object> testdata) {
         	try
         	{
@@ -295,11 +297,11 @@ public class LoginbannerPageTest {
         		
         			ExtentTestManager.getTest().log(Status.PASS, "Expected result-Input an alphanumeric  line in the 'Detail' field with max length of 35");
         			Assert.assertEquals("Detailtextinput does not match expected text",ExpectedAlphaNumericInput,ActualInput);
-        			ExtentTestManager.getTest().log(Status.PASS, "Actual result-1.Alphanumeric line of data is entered in the heading field ");
+        			ExtentTestManager.getTest().log(Status.PASS, "Actual result-1.Alphanumeric line of data is entered in the detail field ");
         			// Assert that the entered text length does not exceed 35 characters
                 	
                     Assert.assertTrue(ActualInput.length()<=35); 
-                    ExtentTestManager.getTest().log(Status.PASS, "Actual result-2.Entered Headingfield input is less than 35 character");
+                    ExtentTestManager.getTest().log(Status.PASS, "Actual result-2.Entered input for detailfield is less than 35 character");
                 
         	}
         }
@@ -313,12 +315,24 @@ public class LoginbannerPageTest {
         }
         
        //Submit the details by clicking on Submit button 
-        @Test(priority=9,enabled=false)
-        public void clicksubmitbutton() throws InterruptedException {
+        @Test(priority=9)
+        public void Clicksubmitbutton() throws InterruptedException {
+        	try
+        	{
         	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(60));
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Submit button");
         	loginbanner.clicksubmit();
-             	
-        }
+        	} 	
+    	catch(AssertionError|Exception e) {
+	    		
+	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+	    	}
+	        
+	    }
+        
         
         
         @DataProvider(name = "TestData")

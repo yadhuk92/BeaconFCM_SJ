@@ -1,5 +1,7 @@
 package Core.Configurations;
 
+import static org.testng.Assert.assertTrue;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,22 +97,22 @@ public class LoginbannerPage extends Base_Class{
        userTypes.contains("Collection Agency");
        return true;
    }
-   
-
-
+ 
 //Method to select 'Internal User'option from Usertype dropdown
-   public String selectinternaluser(String str) throws InterruptedException {
-	   WebElement usertypesearch=driver.findElement(Page_Repository.usertypesearch);
-	   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
-  
-//  	   WebElement usertypesearchbtn = wait.until(ExpectedConditions.visibilityOfElementLocated(Page_Repository.usertypesearch));
-//	   WebElement usertypesearch=driver.findElement(Page_Repository.usertypesearch);
-	   usertypesearch.click();
-	   usertypesearch.sendKeys(str);
-	return str;   
-	     
-	
-   }
+   public  boolean selectinternaluser() throws InterruptedException {
+	   List<WebElement> usertypeoptionvalue=driver.findElements(Page_Repository.UserTypeallvalues);
+	   
+	   for(WebElement wb:usertypeoptionvalue)
+	   {
+		   if(wb.getText().contains("Internal User"))
+		   {
+			   wb.click();
+			   return true;
+		   }
+	   }
+
+	return false;   
+ }
 
    //Method click on Bannertypedropdown
    public boolean clickBannertypedropdown() throws InterruptedException{
@@ -121,11 +123,12 @@ public class LoginbannerPage extends Base_Class{
    //Select Information/hyperlink from bannertype dropdown
    public boolean clickInfo() {
 	   List<WebElement> allvalueofbannertype=driver.findElements(Page_Repository.Bannertypeallvalue);
-	   List <String> str=new ArrayList();
+//	   List <String> str=new ArrayList();
 	   for(WebElement wb: allvalueofbannertype)
 	   {
 		   if(wb.getText().contains("Information"))
 		   {
+//			   wb.isDisplayed();
 			   wb.click();
 			   return true;
 		   }
@@ -141,15 +144,16 @@ public class LoginbannerPage extends Base_Class{
    //select header1 from section dropdown
    public boolean selectheader1() throws InterruptedException {
 	   List<WebElement> headers=driver.findElements(Page_Repository.Sectionallvalue);
-	   List <String> str=new ArrayList();
+//	   List <String> str=new ArrayList();
+	   
 	   for(WebElement wb:headers)
 	   {
 		   if(wb.getText().contains("Header1"))
+			   
 		   {
-			   wb.isDisplayed();
-			   driver.wait(60);
-			   wb.click();
-			   wb.isSelected();
+			   System.out.println(wb.getText());
+               wb.click();
+//			   wb.isSelected();
 		   }
 		   return true;
 	   }

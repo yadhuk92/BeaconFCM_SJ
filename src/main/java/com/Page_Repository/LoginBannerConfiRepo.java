@@ -1,6 +1,6 @@
 package com.Page_Repository;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.By;import org.openqa.selenium.WebElement;
 
 public class LoginBannerConfiRepo {
 	public By configurationmenu=By.xpath("//span[text()='Configurations']");
@@ -15,8 +15,6 @@ public class LoginBannerConfiRepo {
     public By searchbutton=By.xpath("//button[text()='Search']");
     public By resetbutton=By.xpath("//button[text()='Reset']");
     public By warningmsg=By.xpath("(//div[@class='rz-growl-message']/p)");
-    public By internaluser=By.xpath("//li[@role='option' and @aria-label='>Internal User']");
-    public By usertypesearch=By.xpath("(//input[@class='rz-dropdown-filter rz-inputtext   ' and @type='text'])[3]");
     public By UserTypeallvalues=By.xpath("//div[@class='rz-dropdown-panel rz-popup']//li");
     public By Bannertypeallvalue=By.xpath("//div[@class='rz-dropdown-panel rz-popup']//li");
     public By Sectionallvalue=By.xpath("//div[@class='rz-dropdown-panel rz-popup']//li");
