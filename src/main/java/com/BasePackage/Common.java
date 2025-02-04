@@ -59,6 +59,24 @@ public class Common {
             }
         });
     }
+    
+    public static void waitForSpinnerToDisappear2(WebDriver driver, String WebElementName, By element) {
+        // Define the FluentWait
+        FluentWait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(60)) // Maximum wait time
+                .pollingEvery(Duration.ofMillis(500)) // Polling interval
+                .ignoring(Exception.class); // Ignore exceptions like NoSuchElementException
+
+        // Wait until the spinner disappears
+        wait.until(driverInstance -> {
+            try {
+                WebElement spinner = driverInstance.findElement(element);
+                return !spinner.isDisplayed(); // Return true if spinner is not displayed
+            } catch (Exception e) {
+                return true; // Return true if spinner is not found
+            }
+        });
+    }
 
     public static WebElement waitForElementToBeClickable(WebDriver driver, By locator, Duration timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
