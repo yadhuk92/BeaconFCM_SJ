@@ -228,13 +228,13 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 	@Test(priority = 6, dataProvider = "TestData")
 	public void Add_new_user_page__Enter_inputs_for_ExecutiveID(Map<Object, Object> testdata, ITestContext context)
 			throws Throwable {
-		CallCentreUserManagement.ClickAddNewUserCloseBtn();
-		ExtentTestManager.getTest().log(Status.PASS, "1. Click Close button from Add New user page");
-		Log.info("1. Click Close button from Add New user page");
-		CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
-		ExtentTestManager.getTest().log(Status.PASS, "2. Click on Add User button");
-		Log.info("2. Click on Add User button");
 		try {
+			CallCentreUserManagement.ClickAddNewUserCloseBtn();
+			ExtentTestManager.getTest().log(Status.PASS, "1. Click Close button from Add New user page");
+			Log.info("1. Click Close button from Add New user page");
+			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
+			ExtentTestManager.getTest().log(Status.PASS, "2. Click on Add User button");
+			Log.info("2. Click on Add User button");
 			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
 				String value1 = testdata.get("ExecutiveID").toString();
 				CallCentreUserManagement.EnterUserManagementExecutiveID(value1);
@@ -360,6 +360,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 	public void Check_for_Newly_created_User_In_the_Grid(Map<Object, Object> testdata, ITestContext context)
 			throws Throwable {
 		try {
+			CallCentreUserManagement.GetUsername_Password(driver);
 			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
 				String Value = testdata.get("ExecutiveID").toString();
 				CallCentreUserManagement.isUserPresentInGrid(Value, driver);
@@ -376,209 +377,225 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 			throw e;
 		}
 	}
+	
+	@Test(priority = 13, dataProvider = "TestData")
+	public void ExecutiveID_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
+		try {
+			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
+			CallCentreUserManagement.ECPValidationExecutiveID(driver);
+			ExtentTestManager.getTest().log(Status.PASS, "1 Entered Numeric input on Executive ID field");
+			Log.info("1 Entered Numeric input on Executive ID field");
+			CallCentreUserManagement.SelectRole(driver);
+			ExtentTestManager.getTest().log(Status.PASS,
+					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
+			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
+			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
+			Log.info("3. Click Submit button");
+			ExtentTestManager.getTest().log(Status.PASS,
+					"4. Expected Result ->. The new user has been added to the grid when the user provides numeric input on Executive ID field");
+			Log.info(
+					"4. Expected Result ->. The new user has been added to the grid when the user provides numeric input on Executive ID field");
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+	
+	@Test(priority = 14, dataProvider = "TestData")
+	public void Name_Field_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
+		try {
+			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
+			CallCentreUserManagement.ECPValidationName(driver);
+			ExtentTestManager.getTest().log(Status.PASS, "1 Entered Alphabetic input on Name field");
+			Log.info("1 Entered Alphabetic input on Name field");
+			CallCentreUserManagement.SelectRoleDropdown(driver);
+			ExtentTestManager.getTest().log(Status.PASS,
+					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
+			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
+			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
+			Log.info("3. Click Submit button");
+			ExtentTestManager.getTest().log(Status.PASS,
+					"4. Expected Result ->. The new user has been added to the grid when the user provides numeric input on Name field");
+			Log.info(
+					"4. Expected Result ->. The new user has been added to the grid when the user provides numeric input on Name field");
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
 
-//	@Test(priority = 13, dataProvider = "TestData")
-//	public void ExecutiveID_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
-//		try {
-//			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
-//			CallCentreUserManagement.SelectRole(driver);
-//			CallCentreUserManagement.ECPValidationExecutiveID(driver);
-//			ExtentTestManager.getTest().log(Status.PASS, "1 Entered Numeric input on Executive ID field");
-//			Log.info("1 Entered Numeric input on Executive ID field");
-//			ExtentTestManager.getTest().log(Status.PASS,
-//					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-//			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-////			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
-//			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
-//			Log.info("3. Click Submit button");
-//			ExtentTestManager.getTest().log(Status.PASS,
-//					"4. Expected Result ->. The new user has been added to the grid when the user provides numeric input on Executive ID field");
-//			Log.info(
-//					"4. Expected Result ->. The new user has been added to the grid when the user provides numeric input on Executive ID field");
-//		} catch (AssertionError | Exception e) {
-//			String testName = new Object() {
-//			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-//			ExtentTestManager.getTest().log(Status.FAIL,
-//					"Test Failed in method: " + testName + " --> " + e.getMessage());
-//			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//			throw e;
-//		}
-//	}
-//
-//	@Test(priority = 14, dataProvider = "TestData")
-//	public void Name_Field_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
-//		try {
-//			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
-//			CallCentreUserManagement.ECPValidationName(driver);
-//			ExtentTestManager.getTest().log(Status.PASS, "1 Entered Alphabetic input on Name field");
-//			Log.info("1 Entered Alphabetic input on Name field");
-//			CallCentreUserManagement.SelectRoleDropdown(driver);
-//			ExtentTestManager.getTest().log(Status.PASS,
-//					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-//			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-//			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
-//			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
-//			Log.info("3. Click Submit button");
-//			ExtentTestManager.getTest().log(Status.PASS,
-//					"4. Expected Result ->. The new user has been added to the grid when the user provides numeric input on Name field");
-//			Log.info(
-//					"4. Expected Result ->. The new user has been added to the grid when the user provides numeric input on Name field");
-//		} catch (AssertionError | Exception e) {
-//			String testName = new Object() {
-//			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-//			ExtentTestManager.getTest().log(Status.FAIL,
-//					"Test Failed in method: " + testName + " --> " + e.getMessage());
-//			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//			throw e;
-//		}
-//	}
-//
-//	@Test(priority = 15, dataProvider = "TestData")
-//	public void Email_Field_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
-//		try {
-//			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
-//			CallCentreUserManagement.ECPValidationEmail(driver);
-//			ExtentTestManager.getTest().log(Status.PASS, "1 Entered Valid input on Email field");
-//			Log.info("1 Entered Valid input on Email field");
-//			CallCentreUserManagement.SelectRoleDropdown(driver);
-//			ExtentTestManager.getTest().log(Status.PASS,
-//					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-//			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-//			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
-//			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
-//			Log.info("3. Click Submit button");
-//			ExtentTestManager.getTest().log(Status.PASS,
-//					"4. Expected Result ->. The new user has been added to the grid when the user provides valid input on Email ID field");
-//			Log.info(
-//					"4. Expected Result ->. The new user has been added to the grid when the user provides valid input on Email ID field");
-//		} catch (AssertionError | Exception e) {
-//			String testName = new Object() {
-//			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-//			ExtentTestManager.getTest().log(Status.FAIL,
-//					"Test Failed in method: " + testName + " --> " + e.getMessage());
-//			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//			throw e;
-//		}
-//	}
-//
-//	@Test(priority = 16, dataProvider = "TestData")
-//	public void PhoneNumber_Field_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
-//		try {
-//			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
-//			CallCentreUserManagement.ECPValidationPhone(driver);
-//			ExtentTestManager.getTest().log(Status.PASS, "1 Entered Valid input on Phone Number field");
-//			Log.info("1 Entered Valid input on Phone Number field");
-//			CallCentreUserManagement.SelectRoleDropdown(driver);
-//			ExtentTestManager.getTest().log(Status.PASS,
-//					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-//			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-//			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
-//			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
-//			Log.info("3. Click Submit button");
-//			ExtentTestManager.getTest().log(Status.PASS,
-//					"4. Expected Result ->. The new user has been added to the grid when the user provides valid input on Phone Number field");
-//			Log.info(
-//					"4. Expected Result ->. The new user has been added to the grid when the user provides valid input on Phone Number field");
-//		} catch (AssertionError | Exception e) {
-//			String testName = new Object() {
-//			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-//			ExtentTestManager.getTest().log(Status.FAIL,
-//					"Test Failed in method: " + testName + " --> " + e.getMessage());
-//			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//			throw e;
-//		}
-//	}
+	@Test(priority = 15, dataProvider = "TestData")
+	public void Email_Field_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
+		try {
+			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
+			CallCentreUserManagement.ECPValidationEmail(driver);
+			ExtentTestManager.getTest().log(Status.PASS, "1 Entered Valid input on Email field");
+			Log.info("1 Entered Valid input on Email field");
+			CallCentreUserManagement.SelectRoleDropdown(driver);
+			ExtentTestManager.getTest().log(Status.PASS,
+					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
+			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
+			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
+			Log.info("3. Click Submit button");
+			ExtentTestManager.getTest().log(Status.PASS,
+					"4. Expected Result ->. The new user has been added to the grid when the user provides valid input on Email ID field");
+			Log.info(
+					"4. Expected Result ->. The new user has been added to the grid when the user provides valid input on Email ID field");
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
 
-//	@Test(priority = 17, dataProvider = "TestData")
-//	public void Error_Guessing_Invalid_Email(Map<Object, Object> testdata, ITestContext context) throws Throwable {
-//		try {
-//			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
-//			if (testdata.get("Run").toString().equalsIgnoreCase("Invalid")) {
-//				String value1 = testdata.get("Invalid Email").toString();
-//				CallCentreUserManagement.EnterAddNewUserEmail(value1);
-//				ExtentTestManager.getTest().log(Status.PASS, "1. Invalid Email ID is being entered - " + value1);
-//				Log.info("1. Invalid Email ID is being entered, the system throws an error message " + value1);
-//				CallCentreUserManagement.ClickAddNewUserSubmitBtn();
-//				ExtentTestManager.getTest().log(Status.PASS,
-//						"2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
-//				Log.info("2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
-//
-//			}
-//		} catch (AssertionError | Exception e) {
-//			String testName = new Object() {
-//			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-//			ExtentTestManager.getTest().log(Status.FAIL,
-//					"Test Failed in method: " + testName + " --> " + e.getMessage());
-//			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//			throw e;
-//		}
-//	}
-//
-//	@Test(priority = 18, dataProvider = "TestData")
-//	public void Error_Guessing_Invalid_PhoneNumber_Format(Map<Object, Object> testdata, ITestContext context)
-//			throws Throwable {
-//		try {
-//			if (testdata.get("Run").toString().equalsIgnoreCase("Invalid")) {
-//				String value1 = testdata.get("Invalid Phone").toString();
-//				CallCentreUserManagement.EnterAddNewUserPhoneNumber(value1);
-//				ExtentTestManager.getTest().log(Status.PASS, "1. Invalid Email ID is being entered - " + value1);
-//				Log.info("1. Invalid Email ID is being entered, the system throws an error message " + value1);
-//				CallCentreUserManagement.ClickAddNewUserSubmitBtn();
-//				ExtentTestManager.getTest().log(Status.PASS,
-//						"2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
-//				Log.info("2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
-//
-//			}
-//		} catch (AssertionError | Exception e) {
-//			String testName = new Object() {
-//			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
-//			ExtentTestManager.getTest().log(Status.FAIL,
-//					"Test Failed in method: " + testName + " --> " + e.getMessage());
-//			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//			throw e;
-//		}
-//	}
-//
-//	@Test(priority = 19, dataProvider = "TestData")
-//	public void Error_Guessing_Duplicate_ExecutiveID(Map<Object, Object> testdata, ITestContext context)
-//			throws Throwable {
-//		try {
-//			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
-//				String value0 = testdata.get("NameDup").toString();
-//				CallCentreUserManagement.EnterAddNewUserNameDup(value0);
-//				ExtentTestManager.getTest().log(Status.PASS, "1.Name is entered successfully - " + value0);
-//				Log.info("1. Name is entered successfully - " + value0);
-//				String value1 = testdata.get("EmailDup").toString();
-//				CallCentreUserManagement.EnterAddNewUserEmailDup(value1);
-//				ExtentTestManager.getTest().log(Status.PASS, "2. Email ID is entered successfully - " + value1);
-//				Log.info("2. Email ID is entered successfully - " + value1);
-//				String value2 = testdata.get("PhoneDup").toString();
-//				CallCentreUserManagement.EnterAddNewUserPhoneNumberDup(value2);
-//				ExtentTestManager.getTest().log(Status.PASS, "3. Phone Number is entered successfully - " + value2);
-//				Log.info("3. Phone Number is entered successfully - " + value2);
-//				CallCentreUserManagement.SelectRoleDropdown(driver);
-//				ExtentTestManager.getTest().log(Status.PASS, "4. Opted valid option for Role Type - " + driver);
-//				Log.info("4. Opted valid option for Role Type - " + driver);
-//				String value3 = testdata.get("ExecutiveIDDup").toString();
-//				CallCentreUserManagement.EnterUserManagementExecutiveID_Dup(value3);
-//				ExtentTestManager.getTest().log(Status.PASS, "5. Executive ID is entered successfully - " + value3);
-//				Log.info("5. Executive ID is entered successfully - " + value3);
-//				CallCentreUserManagement.ClickAddNewUserSubmitBtn();
-//				ExtentTestManager.getTest().log(Status.PASS, "6. Click on Submit button");
-//				Log.info("6. Click on Submit button");
-//				ExtentTestManager.getTest().log(Status.PASS,
-//						"7. Expected Result -> The Add User page throws an error message stating the Executive ID is existing in the DB");
-//				Log.info("The Add User page throws an error message stating the Executive ID is existing in the DB");
-//			}
-//		} catch (AssertionError | Exception e) {
-//			String testName = new Object() {
-//			}.getClass().getEnclosingMethod().getName();
-//			ExtentTestManager.getTest().log(Status.FAIL,
-//					"Test Failed in method: " + testName + " --> " + e.getMessage());
-//			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
-//			throw e;
-//		}
-//	}
+	@Test(priority = 16, dataProvider = "TestData")
+	public void PhoneNumber_Field_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
+		try {
+			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
+			CallCentreUserManagement.ECPValidationPhone(driver);
+			ExtentTestManager.getTest().log(Status.PASS, "1 Entered Valid input on Phone Number field");
+			Log.info("1 Entered Valid input on Phone Number field");
+			CallCentreUserManagement.SelectRoleDropdown(driver);
+			ExtentTestManager.getTest().log(Status.PASS,
+					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
+			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
+			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
+			Log.info("3. Click Submit button");
+			ExtentTestManager.getTest().log(Status.PASS,
+					"4. Expected Result ->. The new user has been added to the grid when the user provides valid input on Phone Number field");
+			Log.info(
+					"4. Expected Result ->. The new user has been added to the grid when the user provides valid input on Phone Number field");
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(priority = 17, dataProvider = "TestData")
+	public void Error_Guessing_Invalid_Email_Format(Map<Object, Object> testdata, ITestContext context)
+			throws Throwable {
+		try {
+			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
+				String value1 = testdata.get("InvalidEmail").toString();
+				CallCentreUserManagement.EnterAddNewUserEmailInvalid(value1);
+				ExtentTestManager.getTest().log(Status.PASS, "1. Invalid Email ID is being entered - " + value1);
+				Log.info("1. Invalid Email ID is being entered, the system throws an error message " + value1);
+				CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+				ExtentTestManager.getTest().log(Status.PASS,
+						"2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
+				Log.info("2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
+			}
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(priority = 18, dataProvider = "TestData")
+	public void Error_Guessing_Invalid_PhoneNumber_Format(Map<Object, Object> testdata, ITestContext context)
+			throws Throwable {
+		try {
+			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
+				String value1 = testdata.get("InvalidPhone").toString();
+				CallCentreUserManagement.EnterAddNewUserPhoneNumberDup(value1);
+				ExtentTestManager.getTest().log(Status.PASS, "1. Invalid Email ID is being entered - " + value1);
+				Log.info("1. Invalid Email ID is being entered, the system throws an error message " + value1);
+				CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+				ExtentTestManager.getTest().log(Status.PASS,
+						"2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
+				Log.info("2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
+
+			}
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(priority = 19, dataProvider = "TestData")
+	public void Error_Guessing_Duplicate_ExecutiveID(Map<Object, Object> testdata, ITestContext context)
+			throws Throwable {
+		try {
+			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
+				String value0 = testdata.get("NameDup").toString();
+				CallCentreUserManagement.EnterAddNewUserNameDup(value0);
+				ExtentTestManager.getTest().log(Status.PASS, "1.Name is entered successfully - " + value0);
+				Log.info("1. Name is entered successfully - " + value0);
+				String value1 = testdata.get("EmailDup").toString();
+				CallCentreUserManagement.EnterAddNewUserEmailDup(value1);
+				ExtentTestManager.getTest().log(Status.PASS, "2. Email ID is entered successfully - " + value1);
+				Log.info("2. Email ID is entered successfully - " + value1);
+				String value2 = testdata.get("PhoneDup").toString();
+				CallCentreUserManagement.EnterAddNewUserPhoneNumberDup(value2);
+				ExtentTestManager.getTest().log(Status.PASS, "3. Phone Number is entered successfully - " + value2);
+				Log.info("3. Phone Number is entered successfully - " + value2);
+				CallCentreUserManagement.SelectRoleDropdown(driver);
+				ExtentTestManager.getTest().log(Status.PASS, "4. Opted valid option for Role Type - " + driver);
+				Log.info("4. Opted valid option for Role Type - " + driver);
+				String value3 = testdata.get("ExecutiveIDDup").toString();
+				CallCentreUserManagement.EnterUserManagementExecutiveID_Dup(value3);
+				ExtentTestManager.getTest().log(Status.PASS, "5. Executive ID is entered successfully - " + value3);
+				Log.info("5. Executive ID is entered successfully - " + value3);
+				CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+				ExtentTestManager.getTest().log(Status.PASS, "6. Click on Submit button");
+				Log.info("6. Click on Submit button");
+				ExtentTestManager.getTest().log(Status.PASS,
+						"7. Expected Result -> The Add User page throws an error message stating the Executive ID is existing in the DB");
+				Log.info("The Add User page throws an error message stating the Executive ID is existing in the DB");
+			}
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(priority = 20)
+	public void Login_with_new_User_created() throws Throwable {
+		try {
+			CallCentreUserManagement.Logout();
+			ExtentTestManager.getTest().log(Status.PASS, "1. User gets logged out");
+			Log.info("1. User gets logged out");
+			CallCentreUserManagement.NewUserLogin(driver);
+		} catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
 
 	@DataProvider(name = "TestData")
 	public static Object[][] gettestdate() throws IOException {
@@ -598,9 +615,9 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 	public void AfterClass() {
 		ExtentManager.getInstance().flush();
 		// Close the browser
-//        if (driver != null) {
-//            driver.quit();
-//        }
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 }

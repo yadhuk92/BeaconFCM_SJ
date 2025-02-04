@@ -10,6 +10,7 @@ public class CallCentre_Locators {
 			.xpath("//label[text()='Executive ID']//following-sibling::input[@type='search']");
 	public static By UserManagementaddExecutiveID = By
 			.xpath("//label[text()='Executive ID']//following-sibling::input[@name='Name']");
+	public static By UserManagementAddSpace = By.xpath("//div[@class='form-button justify-content-center']");
 	public static By UserManagementPageUsername = By.xpath("(//input[@class='searchinput form-control'])[1]");
 	public static By UserManagementPageRoleType = By.xpath("(//span[normalize-space()=CallCentreRole]");
 	public static By UserManagementPageName = By.xpath("(//input[@class='searchinput form-control']) [2]");
@@ -138,6 +139,7 @@ public class CallCentre_Locators {
 	public By RoleDropdownValues = By.xpath("//div[@class='rz-dropdown-panel rz-popup']/child::div[2]/ul/li/span");
 	public By UserGridTable = By.xpath("//table[@class='rz-grid-table rz-grid-table-fixed']");
 	public By UserGridRow = By.xpath("//tbody/tr[1]/td[3]/span");
+	public By PwdText = By.xpath("//div[@class=\"alert alert-success alert-dismissible\"]/strong");
 
 	public By RoleDDLSearchedValue(String RoleName) {
 		String xpathExpression;
