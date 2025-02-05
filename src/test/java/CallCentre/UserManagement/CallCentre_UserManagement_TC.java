@@ -377,7 +377,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 			throw e;
 		}
 	}
-	
+
 	@Test(priority = 13, dataProvider = "TestData")
 	public void ExecutiveID_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
 		try {
@@ -389,7 +389,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 			ExtentTestManager.getTest().log(Status.PASS,
 					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
 			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+			CallCentreUserManagement.ClickAddNewUserSubmitBtnECP();
 			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
 			Log.info("3. Click Submit button");
 			ExtentTestManager.getTest().log(Status.PASS,
@@ -405,7 +405,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 			throw e;
 		}
 	}
-	
+
 	@Test(priority = 14, dataProvider = "TestData")
 	public void Name_Field_ECP_Validations(Map<Object, Object> testdata) throws Throwable {
 		try {
@@ -417,7 +417,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 			ExtentTestManager.getTest().log(Status.PASS,
 					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
 			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+			CallCentreUserManagement.ClickAddNewUserSubmitBtnECP();
 			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
 			Log.info("3. Click Submit button");
 			ExtentTestManager.getTest().log(Status.PASS,
@@ -445,7 +445,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 			ExtentTestManager.getTest().log(Status.PASS,
 					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
 			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+			CallCentreUserManagement.ClickAddNewUserSubmitBtnECP();
 			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
 			Log.info("3. Click Submit button");
 			ExtentTestManager.getTest().log(Status.PASS,
@@ -473,7 +473,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 			ExtentTestManager.getTest().log(Status.PASS,
 					"2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
 			Log.info("2 Entered inputs on Name, Email ID, Phone Number, RoleType fields");
-			CallCentreUserManagement.ClickAddNewUserSubmitBtn();
+			CallCentreUserManagement.ClickAddNewUserSubmitBtnECP();
 			ExtentTestManager.getTest().log(Status.PASS, "3. Click Submit button");
 			Log.info("3. Click Submit button");
 			ExtentTestManager.getTest().log(Status.PASS,
@@ -495,6 +495,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 			throws Throwable {
 		try {
 			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
+				CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
 				String value1 = testdata.get("InvalidEmail").toString();
 				CallCentreUserManagement.EnterAddNewUserEmailInvalid(value1);
 				ExtentTestManager.getTest().log(Status.PASS, "1. Invalid Email ID is being entered - " + value1);
@@ -503,6 +504,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 				ExtentTestManager.getTest().log(Status.PASS,
 						"2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
 				Log.info("2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
+				CallCentreUserManagement.ClickAddNewUserCloseBtn();
 			}
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -518,16 +520,17 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 	public void Error_Guessing_Invalid_PhoneNumber_Format(Map<Object, Object> testdata, ITestContext context)
 			throws Throwable {
 		try {
+			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
 			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
 				String value1 = testdata.get("InvalidPhone").toString();
-				CallCentreUserManagement.EnterAddNewUserPhoneNumberDup(value1);
+				CallCentreUserManagement.EnterAddNewUserPhoneNumberInvalid(value1);
 				ExtentTestManager.getTest().log(Status.PASS, "1. Invalid Email ID is being entered - " + value1);
 				Log.info("1. Invalid Email ID is being entered, the system throws an error message " + value1);
 				CallCentreUserManagement.ClickAddNewUserSubmitBtn();
 				ExtentTestManager.getTest().log(Status.PASS,
 						"2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
 				Log.info("2. Expected Result -> Click Submit button - The system throws an error on Email ID field");
-
+				CallCentreUserManagement.ClickAddNewUserCloseBtn();
 			}
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -543,6 +546,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 	public void Error_Guessing_Duplicate_ExecutiveID(Map<Object, Object> testdata, ITestContext context)
 			throws Throwable {
 		try {
+			CallCentreUserManagement.ClickUserManagementPageAddUserBtn();
 			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
 				String value0 = testdata.get("NameDup").toString();
 				CallCentreUserManagement.EnterAddNewUserNameDup(value0);
@@ -569,6 +573,7 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 				ExtentTestManager.getTest().log(Status.PASS,
 						"7. Expected Result -> The Add User page throws an error message stating the Executive ID is existing in the DB");
 				Log.info("The Add User page throws an error message stating the Executive ID is existing in the DB");
+				CallCentreUserManagement.ClickAddNewUserCloseBtn();
 			}
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -615,9 +620,9 @@ public class CallCentre_UserManagement_TC extends Base_Class {
 	public void AfterClass() {
 		ExtentManager.getInstance().flush();
 		// Close the browser
-		if (driver != null) {
-			driver.quit();
-		}
+//		if (driver != null) {
+//			driver.quit();
+//		}
 	}
 
 }
