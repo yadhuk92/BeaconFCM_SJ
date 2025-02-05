@@ -30,6 +30,7 @@ public class AgentListPageRepo {
 	public static By Active = By.xpath("//*[@for='name']/..//*[contains(text(),'Is Active')]");
 	public static By spinner = By.xpath("//*[@class='spinner']");
 	public static By AddAgent = By.xpath("//*[contains(text(),'Add Agent')]");
+	public static By html = By.xpath("//html");
 	
 	//Add new Agent page
 	
@@ -51,7 +52,8 @@ public class AgentListPageRepo {
 	public static By CurrentDate = By.xpath("//input[@id='Date']");
 	public static By ErrorForMandotoryFields = By.xpath("//*[@style='display: block']");
 	public static By InvalidPhoneNumber = By.xpath("//*[contains(text(),'Invalid Phone Number')]");
-	public static By agenntrole = By.xpath("//*[@aria-label='>agenntrole']");
+//	public static By agenntrole = By.xpath("//*[@aria-label='>agenntrole']");
+	public static By agenntrole = By.xpath("(//*[@role='listbox']/..//li[1])[3]");
 	
 	public static By NameAgentCode = By.xpath("//*[@name='Name']");
 	public static By NameAgentName = By.xpath("//*[@id='uwkNjTLdHE']");

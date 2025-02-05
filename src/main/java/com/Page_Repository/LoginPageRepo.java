@@ -16,6 +16,11 @@ public class LoginPageRepo {
 	public static By SetAsDefaultRadioButton = By.xpath("//div[@class='rz-chkbox-box']");
 	public static By LoginPageSomeErrorOccurred = By.xpath("//span[@style='color:red' and text()='Some error occurred.']");
 	
+	//Call Center Locators
+	public static By username = By.xpath("//input[@placeholder='User Name']");
+	public static By password = By.xpath("//input[@placeholder='Password']");
+	public static By login = By.xpath("//button[contains(text(),'LOGIN')]");
+	public static By CallcentreFullLogo = By.xpath("//img[@class='fulllogo']");
 	public static By getORGDetailsinLoginLandingPage(String OrgID, String OrgType) {
 	    String xpathExpression;
 

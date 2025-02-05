@@ -113,7 +113,14 @@ public class Base_Class {
 		Thread.sleep(2000);
 
 	}
-	
+	public static  void click1(By element) throws InterruptedException {
+
+		Thread.sleep(500);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Updated constructor
+		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+//		Thread.sleep(2000);
+
+	}
 	public static void ForLoopClick(By ClickElement) {
 		try
 		{

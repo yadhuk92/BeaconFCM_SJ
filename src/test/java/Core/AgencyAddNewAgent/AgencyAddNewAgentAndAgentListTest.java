@@ -1,4 +1,4 @@
-package Core.AddNewAgent;
+package Core.AgencyAddNewAgent;
 
 import java.io.File;
 
@@ -59,15 +59,14 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.DataProvider;
 import com.aventstack.extentreports.ExtentTest;
 
-public class AddNewAgentAndAgentList extends Base_Class {
+public class AgencyAddNewAgentAndAgentListTest extends Base_Class {
 	Log log;
 	Base_Class Base_Class;
 	com.Utility.ExcelReader ExcelReader;
 	Base_Class baseclass;
 	WebDriver driver;
 	TestListener TestListener;
-	com.Utility.ScreenShot screenShot;
-	DispositionMasterPage dispositionMasterPage;
+	com.Utility.ScreenShot screenShot;	
 	ExtentTest extenttest;
 	Login_Class corelogin;
 	Login_Class AllLoginCases;
@@ -92,22 +91,21 @@ public class AddNewAgentAndAgentList extends Base_Class {
 
 	@BeforeTest
 	public void SetUp() throws Exception {
-		ExcelReader = new com.Utility.ExcelReader("AddNewAgent");
+		ExcelReader = new com.Utility.ExcelReader("AgencyAddNewAgent");
 		baseclass = new Base_Class();
 		TestListener = new TestListener();
 		// baseclass.SetUp();
 		corelogin = new Login_Class();
 		corelogin.CollectionAgencyLogin();
 		driver = baseclass.getDriver(); // Retrieve the driver instance
-		screenShot = new com.Utility.ScreenShot(driver);
-		dispositionMasterPage = new DispositionMasterPage(driver);
+		screenShot = new com.Utility.ScreenShot(driver);		
 		AddNewAgentPage = new AddNewAgentPage(driver);
 	}
 
 	@BeforeMethod
 	public void setupTest(Method method) throws Exception {
 		// Start a new ExtentTest for the current test method
-		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("AddNewAgent master");
+		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Agency Add New Agent master");
 		System.out.println("Before method in disposition master");
 	}
 
@@ -122,10 +120,17 @@ public class AddNewAgentAndAgentList extends Base_Class {
 			Common.fluentWait("Agent Management", AgentListPageRepo.AgentManagement);
 			driver.findElement(AgentListPageRepo.AgentManagement).click();
 			ExtentTestManager.getTest().log(Status.PASS, "Agent Management name displayed and Clicked");
-			driver.findElement(AgentListPageRepo.AgentList).click();
-			ExtentTestManager.getTest().log(Status.PASS, "Agent Management name displayed and Clicked");
+			driver.findElement(AgentListPageRepo.AgentList).click();AddNewAgentPage.WaitLoader();
+			ExtentTestManager.getTest().log(Status.PASS, "Agent List displayed and Clicked");
 			// is displayed
-
+			String CurrentURL=driver.getCurrentUrl();
+			if (CurrentURL.contains("Agent/AgentManagement")) {
+				ExtentTestManager.getTest().log(Status.PASS, "Agent Management is contained in the current URL");
+				ExtentTestManager.getTest().log(Status.PASS, "Currnet url is:" + CurrentURL);
+			} else {
+				ExtentTestManager.getTest().log(Status.FAIL, "Agent Management not displayed");
+				ExtentTestManager.getTest().log(Status.FAIL, "Currnet url is:" + CurrentURL);
+			}
 			if (driver.findElement(AgentListPageRepo.AgentManagement1).isDisplayed()) {
 				ExtentTestManager.getTest().log(Status.PASS, "Agent Management  displayed");
 			} else {
@@ -143,7 +148,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 2)
-	public void VerifythefieldsandbuttonsinAgentlistpage(ITestContext context)
+	public void Verify_Fields_Buttons_AgentListPage  (ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -220,7 +225,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 3)
-	public void Addnewagentpagenavigation(ITestContext context)
+	public void Verify_AddNewAgent_Navigation  (ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -252,7 +257,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 4)
-	public void Verifythefieldsandbuttonsinaddnewagentpage(ITestContext context)
+	public void Verify_Fields_Buttons_AddNewAgentPage  (ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -310,7 +315,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 5)
-	public void VerifyDateofJoiningfieldonpageload(ITestContext context)
+	public void Verify_DateOfJoining_Pageload  (ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -345,7 +350,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 6)
-	public void Addnewagentpageclosebuttonfunctionality(ITestContext context)
+	public void Verify_AddNewAgent_CloseButton  (ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -366,7 +371,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 7)
-	public void SubmitaddnewagentwithoutMandatoryFields(ITestContext context)
+	public void Verify_Submit_AddNewAgent_WithoutMandatoryFields  (ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -399,7 +404,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 8)
-	public void InvalidPhoneNumberFormat(ITestContext context)
+	public void Verify_InvalidPhoneNumber_Format(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -448,7 +453,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 9)
-	public void SubmitValidNewAgentDetails(ITestContext context)
+	public void Verify_Submit_ValidNewAgentDetails(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -507,7 +512,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 10)
-	public void SubmitValidNewAgentDetailswithexistingAgentcode(ITestContext context)
+	public void Verify_Submit_ValidNewAgentDetails_ExistingAgentCode(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -558,7 +563,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 17)
-	public void SubmitWithPastDateofJoining(ITestContext context)
+	public void Verify_Submit_PastDateOfJoining(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -589,10 +594,10 @@ public class AddNewAgentAndAgentList extends Base_Class {
 			ExtentTestManager.getTest().log(Status.PASS, "Tenurity added");
 			driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
 			Thread.sleep(1000);
-			
+			ExtentTestManager.getTest().log(Status.PASS, "Agent Role Selected");
 			Common.fluentWait("UserNameField", AgentListPageRepo.agenntrole);
 			driver.findElement(AgentListPageRepo.agenntrole).click();
-			
+			ExtentTestManager.getTest().log(Status.PASS, "Agent role added");
 			Thread.sleep(1000);
 			driver.findElement(AgentListPageRepo.DatePicker).click();
 			LocalDate today = LocalDate.now();
@@ -632,7 +637,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 18)
-	public void SubmitWithFutureDateofJoining(ITestContext context)
+	public void Verify_Submit_FutureDateOfJoining(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -650,22 +655,28 @@ public class AddNewAgentAndAgentList extends Base_Class {
 
 			System.out.println("AgentCode2 :" + AgentCode2);
 			driver.findElement(AgentListPageRepo.NameAgentCode).sendKeys(AgentCode2);
+			ExtentTestManager.getTest().log(Status.PASS, "Agent Code is added");
 			String Username2 = AddNewAgentPage.RandomNameGenerator();
 			Username18 = Username2;
 			System.out.println("Username2U" + Username2);
 			driver.findElement(AgentListPageRepo.Name1).sendKeys(Username2);
+			ExtentTestManager.getTest().log(Status.PASS, "User name entered Successfully");
 			String MobileNumber2 = AddNewAgentPage.MobileNumberGenerator();
 			System.out.println("MobileNumber2 :" + MobileNumber2);
 			driver.findElement(AgentListPageRepo.MobileInput).sendKeys(MobileNumber2);
+			ExtentTestManager.getTest().log(Status.PASS, "Mobile Number is added");
 			PhoneNumber18 = MobileNumber2;
 			driver.findElement(AgentListPageRepo.Tenurity).click();
 			driver.findElement(AgentListPageRepo.Tenurity).sendKeys("12");
+			ExtentTestManager.getTest().log(Status.PASS, "Tenurity added");
 			driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
+			ExtentTestManager.getTest().log(Status.PASS, "Agent Role Selected");
 			Thread.sleep(2000);
 			Common.fluentWait("UserNameField", AgentListPageRepo.agenntrole);
 			WebElement elementToClick = driver.findElement(By.xpath("//*[@aria-label='>agenntrole']"));
 			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 			jsExecutor.executeScript("arguments[0].style.display='block'; arguments[0].click();", elementToClick);
+			ExtentTestManager.getTest().log(Status.PASS, "Agent role added");
 			Thread.sleep(1000);
 			driver.findElement(AgentListPageRepo.DatePicker).click();
 			LocalDate today = LocalDate.now();
@@ -687,6 +698,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 			}
 
 			driver.findElement(AgentListPageRepo.Submit).click();
+			ExtentTestManager.getTest().log(Status.PASS, "All the details for add New Agent submitted");
 			AddNewAgentPage.WaitLoader();
 			Thread.sleep(3000);
 			if (driver.findElement(AgentListPageRepo.Usercreatedsuccessfully).isDisplayed()) {
@@ -706,7 +718,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 19)
-	public void SearchAgentbyValidUsername(ITestContext context)
+	public void Verify_SearchAgent_ValidUsername(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -752,7 +764,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 20)
-	public void SearchAgentbyInvalidUsername(ITestContext context)
+	public void Verify_SearchAgent_InvalidUsername(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -786,13 +798,13 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 21)
-	public void ToggleAgentActiveStatusintodeactivate(ITestContext context)
+	public void Verify_ToggleAgent_ActiveToDeactive(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
 			System.out.println("**********  ToggleAgentActiveStatusintodeactivate 21 ***********");
 			System.out.println();
-			Common.fluentWait("UserNameField", AgentListPageRepo.AgentManagement);
+			Common.fluentWait("Agent Management", AgentListPageRepo.AgentManagement);
 			driver.findElement(AgentListPageRepo.AgentManagement).click();
 			Thread.sleep(1000);
 			driver.findElement(AgentListPageRepo.AgentList).click();
@@ -826,7 +838,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 22)
-	public void Searchandconfirmtheuserisdeactivatedornot(ITestContext context)
+	public void Verify_SearchConfirm_UserDeactivated(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -857,7 +869,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 23)
-	public void ToggleAgentInactiveStatusintoactive(ITestContext context)
+	public void Verify_ToggleAgent_InactiveToActive(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -885,7 +897,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 30)
-	public void ResetPasswordFunctionality(ITestContext context)
+	public void Verify_ResetPassword_Functionality(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -955,7 +967,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 31)
-	public void VerifythefieldsandbuttonsinEditoptioninagentlistpage(ITestContext context)
+	public void Verify_Fields_Buttons_EditOption_AgentListPage(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
@@ -1070,7 +1082,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 32)
-	public void Editagentnameandsubmit(ITestContext context) throws InterruptedException, IOException, ParseException {
+	public void Verify_EditAgentName_Submit(ITestContext context) throws InterruptedException, IOException, ParseException {
 
 		try {
 			System.out.println("**********  Editagentnameandsubmit 32  ***********");
@@ -1120,7 +1132,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 	}
 
 	@Test(priority = 33)
-	public void Checkingediteduserdetails(ITestContext context)
+	public void Verify_Checking_EditedUserDetails(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
