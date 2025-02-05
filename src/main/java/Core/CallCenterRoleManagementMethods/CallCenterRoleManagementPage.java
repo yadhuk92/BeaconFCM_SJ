@@ -32,6 +32,18 @@ public class CallCenterRoleManagementPage extends Base_Class {
 		Log.info("Call center role management initialized.");
 	}
 
+	public void addRoleName7() {
+		try {
+			Common.fluentWait("RoleName7", CallCenterRoleManagementRepo.RoleName);
+			driver.findElement(CallCenterRoleManagementRepo.RoleName).sendKeys(RoleName7);
+			ExtentTestManager.getTest().log(Status.PASS, "Entered role name");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, "Unable to enter the role name");
+		}
+	}
+	
 	public void SelectFunctionalities() {
 		// Get all checkbox elements
 		List<WebElement> checkboxes = driver.findElements(By.xpath("//*[@type='checkbox']"));
@@ -194,7 +206,16 @@ public class CallCenterRoleManagementPage extends Base_Class {
 		}
 
 	}
-	
+	public void checkURL() {
+		String CurrentURL = driver.getCurrentUrl();
+		if (CurrentURL.contains("Admin/LevelPermissions")) {
+			ExtentTestManager.getTest().log(Status.PASS, "Admin/LevelPermissions is contained in the current URL");
+			ExtentTestManager.getTest().log(Status.PASS, "Currnet url is:" + CurrentURL);
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Admin/LevelPermissions not displayed");
+			ExtentTestManager.getTest().log(Status.FAIL, "Currnet url is:" + CurrentURL);
+		}
+	}
 	public void RoleManagementFieldsVerification() {
 		if (driver.findElement(CallCenterRoleManagementRepo.RoleManagementHeader).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Role Management Header displayed successfully");

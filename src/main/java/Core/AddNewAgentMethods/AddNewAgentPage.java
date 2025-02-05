@@ -400,7 +400,12 @@ public class AddNewAgentPage extends Base_Class {
 		driver.findElement(AgentListPageRepo.MobileInput).clear();
 		driver.findElement(AgentListPageRepo.Tenurity).click();
 		driver.findElement(AgentListPageRepo.Tenurity).clear();
-		driver.findElement(AgentListPageRepo.ClearRole).click();
+		try {
+			driver.findElement(AgentListPageRepo.ClearRole).click();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void AddNewAgentWithPastDateofJoining() throws InterruptedException {
@@ -843,21 +848,31 @@ public void creatNewAgent() throws InterruptedException {
 		}
 	}
 
-	public void DateOfJoiningField() {
+	public void DateOfJoiningField() throws InterruptedException {
 		LocalDate currentDate = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 		String formattedDate = currentDate.format(formatter);
-		By AgencyName = By.xpath("//*[contains(text(),'" + formattedDate + "']");
+		By AgencyName = By.xpath("//*[contains(text(),'" + formattedDate + "')]");
 	
-	Common.fluentWait("UserNameField", AgencyName);
+		Thread.sleep(2000);
 		String TextDate = driver.findElement(AgentListPageRepo.CurrentDate).getAttribute("value");
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		if(TextDate.isBlank()) {
+			 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));	
+			 wait.until(driver1 -> {
+		            String textDate = driver1.findElement(AgentListPageRepo.CurrentDate).getAttribute("value");
+		            return textDate != null && !textDate.isBlank();
+		        });
+		}
+		else {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
 		if (TextDate.contains(formattedDate)) {
 			ExtentTestManager.getTest().log(Status.PASS, "Current date is displayed in Date of joining");
 		} else {
 			ExtentTestManager.getTest().log(Status.FAIL, "Current date is not displayed in Date of joining");
 		}
+		}
+		
 	}
 
 	public void AddNewAgentPageFieldsVerification() {

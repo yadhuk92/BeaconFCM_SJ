@@ -2,6 +2,7 @@ package Core.CallCenterRoleManagement;
 
 import java.io.File;
 
+
 import Core.AddNewAgentMethods.AddNewAgentPage;
 import Core.CallCenterRoleManagementMethods.CallCenterRoleManagementPage;
 import java.io.FileInputStream;
@@ -135,6 +136,8 @@ public class CallCenterRoleManagementTest extends Base_Class {
 			CallCenterRoleManagementPage.WaitLoader();
 			CallCenterRoleManagementPage.RoleManagementHeaderIsDisplayed();
 			CallCenterRoleManagementPage.AddNewRoleIsDisplayed();
+			CallCenterRoleManagementPage.checkURL();
+			
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -349,6 +352,7 @@ public class CallCenterRoleManagementTest extends Base_Class {
 			CallCenterRoleManagementPage.clickAddNewRole();
 			CallCenterRoleManagementPage.WaitLoader();
 			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
+			CallCenterRoleManagementPage.addRoleName7();
 			CallCenterRoleManagementPage.SelectFunctionalities();
 			ExtentTestManager.getTest().log(Status.PASS, "Selected the all Functionalities");
 			CallCenterRoleManagementPage.clickSave();

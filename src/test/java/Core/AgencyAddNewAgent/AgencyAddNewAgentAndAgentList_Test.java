@@ -1,19 +1,21 @@
 package Core.AgencyAddNewAgent;
 
+import java.io.File;
 import java.io.IOException;
+
 import java.lang.reflect.Method;
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.BasePackage.Base_Class;
@@ -22,7 +24,9 @@ import com.BasePackage.Login_Class;
 import com.Page_Repository.AgentListPageRepo;
 import com.Utility.Log;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
 import com.listeners.TestListener;
 
@@ -61,7 +65,6 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		corelogin.CollectionAgencyLogin();
 		driver = baseclass.getDriver(); // Retrieve the driver instance
 		screenShot = new com.Utility.ScreenShot(driver);
-
 		AddNewAgentPage = new AddNewAgentPage(driver);
 	}
 
@@ -418,6 +421,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			AddNewAgentPage.clickAgentList();
 			AddNewAgentPage.WaitLoader();
 			AddNewAgentPage.SearchUser();
+			AddNewAgentPage.WaitLoader();	
 			AddNewAgentPage.clickActionClickAndAvtivateDectivate();
 			AddNewAgentPage.SatusChanged();
 	
@@ -580,7 +584,46 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 
 	}
 	
-	
+	@AfterMethod
+	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
+		// Check if the test case failed
+		if (result.getStatus() == ITestResult.FAILURE) {
+			String methodName = result.getMethod().getMethodName();
+			try {
+				// Take the screenshot for the failed test
+				File image = screenShot.takeScreenShot(methodName, "Failure");
+
+				ExtentTestManager.getTest().fail("Screenshot of failure: ",
+						MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
+			} catch (IOException e) {
+				System.err.println("Failed to capture screenshot: " + e.getMessage());
+			}
+		}
+	}
+
+	@AfterClass
+	public void afterclass() {
+		ExtentManager.getInstance().flush();
+		// Close the browser
+		if (driver != null) {
+			driver.quit();
+		}
+	}
+
+	@DataProvider(name = "TestData")
+	public static Object[][] gettestdate() throws IOException {
+
+		Object[][] objectarry = null;
+		java.util.List<Map<String, String>> completedata = com.Utility.ExcelReader.getdata();
+
+		objectarry = new Object[completedata.size()][1];
+
+		for (int i = 0; i < completedata.size(); i++) {
+			objectarry[i][0] = completedata.get(i);
+		}
+		return objectarry;
+	}
+
 	
 	
 	
