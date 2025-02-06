@@ -18,4 +18,15 @@ public class LoginBannerConfiRepo {
     public By UserTypeallvalues=By.xpath("//div[@class='rz-dropdown-panel rz-popup']//li");
     public By Bannertypeallvalue=By.xpath("//div[@class='rz-dropdown-panel rz-popup']//li");
     public By Sectionallvalue=By.xpath("//div[@class='rz-dropdown-panel rz-popup']//li");
+    public By header1=By.xpath("(//li[@role='option'])[6]");
+    public By profilebutton=By.xpath("//button[@class='btn dropdown-toggle']");
+    public By logout=By.xpath("//a[text()='Logout']");
+    public By profilepage=By.xpath("(//p[@class='constyle1'])[1]");
+    public By hyperlink=By.xpath("(//li[@role='option'])[5]");
+    public By sectionlink1=By.xpath("(//li[@role='option'])[6]");
+    public By link1OnProfilePage=By.xpath("(//a[@target='_blank'])[1]");
+//    public By headingtextlink1=By.xpath("(//span[@class='constyle'])[4]");
+    public By ProfilePagewithHeaderandDetaillink=By.xpath("(//p[@class='constyle1'])[4]");
+    
+    
 }

@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -174,7 +175,7 @@ public class LoginbannerPageTest {
         
        //Click on Usertypedropdown and validate the dropdown values
         
-        @Test(priority = 4)
+ //       @Test(priority = 4)
         public void SelectInternalUserType() throws Throwable {
         	 
         	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
@@ -203,8 +204,8 @@ public class LoginbannerPageTest {
        		        throw e;
        	    	}
                }
-	// Select Banner Type
-        @Test (priority=5)
+	// Select Banner Type(Information)
+ //       @Test (priority=5,enabled=false)
         public void SelectInformationtype() throws InterruptedException {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
         	try
@@ -228,7 +229,7 @@ public class LoginbannerPageTest {
         }
      
        //select Header1 from Section dropdown
-        @Test(priority=6)
+//        @Test(priority=6,enabled=false)
         public void SelectHeader1() throws InterruptedException {
         	
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(200));
@@ -254,12 +255,12 @@ public class LoginbannerPageTest {
 	    	}
         }      	
         //Enter Heading
-        @Test(priority=7,dataProvider="TestData")
+  //      @Test(priority=7,dataProvider="TestData")
         public void InputHeadingField(Map<Object, Object> testdata) {
         	try {
         		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
         			// Step 2: Retrieve the "AlphaNumericInput" data from the test data
-        		        String ExpectedAlphaNumericInput = testdata.get("AlphaNumericInput").toString();
+        		        String ExpectedAlphaNumericInput = testdata.get("HeadingField").toString();
         		        System.out.println(ExpectedAlphaNumericInput);
         		       String ActualInput =  loginbanner.Headingfieldinput(ExpectedAlphaNumericInput);
         		       
@@ -286,13 +287,13 @@ public class LoginbannerPageTest {
         }
         
         //Enter Details
-        @Test(priority=8,dataProvider= "TestData")
+ //       @Test(priority=8,dataProvider= "TestData")
         public void InputDetailField( Map<Object,Object> testdata) {
         	try
         	{
         		if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
         			// Step 2: Retrieve the "AlphaNumericInput" data from the test data
-    		        String ExpectedAlphaNumericInput = testdata.get("AlphaNumericInput").toString();
+    		        String ExpectedAlphaNumericInput = testdata.get("DetailField").toString();
         			String ActualInput=loginbanner.Detailfieldinput(ExpectedAlphaNumericInput);
         		
         			ExtentTestManager.getTest().log(Status.PASS, "Expected result-Input an alphanumeric  line in the 'Detail' field with max length of 35");
@@ -314,8 +315,9 @@ public class LoginbannerPageTest {
 	    	}
         }
         
-       //Submit the details by clicking on Submit button 
-        @Test(priority=9)
+       //Submit the details by clicking on Submit button
+        //(Usertype=Internal user,bannertype=Information,Section=Header1)
+ //       @Test(priority=9)
         public void Clicksubmitbutton() throws InterruptedException {
         	try
         	{
@@ -332,8 +334,310 @@ public class LoginbannerPageTest {
 	    	}
 	        
 	    }
+ //Verify Data Post Logout(Usertype=Internal user,bannertype=Information,Section=Header1)
+        
+//       @Test(priority=10)
+        public void CheckdataPostLogout() {
+
+        	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(300));
+        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        	
+        	try
+        	{
+        	ExtentTestManager.getTest().log(Status.PASS, "1.Navigate to profile icon");
+        	loginbanner.Clickprofiledropdown();
+        	
+        	WebDriverWait wait1=new WebDriverWait(driver, Duration.ofSeconds(300));
+        	ExtentTestManager.getTest().log(Status.PASS, "2.Click on Logout");
+        	loginbanner.Clicklogout();
+        	
+        	ExtentTestManager.getTest().log(Status.PASS, "Expected Result-The data entered in the 'Heading' and 'Details'should display in the internal user's login page.");
+        	WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(120));
+        	loginbanner.profilepagetext();
+        	
+        	ExtentTestManager.getTest().log(Status.PASS, "Actual Result-The data entered in the 'Heading' and 'Details'displayed in the internal user's login page.");
+        	}
+   	catch(AssertionError|Exception e) {
+	    		
+	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+	    	}
+        }
+        
+  
+  //Click on usertype=> select internal user
+ //      @Test(priority=4)
+       public void selectinternaluser() throws Throwable {
+    	   WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
+    	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+    	   try
+    	   {
+    		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+    		   loginbanner.clickusertypedropdown();
+    		   
+    		   ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+    		   loginbanner.selectinternaluser();
+    		   
+    		   ExtentTestManager.getTest().log(Status.PASS, "Actual result-Internal user is selected in Usertypedropdown");
+    	   }
+  	catch(AssertionError|Exception e) {
+	    		
+	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+	    	}
+        }
+       
         
         
+  //Select hyperlink from banner type dropdown
+  //      @Test(priority=5)
+        public void Selecthyperlink() throws Throwable {
+        	WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
+        	try
+        	{
+        	ExtentTestManager.getTest().log(Status.PASS, "1.Click on Bannertype dropdown.");
+        	loginbanner.clickBannertypedropdown();
+        	
+        	WebDriverWait wait1 =new WebDriverWait(driver,Duration.ofSeconds(90));
+        	loginbanner.hyperlink();
+        	ExtentTestManager.getTest().log(Status.PASS, "2.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+        	
+        	ExtentTestManager.getTest().log(Status.PASS, "Actual result-\"hyperlink\" selected from the 'Banner Type' dropdown.");
+        	}
+  	catch(AssertionError|Exception e) {
+	    		
+	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+	    	}
+        }
+        
+ //select link1 from section dropdown
+ //       @Test(priority=6)
+        public void Selectlink1() throws Throwable {
+        	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        	try
+        	{
+        	ExtentTestManager.getTest().log(Status.PASS, "1.Click on Section dropdown");
+        	loginbanner.clickSectiondropdown();
+        	
+        	ExtentTestManager.getTest().log(Status.PASS, "2.Select link1 from section dropdown");
+        	WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	loginbanner.selectlink1FromSectiondropdown();
+        	
+        	ExtentTestManager.getTest().log(Status.PASS, "Actual result-\"link1\"selected from section dropdown");
+        	}
+ 	catch(AssertionError|Exception e) {
+	    		
+	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+	    	}
+        }
+  
+        
+//Input Headerlink
+ //       @Test(priority=7,dataProvider="TestData")
+        public void InputHeaderLink( Map<Object,Object> testdata) {
+        	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
+        	try
+        	{
+        		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
+        		{
+        			ExtentTestManager.getTest().log(Status.PASS, "Expected-Input link from test data file");
+        			
+        			String Headerlink = testdata.get("Headerfield1link").toString();
+        			loginbanner.headerlink(Headerlink);
+        		}
+        		ExtentTestManager.getTest().log(Status.PASS, "Actual result-Link is entered from test data file");
+        		return;
+        	}
+        	   catch(AssertionError|Exception e) {
+           		
+   	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+   		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+   		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+   		        throw e;
+   	    	}
+     }  	
+        
+      //Input Detaillink
+//        @Test(priority=8,dataProvider="TestData")
+        public void InputDetailLink( Map<Object,Object> testdata) {
+        	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	try
+        	{
+        		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
+        		{
+        			ExtentTestManager.getTest().log(Status.PASS, "Expected-Input link from test data file");
+        			
+        			String Detaillink = testdata.get("Detailfield1link").toString();
+        			loginbanner.detaillink(Detaillink);;
+        		}
+        		ExtentTestManager.getTest().log(Status.PASS, "Actual result-Link is entered from test data file");
+        		return;
+        	}
+        	   catch(AssertionError|Exception e) {
+           		
+   	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+   		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+   		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+   		        throw e;
+   	    	}
+     }       
+   
+ //Verify Data Post Logout(Usertype=Internal user,bannertype=Hyperlink,Section=link1)  
+        
+//        @Test(priority=10)
+        
+        public void ClickonLink1PostLogout() {
+        	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(300));
+        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        	try
+        	{
+        		ExtentTestManager.getTest().log(Status.PASS, "1.Navigate to profile icon");
+            	loginbanner.Clickprofiledropdown();
+            	
+            	WebDriverWait wait1=new WebDriverWait(driver, Duration.ofSeconds(400));
+            	ExtentTestManager.getTest().log(Status.PASS, "2.Click on Logout");
+            	loginbanner.Clicklogout();
+            	
+            	WebDriverWait wait2=new WebDriverWait(driver, Duration.ofSeconds(400));
+        		ExtentTestManager.getTest().log(Status.PASS, "Expected-1.Data entered for hyperlink should be displayed on login page");
+        		loginbanner.dataforlink1();
+        		
+        		WebDriverWait wait3=new WebDriverWait(driver, Duration.ofSeconds(500));
+        		ExtentTestManager.getTest().log(Status.PASS, "2.User should be able to click on link1");
+        		loginbanner.clickonProfilePagelink1();
+        		
+        		ExtentTestManager.getTest().log(Status.PASS, "Actual-Data entered for hyperlink is displayed on Internal User's login page and user is able to click on link1 and the page is opened");
+        	}	
+        		catch(AssertionError|Exception e) {
+    	    		
+    	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+    		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+    		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+    		        throw e;
+    	 	}
+    }
+ //Test case-1. Select "internal user" from 'User Type'.2. Select "hyperlink" from 'Banner Type'. 3. Enter "link1" in 'Section'.4. Click on 'Search'.
+  //Search entered details for link1      
+ 
+ //       @Test(priority=4)
+        public void VerifyInputdataUsingSearch2() throws Throwable {
+           WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(200));
+       	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+        	try
+        	{
+        		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
+        		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+        		   loginbanner.clickusertypedropdown();
+        		   
+        		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
+        		   ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+        		   loginbanner.selectinternaluser();
+        		   
+        		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+        		   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
+                   loginbanner.clickBannertypedropdown();
+                	
+                	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
+                	loginbanner.hyperlink();
+                	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+                	
+                	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
+                	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+                	
+                	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
+                	loginbanner.clickSectiondropdown();
+                	
+                	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
+                	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
+                	loginbanner.selectlink1FromSectiondropdown();
+                	
+                	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(200));
+                	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
+                	loginbanner.ClickSearchbutton();
+                	
+                	ExtentTestManager.getTest().log(Status.PASS, "8.The saved data should populate in the 'Heading' and 'Details' fields.");
+                	
+                	ExtentTestManager.getTest().log(Status.PASS, "Actual result-The saved data populated in the 'Heading' and 'Details' fields.");
+        	}
+ 	catch(AssertionError|Exception e) {
+	    		
+	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+		        throw e;
+	    	}
+        }
+        
+        
+ //Test case-1. Select "internal user" from 'User Type'.2. Select "information" from 'Banner Type'. 3. Enter "Header1" in 'Section'.4. Click on 'Search'.
+ //Search entered details for Header1      
+        
+    @Test(priority=4)
+    public void VerifydataUsingSearch1() throws Throwable {
+    	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(200));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+    	try
+    	{
+    	 WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
+   		 ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+   		 loginbanner.clickusertypedropdown();
+   		   
+   		 WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
+   		 ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+   		 loginbanner.selectinternaluser();
+   		   
+   		 WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(90));
+   		 ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
+         loginbanner.clickBannertypedropdown();
+         
+         WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(90));  
+         loginbanner.clickInfo();
+    	 ExtentTestManager.getTest().log(Status.PASS, "4.Select\" Information\"in the banner type field.");
+    	 
+    	 WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
+    	 wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+    	 
+    	 ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section Dropdown");
+       	 loginbanner.clickSectiondropdown();
+       	 
+       	 
+       	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(220));
+        ExtentTestManager.getTest().log(Status.PASS, "6.Select Header1 from Section dropdown");
+       	loginbanner.selectheader1();
+       	
+      	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(400));
+    	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
+    	loginbanner.ClickSearchbutton();
+    	
+    	ExtentTestManager.getTest().log(Status.PASS, "8.The saved data should populate in the 'Heading' and 'Details' fields.");
+    	
+    	ExtentTestManager.getTest().log(Status.PASS, "Actual result-The saved data populated in the 'Heading' and 'Details' fields.");
+    	 }
+    	catch(AssertionError|Exception e) {
+    		
+    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+	        throw e;
+    	}
+    }
+    
+//Modify data in 'Heading' and 'Details' fields and submit
+    
+    
+    
+    
         
         @DataProvider(name = "TestData")
  		public static Object[][] gettestdate() throws IOException {

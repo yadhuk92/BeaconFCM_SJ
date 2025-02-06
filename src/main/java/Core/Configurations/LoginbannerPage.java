@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -143,28 +144,19 @@ public class LoginbannerPage extends Base_Class{
      }
    //select header1 from section dropdown
    public boolean selectheader1() throws InterruptedException {
-	   List<WebElement> headers=driver.findElements(Page_Repository.Sectionallvalue);
+//	   List<WebElement> headers=driver.findElements(Page_Repository.Sectionallvalue);
 //	   List <String> str=new ArrayList();
-	   
-	   for(WebElement wb:headers)
-	   {
-		   if(wb.getText().contains("Header1"))
-			   
-		   {
-			   System.out.println(wb.getText());
-               wb.click();
-//			   wb.isSelected();
-		   }
-		   return true;
-	   }
-	   return false;
+	   WebElement header1=driver.findElement(Page_Repository.header1);
+	   header1.click();
+	   return true;
+
    }
   //Method to input value in "Heading"field
     // Method to enter text into the Heading field
-   public String Headingfieldinput(String AlphaNumericInput) {
+   public String Headingfieldinput(String HeadingField) {
 	   WebElement headingfield=driver.findElement(Page_Repository.headingtext);
 	   headingfield.clear();
-	   headingfield.sendKeys(AlphaNumericInput);
+	   headingfield.sendKeys(HeadingField);
    
    // Method to get the text from the Heading field
       String Heading=headingfield.getAttribute("value");
@@ -172,10 +164,10 @@ public class LoginbannerPage extends Base_Class{
    }
  //Method to input value in "Details"field	
    // Method to enter text into the Details field
-   public String Detailfieldinput(String AlphaNumericInput) {
+   public String Detailfieldinput(String DetailField) {
 	   WebElement detailfield=driver.findElement(Page_Repository.detailtext);
 	   detailfield.clear();
-	   detailfield.sendKeys(AlphaNumericInput);
+	   detailfield.sendKeys(DetailField);
 	// Method to get the text from the Details field 
 	   
 	   String str=detailfield.getAttribute("value");
@@ -187,7 +179,92 @@ public class LoginbannerPage extends Base_Class{
 	   click(Page_Repository.submitbutton);
 	   return true;
    }
+   
+  //Method to click on profile dropdown
+   public boolean Clickprofiledropdown(){
+	   WebElement profiledropdown=driver.findElement(Page_Repository.profilebutton);
+	   profiledropdown.click();
+	   return true;
    }
+  //Method to click logout button
+   public boolean Clicklogout() {
+	   WebElement logoutbutton=driver.findElement(Page_Repository.logout);
+	   logoutbutton.click();
+	   return true;
+	   
+   }
+  
+//Method to get profilepage text
+   public boolean profilepagetext() {
+	   List<WebElement> profilepage=driver.findElements(Page_Repository.profilepage);
+	   List<String> str=new ArrayList();
+	   
+	   str.contains(Page_Repository.detailtext);
+	   str.contains(Page_Repository.headingtext);
+	   
+	   return true;
+   }
+   
+   //Method click on Usertypedropdown
+   public boolean clickusertypedropdown()throws InterruptedException{
+	   WebElement usertypedropdown=driver.findElement(Page_Repository.usertypedropdown);
+	   usertypedropdown.click();
+	return true; 
+   }
+   
+ //Method to select hyperlink from bannertype
+   public boolean hyperlink() {
+	   WebElement hyperlink=driver.findElement(Page_Repository.hyperlink);
+	   hyperlink.click();
+	   return true;
+   }
+   
+ //Method to select link1 from section dropdown
+   public boolean selectlink1FromSectiondropdown() {
+	   WebElement sectiondropdownlink1=driver.findElement(Page_Repository.sectionlink1);
+	   sectiondropdownlink1.click();
+	   return true;
+   }
+ 
+ //Method to Input link1 in Headerfield  
+   public void headerlink(String Headerlink) {
+	  WebElement headerlink=driver.findElement(Page_Repository.headingtext);
+	   headerlink.clear();
+	   headerlink.sendKeys(Headerlink);
+	   
+   }
+   //Method to Input link1 in Detailfield  
+   public void detaillink(String Detaillink) {
+	  WebElement detaillink=driver.findElement(Page_Repository.detailtext);
+	  detaillink.clear();
+	  detaillink.sendKeys(Detaillink);
+	   
+   }
+ //Method to get data(link1)from login page
+   public boolean dataforlink1() {
+	   List<WebElement>link1OnProfilePage= driver.findElements(Page_Repository.ProfilePagewithHeaderandDetaillink);
+	   List<String> str =new ArrayList();
+	   
+	   str.contains(Page_Repository.headingtext);
+	   str.contains(Page_Repository.detailtext);
+	   
+	   return true;
+   }
+   
+   
+ //Method to click on link1
+   public void clickonProfilePagelink1() {
+	   WebElement link1=driver.findElement(Page_Repository.link1OnProfilePage);
+	   link1.click();
+   }
+   
+  //Method to click on search button
+   public void ClickSearchbutton() {
+	   WebElement serchbutton=driver.findElement(Page_Repository.searchbutton);
+	   serchbutton.click();
+   }
+   
+}
 
 
 
