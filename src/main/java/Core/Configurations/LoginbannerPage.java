@@ -263,8 +263,28 @@ public class LoginbannerPage extends Base_Class{
 	   WebElement serchbutton=driver.findElement(Page_Repository.searchbutton);
 	   serchbutton.click();
    }
-   
+ 
+  //Method to input modified link1
+   public void modifiedDataForlink1(String modifiedlink1) {
+	   WebElement modifiedData =driver.findElement(Page_Repository.detailtext);
+	   modifiedData.clear();
+	   modifiedData.sendKeys(modifiedlink1);
+   }
+
+ //Method to select "Call Centre" in Usertype dropdown
+   public boolean selectCallCentre() {
+	   List<WebElement> CallCentre=driver.findElements(Page_Repository.UserTypeallvalues);
+	   for(WebElement wb:CallCentre)
+		   if(wb.getText().contains("Call Centre"))
+		   {
+			   wb.click();
+			   
+		   }
+	return true;
+   }
+
 }
+
 
 
 
