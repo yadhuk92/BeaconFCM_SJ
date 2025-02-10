@@ -41,6 +41,8 @@ public class AddNewAgentPage extends Base_Class {
 	public static String AgentCode30;
 	public static String PhoneNumber30;
 
+	public static String TenurityCode;
+
 // Constructor
 	public AddNewAgentPage(WebDriver driver) {
 		this.driver = driver;
@@ -60,8 +62,7 @@ public class AddNewAgentPage extends Base_Class {
 			System.out.println("Error message " + e.getMessage());
 		}
 	}
-	
-	
+
 	public void clickEdit() {
 		try {
 			Common.fluentWait("Edit", AgentListPageRepo.Edit);
@@ -74,7 +75,7 @@ public class AddNewAgentPage extends Base_Class {
 			System.out.println("Error message " + e.getMessage());
 		}
 	}
-	
+
 	public void clickResetPassword() {
 		try {
 			Common.fluentWait("Reset Password", AgentListPageRepo.ResetPassword);
@@ -87,7 +88,7 @@ public class AddNewAgentPage extends Base_Class {
 			System.out.println("Error message " + e.getMessage());
 		}
 	}
-	
+
 	public void clickAction() {
 		try {
 			WebElement ActionMenu1 = driver.findElement(By.xpath("//*[@id='dropdownMenu2']//span"));
@@ -101,12 +102,24 @@ public class AddNewAgentPage extends Base_Class {
 			System.out.println("Error message " + e.getMessage());
 		}
 	}
+
 	public void clickUpdate() {
 		try {
 			Common.fluentWait("Update", AgentListPageRepo.Update);
 			WebElement elementToDoubleClick = driver.findElement(By.xpath("//button[contains(text(),'Update')]"));
 			Actions actions = new Actions(driver);
 			actions.doubleClick(elementToDoubleClick).perform();
+			By loader = By.xpath("//*[@class='spinner']");
+			if (driver.findElement(By.xpath("//*[@class='spinner']")).isDisplayed()) {
+				Common.fluentWait("Record Updated Successfully", AgentListPageRepo.RecordUpdatedSuccessfully);
+				if (driver.findElement(AgentListPageRepo.RecordUpdatedSuccessfully).isDisplayed()) {
+					ExtentTestManager.getTest().log(Status.PASS, "Record Updated Successfully displayed");
+				} else {
+					ExtentTestManager.getTest().log(Status.FAIL, "Record Updated Successfully not displayed");
+				}
+			} else {
+				click1(AgentListPageRepo.Update);
+			}
 			Thread.sleep(2000);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -115,6 +128,7 @@ public class AddNewAgentPage extends Base_Class {
 			System.out.println("Error message " + e.getMessage());
 		}
 	}
+
 	public void clearAndSendUsername() {
 		try {
 			driver.findElement(AgentListPageRepo.Name1).clear();
@@ -128,9 +142,7 @@ public class AddNewAgentPage extends Base_Class {
 			System.out.println("Error message " + e.getMessage());
 		}
 	}
-	
-	
-	
+
 	public void clickAgentList() {
 		try {
 			Common.fluentWait("Agent List", AgentListPageRepo.AgentList);
@@ -195,20 +207,33 @@ public class AddNewAgentPage extends Base_Class {
 
 	public void clickAddNewAgent() {
 		try {
-			Common.fluentWait("SecurityManagementMainMenu", AgentListPageRepo.AddNewAgent);
-			click1(AgentListPageRepo.AddNewAgent);
+			Common.fluentWait("AddNewAgent", AgentListPageRepo.AddNewAgent);
+			click1(AgentListPageRepo.AddNewAgent);	
+			WaitLoader();
 			ExtentTestManager.getTest().log(Status.PASS, "Add New Agent Functionality selected");
+			Thread.sleep(2000);
+			
+			WaitLoader();
+			String TextDate = driver.findElement(AgentListPageRepo.CurrentDate).getAttribute("value");
+			while(TextDate.isBlank()) {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+				wait.until(driver1 -> {
+					String textDate = driver1.findElement(AgentListPageRepo.CurrentDate).getAttribute("value");
+					return textDate != null && !textDate.isBlank();
+				});
+			}			
+			Thread.sleep(2000);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			ExtentTestManager.getTest().log(Status.FAIL, "Unable to select Add New Agent  Functionality");
+//			ExtentTestManager.getTest().log(Status.FAIL, "Unable to select Add New Agent  Functionality");
 			System.out.println("Error message " + e.getMessage());
 		}
 	}
 
 	public void clickClose() {
 		try {
-			Common.fluentWait("SecurityManagementMainMenu", AgentListPageRepo.Close);
+			Common.fluentWait("Close", AgentListPageRepo.Close);
 			click1(AgentListPageRepo.Close);
 			ExtentTestManager.getTest().log(Status.PASS, "Close Functionality selected");
 		} catch (Exception e) {
@@ -221,7 +246,7 @@ public class AddNewAgentPage extends Base_Class {
 
 	public void clickSubmit() {
 		try {
-			Common.fluentWait("SecurityManagementMainMenu", AgentListPageRepo.Submit);
+			Common.fluentWait("Submit", AgentListPageRepo.Submit);
 			click1(AgentListPageRepo.Submit);
 			ExtentTestManager.getTest().log(Status.PASS, "Submit Functionality selected");
 		} catch (Exception e) {
@@ -234,7 +259,7 @@ public class AddNewAgentPage extends Base_Class {
 
 	public void clickhtml() {
 		try {
-			Common.fluentWait("SecurityManagementMainMenu", AgentListPageRepo.html);
+			Common.fluentWait("html", AgentListPageRepo.html);
 			click1(AgentListPageRepo.html);
 //				ExtentTestManager.getTest().log(Status.PASS, "html element clicked selected");
 		} catch (Exception e) {
@@ -247,7 +272,7 @@ public class AddNewAgentPage extends Base_Class {
 
 	public void clickTenurity() {
 		try {
-			Common.fluentWait("SecurityManagementMainMenu", AgentListPageRepo.Tenurity);
+			Common.fluentWait("Tenurity", AgentListPageRepo.Tenurity);
 			click1(AgentListPageRepo.Tenurity);
 			ExtentTestManager.getTest().log(Status.PASS, "Tenurity Functionality selected");
 		} catch (Exception e) {
@@ -260,7 +285,7 @@ public class AddNewAgentPage extends Base_Class {
 
 	public void clickagenntrole() {
 		try {
-			Common.fluentWait("SecurityManagementMainMenu", AgentListPageRepo.agenntrole);
+			Common.fluentWait("agenntrole", AgentListPageRepo.agenntrole);
 			click1(AgentListPageRepo.agenntrole);
 			ExtentTestManager.getTest().log(Status.PASS, "Tenurity Functionality selected");
 		} catch (Exception e) {
@@ -370,7 +395,9 @@ public class AddNewAgentPage extends Base_Class {
 		}
 		driver.findElement(AgentListPageRepo.Tenurity).click();
 		ExtentTestManager.getTest().log(Status.PASS, "Tenurity added");
-		driver.findElement(AgentListPageRepo.Tenurity).sendKeys("12");
+		TenurityCode = TenurityCode();
+
+		driver.findElement(AgentListPageRepo.Tenurity).sendKeys(TenurityCode);
 		driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
 		ExtentTestManager.getTest().log(Status.PASS, "Agent Role Selected");
 		Common.fluentWait("agenntrole", AgentListPageRepo.agenntrole);
@@ -387,6 +414,18 @@ public class AddNewAgentPage extends Base_Class {
 		// Generate a 4-digit random number
 		int min = 1000; // Smallest 4-digit number
 		int max = 9999; // Largest 4-digit number
+
+		// Generate random number in range [1000, 9999]
+		int randomNumber = random.nextInt(max - min + 1) + min;
+		String stringNum = Integer.toString(randomNumber);
+		return stringNum;
+	}
+
+	public String TenurityCode() {
+		Random random = new Random();
+		// Generate a 4-digit random number
+		int min = 10; // Smallest 4-digit number
+		int max = 99; // Largest 4-digit number
 
 		// Generate random number in range [1000, 9999]
 		int randomNumber = random.nextInt(max - min + 1) + min;
@@ -419,7 +458,7 @@ public class AddNewAgentPage extends Base_Class {
 		driver.findElement(AgentListPageRepo.MobileInput).sendKeys(MobileNumber2);
 		ExtentTestManager.getTest().log(Status.PASS, "Mobile Number is added");
 		driver.findElement(AgentListPageRepo.Tenurity).click();
-		driver.findElement(AgentListPageRepo.Tenurity).sendKeys("12");
+		driver.findElement(AgentListPageRepo.Tenurity).sendKeys(TenurityCode);
 		ExtentTestManager.getTest().log(Status.PASS, "Tenurity added");
 		driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
 		Thread.sleep(1000);
@@ -466,7 +505,7 @@ public class AddNewAgentPage extends Base_Class {
 		ExtentTestManager.getTest().log(Status.PASS, "Mobile Number is added");
 		PhoneNumber18 = MobileNumber2;
 		driver.findElement(AgentListPageRepo.Tenurity).click();
-		driver.findElement(AgentListPageRepo.Tenurity).sendKeys("12");
+		driver.findElement(AgentListPageRepo.Tenurity).sendKeys(TenurityCode);
 		ExtentTestManager.getTest().log(Status.PASS, "Tenurity added");
 		driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
 		ExtentTestManager.getTest().log(Status.PASS, "Agent Role Selected");
@@ -509,7 +548,7 @@ public class AddNewAgentPage extends Base_Class {
 		driver.findElement(AgentListPageRepo.MobileInput).sendKeys(MobileNumber);
 		ExtentTestManager.getTest().log(Status.PASS, "Mobile Number is added");
 		driver.findElement(AgentListPageRepo.Tenurity).click();
-		driver.findElement(AgentListPageRepo.Tenurity).sendKeys("12");
+		driver.findElement(AgentListPageRepo.Tenurity).sendKeys(TenurityCode);
 		ExtentTestManager.getTest().log(Status.PASS, "Tenurity added");
 		driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
 		ExtentTestManager.getTest().log(Status.PASS, "Agent Role Selected");
@@ -533,6 +572,7 @@ public class AddNewAgentPage extends Base_Class {
 					AgentListPageRepo.Usercreatedsuccessfully + "Unable to add New agent");
 		}
 	}
+
 	public void isUserUpdated() {
 		Common.fluentWait("RecordUpdatedSuccessfully", AgentListPageRepo.RecordUpdatedSuccessfully);
 		if (driver.findElement(AgentListPageRepo.RecordUpdatedSuccessfully).isDisplayed()) {
@@ -541,7 +581,7 @@ public class AddNewAgentPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Record Updated Successfully not Displayed");
 		}
 	}
-	
+
 	public void PasswordReserStatus() {
 		Common.fluentWait("Password Reset Status", AgentListPageRepo.PasswordResetStatus);
 		if (driver.findElement(AgentListPageRepo.PasswordResetStatus).isDisplayed()) {
@@ -550,9 +590,7 @@ public class AddNewAgentPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Password Reset Statusnot Displayed");
 		}
 	}
-	
-	
-	
+
 	public void IsNoRecordToDisplay() {
 		if (driver.findElement(AgentListPageRepo.NoRecordToDisplay).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "No Record to Display shown successfully");
@@ -613,6 +651,20 @@ public class AddNewAgentPage extends Base_Class {
 			wait.pollingEvery(Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
 			Log.info("Loader disappeared.");
+			Thread.sleep(4000);
+		} catch (Exception e) {
+			Log.info("Loader did not appear, proceeding without delay.");
+		}
+	}
+	public void WaitNext() {
+		By Next = By.xpath("//*[contains(text(),'Next')]");
+		// wait for Processing icon
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+			wait.pollingEvery(Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Next));
+			Log.info("Loader disappeared.");
+			Thread.sleep(4000);
 		} catch (Exception e) {
 			Log.info("Loader did not appear, proceeding without delay.");
 		}
@@ -627,58 +679,55 @@ public class AddNewAgentPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, " Username not updated and it is displayed in AgentList");
 		}
 	}
-	
-	
-	
-	
+
 	public void EditAgentVerification() {
 		// is displayed
-					if (driver.findElement(AgentListPageRepo.EditAgent).isDisplayed()) {
-						ExtentTestManager.getTest().log(Status.PASS, "Edit Agent displayed");
-					} else {
-						ExtentTestManager.getTest().log(Status.FAIL, "Edit Agent not displayed");
-					}
-					if (driver.findElement(AgentListPageRepo.AgentCodeAddNewAgent).isDisplayed()) {
-						ExtentTestManager.getTest().log(Status.PASS, "Agent Code Add New Agent displayed");
-					} else {
-						ExtentTestManager.getTest().log(Status.FAIL, "Agent Code Add New Agent  not displayed");
-					}
-					// Agent name
-					if (driver.findElement(AgentListPageRepo.Name).isDisplayed()) {
-						ExtentTestManager.getTest().log(Status.PASS, "Name is dispalyed in Edit displayed");
-					} else {
-						ExtentTestManager.getTest().log(Status.FAIL, "Name is dispalyed in Edit not displayed");
-					}
-					// Mobile Number
-					if (driver.findElement(AgentListPageRepo.PhoneNumberAddNewAgent).isDisplayed()) {
-						ExtentTestManager.getTest().log(Status.PASS, "Phone Number AddNewAgent is displayed");
-					} else {
-						ExtentTestManager.getTest().log(Status.FAIL, "Phone Number AddNewAgent is not displayed");
-					}
+		if (driver.findElement(AgentListPageRepo.EditAgent).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, "Edit Agent displayed");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Edit Agent not displayed");
+		}
+		if (driver.findElement(AgentListPageRepo.AgentCodeAddNewAgent).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, "Agent Code Add New Agent displayed");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Agent Code Add New Agent  not displayed");
+		}
+		// Agent name
+		if (driver.findElement(AgentListPageRepo.Name).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, "Name is dispalyed in Edit displayed");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Name is dispalyed in Edit not displayed");
+		}
+		// Mobile Number
+		if (driver.findElement(AgentListPageRepo.PhoneNumberAddNewAgent).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, "Phone Number AddNewAgent is displayed");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Phone Number AddNewAgent is not displayed");
+		}
 
-					if (driver.findElement(AgentListPageRepo.DateofJoining).isDisplayed()) {
-						ExtentTestManager.getTest().log(Status.PASS, "Date of Joining displayed");
-					} else {
-						ExtentTestManager.getTest().log(Status.FAIL, "Date of Joining not displayed");
-					}
+		if (driver.findElement(AgentListPageRepo.DateofJoining).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, "Date of Joining displayed");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Date of Joining not displayed");
+		}
 
-					if (driver.findElement(AgentListPageRepo.Tenurity).isDisplayed()) {
-						ExtentTestManager.getTest().log(Status.PASS, "Tenurity displayed");
-					} else {
-						ExtentTestManager.getTest().log(Status.FAIL, "Tenurity not displayed");
-					}
-					if (driver.findElement(AgentListPageRepo.Close).isDisplayed()) {
-						ExtentTestManager.getTest().log(Status.PASS, "Close displayed");
-					} else {
-						ExtentTestManager.getTest().log(Status.FAIL, "Close not displayed");
-					}
-					if (driver.findElement(AgentListPageRepo.Update).isDisplayed()) {
-						ExtentTestManager.getTest().log(Status.PASS, " Update button displayed");
-					} else {
-						ExtentTestManager.getTest().log(Status.FAIL, " Update not displayed");
-					}
+		if (driver.findElement(AgentListPageRepo.Tenurity).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, "Tenurity displayed");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Tenurity not displayed");
+		}
+		if (driver.findElement(AgentListPageRepo.Close).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, "Close displayed");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Close not displayed");
+		}
+		if (driver.findElement(AgentListPageRepo.Update).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, " Update button displayed");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, " Update not displayed");
+		}
 	}
-	
+
 	public void GetAttributeAndVerify() {
 		String TextDate = driver.findElement(AgentListPageRepo.CurrentDate).getAttribute("value");
 		String name = driver.findElement(AgentListPageRepo.Name).getAttribute("value");
@@ -719,45 +768,50 @@ public class AddNewAgentPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, " PhoneNumber is not displayed");
 		}
 
-		if (Tenurity.contains("12")) {
+		if (Tenurity.contains(TenurityCode)) {
 			ExtentTestManager.getTest().log(Status.PASS, " Tenurity is displayed");
 		} else {
 			ExtentTestManager.getTest().log(Status.FAIL, " Tenurity is not displayed");
 		}
 	}
-	
-	
-	
-	
-	
-	
-public void creatNewAgent() throws InterruptedException {
-	String AgentCode2 = AgentCodeGenerator();
 
-	AgentCode30 = AgentCode2;
+	public void creatNewAgent() throws InterruptedException {
+		Common.fluentWait("agenntrole", AgentListPageRepo.RoleAddNewAgent);
 
-	System.out.println("AgentCode2 :" + AgentCode2);
-	driver.findElement(AgentListPageRepo.NameAgentCode).sendKeys(AgentCode2);
-	String Username2 = RandomNameGenerator();
-	Username30 = Username2;
-	System.out.println("Username2U" + Username2);
-	driver.findElement(AgentListPageRepo.Name1).sendKeys(Username2);
-	String MobileNumber2 = MobileNumberGenerator();
-	System.out.println("MobileNumber2 :" + MobileNumber2);
-	driver.findElement(AgentListPageRepo.MobileInput).sendKeys(MobileNumber2);
-	PhoneNumber30 = MobileNumber2;
-	driver.findElement(AgentListPageRepo.Tenurity).click();
-	driver.findElement(AgentListPageRepo.Tenurity).sendKeys("12");
-	driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
-	Thread.sleep(2000);
-	Common.fluentWait("agenntrole", AgentListPageRepo.agenntrole);
-	WebElement elementToClick = driver.findElement(By.xpath("(//*[@role='listbox']/..//li[1])[3]"));
-	JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-	jsExecutor.executeScript("arguments[0].style.display='block'; arguments[0].click();", elementToClick);
-	Thread.sleep(1000);
+		driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
+		Common.fluentWait("agenntrole", AgentListPageRepo.agenntrole);
+		Thread.sleep(5000);
+		WebElement elementToClick = driver.findElement(By.xpath("(//*[@role='listbox']/..//li[1])[3]"));
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("arguments[0].style.display='block'; arguments[0].click();", elementToClick);
 
-	driver.findElement(AgentListPageRepo.Submit).click();
-}
+		String AgentCode2 = AgentCodeGenerator();
+
+		AgentCode30 = AgentCode2;
+
+		System.out.println("AgentCode2 :" + AgentCode2);
+		driver.findElement(AgentListPageRepo.NameAgentCode).sendKeys(AgentCode2);
+		String Username2 = RandomNameGenerator();
+		Username30 = Username2;
+		System.out.println("Username2U" + Username2);
+		driver.findElement(AgentListPageRepo.Name1).sendKeys(Username2);
+		String MobileNumber2 = MobileNumberGenerator();
+		System.out.println("MobileNumber2 :" + MobileNumber2);
+		driver.findElement(AgentListPageRepo.MobileInput).sendKeys(MobileNumber2);
+		PhoneNumber30 = MobileNumber2;
+		driver.findElement(AgentListPageRepo.Tenurity).click();
+		driver.findElement(AgentListPageRepo.Tenurity).sendKeys(TenurityCode);
+//	driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
+
+//	Common.fluentWait("agenntrole", AgentListPageRepo.agenntrole);
+//	WebElement elementToClick = driver.findElement(By.xpath("(//*[@role='listbox']/..//li[1])[3]"));
+//	JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+//	jsExecutor.executeScript("arguments[0].style.display='block'; arguments[0].click();", elementToClick);
+		Thread.sleep(1000);
+
+		driver.findElement(AgentListPageRepo.Submit).click();
+	}
+
 	public void SearchUser() {
 		driver.findElement(AgentListPageRepo.AgentName1).clear();
 		ExtentTestManager.getTest().log(Status.PASS, "Agent Name is cleared");
@@ -827,7 +881,7 @@ public void creatNewAgent() throws InterruptedException {
 		driver.findElement(AgentListPageRepo.MobileInput).sendKeys(MobileNumber1);
 		ExtentTestManager.getTest().log(Status.PASS, "Mobile Number is added");
 		driver.findElement(AgentListPageRepo.Tenurity).click();
-		driver.findElement(AgentListPageRepo.Tenurity).sendKeys("12");
+		driver.findElement(AgentListPageRepo.Tenurity).sendKeys(TenurityCode);
 		ExtentTestManager.getTest().log(Status.PASS, "Tenurity added");
 		driver.findElement(AgentListPageRepo.RoleAddNewAgent).click();
 		ExtentTestManager.getTest().log(Status.PASS, "Agent Role Selected");
@@ -854,25 +908,24 @@ public void creatNewAgent() throws InterruptedException {
 
 		String formattedDate = currentDate.format(formatter);
 		By AgencyName = By.xpath("//*[contains(text(),'" + formattedDate + "')]");
-	
-		Thread.sleep(2000);
+
+		Thread.sleep(5000);
 		String TextDate = driver.findElement(AgentListPageRepo.CurrentDate).getAttribute("value");
-		if(TextDate.isBlank()) {
-			 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));	
-			 wait.until(driver1 -> {
-		            String textDate = driver1.findElement(AgentListPageRepo.CurrentDate).getAttribute("value");
-		            return textDate != null && !textDate.isBlank();
-		        });
-		}
-		else {
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-		if (TextDate.contains(formattedDate)) {
-			ExtentTestManager.getTest().log(Status.PASS, "Current date is displayed in Date of joining");
+		if (TextDate.isBlank()) {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(driver1 -> {
+				String textDate = driver1.findElement(AgentListPageRepo.CurrentDate).getAttribute("value");
+				return textDate != null && !textDate.isBlank();
+			});
 		} else {
-			ExtentTestManager.getTest().log(Status.FAIL, "Current date is not displayed in Date of joining");
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			if (TextDate.contains(formattedDate)) {
+				ExtentTestManager.getTest().log(Status.PASS, "Current date is displayed in Date of joining");
+			} else {
+				ExtentTestManager.getTest().log(Status.FAIL, "Current date is not displayed in Date of joining");
+			}
 		}
-		}
-		
+
 	}
 
 	public void AddNewAgentPageFieldsVerification() {

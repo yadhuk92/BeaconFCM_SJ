@@ -86,6 +86,8 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			AddNewAgentPage.clickAgentManagement();
 			AddNewAgentPage.clickAgentList();
 			AddNewAgentPage.WaitLoader();
+			AddNewAgentPage.WaitNext();
+			Thread.sleep(4000);
 			AddNewAgentPage.AgentManagementDisplay();
 
 		} catch (AssertionError | Exception e) {
@@ -151,6 +153,8 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			throws InterruptedException, IOException, ParseException {
 
 		try {
+			System.out.println("********** Verify_Fields_Buttons_AddNewAgentPage 4   ***********");
+			System.out.println();
 			AddNewAgentPage.AddNewAgentPageFieldsVerification();
 
 		} catch (AssertionError | Exception e) {
@@ -287,7 +291,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			AddNewAgentPage.clickAddNewAgent();
 			AddNewAgentPage.WaitLoader();
 			AddNewAgentPage.Fillthedetails10();
-			Common.fluentWait("UserNameField", AgentListPageRepo.AlreadyUserExist);
+			Common.fluentWait("AlreadyUserExist", AgentListPageRepo.AlreadyUserExist);
 			AddNewAgentPage.AlreadyUserExistDisplayed();
 			AddNewAgentPage.WaitLoader();
 		} catch (AssertionError | Exception e) {
@@ -363,7 +367,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("**********  SearchAgentbyValidUsername 19 ***********");
 			System.out.println();
-			Common.fluentWait("UserNameField", AgentListPageRepo.AgentManagement);
+			Common.fluentWait("AgentManagement", AgentListPageRepo.AgentManagement);
 			
 			AddNewAgentPage.clickAgentManagement();
 			AddNewAgentPage.clickAgentList();
@@ -485,14 +489,15 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 
 		try {
 			System.out.println("********** ResetPasswordFunctionality 30  ***********");
-			System.out.println();
+			System.out.println();Thread.sleep(10000);
 			AddNewAgentPage.clickAgentManagement();
 			AddNewAgentPage.clickAddNewAgent();
-			AddNewAgentPage.WaitLoader();			
+			AddNewAgentPage.WaitLoader();
+			Thread.sleep(4000);
 			AddNewAgentPage.creatNewAgent();			
 			AddNewAgentPage.WaitLoader();
 			AddNewAgentPage.isUserCreatedSuccessfully();
-			Common.fluentWait("UserNameField", AgentListPageRepo.Action);
+			Common.fluentWait("Action", AgentListPageRepo.Action);
 			AddNewAgentPage.clickAction();
 			AddNewAgentPage.clickResetPassword();
 			AddNewAgentPage.PasswordReserStatus();
@@ -517,7 +522,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("**********  VerifythefieldsandbuttonsinEditoptioninagentlistpage 31 ***********");
 			System.out.println();
-			Common.fluentWait("UserNameField", AgentListPageRepo.Action);	
+			Common.fluentWait("Action", AgentListPageRepo.Action);	
 			AddNewAgentPage.clickAction();
 			AddNewAgentPage.clickEdit();
 			AddNewAgentPage.WaitLoader();
