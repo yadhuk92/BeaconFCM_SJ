@@ -25,7 +25,7 @@ public class LoginBannerConfiRepo {
     public By hyperlink=By.xpath("(//li[@role='option'])[5]");
     public By sectionlink1=By.xpath("(//li[@role='option'])[6]");
     public By link1OnProfilePage=By.xpath("(//a[@target='_blank'])[1]");
-//    public By headingtextlink1=By.xpath("(//span[@class='constyle'])[4]");
+//    public By headerForlink1=By.xpath("(//span[@class='constyle'])[5]");
     public By ProfilePagewithHeaderandDetaillink=By.xpath("(//p[@class='constyle1'])[4]");
     
     

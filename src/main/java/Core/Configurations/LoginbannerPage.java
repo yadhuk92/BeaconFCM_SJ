@@ -264,7 +264,14 @@ public class LoginbannerPage extends Base_Class{
 	   serchbutton.click();
    }
  
-  //Method to input modified link1
+   //Method to input modified Header
+   public void modifiedDataForHeader(String modifiedlink1) {
+	   WebElement modifiedData =driver.findElement(Page_Repository.headingtext);
+	   modifiedData.clear();
+	   modifiedData.sendKeys(modifiedlink1);
+   }
+   
+  //Method to input modified Detalfieldlink1
    public void modifiedDataForlink1(String modifiedlink1) {
 	   WebElement modifiedData =driver.findElement(Page_Repository.detailtext);
 	   modifiedData.clear();
@@ -283,7 +290,31 @@ public class LoginbannerPage extends Base_Class{
 	return true;
    }
 
+ //Method to navigate to Call Centre URL
+   public void callCentreURL() {
+	   driver.get("http://192.168.32.33:8595/");
+	   return;
+   }
+   
+ //Method to select Agency User in Usertype dropdown
+   public boolean selectAgencyUser() {
+	   List<WebElement> AgencyUser=driver.findElements(Page_Repository.UserTypeallvalues);
+	   for(WebElement wb:AgencyUser)
+		   if(wb.getText().contains("Collection Agency"))
+		   {
+			   wb.click();
+		   }
+	return true;
+	   
+   }
+   
+ //Method to navigate to Collection Agency URL
+   public void CollectionAgencyURL() {
+	   driver.get("http://192.168.32.33:8597/collection");
+	   return;
+   }  
 }
+
 
 
 
