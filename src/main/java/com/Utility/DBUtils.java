@@ -140,4 +140,133 @@ public class DBUtils {
         return results;
     }
 
+    public static List<Object> ExecuteAnyOracleSQLStoredProcedure(String procedureName, List<Object> inputParams, List<Integer> outputParamTypes) throws IOException {
+        Connection conn = null;
+        CallableStatement stmt = null;
+        List<Object> outputValues = new ArrayList<>();
+
+        try {
+            // Establish database connection using Base_Class method
+            conn = Base_Class.OracleDBConnection();
+
+            // Build procedure call string dynamically
+            StringBuilder procedureCall = new StringBuilder("{ call " + procedureName + "(");
+            int totalParams = inputParams.size() + outputParamTypes.size();
+            procedureCall.append("?,".repeat(Math.max(0, totalParams - 1))).append("?) }");
+
+            stmt = conn.prepareCall(procedureCall.toString());
+
+            // Set input parameters
+            for (int i = 0; i < inputParams.size(); i++) {
+                stmt.setObject(i + 1, inputParams.get(i));
+            }
+
+            // Register output parameters
+            int outputIndex = inputParams.size() + 1;
+            for (Integer sqlType : outputParamTypes) {
+                stmt.registerOutParameter(outputIndex++, sqlType);
+            }
+
+            // Execute stored procedure
+            stmt.execute();
+
+            // Retrieve output parameters
+            for (int i = 0; i < outputParamTypes.size(); i++) {
+                outputValues.add(stmt.getObject(inputParams.size() + 1 + i));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return outputValues;
+    }  
+    
+    
+    public static List<Object> InsertToMSTEmployeeForCoreMyDeskDashboard(
+            String procedureName, List<Object> inputParams, List<Integer> outputParamTypes) throws IOException {
+        
+        Connection conn = null;
+        CallableStatement stmt = null;
+        List<Object> outputValues = new ArrayList<>();
+
+        try {
+            // Establish database connection using Base_Class method
+            conn = Base_Class.OracleDBConnection();
+
+            // Build procedure call string dynamically
+            StringBuilder procedureCall = new StringBuilder("{ call " + procedureName + "(");
+            int totalParams = inputParams.size() + outputParamTypes.size();
+            procedureCall.append("?,".repeat(Math.max(0, totalParams - 1))).append("?) }");
+
+            stmt = conn.prepareCall(procedureCall.toString());
+
+            // Set input parameters
+            for (int i = 0; i < inputParams.size(); i++) {
+                stmt.setObject(i + 1, inputParams.get(i));
+            }
+
+            // Register output parameters
+            int outputIndex = inputParams.size() + 1;
+            for (Integer sqlType : outputParamTypes) {
+                stmt.registerOutParameter(outputIndex++, sqlType);
+            }
+
+            // Execute stored procedure
+            stmt.execute();
+
+            // Retrieve output parameters
+            for (int i = 0; i < outputParamTypes.size(); i++) {
+                outputValues.add(stmt.getObject(inputParams.size() + 1 + i));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return outputValues;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
