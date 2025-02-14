@@ -9,15 +9,11 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -146,7 +142,7 @@ public class LoginbannerPageTest {
 	    	}
 		    }
 	  //Verify Mandatory Fields Warning
-//        @Test(priority=3)
+        @Test(priority=3)
         public void MandatoryFieldsWarning() throws InterruptedException {
         	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner)); 
@@ -175,7 +171,7 @@ public class LoginbannerPageTest {
         
        //Click on Usertypedropdown and validate the dropdown values
         
- //       @Test(priority = 4)
+        @Test(priority=4,enabled=false)
         public void SelectInternalUserType() throws Throwable {
         	 
         	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
@@ -185,11 +181,7 @@ public class LoginbannerPageTest {
     		ExtentTestManager.getTest().log(Status.PASS,"1.Click on Usertype dropdown");
         		loginbanner.clickuserdropdown();
         		ExtentTestManager.getTest().log(Status.PASS,"2.Internal user , call centre user , collection agency user displayed in dropdown ");
-        		
-//               if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
-            	   
- //       		String usertype=testdata.get("UserType").toString();
- //       		System.out.println(usertype);
+
         		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
         		loginbanner.selectinternaluser();
         		ExtentTestManager.getTest().log(Status.PASS, "3.\"Internal user\" is selected in the user type field.");
@@ -205,7 +197,7 @@ public class LoginbannerPageTest {
        	    	}
                }
 	// Select Banner Type(Information)
- //       @Test (priority=5,enabled=false)
+        @Test (priority=5,enabled=false)
         public void SelectInformationtype() throws InterruptedException {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
         	try
@@ -229,14 +221,13 @@ public class LoginbannerPageTest {
         }
      
        //select Header1 from Section dropdown
-//        @Test(priority=6,enabled=false)
+        @Test(priority=6,enabled=false)
         public void SelectHeader1() throws InterruptedException {
         	
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(200));
         	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
 //        	Common.fluentWait("wait till spinner to dissappear", PageRepository.spinner);
-        	
-        	try
+      	try
         	{
         	ExtentTestManager.getTest().log(Status.PASS, "1.Click on Section Dropdown");
         	loginbanner.clickSectiondropdown();
@@ -255,7 +246,7 @@ public class LoginbannerPageTest {
 	    	}
         }      	
         //Enter Heading
-  //      @Test(priority=7,dataProvider="TestData")
+        @Test(priority=7,dataProvider="TestData",enabled=false)
         public void InputHeadingField(Map<Object, Object> testdata) {
         	try {
         		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
@@ -287,7 +278,7 @@ public class LoginbannerPageTest {
         }
         
         //Enter Details
- //       @Test(priority=8,dataProvider= "TestData")
+        @Test(priority=8,dataProvider= "TestData",enabled=false)
         public void InputDetailField( Map<Object,Object> testdata) {
         	try
         	{
@@ -317,7 +308,7 @@ public class LoginbannerPageTest {
         
        //Submit the details by clicking on Submit button
         //(Usertype=Internal user,bannertype=Information,Section=Header1)
- //       @Test(priority=9)
+        @Test(priority=9,enabled=false)
         public void Clicksubmitbutton() throws InterruptedException {
         	try
         	{
@@ -336,7 +327,7 @@ public class LoginbannerPageTest {
 	    }
  //Verify Data Post Logout(Usertype=Internal user,bannertype=Information,Section=Header1)
         
-//       @Test(priority=10)
+       @Test(priority=10,enabled=false)
         public void CheckdataPostLogout() {
 
         	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(300));
@@ -368,7 +359,7 @@ public class LoginbannerPageTest {
         
   
   //Click on usertype=> select internal user
- //      @Test(priority=4)
+       @Test(priority=3,enabled=false)
        public void selectinternaluser() throws Throwable {
     	   WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
     	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
@@ -394,7 +385,7 @@ public class LoginbannerPageTest {
         
         
   //Select hyperlink from banner type dropdown
-  //      @Test(priority=5)
+        @Test(priority=4,enabled=false)
         public void Selecthyperlink() throws Throwable {
         	WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
         	try
@@ -418,7 +409,7 @@ public class LoginbannerPageTest {
         }
         
  //select link1 from section dropdown
- //       @Test(priority=6)
+        @Test(priority=5,enabled=false)
         public void Selectlink1() throws Throwable {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
         	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
@@ -444,7 +435,7 @@ public class LoginbannerPageTest {
   
         
 //Input Headerlink
- //       @Test(priority=7,dataProvider="TestData")
+        @Test(priority=6,dataProvider="TestData",enabled=false)
         public void InputHeaderLink( Map<Object,Object> testdata) {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
         	try
@@ -469,7 +460,7 @@ public class LoginbannerPageTest {
      }  	
         
       //Input Detaillink
-//        @Test(priority=8,dataProvider="TestData")
+        @Test(priority=7,dataProvider="TestData",enabled=false)
         public void InputDetailLink( Map<Object,Object> testdata) {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
         	try
@@ -495,7 +486,7 @@ public class LoginbannerPageTest {
    
  //Verify Data Post Logout(Usertype=Internal user,bannertype=Hyperlink,Section=link1)  
         
-//        @Test(priority=10)
+        @Test(priority=8,enabled=false)
         
         public void ClickonLink1PostLogout() {
         	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(300));
@@ -509,11 +500,11 @@ public class LoginbannerPageTest {
             	ExtentTestManager.getTest().log(Status.PASS, "2.Click on Logout");
             	loginbanner.Clicklogout();
             	
-            	WebDriverWait wait2=new WebDriverWait(driver, Duration.ofSeconds(400));
+            	WebDriverWait wait2=new WebDriverWait(driver, Duration.ofSeconds(600));
         		ExtentTestManager.getTest().log(Status.PASS, "Expected-1.Data entered for hyperlink should be displayed on login page");
         		loginbanner.dataforlink1();
         		
-        		WebDriverWait wait3=new WebDriverWait(driver, Duration.ofSeconds(500));
+        		WebDriverWait wait3=new WebDriverWait(driver, Duration.ofSeconds(600));
         		ExtentTestManager.getTest().log(Status.PASS, "2.User should be able to click on link1");
         		loginbanner.clickonProfilePagelink1();
         		
@@ -530,7 +521,7 @@ public class LoginbannerPageTest {
  //Test case-1. Select "internal user" from 'User Type'.2. Select "hyperlink" from 'Banner Type'. 3. Enter "link1" in 'Section'.4. Click on 'Search'.
   //Search entered details for link1      
  
- //       @Test(priority=4)
+        @Test(priority=4,enabled=false)
         public void VerifyInputdataUsingSearch2() throws Throwable {
            WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(200));
        	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
@@ -583,10 +574,10 @@ public class LoginbannerPageTest {
  //Test case-1. Select "internal user" from 'User Type'.2. Select "information" from 'Banner Type'. 3. Enter "Header1" in 'Section'.4. Click on 'Search'.
  //Search entered details for Header1      
         
-//    @Test(priority=4)
+    @Test(priority=4,enabled=false)
     public void VerifydataUsingSearch1() throws Throwable {
     	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(200));
-    	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
     	try
     	{
     	 WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
@@ -635,7 +626,7 @@ public class LoginbannerPageTest {
     
 //Modify data in 'Heading' and 'Details' fields and submit for Internal user
     
-//   @Test(priority=4,dataProvider="TestData")
+   @Test(priority=4,dataProvider="TestData",enabled=false)
    public void modifydata_link1( Map<Object,Object> testdata) throws Throwable {
 	   WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
@@ -705,7 +696,7 @@ catch(AssertionError|Exception e) {
     
  //Verify Updated Data Post Logout.Click on modified link1  
    
-//   @Test(priority=4,dataProvider="TestData")
+   @Test(priority=4,dataProvider="TestData",enabled=false)
    public void VerifyUpdatedDataPostLogout(Map<Object,Object> testdata) throws Throwable {
 	   WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
@@ -754,9 +745,7 @@ catch(AssertionError|Exception e) {
         			System.out.println(modifiedlink1);
         			loginbanner.modifiedDataForlink1(modifiedlink1);
         		}
-        		
-     //   		return;	
-        	
+    	
    	    WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(400));
         ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit");
    	    loginbanner.clicksubmit();
@@ -791,10 +780,10 @@ catch(AssertionError|Exception e) {
 } 
      
 //Submit Without Heading
-//   @Test(priority=3,dataProvider="TestData")
+   @Test(priority=4,dataProvider="TestData",enabled=false)
    public void SubmitWithoutHeading(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(60));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
@@ -832,10 +821,7 @@ catch(AssertionError|Exception e) {
     			String Detaillink = testdata.get("Detailfield1link").toString();
     			loginbanner.detaillink(Detaillink);
     		}
-    		
-//    		return;
-        	
-       	    WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(400));
+ 	    WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(400));
             ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit");
        	    loginbanner.clicksubmit();
        	    
@@ -859,10 +845,10 @@ catch(AssertionError|Exception e) {
 	} 
    
  //Submit Without Detail field
-//   @Test(priority=3,dataProvider="TestData")
+   @Test(priority=4,dataProvider="TestData",enabled=false)
    public void SubmitWithoutDetailField(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(60));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
@@ -900,9 +886,7 @@ catch(AssertionError|Exception e) {
     			String Headerlink = testdata.get("Headerfield1link").toString();
     			loginbanner.headerlink(Headerlink);
     		}
-    		
-//    		return;
-        	
+    	
        	    WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(400));
             ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit");
        	    loginbanner.clicksubmit();
@@ -927,10 +911,10 @@ catch(AssertionError|Exception e) {
 	}   
    
 //Select "callcentre user" from the 'User Type' dropdown.  
-//   @Test(priority=3)
+   @Test(priority=4,enabled=false)
    public void SelectCallCenter() throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
@@ -953,10 +937,10 @@ catch(AssertionError|Exception e) {
    
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select Information from banner type dropdown 3.Select Header1 from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit   
    
-//  @Test(priority=3,dataProvider="TestData")
+  @Test(priority=4,dataProvider="TestData",enabled=false)
   public void SubmitCallCentreData1(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
@@ -1028,10 +1012,10 @@ catch(AssertionError|Exception e) {
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select Information from banner type dropdown 3.Select Header1 from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit   
 //7.Logout and Verify the data on login page of Call Centre user
   
-//  @Test(priority=3,dataProvider="TestData")
+  @Test(priority=4,dataProvider="TestData",enabled=false)
   public void VerifydataPostLogoutCC1(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
@@ -1117,11 +1101,11 @@ catch(AssertionError|Exception e) {
   
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select "Hyperlink" from banner type dropdown 3.Select "link1" from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit  
 
-//  @Test(priority=3,dataProvider="TestData")
+  @Test(priority=4,dataProvider="TestData",enabled=false)
   
 public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
@@ -1190,11 +1174,11 @@ public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select "Hyperlink" from banner type dropdown 3.Select "link1" from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit  
 //7.Logout and Verify the data on login page of Call Centre user. 8.Click on link1 to load the page
 
-//@Test(priority=3,dataProvider="TestData")
+@Test(priority=4,dataProvider="TestData",enabled=false)
 
 public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
@@ -1287,7 +1271,7 @@ public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable
 
 //Test case-Edit and Update Data(Link1) for Call Centre user and submit  
 
-//@Test(priority=3,dataProvider="TestData")
+@Test(priority=4,dataProvider="TestData",enabled=false)
 
 public void ModifydataforCallCentre( Map<Object,Object> testdata) throws Throwable {
   WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -1367,7 +1351,7 @@ throw e;
 
 //Test case-Verify Updated Data Post Logout for Call Centre User  
 
-//@Test(priority=3,dataProvider="TestData")
+@Test(priority=4,dataProvider="TestData",enabled=false)
 
 public void VerifyModifieddataforCallCentre( Map<Object,Object> testdata) throws Throwable {
 WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -1473,11 +1457,11 @@ throw e;
 //Test case-1. verify usertype dropdown 2. Select "Collection Agency " from the 'User Type' dropdown. 3.Select "Information" from banner type dropdown 4.Select "Header1" from Section dropdown 5.Enter Heading field
 //6.Enter Detail field 7.Click on Submit
   
-//@Test(priority=3,dataProvider="TestData")
+@Test(priority=4,dataProvider="TestData",enabled=false)
 
 public void SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
@@ -1548,10 +1532,10 @@ public void SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable
 //Test case-1.Select "Collection Agency" from Usertype dropdown 2.Select Information from banner type dropdown 3.Select Header1 from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit   
 //7.Logout and Verify the data on login page of Collection Agency user
 
-//@Test(priority=3,dataProvider="TestData")
+@Test(priority=4,dataProvider="TestData",enabled=false)
 public void VerifyPostLogoutdataAgencyUser(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
@@ -1633,10 +1617,10 @@ public void VerifyPostLogoutdataAgencyUser(Map<Object,Object>testdata) throws Th
   }
 
 //Search Existing Data-For Agency User
-//@Test(priority=3)
+@Test(priority=4,enabled=false)
 public void SearchDataForAgencyUser() throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
 	   try
 	   {
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
@@ -1685,10 +1669,10 @@ public void SearchDataForAgencyUser() throws Throwable {
 	  }
 
 //Edit and update the data for Agency User
-//@Test(priority=3,dataProvider="TestData")
+@Test(priority=4,dataProvider="TestData",enabled=false)
 public void ModifydataforAgencyUser( Map<Object,Object> testdata) throws Throwable {
 	  WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
-	  wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+	  wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
 	  try
 	  {
 		  WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
@@ -1764,10 +1748,10 @@ public void ModifydataforAgencyUser( Map<Object,Object> testdata) throws Throwab
 
 
 //Verify updated data post logout for Agency User
-@Test(priority=3,dataProvider="TestData")
+@Test(priority=4,dataProvider="TestData")
 public void VerifyModifiedDataforAgencyUser( Map<Object,Object> testdata) throws Throwable {
 	  WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
-	  wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+	  wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
 	  try
 	  {
 		  WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
