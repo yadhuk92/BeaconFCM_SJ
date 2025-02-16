@@ -45,7 +45,8 @@ public class CoreLoginTest extends Base_Class {
             Log.info("*** Running Beacon FCM core application login...");
             context.setAttribute("fileName", "Login");
             
-            AllLoginCases.CoreLogin();
+            //AllLoginCases.CoreLogin();
+            AllLoginCases.CoreLoginWithInputs("IBU0001521", "ses@987");
             
 			/*ExtentTest test = extent.createTest("Login Test - TC001").assignCategory("Banned Customer Module");
             ExtentTest preconditions = test.createNode("Preconditions");
