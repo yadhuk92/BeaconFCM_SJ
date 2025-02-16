@@ -7,10 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.sql.Types;
 
 import com.BasePackage.Base_Class;
-
 import oracle.jdbc.OracleTypes;
 
 public class DBUtils {
@@ -79,11 +80,32 @@ public class DBUtils {
         /*String selectQuery = "SELECT column_name FROM table_name WHERE condition";
         String selectResult = executeSQLStatement(selectQuery);
         System.out.println("Select Query Result: " + selectResult);*/
+    	
+    	String CoreUserName="IBU0001521";
+    	//String CoreUserName="IBU0000028";
+    	String query ="select Default_URL from acc_users where user_id = '"+CoreUserName+"'";
+	    String defaultURL = DBUtils.fetchSingleValueFromDB(query);
+	    System.out.println("Default URL: " + defaultURL);
 
-        // Example usage with a TRUNCATE statement
-        String truncateQuery = "TRUNCATE TABLE mst_callcentre_accounts";
-        String truncateResult = executeSQLStatement(truncateQuery);
-        System.out.println("Truncate Query Result: " + truncateResult);
+        // Example usage of executeSQLStatement with a TRUNCATE statement
+		/*
+		 * String truncateQuery = "TRUNCATE TABLE mst_callcentre_accounts"; String
+		 * truncateResult = executeSQLStatement(truncateQuery);
+		 * System.out.println("Truncate Query Result: " + truncateResult);
+		 */
+		 
+        
+        // Example usage for ExecuteAnyOracleSQLStoredProcedure
+		/*
+		 * List<Object> inputParams = Arrays.asList("John Doe", "john.doe@example.com",
+		 * 9876543210L); List<Integer> outputTypes = Arrays.asList(Types.VARCHAR,
+		 * Types.VARCHAR);
+		 * 
+		 * List<Object> results =
+		 * ExecuteAnyOracleSQLStoredProcedure("HOUserIDGenerator", inputParams,
+		 * outputTypes); System.out.println("Generated User ID: " + results.get(0));
+		 * System.out.println("Default Password: " + results.get(1));
+		 */
     	
     }
     
@@ -199,4 +221,55 @@ public class DBUtils {
         }
         return result;
     }
+    
+    public static List<Object> ExecuteAnyOracleSQLStoredProcedure(String procedureName, List<Object> inputParams, List<Integer> outputParamTypes) throws IOException {
+        Connection conn = null;
+        CallableStatement stmt = null;
+        List<Object> outputValues = new ArrayList<>();
+
+        try {
+            // Establish database connection using Base_Class method
+            conn = Base_Class.OracleDBConnection();
+
+            // Build procedure call string dynamically
+            StringBuilder procedureCall = new StringBuilder("{ call " + procedureName + "(");
+            int totalParams = inputParams.size() + outputParamTypes.size();
+            procedureCall.append("?,".repeat(Math.max(0, totalParams - 1))).append("?) }");
+
+            stmt = conn.prepareCall(procedureCall.toString());
+
+            // Set input parameters
+            for (int i = 0; i < inputParams.size(); i++) {
+                stmt.setObject(i + 1, inputParams.get(i));
+            }
+
+            // Register output parameters
+            int outputIndex = inputParams.size() + 1;
+            for (Integer sqlType : outputParamTypes) {
+                stmt.registerOutParameter(outputIndex++, sqlType);
+            }
+
+            // Execute stored procedure
+            stmt.execute();
+
+            // Retrieve output parameters
+            for (int i = 0; i < outputParamTypes.size(); i++) {
+                outputValues.add(stmt.getObject(inputParams.size() + 1 + i));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return outputValues;
+    }  
+    
 }

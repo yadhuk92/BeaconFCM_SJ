@@ -71,6 +71,21 @@ public class Login_Class extends Base_Class {
             Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
             Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
             Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+            
+         // Fetch the default URL from the database
+	        String query = "select Default_URL from acc_users where user_id = '" + CoreUserName + "'";
+	        String defaultURL = DBUtils.fetchSingleValueFromDB(query);
+	        Log.info("Default URL: " + defaultURL);
+	        
+	     // Check if the default URL is null or empty
+			  if (defaultURL == null || defaultURL.trim().isEmpty()) {
+			      // If the default URL is null or empty, update it to '/Home'
+			      String updateQuery = "UPDATE acc_users SET Default_URL = '/Home' WHERE user_id = '"+CoreUserName+"'";
+			      DBUtils.executeSQLStatement(updateQuery);
+			  } else if ("/Home".equals(defaultURL)) {
+			      // If the default URL is already '/Home', no action is needed
+			      System.out.println("Default URL is already /Home. No action taken.");
+			  }
 
             driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
             //ExtentTestManager.getTest().log(Status.INFO, "Entered " + CoreUserName + " in user name field");
@@ -114,13 +129,6 @@ public class Login_Class extends Base_Class {
                 System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
                 System.out.println("Already login pop up not appeared");
             }
-            
-			/*
-			 * String query =
-			 * "select Default_URL from acc_users where user_id = '"+CoreUserName+"'";
-			 * String defaultURL = DBUtils.fetchSingleValueFromDB(query);
-			 * System.out.println("Default URL: " + defaultURL);
-			 */
             
             // Redirect to the module selection page
             //if (Common.waitForElementToBeClickable(driver, LoginPageRepo.GoCollectionButton, Duration.ofSeconds(30)) != null) {
@@ -477,6 +485,21 @@ public class Login_Class extends Base_Class {
 	        Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
 	        Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
 	        Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+	        
+	     // Fetch the default URL from the database
+	        String query = "select Default_URL from acc_users where user_id = '" + CoreUserName + "'";
+	        String defaultURL = DBUtils.fetchSingleValueFromDB(query);
+	        Log.info("Default URL: " + defaultURL);
+	        
+	     // Check if the default URL is null or empty
+			  if (defaultURL == null || defaultURL.trim().isEmpty()) {
+			      // If the default URL is null or empty, update it to '/Home'
+			      String updateQuery = "UPDATE acc_users SET Default_URL = '/Home' WHERE user_id = '"+CoreUserName+"'";
+			      DBUtils.executeSQLStatement(updateQuery);
+			  } else if ("/Home".equals(defaultURL)) {
+			      // If the default URL is already '/Home', no action is needed
+			      System.out.println("Default URL is already /Home. No action taken.");
+			  }
 
 	        driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
 	        Log.info("Entered " + CoreUserName + " in user name field");
@@ -508,22 +531,16 @@ public class Login_Class extends Base_Class {
 	            }
 	        } catch (Exception e) {
 	            Log.info("Already login pop-up not appeared");
-	        }
-	        
-	        String query = "select Default_URL from acc_users where user_id = '" + CoreUserName + "'";
-	        String defaultURL = DBUtils.fetchSingleValueFromDB(query);
-	        Log.info("Default URL: " + defaultURL);
-	        
-	        if (defaultURL == null) {
-	            Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
-	            Common.fluentWait("SetAsDefaultRadioButton", LoginPageRepo.SetAsDefaultRadioButton);
-	            Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
-	            Thread.sleep(3000);
-	            ForLoopClick(LoginPageRepo.GoCollectionButton);
-	            Log.info("Clicked on Go collection button");
-	        } else {
-	            Log.info("Module selection page not appeared");
-	        }
+	        }	        
+				/*
+				 * if (defaultURL == null) { Common.waitForSpinnerToDisappear("Loading Spinner",
+				 * LoginPageRepo.Spinner); Common.fluentWait("SetAsDefaultRadioButton",
+				 * LoginPageRepo.SetAsDefaultRadioButton);
+				 * Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
+				 * Thread.sleep(3000); ForLoopClick(LoginPageRepo.GoCollectionButton);
+				 * Log.info("Clicked on Go collection button"); } else {
+				 * Log.info("Module selection page not appeared"); }
+				 */
 	        
 	        Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
 	        String UserIDInDashboard = driver.findElement(LoginPageRepo.UserIDInDashboard).getText();
