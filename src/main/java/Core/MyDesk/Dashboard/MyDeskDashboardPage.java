@@ -338,5 +338,67 @@ public class MyDeskDashboardPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, e.getMessage());	
 		}
 	}
-
+	public void SQL_QueryMyDesktoCoreUser() throws IOException {
+		try {
+			String Core_BranchUserID = MyDeskDashboardPage.configloader().getProperty("Core_BranchUserID").trim();
+			List<Object> inputParams = Arrays.asList(Core_BranchUserID);
+				List<Integer> outputTypes = Arrays.asList(Types.VARCHAR);
+				List<Object> results = DBUtils.ExecuteAnyOracleSQLStoredProcedure("ConfigureTilesForBranchUser", inputParams,
+						outputTypes);
+				System.out.println("Generated User ID: " + results.get(0));
+				String MessageFromDB = (String) results.get(0);
+				if(MessageFromDB.contains("Tiles are successfully configured to the user")) {
+					ExtentTestManager.getTest().log(Status.PASS, "Tiles are successfully configured to the user" );
+				}
+				else {
+					ExtentTestManager.getTest().log(Status.FAIL, "Tiles are not configured to the user" );
+				}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, e.getMessage());	
+		}
+	}
+	public void SQL_QueryMyDesktoRegionUser() throws IOException {
+		try {
+			String RegionUserID = MyDeskDashboardPage.configloader().getProperty("RegionUserID").trim();
+			List<Object> inputParams = Arrays.asList(RegionUserID);
+				List<Integer> outputTypes = Arrays.asList(Types.VARCHAR);
+				List<Object> results = DBUtils.ExecuteAnyOracleSQLStoredProcedure("ConfigureTilesForBranchUser", inputParams,
+						outputTypes);
+				System.out.println("Generated User ID: " + results.get(0));
+				String MessageFromDB = (String) results.get(0);
+				if(MessageFromDB.contains("Tiles are successfully configured to the user")) {
+					ExtentTestManager.getTest().log(Status.PASS, "Tiles are successfully configured to the user" );
+				}
+				else {
+					ExtentTestManager.getTest().log(Status.FAIL, "Tiles are not configured to the user" );
+				}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, e.getMessage());	
+		}
+	}
+	public void SQL_QueryMyDesktoZoneUser() throws IOException {
+		try {
+			String ZoneUserID = MyDeskDashboardPage.configloader().getProperty("ZoneUserID").trim();
+			List<Object> inputParams = Arrays.asList(ZoneUserID);
+				List<Integer> outputTypes = Arrays.asList(Types.VARCHAR);
+				List<Object> results = DBUtils.ExecuteAnyOracleSQLStoredProcedure("ConfigureTilesForBranchUser", inputParams,
+						outputTypes);
+				System.out.println("Generated User ID: " + results.get(0));
+				String MessageFromDB = (String) results.get(0);
+				if(MessageFromDB.contains("Tiles are successfully configured to the user")) {
+					ExtentTestManager.getTest().log(Status.PASS, "Tiles are successfully configured to the user" );
+				}
+				else {
+					ExtentTestManager.getTest().log(Status.FAIL, "Tiles are not configured to the user" );
+				}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, e.getMessage());	
+		}
+	}
 }

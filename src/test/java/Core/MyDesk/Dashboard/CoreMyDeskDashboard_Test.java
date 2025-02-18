@@ -87,7 +87,7 @@ public class CoreMyDeskDashboard_Test extends Base_Class {
 			throws InterruptedException, IOException, ParseException {
 
 		try {
-			System.out.println(" ************** 1 *****************");
+			System.out.println(" ************** 3 *****************");
 			System.out.println();
 			MyDeskDashboardPage.VerifyConfigZone();
 			MyDeskDashboardPage.SQLQueryZone();
@@ -108,7 +108,7 @@ public class CoreMyDeskDashboard_Test extends Base_Class {
 			throws InterruptedException, IOException, ParseException {
 
 		try {
-			System.out.println(" ************** 2 *****************");
+			System.out.println(" ************** 4 *****************");
 			System.out.println();
 			MyDeskDashboardPage.VerifyConfigRegion();
 			MyDeskDashboardPage.SQLQueryRegion();
@@ -129,7 +129,7 @@ public class CoreMyDeskDashboard_Test extends Base_Class {
 			throws InterruptedException, IOException, ParseException {
 
 		try {
-			System.out.println(" ************** 3 *****************");
+			System.out.println(" ************** 5 *****************");
 			System.out.println();
 			MyDeskDashboardPage.VerifyConfigBranch();
 			MyDeskDashboardPage.SQLQueryBranch();
@@ -150,10 +150,76 @@ public class CoreMyDeskDashboard_Test extends Base_Class {
 			throws InterruptedException, IOException, ParseException {
 
 		try {
-			System.out.println(" ************** 4 *****************");
+			System.out.println(" ************** 6 *****************");
 			System.out.println();
 			MyDeskDashboardPage.VerifyConfigBCOUser();
 			MyDeskDashboardPage.SQL_BCOUSer();
+
+		}
+
+		catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(priority = 5)
+	public void Configurating_my_desk_to_core_Branch_user(ITestContext context)
+			throws InterruptedException, IOException, ParseException {
+
+		try {
+			System.out.println(" ************** 7 *****************");
+			System.out.println();
+
+			MyDeskDashboardPage.SQL_QueryMyDesktoCoreUser();
+
+		}
+
+		catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(priority = 6)
+	public void Configurating_my_desk_to_core_Region_user(ITestContext context)
+			throws InterruptedException, IOException, ParseException {
+
+		try {
+			System.out.println(" ************** 8 *****************");
+			System.out.println();
+
+			MyDeskDashboardPage.SQL_QueryMyDesktoRegionUser();
+
+		}
+
+		catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(priority = 7)
+	public void Configurating_my_desk_to_core_Zone_user(ITestContext context)
+			throws InterruptedException, IOException, ParseException {
+
+		try {
+			System.out.println(" ************** 9 *****************");
+			System.out.println();
+
+			MyDeskDashboardPage.SQL_QueryMyDesktoZoneUser();
 
 		}
 

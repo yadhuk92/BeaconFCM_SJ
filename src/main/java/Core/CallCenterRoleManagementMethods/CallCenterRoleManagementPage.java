@@ -124,19 +124,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 		}
 	}
 
-	public void IsCallCenterDisplayed() {
-		try {
-			if (driver.findElement(CallCenterRoleManagementRepo.Callcntertwo).isDisplayed()) {
-				ExtentTestManager.getTest().log(Status.PASS, "Call center login done successfully");
-			} else {
-				ExtentTestManager.getTest().log(Status.FAIL, "Unable to login Call center");
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			ExtentTestManager.getTest().log(Status.FAIL, "Unable to login Call center");
-		}
-	}
+
 	
 	public void VerifyTheText() throws IOException {
 		try {

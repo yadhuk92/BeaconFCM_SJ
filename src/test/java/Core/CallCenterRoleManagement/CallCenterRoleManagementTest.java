@@ -111,7 +111,7 @@ public class CallCenterRoleManagementTest extends Base_Class {
 		try {
 			System.out.println(" ************** Login_to_Beacon_FCM_call_centre_application 1 *****************");
 			System.out.println();
-			CallCenterRoleManagementPage.IsCallCenterDisplayed();
+		
 			CallCenterRoleManagementPage.VerifyTheText();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {

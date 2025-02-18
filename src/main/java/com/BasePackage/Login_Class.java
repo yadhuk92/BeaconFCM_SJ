@@ -19,7 +19,7 @@ import com.Utility.Log;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Login_Class extends Base_Class {
-	LoginPageRepo LoginPageRepo;
+	
 	public static String orgName;
     public static String orgTypeName;
 	
@@ -54,7 +54,12 @@ public class Login_Class extends Base_Class {
             // Load the application URL
             driver.get(CoreAppUrl);
             Common.setDriver(driver);
-            Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+            
+            String LoginBannerQuery = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=1 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
+            String CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
+            //System.out.println("BANNER_DETAILS: " + CORE_LOGIN_BANNER_DETAILS);
+            
+            Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
 
             //ExtentTestManager.getTest().log(Status.INFO, CoreAppUrl + " loaded successfully!");
             Thread.sleep(9000);
@@ -66,6 +71,21 @@ public class Login_Class extends Base_Class {
             Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
             Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
             Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+            
+         // Fetch the default URL from the database
+	        String query = "select Default_URL from acc_users where user_id = '" + CoreUserName + "'";
+	        String defaultURL = DBUtils.fetchSingleValueFromDB(query);
+	        Log.info("Default URL: " + defaultURL);
+	        
+	     // Check if the default URL is null or empty
+			  if (defaultURL == null || defaultURL.trim().isEmpty()) {
+			      // If the default URL is null or empty, update it to '/Home'
+			      String updateQuery = "UPDATE acc_users SET Default_URL = '/Home' WHERE user_id = '"+CoreUserName+"'";
+			      DBUtils.executeSQLStatement(updateQuery);
+			  } else if ("/Home".equals(defaultURL)) {
+			      // If the default URL is already '/Home', no action is needed
+			      System.out.println("Default URL is already /Home. No action taken.");
+			  }
 
             driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
             //ExtentTestManager.getTest().log(Status.INFO, "Entered " + CoreUserName + " in user name field");
@@ -110,24 +130,21 @@ public class Login_Class extends Base_Class {
                 System.out.println("Already login pop up not appeared");
             }
             
-            String query = "select Default_URL from acc_users where user_id = '"+CoreUserName+"'";
-            String defaultURL = DBUtils.fetchSingleValueFromDB(query);
-            System.out.println("Default URL: " + defaultURL);
-            
             // Redirect to the module selection page
             //if (Common.waitForElementToBeClickable(driver, LoginPageRepo.GoCollectionButton, Duration.ofSeconds(30)) != null) {
-            if (defaultURL == null) {
-            	System.out.println("Entered into module selection page if condition");
-                Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
-                Common.fluentWait("SetAsDefaultRadioButton", LoginPageRepo.SetAsDefaultRadioButton);
-                Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
-                Thread.sleep(3000);
-                //driver.findElement(LoginPageRepo.GoCollectionButton).click();
-                ForLoopClick(LoginPageRepo.GoCollectionButton);
-                Log.info("Clicked on Go collection button");
-            } else {
-                Log.info("Module selection page not appeared");
-            }
+			/*
+			 * if (defaultURL == null) {
+			 * System.out.println("Entered into module selection page if condition");
+			 * Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+			 * Common.fluentWait("SetAsDefaultRadioButton",
+			 * LoginPageRepo.SetAsDefaultRadioButton);
+			 * Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
+			 * Thread.sleep(3000);
+			 * //driver.findElement(LoginPageRepo.GoCollectionButton).click();
+			 * ForLoopClick(LoginPageRepo.GoCollectionButton);
+			 * Log.info("Clicked on Go collection button"); } else {
+			 * Log.info("Module selection page not appeared"); }
+			 */
 
             // Fetch and display user organization details
             Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
@@ -152,7 +169,7 @@ public class Login_Class extends Base_Class {
             }
         }*/
     }
-    
+	
 	public static void GetUserORGDetailsFromDB(String UserID) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         CallableStatement cstmt = null;
@@ -285,6 +302,7 @@ public class Login_Class extends Base_Class {
             throw e;
         }
 	}
+	
 	public void CallCenterLogin() throws Exception {
         try {        	
             String Browser = configloader().getProperty("Browser");
@@ -373,7 +391,7 @@ public class Login_Class extends Base_Class {
                     // Perform the desired action on the element
                     clickableElement.click();
                     //driver.findElement(LoginPageRepo.AlreadyLoginPopupYesButton).click();
-                    Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+//                    Common.waitForSpinnerToDisappear2(driver, "Loading Spinner", LoginPageRepo.Spinner);
                     
                     Common.fluentWait("UserNameField", LoginPageRepo.username);
                     Common.fluentWait("PasswordField", LoginPageRepo.password);
@@ -395,7 +413,7 @@ public class Login_Class extends Base_Class {
                 System.out.println("Already login pop up not appeared");
             }
             
-            Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+//            Common.waitForSpinnerToDisappear2(driver, "Loading Spinner", LoginPageRepo.Spinner);
             Common.fluentWait("CallcentreFullLogo", LoginPageRepo.CallcentreFullLogo);
             Thread.sleep(5000);
             
@@ -420,6 +438,225 @@ public class Login_Class extends Base_Class {
             }
         }*/
     }
+	
+	public void CoreLoginWithInputs(String UserID, String password) throws Exception {
+	    try {
+	        String Browser = configloader().getProperty("Browser");
+	        String CoreAppUrl = configloader().getProperty("CoreApplicationUrl");
+	        
+	        // Use input parameters if provided; otherwise, fetch from config
+	        String CoreUserName = (UserID != null && !UserID.isEmpty()) ? UserID : configloader().getProperty("CoreUserName");
+	        String CoreUserPassword = (password != null && !password.isEmpty()) ? password : configloader().getProperty("CoreUserPassword");
+	        
+	        // Initialize WebDriver based on browser type
+	        switch (Browser.toUpperCase()) {
+	            case "CHROME":
+	                ChromeOptions options = new ChromeOptions();
+	                options.addArguments("--disable-extensions");
+	                WebDriverManager.chromedriver().setup();
+	                driver = new ChromeDriver(options);
+	                break;
+	            case "FIREFOX":
+	                WebDriverManager.firefoxdriver().setup();
+	                driver = new FirefoxDriver();
+	                break;
+	            default:
+	                throw new IllegalArgumentException("The Driver is not defined for browser: " + Browser);
+	        }
 
+	        driver.manage().window().maximize();
+	        driver.manage().deleteAllCookies();
+	        Log.info("Driver has initialized successfully for " + Browser + " browser");
 
+	        // Load the application URL
+	        driver.get(CoreAppUrl);
+	        Common.setDriver(driver);
+	        
+	        String LoginBannerQuery = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=1 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
+	        String CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
+	        
+	        Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
+	        Thread.sleep(9000);
+	        
+	        Pagetitle = driver.getTitle();
+	        Log.info("Title is displayed: " + Pagetitle);
+
+	        // Perform login actions
+	        Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+	        Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+	        Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+	        
+	     // Fetch the default URL from the database
+	        String query = "select Default_URL from acc_users where user_id = '" + CoreUserName + "'";
+	        String defaultURL = DBUtils.fetchSingleValueFromDB(query);
+	        Log.info("Default URL: " + defaultURL);
+	        
+	     // Check if the default URL is null or empty
+			  if (defaultURL == null || defaultURL.trim().isEmpty()) {
+			      // If the default URL is null or empty, update it to '/Home'
+			      String updateQuery = "UPDATE acc_users SET Default_URL = '/Home' WHERE user_id = '"+CoreUserName+"'";
+			      DBUtils.executeSQLStatement(updateQuery);
+			  } else if ("/Home".equals(defaultURL)) {
+			      // If the default URL is already '/Home', no action is needed
+			      System.out.println("Default URL is already /Home. No action taken.");
+			  }
+
+	        driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+	        Log.info("Entered " + CoreUserName + " in user name field");
+	        driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+	        Log.info("Entered password in password field");
+	        driver.findElement(LoginPageRepo.LoginButton).click();
+	        Log.info("Clicked on login button");
+
+	        try {
+	            WebElement clickableElement = Common.waitForElementToBeClickable(
+	                driver, 
+	                LoginPageRepo.AlreadyLoginPopupYesButton, 
+	                Duration.ofSeconds(20)
+	            );
+	            if (clickableElement != null) {
+	                clickableElement.click();
+	                Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+	                
+	                Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+	                Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+	                Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+	                driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+	                Log.info("Entered " + CoreUserName + " in user name field");
+	                driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+	                Log.info("Entered password in password field");
+	                driver.findElement(LoginPageRepo.LoginButton).click();
+	                Log.info("Clicked on login button");
+	            }
+	        } catch (Exception e) {
+	            Log.info("Already login pop-up not appeared");
+	        }	        
+				/*
+				 * if (defaultURL == null) { Common.waitForSpinnerToDisappear("Loading Spinner",
+				 * LoginPageRepo.Spinner); Common.fluentWait("SetAsDefaultRadioButton",
+				 * LoginPageRepo.SetAsDefaultRadioButton);
+				 * Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
+				 * Thread.sleep(3000); ForLoopClick(LoginPageRepo.GoCollectionButton);
+				 * Log.info("Clicked on Go collection button"); } else {
+				 * Log.info("Module selection page not appeared"); }
+				 */
+	        
+	        Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
+	        String UserIDInDashboard = driver.findElement(LoginPageRepo.UserIDInDashboard).getText();
+	        Log.info("UserID in Dashboard: " + UserIDInDashboard);
+	        
+	        GetUserORGDetailsFromDB(UserIDInDashboard);
+	        Log.info("Org Name: " + orgName + ", Org Type Name: " + orgTypeName);
+	        
+	        Common.fluentWait("UserORGDetails", LoginPageRepo.getORGDetailsinLoginLandingPage(orgName, orgTypeName));
+	    } catch (Exception e) {
+	        Log.error("An error occurred in CoreLogin: " + e.getMessage());
+	        e.printStackTrace();
+	        throw e;
+	    }
+	}
+	
+	public void CollectionAgencyLoginWithInputs(String UserID, String password) throws Exception {
+		try {
+            String Browser = configloader().getProperty("Browser");
+            String CollectionAppUrl = configloader().getProperty("CollectionAgencyApplicationUrl");
+            
+         // Use input parameters if provided; otherwise, fetch from config
+	        String CollectionUserName = (UserID != null && !UserID.isEmpty()) ? UserID : configloader().getProperty("CollectionAgencyUserName");
+	        String CollectionUserPassword = (password != null && !password.isEmpty()) ? password : configloader().getProperty("CollectionAgencyUserPassword");
+	        
+			/*
+			 * String CollectionUserName =
+			 * configloader().getProperty("CollectionAgencyUserName"); String
+			 * CollectionUserPassword =
+			 * configloader().getProperty("CollectionAgencyUserPassword");
+			 */
+
+            // Initialize WebDriver based on browser type
+            switch (Browser.toUpperCase()) {
+                case "CHROME":
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--disable-extensions");
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(options);
+                    break;
+                case "FIREFOX":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                    break;
+                default:
+                    throw new IllegalArgumentException("The Driver is not defined for browser: " + Browser);
+            }
+
+            driver.manage().window().maximize();
+            driver.manage().deleteAllCookies();
+            Log.info("Driver has initialized successfully for " + Browser + " browser");
+
+            // Load the application URL
+            driver.get(CollectionAppUrl);
+            Common.setDriver(driver);
+            
+            String query = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=3 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
+            String BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(query);
+            System.out.println("BANNER_DETAILS: " + BANNER_DETAILS);
+            
+            Common.fluentWait(BANNER_DETAILS, LoginPageRepo.CollectionAgencyLoginBannerDetails(BANNER_DETAILS));
+
+            Pagetitle = driver.getTitle();
+            Log.info("Title is displayed: " + Pagetitle);
+
+            // Perform login actions
+            Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+            Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+            Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+            driver.findElement(LoginPageRepo.UserNameField).sendKeys(CollectionUserName);
+            Log.info("Entered " + CollectionUserName + " in user name field");
+            driver.findElement(LoginPageRepo.PasswordField).sendKeys(CollectionUserPassword);
+            Log.info("Entered " + CollectionUserPassword + " in password field");
+            driver.findElement(LoginPageRepo.LoginButton).click();
+            Log.info("Clicked on login button");
+            
+            try {
+                WebElement clickableElement = Common.waitForElementToBeClickable(
+                    driver, 
+                    LoginPageRepo.AlreadyLoginPopupYesButton, 
+                    Duration.ofSeconds(20)
+                );
+
+                if (clickableElement != null) {
+                    clickableElement.click();
+                    Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+                    
+                    Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+                    Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+                    Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+                    driver.findElement(LoginPageRepo.UserNameField).sendKeys(CollectionUserName);
+                    Log.info("Entered " + CollectionUserName + " in user name field");
+                    driver.findElement(LoginPageRepo.PasswordField).sendKeys(CollectionUserPassword);
+                    Log.info("Entered " + CollectionUserPassword + " in password field");
+                    driver.findElement(LoginPageRepo.LoginButton).click();
+                    Log.info("Clicked on login button");
+                    
+                    Log.info("Clicked on already login yes button and logged in again with valid credentials");
+                } else {
+                    System.out.println("Element not clickable within the timeout.");
+                }
+            } catch (Exception e) {
+                System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
+                System.out.println("Already login pop up not appeared");
+            }
+
+            Thread.sleep(6000);
+
+        } catch (Exception e) {
+            Log.error("An error occurred in CoreLogin: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+	}
+
+	
 }
