@@ -5,8 +5,9 @@ import org.openqa.selenium.By;import org.openqa.selenium.WebElement;
 public class LoginBannerConfiRepo {
 	public By configurationmenu=By.xpath("//span[text()='Configurations']");
 	public By LoginBannerConfimenu =By.xpath("//a[@title='Login Banner Config']");
-	public By spinner=By.xpath("//div[@class='spinner']");
-	public By usertypedropdown=By.xpath("(//label[@class='rz-dropdown-label rz-inputtext  rz-placeholder'])[1]");
+	public By spinner=By.xpath("(//div[@class='spinner'])");
+//	public By spinner2=By.xpath("(//div[@class='spinner'])[2]");
+	public By usertypedropdown=By.xpath("//label[text()='User Type']/following-sibling::div[@onmousedown='Radzen.activeElement = null']");
     public By bannertypedropdown=By.xpath("//label[text()='Banner Type']/following-sibling::div[@onmousedown='Radzen.activeElement = null']");
     public By sectiondropdown=By.xpath("//label[text()='Section']/following-sibling::div[@onmousedown='Radzen.activeElement = null']");
     public By headingtext=By.xpath("//textarea[@name='Heading']");

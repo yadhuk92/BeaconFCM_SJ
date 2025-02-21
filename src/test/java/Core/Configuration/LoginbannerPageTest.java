@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -32,9 +33,9 @@ import com.listeners.TestListener;
 import Core.Configurations.LoginbannerPage;
  
 
-public class LoginbannerPageTest {
+public class LoginbannerPageTest extends Base_Class{
 	    
-	    private WebDriver driver;
+	    WebDriver driver;
 		com.Utility.ExcelReader ExcelReader;
 		Base_Class baseclass;
 		Log log;
@@ -79,21 +80,21 @@ public class LoginbannerPageTest {
 	 //Navigation to Login Banner Configuration Page
 	    @Test(priority=1)
 	    public void NavigationToLoginBannerConfigurationPage() throws Throwable {
-//	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 	    	try {
-	//CoreAppLogin.CoreLogin();
+
 				ExtentTestManager.getTest().log(Status.INFO, "Login successful");
 				Log.info("Login successfull !");
 				
 				Log.info("***Navigation to Configuration menu***");
 				boolean Flag1=loginbanner.clickOnConfigurationMenu();
-				ExtentTestManager.getTest().log(Status.PASS,"1.Click on the 'Configuration' from the main menu.");
+				ExtentTestManager.getTest().log(Status.PASS,"Click on the 'Configuration' from the main menu.");
 				Log.info("1.Click on the 'Configuration' from the main menu."+Flag1);
 				
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
 				
 				boolean Flag2=loginbanner.clickOnLoginBannerConfigMenu();
-				ExtentTestManager.getTest().log(Status.PASS, "2. Click on 'Login Banner Config' from the sub-menu");
+				ExtentTestManager.getTest().log(Status.PASS, "Click on 'Login Banner Config' from the sub-menu");
 				Log.info("2. Click on 'Login Banner Config' from the sub-menu"+Flag2);
 				
 				WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(90));
@@ -118,18 +119,18 @@ public class LoginbannerPageTest {
 	    public void FieldsandButtonsAreCorrect() throws Throwable {
 	    	
 	    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
-	    	 wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));	 
+	    	 loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);	 
 	     try {
 	 // Verify fields are empty
 	    	 boolean Flag1=loginbanner.areFieldsEmpty();
 	    	 Assert.assertTrue("Fields are not empty",loginbanner.areFieldsEmpty());
-	         ExtentTestManager.getTest().log(Status.PASS, "1.Check Usertype,Bannertype,Section dropdown fields are Empty");
+	         ExtentTestManager.getTest().log(Status.PASS, "Check Usertype,Bannertype,Section dropdown fields are Empty");
              Log.info("Check Usertype,Bannertype,Section dropdown fields are Empty"+Flag1);
              
 	 // Verify buttons are displayed
              boolean Flag2=loginbanner.areButtonsDisplayed();
 	         Assert.assertTrue("Buttons are not displayed",loginbanner.areButtonsDisplayed());
-	         ExtentTestManager.getTest().log(Status.PASS, "2.search and reset buttons are displayed");
+	         ExtentTestManager.getTest().log(Status.PASS, "search and reset buttons are displayed");
 	         Log.info("search and reset buttons are displayed"+Flag2);
 	     }
 	    	
@@ -140,19 +141,20 @@ public class LoginbannerPageTest {
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;
 	    	}
+	     Thread.sleep(3000);
 		    }
 	  //Verify Mandatory Fields Warning
-        @Test(priority=3)
+      @Test(priority=3)
         public void MandatoryFieldsWarning() throws InterruptedException {
         	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner)); 
+ //       	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner)); 
            try 
            {
         	
         	WebElement submit = wait.until(ExpectedConditions.elementToBeClickable(PageRepository.submitbutton));
         	submit.click();
-        	ExtentTestManager.getTest().log(Status.PASS, "1.Leave Usertype,Bannertype,Section,Heading,Detail fields empty");   
-        	ExtentTestManager.getTest().log(Status.PASS, "2.Click on Submit button");
+        	ExtentTestManager.getTest().log(Status.PASS, "Leave Usertype,Bannertype,Section,Heading,Detail fields empty");   
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Submit button");
         	
         	
         	loginbanner.getWarningMessageText();
@@ -167,24 +169,29 @@ public class LoginbannerPageTest {
 		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;}
+           Thread.sleep(3000);
 	    	}
         
        //Click on Usertypedropdown and validate the dropdown values
         
-        @Test(priority=4,enabled=false)
+        @Test(priority=4)
         public void SelectInternalUserType() throws Throwable {
         	 
-        	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-	    	 wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+        	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+	    	 wait.until(ExpectedConditions.invisibilityOf((WebElement) PageRepository.warningmsg));
         	try
        	{
-    		ExtentTestManager.getTest().log(Status.PASS,"1.Click on Usertype dropdown");
+    		   ExtentTestManager.getTest().log(Status.PASS,"Click on Usertype dropdown");
+    		   Thread.sleep(3000);
         		loginbanner.clickuserdropdown();
-        		ExtentTestManager.getTest().log(Status.PASS,"2.Internal user , call centre user , collection agency user displayed in dropdown ");
+        		ExtentTestManager.getTest().log(Status.PASS,"Internal user , call centre user , collection agency user displayed in dropdown ");
+        		
+        		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
 
-        		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
+        		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
+        		Thread.sleep(3000);
         		loginbanner.selectinternaluser();
-        		ExtentTestManager.getTest().log(Status.PASS, "3.\"Internal user\" is selected in the user type field.");
+        		ExtentTestManager.getTest().log(Status.PASS, "\"Internal user\" is selected in the user type field.");
                 
            
           	}
@@ -197,16 +204,18 @@ public class LoginbannerPageTest {
        	    	}
                }
 	// Select Banner Type(Information)
-        @Test (priority=5,enabled=false)
+       @Test (priority=5)
         public void SelectInformationtype() throws InterruptedException {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
         	try
         	{
-           ExtentTestManager.getTest().log(Status.PASS, "1.Click on \"Bannertype dropdown\"");
+           ExtentTestManager.getTest().log(Status.PASS, "Click on \"Bannertype dropdown\"");
         	   loginbanner.clickBannertypedropdown();
+        	   
+        	   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
         
         //select Information from bannertype dropdown	
-        	   ExtentTestManager.getTest().log(Status.PASS, "Expected result-2. Select \"Information\" from the ' Banner Type' dropdown.");
+        	   ExtentTestManager.getTest().log(Status.PASS, "Expected result- Select \"Information\" from the ' Banner Type' dropdown.");
         	   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(200));
         	   loginbanner.clickInfo();
         	   ExtentTestManager.getTest().log(Status.PASS, "Actual result-\"Information\" is selected in the banner type field.");
@@ -221,7 +230,7 @@ public class LoginbannerPageTest {
         }
      
        //select Header1 from Section dropdown
-        @Test(priority=6,enabled=false)
+        @Test(priority=6)
         public void SelectHeader1() throws InterruptedException {
         	
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(200));
@@ -229,11 +238,13 @@ public class LoginbannerPageTest {
 //        	Common.fluentWait("wait till spinner to dissappear", PageRepository.spinner);
       	try
         	{
-        	ExtentTestManager.getTest().log(Status.PASS, "1.Click on Section Dropdown");
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Section Dropdown");
         	loginbanner.clickSectiondropdown();
         	WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
+        	
+        	wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
         	//select Header1 
-        	ExtentTestManager.getTest().log(Status.PASS, "Expected Result-2.Select Header1 from Section dropdown");
+        	ExtentTestManager.getTest().log(Status.PASS, "Expected Result-Select Header1 from Section dropdown");
         	loginbanner.selectheader1();
         	ExtentTestManager.getTest().log(Status.PASS, "Actual Result-Header1 is selected from section dropdown");
             }
@@ -246,7 +257,7 @@ public class LoginbannerPageTest {
 	    	}
         }      	
         //Enter Heading
-        @Test(priority=7,dataProvider="TestData",enabled=false)
+       @Test(priority=7,dataProvider="TestData")
         public void InputHeadingField(Map<Object, Object> testdata) {
         	try {
         		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
@@ -258,12 +269,12 @@ public class LoginbannerPageTest {
         	  ExtentTestManager.getTest().log(Status.PASS, "Expected result-Input an alphanumeric  line in the 'Heading' field with max length of 35");
         	        	       
         	  Assert.assertEquals("Heading text does not match expected text",ExpectedAlphaNumericInput,ActualInput);   
-        	  ExtentTestManager.getTest().log(Status.PASS, "Actaul result-1.Alphanumeric line of data is entered in the heading field ");
+        	  ExtentTestManager.getTest().log(Status.PASS, "Actual result-Alphanumeric line of data is entered in the heading field ");
         	
         	  // Assert that the entered text length does not exceed 35 characters
         	
               Assert.assertTrue(ActualInput.length()<=35); 
-              ExtentTestManager.getTest().log(Status.PASS, "Actaul result-2.Entered input in Headingfield  is less than 35 character");
+              ExtentTestManager.getTest().log(Status.PASS, "Actual result-Entered input in Headingfield  is less than 35 character");
           
         }
         	}
@@ -278,7 +289,7 @@ public class LoginbannerPageTest {
         }
         
         //Enter Details
-        @Test(priority=8,dataProvider= "TestData",enabled=false)
+        @Test(priority=8,dataProvider= "TestData")
         public void InputDetailField( Map<Object,Object> testdata) {
         	try
         	{
@@ -289,11 +300,11 @@ public class LoginbannerPageTest {
         		
         			ExtentTestManager.getTest().log(Status.PASS, "Expected result-Input an alphanumeric  line in the 'Detail' field with max length of 35");
         			Assert.assertEquals("Detailtextinput does not match expected text",ExpectedAlphaNumericInput,ActualInput);
-        			ExtentTestManager.getTest().log(Status.PASS, "Actual result-1.Alphanumeric line of data is entered in the detail field ");
+        			ExtentTestManager.getTest().log(Status.PASS, "Actual result-Alphanumeric line of data is entered in the detail field ");
         			// Assert that the entered text length does not exceed 35 characters
                 	
                     Assert.assertTrue(ActualInput.length()<=35); 
-                    ExtentTestManager.getTest().log(Status.PASS, "Actual result-2.Entered input for detailfield is less than 35 character");
+                    ExtentTestManager.getTest().log(Status.PASS, "Actual result-Entered input for detailfield is less than 35 character");
                 
         	}
         }
@@ -308,7 +319,7 @@ public class LoginbannerPageTest {
         
        //Submit the details by clicking on Submit button
         //(Usertype=Internal user,bannertype=Information,Section=Header1)
-        @Test(priority=9,enabled=false)
+       @Test(priority=9)
         public void Clicksubmitbutton() throws InterruptedException {
         	try
         	{
@@ -323,27 +334,29 @@ public class LoginbannerPageTest {
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;
 	    	}
-	        
+	      Thread.sleep(3000);  
 	    }
  //Verify Data Post Logout(Usertype=Internal user,bannertype=Information,Section=Header1)
         
-       @Test(priority=10,enabled=false)
-        public void CheckdataPostLogout() {
+      @Test(priority=10)
+        public void CheckdataPostLogout() throws Throwable {
 
         	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(300));
-        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        	 loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);	
         	
         	try
         	{
-        	ExtentTestManager.getTest().log(Status.PASS, "1.Navigate to profile icon");
+        	ExtentTestManager.getTest().log(Status.PASS, "Navigate to profile icon");
         	loginbanner.Clickprofiledropdown();
         	
         	WebDriverWait wait1=new WebDriverWait(driver, Duration.ofSeconds(300));
-        	ExtentTestManager.getTest().log(Status.PASS, "2.Click on Logout");
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Logout");
         	loginbanner.Clicklogout();
         	
+        	Thread.sleep(3000);
+        	
         	ExtentTestManager.getTest().log(Status.PASS, "Expected Result-The data entered in the 'Heading' and 'Details'should display in the internal user's login page.");
-        	WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(120));
+        	WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(320));
         	loginbanner.profilepagetext();
         	
         	ExtentTestManager.getTest().log(Status.PASS, "Actual Result-The data entered in the 'Heading' and 'Details'displayed in the internal user's login page.");
@@ -355,20 +368,41 @@ public class LoginbannerPageTest {
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;
 	    	}
-        }
+   	driver.quit();
+   	Thread.sleep(5000);
+		        }
+        
         
   
   //Click on usertype=> select internal user
-       @Test(priority=3,enabled=false)
+       @Test(priority=11)
        public void selectinternaluser() throws Throwable {
     	   WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
-    	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+    	   
     	   try
     	   {
-    		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+   	   
+   		   CoreAppLogin.CoreLogin();
+    		   
+    		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
+    		   loginbanner.clickOnConfigurationMenu();
+    		   
+    		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(120));
+    		   loginbanner.clickOnLoginBannerConfigMenu();
+  //  		   wait.until(ExpectedConditions.invisibilityOf(driver.findElement(PageRepository.spinner)));
+    		   
+    		   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+   
+    		   Thread.sleep(3000); 
+    		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
     		   loginbanner.clickusertypedropdown();
     		   
-    		   ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+    		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+    		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+    
+    		   WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(30));
+    		   ExtentTestManager.getTest().log(Status.PASS, "Select Internal User");
+    		   Thread.sleep(3000);
     		   loginbanner.selectinternaluser();
     		   
     		   ExtentTestManager.getTest().log(Status.PASS, "Actual result-Internal user is selected in Usertypedropdown");
@@ -380,22 +414,26 @@ public class LoginbannerPageTest {
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;
 	    	}
+    	   Thread.sleep(3000);
         }
        
         
         
   //Select hyperlink from banner type dropdown
-        @Test(priority=4,enabled=false)
+       @Test(priority=12)
         public void Selecthyperlink() throws Throwable {
         	WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
         	try
         	{
-        	ExtentTestManager.getTest().log(Status.PASS, "1.Click on Bannertype dropdown.");
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown.");
         	loginbanner.clickBannertypedropdown();
+        	
+ 		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+ 		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
         	
         	WebDriverWait wait1 =new WebDriverWait(driver,Duration.ofSeconds(90));
         	loginbanner.hyperlink();
-        	ExtentTestManager.getTest().log(Status.PASS, "2.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+        	ExtentTestManager.getTest().log(Status.PASS, "Select \"hyperlink\" from the 'Banner Type' dropdown.");
         	
         	ExtentTestManager.getTest().log(Status.PASS, "Actual result-\"hyperlink\" selected from the 'Banner Type' dropdown.");
         	}
@@ -406,19 +444,23 @@ public class LoginbannerPageTest {
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;
 	    	}
+        	Thread.sleep(3000);
         }
         
- //select link1 from section dropdown
-        @Test(priority=5,enabled=false)
+// select link1 from section dropdown
+        @Test(priority=13)
         public void Selectlink1() throws Throwable {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
-        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
         	try
         	{
-        	ExtentTestManager.getTest().log(Status.PASS, "1.Click on Section dropdown");
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Section dropdown");
         	loginbanner.clickSectiondropdown();
         	
-        	ExtentTestManager.getTest().log(Status.PASS, "2.Select link1 from section dropdown");
+ 		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+ 		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
+        	
+        	ExtentTestManager.getTest().log(Status.PASS, "Select link1 from section dropdown");
         	WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
         	loginbanner.selectlink1FromSectiondropdown();
         	
@@ -431,11 +473,12 @@ public class LoginbannerPageTest {
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;
 	    	}
+        	Thread.sleep(3000);
         }
   
         
 //Input Headerlink
-        @Test(priority=6,dataProvider="TestData",enabled=false)
+       @Test(priority=14,dataProvider="TestData")
         public void InputHeaderLink( Map<Object,Object> testdata) {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
         	try
@@ -460,8 +503,8 @@ public class LoginbannerPageTest {
      }  	
         
       //Input Detaillink
-        @Test(priority=7,dataProvider="TestData",enabled=false)
-        public void InputDetailLink( Map<Object,Object> testdata) {
+       @Test(priority=15,dataProvider="TestData")
+        public void InputDetailLink( Map<Object,Object> testdata)throws Throwable {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
         	try
         	{
@@ -482,34 +525,49 @@ public class LoginbannerPageTest {
    		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
    		        throw e;
    	    	}
+//        Thread.sleep(3000);	
      }       
    
  //Verify Data Post Logout(Usertype=Internal user,bannertype=Hyperlink,Section=link1)  
         
-        @Test(priority=8,enabled=false)
+       @Test(priority=16)
         
-        public void ClickonLink1PostLogout() {
-        	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(300));
-        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        public void ClickonLink1PostLogout() throws Throwable {
+        	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(90));
+ //       	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        	
+        	  // Declare and initialize the initial window handle
+            String initialWindowHandle = driver.getWindowHandle();
+            
         	try
         	{
-        		ExtentTestManager.getTest().log(Status.PASS, "1.Navigate to profile icon");
+        		Thread.sleep(1000);
+        		loginbanner.clicksubmit();
+        		loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+        		
+        		WebDriverWait wait1=new WebDriverWait(driver, Duration.ofSeconds(90));
+        		ExtentTestManager.getTest().log(Status.PASS, "Navigate to profile icon");
             	loginbanner.Clickprofiledropdown();
             	
-            	WebDriverWait wait1=new WebDriverWait(driver, Duration.ofSeconds(400));
-            	ExtentTestManager.getTest().log(Status.PASS, "2.Click on Logout");
+            	WebDriverWait wait2=new WebDriverWait(driver, Duration.ofSeconds(120));
+            	ExtentTestManager.getTest().log(Status.PASS, "Click on Logout");
             	loginbanner.Clicklogout();
             	
-            	WebDriverWait wait2=new WebDriverWait(driver, Duration.ofSeconds(600));
+            	Thread.sleep(3000);
+            	
+            	WebDriverWait wait3=new WebDriverWait(driver, Duration.ofSeconds(200));
         		ExtentTestManager.getTest().log(Status.PASS, "Expected-1.Data entered for hyperlink should be displayed on login page");
         		loginbanner.dataforlink1();
         		
-        		WebDriverWait wait3=new WebDriverWait(driver, Duration.ofSeconds(600));
-        		ExtentTestManager.getTest().log(Status.PASS, "2.User should be able to click on link1");
+        		WebDriverWait wait4=new WebDriverWait(driver, Duration.ofSeconds(200));
+        		ExtentTestManager.getTest().log(Status.PASS, "User should be able to click on link1");
+       // 		Thread.sleep(3000);
         		loginbanner.clickonProfilePagelink1();
-        		
+    	
         		ExtentTestManager.getTest().log(Status.PASS, "Actual-Data entered for hyperlink is displayed on Internal User's login page and user is able to click on link1 and the page is opened");
+        	
         	}	
+        	
         		catch(AssertionError|Exception e) {
     	    		
     	    		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
@@ -517,47 +575,83 @@ public class LoginbannerPageTest {
     		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
     		        throw e;
     	 	}
-    }
+        	finally {
+                // Close the second browser window if it exists
+                Set<String> allWindowHandles = driver.getWindowHandles();
+                for (String windowHandle : allWindowHandles) {
+                    if (!windowHandle.equals(initialWindowHandle)) {
+                        driver.switchTo().window(windowHandle);
+                        driver.close(); // Close second browser window
+                    }
+                }
+
+                // Switch back to the initial window and close it as well
+                driver.switchTo().window(initialWindowHandle);
+                driver.close(); // Close the initial browser window
+            }
+        	
+        	Thread.sleep(5000);
+        }
  //Test case-1. Select "internal user" from 'User Type'.2. Select "hyperlink" from 'Banner Type'. 3. Enter "link1" in 'Section'.4. Click on 'Search'.
   //Search entered details for link1      
- 
-        @Test(priority=4,enabled=false)
+        @Test(priority=17)
         public void VerifyInputdataUsingSearch2() throws Throwable {
-           WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(200));
-       	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
-        	try
+        	  WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
+    	try
         	{
-        		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
-        		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+        		
+     		 CoreAppLogin.CoreLogin();
+    		   
+     		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
+     		   loginbanner.clickOnConfigurationMenu();
+     		   
+     		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(100));
+     		   loginbanner.clickOnLoginBannerConfigMenu();
+     		   
+     		  loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+   
+    		   Thread.sleep(3000);
+  
+        		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
         		   loginbanner.clickusertypedropdown();
         		   
-        		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-        		   ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+        		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(90));
+        		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+        		   
+        		   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(60));
+        		   ExtentTestManager.getTest().log(Status.PASS, "Select Internal User");
+        		Thread.sleep(3000);   
         		   loginbanner.selectinternaluser();
         		   
-        		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-        		   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
+        		   WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(90));
+        		   ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown.");
                    loginbanner.clickBannertypedropdown();
+                   
+                   WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
+                   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
                 	
-                	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
+                	WebDriverWait wait7 =new WebDriverWait(driver,Duration.ofSeconds(60));
                 	loginbanner.hyperlink();
-                	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+                	ExtentTestManager.getTest().log(Status.PASS, "Select \"hyperlink\" from the 'Banner Type' dropdown.");
                 	
-                	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
-                	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+                	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(100));
+                	wait.until(ExpectedConditions.invisibilityOf(driver.findElement(PageRepository.spinner)));
                 	
-                	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
+                	ExtentTestManager.getTest().log(Status.PASS, "Click on Section dropdown");
                 	loginbanner.clickSectiondropdown();
                 	
-                	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
-                	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
+         		   WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(60));
+        		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
+                	
+                	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(60));
+                	ExtentTestManager.getTest().log(Status.PASS, "Select link1 from section dropdown");
                 	loginbanner.selectlink1FromSectiondropdown();
                 	
-                	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(200));
-                	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
+                	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(90));
+                	ExtentTestManager.getTest().log(Status.PASS, "Click on Search");
                 	loginbanner.ClickSearchbutton();
                 	
-                	ExtentTestManager.getTest().log(Status.PASS, "8.The saved data should populate in the 'Heading' and 'Details' fields.");
+                	ExtentTestManager.getTest().log(Status.PASS, "The saved data should populate in the 'Heading' and 'Details' fields.");
                 	
                 	ExtentTestManager.getTest().log(Status.PASS, "Actual result-The saved data populated in the 'Heading' and 'Details' fields.");
         	}
@@ -568,50 +662,60 @@ public class LoginbannerPageTest {
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;
 	    	}
+    	Thread.sleep(3000);
         }
         
         
  //Test case-1. Select "internal user" from 'User Type'.2. Select "information" from 'Banner Type'. 3. Enter "Header1" in 'Section'.4. Click on 'Search'.
  //Search entered details for Header1      
         
-    @Test(priority=4,enabled=false)
+    @Test(priority=18)
     public void VerifydataUsingSearch1() throws Throwable {
-    	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(200));
-    	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+    	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+    	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
     	try
     	{
-    	 WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
-   		 ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+    		wait.until(ExpectedConditions.presenceOfElementLocated(PageRepository.headingtext));
+    		wait.until(ExpectedConditions.presenceOfElementLocated(PageRepository.detailtext));
+    		
+    		loginbanner.clickResetbutton();
+        	WebDriverWait wait1 =new WebDriverWait(driver, Duration.ofSeconds(90));
+        	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+    		
+    	 WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(90));
+   		 ExtentTestManager.getTest().log(Status.PASS, ".Click on Usertype dropdown");
+   		 Thread.sleep(3000);
    		 loginbanner.clickusertypedropdown();
    		   
-   		 WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-   		 ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+   		 WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+   		 ExtentTestManager.getTest().log(Status.PASS, "Select Internal User");
+   		 Thread.sleep(3000);
    		 loginbanner.selectinternaluser();
    		   
-   		 WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(90));
-   		 ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
+   		 WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(90));
+   		 ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown.");
          loginbanner.clickBannertypedropdown();
          
-         WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(90));  
+         WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(60));  
          loginbanner.clickInfo();
-    	 ExtentTestManager.getTest().log(Status.PASS, "4.Select\" Information\"in the banner type field.");
+    	 ExtentTestManager.getTest().log(Status.PASS, "Select\" Information\"in the banner type field.");
     	 
-    	 WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
-    	 wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+    	 WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(100));
+    	 loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
     	 
-    	 ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section Dropdown");
+    	 ExtentTestManager.getTest().log(Status.PASS, "Click on Section Dropdown");
        	 loginbanner.clickSectiondropdown();
        	 
        	 
-       	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(220));
-        ExtentTestManager.getTest().log(Status.PASS, "6.Select Header1 from Section dropdown");
+       	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(90));
+        ExtentTestManager.getTest().log(Status.PASS, "Select Header1 from Section dropdown");
        	loginbanner.selectheader1();
        	
-      	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(400));
-    	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
+      	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(60));
+    	ExtentTestManager.getTest().log(Status.PASS, "Click on Search");
     	loginbanner.ClickSearchbutton();
     	
-    	ExtentTestManager.getTest().log(Status.PASS, "8.The saved data should populate in the 'Heading' and 'Details' fields.");
+    	ExtentTestManager.getTest().log(Status.PASS, "The saved data should populate in the 'Heading' and 'Details' fields.");
     	
     	ExtentTestManager.getTest().log(Status.PASS, "Actual result-The saved data populated in the 'Heading' and 'Details' fields.");
     	 }
@@ -622,64 +726,79 @@ public class LoginbannerPageTest {
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
     	}
+    	Thread.sleep(3000);
     }
     
 //Modify data in 'Heading' and 'Details' fields and submit for Internal user
-    
-   @Test(priority=4,dataProvider="TestData",enabled=false)
+       @Test(priority=19,dataProvider="TestData")
    public void modifydata_link1( Map<Object,Object> testdata) throws Throwable {
-	   WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+   	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+   	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
 	   try
 	   {
-   		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+		wait.until(ExpectedConditions.presenceOfElementLocated(PageRepository.headingtext));
+		wait.until(ExpectedConditions.presenceOfElementLocated(PageRepository.detailtext));
+		
+   		loginbanner.clickResetbutton();
+    	WebDriverWait wait1 =new WebDriverWait(driver, Duration.ofSeconds(100));
+    	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+    	
+//   		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(90));
+//   		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(PageRepository.spinner)));
+   		Thread.sleep(3000);
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
 		   loginbanner.clickusertypedropdown();
 		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+		   ExtentTestManager.getTest().log(Status.PASS, "Select Internal User");
+		   Thread.sleep(3000);
 		   loginbanner.selectinternaluser();
 		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
+		   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown.");
            loginbanner.clickBannertypedropdown();
         	
-        	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
+        	WebDriverWait wait5 =new WebDriverWait(driver,Duration.ofSeconds(60));
         	loginbanner.hyperlink();
-        	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+        	ExtentTestManager.getTest().log(Status.PASS, "Select \"hyperlink\" from the 'Banner Type' dropdown.");
         	
-        	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
-        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(100));
+        	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
         	
-        	WebDriverWait wait6 =new WebDriverWait(driver,Duration.ofSeconds(60));
-        	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
+        	WebDriverWait wait7 =new WebDriverWait(driver,Duration.ofSeconds(60));
+       	ExtentTestManager.getTest().log(Status.PASS, "Click on Section dropdown");
         	loginbanner.clickSectiondropdown();
         	
-        	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
-        	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
+        	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	ExtentTestManager.getTest().log(Status.PASS, "Select link1 from section dropdown");
         	loginbanner.selectlink1FromSectiondropdown();
         	
-        	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(300));
-        	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
+        	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(100));
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Search");  
         	loginbanner.ClickSearchbutton();
         	
-        	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(400));
-        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+        	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(100));
+        	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+        	
+//        	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(60));
+//        	loginbanner.clearHeader();
+        	
+        	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	loginbanner.clearDetail();
         	
         	
         	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
           		{
-        			ExtentTestManager.getTest().log(Status.PASS, "8.Input modified data");
+        			ExtentTestManager.getTest().log(Status.PASS, "Input modified data");
         			
         			String modifiedlink1 = testdata.get("Modifiedlink1").toString();
         			System.out.println(modifiedlink1);
         			loginbanner.modifiedDataForlink1(modifiedlink1);
         		}
         		
-     //   		return;	
-        	
-   	    WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(400));
-        ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit");
+        		
+        WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(60));
+        ExtentTestManager.getTest().log(Status.PASS, "Click on Submit");
    	    loginbanner.clicksubmit();
    	    
    	   ExtentTestManager.getTest().log(Status.PASS, "Actual result-Data is updated successfully.");
@@ -692,83 +811,45 @@ catch(AssertionError|Exception e) {
     Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
     throw e;
     }
+	   Thread.sleep(3000);
 } 
     
  //Verify Updated Data Post Logout.Click on modified link1  
    
-   @Test(priority=4,dataProvider="TestData",enabled=false)
+   @Test(priority=20,dataProvider="TestData")
    public void VerifyUpdatedDataPostLogout(Map<Object,Object> testdata) throws Throwable {
 	   WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+	   
+	   // Declare and initialize the initial window handle
+	    String initialWindowHandle = driver.getWindowHandle();
+
 	   try
 	   {
-   		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
-		   loginbanner.clickusertypedropdown();
-		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
-		   loginbanner.selectinternaluser();
-		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
-           loginbanner.clickBannertypedropdown();
-        	
-        	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
-        	loginbanner.hyperlink();
-        	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
-        	
-        	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
-        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-        	
-        	WebDriverWait wait6 =new WebDriverWait(driver,Duration.ofSeconds(60));
-        	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
-        	loginbanner.clickSectiondropdown();
-        	
-        	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
-        	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
-        	loginbanner.selectlink1FromSectiondropdown();
-        	
-        	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(300));
-        	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
-        	loginbanner.ClickSearchbutton();
-        	
-        	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(400));
-        	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-        	
-        	
-        	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
-          		{
-        			ExtentTestManager.getTest().log(Status.PASS, "8.Input modified data");
-        			
-        			String modifiedlink1 = testdata.get("Modifiedlink1").toString();
-        			System.out.println(modifiedlink1);
-        			loginbanner.modifiedDataForlink1(modifiedlink1);
-        		}
-    	
-   	    WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(400));
-        ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit");
-   	    loginbanner.clicksubmit();
-   	    
- 	   WebDriverWait wait11= new WebDriverWait(driver, Duration.ofSeconds(200));
- 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-		ExtentTestManager.getTest().log(Status.PASS, "10.Navigate to profile icon");
+	
+		   WebDriverWait wait11= new WebDriverWait(driver, Duration.ofSeconds(100));
+	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+		ExtentTestManager.getTest().log(Status.PASS, "Navigate to profile icon");
     	loginbanner.Clickprofiledropdown();
     	
-    	WebDriverWait wait12=new WebDriverWait(driver, Duration.ofSeconds(400));
-    	ExtentTestManager.getTest().log(Status.PASS, "11.Click on Logout");
+    	WebDriverWait wait12=new WebDriverWait(driver, Duration.ofSeconds(100));
+    	ExtentTestManager.getTest().log(Status.PASS, "Click on Logout");
     	loginbanner.Clicklogout();
     	
-    	WebDriverWait wait13=new WebDriverWait(driver, Duration.ofSeconds(800));
-		ExtentTestManager.getTest().log(Status.PASS, "12.Data entered for hyperlink should be displayed on login page");
+    	Thread.sleep(3000);
+    	
+    	WebDriverWait wait13=new WebDriverWait(driver, Duration.ofSeconds(100));
+		ExtentTestManager.getTest().log(Status.PASS, "Data entered for hyperlink should be displayed on login page");
 		loginbanner.dataforlink1();
 		
-		WebDriverWait wait14=new WebDriverWait(driver, Duration.ofSeconds(500));
-		ExtentTestManager.getTest().log(Status.PASS, "13.User should be able to click on link1");
+		WebDriverWait wait14=new WebDriverWait(driver, Duration.ofSeconds(100));
+		ExtentTestManager.getTest().log(Status.PASS, "User should be able to click on link1");
+	
 		loginbanner.clickonProfilePagelink1();
 		
 		ExtentTestManager.getTest().log(Status.PASS, "Actual-Data entered for hyperlink is displayed on Internal User's login page and user is able to click on link1 and the page is opened");
+
 	   }
+	   
 
 catch(AssertionError|Exception e) {
 	
@@ -777,58 +858,96 @@ catch(AssertionError|Exception e) {
     Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
     throw e;
     }
-} 
+	  
+   	finally {
+        // Close the second browser window if it exists
+        Set<String> allWindowHandles = driver.getWindowHandles();
+        for (String windowHandle : allWindowHandles) {
+            if (!windowHandle.equals(initialWindowHandle)) {
+                driver.switchTo().window(windowHandle);
+                driver.close(); // Close second browser window
+            }
+        }
+
+        // Switch back to the initial window and close it as well
+        driver.switchTo().window(initialWindowHandle);
+        driver.close(); // Close the initial browser window
+    }
+	   Thread.sleep(5000);
+}
      
 //Submit Without Heading
-   @Test(priority=4,dataProvider="TestData",enabled=false)
+   @Test(priority=21,dataProvider="TestData")
    public void SubmitWithoutHeading(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(60));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+	 
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+  		 CoreAppLogin.CoreLogin();
+		   
+		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   loginbanner.clickOnConfigurationMenu();
+		   
+		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   loginbanner.clickOnLoginBannerConfigMenu();
+		   
+		   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+
+		   Thread.sleep(3000);
+//		   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
 		   loginbanner.clickusertypedropdown();
 		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+		   
+		   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(60));
+		   ExtentTestManager.getTest().log(Status.PASS, "Select Internal User");
+		   Thread.sleep(3000);
 		   loginbanner.selectinternaluser();
 		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
+		   WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(60));
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown.");
            loginbanner.clickBannertypedropdown();
+           
+		   WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
         	
-        	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
+        	WebDriverWait wait7 =new WebDriverWait(driver,Duration.ofSeconds(60));
         	loginbanner.hyperlink();
-        	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+        	ExtentTestManager.getTest().log(Status.PASS, "Select \"hyperlink\" from the 'Banner Type' dropdown.");
         	
-           	WebDriverWait wait5 =new WebDriverWait(driver,Duration.ofSeconds(60));
-           	wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+           	WebDriverWait wait8 =new WebDriverWait(driver,Duration.ofSeconds(60));
+           	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
            	
-        	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Section dropdown");
         	loginbanner.clickSectiondropdown();
         	
-        	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
-        	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
+ 		   WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(90));
+ 		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
+        	
+        	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	ExtentTestManager.getTest().log(Status.PASS, "Select link1 from section dropdown");
         	loginbanner.selectlink1FromSectiondropdown();
         	
-        	ExtentTestManager.getTest().log(Status.PASS, "7.Leave \"Heading\"field empty");
+        	ExtentTestManager.getTest().log(Status.PASS, "Leave \"Heading\"field empty");
+        	loginbanner.clearHeader();
         	
-        	ExtentTestManager.getTest().log(Status.PASS, "8.Enter the details in \"Detail\" field");
+        	ExtentTestManager.getTest().log(Status.PASS, "Enter the details in \"Detail\" field");
     		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
     		{
     			
     			String Detaillink = testdata.get("Detailfield1link").toString();
     			loginbanner.detaillink(Detaillink);
     		}
- 	    WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(400));
-            ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit");
+ 	    WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(400));
+            ExtentTestManager.getTest().log(Status.PASS, "Click on Submit");
        	    loginbanner.clicksubmit();
        	    
-       	   WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(300));
-       	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+       	   WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(100));
+       	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
  
-       	   ExtentTestManager.getTest().log(Status.PASS, "10.Warning msg should be display");
+       	   ExtentTestManager.getTest().log(Status.PASS, "Warning msg should be display");
        	   
         	loginbanner.getWarningMessageText();
            Assert.assertTrue("Warning message not displayed",loginbanner.getWarningMessageText()); 
@@ -842,59 +961,75 @@ catch(AssertionError|Exception e) {
 		    Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		    throw e;
 		    }
+	   Thread.sleep(3000);
 	} 
    
  //Submit Without Detail field
-   @Test(priority=4,dataProvider="TestData",enabled=false)
+   @Test(priority=22,dataProvider="TestData")
    public void SubmitWithoutDetailField(Map<Object,Object>testdata) throws Throwable {
-	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(60));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
-	   try
+   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+		   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(60));
+		   wait.until(ExpectedConditions.invisibilityOf(driver.findElement(PageRepository.warningmsg)));
+		   loginbanner.clickResetbutton();
+		   
+			loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+			
+		   Thread.sleep(3000);
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
 		   loginbanner.clickusertypedropdown();
 		   
+		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+		   
 		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select Internal User");
+		   ExtentTestManager.getTest().log(Status.PASS, "Select Internal User");
+		   Thread.sleep(3000);
 		   loginbanner.selectinternaluser();
 		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
+		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown.");
            loginbanner.clickBannertypedropdown();
+           
+		   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
         	
-        	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
+        	WebDriverWait wait5 =new WebDriverWait(driver,Duration.ofSeconds(60));
         	loginbanner.hyperlink();
-        	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+        	ExtentTestManager.getTest().log(Status.PASS, "Select \"hyperlink\" from the 'Banner Type' dropdown.");
         	
-           	WebDriverWait wait5 =new WebDriverWait(driver,Duration.ofSeconds(60));
-           	wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+           	WebDriverWait wait6 =new WebDriverWait(driver,Duration.ofSeconds(60));
+           	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
            	
-        	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
+        	ExtentTestManager.getTest().log(Status.PASS, "Click on Section dropdown");
         	loginbanner.clickSectiondropdown();
         	
-        	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
-        	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
+ 		   WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(90));
+ 		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
+        	
+        	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(60));
+        	ExtentTestManager.getTest().log(Status.PASS, "Select link1 from section dropdown");
         	loginbanner.selectlink1FromSectiondropdown();
-        	
-        	ExtentTestManager.getTest().log(Status.PASS, "7.Leave \"Detail\"field empty");
-        	
-        	ExtentTestManager.getTest().log(Status.PASS, "8.Enter the details in \"Heading\" field");
+    	
+        	ExtentTestManager.getTest().log(Status.PASS, "Enter the details in \"Heading\" field");
     		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
     		{
     			
     			String Headerlink = testdata.get("Headerfield1link").toString();
     			loginbanner.headerlink(Headerlink);
     		}
+    		
+        	ExtentTestManager.getTest().log(Status.PASS, "Leave \"Detail\"field empty");
+        	loginbanner.clearDetail();
     	
-       	    WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(400));
-            ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit");
+       	    WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(100));
+            ExtentTestManager.getTest().log(Status.PASS, "Click on Submit");
        	    loginbanner.clicksubmit();
        	    
-       	   WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(300));
-       	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+       	   WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(60));
+       	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
  
-       	   ExtentTestManager.getTest().log(Status.PASS, "10.Warning msg should be display");
+       	   ExtentTestManager.getTest().log(Status.PASS, "Warning msg should be display");
        	   
         	loginbanner.getWarningMessageText();
            Assert.assertTrue("Warning message not displayed",loginbanner.getWarningMessageText()); 
@@ -908,21 +1043,32 @@ catch(AssertionError|Exception e) {
 		    Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		    throw e;
 		    }
+   Thread.sleep(3000);
 	}   
    
 //Select "callcentre user" from the 'User Type' dropdown.  
-   @Test(priority=4,enabled=false)
+   @Test(priority=23)
    public void SelectCallCenter() throws Throwable {
-	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+ 
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+		   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
+		   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+		   loginbanner.clickResetbutton();
+		   
+		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
+		  loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+		  
+		   Thread.sleep(3000);
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
 		   loginbanner.clickusertypedropdown();
 		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Call Centre\" from Usertype dropdown");
+		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(90));
+ 		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+		   
+		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(30));
+		   ExtentTestManager.getTest().log(Status.PASS, "Select \"Call Centre\" from Usertype dropdown");
+		   Thread.sleep(3000);
 		   loginbanner.selectCallCentre();
        	   
 	   }
@@ -933,44 +1079,45 @@ catch(AssertionError|Exception e) {
 		    Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		    throw e;
 		    }
+	   Thread.sleep(3000);
 	} 
    
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select Information from banner type dropdown 3.Select Header1 from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit   
    
-  @Test(priority=4,dataProvider="TestData",enabled=false)
+  @Test(priority=24,dataProvider="TestData")
   public void SubmitCallCentreData1(Map<Object,Object>testdata) throws Throwable {
-	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(30));
+	   
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
-		   loginbanner.clickusertypedropdown();
-		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(200));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Call Centre\" from Usertype dropdown");
-		   loginbanner.selectCallCentre();
-		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-           ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown");
+	   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
+           ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown");
     	   loginbanner.clickBannertypedropdown();
+    	   
+    	   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(90));
+ 		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
     
  	
-    	   ExtentTestManager.getTest().log(Status.PASS, "4. Select \"Information\" from the Banner Type dropdown.");
-    	   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(200));
+    	   ExtentTestManager.getTest().log(Status.PASS, "Select \"Information\" from the Banner Type dropdown.");
+    	   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(90));
     	   loginbanner.clickInfo();
     	   
-    	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+    	   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
     	   
-       	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section Dropdown");
+       	ExtentTestManager.getTest().log(Status.PASS, "Click on Section Dropdown");
        	loginbanner.clickSectiondropdown();
-       	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(120));
+       	WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(60));
+       	
+ 	   WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
         
-       	ExtentTestManager.getTest().log(Status.PASS, "6.Select \"Header1\" from Section dropdown");
+       	ExtentTestManager.getTest().log(Status.PASS, "Select \"Header1\" from Section dropdown");
        	loginbanner.selectheader1();
        	
-        ExtentTestManager.getTest().log(Status.PASS, "7.Input an alphanumeric  line in the 'Heading' field with max length of 35");
-     	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(200));
+        ExtentTestManager.getTest().log(Status.PASS, "Input an alphanumeric  line in the 'Heading' field with max length of 35");
+     	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(100));
+     	
+     	loginbanner.clearHeader();
      	
 		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
 		 {
@@ -979,8 +1126,10 @@ catch(AssertionError|Exception e) {
 		        loginbanner.Headingfieldinput(AlphaNumericInput);
 	    }
 		 
-	  ExtentTestManager.getTest().log(Status.PASS, "8.Input an alphanumeric  line in the 'Detail' field with max length of 35");
-	 	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(220));
+	  ExtentTestManager.getTest().log(Status.PASS, "Input an alphanumeric  line in the 'Detail' field with max length of 35");
+	 	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(100));
+	 	
+	 	loginbanner.clearDetail();
 	 	
  		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
  		{
@@ -992,10 +1141,10 @@ catch(AssertionError|Exception e) {
        }
  		
     	WebDriverWait wait8=new WebDriverWait(driver, Duration.ofSeconds(90));
-    	ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit button");
+    	ExtentTestManager.getTest().log(Status.PASS, "Click on Submit button");
     	loginbanner.clicksubmit();
     	
-    	ExtentTestManager.getTest().log(Status.PASS, "10.Data should be submitted successfully.");
+    	ExtentTestManager.getTest().log(Status.PASS, "Data should be submitted successfully.");
     	ExtentTestManager.getTest().log(Status.PASS, "Actual result-Data is submitted successfully.");
     	} 	
 	catch(AssertionError|Exception e) {
@@ -1005,6 +1154,7 @@ catch(AssertionError|Exception e) {
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
     	}
+	   Thread.sleep(3000);
         
     }
  
@@ -1012,81 +1162,36 @@ catch(AssertionError|Exception e) {
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select Information from banner type dropdown 3.Select Header1 from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit   
 //7.Logout and Verify the data on login page of Call Centre user
   
-  @Test(priority=4,dataProvider="TestData",enabled=false)
+  @Test(priority=25,dataProvider="TestData")
   public void VerifydataPostLogoutCC1(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+	   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+	   
+	   // Declare and initialize the initial window handle
+	    String initialWindowHandle = driver.getWindowHandle();
+	
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
-		   loginbanner.clickusertypedropdown();
-		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(200));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Call Centre\" from Usertype dropdown");
-		   loginbanner.selectCallCentre();
-		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-           ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown");
-    	   loginbanner.clickBannertypedropdown();
-    
- 	
-    	   ExtentTestManager.getTest().log(Status.PASS, "4. Select \"Information\" from the Banner Type dropdown.");
-    	   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(200));
-    	   loginbanner.clickInfo();
-    	   
-    	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
-    	   
-       	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section Dropdown");
-       	loginbanner.clickSectiondropdown();
-       	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(120));
-        
-       	ExtentTestManager.getTest().log(Status.PASS, "6.Select \"Header1\" from Section dropdown");
-       	loginbanner.selectheader1();
-       	
-        ExtentTestManager.getTest().log(Status.PASS, "7.Input an alphanumeric  line in the 'Heading' field with max length of 35");
-     	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(200));
-     	
-		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
-		 {
-			
-		        String ExpectedAlphaNumericInput = testdata.get("CallCenterHeadingtext").toString();
-		        loginbanner.Headingfieldinput(ExpectedAlphaNumericInput);
-	    }
-		 
-	  ExtentTestManager.getTest().log(Status.PASS, "8.Input an alphanumeric  line in the 'Detail' field with max length of 35");
-	 	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(220));
-	 	
- 		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
- 		{
-		
-	        String AlphaNumericInput = testdata.get("CallCenterDetailtext").toString();
-			loginbanner.Detailfieldinput(AlphaNumericInput);
-		
-		
-       }
- 		
-    	WebDriverWait wait8=new WebDriverWait(driver, Duration.ofSeconds(90));
-    	ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit button");
-    	loginbanner.clicksubmit();
-    	
-    	ExtentTestManager.getTest().log(Status.PASS, "10.Data should be submitted successfully.");
-    	
-    	WebDriverWait wait9=new WebDriverWait(driver, Duration.ofSeconds(200));
-    	ExtentTestManager.getTest().log(Status.PASS, "11.Navigate to profile icon");
+  	WebDriverWait wait1=new WebDriverWait(driver, Duration.ofSeconds(100));
+    	ExtentTestManager.getTest().log(Status.PASS, ".Navigate to profile icon");
     	loginbanner.Clickprofiledropdown();
     	
-    	WebDriverWait wait10=new WebDriverWait(driver, Duration.ofSeconds(300));
-    	ExtentTestManager.getTest().log(Status.PASS, "12.Click on Logout");
+    	WebDriverWait wait2=new WebDriverWait(driver, Duration.ofSeconds(100));
+    	ExtentTestManager.getTest().log(Status.PASS, "Click on Logout");
     	loginbanner.Clicklogout();
     	
-    	ExtentTestManager.getTest().log(Status.PASS, "13.The data entered in the 'Heading' and 'Details'should display in the Call Centre user's login page.");
-    	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(120));
+    	Thread.sleep(3000);
+    	
+    	ExtentTestManager.getTest().log(Status.PASS, "The data entered in the 'Heading' and 'Details'should display in the Call Centre user's login page.");
+    	WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(100));
+    	loginbanner.callCentreURL();
+    	
+    	WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(100));
     	loginbanner.profilepagetext();
     	
     	ExtentTestManager.getTest().log(Status.PASS, "Actual Result-The data entered in the 'Heading' and 'Details'displayed in the Call Centre user's login page.");
     	
-    	
+    
     	} 	
 	catch(AssertionError|Exception e) {
     		
@@ -1095,47 +1200,82 @@ catch(AssertionError|Exception e) {
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
     	}
-        
-    } 
+   
+   	finally {
+        // Close the second browser window if it exists
+        Set<String> allWindowHandles = driver.getWindowHandles();
+        for (String windowHandle : allWindowHandles) {
+            if (!windowHandle.equals(initialWindowHandle)) {
+                driver.switchTo().window(windowHandle);
+                driver.close(); // Close second browser window
+            }
+        }
+
+        // Switch back to the initial window and close it as well
+        driver.switchTo().window(initialWindowHandle);
+        driver.close(); // Close the initial browser window
+    }
+	   Thread.sleep(3000);
+}
 
   
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select "Hyperlink" from banner type dropdown 3.Select "link1" from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit  
-
-  @Test(priority=4,dataProvider="TestData",enabled=false)
+ @Test(priority=26,dataProvider="TestData")
   
 public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+	   
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+ 		 CoreAppLogin.CoreLogin();
+		   
+		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
+		   loginbanner.clickOnConfigurationMenu();
+		   
+		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(90));
+		   loginbanner.clickOnLoginBannerConfigMenu();
+		   
+		   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+
+		   Thread.sleep(3000);
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
 		   loginbanner.clickusertypedropdown();
 		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(200));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Call Centre\" from Usertype dropdown");
-		   loginbanner.selectCallCentre();
 		   
 		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-         ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown");
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+		   
+		   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(60));
+		   ExtentTestManager.getTest().log(Status.PASS, "Select \"Call Centre\" from Usertype dropdown");
+		   Thread.sleep(3000);
+		   loginbanner.selectCallCentre();
+		   
+		   WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(60));
+         ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown");
   	    loginbanner.clickBannertypedropdown();
+  	    
+		   WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
   
 	
-    	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(90));
+    	WebDriverWait wait7 =new WebDriverWait(driver,Duration.ofSeconds(60));
     	loginbanner.hyperlink();
-    	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+    	ExtentTestManager.getTest().log(Status.PASS, "Select \"hyperlink\" from the 'Banner Type' dropdown.");
   	   
-  	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+    	 loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
   	   
-    	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
+    	ExtentTestManager.getTest().log(Status.PASS, "Click on Section dropdown");
    	   loginbanner.clickSectiondropdown();
+   	   
+	   WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(60));
+	   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
    	
-     	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
-    	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(60));
+     	ExtentTestManager.getTest().log(Status.PASS, "Select link1 from section dropdown");
+    	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(60));
     	loginbanner.selectlink1FromSectiondropdown();
      	
-		ExtentTestManager.getTest().log(Status.PASS, "7.Input data for HeaderField");
-    	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(200));
+		ExtentTestManager.getTest().log(Status.PASS, "Input data for HeaderField");
+    	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(100));
    	
 		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
 		 {
@@ -1144,8 +1284,8 @@ public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
  			loginbanner.headerlink(Headerlink);
 	    }
 		 
-		ExtentTestManager.getTest().log(Status.PASS, "8.Input data for DetailField");
-	 	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(220));
+		ExtentTestManager.getTest().log(Status.PASS, "Input data for DetailField");
+	 	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(100));
 	 	
 		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
 		{
@@ -1154,11 +1294,11 @@ public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
 	
      }
 		
-  	WebDriverWait wait8=new WebDriverWait(driver, Duration.ofSeconds(90));
-  	ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit button");
+  	WebDriverWait wait12=new WebDriverWait(driver, Duration.ofSeconds(90));
+  	ExtentTestManager.getTest().log(Status.PASS, "Click on Submit button");
   	loginbanner.clicksubmit();
   	
-  	ExtentTestManager.getTest().log(Status.PASS, "10.Data should be submitted successfully.");
+  	ExtentTestManager.getTest().log(Status.PASS, "Data should be submitted successfully.");
   	ExtentTestManager.getTest().log(Status.PASS, "Actual result-Data is submitted successfully.");
   	} 	
 	catch(AssertionError|Exception e) {
@@ -1168,93 +1308,50 @@ public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
   	}
-      
+   Thread.sleep(3000);   
   }  
 
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select "Hyperlink" from banner type dropdown 3.Select "link1" from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit  
 //7.Logout and Verify the data on login page of Call Centre user. 8.Click on link1 to load the page
 
-@Test(priority=4,dataProvider="TestData",enabled=false)
+@Test(priority=27,dataProvider="TestData")
 
 public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+	   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+	   
+	   // Declare and initialize the initial window handle
+	    String initialWindowHandle = driver.getWindowHandle();
+	
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
-		   loginbanner.clickusertypedropdown();
-		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(200));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Call Centre\" from Usertype dropdown");
-		   loginbanner.selectCallCentre();
-		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-       ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown");
-	    loginbanner.clickBannertypedropdown();
 
-	
-  	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(90));
-  	loginbanner.hyperlink();
-  	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
-	   
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
-	   
-  	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
- 	   loginbanner.clickSectiondropdown();
- 	
-   	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
-  	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(60));
-  	loginbanner.selectlink1FromSectiondropdown();
-   	
-		ExtentTestManager.getTest().log(Status.PASS, "7.Input data for HeaderField");
-  	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(200));
- 	
-		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
-		 {
-			
-			String Headerlink = testdata.get("CallCenterHeaderLink1").toString();
-			loginbanner.headerlink(Headerlink);
-	    }
-		 
-		ExtentTestManager.getTest().log(Status.PASS, "8.Input data for DetailField");
-	 	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(220));
-	 	
-		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
-		{
-      	String Detaillink = testdata.get("CallCenterDetailLink1").toString();
-			loginbanner.detaillink(Detaillink);
-	
-   }
-		
-	WebDriverWait wait8=new WebDriverWait(driver, Duration.ofSeconds(90));
-	ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit button");
-	loginbanner.clicksubmit();
-	
-	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-	
-	WebDriverWait wait9=new WebDriverWait(driver, Duration.ofSeconds(200));
-	ExtentTestManager.getTest().log(Status.PASS, "10.Click on Profile icon");
+	WebDriverWait wait9=new WebDriverWait(driver, Duration.ofSeconds(100));
+	ExtentTestManager.getTest().log(Status.PASS, "Click on Profile icon");
 	loginbanner.Clickprofiledropdown();
 	
-	WebDriverWait wait10=new WebDriverWait(driver, Duration.ofSeconds(200));
-	ExtentTestManager.getTest().log(Status.PASS, "11.Click on LogOut");
+	WebDriverWait wait10=new WebDriverWait(driver, Duration.ofSeconds(100));
+	ExtentTestManager.getTest().log(Status.PASS, "Click on LogOut");
 	loginbanner.Clicklogout();
 	
+	Thread.sleep(3000);
+	
 	WebDriverWait wait11=new WebDriverWait(driver, Duration.ofSeconds(90));
-	ExtentTestManager.getTest().log(Status.PASS, "12.The data entered in the 'Heading' and 'Details' should display in the call centre user's login page.");
+	ExtentTestManager.getTest().log(Status.PASS, "The data entered in the 'Heading' and 'Details' should display in the call centre user's login page.");
 	loginbanner.dataforlink1();
 	
 	WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(90));
-	ExtentTestManager.getTest().log(Status.PASS, "13.Navigate to Call Centre app URL");
+	ExtentTestManager.getTest().log(Status.PASS, "Navigate to Call Centre app URL");
 	loginbanner.callCentreURL();
 	
-	WebDriverWait wait13=new WebDriverWait(driver,Duration.ofSeconds(400));
+	WebDriverWait wait13=new WebDriverWait(driver,Duration.ofSeconds(100));
 	wait.until(ExpectedConditions.visibilityOfElementLocated(PageRepository.ProfilePagewithHeaderandDetaillink));
 	
-	WebDriverWait wait14=new WebDriverWait(driver,Duration.ofSeconds(500));
-	ExtentTestManager.getTest().log(Status.PASS, "13.Click on provided Link1");
+	WebDriverWait wait14=new WebDriverWait(driver,Duration.ofSeconds(100));
+	ExtentTestManager.getTest().log(Status.PASS, "Click on provided Link1");
+//	Thread.sleep(3000);
 	loginbanner.clickonProfilePagelink1();
+
 	
 	ExtentTestManager.getTest().log(Status.PASS, "Actual result-The Call Center user should be redirected to given page");
 	} 	
@@ -1265,75 +1362,114 @@ public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
 	}
-    
+   	finally {
+        // Close the second browser window if it exists
+        Set<String> allWindowHandles = driver.getWindowHandles();
+        for (String windowHandle : allWindowHandles) {
+            if (!windowHandle.equals(initialWindowHandle)) {
+                driver.switchTo().window(windowHandle);
+                driver.close(); // Close second browser window
+            }
+        }
+
+        // Switch back to the initial window and close it as well
+        driver.switchTo().window(initialWindowHandle);
+        driver.close(); // Close the initial browser window
+    }
+	   Thread.sleep(3000);
 }
 
 
 //Test case-Edit and Update Data(Link1) for Call Centre user and submit  
 
-@Test(priority=4,dataProvider="TestData",enabled=false)
+@Test(priority=28,dataProvider="TestData")
 
 public void ModifydataforCallCentre( Map<Object,Object> testdata) throws Throwable {
   WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
-  wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+
   try
   {
-	  WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
-	   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+  CoreAppLogin.CoreLogin();
+	   
+	   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
+	   loginbanner.clickOnConfigurationMenu();
+	   
+	   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(90));
+	   loginbanner.clickOnLoginBannerConfigMenu();
+	   
+	   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+	   
+
+
+	  Thread.sleep(3000);
+	   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
 	   loginbanner.clickusertypedropdown();
 	   
-	   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-	   ExtentTestManager.getTest().log(Status.PASS, "2.Select\" Call Centre\" User");
+	   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+	   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+	   
+	   WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(30));
+	   ExtentTestManager.getTest().log(Status.PASS, "Select\" Call Centre\" User");
+	   Thread.sleep(3000);
 	   loginbanner.selectCallCentre();
 	   
-	   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-	   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
+	   WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
+	   ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown.");
       loginbanner.clickBannertypedropdown();
+      
+	   WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
+	   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
    	
-   	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
+   	WebDriverWait wait8 =new WebDriverWait(driver,Duration.ofSeconds(60));
    	loginbanner.hyperlink();
-   	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
+   	ExtentTestManager.getTest().log(Status.PASS, "Select \"hyperlink\" from the 'Banner Type' dropdown.");
    	
-   	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
-   	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+   	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(100));
+    loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
    	
-   	WebDriverWait wait6 =new WebDriverWait(driver,Duration.ofSeconds(60));
-   	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
+   	WebDriverWait wait10 =new WebDriverWait(driver,Duration.ofSeconds(60));
+   	ExtentTestManager.getTest().log(Status.PASS, "Click on Section dropdown");
    	loginbanner.clickSectiondropdown();
    	
-   	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
-   	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
+	   WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(60));
+	   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
+   	
+   	WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(60));
+   	ExtentTestManager.getTest().log(Status.PASS, "Select link1 from section dropdown");
    	loginbanner.selectlink1FromSectiondropdown();
    	
-   	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(300));
-   	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
+   	WebDriverWait wait13=new WebDriverWait(driver,Duration.ofSeconds(100));
+   	ExtentTestManager.getTest().log(Status.PASS, "Click on Search");
    	loginbanner.ClickSearchbutton();
    	
-   	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(400));
-   	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
+   	WebDriverWait wait14=new WebDriverWait(driver,Duration.ofSeconds(100));
+    loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+   	
+   	loginbanner.clearHeader();
    	
   	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
 		{
-		ExtentTestManager.getTest().log(Status.PASS, "8.Input modified data for HeaderField");
+		ExtentTestManager.getTest().log(Status.PASS, "Input modified data for HeaderField");
 		
 		String modifiedHeader = testdata.get("CallCenterModifiedHeader").toString();
 		System.out.println(modifiedHeader);
 		loginbanner.modifiedDataForHeader(modifiedHeader);
 	}
    	
-  	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(600));
+  	WebDriverWait wait15=new WebDriverWait(driver,Duration.ofSeconds(60));
+  	loginbanner.clearDetail();
   	
    	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
      		{
-   			ExtentTestManager.getTest().log(Status.PASS, "9.Input modified data for DetailField");
+   			ExtentTestManager.getTest().log(Status.PASS, "Input modified data for DetailField");
    			
    			String modifiedlink1 = testdata.get("CallCenterModifiedDetail").toString();
    			System.out.println(modifiedlink1);
    			loginbanner.modifiedDataForlink1(modifiedlink1);
    		}
 	
-	    WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(400));
-       ExtentTestManager.getTest().log(Status.PASS, "10.Click on Submit");
+	    WebDriverWait wait16=new WebDriverWait(driver,Duration.ofSeconds(60));
+       ExtentTestManager.getTest().log(Status.PASS, "Click on Submit");
 	    loginbanner.clicksubmit();
 	    
 	   ExtentTestManager.getTest().log(Status.PASS, "Actual result-Data is submitted successfully.");
@@ -1346,103 +1482,50 @@ ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testNam
 Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 throw e;
 }
+  Thread.sleep(3000);
 }
  
 
 //Test case-Verify Updated Data Post Logout for Call Centre User  
 
-@Test(priority=4,dataProvider="TestData",enabled=false)
+@Test(priority=29,dataProvider="TestData")
 
 public void VerifyModifieddataforCallCentre( Map<Object,Object> testdata) throws Throwable {
 WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
-wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+
+// Declare and initialize the initial window handle
+String initialWindowHandle = driver.getWindowHandle();
+
 try
 {
-	  WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
-	   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
-	   loginbanner.clickusertypedropdown();
-	   
-	   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-	   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Call Centre\" User");
-	   loginbanner.selectCallCentre();
-	   
-	   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-	   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
-    loginbanner.clickBannertypedropdown();
- 	
- 	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
- 	loginbanner.hyperlink();
- 	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
- 	
- 	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
- 	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
- 	
- 	WebDriverWait wait6 =new WebDriverWait(driver,Duration.ofSeconds(60));
- 	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
- 	loginbanner.clickSectiondropdown();
- 	
- 	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
- 	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
- 	loginbanner.selectlink1FromSectiondropdown();
- 	
- 	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(300));
- 	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
- 	loginbanner.ClickSearchbutton();
- 	
- 	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(400));
- 	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
- 	
-	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
-		{
-		ExtentTestManager.getTest().log(Status.PASS, "8.Input modified data for HeaderField");
-		
-		String modifiedHeader = testdata.get("CallCenterModifiedHeader").toString();
-		System.out.println(modifiedHeader);
-		loginbanner.modifiedDataForHeader(modifiedHeader);
-	}
- 	
-	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(600));
-	
- 	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
-   		{
- 			ExtentTestManager.getTest().log(Status.PASS, "9.Input modified data for DetailField");
- 			
- 			String modifiedlink1 = testdata.get("CallCenterModifiedDetail").toString();
- 			System.out.println(modifiedlink1);
- 			loginbanner.modifiedDataForlink1(modifiedlink1);
- 		}
-	
-	    WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(400));
-        ExtentTestManager.getTest().log(Status.PASS, "10.Click on Submit");
-	    loginbanner.clicksubmit();
-	    
-	    wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-	    
-	    WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(400));
-        ExtentTestManager.getTest().log(Status.PASS, "11.Click on profile icon");
+    WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(100));
+        ExtentTestManager.getTest().log(Status.PASS, "Click on profile icon");
 	    loginbanner.Clickprofiledropdown();
 	    
-	    WebDriverWait wait13=new WebDriverWait(driver,Duration.ofSeconds(400));
-        ExtentTestManager.getTest().log(Status.PASS, "12.Click on LogOut");
+	    WebDriverWait wait13=new WebDriverWait(driver,Duration.ofSeconds(100));
+        ExtentTestManager.getTest().log(Status.PASS, "Click on LogOut");
 	    loginbanner.Clicklogout();
 	    
-		WebDriverWait wait14=new WebDriverWait(driver,Duration.ofSeconds(600));
-		ExtentTestManager.getTest().log(Status.PASS, "13.Navigate to Call Centre app URL");
+	    Thread.sleep(3000);
+	    
+		WebDriverWait wait14=new WebDriverWait(driver,Duration.ofSeconds(100));
+		ExtentTestManager.getTest().log(Status.PASS, "Navigate to Call Centre app URL");
 		loginbanner.callCentreURL();
 		
-		WebDriverWait wait15=new WebDriverWait(driver,Duration.ofSeconds(500));
+		WebDriverWait wait15=new WebDriverWait(driver,Duration.ofSeconds(100));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PageRepository.ProfilePagewithHeaderandDetaillink));
 	   
-		WebDriverWait wait16=new WebDriverWait(driver, Duration.ofSeconds(200));
-		ExtentTestManager.getTest().log(Status.PASS, "14.The data entered in the 'Heading' and 'Details' should display in the call centre user's login page.");
+		WebDriverWait wait16=new WebDriverWait(driver, Duration.ofSeconds(60));
+		ExtentTestManager.getTest().log(Status.PASS, "The data entered in the 'Heading' and 'Details' should display in the call centre user's login page.");
 		loginbanner.dataforlink1();
 	
-		WebDriverWait wait17=new WebDriverWait(driver,Duration.ofSeconds(500));
-		ExtentTestManager.getTest().log(Status.PASS, "15.Click on provided Link1");
+		WebDriverWait wait17=new WebDriverWait(driver,Duration.ofSeconds(90));
+		ExtentTestManager.getTest().log(Status.PASS, "Click on provided Link1");
 		loginbanner.clickonProfilePagelink1();
 		
 		ExtentTestManager.getTest().log(Status.PASS, "Actual result-1.The data entered in the 'Heading' and 'Details'is displayed in the call centre user's login page.2.The Call Center user is redirected to given link");
-	   
+
 }
 
 catch(AssertionError|Exception e) {
@@ -1452,46 +1535,83 @@ ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testNam
 Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 throw e;
 }
+finally {
+    // Close the second browser window if it exists
+    Set<String> allWindowHandles = driver.getWindowHandles();
+    for (String windowHandle : allWindowHandles) {
+        if (!windowHandle.equals(initialWindowHandle)) {
+            driver.switchTo().window(windowHandle);
+            driver.close(); // Close second browser window
+        }
+    }
+
+    // Switch back to the initial window and close it as well
+    driver.switchTo().window(initialWindowHandle);
+    driver.close(); // Close the initial browser window
+}
+Thread.sleep(3000);
 }
    
 //Test case-1. verify usertype dropdown 2. Select "Collection Agency " from the 'User Type' dropdown. 3.Select "Information" from banner type dropdown 4.Select "Header1" from Section dropdown 5.Enter Heading field
 //6.Enter Detail field 7.Click on Submit
   
-@Test(priority=4,dataProvider="TestData",enabled=false)
+@Test(priority=30,dataProvider="TestData")
 
 public void SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+  CoreAppLogin.CoreLogin();
+		   
+		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
+		   loginbanner.clickOnConfigurationMenu();
+		   
+		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(100));
+		   loginbanner.clickOnLoginBannerConfigMenu();
+		   
+		   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+		   
+
+		   Thread.sleep(2000);
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
 		   loginbanner.clickusertypedropdown();
 		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(200));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Agency User\" from Usertype dropdown");
+		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+		   
+		   WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(30));
+		   ExtentTestManager.getTest().log(Status.PASS, "Select \"Agency User\" from Usertype dropdown");
+		   Thread.sleep(2000);
 		   loginbanner.selectAgencyUser();
 		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-         ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown");
+		   WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
+         ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown");
  	     loginbanner.clickBannertypedropdown();
+ 	     
+		   WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
  
 	
- 	    ExtentTestManager.getTest().log(Status.PASS, "4. Select \"Information\" from the Banner Type dropdown.");
- 	    WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(200));
+ 	    ExtentTestManager.getTest().log(Status.PASS, "Select \"Information\" from the Banner Type dropdown.");
+ 	    WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(90));
  	    loginbanner.clickInfo();
  	   
- 	    wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+ 	   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
  	   
-    	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section Dropdown");
+ 	   WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(60));
+    	ExtentTestManager.getTest().log(Status.PASS, "Click on Section Dropdown");
     	loginbanner.clickSectiondropdown();
-    	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(120));
+    	
+		  
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
+    	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(60));
      
-    	ExtentTestManager.getTest().log(Status.PASS, "6.Select \"Header1\" from Section dropdown");
+    	ExtentTestManager.getTest().log(Status.PASS, "Select \"Header1\" from Section dropdown");
     	loginbanner.selectheader1();
     	
-     ExtentTestManager.getTest().log(Status.PASS, "7.Input an alphanumeric  line in the 'Heading' field with max length of 35");
-  	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(200));
+     ExtentTestManager.getTest().log(Status.PASS, "Input an alphanumeric  line in the 'Heading' field with max length of 35");
+  	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(60));
   	
 		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
 		 {
@@ -1500,8 +1620,8 @@ public void SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable
 		        loginbanner.Headingfieldinput(AlphaNumericInput);
 	    }
 		 
-	  ExtentTestManager.getTest().log(Status.PASS, "8.Input an alphanumeric  line in the 'Detail' field with max length of 35");
-	 	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(220));
+	  ExtentTestManager.getTest().log(Status.PASS, "Input an alphanumeric  line in the 'Detail' field with max length of 35");
+	 	WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(60));
 	 	
 		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
 		{
@@ -1511,11 +1631,11 @@ public void SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable
 	
     }
 		
- 	WebDriverWait wait8=new WebDriverWait(driver, Duration.ofSeconds(90));
- 	ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit button");
+ 	WebDriverWait wait13=new WebDriverWait(driver, Duration.ofSeconds(90));
+ 	ExtentTestManager.getTest().log(Status.PASS, "Click on Submit button");
  	loginbanner.clicksubmit();
  	
- 	ExtentTestManager.getTest().log(Status.PASS, "10.Data should be submitted successfully.");
+ 	ExtentTestManager.getTest().log(Status.PASS, "Data should be submitted successfully.");
  	ExtentTestManager.getTest().log(Status.PASS, "Actual result-Data is submitted successfully.");
  	} 	
 	catch(AssertionError|Exception e) {
@@ -1525,86 +1645,40 @@ public void SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
  	}
-     
+  Thread.sleep(3000);   
  }
 
 
 //Test case-1.Select "Collection Agency" from Usertype dropdown 2.Select Information from banner type dropdown 3.Select Header1 from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit   
 //7.Logout and Verify the data on login page of Collection Agency user
 
-@Test(priority=4,dataProvider="TestData",enabled=false)
+@Test(priority=31,dataProvider="TestData")
 public void VerifyPostLogoutdataAgencyUser(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+	   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+	   
+	   // Declare and initialize the initial window handle
+	    String initialWindowHandle = driver.getWindowHandle();
+	    
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
-		   loginbanner.clickusertypedropdown();
-		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(200));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Collection Agency\" from Usertype dropdown");
-		   loginbanner.selectCallCentre();
-		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-         ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown");
-  	   loginbanner.clickBannertypedropdown();
-  
-	
-  	   ExtentTestManager.getTest().log(Status.PASS, "4. Select \"Information\" from the Banner Type dropdown.");
-  	   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(200));
-  	   loginbanner.clickInfo();
-  	   
-  	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
-  	   
-     	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section Dropdown");
-     	loginbanner.clickSectiondropdown();
-     	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(120));
-      
-     	ExtentTestManager.getTest().log(Status.PASS, "6.Select \"Header1\" from Section dropdown");
-     	loginbanner.selectheader1();
-     	
-      ExtentTestManager.getTest().log(Status.PASS, "7.Input an alphanumeric  line in the 'Heading' field with max length of 35");
-   	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(200));
-   	
-		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes"))
-		 {
-			
-		        String AlphaNumericInput = testdata.get("AgencyUserHeader1").toString();
-		        loginbanner.Headingfieldinput(AlphaNumericInput);
-	    }
-		 
-	  ExtentTestManager.getTest().log(Status.PASS, "8.Input an alphanumeric  line in the 'Detail' field with max length of 35");
-	 	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(220));
-	 	
-		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
-		{
-		
-	        String AlphaNumericInput = testdata.get("AgencyUserDetail1").toString();
-			loginbanner.Detailfieldinput(AlphaNumericInput);
-	
-     }
-		
-  	WebDriverWait wait8=new WebDriverWait(driver, Duration.ofSeconds(90));
-  	ExtentTestManager.getTest().log(Status.PASS, "9.Click on Submit button");
-  	loginbanner.clicksubmit();
-  	
-  	ExtentTestManager.getTest().log(Status.PASS, "10.Data should be submitted successfully.");
-  	
-  	WebDriverWait wait9=new WebDriverWait(driver, Duration.ofSeconds(200));
-  	ExtentTestManager.getTest().log(Status.PASS, "11.Navigate to profile icon");
+ 	
+  	WebDriverWait wait9=new WebDriverWait(driver, Duration.ofSeconds(100));
+  	ExtentTestManager.getTest().log(Status.PASS, "Navigate to profile icon");
   	loginbanner.Clickprofiledropdown();
   	
-  	WebDriverWait wait10=new WebDriverWait(driver, Duration.ofSeconds(300));
-  	ExtentTestManager.getTest().log(Status.PASS, "12.Click on Logout");
+  	WebDriverWait wait10=new WebDriverWait(driver, Duration.ofSeconds(100));
+  	ExtentTestManager.getTest().log(Status.PASS, "Click on Logout");
   	loginbanner.Clicklogout();
   	
-  	ExtentTestManager.getTest().log(Status.PASS, "13.The data entered in the 'Heading' and 'Details'should display in the Agency user's login page.");
-  	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(120));
+  	ExtentTestManager.getTest().log(Status.PASS, "The data entered in the 'Heading' and 'Details'should display in the Agency user's login page.");
+  	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(90));
+  	loginbanner.CollectionAgencyURL();
+  	
   	loginbanner.profilepagetext();
   	
   	ExtentTestManager.getTest().log(Status.PASS, "Actual Result-The data entered in the 'Heading' and 'Details'displayed in the Agency user's login page.");
-	
+
   	} 	
 	catch(AssertionError|Exception e) {
   		
@@ -1613,49 +1687,82 @@ public void VerifyPostLogoutdataAgencyUser(Map<Object,Object>testdata) throws Th
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
   	}
-      
-  }
+   	finally {
+        // Close the second browser window if it exists
+        Set<String> allWindowHandles = driver.getWindowHandles();
+        for (String windowHandle : allWindowHandles) {
+            if (!windowHandle.equals(initialWindowHandle)) {
+                driver.switchTo().window(windowHandle);
+                driver.close(); // Close second browser window
+            }
+        }
 
+        // Switch back to the initial window and close it as well
+        driver.switchTo().window(initialWindowHandle);
+        driver.close(); // Close the initial browser window
+    }
+	   Thread.sleep(3000);
+}
 //Search Existing Data-For Agency User
-@Test(priority=4,enabled=false)
+@Test(priority=32)
 public void SearchDataForAgencyUser() throws Throwable {
-	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.warningmsg));
+	 WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
 	   try
 	   {
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
+  CoreAppLogin.CoreLogin();
+		   
+		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
+		   loginbanner.clickOnConfigurationMenu();
+		   
+		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(100));
+		   loginbanner.clickOnLoginBannerConfigMenu();
+		   
+		   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+		   
+
+		   Thread.sleep(3000);
+		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
 		   loginbanner.clickusertypedropdown();
 		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(200));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select \"Collection Agency\" from Usertype dropdown");
-		   loginbanner.selectCallCentre();
-		   
 		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-      ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown");
+		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+		   
+		   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(30));
+		   ExtentTestManager.getTest().log(Status.PASS, "Select \"Collection Agency\" from Usertype dropdown");
+		   Thread.sleep(3000);
+		   loginbanner.selectAgencyUser();
+		   
+		   WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(60));
+      ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown");
 	   loginbanner.clickBannertypedropdown();
+	   
+	   WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(60));
+	   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
 
 	
-	   ExtentTestManager.getTest().log(Status.PASS, "4. Select \"Information\" from the Banner Type dropdown.");
-	   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(200));
+	   ExtentTestManager.getTest().log(Status.PASS, " Select \"Information\" from the Banner Type dropdown.");
+	   WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
 	   loginbanner.clickInfo();
 	   
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated( PageRepository.spinner));
+	   loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
 	
-	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(120)); 
-  	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section Dropdown");
+	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(90)); 
+  	ExtentTestManager.getTest().log(Status.PASS, "Click on Section Dropdown");
   	loginbanner.clickSectiondropdown();
   	
-  	WebDriverWait wait6=new WebDriverWait(driver,Duration.ofSeconds(120));
-  	ExtentTestManager.getTest().log(Status.PASS, "6.Select \"Header1\" from Section dropdown");
+	   WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(60));
+	   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
+  	
+  	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(60));
+  	ExtentTestManager.getTest().log(Status.PASS, "Select \"Header1\" from Section dropdown");
   	loginbanner.selectheader1();
   	
   	
-  	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(120));
-	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
+  	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(60));
+	ExtentTestManager.getTest().log(Status.PASS, "Click on Search");
   	loginbanner.ClickSearchbutton();
   	
-  	ExtentTestManager.getTest().log(Status.PASS, "8.The saved data should populate in the 'Heading' and 'Details' fields.");
+  	ExtentTestManager.getTest().log(Status.PASS, "The saved data should populate in the 'Heading' and 'Details' fields.");
   	ExtentTestManager.getTest().log(Status.PASS, "Actual result-The saved data is populating in the 'Heading' and 'Details' fields.");
 }
 		catch(AssertionError|Exception e) {
@@ -1669,68 +1776,41 @@ public void SearchDataForAgencyUser() throws Throwable {
 	  }
 
 //Edit and update the data for Agency User
-@Test(priority=4,dataProvider="TestData",enabled=false)
+@Test(priority=33,dataProvider="TestData")
 public void ModifydataforAgencyUser( Map<Object,Object> testdata) throws Throwable {
 	  WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
-	  wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+	  loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+	
 	  try
 	  {
-		  WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
-		   loginbanner.clickusertypedropdown();
-		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select\"Collection Agency\" User");
-		   loginbanner.selectAgencyUser();
-		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
-	      loginbanner.clickBannertypedropdown();
-	   	
-	   	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
-	   	loginbanner.hyperlink();
-	   	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
-	   	
-	   	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
-	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-	   	
-	   	WebDriverWait wait6 =new WebDriverWait(driver,Duration.ofSeconds(60));
-	   	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
-	   	loginbanner.clickSectiondropdown();
-	   	
-	   	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
-	   	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
-	   	loginbanner.selectlink1FromSectiondropdown();
-	   	
-	   	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(300));
-	   	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
-	   	loginbanner.ClickSearchbutton();
-	   	
-	   	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(400));
-	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-	   	
-	  	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
+
+		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(60));
+		loginbanner.clearHeader();
+
+		if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
 			{
-			ExtentTestManager.getTest().log(Status.PASS, "8.Input modified data for HeaderField");
+			ExtentTestManager.getTest().log(Status.PASS, "Input modified data for HeaderField");
 			
 			String modifiedHeader = testdata.get("AgencyUpdatedHeader1").toString();
 			System.out.println(modifiedHeader);
 			loginbanner.modifiedDataForHeader(modifiedHeader);
 		}
 	   	
-	  	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(600));
+		
+		WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
+		loginbanner.clearDetail();
 	  	
 	   	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
 	     		{
-	   			ExtentTestManager.getTest().log(Status.PASS, "9.Input modified data for DetailField");
+	   			ExtentTestManager.getTest().log(Status.PASS, "Input modified data for DetailField");
 	   			
 	   			String modifiedlink1 = testdata.get("AgencyUpdatedDetail1").toString();
 	   			System.out.println(modifiedlink1);
 	   			loginbanner.modifiedDataForlink1(modifiedlink1);
 	   		}
 		
-		    WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(400));
-	       ExtentTestManager.getTest().log(Status.PASS, "10.Click on Submit");
+		    WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(60));
+	       ExtentTestManager.getTest().log(Status.PASS, "Click on Submit");
 		    loginbanner.clicksubmit();
 		    
 		    ExtentTestManager.getTest().log(Status.PASS, "Expected result-Data should be submitted successfully.");
@@ -1748,99 +1828,41 @@ public void ModifydataforAgencyUser( Map<Object,Object> testdata) throws Throwab
 
 
 //Verify updated data post logout for Agency User
-@Test(priority=4,dataProvider="TestData")
+@Test(priority=34,dataProvider="TestData")
 public void VerifyModifiedDataforAgencyUser( Map<Object,Object> testdata) throws Throwable {
 	  WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
-	  wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
+
 	  try
 	  {
-		  WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "1.Click on Usertype dropdown");
-		   loginbanner.clickusertypedropdown();
-		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(120));
-		   ExtentTestManager.getTest().log(Status.PASS, "2.Select\"Collection Agency\" User");
-		   loginbanner.selectAgencyUser();
-		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "3.Click on Bannertype dropdown.");
-	      loginbanner.clickBannertypedropdown();
-	   	
-	   	WebDriverWait wait4 =new WebDriverWait(driver,Duration.ofSeconds(60));
-	   	loginbanner.hyperlink();
-	   	ExtentTestManager.getTest().log(Status.PASS, "4.Select \"hyperlink\" from the 'Banner Type' dropdown.");
-	   	
-	   	WebDriverWait wait5=new WebDriverWait(driver,Duration.ofSeconds(200));
-	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-	   	
-	   	WebDriverWait wait6 =new WebDriverWait(driver,Duration.ofSeconds(60));
-	   	ExtentTestManager.getTest().log(Status.PASS, "5.Click on Section dropdown");
-	   	loginbanner.clickSectiondropdown();
-	   	
-	   	WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(60));
-	   	ExtentTestManager.getTest().log(Status.PASS, "6.Select link1 from section dropdown");
-	   	loginbanner.selectlink1FromSectiondropdown();
-	   	
-	   	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(300));
-	   	ExtentTestManager.getTest().log(Status.PASS, "7.Click on Search");
-	   	loginbanner.ClickSearchbutton();
-	   	
-	   	WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(400));
-	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-	   	
-	  	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
-			{
-			ExtentTestManager.getTest().log(Status.PASS, "8.Input modified data for HeaderField");
-			
-			String modifiedHeader = testdata.get("AgencyUpdatedHeader1").toString();
-			System.out.println(modifiedHeader);
-			loginbanner.modifiedDataForHeader(modifiedHeader);
-		}
-	   	
-	  	WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(600));
-	  	
-	   	if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) 
-	     		{
-	   			ExtentTestManager.getTest().log(Status.PASS, "9.Input modified data for DetailField");
-	   			
-	   			String modifiedlink1 = testdata.get("AgencyUpdatedDetail1").toString();
-	   			System.out.println(modifiedlink1);
-	   			loginbanner.modifiedDataForlink1(modifiedlink1);
-	   		}
-		
-		    WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(400));
-	       ExtentTestManager.getTest().log(Status.PASS, "10.Click on Submit");
-		    loginbanner.clicksubmit();
+		  loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
 		    
-		    wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
-		    
-		    WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(400));
-		    ExtentTestManager.getTest().log(Status.PASS, "11.Click on Profile dropdown");
+		    WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(100));
+		    ExtentTestManager.getTest().log(Status.PASS, "Click on Profile dropdown");
 			loginbanner.Clickprofiledropdown();
 			
-		    WebDriverWait wait13=new WebDriverWait(driver,Duration.ofSeconds(400));
-		    ExtentTestManager.getTest().log(Status.PASS, "12.Click on LogOut");
+		    WebDriverWait wait13=new WebDriverWait(driver,Duration.ofSeconds(100));
+		    ExtentTestManager.getTest().log(Status.PASS, "Click on LogOut");
 			loginbanner.Clicklogout();
 			
 			
-		    WebDriverWait wait14=new WebDriverWait(driver,Duration.ofSeconds(400));
-		    ExtentTestManager.getTest().log(Status.PASS, "13.Navigate to Collection Agency URL");
+		    WebDriverWait wait14=new WebDriverWait(driver,Duration.ofSeconds(90));
+		    ExtentTestManager.getTest().log(Status.PASS, "Navigate to Collection Agency URL");
 			loginbanner.CollectionAgencyURL();
 			
-			WebDriverWait wait15=new WebDriverWait(driver,Duration.ofSeconds(500));
+			WebDriverWait wait15=new WebDriverWait(driver,Duration.ofSeconds(90));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(PageRepository.ProfilePagewithHeaderandDetaillink));
 		   
-			WebDriverWait wait16=new WebDriverWait(driver, Duration.ofSeconds(400));
-			ExtentTestManager.getTest().log(Status.PASS, "14.The data entered in the 'Heading' and 'Details' should display in the Collection Agency user's login page.");
+			WebDriverWait wait16=new WebDriverWait(driver, Duration.ofSeconds(90));
+			ExtentTestManager.getTest().log(Status.PASS, "The data entered in the 'Heading' and 'Details' should display in the Collection Agency user's login page.");
 			loginbanner.dataforlink1();
 		
-			WebDriverWait wait17=new WebDriverWait(driver,Duration.ofSeconds(500));
-			ExtentTestManager.getTest().log(Status.PASS, "15.Click on provided Link1");
+			WebDriverWait wait17=new WebDriverWait(driver,Duration.ofSeconds(60));
+			ExtentTestManager.getTest().log(Status.PASS, "Click on provided Link1");
 			loginbanner.clickonProfilePagelink1();
 			
 			ExtentTestManager.getTest().log(Status.PASS, "Actual result-1.The data entered in the 'Heading' and 'Details'is displayed in the Collection Agency user's login page.2.The user is redirected to given link");
 			
-			
+			driver.close();
 	  }
 
 	catch(AssertionError|Exception e) {
@@ -1873,8 +1895,8 @@ public void VerifyModifiedDataforAgencyUser( Map<Object,Object> testdata) throws
  		public void AfterClass() {
  		     ExtentManager.getInstance().flush();
  		  // Close the browser
-// 		        if (driver != null) {
-// 		            driver.quit();
+ 		        if (driver != null) {
+ 		            driver.quit();
  		        }
- //}
+ }
 }    

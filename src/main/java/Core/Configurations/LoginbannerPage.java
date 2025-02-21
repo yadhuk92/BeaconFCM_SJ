@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
@@ -178,6 +179,27 @@ public class LoginbannerPage extends Base_Class{
 	   click(Page_Repository.submitbutton);
 	   return true;
    }
+
+   //Method to click on reset button
+   public boolean clickResetbutton() {
+	   WebElement resetbutton=driver.findElement(Page_Repository.resetbutton);
+	   resetbutton.click();
+	return true;
+   }
+   
+  //Method to clear content of Headerfield
+   public boolean clearHeader() {
+	   WebElement header=driver.findElement(Page_Repository.headingtext);
+	   header.clear();
+	return true;
+   }
+   
+   //Method to clear content of Detailfield
+   public boolean clearDetail() {
+	   WebElement detail=driver.findElement(Page_Repository.detailtext);
+	   detail.clear();
+	return true;
+   }
    
   //Method to click on profile dropdown
    public boolean Clickprofiledropdown(){
@@ -311,9 +333,31 @@ public class LoginbannerPage extends Base_Class{
    public void CollectionAgencyURL() {
 	   driver.get("http://192.168.32.33:8597/collection");
 	   return;
-   }  
-}
+   } 
+   
+ //Handle Spinner
+   public void waitForSpinnerToDisappear(String WebElementName, By element)  {
+   	if (driver == null) {
+           throw new IllegalArgumentException("WebDriver instance is null");
+       }
+       // Define the FluentWait
+       FluentWait<WebDriver> wait = new FluentWait<>(driver)
+               .withTimeout(Duration.ofSeconds(30)) // Maximum wait time
+               .pollingEvery(Duration.ofMillis(500)) // Polling interval
+               .ignoring(Exception.class); // Ignore exceptions like NoSuchElementException
 
+       // Wait until the spinner disappears
+       wait.until(driverInstance -> {
+           try {
+               WebElement spinner = driverInstance.findElement(element);
+               return !spinner.isDisplayed(); // Return true if spinner is not displayed
+           } catch (Exception e) {
+               return true; // Return true if spinner is not found
+           }
+       });
+   }
+
+}
 
 
 
