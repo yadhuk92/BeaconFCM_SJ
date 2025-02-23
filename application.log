@@ -1,27 +1,49 @@
-[INFO ] 2025-01-24 22:14:49.318 [main] Log - *****Navigation_to_User_Management_Page*****
-[INFO ] 2025-01-24 22:14:52.398 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2025-01-24 22:15:26.292 [main] Log - Title is displayed: BeaconICnRM
-[INFO ] 2025-01-24 22:15:26.507 [main] Log - Entered IBU0000028 in user name field
-[INFO ] 2025-01-24 22:15:26.587 [main] Log - Entered ses@987 in password field
-[INFO ] 2025-01-24 22:15:26.679 [main] Log - Clicked on login button
-[INFO ] 2025-01-24 22:15:47.366 [main] Log - Module selection page not appeared
-[INFO ] 2025-01-24 22:15:47.429 [main] Log - UserID in Dashboard: IBU0000028
-[INFO ] 2025-01-24 22:15:47.889 [main] Log - Org Name: Mumbai, Org Type Name: Zone/CO
-[INFO ] 2025-01-24 22:16:07.104 [main] Log - Clicked on Security Management main menu
-[INFO ] 2025-01-24 22:16:11.404 [main] Log - Clicked on User Management sub menu
-[INFO ] 2025-01-24 22:16:28.820 [main] Log - Next button found using fluent wait
-[INFO ] 2025-01-24 22:16:36.051 [main] Log - Clicked on add user button and managed spinner
-[INFO ] 2025-01-24 22:16:40.281 [main] Log - Clicked on Organization Type DDL
-[INFO ] 2025-01-24 22:16:41.723 [main] Log - Organisation type First Option visibility checking using fluent wait in Organization Type DDL
-[INFO ] 2025-01-24 22:16:45.851 [main] Log - Clicked on Organization Type DDL to close the DDL
-[INFO ] 2025-01-24 22:16:54.936 [main] Log - Clicked on Role DDL to check the Role options visibility and closed it
-[INFO ] 2025-01-24 22:16:55.006 [main] Log - Entered valid user name: Bajith kan
-[INFO ] 2025-01-24 22:16:55.204 [main] Log - Entered valid Email address: bajithkan@gmail.com
-[INFO ] 2025-01-24 22:16:55.389 [main] Log - Entered valid Phone number: 8089889900
-[INFO ] 2025-01-24 22:17:04.639 [main] Log - Selected Role as: NewrolePlaywright
-[INFO ] 2025-01-24 22:17:17.080 [main] Log - Selected oraganization type as: Head office
-[INFO ] 2025-01-24 22:17:31.367 [main] Log - Successfully user found and clicked on the Mumbai value inside the dropdown 
-[INFO ] 2025-01-24 22:17:33.382 [main] Log - Selected Head office drop down as: Mumbai
-[INFO ] 2025-01-24 22:17:37.574 [main] Log - Clicked on Submit button in Add new user page
-[INFO ] 2025-01-24 22:17:55.730 [main] Log - User creation success message validation
-[INFO ] 2025-01-24 22:17:55.836 [main] Log - ****Test Failed in method: Navigation_to_User_Management_Page --> java.lang.NullPointerException
+[INFO ] 2025-02-23 20:11:34.520 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-02-23 20:12:50.271 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2025-02-23 20:12:50.595 [main] Log - Entered IBU0001487 in user name field
+[INFO ] 2025-02-23 20:12:50.745 [main] Log - Entered 4u75^a in password field
+[INFO ] 2025-02-23 20:12:50.884 [main] Log - Clicked on login button
+[INFO ] 2025-02-23 20:12:55.545 [main] Log - Entered IBU0001487 in user name field
+[INFO ] 2025-02-23 20:12:55.605 [main] Log - Entered 4u75^a in password field
+[INFO ] 2025-02-23 20:12:55.666 [main] Log - Clicked on login button
+[INFO ] 2025-02-23 20:12:55.667 [main] Log - Clicked on already login yes button and logged in again with valid credentials
+[INFO ] 2025-02-23 20:12:58.159 [main] Log - Module selection page not appeared
+[INFO ] 2025-02-23 20:13:20.642 [main] Log - UserID in Dashboard: IBU0001487
+[INFO ] 2025-02-23 20:13:21.783 [main] Log - Org Name: Mumbai, Org Type Name: Head office
+[INFO ] 2025-02-23 20:13:24.614 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-02-23 20:13:24.615 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-02-23 20:13:24.615 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-02-23 20:13:24.619 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-02-23 20:13:24.620 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-02-23 20:13:24.653 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-02-23 20:13:24.653 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-02-23 20:13:24.653 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-02-23 20:13:24.653 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-02-23 20:13:24.653 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-02-23 20:13:24.834 [main] Log - Starting navigation to the Call Centre Main Menu...
+[INFO ] 2025-02-23 20:13:24.834 [main] Log - Locating the Call Centre Main Menu element...
+[INFO ] 2025-02-23 20:13:24.850 [main] Log - Call Centre Main Menu element located successfully.
+[INFO ] 2025-02-23 20:13:24.850 [main] Log - Clicking on the Call Centre Main Menu...
+[INFO ] 2025-02-23 20:13:24.924 [main] Log - Clicked on the Call Centre Main Menu. Navigation complete.
+[INFO ] 2025-02-23 20:13:24.924 [main] Log - Starting navigation to the Manual Allocation submenu...
+[INFO ] 2025-02-23 20:13:24.924 [main] Log - Locating Manual Allocation option...
+[INFO ] 2025-02-23 20:13:24.938 [main] Log - Manual Allocation submenu element located successfully.
+[INFO ] 2025-02-23 20:13:24.938 [main] Log - Clicking on the manual allocation submenu...
+[INFO ] 2025-02-23 20:13:25.551 [main] Log - Clicked on the manual allocation submenu. Navigation complete.
+[INFO ] 2025-02-23 20:13:28.616 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-02-23 20:13:28.617 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-02-23 20:13:28.617 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-02-23 20:13:28.617 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-02-23 20:13:28.617 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-02-23 20:13:28.620 [main] Log - Starting the process to click the Search button...
+[INFO ] 2025-02-23 20:13:28.620 [main] Log - Waiting for the Search button to become visible...
+[INFO ] 2025-02-23 20:13:38.979 [main] Log - Scrolling the Search button into view...
+[INFO ] 2025-02-23 20:13:38.989 [main] Log - Search button scrolled into view.
+[INFO ] 2025-02-23 20:13:38.989 [main] Log - Waiting for 500ms to ensure smooth scrolling...
+[INFO ] 2025-02-23 20:13:39.501 [main] Log - Wait completed.
+[INFO ] 2025-02-23 20:13:39.502 [main] Log - Clicking the Search button...
+[INFO ] 2025-02-23 20:13:39.678 [main] Log - Search button clicked successfully.
+[INFO ] 2025-02-23 20:13:39.678 [main] Log - Waiting for the warning message to become visible on the page.
+[INFO ] 2025-02-23 20:13:39.679 [main] Log - WebDriverWait initialized with a timeout of 120 seconds.
+[INFO ] 2025-02-23 20:13:39.719 [main] Log - Warning message element is now visible.
+[INFO ] 2025-02-23 20:13:39.730 [main] Log - Retrieved warning message text: Asset Category Required

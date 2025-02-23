@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 public class CoreAutoAllocationRepo {
 	
 	public static By callcentermainmenu = By.xpath("//span[contains(text(),'Call Centre')]");
+	
 	public static By accountfiltrationsubmenu = By.xpath("//a[contains(text(),'Account Filtration')]");
 	public static By searchbutton = By.xpath("//button[contains(text(),'Search')]");
 	public static By warningmsg = By.xpath("//p[contains(text(),'Allocated To is Required')]");
