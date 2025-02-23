@@ -53,7 +53,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 
 	@BeforeTest
 	public void SetUp() {
-		ExcelReader = new com.Utility.ExcelReader("AgencyAddNewAgent");
+		ExcelReader = new com.Utility.ExcelReader("CA-AddNewAgent");
 		baseclass = new Base_Class();
 		TestListener = new TestListener();
 		// baseclass.SetUp();
@@ -111,7 +111,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 			System.out.println();
 			AddNewAgentPage.clickAgentManagement();
 			AddNewAgentPage.clickAgentList();
-			AddNewAgentPage.WaitLoader();
+			//AddNewAgentPage.WaitLoader();
 			AddNewAgentPage.AgentListPageIsDisplayed();
 
 		} catch (AssertionError | Exception e) {

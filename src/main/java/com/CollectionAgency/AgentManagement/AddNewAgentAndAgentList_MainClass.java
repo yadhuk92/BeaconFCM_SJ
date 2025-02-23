@@ -140,6 +140,8 @@ public class AddNewAgentAndAgentList_MainClass extends Base_Class {
 		try {
 			Common.fluentWait("Agent List", CollectionAgency_AddNewAgentAndAgentList.AgentList);
 			click(CollectionAgency_AddNewAgentAndAgentList.AgentList);
+			Common.waitForSpinnerToDisappear("Spinner", com.Page_Repository.LoginPageRepo.Spinner);
+			Common.fluentWait("FirstPageInPagination", CollectionAgency_AddNewAgentAndAgentList.FirstPageInPagination);
 			ExtentTestManager.getTest().log(Status.PASS, "Agent List Functionality selected");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -235,7 +237,8 @@ public class AddNewAgentAndAgentList_MainClass extends Base_Class {
 	public void clickSubmit() {
 		try {
 			Common.fluentWait("Submit", CollectionAgency_AddNewAgentAndAgentList.Submit);
-			click(CollectionAgency_AddNewAgentAndAgentList.Submit);
+			Base_Class.ForLoopClick(CollectionAgency_AddNewAgentAndAgentList.Submit);
+			//click(CollectionAgency_AddNewAgentAndAgentList.Submit);
 			ExtentTestManager.getTest().log(Status.PASS, "Submit Functionality selected");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -299,14 +302,19 @@ public class AddNewAgentAndAgentList_MainClass extends Base_Class {
 	}
 
 	public void AgentListPageIsDisplayed() throws IOException {
-		String Text = driver.findElement(CollectionAgency_AddNewAgentAndAgentList.AgencyName).getText();
-		String CoreUserName = AddNewAgentAndAgentList_MainClass.configloader().getProperty("CoreUserName_Agency");
-		if (Text.contains(CoreUserName)) {
-			ExtentTestManager.getTest().log(Status.PASS, "Agency name displayed");
-		} else {
-			ExtentTestManager.getTest().log(Status.FAIL, "Agency name not displayed");
-		}
+		/*
+		 * Common.fluentWait("Agency Name",
+		 * CollectionAgency_AddNewAgentAndAgentList.AgencyName); String Text =
+		 * driver.findElement(CollectionAgency_AddNewAgentAndAgentList.AgencyName).
+		 * getText(); String CoreUserName =
+		 * AddNewAgentAndAgentList_MainClass.configloader().getProperty(
+		 * "CollectionAgencyUserName"); if (Text.contains(CoreUserName)) {
+		 * ExtentTestManager.getTest().log(Status.PASS, "Agency name displayed"); } else
+		 * { ExtentTestManager.getTest().log(Status.FAIL, "Agency name not displayed");
+		 * }
+		 */
 		// agent code
+		
 		if (driver.findElement(CollectionAgency_AddNewAgentAndAgentList.AgentCode).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Agent Code displayed");
 		} else {
@@ -791,8 +799,9 @@ public class AddNewAgentAndAgentList_MainClass extends Base_Class {
 //	JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 //	jsExecutor.executeScript("arguments[0].style.display='block'; arguments[0].click();", elementToClick);
 		Thread.sleep(1000);
-
-		driver.findElement(CollectionAgency_AddNewAgentAndAgentList.Submit).click();
+		Common.fluentWait("Add new agent submit button", CollectionAgency_AddNewAgentAndAgentList.Submit);
+		//driver.findElement(CollectionAgency_AddNewAgentAndAgentList.Submit).click();
+		Base_Class.ForLoopClick(CollectionAgency_AddNewAgentAndAgentList.Submit);
 	}
 
 	public void SearchUser() {

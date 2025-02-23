@@ -13,7 +13,7 @@ public class CollectionAgency_AddNewAgentAndAgentList {
 	public static By AddNewAgent = By.xpath("//*[contains(text(),'Add New Agent')]");
 	public static By Search = By.xpath("//*[contains(text(),'Search')]");
 	public static By AddNewAgent1 = By.xpath("(//*[contains(text(),'Add New Agent')])[2]");
-	
+	public static By FirstPageInPagination = By.xpath("//span[@class='page-link' and text()='1']");
 	
 	public static By AgentList = By.xpath("//*[contains(text(),'Agent List')]");
 	public static By UploadInvoice = By.xpath("//*[contains(text(),'Upload Invoice')]");
