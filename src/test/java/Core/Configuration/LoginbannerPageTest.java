@@ -1,4 +1,5 @@
 package Core.Configuration;
+import java.awt.Window;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
@@ -8,6 +9,7 @@ import java.util.Set;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -186,7 +188,8 @@ public class LoginbannerPageTest extends Base_Class{
         		loginbanner.clickuserdropdown();
         		ExtentTestManager.getTest().log(Status.PASS,"Internal user , call centre user , collection agency user displayed in dropdown ");
         		
-        		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
+     		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+     		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
 
         		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
         		Thread.sleep(3000);
@@ -368,7 +371,7 @@ public class LoginbannerPageTest extends Base_Class{
 		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 		        throw e;
 	    	}
-   	driver.quit();
+ //  	driver.close();
    	Thread.sleep(5000);
 		        }
         
@@ -377,13 +380,19 @@ public class LoginbannerPageTest extends Base_Class{
   //Click on usertype=> select internal user
        @Test(priority=11)
        public void selectinternaluser() throws Throwable {
-    	   WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
-    	   
+   
     	   try
     	   {
    	   
-   		   CoreAppLogin.CoreLogin();
-    		   
+//   		   CoreAppLogin.CoreLogin();
+    		   Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+    		   Thread.sleep(3000);
+    		   loginbanner.logintoApp();
+    		
+        	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+    	  	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);   
+   		   Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
+  
     		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(120));
     		   loginbanner.clickOnConfigurationMenu();
     		   
@@ -448,7 +457,7 @@ public class LoginbannerPageTest extends Base_Class{
         }
         
 // select link1 from section dropdown
-        @Test(priority=13)
+       @Test(priority=13)
         public void Selectlink1() throws Throwable {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
         	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
@@ -565,7 +574,21 @@ public class LoginbannerPageTest extends Base_Class{
         		loginbanner.clickonProfilePagelink1();
     	
         		ExtentTestManager.getTest().log(Status.PASS, "Actual-Data entered for hyperlink is displayed on Internal User's login page and user is able to click on link1 and the page is opened");
-        	
+                // Switch to the new tab (window)
+                Set<String> windowHandles = driver.getWindowHandles();
+                for (String handle : windowHandles) {
+                    if (!handle.equals(initialWindowHandle)) {
+                        // Switch to the new tab
+                        driver.switchTo().window(handle);
+                        break;
+                    }
+                }
+
+                // After clicking on the link, close the newly opened tab
+                driver.close();
+
+                // Switch back to the original tab (the initial window handle)
+                driver.switchTo().window(initialWindowHandle);
         	}	
         	
         		catch(AssertionError|Exception e) {
@@ -575,32 +598,26 @@ public class LoginbannerPageTest extends Base_Class{
     		        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
     		        throw e;
     	 	}
-        	finally {
-                // Close the second browser window if it exists
-                Set<String> allWindowHandles = driver.getWindowHandles();
-                for (String windowHandle : allWindowHandles) {
-                    if (!windowHandle.equals(initialWindowHandle)) {
-                        driver.switchTo().window(windowHandle);
-                        driver.close(); // Close second browser window
-                    }
-                }
+   
+     	Thread.sleep(3000);
 
-                // Switch back to the initial window and close it as well
-                driver.switchTo().window(initialWindowHandle);
-                driver.close(); // Close the initial browser window
-            }
-        	
-        	Thread.sleep(5000);
         }
  //Test case-1. Select "internal user" from 'User Type'.2. Select "hyperlink" from 'Banner Type'. 3. Enter "link1" in 'Section'.4. Click on 'Search'.
   //Search entered details for link1      
         @Test(priority=17)
         public void VerifyInputdataUsingSearch2() throws Throwable {
-        	  WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
+
     	try
         	{
         		
-     		 CoreAppLogin.CoreLogin();
+//    		CoreAppLogin.CoreLogin();
+    	Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+    	Thread.sleep(3000);
+    		loginbanner.logintoApp();
+    		
+        	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+    	  	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);   
+   		   Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
     		   
      		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
      		   loginbanner.clickOnConfigurationMenu();
@@ -847,7 +864,21 @@ catch(AssertionError|Exception e) {
 		loginbanner.clickonProfilePagelink1();
 		
 		ExtentTestManager.getTest().log(Status.PASS, "Actual-Data entered for hyperlink is displayed on Internal User's login page and user is able to click on link1 and the page is opened");
+        // Switch to the new tab (window)
+        Set<String> windowHandles = driver.getWindowHandles();
+        for (String handle : windowHandles) {
+            if (!handle.equals(initialWindowHandle)) {
+                // Switch to the new tab
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
 
+        // After clicking on the link, close the newly opened tab
+        driver.close();
+
+        // Switch back to the original tab (the initial window handle)
+        driver.switchTo().window(initialWindowHandle);
 	   }
 	   
 
@@ -858,32 +889,24 @@ catch(AssertionError|Exception e) {
     Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
     throw e;
     }
-	  
-   	finally {
-        // Close the second browser window if it exists
-        Set<String> allWindowHandles = driver.getWindowHandles();
-        for (String windowHandle : allWindowHandles) {
-            if (!windowHandle.equals(initialWindowHandle)) {
-                driver.switchTo().window(windowHandle);
-                driver.close(); // Close second browser window
-            }
-        }
 
-        // Switch back to the initial window and close it as well
-        driver.switchTo().window(initialWindowHandle);
-        driver.close(); // Close the initial browser window
-    }
-	   Thread.sleep(5000);
+	   Thread.sleep(3000);
 }
      
 //Submit Without Heading
    @Test(priority=21,dataProvider="TestData")
    public void SubmitWithoutHeading(Map<Object,Object>testdata) throws Throwable {
-	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(60));
-	 
+
 	   try
 	   {
-  		 CoreAppLogin.CoreLogin();
+//  		 CoreAppLogin.CoreLogin();
+		   Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+		   Thread.sleep(3000);
+		   loginbanner.logintoApp();
+		   
+       	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+   	  	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);   
+  		   Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
 		   
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
 		   loginbanner.clickOnConfigurationMenu();
@@ -969,48 +992,9 @@ catch(AssertionError|Exception e) {
    public void SubmitWithoutDetailField(Map<Object,Object>testdata) throws Throwable {
    try
 	   {
-		   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(60));
-		   wait.until(ExpectedConditions.invisibilityOf(driver.findElement(PageRepository.warningmsg)));
-		   loginbanner.clickResetbutton();
-		   
-			loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
-			
-		   Thread.sleep(3000);
-		   ExtentTestManager.getTest().log(Status.PASS, "Click on Usertype dropdown");
-		   loginbanner.clickusertypedropdown();
-		   
-		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
-		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.UserTypeallvalues));
-		   
-		   WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-		   ExtentTestManager.getTest().log(Status.PASS, "Select Internal User");
-		   Thread.sleep(3000);
-		   loginbanner.selectinternaluser();
-		   
-		   WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(90));
-		   ExtentTestManager.getTest().log(Status.PASS, "Click on Bannertype dropdown.");
-           loginbanner.clickBannertypedropdown();
-           
-		   WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(90));
-		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Bannertypeallvalue));
-        	
-        	WebDriverWait wait5 =new WebDriverWait(driver,Duration.ofSeconds(60));
-        	loginbanner.hyperlink();
-        	ExtentTestManager.getTest().log(Status.PASS, "Select \"hyperlink\" from the 'Banner Type' dropdown.");
-        	
-           	WebDriverWait wait6 =new WebDriverWait(driver,Duration.ofSeconds(60));
-           	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
-           	
-        	ExtentTestManager.getTest().log(Status.PASS, "Click on Section dropdown");
-        	loginbanner.clickSectiondropdown();
-        	
- 		   WebDriverWait wait7=new WebDriverWait(driver,Duration.ofSeconds(90));
- 		   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(PageRepository.Sectionallvalue));
-        	
-        	WebDriverWait wait8=new WebDriverWait(driver,Duration.ofSeconds(60));
-        	ExtentTestManager.getTest().log(Status.PASS, "Select link1 from section dropdown");
-        	loginbanner.selectlink1FromSectiondropdown();
-    	
+	   System.out.println("SubmitWithoutDetailField");
+
+		 WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
         	ExtentTestManager.getTest().log(Status.PASS, "Enter the details in \"Heading\" field");
     		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
     		{
@@ -1019,15 +1003,17 @@ catch(AssertionError|Exception e) {
     			loginbanner.headerlink(Headerlink);
     		}
     		
+    		 WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(120));
         	ExtentTestManager.getTest().log(Status.PASS, "Leave \"Detail\"field empty");
-        	loginbanner.clearDetail();
+        	
+       	loginbanner.clearDetail();
+        	
+  //      	Thread.sleep(3000);
     	
-       	    WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(100));
+       	    WebDriverWait wait9=new WebDriverWait(driver,Duration.ofSeconds(60));
             ExtentTestManager.getTest().log(Status.PASS, "Click on Submit");
        	    loginbanner.clicksubmit();
-       	    
-       	   WebDriverWait wait10=new WebDriverWait(driver,Duration.ofSeconds(60));
-       	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);
+
  
        	   ExtentTestManager.getTest().log(Status.PASS, "Warning msg should be display");
        	   
@@ -1053,7 +1039,6 @@ catch(AssertionError|Exception e) {
 	   try
 	   {
 		   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-		   wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.warningmsg));
 		   loginbanner.clickResetbutton();
 		   
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
@@ -1184,14 +1169,36 @@ catch(AssertionError|Exception e) {
     	
     	ExtentTestManager.getTest().log(Status.PASS, "The data entered in the 'Heading' and 'Details'should display in the Call Centre user's login page.");
     	WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(100));
-    	loginbanner.callCentreURL();
+    	
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Open a new tab with a different URL (example: 'https://www.example.com')
+        js.executeScript("window.open(\"http://192.168.32.33:8595/\");");
+        
+        Thread.sleep(5000);
+    	
+//    	loginbanner.callCentreURL();
     	
     	WebDriverWait wait4=new WebDriverWait(driver,Duration.ofSeconds(100));
     	loginbanner.profilepagetext();
     	
     	ExtentTestManager.getTest().log(Status.PASS, "Actual Result-The data entered in the 'Heading' and 'Details'displayed in the Call Centre user's login page.");
-    	
-    
+        // Switch to the new tab (window)
+        Set<String> windowHandles = driver.getWindowHandles();
+        for (String handle : windowHandles) {
+            if (!handle.equals(initialWindowHandle)) {
+                // Switch to the new tab
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
+
+        // After clicking on the link, close the newly opened tab
+        driver.close();
+
+        // Switch back to the original tab (the initial window handle)
+        driver.switchTo().window(initialWindowHandle);
+ 
     	} 	
 	catch(AssertionError|Exception e) {
     		
@@ -1200,22 +1207,7 @@ catch(AssertionError|Exception e) {
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
     	}
-   
-   	finally {
-        // Close the second browser window if it exists
-        Set<String> allWindowHandles = driver.getWindowHandles();
-        for (String windowHandle : allWindowHandles) {
-            if (!windowHandle.equals(initialWindowHandle)) {
-                driver.switchTo().window(windowHandle);
-                driver.close(); // Close second browser window
-            }
-        }
-
-        // Switch back to the initial window and close it as well
-        driver.switchTo().window(initialWindowHandle);
-        driver.close(); // Close the initial browser window
-    }
-	   Thread.sleep(3000);
+ 	   Thread.sleep(5000);
 }
 
   
@@ -1223,11 +1215,17 @@ catch(AssertionError|Exception e) {
  @Test(priority=26,dataProvider="TestData")
   
 public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
-	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
-	   
+  
 	   try
 	   {
- 		 CoreAppLogin.CoreLogin();
+//		 CoreAppLogin.CoreLogin();
+		   Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+		   Thread.sleep(3000);
+		   loginbanner.logintoApp();
+		   
+       	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+   	  	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);   
+  		   Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
 		   
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
 		   loginbanner.clickOnConfigurationMenu();
@@ -1342,7 +1340,8 @@ public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable
 	
 	WebDriverWait wait12=new WebDriverWait(driver,Duration.ofSeconds(90));
 	ExtentTestManager.getTest().log(Status.PASS, "Navigate to Call Centre app URL");
-	loginbanner.callCentreURL();
+
+
 	
 	WebDriverWait wait13=new WebDriverWait(driver,Duration.ofSeconds(100));
 	wait.until(ExpectedConditions.visibilityOfElementLocated(PageRepository.ProfilePagewithHeaderandDetaillink));
@@ -1354,7 +1353,24 @@ public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable
 
 	
 	ExtentTestManager.getTest().log(Status.PASS, "Actual result-The Call Center user should be redirected to given page");
-	} 	
+    // Switch to the new tab (window)
+    Set<String> windowHandles = driver.getWindowHandles();
+    for (String handle : windowHandles) {
+        if (!handle.equals(initialWindowHandle)) {
+            // Switch to the new tab
+            driver.switchTo().window(handle);
+            break;
+        }
+    }
+
+    // After clicking on the link, close the newly opened tab
+    driver.close();
+  
+
+    // Switch back to the original tab (the initial window handle)
+    driver.switchTo().window(initialWindowHandle);
+	   } 
+	   
 	catch(AssertionError|Exception e) {
 		
 		String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
@@ -1362,20 +1378,7 @@ public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
 	}
-   	finally {
-        // Close the second browser window if it exists
-        Set<String> allWindowHandles = driver.getWindowHandles();
-        for (String windowHandle : allWindowHandles) {
-            if (!windowHandle.equals(initialWindowHandle)) {
-                driver.switchTo().window(windowHandle);
-                driver.close(); // Close second browser window
-            }
-        }
-
-        // Switch back to the initial window and close it as well
-        driver.switchTo().window(initialWindowHandle);
-        driver.close(); // Close the initial browser window
-    }
+ 
 	   Thread.sleep(3000);
 }
 
@@ -1385,11 +1388,17 @@ public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable
 @Test(priority=28,dataProvider="TestData")
 
 public void ModifydataforCallCentre( Map<Object,Object> testdata) throws Throwable {
-  WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(60));
 
   try
   {
-  CoreAppLogin.CoreLogin();
+//  CoreAppLogin.CoreLogin();
+	   Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+	   Thread.sleep(3000);
+	  loginbanner.logintoApp();
+	  
+  	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+	  	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);   
+		   Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
 	   
 	   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
 	   loginbanner.clickOnConfigurationMenu();
@@ -1511,7 +1520,7 @@ try
 	    
 		WebDriverWait wait14=new WebDriverWait(driver,Duration.ofSeconds(100));
 		ExtentTestManager.getTest().log(Status.PASS, "Navigate to Call Centre app URL");
-		loginbanner.callCentreURL();
+
 		
 		WebDriverWait wait15=new WebDriverWait(driver,Duration.ofSeconds(100));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PageRepository.ProfilePagewithHeaderandDetaillink));
@@ -1525,7 +1534,21 @@ try
 		loginbanner.clickonProfilePagelink1();
 		
 		ExtentTestManager.getTest().log(Status.PASS, "Actual result-1.The data entered in the 'Heading' and 'Details'is displayed in the call centre user's login page.2.The Call Center user is redirected to given link");
+        // Switch to the new tab (window)
+        Set<String> windowHandles = driver.getWindowHandles();
+        for (String handle : windowHandles) {
+            if (!handle.equals(initialWindowHandle)) {
+                // Switch to the new tab
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
 
+        // After clicking on the link, close the newly opened tab
+        driver.close();
+
+        // Switch back to the original tab (the initial window handle)
+        driver.switchTo().window(initialWindowHandle);
 }
 
 catch(AssertionError|Exception e) {
@@ -1535,20 +1558,7 @@ ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testNam
 Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 throw e;
 }
-finally {
-    // Close the second browser window if it exists
-    Set<String> allWindowHandles = driver.getWindowHandles();
-    for (String windowHandle : allWindowHandles) {
-        if (!windowHandle.equals(initialWindowHandle)) {
-            driver.switchTo().window(windowHandle);
-            driver.close(); // Close second browser window
-        }
-    }
 
-    // Switch back to the initial window and close it as well
-    driver.switchTo().window(initialWindowHandle);
-    driver.close(); // Close the initial browser window
-}
 Thread.sleep(3000);
 }
    
@@ -1558,11 +1568,17 @@ Thread.sleep(3000);
 @Test(priority=30,dataProvider="TestData")
 
 public void SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable {
-	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
 
-	   try
+   try
 	   {
-  CoreAppLogin.CoreLogin();
+//  CoreAppLogin.CoreLogin();
+	   Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+	   Thread.sleep(3000);
+		   loginbanner.logintoApp();
+		   
+       	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+   	  	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);   
+  		   Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
 		   
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
 		   loginbanner.clickOnConfigurationMenu();
@@ -1672,13 +1688,30 @@ public void VerifyPostLogoutdataAgencyUser(Map<Object,Object>testdata) throws Th
   	loginbanner.Clicklogout();
   	
   	ExtentTestManager.getTest().log(Status.PASS, "The data entered in the 'Heading' and 'Details'should display in the Agency user's login page.");
-  	WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(90));
-  	loginbanner.CollectionAgencyURL();
   	
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+ // Open a new tab with a different URL (example: 'https://www.example.com')
+    js.executeScript("window.open(\"http://192.168.32.33:8597/collection\");");
+  	
+    WebDriverWait wait11=new WebDriverWait(driver,Duration.ofSeconds(90));
   	loginbanner.profilepagetext();
   	
   	ExtentTestManager.getTest().log(Status.PASS, "Actual Result-The data entered in the 'Heading' and 'Details'displayed in the Agency user's login page.");
+    // Switch to the new tab (window)
+    Set<String> windowHandles = driver.getWindowHandles();
+    for (String handle : windowHandles) {
+        if (!handle.equals(initialWindowHandle)) {
+            // Switch to the new tab
+            driver.switchTo().window(handle);
+            break;
+        }
+    }
 
+    // After clicking on the link, close the newly opened tab
+    driver.close();
+
+    // Switch back to the original tab (the initial window handle)
+    driver.switchTo().window(initialWindowHandle);
   	} 	
 	catch(AssertionError|Exception e) {
   		
@@ -1687,30 +1720,24 @@ public void VerifyPostLogoutdataAgencyUser(Map<Object,Object>testdata) throws Th
 	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	        throw e;
   	}
-   	finally {
-        // Close the second browser window if it exists
-        Set<String> allWindowHandles = driver.getWindowHandles();
-        for (String windowHandle : allWindowHandles) {
-            if (!windowHandle.equals(initialWindowHandle)) {
-                driver.switchTo().window(windowHandle);
-                driver.close(); // Close second browser window
-            }
-        }
 
-        // Switch back to the initial window and close it as well
-        driver.switchTo().window(initialWindowHandle);
-        driver.close(); // Close the initial browser window
-    }
-	   Thread.sleep(3000);
+	   Thread.sleep(5000);
 }
 //Search Existing Data-For Agency User
 @Test(priority=32)
 public void SearchDataForAgencyUser() throws Throwable {
-	 WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
+
 	   try
 	   {
-  CoreAppLogin.CoreLogin();
+//  CoreAppLogin.CoreLogin();
+		 Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
+		   loginbanner.logintoApp();
 		   
+	       	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
+	   	  	loginbanner.waitForSpinnerToDisappear("Loading Spinner", PageRepository.spinner);   
+	  		 Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
+	  		 
+		   Thread.sleep(3000);
 		   WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(100));
 		   loginbanner.clickOnConfigurationMenu();
 		   

@@ -28,6 +28,8 @@ public class LoginBannerConfiRepo {
     public By link1OnProfilePage=By.xpath("(//a[@target='_blank'])[1]");
 //    public By headerForlink1=By.xpath("(//span[@class='constyle'])[5]");
     public By ProfilePagewithHeaderandDetaillink=By.xpath("(//p[@class='constyle1'])[4]");
+    public By SomeErrorOccured=By.xpath("//span[text()='Some error occurred.']");
+    public By InvalidUsernameandPassword=By.xpath("//span[text()='Invalid Username Or Password']");
     
     
 }

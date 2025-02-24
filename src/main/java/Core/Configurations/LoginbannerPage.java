@@ -2,6 +2,10 @@ package Core.Configurations;
 
 import static org.testng.Assert.assertTrue;
 
+import java.io.IOException;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +22,10 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
-
+import com.BasePackage.DBUtils;
 import com.Page_Repository.LoginBannerConfiRepo;
+import com.Page_Repository.LoginPageRepo;
+import com.Utility.Log;
 
 
 //Constructor
@@ -356,12 +362,32 @@ public class LoginbannerPage extends Base_Class{
            }
        });
    }
+   
+//Method to enter log in  credentials 
+   public boolean logintoApp() throws Throwable {
+	   
+       String CoreUserName = configloader().getProperty("CoreUserName");
+       String CoreUserPassword = configloader().getProperty("CoreUserPassword");
+  
+   Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+   Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+   Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+   driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+   //ExtentTestManager.getTest().log(Status.INFO, "Entered " + CoreUserName + " in user name field");
+   Log.info("Entered " + CoreUserName + " in user name field");
+   driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+   //ExtentTestManager.getTest().log(Status.INFO, "Entered " + CoreUserPassword + " in password field");
+   Log.info("Entered " + CoreUserPassword + " in password field");
+   driver.findElement(LoginPageRepo.LoginButton).click();
+   Log.info("Clicked on login button");
+return true;
+   
+//   WebElement wb1=driver.findElement(Page_Repository.SomeErrorOccured);
+//   WebElement Wb2=driver.findElement(Page_Repository.InvalidUsernameandPassword);
 
 }
-
-
-
-
+}
     	
     	
     	
