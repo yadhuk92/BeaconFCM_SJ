@@ -94,7 +94,7 @@ public class RoleManagement extends Base_Class {
 	
 	public static void zoomIn(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("document.body.style.zoom='100%'"); // Zoom in to 150%
+        js.executeScript("document.body.style.zoom='100%'"); // Zoom in to 100%
     }
 
     // Method to zoom out (decrease zoom)

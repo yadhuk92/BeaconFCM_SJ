@@ -144,6 +144,30 @@ public class Login_Class extends Base_Class {
 			 * Log.info("Clicked on Go collection button"); } else {
 			 * Log.info("Module selection page not appeared"); }
 			 */
+            
+            //Need to handle some error occured here
+            try {
+                WebElement SomeErrorOccured = Common.waitForElementToBeClickable(
+                    driver, 
+                    LoginPageRepo.LoginPageSomeErrorOccurred, 
+                    Duration.ofSeconds(20)
+                );
+
+                if (SomeErrorOccured != null) {
+                	driver.navigate().refresh();
+                	Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
+                	Thread.sleep(5000);
+                	
+                	driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+                    driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+                    driver.findElement(LoginPageRepo.LoginButton).click();
+                } else {
+                    
+                }
+            } catch (Exception e) {
+                System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
+                System.out.println("Already login pop up not appeared");
+            }
 
             // Fetch and display user organization details
             Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);

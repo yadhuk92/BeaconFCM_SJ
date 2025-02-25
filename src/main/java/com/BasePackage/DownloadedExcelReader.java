@@ -274,4 +274,141 @@ public class DownloadedExcelReader {
 	                '}';
 	    }
 	}
+	
+	public static List<String> getTotalACReceivedCount() throws IOException {
+		List<String> values = new ArrayList<>();
+	    // Get the user's home directory dynamically
+	    String userHome = System.getProperty("user.home");
+	    // Construct the path to the Downloads directory
+	    String downloadDir = userHome + File.separator + "Downloads";
+	    
+	    // Get the latest downloaded file
+	    File latestFile = getLatestFileFromDir(downloadDir);
+	    System.out.println(latestFile);
+	    if (latestFile == null) {
+	        System.out.println("No files found in the download directory.");
+	        return values; // Exit if file not found
+	    }
+	    
+	    FileInputStream fis = new FileInputStream(latestFile);
+	    Workbook workbook = new XSSFWorkbook(fis);
+	    
+	    // Use the correct sheet name; update if your sheet name is different (e.g., "Received")
+	    Sheet sheet = workbook.getSheet("sheet1");
+	    if (sheet == null) {
+	        System.out.println("Sheet 'sheet1' not found in the Excel file.");
+	        workbook.close();
+	        fis.close();
+	        return values; // Exit if sheet not found
+	    }
+	    
+	    // Get the header row (adjust the index if your header is not on the first row)
+	    Row headerRow = sheet.getRow(1);
+	    if (headerRow == null) {
+	        System.out.println("Header row is missing in the Excel sheet.");
+	        workbook.close();
+	        fis.close();
+	        return values; // Exit if header row is missing
+	    }
+	    
+	    // Debug: print out all header cell values
+//	    for (Cell cell : headerRow) {
+//	        String cellValue = "";
+//	        if (cell.getCellType() == CellType.STRING) {
+//	            cellValue = cell.getStringCellValue();
+//	        }
+//	        System.out.println("Header cell " + cell.getColumnIndex() + ": " + cellValue);
+//	    }
+	    
+	    // Locate the column index for "TOTAL A/C RECEIVED"
+	    int targetColumn = 1;
+	    for (Cell cell : headerRow) {
+	        if (cell.getCellType() == CellType.STRING) {
+	            String headerText = cell.getStringCellValue();
+	            // Normalize the header text: remove non-alphanumeric characters and convert to uppercase
+	            String normalizedHeader = headerText.replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
+	            if (normalizedHeader.equals("TOTAL A/C RECEIVED")) {
+	                targetColumn = cell.getColumnIndex();
+	                break;
+	            }
+	        }
+	    }
+	    
+	    if (targetColumn == -1) {
+	        System.out.println("'TOTAL A/C RECEIVED' column not found.");
+	        workbook.close();
+	        fis.close();
+	        return values; // Exit if the target column is not found
+	    }
+	    
+	    // Count non-empty cells in the identified column (excluding the header)
+	    for (int i = 2; i <= sheet.getLastRowNum(); i++) {
+	        Row row = sheet.getRow(i);
+	        if (row == null) continue;
+
+	        Cell cell = row.getCell(targetColumn);
+	        if (cell != null && cell.getCellType() != CellType.BLANK) {
+	            String cellValue = "";
+	            if (cell.getCellType() == CellType.STRING) {
+	                cellValue = cell.getStringCellValue().trim();
+	            } else if (cell.getCellType() == CellType.NUMERIC) {
+	                cellValue = (cell.getNumericCellValue() == (int) cell.getNumericCellValue())
+	                        ? String.valueOf((int) cell.getNumericCellValue())
+	                        : String.valueOf(cell.getNumericCellValue());
+	            }
+
+	            if (!cellValue.isEmpty()) {
+	                values.add(cellValue);
+	            }
+	        }
+	    }
+
+	    workbook.close();
+	    fis.close();
+	    return values;
+	}
+	
+	public static int getTotalAccountNumberCount() throws IOException {
+	    // Get the user's home directory dynamically
+	    String userHome = System.getProperty("user.home");
+
+	    // Construct the path to the Downloads directory
+	    String downloadDir = userHome + File.separator + "Downloads";
+
+	    // Get the latest downloaded file
+	    File latestFile = getLatestFileFromDir(downloadDir);
+	    System.out.println(latestFile);
+	    if (latestFile == null) {
+	        System.out.println("No files found in the download directory.");
+	        return 0; // Return 0 if no file is found
+	    }
+
+	    // Open the latest Excel file
+	    FileInputStream fis = new FileInputStream(latestFile);
+	    Workbook workbook = new XSSFWorkbook(fis);
+	    Sheet sheet = workbook.getSheet("sheet1"); // Use the correct sheet name
+
+	    // Initialize count variable
+	    int count = 0;
+
+	    // Iterate through rows, excluding the first row (header)
+	    for (int i = 1; i <= sheet.getLastRowNum(); i++) { // Start from the second row
+	        Row row = sheet.getRow(i);
+	        if (row == null) continue; // Skip empty rows
+
+	        // Assuming "A/c Number" is in column 8 (index 7 as column index starts from 0)
+	        Cell accountCell = row.getCell(7);
+	        if (accountCell != null) {
+	            if (accountCell.getCellType() == CellType.NUMERIC || accountCell.getCellType() == CellType.STRING) {
+	                count++;
+	            }
+	        }
+	    }
+
+	    workbook.close();
+	    fis.close();
+	    
+	    return count; // Return the total count of values under "A/c Number"
+	}
+	
 }
