@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -126,7 +130,7 @@ public class CoreAllocationSummary_TestClass {
 			// Verify the warning message
 			String expectedMessage = "Asset Category Required";
 
-			Assert.assertEquals(warningMsg, expectedMessage, "Warning message not displayed as expected");
+			Assert.assertEquals(warningMsg, expectedMessage, "Warning message displayed as expected");
 			ExtentTestManager.getTest().log(Status.PASS, "Displays warning message \"Assigned Categoty  Required\".");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
 
@@ -139,6 +143,73 @@ public class CoreAllocationSummary_TestClass {
 		Thread.sleep(3000);
 	} 
 	
+	@Test(priority = 3)
+	public void Validate_AssetCatogories_Dropdown() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		try {
+			
+	        
+			// Use JavaScript to zoom out (set zoom level to 67%)
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+	        js.executeScript("document.body.style.zoom='67%'");
+	        
+			
+			ExtentTestManager.getTest().log(Status.PASS, "Clicking Asset Category Dropdown");
+			coremanualallocationpage.validate_NPA_And_SMA_Dropsdown();
+			
+			ExtentTestManager.getTest().log(Status.PASS, "NPA and SMA Dropdowns are selected from Asset Category");
+			
+			WebElement check_NPA=driver.findElement(CoreAutoAllocationRepo.NPADropdownCheck);
+		    Assert.assertTrue(check_NPA.isEnabled(),"NPADropdown is enabled" );
+		     
+		    WebElement check_SMA=driver.findElement(CoreAutoAllocationRepo.SMADropdownCheck);
+		    Assert.assertTrue(check_SMA.isEnabled(),"NPADropdown is enabled" );
+		    
+			ExtentTestManager.getTest().log(Status.PASS, "Selected both SMA and NPA from dropdown");
+			// Update the ScreenShot object with the new driver
+			screenShot = new com.Utility.ScreenShot(driver);
+
+		}
+
+		catch (AssertionError | Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+			throw e;
+		}
+		Thread.sleep(3000);
+	} 
+	
+	@Test(priority = 4)
+	public void Validate_SMACatogories_From_Dropdown() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		try {
+			
+			
+			ExtentTestManager.getTest().log(Status.PASS, "Clicking Asset Category Dropdown");
+			coremanualallocationpage.validate_SMA_Dropsdown();
+			
+			ExtentTestManager.getTest().log(Status.PASS, "SMA0,SMA1 and SMA2 from SMA Category");
+			
+			WebElement check_SMA0=driver.findElement(CoreAutoAllocationRepo.SM0DropdownCheck);
+		    Assert.assertTrue(check_SMA0.isEnabled(),"SMA0 option is enabled" );
+		     
+		    WebElement check_SMA1=driver.findElement(CoreAutoAllocationRepo.SM1DropdownCheck);
+		    Assert.assertTrue(check_SMA1.isEnabled(),"SMA1 option is enabled" );
+		    
+		    WebElement check_SMA2=driver.findElement(CoreAutoAllocationRepo.SM2DropdownCheck);
+		    Assert.assertTrue(check_SMA2.isEnabled(),"SMA2 option is enabled" );
+		    
+			ExtentTestManager.getTest().log(Status.PASS, "All the SMA0, SMA1 and SMA2 options are enabled");
+			// Update the ScreenShot object with the new driver
+			screenShot = new com.Utility.ScreenShot(driver);
+
+		}
+
+		catch (AssertionError | Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+			throw e;
+		}
+		Thread.sleep(3000);
+	} 
 
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {

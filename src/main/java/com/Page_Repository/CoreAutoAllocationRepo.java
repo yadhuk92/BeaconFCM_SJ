@@ -5,6 +5,26 @@ import org.openqa.selenium.By;
 public class CoreAutoAllocationRepo {
 	
 	public static By callcentermainmenu = By.xpath("//span[contains(text(),'Call Centre')]");
+	public static By selectText=By.xpath("//*[contains(text(),'Asset Category')]/following-sibling::div//*[text()='Select']");
+	public static By AssetCategoryListBox=By.xpath("//div[@id='popup-PFTNPADisable']//ul[@role='listbox']");
+	public static By NPADropdown=By.xpath("//li[@aria-label='NPA Category']//div[@class='rz-chkbox-box   ']");
+	public static By SMADropdown=By.xpath("//li[@aria-label='SMA Category']//div[@class='rz-chkbox-box   ']");
+	public static By NPADropdownCheck=By.xpath("//li[@aria-label='NPA Category']//div/span[contains(@class,rz-check-box)]");
+	public static By SMADropdownCheck=By.xpath("//li[@aria-label='SMA Category']//div/span[contains(@class,rz-check-box)]");
+	
+	public static By smaCategoryDropdown=By.xpath("//*[contains(text(),'SMA Category')]/following-sibling::div//*[text()='Select']");
+	public static By smaCategoryListBox=By.xpath("//div[@id='popup-Sjkh4gk-WE']//ul[@role='listbox']");
+	public static By selectSMA0Option=By.xpath("//li[@aria-label='SMA 0 (01-30 Days)']//div[@class='rz-chkbox-box   ']");
+	public static By selectSMA1Option=By.xpath("//li[@aria-label='SMA 1 (31-60 Days)']//div[@class='rz-chkbox-box   ']");
+	public static By selectSMA2Option=By.xpath("//li[@aria-label='SMA 2 (61-90 Days)']//div[@class='rz-chkbox-box   ']");
+	
+	public static By SM0DropdownCheck=By.xpath("//li[@aria-label='SMA 0 (01-30 Days)']//div/span[contains(@class,rz-chkbox-icon)]");
+	public static By SM1DropdownCheck=By.xpath("//li[@aria-label='SMA 1 (31-60 Days)']//div/span[contains(@class,rz-chkbox-icon)]");
+	public static By SM2DropdownCheck=By.xpath("//li[@aria-label='SMA 2 (61-90 Days)']//div/span[contains(@class,rz-chkbox-icon)]");
+	public static By NPA_SMA_values(String Selectedvalue) {
+        return By.xpath("//li[@aria-label='>" + Selectedvalue + "']");
+    }
+	
 	
 	public static By accountfiltrationsubmenu = By.xpath("//a[contains(text(),'Account Filtration')]");
 	public static By searchbutton = By.xpath("//button[contains(text(),'Search')]");
