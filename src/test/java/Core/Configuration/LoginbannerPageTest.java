@@ -178,13 +178,13 @@ public class LoginbannerPageTest extends Base_Class{
         
         @Test(priority=4)
         public void SelectInternalUserType() throws Throwable {
-        	 
-        	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
-	    	 wait.until(ExpectedConditions.invisibilityOf((WebElement) PageRepository.warningmsg));
-        	try
-       	{
+ //       	System.out.println("Test1");
+       try {
+  //  	   System.out.println("Test2");
+          	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+//   	    	 wait.until(ExpectedConditions.invisibilityOf((WebElement) PageRepository.warningmsg));
     		   ExtentTestManager.getTest().log(Status.PASS,"Click on Usertype dropdown");
-    		   Thread.sleep(3000);
+
         		loginbanner.clickuserdropdown();
         		ExtentTestManager.getTest().log(Status.PASS,"Internal user , call centre user , collection agency user displayed in dropdown ");
         		
