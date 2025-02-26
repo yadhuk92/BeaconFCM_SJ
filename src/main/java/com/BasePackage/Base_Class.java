@@ -41,6 +41,18 @@ public class Base_Class {
 		properties.load(File);
 		return properties;
 	}
+	
+	public static Properties ReadFromPropertiesFile(String path) throws IOException {
+		FileInputStream File = new FileInputStream(".\\src\\test\\resources\\" + path);
+		Properties properties = new Properties();
+		properties.load(File);
+		return properties;
+	}
+	/*// For execution of ReadFromPropertiesFile method use this example
+	 * String filePath = "config.properties"; Properties props =
+	 * Base_Class.ReadFromPropertiesFile(filePath); String Browser =
+	 * props.getProperty("Browser"); System.out.println("Browser Name: " + Browser);
+	 */
 
 	public void SetUp() throws IOException, InterruptedException {
 		
