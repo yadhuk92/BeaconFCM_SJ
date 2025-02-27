@@ -5,6 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -129,72 +130,167 @@ public class CoreManualAllocationPage {
 
 	}
 
-	//Validate NPA and SMA drop down from Asset Catogory-AM
-	public void validate_NPA_And_SMA_Dropsdown()throws InterruptedException
-	{
-		
+	// Validate NPA and SMA drop down from Asset Catogory-AM
+	public void validate_NPA_And_SMA_Dropsdown() throws InterruptedException {
+
 		// Initialize WebDriverWait and wait for the element to become visible
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		Log.info("Screen font is minimized");
-		
+
 		Log.info("Clicking Asset category dropdown");
-		WebElement selectTextDropdown = wait.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.selectText));
+		WebElement selectTextDropdown = wait
+				.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.selectText));
 		selectTextDropdown.click();
 		Log.info("Clicked Asset category dropdown");
-		
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAutoAllocationRepo.AssetCategoryListBox));
-		
+
 		Log.info("Clicking NAP Dropdown");
-		WebElement SelectNAP=driver.findElement(CoreAutoAllocationRepo.NPADropdown);
+		WebElement SelectNAP = driver.findElement(CoreAutoAllocationRepo.NPADropdown);
 		SelectNAP.click();
 		Log.info("Clicked NAP Dropdown");
-		
+
 		Log.info("Clicking SMA Dropdown");
-		WebElement SelectSMA=driver.findElement(CoreAutoAllocationRepo.SMADropdown);
+		WebElement SelectSMA = driver.findElement(CoreAutoAllocationRepo.SMADropdown);
 		SelectSMA.click();
 		Log.info("Clicked SMA Dropdown");
 	}
+
+	// Validate SMA0, SMA1 and SMA2 from SMA category dropdown -AM
+	public void validate_SMA_Dropsdown() throws InterruptedException {
+
+		// Initialize WebDriverWait and wait for the element to become visible
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+		Log.info("Clicking SMA category dropdown");
+		Thread.sleep(6000);
+		WebElement selectTextDropdown = wait
+				.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.smaCategoryDropdown));
+		selectTextDropdown.click();
+		Log.info("Clicked SMA category dropdown");
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAutoAllocationRepo.selectSMA0Option));
+
+		Log.info("Selecting SMA0 Dropdown");
+		WebElement SMA0 = driver.findElement(CoreAutoAllocationRepo.selectSMA0Option);
+		SMA0.click();
+		Log.info("Clicked SMA0 Dropdown");
+
+		Log.info("Clicking SMA1 Dropdown");
+		WebElement SMA1 = driver.findElement(CoreAutoAllocationRepo.selectSMA1Option);
+		SMA1.click();
+		Log.info("Clicked SMA1 Dropdown");
+
+		Log.info("Clicking SMA2 Dropdown");
+		WebElement SMA2 = driver.findElement(CoreAutoAllocationRepo.selectSMA2Option);
+		SMA2.click();
+		Log.info("Clicked SMA2 Dropdown");
+	}
+
+	// Validate Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA category
+	// dropdown -AM
+	public void validate_NPA_Dropsdown() throws InterruptedException {
+		// Expected aria-label values
+		String[] expectedLabels = { "SUB-STANDARD", "DOUBTFUL-1", "DOUBTFUL-2", "DOUBTFUL-3", "LOSS ASSET" }; // Modify
+																												// as
+																												// needed
+		List<String> expectedList = Arrays.asList(expectedLabels);
+
+		// Initialize WebDriverWait and wait for the element to become visible
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+		Thread.sleep(6000);
+		Log.info("Clicking SMA category dropdown");
+		WebElement selectTextDropdown = wait
+				.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.npaCategoryDropdown));
+		selectTextDropdown.click();
+		Log.info("Clicked NPA category dropdown");
+		
+		Thread.sleep(3000);
+		WebElement selectAllCheckbox=driver.findElement((CoreAutoAllocationRepo.npaSelectAllCheckbox));
+		 selectAllCheckbox.click();
+			Thread.sleep(3000);
+		boolean allMatch = true;
+		boolean allCheckboxesEnabled = true;
+
+		// Find all the list from NPA dropdown
+		List<WebElement> lists = driver.findElements(CoreAutoAllocationRepo.npaCategorylistDropdown);
+		for (WebElement name : lists) {
+			// Get the value of aria-label attribute
+			String ListName = name.getAttribute("aria-label");
+
+			// Check if the aria-label value exists in the expected list
+			if (!expectedList.contains(ListName)) {
+				allMatch = false;
+				Log.info(expectedList + " is not present in the dropdown ");
+			}
+
+			// Locate checkbox for this element (assuming it's next to the element)
+			try {
+				WebElement checkbox = name.findElement(CoreAutoAllocationRepo.npaCategorylistCheckbox);
+				boolean isSelected = checkbox.isSelected();
+
+				if (!isSelected) {
+					allCheckboxesEnabled = false;
+				}
+			} catch (Exception e) {
+				Log.info(expectedList + " is not present in the dropdown ");
+				allCheckboxesEnabled = false;
+			}
+		}
+		// Final validation
+		if (allMatch) {
+			System.out.println("✅ All aria-label values match the expected list.");
+		} else {
+			System.out.println("❌ Some aria-label values do not match.");
+		}
+
+		if (allCheckboxesEnabled) {
+			System.out.println("✅ All checkboxes are enabled.");
+		} else {
+			System.out.println("❌ Some checkboxes are disabled or missing.");
+		}
+
+	}
 	
-	//Validate SMA0, SMA1 and SMA2 from SMA category dropdown -AM
-		public void validate_SMA_Dropsdown()throws InterruptedException
-		{
+	// Validate O/S Balance Field dropdown -AM
+		public String validate_OSBalnce() throws InterruptedException {
 			
+
 			// Initialize WebDriverWait and wait for the element to become visible
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
-			
-			Log.info("Clicking SMA category dropdown");
-			WebElement selectTextDropdown = wait.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.smaCategoryDropdown));
-			selectTextDropdown.click();
-			Log.info("Clicked SMA category dropdown");
 			Thread.sleep(6000);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAutoAllocationRepo.smaCategoryListBox));
+			Log.info("Clicking O/S balance dropdown");
+			WebElement selectTextDropdown = wait
+					.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.OSBalanceDropdown));
+			selectTextDropdown.click();
+			Log.info("Clicked O/S Balance dropdown");
 			
-			Log.info("Selecting SMA0 Dropdown");
-			WebElement SMA0=driver.findElement(CoreAutoAllocationRepo.selectSMA0Option);
-			SMA0.click();
-			Log.info("Clicked SMA0 Dropdown");
+			Thread.sleep(3000);
+			Log.info("Selecting = option dropdown");
+			WebElement selectEquals=driver.findElement((CoreAutoAllocationRepo.selectEqualsOption));
+			selectEquals.click();
+			Thread.sleep(3000);
+			Log.info("Selected = option dropdown");
 			
-			Log.info("Clicking SMA1 Dropdown");
-			WebElement SMA1=driver.findElement(CoreAutoAllocationRepo.selectSMA1Option);
-			SMA1.click();
-			Log.info("Clicked SMA1 Dropdown");
+			WebElement selectEqualsText=driver.findElement((CoreAutoAllocationRepo.selectEqualsLabel));
 			
-			Log.info("Clicking SMA2 Dropdown");
-			WebElement SMA2=driver.findElement(CoreAutoAllocationRepo.selectSMA2Option);
-			SMA2.click();
-			Log.info("Clicked SMA2 Dropdown");
+			String Symbol=selectEqualsText.getText();
+			
+			return Symbol;
+			
 		}
-	
+
 	// Method to get the text of the warning message
 
 	public String getWarningMessage() {
 		Log.info("Starting the process to retrieve the warning message...");
 		Log.info("Waiting for the warning message to become visible...");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-		WebElement warningMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
+		WebElement warningMessage = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
 		Log.info("Retrieving the text from the warning message...");
 		String Message = warningMessage.getText();
-		Log.info("Warning message retrieved successfully: " + Message); 
+		Log.info("Warning message retrieved successfully: " + Message);
 		// Log after retrieving the message
 
 		return Message;

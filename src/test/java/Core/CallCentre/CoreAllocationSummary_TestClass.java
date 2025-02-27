@@ -42,6 +42,8 @@ import Core.CallCentre.CoreAutoAllocationPage;
 import Core.CallCentre.CoreAutoAllocationPage.ProcedureResult;
 import Core.CallCentre.CoreManualAllocationPage;
 import bsh.ParseException;
+import jdk.internal.org.jline.utils.Log;
+
 import com.listeners.TestListener;
 
 public class CoreAllocationSummary_TestClass {
@@ -141,30 +143,28 @@ public class CoreAllocationSummary_TestClass {
 			throw e;
 		}
 		Thread.sleep(3000);
-	} 
-	
+	}
+
 	@Test(priority = 3)
 	public void Validate_AssetCatogories_Dropdown() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 		try {
-			
-	        
+
 			// Use JavaScript to zoom out (set zoom level to 67%)
-	        JavascriptExecutor js = (JavascriptExecutor) driver;
-	        js.executeScript("document.body.style.zoom='67%'");
-	        
-			
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("document.body.style.zoom='67%'");
+
 			ExtentTestManager.getTest().log(Status.PASS, "Clicking Asset Category Dropdown");
 			coremanualallocationpage.validate_NPA_And_SMA_Dropsdown();
-			
+
 			ExtentTestManager.getTest().log(Status.PASS, "NPA and SMA Dropdowns are selected from Asset Category");
-			
-			WebElement check_NPA=driver.findElement(CoreAutoAllocationRepo.NPADropdownCheck);
-		    Assert.assertTrue(check_NPA.isEnabled(),"NPADropdown is enabled" );
-		     
-		    WebElement check_SMA=driver.findElement(CoreAutoAllocationRepo.SMADropdownCheck);
-		    Assert.assertTrue(check_SMA.isEnabled(),"NPADropdown is enabled" );
-		    
+
+			WebElement check_NPA = driver.findElement(CoreAutoAllocationRepo.NPADropdownCheck);
+			Assert.assertTrue(check_NPA.isEnabled(), "NPADropdown is enabled");
+
+			WebElement check_SMA = driver.findElement(CoreAutoAllocationRepo.SMADropdownCheck);
+			Assert.assertTrue(check_SMA.isEnabled(), "NPADropdown is enabled");
+
 			ExtentTestManager.getTest().log(Status.PASS, "Selected both SMA and NPA from dropdown");
 			// Update the ScreenShot object with the new driver
 			screenShot = new com.Utility.ScreenShot(driver);
@@ -176,28 +176,27 @@ public class CoreAllocationSummary_TestClass {
 			throw e;
 		}
 		Thread.sleep(3000);
-	} 
-	
+	}
+
 	@Test(priority = 4)
 	public void Validate_SMACatogories_From_Dropdown() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 		try {
-			
-			
-			ExtentTestManager.getTest().log(Status.PASS, "Clicking Asset Category Dropdown");
+
+			ExtentTestManager.getTest().log(Status.PASS, "Clicking SMA Category Dropdown");
 			coremanualallocationpage.validate_SMA_Dropsdown();
-			
+
 			ExtentTestManager.getTest().log(Status.PASS, "SMA0,SMA1 and SMA2 from SMA Category");
-			
-			WebElement check_SMA0=driver.findElement(CoreAutoAllocationRepo.SM0DropdownCheck);
-		    Assert.assertTrue(check_SMA0.isEnabled(),"SMA0 option is enabled" );
-		     
-		    WebElement check_SMA1=driver.findElement(CoreAutoAllocationRepo.SM1DropdownCheck);
-		    Assert.assertTrue(check_SMA1.isEnabled(),"SMA1 option is enabled" );
-		    
-		    WebElement check_SMA2=driver.findElement(CoreAutoAllocationRepo.SM2DropdownCheck);
-		    Assert.assertTrue(check_SMA2.isEnabled(),"SMA2 option is enabled" );
-		    
+
+			WebElement check_SMA0 = driver.findElement(CoreAutoAllocationRepo.SM0DropdownCheck);
+			Assert.assertTrue(check_SMA0.isEnabled(), "SMA0 option is enabled");
+
+			WebElement check_SMA1 = driver.findElement(CoreAutoAllocationRepo.SM1DropdownCheck);
+			Assert.assertTrue(check_SMA1.isEnabled(), "SMA1 option is enabled");
+
+			WebElement check_SMA2 = driver.findElement(CoreAutoAllocationRepo.SM2DropdownCheck);
+			Assert.assertTrue(check_SMA2.isEnabled(), "SMA2 option is enabled");
+
 			ExtentTestManager.getTest().log(Status.PASS, "All the SMA0, SMA1 and SMA2 options are enabled");
 			// Update the ScreenShot object with the new driver
 			screenShot = new com.Utility.ScreenShot(driver);
@@ -209,8 +208,67 @@ public class CoreAllocationSummary_TestClass {
 			throw e;
 		}
 		Thread.sleep(3000);
-	} 
+	}
 
+	@Test(priority = 5)
+	public void Validate_NPACatogories_From_Dropdown() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		try {
+
+			ExtentTestManager.getTest().log(Status.PASS, "Clicking NPA Category Dropdown");
+			coremanualallocationpage.validate_NPA_Dropsdown();
+
+			ExtentTestManager.getTest().log(Status.PASS,
+					"Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA categories are displayed.");
+
+//			List<WebElement> lists = driver.findElements(CoreAutoAllocationRepo.npaCategorylistDropdown);
+//			for (WebElement check : lists) {
+//
+//				String checkboxName = check.getAttribute("aria-label");
+//			//	Assert.assertTrue(check.isSelected(), "NPA categories options are enabled");
+//				Log.info(checkboxName, " is enabled");
+//			}
+
+			ExtentTestManager.getTest().log(Status.PASS,
+					"\"Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA categories are enabled");
+			// Update the ScreenShot object with the new driver
+			screenShot = new com.Utility.ScreenShot(driver);
+
+		}
+
+		catch (AssertionError | Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+			throw e;
+		}
+		Thread.sleep(3000);
+	}
+
+	@Test(priority = 6)
+	public void Validate_OSBalnceField() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		try {
+
+			ExtentTestManager.getTest().log(Status.PASS, "O/S Balance");
+			String selectedName =coremanualallocationpage.validate_OSBalnce();
+
+			ExtentTestManager.getTest().log(Status.PASS,"Selected = option");
+
+			Assert.assertEquals(selectedName, "=", "Selected the expected option from O/S Balance dropdown");
+			screenShot = new com.Utility.ScreenShot(driver);
+			
+			ExtentTestManager.getTest().log(Status.PASS, "Displays warning message \"Assigned Categoty  Required\".");
+
+		}
+
+		catch (AssertionError | Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+			throw e;
+		}
+		Thread.sleep(3000);
+	}
+	
+		
+		
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
 		// Check if the test case failed
