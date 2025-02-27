@@ -51,6 +51,15 @@ public class CoreAutoAllocationRepo {
 	public static By selectEqualsLabel = By
 			.xpath("//div[@title='Select Financial Operator']//label[text()='=']");
 	
+	public static By OSFieldText = By
+			.xpath("//*[contains(text(),'O/S Balance')]/ancestor::*[2]/following-sibling::div[1]//input");
+	
+	public static By selectToField = By
+			.xpath("//*[contains(text(),'Types of Account')]/ancestor::*[2]/following-sibling::div[1]/div/div");
+	
+	public static By selectCallcenterFromToField = By
+			.xpath("//li[@aria-label='>Call Centre']/parent::ul/ancestor::*[2]/preceding-sibling::div[@id='popup-PFTNPADisable']/following-sibling::div//li[@aria-label='>Call Centre']/span");
+	
 	
 	public static By NPAList = By.xpath("//div[@id='popup-O07LGTrrwE']//li");
 

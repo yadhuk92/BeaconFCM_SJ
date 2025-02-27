@@ -187,9 +187,9 @@ public class CoreManualAllocationPage {
 		Log.info("Clicked SMA2 Dropdown");
 	}
 
-	// Validate Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA category
-	// dropdown -AM
+	// Validate Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA category dropdown -AM
 	public void validate_NPA_Dropsdown() throws InterruptedException {
+		Thread.sleep(3000);
 		// Expected aria-label values
 		String[] expectedLabels = { "SUB-STANDARD", "DOUBTFUL-1", "DOUBTFUL-2", "DOUBTFUL-3", "LOSS ASSET" }; // Modify
 																												// as
@@ -255,7 +255,7 @@ public class CoreManualAllocationPage {
 	// Validate O/S Balance Field dropdown -AM
 		public String validate_OSBalnce() throws InterruptedException {
 			
-
+			Thread.sleep(3000);
 			// Initialize WebDriverWait and wait for the element to become visible
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 			Thread.sleep(6000);
@@ -276,9 +276,40 @@ public class CoreManualAllocationPage {
 			
 			String Symbol=selectEqualsText.getText();
 			
+			WebElement OSfieldText=driver.findElement((CoreAutoAllocationRepo.OSFieldText));
+			OSfieldText.sendKeys("1234");
+			
 			return Symbol;
 			
 		}
+		
+		// Validate To_Field dropdown -AM
+				public String validate_ToField_Callcenter() throws InterruptedException {
+					
+					Thread.sleep(3000);
+					// Initialize WebDriverWait and wait for the element to become visible
+					WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+					
+					Log.info("Clicking To Field dropdown");
+					WebElement selectTextDropdown = wait
+							.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.selectToField));
+					selectTextDropdown.click();
+					Log.info("ClickedTo Field dropdown");
+					
+					Thread.sleep(3000);
+					Log.info("Selecting Call Center option ");
+					WebElement selectCallCenterOption=driver.findElement((CoreAutoAllocationRepo.selectCallcenterFromToField));
+					selectCallCenterOption.click();
+					Thread.sleep(3000);
+					Log.info("Selected Call Center option");
+					
+					WebElement selectEqualsText=driver.findElement((CoreAutoAllocationRepo.selectToField));
+					
+					String value=selectEqualsText.getText();
+					
+					return value;
+					
+				}
 
 	// Method to get the text of the warning message
 

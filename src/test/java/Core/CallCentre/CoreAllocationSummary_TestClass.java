@@ -255,8 +255,6 @@ public class CoreAllocationSummary_TestClass {
 
 			Assert.assertEquals(selectedName, "=", "Selected the expected option from O/S Balance dropdown");
 			screenShot = new com.Utility.ScreenShot(driver);
-			
-			ExtentTestManager.getTest().log(Status.PASS, "Displays warning message \"Assigned Categoty  Required\".");
 
 		}
 
@@ -267,6 +265,28 @@ public class CoreAllocationSummary_TestClass {
 		Thread.sleep(3000);
 	}
 	
+	
+	@Test(priority = 7)
+	public void Validate_ToField() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		try {
+			
+			ExtentTestManager.getTest().log(Status.PASS, "To Field");
+			String value =coremanualallocationpage.validate_ToField_Callcenter();
+
+			ExtentTestManager.getTest().log(Status.PASS,"Selected Call Centre option");
+
+			Assert.assertEquals(value, "Call Centre", "Selected the expected option from To  dropdown");
+			screenShot = new com.Utility.ScreenShot(driver);
+
+		}
+
+		catch (AssertionError | Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+			throw e;
+		}
+		Thread.sleep(3000);
+	}
 		
 		
 	@AfterMethod
