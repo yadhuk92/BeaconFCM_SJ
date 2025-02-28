@@ -31,8 +31,22 @@ public class CallCenterUserManagement {
 	 public static By status = By.xpath("//span[normalize-space()='Status']");
 	 public static By action = By.xpath("//span[normalize-space()='Action']");
 	 
+	 
+		//Add New user
+
+		public static By adduser_executiveid = By.xpath("//label[normalize-space()='Executive ID']");
+		public static By adduser_name = By.xpath("//label[normalize-space()='Name']");
+		public static By adduser_email = By.xpath("//label[normalize-space()='Email']");
+		public static By adduser_phno = By.xpath("//label[normalize-space()='Phone Number']");
+		public static By adduser_role = By.xpath("//label[normalize-space()='Role']");
+		public static By adduser_tenure = By.xpath("//label[normalize-space()='Tenurity (In Years)']");
+		public static By adduser_teamleader = By.xpath("//label[normalize-space()='Team Leader']");
+		public static By adduser_dateofjoining = By.xpath("//label[normalize-space()='Team Leader']");
+		public static By adduser_closebutton = By.xpath("//button[normalize-space()='Close']");
+		public static By adduser_submitbutton = By.xpath("//button[normalize-space()='Submit']");
  }
 	
+
 
 			
 

@@ -317,7 +317,7 @@ public void Access_User_Management_Page() throws Throwable {
         }
         Common.fluentWait("Add User", CallCenterUserManagement.status);
         if (driver.findElement(CallCenterUserManagement.status).isDisplayed()) {
-               ExtentTestManager.getTest().log(Status.PASS, "Status No available");
+               ExtentTestManager.getTest().log(Status.PASS, "Status available");
                Log.info("Status exists on the page.");
                
         } else {
@@ -326,19 +326,151 @@ public void Access_User_Management_Page() throws Throwable {
         }
         Common.fluentWait("Add User", CallCenterUserManagement.action);
         if (driver.findElement(CallCenterUserManagement.action).isDisplayed()) {
-               ExtentTestManager.getTest().log(Status.PASS, "Action No available");
+               ExtentTestManager.getTest().log(Status.PASS, "Action available");
                Log.info("Action exists on the page.");
                
         } else {
                ExtentTestManager.getTest().log(Status.FAIL, "Action not available");
                Log.info("Action does not exist on the page.");
-        }
-        
-        
-        
-        
+        }     
 }	
 
+
+@Test (priority = 4, enabled = true)
+public void Access_Add_New_User_Page() throws Throwable {
+	
+	//Accessing Add New User page
+	try {
+		click(CallCenterUserManagement.AddUserButton);
+		
+		ExtentTestManager.getTest().log(Status.PASS, "1. Click on Add New User button.");
+		Log.info("1. Click on Add New User button.");
+		
+		String currentURL = driver.getCurrentUrl();
+		Assert.assertTrue(currentURL.endsWith("Admin/AddNewUser"), "URL does not end with the expected path.");
+	}
+		catch (AssertionError | Exception e) {
+			String testName = new Object() {
+			}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+			ExtentTestManager.getTest().log(Status.FAIL,
+					"Test Failed in method: " + testName + " --> " + e.getMessage());
+			Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+			throw e;}
+	
+	//Validations
+	 Common.fluentWait("Add User", CallCenterUserManagement.adduser_executiveid);
+     if (driver.findElement(CallCenterUserManagement.adduser_executiveid).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Executive ID is available");
+            Log.info("Executive ID exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Executive ID is not available");
+            Log.info("Executive ID does not exist on the page.");
+     }     
+     
+	 Common.fluentWait("Add User", CallCenterUserManagement.adduser_name);
+     if (driver.findElement(CallCenterUserManagement.adduser_name).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Name is available");
+            Log.info("Name exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Name is not available");
+            Log.info("Name does not exist on the page.");
+     }     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_email);
+     if (driver.findElement(CallCenterUserManagement.adduser_email).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Email is available");
+            Log.info("Email exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Email is not available");
+            Log.info("Email does not exist on the page.");
+     }
+     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_phno);
+     if (driver.findElement(CallCenterUserManagement.adduser_phno).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Phone No is available");
+            Log.info("Phone No exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Phone No is not available");
+            Log.info("Phone No does not exist on the page.");
+     }
+     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_role);
+     if (driver.findElement(CallCenterUserManagement.adduser_role).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Role is available");
+            Log.info("Role exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Role is not available");
+            Log.info("Role does not exist on the page.");
+     }
+     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_tenure);
+     if (driver.findElement(CallCenterUserManagement.adduser_tenure).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Tenure is available");
+            Log.info("Tenure exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Tenure is not available");
+            Log.info("Tenure does not exist on the page.");
+     }
+     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_teamleader);
+     if (driver.findElement(CallCenterUserManagement.adduser_teamleader).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Team Leader is available");
+            Log.info("Team Leader exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Team Leader is not available");
+            Log.info("Team Leader does not exist on the page.");
+     }
+     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_dateofjoining);
+     if (driver.findElement(CallCenterUserManagement.adduser_dateofjoining).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Date of Joining is available");
+            Log.info("Date of Joining exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Date of Joining is not available");
+            Log.info("Date of Joining does not exist on the page.");
+     }
+     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_closebutton);
+     if (driver.findElement(CallCenterUserManagement.adduser_closebutton).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Close button is available");
+            Log.info("Close button exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Close button is not available");
+            Log.info("Date of Joining does not exist on the page.");
+     }
+     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_closebutton);
+     if (driver.findElement(CallCenterUserManagement.adduser_closebutton).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Close button is available");
+            Log.info("Close button exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Close button is not available");
+            Log.info("Date of Joining does not exist on the page.");
+     }
+     
+     Common.fluentWait("Add User", CallCenterUserManagement.adduser_submitbutton);
+     if (driver.findElement(CallCenterUserManagement.adduser_submitbutton).isDisplayed()) {
+            ExtentTestManager.getTest().log(Status.PASS, "Submit button is available");
+            Log.info("Submit button exists on the page.");
+            
+     } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Submit button is not available");
+            Log.info("Submit of Joining does not exist on the page.");
+            
+     }
+     
+     
+   
+}
 
 @AfterClass
 public void AfterClass() {
