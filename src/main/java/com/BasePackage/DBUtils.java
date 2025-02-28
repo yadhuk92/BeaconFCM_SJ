@@ -72,16 +72,20 @@ public class DBUtils {
 			 * System.out.println("Default Password: " + results.get(1));
 			 */
         	
-        	// Define the stored procedure name
-            String procedureName = "ALLOCATION_DASHBOARD_DATA_LOAD_PKG.SPPROCESSCALLCENETERREGULARIZATIONSUMMARY";
-            // No input parameters
-            List<Object> inputParams = new ArrayList<>();
-            // No output parameters
-            List<Integer> outputParamTypes = new ArrayList<>();
-            // Execute the stored procedure
-            List<Object> result = ExecuteAnyOracleSQLStoredProcedure(procedureName, inputParams, outputParamTypes);
-            // Print the output (if there were any)
-            System.out.println("Stored procedure executed successfully. Output: " + result);
+			/*
+			 * // Define the stored procedure name String procedureName =
+			 * "ALLOCATION_DASHBOARD_DATA_LOAD_PKG.SPPROCESSCALLCENETERREGULARIZATIONSUMMARY";
+			 * // No input parameters List<Object> inputParams = new ArrayList<>(); // No
+			 * output parameters List<Integer> outputParamTypes = new ArrayList<>(); //
+			 * Execute the stored procedure List<Object> result =
+			 * ExecuteAnyOracleSQLStoredProcedure(procedureName, inputParams,
+			 * outputParamTypes); // Print the output (if there were any)
+			 * System.out.println("Stored procedure executed successfully. Output: " +
+			 * result);
+			 */
+        	
+        	String query="DELETE FROM mst_branch_acc_allocated WHERE ALLOCATED_DATE = TRUNC(SYSDATE)";
+        	executeSQLStatement(query);
             
         } catch (Exception e) {
             e.printStackTrace();

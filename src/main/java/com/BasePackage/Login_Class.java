@@ -32,10 +32,27 @@ public class Login_Class extends Base_Class {
             // Initialize WebDriver based on browser type
             switch (Browser.toUpperCase()) {
                 case "CHROME":
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--disable-extensions");
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver(options);
+                	ChromeOptions options = new ChromeOptions();
+                    // Enable insecure downloads by setting Chrome preferences
+                       Map<String, Object> prefs = new HashMap<>();
+                       prefs.put("profile.default_content_setting_values.automatic_downloads", 1); // Allow automatic downloads
+                       prefs.put("profile.default_content_setting_values.mixed_script", 1); // Allow insecure content globally
+                       prefs.put("profile.default_content_settings.popups", 0); // Block popups
+                       prefs.put("download.prompt_for_download", false); // Disable download prompt
+                       //prefs.put("download.default_directory", "C:\\Users\\pinku.peter\\Downloads"); // Set download directory
+                       String userHome = System.getProperty("user.home"); // Gets the user's home directory
+                       String downloadDirectory = userHome + File.separator + "Downloads";
+                       prefs.put("download.default_directory", downloadDirectory); // Set the dynamic download directory
+                       options.setExperimentalOption("prefs", prefs);
+
+                       // Add necessary arguments
+                       options.addArguments("--allow-running-insecure-content"); // Allow insecure content
+                       options.addArguments("--ignore-certificate-errors"); // Ignore SSL certificate errors
+                       options.addArguments("--disable-extensions");
+                       options.addArguments("--start-maximized");
+                       options.addArguments("--disable-popup-blocking");
+                       WebDriverManager.chromedriver().setup();
+                       driver = new ChromeDriver(options);
                     break;
                 case "FIREFOX":
                     WebDriverManager.firefoxdriver().setup();
@@ -244,10 +261,27 @@ public class Login_Class extends Base_Class {
             // Initialize WebDriver based on browser type
             switch (Browser.toUpperCase()) {
                 case "CHROME":
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--disable-extensions");
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver(options);
+                	ChromeOptions options = new ChromeOptions();
+                    // Enable insecure downloads by setting Chrome preferences
+                       Map<String, Object> prefs = new HashMap<>();
+                       prefs.put("profile.default_content_setting_values.automatic_downloads", 1); // Allow automatic downloads
+                       prefs.put("profile.default_content_setting_values.mixed_script", 1); // Allow insecure content globally
+                       prefs.put("profile.default_content_settings.popups", 0); // Block popups
+                       prefs.put("download.prompt_for_download", false); // Disable download prompt
+                       //prefs.put("download.default_directory", "C:\\Users\\pinku.peter\\Downloads"); // Set download directory
+                       String userHome = System.getProperty("user.home"); // Gets the user's home directory
+                       String downloadDirectory = userHome + File.separator + "Downloads";
+                       prefs.put("download.default_directory", downloadDirectory); // Set the dynamic download directory
+                       options.setExperimentalOption("prefs", prefs);
+
+                       // Add necessary arguments
+                       options.addArguments("--allow-running-insecure-content"); // Allow insecure content
+                       options.addArguments("--ignore-certificate-errors"); // Ignore SSL certificate errors
+                       options.addArguments("--disable-extensions");
+                       options.addArguments("--start-maximized");
+                       options.addArguments("--disable-popup-blocking");
+                       WebDriverManager.chromedriver().setup();
+                       driver = new ChromeDriver(options);
                     break;
                 case "FIREFOX":
                     WebDriverManager.firefoxdriver().setup();
@@ -330,8 +364,8 @@ public class Login_Class extends Base_Class {
         try {        	
             String Browser = configloader().getProperty("Browser");
             String CallCenterAppUrl = configloader().getProperty("CallCenterURL");
-            String CallCenterUserName = configloader().getProperty("CallCenterUserName");
-            String CallCenterPassword = configloader().getProperty("CallCenterPassword");
+            String CallCenterUserName = configloader().getProperty("CallcentreUserName");
+            String CallCenterPassword = configloader().getProperty("CallcentreUserPassword");
 
             // Initialize WebDriver based on browser type
             switch (Browser.toUpperCase()) {
