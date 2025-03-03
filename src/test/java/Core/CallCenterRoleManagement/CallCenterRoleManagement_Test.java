@@ -61,7 +61,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.DataProvider;
 import com.aventstack.extentreports.ExtentTest;
 
-public class CallCenterRoleManagementTest extends Base_Class {
+public class CallCenterRoleManagement_Test extends Base_Class {
 	Log log;
 	Base_Class Base_Class;
 	com.Utility.ExcelReader ExcelReader;

@@ -10,6 +10,7 @@ import java.util.Properties;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -122,6 +123,13 @@ public class Base_Class {
 //		Thread.sleep(2000);
 
 	}
+	public static void moveToElementAndClick(WebDriver driver, By locator) throws InterruptedException {
+		Thread.sleep(2000);
+        WebElement element = driver.findElement(locator); 
+        JavascriptExecutor js = (JavascriptExecutor) driver;       
+        js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);           
+        js.executeScript("arguments[0].click();", element);
+    }
 	public static void ForLoopClick(By ClickElement) {
 		try
 		{

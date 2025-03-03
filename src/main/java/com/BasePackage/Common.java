@@ -25,7 +25,7 @@ public class Common {
         try {
             System.out.println("Fluent wait started for: " + WebElementName);
             Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                    .withTimeout(Duration.ofMinutes(3))
+                    .withTimeout(Duration.ofMinutes(2))
                     .ignoring(NullPointerException.class)
                     .ignoring(StaleElementReferenceException.class)
                     .ignoring(NoSuchElementException.class)

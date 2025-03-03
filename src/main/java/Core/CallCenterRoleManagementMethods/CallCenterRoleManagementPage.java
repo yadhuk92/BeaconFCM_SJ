@@ -25,6 +25,7 @@ import com.extentReports.ExtentTestManager;
 public class CallCenterRoleManagementPage extends Base_Class {
 	private WebDriver driver;
 	public static String RoleName7;
+
 	// Constructor
 	public CallCenterRoleManagementPage(WebDriver driver) {
 		this.driver = driver;
@@ -35,6 +36,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 	public void addRoleName7() {
 		try {
 			Common.fluentWait("RoleName7", CallCenterRoleManagementRepo.RoleName);
+			Thread.sleep(2000);
 			driver.findElement(CallCenterRoleManagementRepo.RoleName).sendKeys(RoleName7);
 			ExtentTestManager.getTest().log(Status.PASS, "Entered role name");
 		} catch (Exception e) {
@@ -43,7 +45,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to enter the role name");
 		}
 	}
-	
+
 	public void SelectFunctionalities() {
 		// Get all checkbox elements
 		List<WebElement> checkboxes = driver.findElements(By.xpath("//*[@type='checkbox']"));
@@ -87,7 +89,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 		ExtentTestManager.getTest().log(Status.PASS, "Functionality Deselected ");
 		elements.get(3).click(); // Clicks the fourth element
 		ExtentTestManager.getTest().log(Status.PASS, "Functionality Deselected ");
-		
+
 	}
 
 	public String RoleNameGenrator() {
@@ -119,13 +121,12 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			wait.pollingEvery(Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
 			Log.info("Loader disappeared.");
+			Thread.sleep(4000);
 		} catch (Exception e) {
 			Log.info("Loader did not appear, proceeding without delay.");
 		}
 	}
 
-
-	
 	public void VerifyTheText() throws IOException {
 		try {
 			String Text = driver.findElement(CallCenterRoleManagementRepo.emailuser).getText();
@@ -141,10 +142,11 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Failed to logged in");
 		}
 	}
-	
+
 	public void clickSecurityManagement() {
 		try {
 			Common.fluentWait("Security Management", CallCenterRoleManagementRepo.SecurityManagement);
+			Thread.sleep(2000);
 			driver.findElement(CallCenterRoleManagementRepo.SecurityManagement).click();
 			ExtentTestManager.getTest().log(Status.PASS, "Security Management button selected");
 		} catch (Exception e) {
@@ -153,9 +155,11 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Security Management button not selected");
 		}
 	}
+
 	public void clickRoleManagement() {
 		try {
 			Common.fluentWait("RoleManagement", CallCenterRoleManagementRepo.RoleManagement);
+			Thread.sleep(2000);
 			driver.findElement(CallCenterRoleManagementRepo.RoleManagement).click();
 			ExtentTestManager.getTest().log(Status.PASS, "Role Management button selected");
 		} catch (Exception e) {
@@ -164,7 +168,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Role Management button not selected");
 		}
 	}
-	
+
 	public void RoleManagementHeaderIsDisplayed() {
 		try {
 			if (driver.findElement(CallCenterRoleManagementRepo.RoleManagementHeader).isDisplayed()) {
@@ -179,7 +183,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 		}
 
 	}
-	
+
 	public void AddNewRoleIsDisplayed() {
 		try {
 			if (driver.findElement(CallCenterRoleManagementRepo.AddNewRole).isDisplayed()) {
@@ -194,6 +198,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 		}
 
 	}
+
 	public void checkURL() {
 		String CurrentURL = driver.getCurrentUrl();
 		if (CurrentURL.contains("Admin/LevelPermissions")) {
@@ -204,6 +209,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Currnet url is:" + CurrentURL);
 		}
 	}
+
 	public void RoleManagementFieldsVerification() {
 		if (driver.findElement(CallCenterRoleManagementRepo.RoleManagementHeader).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Role Management Header displayed successfully");
@@ -228,7 +234,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to show Search submit button");
 		}
 	}
-	
+
 	public void clickAddNewRole() {
 		try {
 			Common.fluentWait("AddNewRole", CallCenterRoleManagementRepo.AddNewRole);
@@ -240,8 +246,12 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "unable to Add New Role button");
 		}
 	}
-	
+
 	public void FunctionalityPopUPVerification() {
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("document.body.style.transform = 'scale(0.85)'; document.body.style.transformOrigin = '0 0';");
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("document.body.style.zoom='90%'"); // Zoom in to 100%
 		if (driver.findElement(CallCenterRoleManagementRepo.RolePermission).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Role Permission displayed successfully");
 		} else {
@@ -274,9 +284,9 @@ public class CallCenterRoleManagementPage extends Base_Class {
 		}
 
 	}
-	
+
 	public void clickSave() {
-		
+
 		try {
 			Common.fluentWait("Save", CallCenterRoleManagementRepo.Save);
 			driver.findElement(CallCenterRoleManagementRepo.Save).click();
@@ -286,9 +296,9 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			e.printStackTrace();
 			ExtentTestManager.getTest().log(Status.FAIL, "unable to Save");
 		}
-		
+
 	}
-	
+
 	public void isDisplayedRoleName() {
 		Common.fluentWait("Role Name ", CallCenterRoleManagementRepo.RoleName);
 		if (driver.findElement(CallCenterRoleManagementRepo.EnterRoleName).isDisplayed()) {
@@ -297,14 +307,14 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to show Enter Role Name  error");
 		}
 	}
-	
+
 	public void AddRoleName7() {
 		String Rolename = RoleNameGenrator();
 		RoleName7 = Rolename;
 		System.out.println("Role name for test case 7 " + RoleName7);
 		driver.findElement(CallCenterRoleManagementRepo.RoleName).sendKeys(Rolename);
 	}
-	
+
 	public void IsRecordSavedSuccessfully() {
 		Common.fluentWait("RecordSavedSuccessfully", CallCenterRoleManagementRepo.RecordSavedSuccessfully);
 		if (driver.findElement(CallCenterRoleManagementRepo.RecordSavedSuccessfully).isDisplayed()) {
@@ -313,7 +323,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to save Record");
 		}
 	}
-	
+
 	public void RoleManagemnentHeader() {
 		if (driver.findElement(CallCenterRoleManagementRepo.RoleManagementHeader).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Returned Role Management page successfully");
@@ -321,7 +331,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to Returned Role Managemen page");
 		}
 	}
-	
+
 	public void SearchFunction7() {
 		try {
 			driver.findElement(CallCenterRoleManagementRepo.search).sendKeys(RoleName7);
@@ -335,7 +345,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to complete the Search function");
 		}
 	}
-	
+
 	public void ActionMenuDisplayed() {
 		if (driver.findElement(CallCenterRoleManagementRepo.ActionMenu).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Action Menu displyed successfully");
@@ -343,7 +353,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Action Menu not displayed");
 		}
 	}
-	
+
 	public void clickAction() {
 		try {
 			Common.fluentWait("ActionMenu", CallCenterRoleManagementRepo.ActionMenu);
@@ -355,8 +365,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "unable to ActionMenu");
 		}
 	}
-	
-	
+
 	public void clickEdit() {
 		try {
 			Common.fluentWait("Edit", CallCenterRoleManagementRepo.Edit);
@@ -368,7 +377,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "unable to Edit");
 		}
 	}
-	
+
 	public void RolePermissionPopUp() {
 		if (driver.findElement(CallCenterRoleManagementRepo.RolePermission).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Role Permission displayed successfully");
@@ -376,7 +385,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to show Role Permission submit button");
 		}
 	}
-	
+
 	public void RecordUpdatedSuccessfully() {
 		Common.fluentWait("RecordSavedSuccessfully", CallCenterRoleManagementRepo.RecordupdatedSuccessfully);
 		if (driver.findElement(CallCenterRoleManagementRepo.RecordupdatedSuccessfully).isDisplayed()) {
@@ -385,9 +394,11 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to update Record");
 		}
 	}
-	
+
 	public void checkIsDisplayed() {
 		try {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("document.addEventListener('click', function(event) { event.stopPropagation(); }, true);");
 			if (driver.findElement(CallCenterRoleManagementRepo.closeRolePermissionPopup).isDisplayed()) {
 				driver.findElement(CallCenterRoleManagementRepo.closeRolePermissionPopup).click();
 				ExtentTestManager.getTest().log(Status.PASS, "closed Role Permission Popup");
@@ -396,7 +407,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void LevelExist() throws InterruptedException {
 		Common.fluentWait("LevelExistAlready", CallCenterRoleManagementRepo.LevelExistAlready);
 		if (driver.findElement(CallCenterRoleManagementRepo.LevelExistAlready).isDisplayed()) {
@@ -406,7 +417,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 		}
 		Thread.sleep(5000);
 	}
-	
+
 	public void PleaseSelectFunctionality() {
 		Common.fluentWait("PleaseSelectFunctionality", CallCenterRoleManagementRepo.PleaseSelectFunctionality);
 		if (driver.findElement(CallCenterRoleManagementRepo.PleaseSelectFunctionality).isDisplayed()) {
@@ -415,7 +426,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Please Select Functionality not Displayed");
 		}
 	}
-	
+
 	public void EnterRoleName() {
 		try {
 			String Rolename12 = RoleNameGenrator();
@@ -427,6 +438,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Role Name not entered in the search");
 		}
 	}
+
 	public void RoleManagementHeader() {
 		if (driver.findElement(CallCenterRoleManagementRepo.RoleManagementHeader).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Returned Role Management page successfully");
@@ -434,9 +446,7 @@ public class CallCenterRoleManagementPage extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to Returned Role Managemen page");
 		}
 	}
-	
-	
-	
+
 	public static Properties configloader() throws IOException {
 		FileInputStream File = new FileInputStream(".\\src\\test\\resources\\config.properties");
 		Properties properties = new Properties();
