@@ -55,11 +55,28 @@ public class CoreAutoAllocationRepo {
 			.xpath("//*[contains(text(),'O/S Balance')]/ancestor::*[2]/following-sibling::div[1]//input");
 	
 	public static By selectToField = By
-			.xpath("//*[contains(text(),'Types of Account')]/ancestor::*[2]/following-sibling::div[1]/div/div");
+			.xpath("//*[contains(text(),'Types of Account')]/ancestor::*[2]/following-sibling::div[1]/div/div//label");
+	
+	public static By selectAllocateToField = By
+			.xpath("//*[contains(text(),'Allocate To')]/following-sibling::div");
+	
+	public static By selectCallCentreSubDropdown = By
+			.xpath("//*[contains(text(),'Select Call Centre')]/following-sibling::div");
 	
 	public static By selectCallcenterFromToField = By
 			.xpath("//li[@aria-label='>Call Centre']/parent::ul/ancestor::*[2]/preceding-sibling::div[@id='popup-PFTNPADisable']/following-sibling::div//li[@aria-label='>Call Centre']/span");
 	
+	public static By selectCallcenterFromAllocateToField = By
+			.xpath("//div[@id='popup-PFTNPADisable']/following-sibling::div[5]//span[text()='Call Centre']");
+	
+	public static By selectCallcenter1FromAllocateToField = By
+			.xpath("//div[@id='popup-PFTNPADisable']/following-sibling::div[6]//span[text()='CallCentre 1']");
+	
+	public static By AllocationTable = By
+			.xpath("//table[@class='rz-grid-table rz-grid-table-fixed']//th//span");
+	
+	public static By AssignButton = By
+			.xpath("//button[contains(text(),'Assign')]");
 	
 	public static By NPAList = By.xpath("//div[@id='popup-O07LGTrrwE']//li");
 

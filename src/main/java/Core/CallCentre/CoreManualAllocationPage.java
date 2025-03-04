@@ -191,9 +191,8 @@ public class CoreManualAllocationPage {
 	public void validate_NPA_Dropsdown() throws InterruptedException {
 		Thread.sleep(3000);
 		// Expected aria-label values
-		String[] expectedLabels = { "SUB-STANDARD", "DOUBTFUL-1", "DOUBTFUL-2", "DOUBTFUL-3", "LOSS ASSET" }; // Modify
-																												// as
-																												// needed
+		String[] expectedLabels = { "SUB-STANDARD", "DOUBTFUL-1", "DOUBTFUL-2", "DOUBTFUL-3", "LOSS ASSET" }; 
+		// Modify as  needed
 		List<String> expectedList = Arrays.asList(expectedLabels);
 
 		// Initialize WebDriverWait and wait for the element to become visible
@@ -277,7 +276,9 @@ public class CoreManualAllocationPage {
 			String Symbol=selectEqualsText.getText();
 			
 			WebElement OSfieldText=driver.findElement((CoreAutoAllocationRepo.OSFieldText));
-			OSfieldText.sendKeys("1234");
+			OSfieldText.sendKeys("12345");
+			
+			
 			
 			return Symbol;
 			
@@ -310,6 +311,91 @@ public class CoreManualAllocationPage {
 					return value;
 					
 				}
+				
+				// Validate Accounts Count -AM
+				public boolean  validate_Accounts_Count() throws InterruptedException {
+					String[]  Expectedcolumn_names= {"TOTAL ACCOUNT SELECTED","TOTAL OUTSTANDING AMOUNT"};
+					Thread.sleep(3000);
+					//clickSearchButton();// Method to click Search BUtton
+					
+					// Initialize WebDriverWait and wait for the element to become visible
+					WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+			
+					
+				       // Verify "Total account selected" column exists
+			        List<WebElement> totalAccountColumn = driver.findElements((CoreAutoAllocationRepo.AllocationTable));
+					String[]  actualCol=new String[totalAccountColumn.size()];
+	
+			        for(int i=0;i<totalAccountColumn.size();i++)
+			        {
+			        	 actualCol[i]=totalAccountColumn.get(i).getText().trim();
+			        	
+			        }
+			        
+			     // Compare expectedColumns with actualColumns
+		            boolean isMatch = java.util.Arrays.equals(Expectedcolumn_names, actualCol);
+			        
+			    
+			       return isMatch;
+					
+				}
+				
+				// Validate AllocateTo_Field dropdown -AM
+				public String validate_AllocateToField_Callcenter() throws InterruptedException {
+					
+					// Initialize WebDriverWait and wait for the element to become visible
+					WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+					
+					Log.info("Clicking Allocate To Field dropdown");
+					WebElement selectTextDropdown = wait
+							.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.selectAllocateToField));
+					selectTextDropdown.click();
+					Log.info("Clicked AllocateTo Field dropdown");
+					
+					Thread.sleep(3000);
+					Log.info("Selecting Call Center option from Allocate To Field Dropdown");
+					WebElement selectCallCenterOption=driver.findElement((CoreAutoAllocationRepo.selectCallcenterFromAllocateToField));
+					selectCallCenterOption.click();
+					Thread.sleep(3000);
+					Log.info("Selected Call Center option");
+					
+					WebElement selectEqualsText=driver.findElement((CoreAutoAllocationRepo.selectToField));
+					
+					String value=selectEqualsText.getText();
+					
+					Log.info("Clicking Callcentre sub dropdown");
+					WebElement selectSubCallCentreDropdown = wait
+							.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.selectCallCentreSubDropdown));
+					selectSubCallCentreDropdown.click();
+					Log.info("Clicked Callcentre sub dropdown");
+					
+					
+					Log.info("Selecting Call Center1 option from Select Call Centre Field Dropdown");
+					WebElement selectCallCenter1Option=driver.findElement((CoreAutoAllocationRepo.selectCallcenter1FromAllocateToField));
+					selectCallCenter1Option.click();
+					Thread.sleep(3000);
+					Log.info("Selected Call Center1 option from Select Call Centre");
+					
+					return value;
+					
+				}
+				
+				// Validate message after clicking assign button  -AM
+				public void validate_mesgAfterAllocation() throws InterruptedException {
+					
+					// Initialize WebDriverWait and wait for the element to become visible
+					WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+					
+					Log.info("Clicking Assign Button");
+					WebElement assignButton = wait
+							.until(ExpectedConditions.elementToBeClickable(CoreAutoAllocationRepo.AssignButton));
+					assignButton.click();
+					Log.info("Clicked Assign Button");
+					
+				
+					
+				}
+				
 
 	// Method to get the text of the warning message
 
