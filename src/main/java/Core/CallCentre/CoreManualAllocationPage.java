@@ -381,7 +381,7 @@ public class CoreManualAllocationPage {
 				}
 				
 				// Validate message after clicking assign button  -AM
-				public void validate_mesgAfterAllocation() throws InterruptedException {
+				public String  validate_mesgAfterAllocation() throws InterruptedException {
 					
 					// Initialize WebDriverWait and wait for the element to become visible
 					WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
@@ -392,7 +392,21 @@ public class CoreManualAllocationPage {
 					assignButton.click();
 					Log.info("Clicked Assign Button");
 					
-				
+					// Wait for the warning message element to be located and visible
+					WebElement warningMessage = wait
+							.until(ExpectedConditions.visibilityOfElementLocated(CoreManualAllocationRepo.validationMessage));
+
+					// Log after the element is located
+					Log.info("Assigned Successfully  message element is now visible.");
+
+					// Retrieve the text of the warning message
+					String Message = warningMessage.getText();
+
+					// Log after retrieving the warning message text
+					Log.info("Retrieved Sucessful  message text: " + Message);
+
+					// Return the warning message text
+					return Message;
 					
 				}
 				

@@ -343,10 +343,17 @@ public class CoreAllocationSummary_TestClass {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		try {
 			
-			ExtentTestManager.getTest().log(Status.PASS, "Validatimg Message after allocation");
-			coremanualallocationpage.validate_mesgAfterAllocation();
+			ExtentTestManager.getTest().log(Status.PASS, "Validating Message after allocation");
+			String warningMsg =coremanualallocationpage.validate_mesgAfterAllocation();
 
-			ExtentTestManager.getTest().log(Status.PASS,"Selected Call Centre option");
+			ExtentTestManager.getTest().log(Status.PASS,"Validated  Message after allocation");
+			
+			// Verify the warning message
+				String expectedMessage = "Assigned Successfully";
+
+				Assert.assertEquals(warningMsg, expectedMessage, "Successful  message displayed as expected");
+				ExtentTestManager.getTest().log(Status.PASS, "Displays warning message \"Assigned Successfully\".");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
 			
 			screenShot = new com.Utility.ScreenShot(driver);
 			

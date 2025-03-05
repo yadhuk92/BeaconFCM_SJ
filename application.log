@@ -1,80 +1,130 @@
-[INFO ] 2025-02-27 11:21:41.500 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2025-02-27 11:22:26.162 [main] Log - Title is displayed: BeaconICnRM
-[INFO ] 2025-02-27 11:22:26.331 [main] Log - Entered IBU0001487 in user name field
-[INFO ] 2025-02-27 11:22:26.402 [main] Log - Entered 4u75^a in password field
-[INFO ] 2025-02-27 11:22:26.474 [main] Log - Clicked on login button
-[INFO ] 2025-02-27 11:22:47.360 [main] Log - Module selection page not appeared
-[ERROR] 2025-02-27 11:26:00.691 [main] Log - An error occurred in CoreLogin: Error communicating with the remote browser. It may have died.
-Build info: version: '4.13.0', revision: 'ba948ece5b*'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [8635ce05a7db63f7aec82c0bd788e514, findElement [using, value]]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 133.0.6943.127, chrome: {chromedriverVersion: 133.0.6943.141 (2a5d6da0d61..., userDataDir: C:\Users\AMBIKA~1.YOG\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54452}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54452/devtoo..., se:cdpVersion: 133.0.6943.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 8635ce05a7db63f7aec82c0bd788e514
-Main Menu element...
-[INFO ] 2025-02-27 11:24:17.393 [main] Log - Call Centre Main Menu element located successfully.
-[INFO ] 2025-02-27 11:24:17.393 [main] Log - Clicking on the Call Centre Main Menu...
-[INFO ] 2025-02-27 11:24:17.457 [main] Log - Clicked on the Call Centre Main Menu. Navigation complete.
-[INFO ] 2025-02-27 11:24:17.457 [main] Log - Starting navigation to the Manual Allocation submenu...
-[INFO ] 2025-02-27 11:24:17.458 [main] Log - Locating Manual Allocation option...
-[INFO ] 2025-02-27 11:24:17.469 [main] Log - Manual Allocation submenu element located successfully.
-[INFO ] 2025-02-27 11:24:17.469 [main] Log - Clicking on the manual allocation submenu...
-[INFO ] 2025-02-27 11:24:18.112 [main] Log - Clicked on the manual allocation submenu. Navigation complete.
-[INFO ] 2025-02-27 11:25:30.143 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-02-27 11:25:30.143 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-02-27 11:25:30.143 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-02-27 11:25:30.144 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-02-27 11:25:30.144 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-02-27 11:25:30.147 [main] Log - Starting the process to click the Search button...
-[INFO ] 2025-02-27 11:25:30.147 [main] Log - Waiting for the Search button to become visible...
-[INFO ] 2025-02-27 11:25:30.175 [main] Log - Scrolling the Search button into view...
-[INFO ] 2025-02-27 11:25:30.180 [main] Log - Search button scrolled into view.
-[INFO ] 2025-02-27 11:25:30.181 [main] Log - Waiting for 500ms to ensure smooth scrolling...
-[INFO ] 2025-02-27 11:25:30.681 [main] Log - Wait completed.
-[INFO ] 2025-02-27 11:25:30.681 [main] Log - Clicking the Search button...
-[INFO ] 2025-02-27 11:25:30.826 [main] Log - Search button clicked successfully.
-[INFO ] 2025-02-27 11:25:30.826 [main] Log - Waiting for the warning message to become visible on the page.
-[INFO ] 2025-02-27 11:25:30.826 [main] Log - WebDriverWait initialized with a timeout of 120 seconds.
-[INFO ] 2025-02-27 11:25:30.850 [main] Log - Warning message element is now visible.
-[INFO ] 2025-02-27 11:25:30.862 [main] Log - Retrieved warning message text: Asset Category Required
-[INFO ] 2025-02-27 11:25:33.877 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-02-27 11:25:33.878 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-02-27 11:25:33.878 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-02-27 11:25:33.878 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-02-27 11:25:33.879 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-02-27 11:25:33.907 [main] Log - Screen font is minimized
-[INFO ] 2025-02-27 11:25:33.907 [main] Log - Clicking Asset category dropdown
-[INFO ] 2025-02-27 11:25:34.003 [main] Log - Clicked Asset category dropdown
-[INFO ] 2025-02-27 11:25:34.028 [main] Log - Clicking NAP Dropdown
-[INFO ] 2025-02-27 11:25:34.231 [main] Log - Clicked NAP Dropdown
-[INFO ] 2025-02-27 11:25:34.231 [main] Log - Clicking SMA Dropdown
-[INFO ] 2025-02-27 11:25:34.357 [main] Log - Clicked SMA Dropdown
-[INFO ] 2025-02-27 11:25:37.394 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-02-27 11:25:37.394 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-02-27 11:25:37.394 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-02-27 11:25:37.394 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-02-27 11:25:37.394 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-02-27 11:25:37.399 [main] Log - Clicking SMA category dropdown
-[INFO ] 2025-02-27 11:25:43.471 [main] Log - Clicked SMA category dropdown
-[INFO ] 2025-02-27 11:25:49.669 [main] Log - Selecting SMA0 Dropdown
-[INFO ] 2025-02-27 11:25:49.741 [main] Log - Clicked SMA0 Dropdown
-[INFO ] 2025-02-27 11:25:49.741 [main] Log - Clicking SMA1 Dropdown
-[INFO ] 2025-02-27 11:25:49.819 [main] Log - Clicked SMA1 Dropdown
-[INFO ] 2025-02-27 11:25:49.819 [main] Log - Clicking SMA2 Dropdown
-[INFO ] 2025-02-27 11:25:49.892 [main] Log - Clicked SMA2 Dropdown
-[INFO ] 2025-02-27 11:25:52.933 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-02-27 11:25:52.934 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-02-27 11:25:52.934 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-02-27 11:25:52.934 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-02-27 11:25:52.934 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-02-27 11:25:58.940 [main] Log - Clicking SMA category dropdown
-[INFO ] 2025-02-27 11:25:59.024 [main] Log - Clicked NPA category dropdown
-[INFO ] 2025-02-27 11:26:08.238 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-02-27 11:26:08.239 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-02-27 11:26:08.239 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-02-27 11:26:08.240 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-02-27 11:26:08.240 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-02-27 11:26:14.258 [main] Log - Clicking O/S balance dropdown
-[INFO ] 2025-02-27 11:26:14.348 [main] Log - Clicked O/S Balance dropdown
-[INFO ] 2025-02-27 11:26:17.349 [main] Log - Selecting = option dropdown
-[INFO ] 2025-02-27 11:26:20.550 [main] Log - Selected = option dropdown
+[INFO ] 2025-03-05 09:55:59.554 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-03-05 09:56:41.007 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2025-03-05 09:56:41.180 [main] Log - Entered IBU0001487 in user name field
+[INFO ] 2025-03-05 09:56:41.247 [main] Log - Entered 4u75^a in password field
+[INFO ] 2025-03-05 09:56:41.325 [main] Log - Clicked on login button
+[INFO ] 2025-03-05 09:57:02.400 [main] Log - Module selection page not appeared
+[INFO ] 2025-03-05 09:57:38.869 [main] Log - UserID in Dashboard: IBU0001487
+[INFO ] 2025-03-05 09:57:39.705 [main] Log - Org Name: Mumbai, Org Type Name: Head office
+[INFO ] 2025-03-05 09:57:49.387 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 09:57:49.388 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 09:57:49.388 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 09:57:49.391 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 09:57:49.391 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 09:57:49.426 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 09:57:49.426 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 09:57:49.426 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 09:57:49.426 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 09:57:49.426 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 09:57:49.622 [main] Log - Starting navigation to the Call Centre Main Menu...
+[INFO ] 2025-03-05 09:57:49.623 [main] Log - Locating the Call Centre Main Menu element...
+[INFO ] 2025-03-05 09:57:49.637 [main] Log - Call Centre Main Menu element located successfully.
+[INFO ] 2025-03-05 09:57:49.638 [main] Log - Clicking on the Call Centre Main Menu...
+[INFO ] 2025-03-05 09:57:49.700 [main] Log - Clicked on the Call Centre Main Menu. Navigation complete.
+[INFO ] 2025-03-05 09:57:49.701 [main] Log - Starting navigation to the Manual Allocation submenu...
+[INFO ] 2025-03-05 09:57:49.701 [main] Log - Locating Manual Allocation option...
+[INFO ] 2025-03-05 09:57:49.712 [main] Log - Manual Allocation submenu element located successfully.
+[INFO ] 2025-03-05 09:57:49.713 [main] Log - Clicking on the manual allocation submenu...
+[INFO ] 2025-03-05 09:57:50.320 [main] Log - Clicked on the manual allocation submenu. Navigation complete.
+[INFO ] 2025-03-05 09:58:30.589 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 09:58:30.590 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 09:58:30.590 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 09:58:30.590 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 09:58:30.590 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 09:58:30.591 [main] Log - Starting the process to click the Search button...
+[INFO ] 2025-03-05 09:58:30.591 [main] Log - Waiting for the Search button to become visible...
+[INFO ] 2025-03-05 09:59:03.316 [main] Log - Scrolling the Search button into view...
+[INFO ] 2025-03-05 09:59:03.321 [main] Log - Search button scrolled into view.
+[INFO ] 2025-03-05 09:59:03.321 [main] Log - Waiting for 500ms to ensure smooth scrolling...
+[INFO ] 2025-03-05 09:59:03.822 [main] Log - Wait completed.
+[INFO ] 2025-03-05 09:59:03.822 [main] Log - Clicking the Search button...
+[INFO ] 2025-03-05 09:59:03.959 [main] Log - Search button clicked successfully.
+[INFO ] 2025-03-05 09:59:03.959 [main] Log - Waiting for the warning message to become visible on the page.
+[INFO ] 2025-03-05 09:59:03.959 [main] Log - WebDriverWait initialized with a timeout of 120 seconds.
+[INFO ] 2025-03-05 09:59:03.987 [main] Log - Warning message element is now visible.
+[INFO ] 2025-03-05 09:59:03.997 [main] Log - Retrieved warning message text: Asset Category Required
+[INFO ] 2025-03-05 09:59:07.014 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 09:59:07.015 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 09:59:07.015 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 09:59:07.016 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 09:59:07.016 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 09:59:07.043 [main] Log - Screen font is minimized
+[INFO ] 2025-03-05 09:59:07.044 [main] Log - Clicking Asset category dropdown
+[INFO ] 2025-03-05 09:59:07.137 [main] Log - Clicked Asset category dropdown
+[INFO ] 2025-03-05 09:59:07.155 [main] Log - Clicking NAP Dropdown
+[INFO ] 2025-03-05 09:59:07.332 [main] Log - Clicked NAP Dropdown
+[INFO ] 2025-03-05 09:59:07.333 [main] Log - Clicking SMA Dropdown
+[INFO ] 2025-03-05 09:59:07.448 [main] Log - Clicked SMA Dropdown
+[INFO ] 2025-03-05 09:59:16.849 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 09:59:16.850 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 09:59:16.850 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 09:59:16.850 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 09:59:16.850 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 09:59:16.854 [main] Log - Clicking SMA category dropdown
+[INFO ] 2025-03-05 09:59:22.946 [main] Log - Clicked SMA category dropdown
+[INFO ] 2025-03-05 09:59:22.964 [main] Log - Selecting SMA0 Dropdown
+[INFO ] 2025-03-05 09:59:23.031 [main] Log - Clicked SMA0 Dropdown
+[INFO ] 2025-03-05 09:59:23.032 [main] Log - Clicking SMA1 Dropdown
+[INFO ] 2025-03-05 09:59:23.115 [main] Log - Clicked SMA1 Dropdown
+[INFO ] 2025-03-05 09:59:23.115 [main] Log - Clicking SMA2 Dropdown
+[INFO ] 2025-03-05 09:59:23.186 [main] Log - Clicked SMA2 Dropdown
+[INFO ] 2025-03-05 09:59:26.256 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 09:59:26.257 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 09:59:26.257 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 09:59:26.257 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 09:59:26.258 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 09:59:35.264 [main] Log - Clicking SMA category dropdown
+[INFO ] 2025-03-05 09:59:35.342 [main] Log - Clicked NPA category dropdown
+[INFO ] 2025-03-05 09:59:44.588 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 09:59:44.588 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 09:59:44.589 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 09:59:44.589 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 09:59:44.589 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 09:59:53.619 [main] Log - Clicking O/S balance dropdown
+[INFO ] 2025-03-05 09:59:53.700 [main] Log - Clicked O/S Balance dropdown
+[INFO ] 2025-03-05 09:59:56.714 [main] Log - Selecting = option dropdown
+[INFO ] 2025-03-05 09:59:59.928 [main] Log - Selected = option dropdown
+[INFO ] 2025-03-05 10:00:03.037 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 10:00:03.037 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 10:00:03.037 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 10:00:03.037 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 10:00:03.037 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 10:00:06.041 [main] Log - Clicking To Field dropdown
+[INFO ] 2025-03-05 10:00:06.152 [main] Log - ClickedTo Field dropdown
+[INFO ] 2025-03-05 10:00:09.154 [main] Log - Selecting Call Center option 
+[INFO ] 2025-03-05 10:00:12.329 [main] Log - Selected Call Center option
+[INFO ] 2025-03-05 10:00:12.348 [main] Log - Starting the process to click the Search button...
+[INFO ] 2025-03-05 10:00:12.348 [main] Log - Waiting for the Search button to become visible...
+[INFO ] 2025-03-05 10:00:12.368 [main] Log - Scrolling the Search button into view...
+[INFO ] 2025-03-05 10:00:12.371 [main] Log - Search button scrolled into view.
+[INFO ] 2025-03-05 10:00:12.371 [main] Log - Waiting for 500ms to ensure smooth scrolling...
+[INFO ] 2025-03-05 10:00:12.872 [main] Log - Wait completed.
+[INFO ] 2025-03-05 10:00:12.872 [main] Log - Clicking the Search button...
+[INFO ] 2025-03-05 10:00:13.044 [main] Log - Search button clicked successfully.
+[INFO ] 2025-03-05 10:00:22.484 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 10:00:22.484 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 10:00:22.484 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 10:00:22.484 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 10:00:22.484 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 10:00:28.535 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 10:00:28.535 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 10:00:28.535 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 10:00:28.535 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 10:00:28.536 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 10:00:28.538 [main] Log - Clicking Allocate To Field dropdown
+[INFO ] 2025-03-05 10:00:28.617 [main] Log - Clicked AllocateTo Field dropdown
+[INFO ] 2025-03-05 10:00:31.618 [main] Log - Selecting Call Center option from Allocate To Field Dropdown
+[INFO ] 2025-03-05 10:00:34.767 [main] Log - Selected Call Center option
+[INFO ] 2025-03-05 10:00:34.794 [main] Log - Clicking Callcentre sub dropdown
+[INFO ] 2025-03-05 10:00:34.854 [main] Log - Clicked Callcentre sub dropdown
+[INFO ] 2025-03-05 10:00:34.854 [main] Log - Selecting Call Center1 option from Select Call Centre Field Dropdown
+[INFO ] 2025-03-05 10:00:37.982 [main] Log - Selected Call Center1 option from Select Call Centre
+[INFO ] 2025-03-05 10:00:40.987 [main] Log - Initializing CallCenterAccountFiltrationPage...
+[INFO ] 2025-03-05 10:00:40.987 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-03-05 10:00:40.987 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-03-05 10:00:40.988 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-03-05 10:00:40.988 [main] Log - CallCenterAccountFiltrationPage initialization completed.
+[INFO ] 2025-03-05 10:00:40.991 [main] Log - Clicking Assign Button
+[INFO ] 2025-03-05 10:00:41.115 [main] Log - Clicked Assign Button
+[INFO ] 2025-03-05 10:00:49.449 [main] Log - Assigned Successfully  message element is now visible.
+[INFO ] 2025-03-05 10:00:49.456 [main] Log - Retrieved Sucessful  message text: Assigned Successfully
