@@ -30,6 +30,7 @@ import com.BasePackage.DownloadedExcelReader;
 import com.BasePackage.DownloadedExcelReader.DataSummary;
 import com.BasePackage.ExecuteStoredProcedure;
 import com.BasePackage.Login_Class;
+import com.Page_Repository.CoreAllocationSummaryRepo;
 import com.Page_Repository.CoreAutoAllocationRepo;
 import com.Page_Repository.CoreManualAllocationRepo;
 import com.Page_Repository.DispositionMasterPageRepo;
@@ -59,7 +60,7 @@ public class CoreAllocationSummary_TestClass {
 	ExtentTest extenttest;
 	Login_Class callcenterlogin;
 	CoreManualAllocationPage coremanualallocationpage;
-
+	CoreAllocationSummaryPage coreallocationsummarypage;
 	@BeforeSuite
 
 	public void SetUp() throws Exception {
@@ -95,6 +96,7 @@ public class CoreAllocationSummary_TestClass {
 		try {
 			ExtentTestManager.getTest().log(Status.PASS, "Opened the FCM Call Centre application.");
 			ExtentTestManager.getTest().log(Status.PASS, "Entered valid credentials and logged in.");
+			
 			// Navigate to Call Centre Main Menu
 			coremanualallocationpage.navigateToMainMenu();
 			ExtentTestManager.getTest().log(Status.PASS, "Navigated to the Call Centre Main Menu.");
@@ -269,7 +271,6 @@ public class CoreAllocationSummary_TestClass {
 		Thread.sleep(3000);
 	}
 	
-	
 	@Test(priority = 7)
 	public void Validate_ToField() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -356,15 +357,143 @@ public class CoreAllocationSummary_TestClass {
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
 			
 			screenShot = new com.Utility.ScreenShot(driver);
+		}
+			catch (AssertionError | Exception e) {
+				ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+				throw e;
+			}
+			Thread.sleep(3000);
+		}
+		
+	@Test(priority = 11)
+	public void Validate_CallcentreSideMenu_Visibility() throws InterruptedException {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+			try {
+				
+				ExtentTestManager.getTest().log(Status.PASS, "Validate if the Call cente option is visible in side menu");
+				
+				//Click on Call Centre option from the main menu
+				WebElement callCenter = driver.findElement(CoreAutoAllocationRepo.callcentermainmenu);
+				callCenter.click();
+				
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+				
+				//Verify  Allocation Summary Sub Menu is displayed
+				WebElement allocationSummary = driver.findElement(CoreAllocationSummaryRepo.allocationSummary);
+				
+				Assert.assertTrue(allocationSummary.isDisplayed(), "'Allocation Summary' option is NOT visible in the side menu!");
+				
+				ExtentTestManager.getTest().log(Status.PASS, "Allocation Summary Page displayed");
+				
+				screenShot = new com.Utility.ScreenShot(driver);
+				
+			}
+			catch (AssertionError | Exception e) {
+				ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+				throw e;
+			}
+			Thread.sleep(3000);
+		}
+		
+	@Test(priority = 12)
+	public void Validate_AllocationSummaryPage_Displayed() throws InterruptedException {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+				try {
+					
+					ExtentTestManager.getTest().log(Status.PASS, "Validate allocation summary page is displayed");
+					
+					//Click on Allocation Summary Sub Menu
+					WebElement allocationSummary = driver.findElement(CoreAllocationSummaryRepo.allocationSummary);
+					
+					//Click on Allocation summary
+					allocationSummary.click();
+					WebElement allocationSummaryPage = driver.findElement(CoreAllocationSummaryRepo.AllocationSummaryPage);
+					
+					Assert.assertTrue(allocationSummaryPage.isDisplayed(), "'Allocation Summary' Page is displayed");
+					
+					screenShot = new com.Utility.ScreenShot(driver);
+				}
+				catch (AssertionError | Exception e) {
+					ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+					throw e;
+				}
+				Thread.sleep(3000);
+					
+				}
 			
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
+			@Test(priority = 13)
+	public void Validate_CallCentre_And_SearchButton_Are_Visible() throws InterruptedException {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+				try {
+					
+					ExtentTestManager.getTest().log(Status.PASS, "Validate Call centre option from dropdown  and search buttonare visible");
+					
+					//Check if the call Center DropDown is visible
+					WebElement _callCentreDropdown=driver.findElement(CoreAllocationSummaryRepo.CallCentreDropdown);
+					Assert.assertTrue(_callCentreDropdown.isDisplayed(),"Call Centre option is visible");
+					
+					//Check if the Search Button is visible
+					WebElement SearchButton=driver.findElement(CoreAllocationSummaryRepo.Submit);
+					Assert.assertTrue(SearchButton.isDisplayed(),"Search Button is visible");
+				
+					ExtentTestManager.getTest().log(Status.PASS, "Call centre option from dropdown  and search buttonare visible");
+					screenShot = new com.Utility.ScreenShot(driver);
+					
+				}
+				catch (AssertionError | Exception e) {
+					ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+					throw e;
+				}
+				Thread.sleep(3000);
+					
+				}
+			
+	@Test(priority = 14)
+    public void Validate_WarningMessage_WithoutCallCentreDropdown() throws InterruptedException {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+				try {
+					
+					ExtentTestManager.getTest().log(Status.PASS, "Left Select call centre option empty");
+					//WebElement _callCentreDropdown=driver.findElement(CoreAllocationSummaryRepo.CallCentreDropdown);
+					String Expectedmessage= "Call Center Is Required";
+					
+					String ActualMessage=coreallocationsummarypage.Search_Without_Selecting_CallCentreDropdown();
+					
+					Assert.assertEquals(ActualMessage,Expectedmessage);
+					
+					ExtentTestManager.getTest().log(Status.PASS, "Warning Message Displayed");
+					screenShot = new com.Utility.ScreenShot(driver);
+				}
+				catch (AssertionError | Exception e) {
+					ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+					throw e;
+				}
+				Thread.sleep(3000);
+					
+				}
+	
+	@Test(priority = 15)
+    public void Validate_AllocationSummary_AccountDetails() throws InterruptedException {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+				try {
+					
+					ExtentTestManager.getTest().log(Status.PASS, "Left Select call centre option empty");
+					//WebElement _callCentreDropdown=driver.findElement(CoreAllocationSummaryRepo.CallCentreDropdown);
+					String Expectedmessage= "Call Center Is Required";
+					
+					coreallocationsummarypage.validate_AllocationSummary_AccountDetails();
+					
+					ExtentTestManager.getTest().log(Status.PASS, "Warning Message Displayed");
+					screenShot = new com.Utility.ScreenShot(driver);
+				}
+				catch (AssertionError | Exception e) {
+					ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+					throw e;
+				}
+				Thread.sleep(3000);
+					
+				}
+			
 		
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {

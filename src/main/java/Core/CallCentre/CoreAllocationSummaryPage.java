@@ -33,11 +33,11 @@ import java.sql.Connection;
 
 import io.netty.handler.timeout.TimeoutException;
 
-public class CoreManualAllocationPage {
+public class CoreAllocationSummaryPage {
 
 	private WebDriver driver;
 
-	public CoreManualAllocationPage(WebDriver driver) {
+	public CoreAllocationSummaryPage(WebDriver driver) {
 		Log.info("Initializing CallCenterAccountFiltrationPage...");
 		this.driver = driver;
 		Log.info("WebDriver instance assigned.");
@@ -99,6 +99,53 @@ public class CoreManualAllocationPage {
 		Log.info("Search button clicked successfully.");
 	}
 
+	// In the Allocation Summary page, validate the warning  message without selecting any option 
+	public String  Search_Without_Selecting_CallCentreDropdown() throws InterruptedException {
+			    
+		// Initialize WebDriverWait and wait for the element to become visible
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+				// Click on Submit button
+				Log.info("Clicking Search Button");
+				WebElement Search=driver.findElement(CoreAllocationSummaryRepo.Submit);
+				Search.click();
+				Log.info("Clicked  Search Button");
+				
+				WebElement warning=wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAllocationSummaryRepo.CallCentreWarning));
+						
+				String warningMessage=warning.getText();
+				return warningMessage;
+	}
+	
+	// Select Call centre from drop down in allocation summary page and click search button-AM
+    // Validate monthly allocation summary and account details	
+	public void validate_AllocationSummary_AccountDetails() throws InterruptedException {
+
+		WebElement SelectCallcentreDropdown =driver.findElement(CoreAllocationSummaryRepo.allocationSummary);
+		Log.info("Click on Select  Call Centre Dropdown");
+		SelectCallcentreDropdown.click();
+		Log.info("Clicked on Select  Call Centre Dropdown");
+		
+		
+		// Select Call Centre from dropdown
+		
+		Log.info("Selecting Call Centre Dropdown");
+		WebElement SelectCallCentre=driver.findElement(CoreAllocationSummaryRepo.CallCentreDropdown);
+		SelectCallCentre.click();
+		Log.info("Selected Call Centre Dropdown");
+		
+		// Click on Submit button
+		
+		Log.info("Clicking Search Button");
+		WebElement Search=driver.findElement(CoreAllocationSummaryRepo.Submit);
+		Search.click();
+		Log.info("Clicked  Search Button");
+		
+		
+
+	}
+
+	
 	// Validate warning message without adding Asset Catogory-AM
 	public String validateWarningMessageWithoutAssetCetegory() throws InterruptedException {
 
