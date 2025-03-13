@@ -809,8 +809,8 @@ public class UserManagement_Page extends Base_Class
 			Log.info("HO_USER_PASSWORD: "+HO_USER_PASSWORD);
 			
 			String fileName = "CoreHOUserCredentials_CoreUserManagement_HO_User_Creation.properties";
-			PropertiesFileUtil.updateProperty(fileName,"HO_USERID: ", HO_USERID);
-			PropertiesFileUtil.updateProperty(fileName,"HO_USER_PASSWORD: ", HO_USER_PASSWORD);
+			//PropertiesFileUtil.updateProperty(fileName,"HO_USERID: ", HO_USERID);
+			//PropertiesFileUtil.updateProperty(fileName,"HO_USER_PASSWORD: ", HO_USER_PASSWORD);
     		
 	    } catch (AssertionError | Exception e) {
 			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name

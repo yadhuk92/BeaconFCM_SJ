@@ -13,6 +13,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
@@ -33,7 +34,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
-import com.testautomation.pages.CoreRegularizationSummaryPage;
+import Core.CallCentre.RegularizationSummary_MainClass;
 import com.listeners.TestListener;
 
 public class RegularizationSummary_TestClass {
@@ -47,17 +48,17 @@ public class RegularizationSummary_TestClass {
 	ExtentTest extenttest;
 	Login_Class corelogin;
 	Login_Class callcenterlogin;
-	CoreRegularizationSummaryPage coreregularizationsummarypage;
+	RegularizationSummary_MainClass coreregularizationsummarypage;
 	
-	@BeforeSuite
+	@BeforeClass
 
 	public void SetUp() throws Exception {
 		
 		baseclass = new Base_Class();
 		corelogin = new Login_Class();
-		corelogin.CoreLogin();
+		Login_Class.CoreLogin();
 		driver = baseclass.getDriver(); // Retrieve the driver instance
-		coreregularizationsummarypage = new CoreRegularizationSummaryPage(driver);
+		coreregularizationsummarypage = new RegularizationSummary_MainClass(driver);
 		ExcelReader = new com.Utility.ExcelReader("Core_Regularization_Summary");
 		TestListener = new TestListener();
 		screenShot = new com.Utility.ScreenShot(driver);
@@ -68,7 +69,7 @@ public class RegularizationSummary_TestClass {
 		baseclass = new Base_Class();
 	    driver = baseclass.getDriver();
 	    drivers.add(driver);
-	    coreregularizationsummarypage = new CoreRegularizationSummaryPage(driver);
+	    coreregularizationsummarypage = new RegularizationSummary_MainClass(driver);
 	    callcenterlogin = new Login_Class();
 	    // Update the ScreenShot object with the new driver
 	    screenShot = new com.Utility.ScreenShot(driver);
@@ -495,7 +496,7 @@ public class RegularizationSummary_TestClass {
 	    	try {
 	  		callcenterlogin.CallCenterLogin();
 	  		driver = baseclass.getDriver(); // Update the driver after CoreLogin
-	  		coreregularizationsummarypage = new CoreRegularizationSummaryPage(driver);
+	  		coreregularizationsummarypage = new RegularizationSummary_MainClass(driver);
 	  		ExtentTestManager.getTest().log(Status.PASS, "Successfully opened the FCM Call Centre application and logged in with valid credentials");
 	  		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 	  		coreregularizationsummarypage.navigateToMainMenu();

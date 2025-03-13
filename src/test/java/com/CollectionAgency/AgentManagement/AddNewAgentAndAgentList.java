@@ -10,6 +10,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -43,7 +44,7 @@ public class AddNewAgentAndAgentList extends Base_Class {
 
 
 
-	@BeforeSuite
+	@BeforeClass
 	public void reference() {
 		log = new Log();
 		TestListener = new TestListener();

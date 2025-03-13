@@ -21,13 +21,31 @@ public class Login_Class extends Base_Class {
 	
 	public static String orgName;
     public static String orgTypeName;
-	
-    public void CoreLogin() throws Exception {
+    public static String CORE_LOGIN_BANNER_DETAILS;
+    public static String CollectionAgency_BANNER_DETAILS;
+    public static String CallCentre_BANNER_DETAILS;
+    public static String CoreUserName;
+    public static String CoreUserPassword;
+	public static String AppType;
+    
+    public static void main(String[] args) {
         try {
+            
+        	//CoreLogin();
+        	//CollectionAgencyLogin();
+        	CallCenterLogin();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void CoreLogin() throws Exception {
+        try {
+        	AppType="Core";
             String Browser = configloader().getProperty("Browser");
             String CoreAppUrl = configloader().getProperty("CoreApplicationUrl");
-            String CoreUserName = configloader().getProperty("CoreUserName");
-            String CoreUserPassword = configloader().getProperty("CoreUserPassword");
+            CoreUserName = configloader().getProperty("CoreUserName");
+            CoreUserPassword = configloader().getProperty("CoreUserPassword");
 
             // Initialize WebDriver based on browser type
             switch (Browser.toUpperCase()) {
@@ -72,7 +90,7 @@ public class Login_Class extends Base_Class {
             Common.setDriver(driver);
             
             String LoginBannerQuery = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=1 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
-            String CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
+            CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
             //System.out.println("BANNER_DETAILS: " + CORE_LOGIN_BANNER_DETAILS);
             
             Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
@@ -162,29 +180,8 @@ public class Login_Class extends Base_Class {
 			 * Log.info("Module selection page not appeared"); }
 			 */
             
-            //Need to handle some error occured here
-            try {
-                WebElement SomeErrorOccured = Common.waitForElementToBeClickable(
-                    driver, 
-                    LoginPageRepo.LoginPageSomeErrorOccurred, 
-                    Duration.ofSeconds(20)
-                );
-
-                if (SomeErrorOccured != null) {
-                	driver.navigate().refresh();
-                	Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
-                	Thread.sleep(5000);
-                	
-                	driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
-                    driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
-                    driver.findElement(LoginPageRepo.LoginButton).click();
-                } else {
-                    
-                }
-            } catch (Exception e) {
-                System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
-                System.out.println("Already login pop up not appeared");
-            }
+            //Handling some error occurred case here
+            SomeErrorOccuredHandling();
 
             // Fetch and display user organization details
             Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
@@ -251,8 +248,9 @@ public class Login_Class extends Base_Class {
         }
     }
 
-	public void CollectionAgencyLogin() throws Exception {
+	public static void CollectionAgencyLogin() throws Exception {
 		try {
+			AppType="CollectionAgency";
             String Browser = configloader().getProperty("Browser");
             String CollectionAppUrl = configloader().getProperty("CollectionAgencyApplicationUrl");
             String CollectionUserName = configloader().getProperty("CollectionAgencyUserName");
@@ -300,10 +298,10 @@ public class Login_Class extends Base_Class {
             Common.setDriver(driver);
             
             String query = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=3 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
-            String BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(query);
-            System.out.println("BANNER_DETAILS: " + BANNER_DETAILS);
+            CollectionAgency_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(query);
+            System.out.println("BANNER_DETAILS: " + CollectionAgency_BANNER_DETAILS);
             
-            Common.fluentWait(BANNER_DETAILS, LoginPageRepo.CollectionAgencyLoginBannerDetails(BANNER_DETAILS));
+            Common.fluentWait(CollectionAgency_BANNER_DETAILS, LoginPageRepo.CollectionAgencyLoginBannerDetails(CollectionAgency_BANNER_DETAILS));
 
             Pagetitle = driver.getTitle();
             Log.info("Title is displayed: " + Pagetitle);
@@ -350,6 +348,8 @@ public class Login_Class extends Base_Class {
                 System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
                 System.out.println("Already login pop up not appeared");
             }
+            
+            SomeErrorOccuredHandling();
 
             Thread.sleep(6000);
 
@@ -360,8 +360,9 @@ public class Login_Class extends Base_Class {
         }
 	}
 	
-	public void CallCenterLogin() throws Exception {
-        try {        	
+	public static void CallCenterLogin() throws Exception {
+        try {
+        	AppType="CallCenter";
             String Browser = configloader().getProperty("Browser");
             String CallCenterAppUrl = configloader().getProperty("CallCenterURL");
             String CallCenterUserName = configloader().getProperty("CallcentreUserName");
@@ -411,10 +412,10 @@ public class Login_Class extends Base_Class {
             //Common.fluentWait("LoginHyperlink2Banner", LoginPageRepo.LoginHyperlink2Banner);
             
             String LoginBannerQuery = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=2 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
-            String CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
+            CallCentre_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
             //System.out.println("BANNER_DETAILS: " + CORE_LOGIN_BANNER_DETAILS);
             
-            Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
+            Common.fluentWait("CallCentre_BANNER_DETAILS", LoginPageRepo.CollectionAgencyLoginBannerDetails(CallCentre_BANNER_DETAILS));
 
             //ExtentTestManager.getTest().log(Status.INFO, CoreAppUrl + " loaded successfully!");
             Thread.sleep(9000);
@@ -470,6 +471,8 @@ public class Login_Class extends Base_Class {
                 System.out.println("Already login pop up not appeared");
             }
             
+            SomeErrorOccuredHandling();
+            
             Common.waitForSpinnerToDisappear2(driver, "Loading Spinner", LoginPageRepo.Spinner);
             Common.fluentWait("CallcentreFullLogo", LoginPageRepo.CallcentreFullLogo);
             Thread.sleep(5000);
@@ -496,7 +499,7 @@ public class Login_Class extends Base_Class {
         }*/
     }
 	
-	public void CoreLoginWithInputs(String UserID, String password) throws Exception {
+	public static void CoreLoginWithInputs(String UserID, String password) throws Exception {
 	    try {
 	        String Browser = configloader().getProperty("Browser");
 	        String CoreAppUrl = configloader().getProperty("CoreApplicationUrl");
@@ -599,6 +602,8 @@ public class Login_Class extends Base_Class {
 				 * Log.info("Module selection page not appeared"); }
 				 */
 	        
+	        SomeErrorOccuredHandling();
+	        
 	        Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
 	        String UserIDInDashboard = driver.findElement(LoginPageRepo.UserIDInDashboard).getText();
 	        Log.info("UserID in Dashboard: " + UserIDInDashboard);
@@ -612,6 +617,70 @@ public class Login_Class extends Base_Class {
 	        e.printStackTrace();
 	        throw e;
 	    }
+	}
+	
+	public static void SomeErrorOccuredHandling() {
+        try {
+            WebElement SomeErrorOccured = Common.waitForElementToBeClickable(
+                driver, 
+                LoginPageRepo.LoginPageSomeErrorOccurred, 
+                Duration.ofSeconds(20)
+            );
+
+            if (SomeErrorOccured != null) {
+            	Log.info("Showing some error occured error message reloading the application");
+            	driver.navigate().refresh();
+            	
+            	if (AppType == "Core") {
+            		Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
+            	} else if (AppType == "CollectionAgency") {
+            		Common.fluentWait(CollectionAgency_BANNER_DETAILS, LoginPageRepo.CollectionAgencyLoginBannerDetails(CollectionAgency_BANNER_DETAILS));
+            	} else if (AppType == "CallCenter") {
+            		Common.fluentWait("CallCentre_BANNER_DETAILS", LoginPageRepo.CollectionAgencyLoginBannerDetails(CallCentre_BANNER_DETAILS));
+            	}
+            	
+            	Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+                Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+                Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+            	
+            	driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+                driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+                driver.findElement(LoginPageRepo.LoginButton).click();
+                
+                try {
+                    WebElement clickableElement = Common.waitForElementToBeClickable(
+                        driver, 
+                        LoginPageRepo.AlreadyLoginPopupYesButton, 
+                        Duration.ofSeconds(20)
+                    );
+
+                    if (clickableElement != null) {
+                        clickableElement.click();
+                        Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+                        
+                        Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+                        Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+                        Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+                        driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+                        driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+                        driver.findElement(LoginPageRepo.LoginButton).click();
+                        
+                        Log.info("Clicked on already login yes button and logged in again with valid credentials");
+                    } else {
+                        System.out.println("Element not clickable within the timeout.");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
+                    System.out.println("Already login pop up not appeared");
+                }
+                
+            } else {
+               System.out.println("Some error occured error message didn't show");  
+            }
+        } catch (Exception e) {
+            System.out.println("Some error occured error message didn't show");
+        }
 	}
 
 	

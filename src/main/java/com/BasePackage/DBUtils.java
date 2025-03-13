@@ -61,16 +61,14 @@ public class DBUtils {
 			 * System.out.println("Default URL: " + defaultURL);
 			 */
         	
-			/*
-			 * List<Object> inputParams = Arrays.asList("John Doe", "john.doe@example.com",
-			 * 9876543210L); List<Integer> outputTypes = Arrays.asList(Types.VARCHAR,
-			 * Types.VARCHAR);
-			 * 
-			 * List<Object> results =
-			 * ExecuteAnyOracleSQLStoredProcedure("HOUserIDGenerator", inputParams,
-			 * outputTypes); System.out.println("Generated User ID: " + results.get(0));
-			 * System.out.println("Default Password: " + results.get(1));
-			 */
+			
+			  List<Object> inputParams = Arrays.asList("","John Doe", "john.doe@example.com",9876543210L);
+			  List<Integer> outputTypes = Arrays.asList(Types.VARCHAR,Types.VARCHAR,Types.VARCHAR);
+			  
+			  List<Object> results =ExecuteAnyOracleSQLStoredProcedure("HOUserIDGenerator", inputParams, outputTypes);
+			  System.out.println("Generated User ID: " + results.get(0));
+			  System.out.println("Default Password: " + results.get(1));
+			 
         	
 			/*
 			 * // Define the stored procedure name String procedureName =
@@ -84,8 +82,13 @@ public class DBUtils {
 			 * result);
 			 */
         	
-        	String query="DELETE FROM mst_branch_acc_allocated WHERE ALLOCATED_DATE = TRUNC(SYSDATE)";
-        	executeSQLStatement(query);
+			/*
+			 * String query="UPDATE MST_account \r\n" + "SET DPD = '100' \r\n" +
+			 * "WHERE ACCOUNT_NO IN (\r\n" + "    SELECT ACCOUNT_NO \r\n" +
+			 * "    FROM MST_account \r\n" + "    WHERE branch_id = 5 \r\n" +
+			 * "    ORDER BY ACCOUNT_NO DESC \r\n" + "    FETCH FIRST 10 ROWS ONLY\r\n" +
+			 * ")"; executeSQLStatement(query);
+			 */
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -114,15 +117,18 @@ public class DBUtils {
                 // Retrieve the single value from the result set
                 if (rs.next()) {
                     result = rs.getString(1); // Assuming the result is in the first column
+                    System.out.println(result);
                 }
             } else if (query.trim().toLowerCase().startsWith("truncate")) {
                 // Execute TRUNCATE statement
                 pstmt.executeUpdate(); // TRUNCATE does not return affected rows
                 result = "TRUNCATE command executed successfully.";
+                System.out.println(result);
             } else {
                 // Execute other non-query statements (like INSERT, UPDATE, DELETE)
                 int affectedRows = pstmt.executeUpdate();
                 result = "Query executed successfully. Rows affected: " + affectedRows;
+                System.out.println(result);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -160,12 +166,13 @@ public class DBUtils {
 
             // Execute the UPDATE statement
             int affectedRows = pstmt.executeUpdate();
-
+            //System.out.println("Lines affected: "+affectedRows);
             // Commit the changes
             con.commit();
 
             // Return success message
             result = "Update query executed successfully. Rows affected: " + affectedRows;
+            System.out.println(result);
         } catch (SQLException e) {
             if (con != null) {
                 try {
@@ -236,7 +243,7 @@ public class DBUtils {
         }
 
         return outputValues;
-    }
+    } 
     
 }
 

@@ -3,6 +3,7 @@ package com.BasePackage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 public class PropertiesFileUtil {
@@ -46,40 +47,50 @@ public class PropertiesFileUtil {
     /**
      * Saves the updated properties back to the file.
      *
-     * @param key   The property key.
-     * @param value The property value.
      * @throws IOException If the file cannot be written.
      */
-    public void saveProperty(String key, String value) throws IOException {
-        properties.setProperty(key, value);
+    public void saveProperties(Map<String, String> updates) throws IOException {
+        for (Map.Entry<String, String> entry : updates.entrySet()) {
+            properties.setProperty(entry.getKey(), entry.getValue());
+        }
         FileOutputStream outputStream = new FileOutputStream(fileName);
         properties.store(outputStream, "Updated by PropertiesFileUtil");
         outputStream.close();
     }
 
     /**
-     * Utility method to update a property in a single call.
+     * Utility method to update multiple properties in a single call.
      *
      * @param fileName The name of the properties file.
-     * @param key      The property key.
-     * @param value    The property value.
+     * @param updates  A map of key-value pairs to be updated.
      */
-    public static void updateProperty(String fileName, String key, String value) {
+    public static void updateProperties(String fileName, Map<String, String> updates) {
         try {
             PropertiesFileUtil util = new PropertiesFileUtil(fileName);
-            util.saveProperty(key, value);
-            System.out.println("Property updated successfully: " + key + " = " + value);
+            util.saveProperties(updates);
+            System.out.println("Properties updated successfully: " + updates);
         } catch (IOException e) {
-            System.err.println("Error updating property: " + e.getMessage());
+            System.err.println("Error updating properties: " + e.getMessage());
         }
     }
+    
+    public static Properties ReadFromPropertiesFile(String path) throws IOException {
+		FileInputStream File = new FileInputStream(".\\src\\test\\resources\\" + path);
+		Properties properties = new Properties();
+		properties.load(File);
+		return properties;
+	}
 
     public static void main(String[] args) {
-        // Example usage of the single-call utility method
+        // Example usage of updating multiple properties
         String fileName = "CoreHOUserCredentials_CoreUserManagement_HO_User_Creation.properties";
-        String key = "Athul";
-        String value = "Hari";
+        
+        Map<String, String> updates = Map.of(
+            "Athul", "Hari",
+            "Reshma", "Poyil",
+            "Maneesha", "Pattanath"
+        );
 
-        updateProperty(fileName, key, value);
+        updateProperties(fileName, updates);
     }
 }
