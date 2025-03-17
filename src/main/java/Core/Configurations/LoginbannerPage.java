@@ -342,26 +342,90 @@ public class LoginbannerPage extends Base_Class{
    } 
    
  //Handle Spinner
-   public void waitForSpinnerToDisappear(String WebElementName, By element)  {
-   	if (driver == null) {
-           throw new IllegalArgumentException("WebDriver instance is null");
-       }
-       // Define the FluentWait
-       FluentWait<WebDriver> wait = new FluentWait<>(driver)
-               .withTimeout(Duration.ofSeconds(30)) // Maximum wait time
-               .pollingEvery(Duration.ofMillis(500)) // Polling interval
-               .ignoring(Exception.class); // Ignore exceptions like NoSuchElementException
+   public void waitForSpinnerToDisappear(WebDriver driver, By spinnerLocator)  {
+	    int MAX_WAIT_TIME = 60;  // Max total wait time in seconds
 
-       // Wait until the spinner disappears
-       wait.until(driverInstance -> {
-           try {
-               WebElement spinner = driverInstance.findElement(element);
-               return !spinner.isDisplayed(); // Return true if spinner is not displayed
-           } catch (Exception e) {
-               return true; // Return true if spinner is not found
-           }
-       });
-   }
+	    int POLL_INTERVAL = 1;   // Poll interval in seconds
+
+	    int CONSECUTIVE_DISAPPEAR_COUNT = 3;  // Number of consecutive times the spinner must disappear
+
+	   
+
+	   int remainingTime = MAX_WAIT_TIME;
+
+	   int disappearCount = 0;
+
+
+
+	   // WebDriverWait setup
+
+	   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(POLL_INTERVAL));
+
+
+
+	   // Loop until the spinner disappears for the set number of cycles or time runs out
+
+	   while (remainingTime > 0) {
+
+	       try {
+
+	           // Wait until the spinner becomes invisible
+
+	           wait.until(ExpectedConditions.invisibilityOfElementLocated(spinnerLocator));
+
+
+
+	           // If spinner disappeared, increment the disappearCount
+
+	           disappearCount++;
+
+
+
+	           // If spinner has disappeared for enough consecutive cycles, we stop the wait
+
+	           if (disappearCount >= CONSECUTIVE_DISAPPEAR_COUNT) {
+
+	               System.out.println("Spinner has stopped appearing.");
+
+	               return;
+
+	           }
+
+
+
+	       } catch (Exception e) {
+
+	           // Spinner is still visible, reset disappearCount
+
+	           disappearCount = 0;
+
+	           System.out.println("Spinner is still visible. Waiting...");
+
+	       }
+
+
+
+	       // Sleep for the polling interval before checking again
+
+	       try {
+
+	           Thread.sleep(POLL_INTERVAL * 1000); // Polling interval
+
+	       } catch (InterruptedException ie) {
+
+	           Thread.currentThread().interrupt();
+
+	       }
+
+	       // Reduce the remaining time
+
+	       remainingTime -= POLL_INTERVAL;
+
+	   }
+
+	   System.out.println("Timeout reached, spinner still shows up intermittently.");
+
+	}
    
 //Method to enter log in  credentials 
    public boolean logintoApp() throws Throwable {
