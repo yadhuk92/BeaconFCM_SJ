@@ -8,9 +8,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -410,5 +410,193 @@ public class DownloadedExcelReader {
 	    
 	    return count; // Return the total count of values under "A/c Number"
 	}
+	
+	public static List<List<String>> readRequiredColumns() throws IOException {
+	    // Get the user's home directory dynamically
+	    String userHome = System.getProperty("user.home");
+	    String downloadDir = userHome + File.separator + "Downloads";
+
+	    // Get the latest downloaded Excel file
+	    File latestFile = getLatestFileFromDir(downloadDir);
+	    if (latestFile == null) {
+	        System.out.println("No files found in the download directory.");
+	        return Collections.emptyList();
+	    }
+
+	    FileInputStream fis = new FileInputStream(latestFile);
+	    Workbook workbook = new XSSFWorkbook(fis);
+	    Sheet sheet = workbook.getSheetAt(0); // First sheet
+
+	    // Define required column names in the specified order
+	    List<String> requiredColumns = Arrays.asList(
+	        "A/c Number", "A/c Name", "Sol Id", "Branch Name",
+	        "Allocated /De Allocated  Status", "Product Type",
+	        "O/S Bal", "Total Overdue", "Contact No.", "Overdue Date",
+	        "Contact Date", "Disposition", "Next Action Owner"
+	    );
+
+	    Map<String, Integer> columnIndexMap = new LinkedHashMap<>();
+	    Row headerRow = sheet.getRow(0);
+	    if (headerRow == null) {
+	        workbook.close();
+	        return Collections.emptyList();
+	    }
+
+	    // Identify required column indexes
+	    for (Cell cell : headerRow) {
+	        String headerValue = cell.getStringCellValue().trim();
+	        if (requiredColumns.contains(headerValue)) {
+	            columnIndexMap.put(headerValue, cell.getColumnIndex());
+	        }
+	    }
+
+	    List<List<String>> extractedData = new ArrayList<>();
+	    DataFormatter dataFormatter = new DataFormatter(); // Formats as displayed in Excel
+
+	    // Iterate through rows and extract values exactly as shown in Excel
+	    for (int i = 1; i <= sheet.getLastRowNum(); i++) { // Skip header row (0)
+	        Row row = sheet.getRow(i);
+	        if (row == null) continue;
+
+	        List<String> rowData = new ArrayList<>();
+	        boolean isRowEmpty = true;
+
+	        for (String columnName : requiredColumns) {
+	            int columnIndex = columnIndexMap.getOrDefault(columnName, -1);
+	            String cellValue = "";
+	            if (columnIndex != -1) {
+	                Cell cell = row.getCell(columnIndex);
+	                if (cell != null) {
+	                    cellValue = dataFormatter.formatCellValue(cell); // Formats value as displayed
+	                }
+	            }
+	            if (!cellValue.isEmpty()) {
+	                isRowEmpty = false;
+	                rowData.add(cellValue);
+	            }
+	        }
+
+	        if (!isRowEmpty) {
+	            extractedData.add(rowData);
+	        }
+	    }
+
+	    workbook.close();
+	    return extractedData;
+	}
+	
+	public static List<List<String>> readAllocatedaccountdetails() throws IOException {
+        // Get the user's home directory dynamically
+        String userHome = System.getProperty("user.home");
+        String downloadDir = userHome + File.separator + "Downloads";
+
+        // Get the latest downloaded Excel file
+        File latestFile = getLatestFileFromDir(downloadDir);
+        if (latestFile == null) {
+            System.out.println("No files found in the download directory.");
+            return Collections.emptyList();
+        }
+
+        FileInputStream fis = new FileInputStream(latestFile);
+        Workbook workbook = new XSSFWorkbook(fis);
+        Sheet sheet = workbook.getSheetAt(0); // First sheet
+
+        // Define required column names in the specified order
+        List<String> requiredColumns = Arrays.asList(
+            "A/c Number", "A/c Name", "Allocated/De Allocated Date",
+            "Allocated/De Allocated  Status", "Agency Name", "Agent ID", "Agent Name"
+        );
+
+        Map<String, Integer> columnIndexMap = new LinkedHashMap<>();
+        Row headerRow = sheet.getRow(0);
+        if (headerRow == null) {
+            workbook.close();
+            return Collections.emptyList();
+        }
+
+        // Identify required column indexes
+        for (Cell cell : headerRow) {
+            String headerValue = cell.getStringCellValue().trim();
+            if (requiredColumns.contains(headerValue)) {
+                columnIndexMap.put(headerValue, cell.getColumnIndex());
+            }
+        }
+
+        List<List<String>> extractedData = new ArrayList<>();
+        DataFormatter dataFormatter = new DataFormatter(); // Formats as displayed in Excel
+
+        // Iterate through rows and extract values exactly as shown in Excel
+        for (int i = 1; i <= sheet.getLastRowNum(); i++) { // Skip header row (0)
+            Row row = sheet.getRow(i);
+            if (row == null) continue;
+
+            List<String> rowData = new ArrayList<>();
+            boolean isRowEmpty = true;
+
+            for (String columnName : requiredColumns) {
+                int columnIndex = columnIndexMap.getOrDefault(columnName, -1);
+                String cellValue = "";
+                if (columnIndex != -1) {
+                    Cell cell = row.getCell(columnIndex);
+                    if (cell != null) {
+                        cellValue = dataFormatter.formatCellValue(cell); // Formats value as displayed
+                    }
+                }
+                if (!cellValue.isEmpty()) {
+                    isRowEmpty = false;
+                    rowData.add(cellValue);
+                }
+            }
+
+            if (!isRowEmpty) {
+                extractedData.add(rowData);
+            }
+        }
+
+        workbook.close();
+        return extractedData;
+    }
+
+	public static boolean isEmployeePresent(String empId, String empName) throws IOException {
+        // Get the user's Downloads directory
+        String userHome = System.getProperty("user.home");
+        String downloadDir = userHome + File.separator + "Downloads";
+
+        // Get the latest downloaded file
+        File latestFile = getLatestFileFromDir(downloadDir);
+        if (latestFile == null) {
+            System.out.println("No files found in the download directory.");
+            return false; 
+        }
+
+        // Open the Excel file
+        FileInputStream fis = new FileInputStream(latestFile);
+        Workbook workbook = new XSSFWorkbook(fis);
+        Sheet sheet = workbook.getSheet("sheet1"); // Adjust sheet name if needed
+
+        // Iterate through rows (skipping the header row)
+        for (int i = 1; i <= sheet.getLastRowNum(); i++) { 
+            Row row = sheet.getRow(i);
+            if (row == null) continue; // Skip empty rows
+
+            // Read Employee ID and Name
+            Cell idCell = row.getCell(1); // Assuming Employee ID is in the 2nd column (Index 1)
+            Cell nameCell = row.getCell(2); // Assuming Name is in the 3rd column (Index 2)
+
+            // Convert cell values to String
+            String idValue = (idCell != null) ? idCell.getStringCellValue().trim() : "";
+            String nameValue = (nameCell != null) ? nameCell.getStringCellValue().trim() : "";
+
+            // Check for a match
+            if (idValue.equalsIgnoreCase(empId) && nameValue.equalsIgnoreCase(empName)) {
+                workbook.close();
+                return true; // Match found
+            }
+        }
+
+        workbook.close();
+        return false; // No match found
+    }
+	
 	
 }

@@ -3,8 +3,9 @@
 <suite name="Suite" parallel="none">
   <test thread-count="1" name="Test">
     <classes>
-      <class name="Core.SecurityManagement.UserManagement_TC"/>
-      <class name="Core.SecurityManagement.BannedCustomerTest"/>
+      <class name="CollectionAgency.Disposition.CollectionAgencyDisposition_TestClass"/>
+      <class name="CollectionAgency.AccountAllocation.AgentAccountAllocation_TestClass"/>
+      <class name="Core.Configurations.CollectionOfficerConfig_TestClass"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -181,7 +181,7 @@ public class Login_Class extends Base_Class {
 			 */
             
             //Handling some error occurred case here
-            SomeErrorOccuredHandling();
+            SomeErrorOccuredHandling(CoreUserName,CoreUserPassword);
 
             // Fetch and display user organization details
             Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
@@ -349,7 +349,7 @@ public class Login_Class extends Base_Class {
                 System.out.println("Already login pop up not appeared");
             }
             
-            SomeErrorOccuredHandling();
+            SomeErrorOccuredHandling(CollectionUserName,CollectionUserPassword);
 
             Thread.sleep(6000);
 
@@ -458,7 +458,7 @@ public class Login_Class extends Base_Class {
                     driver.findElement(LoginPageRepo.username).sendKeys(CallCenterUserName);
                     Log.info("Entered " + CallCenterUserName + " in user name field");
                     driver.findElement(LoginPageRepo.password).sendKeys(CallCenterPassword);
-                    Log.info("Entered " + CallCenterUserName + " in password field");
+                    Log.info("Entered " + CallCenterPassword + " in password field");
                     driver.findElement(LoginPageRepo.login).click();
                     Log.info("Clicked on login button");
                     
@@ -471,7 +471,7 @@ public class Login_Class extends Base_Class {
                 System.out.println("Already login pop up not appeared");
             }
             
-            SomeErrorOccuredHandling();
+            SomeErrorOccuredHandling(CallCenterUserName,CallCenterPassword);
             
             Common.waitForSpinnerToDisappear2(driver, "Loading Spinner", LoginPageRepo.Spinner);
             Common.fluentWait("CallcentreFullLogo", LoginPageRepo.CallcentreFullLogo);
@@ -602,7 +602,7 @@ public class Login_Class extends Base_Class {
 				 * Log.info("Module selection page not appeared"); }
 				 */
 	        
-	        SomeErrorOccuredHandling();
+	        SomeErrorOccuredHandling(UserID,password);
 	        
 	        Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
 	        String UserIDInDashboard = driver.findElement(LoginPageRepo.UserIDInDashboard).getText();
@@ -619,69 +619,65 @@ public class Login_Class extends Base_Class {
 	    }
 	}
 	
-	public static void SomeErrorOccuredHandling() {
-        try {
-            WebElement SomeErrorOccured = Common.waitForElementToBeClickable(
-                driver, 
-                LoginPageRepo.LoginPageSomeErrorOccurred, 
-                Duration.ofSeconds(20)
-            );
+	public static void SomeErrorOccuredHandling(String CoreUserName, String CoreUserPassword) {
+	    try {
+	        WebElement SomeErrorOccured = Common.waitForElementToBeClickable(
+	            driver, 
+	            LoginPageRepo.LoginPageSomeErrorOccurred, Duration.ofSeconds(20));
 
-            if (SomeErrorOccured != null) {
-            	Log.info("Showing some error occured error message reloading the application");
-            	driver.navigate().refresh();
-            	
-            	if (AppType == "Core") {
-            		Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
-            	} else if (AppType == "CollectionAgency") {
-            		Common.fluentWait(CollectionAgency_BANNER_DETAILS, LoginPageRepo.CollectionAgencyLoginBannerDetails(CollectionAgency_BANNER_DETAILS));
-            	} else if (AppType == "CallCenter") {
-            		Common.fluentWait("CallCentre_BANNER_DETAILS", LoginPageRepo.CollectionAgencyLoginBannerDetails(CallCentre_BANNER_DETAILS));
-            	}
-            	
-            	Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
-                Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
-                Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
-            	
-            	driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
-                driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
-                driver.findElement(LoginPageRepo.LoginButton).click();
-                
-                try {
-                    WebElement clickableElement = Common.waitForElementToBeClickable(
-                        driver, 
-                        LoginPageRepo.AlreadyLoginPopupYesButton, 
-                        Duration.ofSeconds(20)
-                    );
+	        if (SomeErrorOccured != null) {
+	            Log.info("Showing some error occurred message, reloading the application");
+	            driver.navigate().refresh();
+	            
+	            if (AppType.equals("Core")) {
+	                Common.fluentWait("Core login Banner", LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
+	            } else if (AppType.equals("CollectionAgency")) {
+	                Common.fluentWait(CollectionAgency_BANNER_DETAILS, LoginPageRepo.CollectionAgencyLoginBannerDetails(CollectionAgency_BANNER_DETAILS));
+	            } else if (AppType.equals("CallCenter")) {
+	                Common.fluentWait("CallCentre_BANNER_DETAILS", LoginPageRepo.CollectionAgencyLoginBannerDetails(CallCentre_BANNER_DETAILS));
+	            }
+	            
+	            Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+	            Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+	            Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+	            
+	            driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+	            driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+	            driver.findElement(LoginPageRepo.LoginButton).click();
+	            
+	            try {
+	                WebElement clickableElement = Common.waitForElementToBeClickable(
+	                    driver, 
+	                    LoginPageRepo.AlreadyLoginPopupYesButton, 
+	                    Duration.ofSeconds(20)
+	                );
 
-                    if (clickableElement != null) {
-                        clickableElement.click();
-                        Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
-                        
-                        Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
-                        Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
-                        Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
-
-                        driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
-                        driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
-                        driver.findElement(LoginPageRepo.LoginButton).click();
-                        
-                        Log.info("Clicked on already login yes button and logged in again with valid credentials");
-                    } else {
-                        System.out.println("Element not clickable within the timeout.");
-                    }
-                } catch (Exception e) {
-                    System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
-                    System.out.println("Already login pop up not appeared");
-                }
-                
-            } else {
-               System.out.println("Some error occured error message didn't show");  
-            }
-        } catch (Exception e) {
-            System.out.println("Some error occured error message didn't show");
-        }
+	                if (clickableElement != null) {
+	                    clickableElement.click();
+	                    Common.waitForSpinnerToDisappear2(driver, "Loading Spinner", LoginPageRepo.Spinner);
+	                    
+	                    Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+	                    Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+	                    Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+	                    
+	                    driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+	                    driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+	                    driver.findElement(LoginPageRepo.LoginButton).click();
+	                    
+	                    Log.info("Clicked on already login yes button and logged in again with valid credentials");
+	                } else {
+	                    Log.info("Already login pop-up did not appear");
+	                }
+	            } catch (Exception e) {
+	                Log.info("Exception occurred while handling already login pop-up: " + e.getMessage());
+	            }
+	            
+	        } else {
+	            Log.info("Some error occurred message did not show");
+	        }
+	    } catch (Exception e) {
+	        Log.info("Exception in SomeErrorOccuredHandling: " + e.getMessage());
+	    }
 	}
-
 	
 }
