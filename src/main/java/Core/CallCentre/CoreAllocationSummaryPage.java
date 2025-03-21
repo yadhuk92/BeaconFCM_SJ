@@ -1,5 +1,6 @@
 package Core.CallCentre;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
@@ -11,6 +12,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Random;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -99,7 +109,7 @@ public class CoreAllocationSummaryPage {
 		Log.info("Search button clicked successfully.");
 	}
 
-	// In the Allocation Summary page, validate the warning  message without selecting any option 
+	// In the Allocation Summary page, validate the warning  message without selecting any option -AM
 	public String  Search_Without_Selecting_CallCentreDropdown() throws InterruptedException {
 			    
 		// Initialize WebDriverWait and wait for the element to become visible
@@ -121,7 +131,7 @@ public class CoreAllocationSummaryPage {
     // Validate monthly allocation summary and account details	
 	public void validate_AllocationSummary_AccountDetails() throws InterruptedException {
 
-		WebElement SelectCallcentreDropdown =driver.findElement(CoreAllocationSummaryRepo.allocationSummary);
+		WebElement SelectCallcentreDropdown =driver.findElement(CoreAllocationSummaryRepo.Select_CallCentre);
 		Log.info("Click on Select  Call Centre Dropdown");
 		SelectCallcentreDropdown.click();
 		Log.info("Clicked on Select  Call Centre Dropdown");
@@ -141,10 +151,82 @@ public class CoreAllocationSummaryPage {
 		Search.click();
 		Log.info("Clicked  Search Button");
 		
-		
+	}
+	
+	 // Function to wait for file download with a dynamic name -AM
+    public static File waitForFileDownload(String directory, String prefix, String extension, int timeoutSeconds) throws InterruptedException {
+        File dir = new File(directory);
+        File[] matchingFiles;
+        int attempts = 0;
+
+        while (attempts < timeoutSeconds / 2) {
+            matchingFiles = dir.listFiles((dir1, name) -> name.startsWith(prefix) && name.endsWith(extension));
+
+            if (matchingFiles != null && matchingFiles.length > 0) {
+                return matchingFiles[0];  // Return the first matching file
+            }
+
+            Thread.sleep(2000);  // Wait and retry
+            attempts++;
+        }
+
+        return null;  // Return null if no file found within timeout
+    }
+	
+ // Function to validate column headers in an Excel file - AM
+	public static boolean validateExcelHeaders(File file) {
+        try (FileInputStream fis = new FileInputStream(file);
+             Workbook workbook = new XSSFWorkbook(fis)) {
+
+            Sheet sheet = workbook.getSheetAt(0);  // First sheet
+            Row headerRow = sheet.getRow(0);  // First row
+
+            List<String> requiredHeaders = Arrays.asList("Allocation Date", "Allocation Type", "No. Of Accounts", "Total O/S Amount In Lakhs");
+
+            for (Cell cell : headerRow) {
+                String cellValue = cell.getStringCellValue().trim();
+                requiredHeaders.remove(cellValue);
+            }
+
+            return requiredHeaders.isEmpty();  // If all headers are found, return true
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+	// Once the summary allocation page is displayed, click on download icon-AM
+	// Validate monthly allocation summary and account details
+	public void validate_DownloadIcon_Header() throws InterruptedException {
+
+		Log.info("Click on download Icon");
+		// Click on the download icon
+		WebElement downloadIcon = driver.findElement(CoreAllocationSummaryRepo.downloadIcon); // Modify XPath as needed
+		downloadIcon.click();
+		Log.info("Clicked on download Icon");
+
+		// Define download directory
+		String downloadPath = "C:\\Users\\User\\ambika.yogesh\\Downloads\\"; // Modify based on system
+
+		// Wait for the file with dynamic name (DashBoard_*.xlsx)
+		File downloadedFile = waitForFileDownload(downloadPath, "DashBoard_", ".xlsx", 20);
+
+		if (downloadedFile == null) {
+			Log.info("File not downloaded");
+
+		}
+
+		Log.info("File downloaded: " + downloadedFile.getName());
+
+		// Validate column headers in the Excel file
+		if (validateExcelHeaders(downloadedFile)) {
+			Log.info("Validation Passed: Required columns are present!");
+		} else {
+			Log.info("Validation Failed: Some required columns are missing!");
+		}
 
 	}
-
 	
 	// Validate warning message without adding Asset Catogory-AM
 	public String validateWarningMessageWithoutAssetCetegory() throws InterruptedException {

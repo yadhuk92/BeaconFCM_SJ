@@ -256,6 +256,7 @@ public class CoreManualAllocationPage {
 		public String validate_OSBalnce() throws InterruptedException {
 			
 			Thread.sleep(3000);
+			
 			// Initialize WebDriverWait and wait for the element to become visible
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 			Thread.sleep(6000);
@@ -276,12 +277,12 @@ public class CoreManualAllocationPage {
 			
 			String Symbol=selectEqualsText.getText();
 			
-			//To generate the random number
-			Random random = new Random();
-	        int randomNumber = random.nextInt(9000) + 1000;
+//			//To generate the random number
+//			Random random = new Random();
+//	        int randomNumber = random.nextInt(30000) + 1000;
 			
 			WebElement OSfieldText=driver.findElement((CoreAutoAllocationRepo.OSFieldText));
-			OSfieldText.sendKeys(String.valueOf(randomNumber));
+			OSfieldText.sendKeys(String.valueOf("30000"));
 			
 			return Symbol;
 			
@@ -341,6 +342,40 @@ public class CoreManualAllocationPage {
 			    
 			       return isMatch;
 					
+				}
+				
+				// Validate Accounts Count data -AM
+				public void validate_Accounts_CountData() throws InterruptedException {
+
+//					String data = "0";
+//
+					// Initialize WebDriverWait and wait for the element to become visible
+					WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+//
+//					// Verify "Total account selected" column exists
+//					List<WebElement> totalAccountColumn = driver.findElements((CoreAutoAllocationRepo.table_content));
+//					String[] actualCol = new String[totalAccountColumn.size()];
+//
+//					for (int i = 0; i < totalAccountColumn.size(); i++) {
+//						actualCol[i] = totalAccountColumn.get(i).getText().trim();
+//						if (actualCol[i].equals(data)) {
+							WebElement resetBtn = driver.findElement(CoreAutoAllocationRepo.reset_Button);
+							resetBtn.click();
+							wait.until(
+									ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+
+							validate_NPA_And_SMA_Dropsdown();
+							validate_SMA_Dropsdown();
+							validate_NPA_Dropsdown();
+							validate_OSBalnce();
+							validate_ToField_Callcenter();
+							clickSearchButton();
+//						} else {
+//							break;
+//						}
+
+//					}
+
 				}
 				
 				// Validate AllocateTo_Field dropdown -AM

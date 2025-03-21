@@ -89,283 +89,286 @@ public class CoreAllocationSummary_TestClass {
 		// Start a new ExtentTest for the current test method
 		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Call Centre ManualAllocation");
 	}
-
-	@Test(priority = 1)
-	public void Login_to_call_centre_application_and_take_account_filtration_page() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-		try {
-			ExtentTestManager.getTest().log(Status.PASS, "Opened the FCM Call Centre application.");
-			ExtentTestManager.getTest().log(Status.PASS, "Entered valid credentials and logged in.");
-			
-			// Navigate to Call Centre Main Menu
-			coremanualallocationpage.navigateToMainMenu();
-			ExtentTestManager.getTest().log(Status.PASS, "Navigated to the Call Centre Main Menu.");
-
-			// Click on Manual Allocation option
-			coremanualallocationpage.navigateToManualAllocationOption();
-			ExtentTestManager.getTest().log(Status.PASS, "Clicked on the Manual Allocation sub-menu.");
-
-			// Expected Result: User is navigated to Manual Allocation page
-			// URL shows CallCentre/CallCentreLeadFiltration
-			String currentUrl = driver.getCurrentUrl();
-			Assert.assertTrue(currentUrl.contains("CallCentre/ManualAllocationConfiguration"),
-					"Not navigated to Manual Allocation page.");
-			ExtentTestManager.getTest().log(Status.PASS,
-					"User is navigated to Manual Allocation page, URL shows CallCentre/ManualAllocationConfiguration.");
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-
-	@Test(priority = 2)
-	public void Mandatory_Field_Validation_for_AssetCategory_and_ToField() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-		try {
-
-			ExtentTestManager.getTest().log(Status.PASS, "Left the Asset Category");
-			String warningMsg = coremanualallocationpage.validateWarningMessageWithoutAssetCetegory();
-
-			ExtentTestManager.getTest().log(Status.PASS, "Clicked on the Search button.");
-			// Verify the warning message
-			String expectedMessage = "Asset Category Required";
-
-			Assert.assertEquals(warningMsg, expectedMessage, "Warning message displayed as expected");
-			ExtentTestManager.getTest().log(Status.PASS, "Displays warning message \"Assigned Categoty  Required\".");
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
-
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-
-	@Test(priority = 3)
-	public void Validate_AssetCatogories_Dropdown() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-		try {
-
-			// Use JavaScript to zoom out (set zoom level to 67%)
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("document.body.style.zoom='67%'");
-
-			ExtentTestManager.getTest().log(Status.PASS, "Clicking Asset Category Dropdown");
-			coremanualallocationpage.validate_NPA_And_SMA_Dropsdown();
-
-			ExtentTestManager.getTest().log(Status.PASS, "NPA and SMA Dropdowns are selected from Asset Category");
-
-			WebElement check_NPA = driver.findElement(CoreAutoAllocationRepo.NPADropdownCheck);
-			Assert.assertTrue(check_NPA.isEnabled(), "NPADropdown is enabled");
-
-			WebElement check_SMA = driver.findElement(CoreAutoAllocationRepo.SMADropdownCheck);
-			Assert.assertTrue(check_SMA.isEnabled(), "NPADropdown is enabled");
-
-			ExtentTestManager.getTest().log(Status.PASS, "Selected both SMA and NPA from dropdown");
-			// Update the ScreenShot object with the new driver
-			screenShot = new com.Utility.ScreenShot(driver);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-
-	@Test(priority = 4)
-	public void Validate_SMACatogories_From_Dropdown() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-		try {
-
-			ExtentTestManager.getTest().log(Status.PASS, "Clicking SMA Category Dropdown");
-			coremanualallocationpage.validate_SMA_Dropsdown();
-
-			ExtentTestManager.getTest().log(Status.PASS, "SMA0,SMA1 and SMA2 from SMA Category");
-
-			WebElement check_SMA0 = driver.findElement(CoreAutoAllocationRepo.SM0DropdownCheck);
-			Assert.assertTrue(check_SMA0.isEnabled(), "SMA0 option is enabled");
-
-			WebElement check_SMA1 = driver.findElement(CoreAutoAllocationRepo.SM1DropdownCheck);
-			Assert.assertTrue(check_SMA1.isEnabled(), "SMA1 option is enabled");
-
-			WebElement check_SMA2 = driver.findElement(CoreAutoAllocationRepo.SM2DropdownCheck);
-			Assert.assertTrue(check_SMA2.isEnabled(), "SMA2 option is enabled");
-
-			ExtentTestManager.getTest().log(Status.PASS, "All the SMA0, SMA1 and SMA2 options are enabled");
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-			// Update the ScreenShot object with the new driver
-			screenShot = new com.Utility.ScreenShot(driver);
-
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-
-	@Test(priority = 5)
-	public void Validate_NPACatogories_From_Dropdown() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-		try {
-
-			ExtentTestManager.getTest().log(Status.PASS, "Clicking NPA Category Dropdown");
-			coremanualallocationpage.validate_NPA_Dropsdown();
-
-			ExtentTestManager.getTest().log(Status.PASS,
-					"Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA categories are displayed.");
-
-//			List<WebElement> lists = driver.findElements(CoreAutoAllocationRepo.npaCategorylistDropdown);
-//			for (WebElement check : lists) {
 //
-//				String checkboxName = check.getAttribute("aria-label");
-//			//	Assert.assertTrue(check.isSelected(), "NPA categories options are enabled");
-//				Log.info(checkboxName, " is enabled");
+//	@Test(priority = 1)
+//	public void Login_to_call_centre_application_and_take_account_filtration_page() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//		try {
+//			ExtentTestManager.getTest().log(Status.PASS, "Opened the FCM Call Centre application.");
+//			ExtentTestManager.getTest().log(Status.PASS, "Entered valid credentials and logged in.");
+//			
+//			// Navigate to Call Centre Main Menu
+//			coremanualallocationpage.navigateToMainMenu();
+//			ExtentTestManager.getTest().log(Status.PASS, "Navigated to the Call Centre Main Menu.");
+//
+//			// Click on Manual Allocation option
+//			coremanualallocationpage.navigateToManualAllocationOption();
+//			ExtentTestManager.getTest().log(Status.PASS, "Clicked on the Manual Allocation sub-menu.");
+//
+//			// Expected Result: User is navigated to Manual Allocation page
+//			// URL shows CallCentre/CallCentreLeadFiltration
+//			String currentUrl = driver.getCurrentUrl();
+//			Assert.assertTrue(currentUrl.contains("CallCentre/ManualAllocationConfiguration"),
+//					"Not navigated to Manual Allocation page.");
+//			ExtentTestManager.getTest().log(Status.PASS,
+//					"User is navigated to Manual Allocation page, URL shows CallCentre/ManualAllocationConfiguration.");
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//
+//	@Test(priority = 2)
+//	public void Mandatory_Field_Validation_for_AssetCategory_and_ToField() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//		try {
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "Left the Asset Category");
+//			String warningMsg = coremanualallocationpage.validateWarningMessageWithoutAssetCetegory();
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "Clicked on the Search button.");
+//			// Verify the warning message
+//			String expectedMessage = "Asset Category Required";
+//
+//			Assert.assertEquals(warningMsg, expectedMessage, "Warning message displayed as expected");
+//			ExtentTestManager.getTest().log(Status.PASS, "Displays warning message \"Assigned Categoty  Required\".");
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
+//
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//
+//	@Test(priority = 3)
+//	public void Validate_AssetCatogories_Dropdown() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//		try {
+//
+//			// Use JavaScript to zoom out (set zoom level to 67%)
+//			JavascriptExecutor js = (JavascriptExecutor) driver;
+//			js.executeScript("document.body.style.zoom='67%'");
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "Clicking Asset Category Dropdown");
+//			coremanualallocationpage.validate_NPA_And_SMA_Dropsdown();
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "NPA and SMA Dropdowns are selected from Asset Category");
+//
+//			WebElement check_NPA = driver.findElement(CoreAutoAllocationRepo.NPADropdownCheck);
+//			Assert.assertTrue(check_NPA.isEnabled(), "NPADropdown is enabled");
+//
+//			WebElement check_SMA = driver.findElement(CoreAutoAllocationRepo.SMADropdownCheck);
+//			Assert.assertTrue(check_SMA.isEnabled(), "NPADropdown is enabled");
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "Selected both SMA and NPA from dropdown");
+//			// Update the ScreenShot object with the new driver
+//			screenShot = new com.Utility.ScreenShot(driver);
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+//
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//
+//	@Test(priority = 4)
+//	public void Validate_SMACatogories_From_Dropdown() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//		try {
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "Clicking SMA Category Dropdown");
+//			coremanualallocationpage.validate_SMA_Dropsdown();
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "SMA0,SMA1 and SMA2 from SMA Category");
+//
+//			WebElement check_SMA0 = driver.findElement(CoreAutoAllocationRepo.SM0DropdownCheck);
+//			Assert.assertTrue(check_SMA0.isEnabled(), "SMA0 option is enabled");
+//
+//			WebElement check_SMA1 = driver.findElement(CoreAutoAllocationRepo.SM1DropdownCheck);
+//			Assert.assertTrue(check_SMA1.isEnabled(), "SMA1 option is enabled");
+//
+//			WebElement check_SMA2 = driver.findElement(CoreAutoAllocationRepo.SM2DropdownCheck);
+//			Assert.assertTrue(check_SMA2.isEnabled(), "SMA2 option is enabled");
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "All the SMA0, SMA1 and SMA2 options are enabled");
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+//			// Update the ScreenShot object with the new driver
+//			screenShot = new com.Utility.ScreenShot(driver);
+//
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//
+//	@Test(priority = 5)
+//	public void Validate_NPACatogories_From_Dropdown() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//		try {
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "Clicking NPA Category Dropdown");
+//			coremanualallocationpage.validate_NPA_Dropsdown();
+//
+//			ExtentTestManager.getTest().log(Status.PASS,
+//					"Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA categories are displayed.");
+//
+////			List<WebElement> lists = driver.findElements(CoreAutoAllocationRepo.npaCategorylistDropdown);
+////			for (WebElement check : lists) {
+////
+////				String checkboxName = check.getAttribute("aria-label");
+////			//	Assert.assertTrue(check.isSelected(), "NPA categories options are enabled");
+////				Log.info(checkboxName, " is enabled");
+////			}
+//
+//			ExtentTestManager.getTest().log(Status.PASS,
+//					"\"Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA categories are enabled");
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+//			// Update the ScreenShot object with the new driver
+//			screenShot = new com.Utility.ScreenShot(driver);
+//
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//
+//	@Test(priority = 6)
+//	public void Validate_OSBalnceField() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//		try {
+//
+//			ExtentTestManager.getTest().log(Status.PASS, "O/S Balance");
+//			String selectedName =coremanualallocationpage.validate_OSBalnce();
+//
+//			ExtentTestManager.getTest().log(Status.PASS,"Selected = option");
+//
+//			Assert.assertEquals(selectedName, "=", "Selected the expected option from O/S Balance dropdown");
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+//			screenShot = new com.Utility.ScreenShot(driver);
+//
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//	
+//	@Test(priority = 7)
+//	public void Validate_ToField() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+//		try {
+//			
+//			ExtentTestManager.getTest().log(Status.PASS, "To Field");
+//			String value =coremanualallocationpage.validate_ToField_Callcenter();
+//
+//			ExtentTestManager.getTest().log(Status.PASS,"Selected Call Centre option");
+//
+//			Assert.assertEquals(value, "Call Centre", "Selected the expected option from To  dropdown");
+//			screenShot = new com.Utility.ScreenShot(driver);
+//		
+//			coremanualallocationpage.clickSearchButton();// Method to click Search BUtton();
+//		
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//		
+//	@Test(priority = 8)
+//	public void Validate_AccountsCount() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+//		try {
+//			
+//			ExtentTestManager.getTest().log(Status.PASS, "Account Counts");
+//			boolean isMatch=coremanualallocationpage.validate_Accounts_Count();
+//			
+//			ExtentTestManager.getTest().log(Status.PASS, "Displayed Account Counts");
+//
+//			Assert.assertTrue(isMatch,"Expected Columns are present");
+//			screenShot = new com.Utility.ScreenShot(driver);
+//
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//	
+//	@Test(priority = 9)
+//	public void Validate_AllocateToField() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+//		try {
+//			
+//			ExtentTestManager.getTest().log(Status.PASS, "Allocate To Field");
+//			String value =coremanualallocationpage.validate_AllocateToField_Callcenter();
+//
+//			ExtentTestManager.getTest().log(Status.PASS,"Selected Call Centre option");
+//
+//			Assert.assertEquals(value, "Call Centre", "Selected the expected option from Allocated  To  dropdown");
+//			screenShot = new com.Utility.ScreenShot(driver);
+//			
+//		}
+//
+//		catch (AssertionError | Exception e) {
+//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//			throw e;
+//		}
+//		Thread.sleep(3000);
+//	}
+//	
+//	@Test(priority = 10)
+//	public void Validate_MessageAfterAllocation() throws InterruptedException {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+//		try {
+//			
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+//			//coremanualallocationpage.validate_Accounts_CountData();
+//			
+//			ExtentTestManager.getTest().log(Status.PASS, "Validating Message after allocation");
+//			String warningMsg =coremanualallocationpage.validate_mesgAfterAllocation();
+//
+//			ExtentTestManager.getTest().log(Status.PASS,"Validated  Message after allocation");
+//			
+//			// Verify the warning message
+//				String expectedMessage = "Assigned Successfully";
+//
+//				Assert.assertEquals(warningMsg, expectedMessage, "Successful  message displayed as expected");
+//				ExtentTestManager.getTest().log(Status.PASS, "Displays warning message \"Assigned Successfully\".");
+//				wait.until(ExpectedConditions.invisibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
+//			
+//			screenShot = new com.Utility.ScreenShot(driver);
+//		}
+//			catch (AssertionError | Exception e) {
+//				ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+//				throw e;
 //			}
-
-			ExtentTestManager.getTest().log(Status.PASS,
-					"\"Sub Standard, Doubtful1, Doubtful2, doubtful3 and loss NPA categories are enabled");
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-			// Update the ScreenShot object with the new driver
-			screenShot = new com.Utility.ScreenShot(driver);
-
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-
-	@Test(priority = 6)
-	public void Validate_OSBalnceField() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-		try {
-
-			ExtentTestManager.getTest().log(Status.PASS, "O/S Balance");
-			String selectedName =coremanualallocationpage.validate_OSBalnce();
-
-			ExtentTestManager.getTest().log(Status.PASS,"Selected = option");
-
-			Assert.assertEquals(selectedName, "=", "Selected the expected option from O/S Balance dropdown");
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-			screenShot = new com.Utility.ScreenShot(driver);
-
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-	
-	@Test(priority = 7)
-	public void Validate_ToField() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		try {
-			
-			ExtentTestManager.getTest().log(Status.PASS, "To Field");
-			String value =coremanualallocationpage.validate_ToField_Callcenter();
-
-			ExtentTestManager.getTest().log(Status.PASS,"Selected Call Centre option");
-
-			Assert.assertEquals(value, "Call Centre", "Selected the expected option from To  dropdown");
-			screenShot = new com.Utility.ScreenShot(driver);
-			coremanualallocationpage.clickSearchButton();// Method to click Search BUtton();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-			
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-		
-	@Test(priority = 8)
-	public void Validate_AccountsCount() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-		try {
-			
-			ExtentTestManager.getTest().log(Status.PASS, "Account Counts");
-			boolean isMatch=coremanualallocationpage.validate_Accounts_Count();
-			
-			ExtentTestManager.getTest().log(Status.PASS, "Displayed Account Counts");
-
-			Assert.assertTrue(isMatch,"Expected Columns are present");
-			screenShot = new com.Utility.ScreenShot(driver);
-
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-	
-	@Test(priority = 9)
-	public void Validate_AllocateToField() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		try {
-			
-			ExtentTestManager.getTest().log(Status.PASS, "Allocate To Field");
-			String value =coremanualallocationpage.validate_AllocateToField_Callcenter();
-
-			ExtentTestManager.getTest().log(Status.PASS,"Selected Call Centre option");
-
-			Assert.assertEquals(value, "Call Centre", "Selected the expected option from Allocated  To  dropdown");
-			screenShot = new com.Utility.ScreenShot(driver);
-			
-		}
-
-		catch (AssertionError | Exception e) {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-			throw e;
-		}
-		Thread.sleep(3000);
-	}
-	
-	@Test(priority = 10)
-	public void Validate_MessageAfterAllocation() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		try {
-			
-			ExtentTestManager.getTest().log(Status.PASS, "Validating Message after allocation");
-			String warningMsg =coremanualallocationpage.validate_mesgAfterAllocation();
-
-			ExtentTestManager.getTest().log(Status.PASS,"Validated  Message after allocation");
-			
-			// Verify the warning message
-				String expectedMessage = "Assigned Successfully";
-
-				Assert.assertEquals(warningMsg, expectedMessage, "Successful  message displayed as expected");
-				ExtentTestManager.getTest().log(Status.PASS, "Displays warning message \"Assigned Successfully\".");
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(CoreAutoAllocationRepo.warningmsg));
-			
-			screenShot = new com.Utility.ScreenShot(driver);
-		}
-			catch (AssertionError | Exception e) {
-				ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-				throw e;
-			}
-			Thread.sleep(3000);
-		}
-		
-	@Test(priority = 11)
+//			Thread.sleep(3000);
+//		}
+//		
+	@Test(priority = 1)
 	public void Validate_CallcentreSideMenu_Visibility() throws InterruptedException {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 			try {
@@ -379,7 +382,7 @@ public class CoreAllocationSummary_TestClass {
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
 				
 				//Verify  Allocation Summary Sub Menu is displayed
-				WebElement allocationSummary = driver.findElement(CoreAllocationSummaryRepo.allocationSummary);
+				WebElement allocationSummary = driver.findElement(CoreAllocationSummaryRepo.allocationSummaryOption);
 				
 				Assert.assertTrue(allocationSummary.isDisplayed(), "'Allocation Summary' option is NOT visible in the side menu!");
 				
@@ -395,7 +398,7 @@ public class CoreAllocationSummary_TestClass {
 			Thread.sleep(3000);
 		}
 		
-	@Test(priority = 12)
+	@Test(priority = 2)
 	public void Validate_AllocationSummaryPage_Displayed() throws InterruptedException {
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 				try {
@@ -421,7 +424,7 @@ public class CoreAllocationSummary_TestClass {
 					
 				}
 			
-			@Test(priority = 13)
+			@Test(priority = 3)
 	public void Validate_CallCentre_And_SearchButton_Are_Visible() throws InterruptedException {
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 				try {
@@ -429,8 +432,8 @@ public class CoreAllocationSummary_TestClass {
 					ExtentTestManager.getTest().log(Status.PASS, "Validate Call centre option from dropdown  and search buttonare visible");
 					
 					//Check if the call Center DropDown is visible
-					WebElement _callCentreDropdown=driver.findElement(CoreAllocationSummaryRepo.CallCentreDropdown);
-					Assert.assertTrue(_callCentreDropdown.isDisplayed(),"Call Centre option is visible");
+					WebElement _selectCallCenter=driver.findElement(CoreAllocationSummaryRepo.selectCallCenterLabel);
+					Assert.assertTrue(_selectCallCenter.isDisplayed(),"Call Centre option is visible");
 					
 					//Check if the Search Button is visible
 					WebElement SearchButton=driver.findElement(CoreAllocationSummaryRepo.Submit);
@@ -448,7 +451,7 @@ public class CoreAllocationSummary_TestClass {
 					
 				}
 			
-	@Test(priority = 14)
+	@Test(priority = 4)
     public void Validate_WarningMessage_WithoutCallCentreDropdown() throws InterruptedException {
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 				try {
@@ -472,18 +475,17 @@ public class CoreAllocationSummary_TestClass {
 					
 				}
 	
-	@Test(priority = 15)
+	@Test(priority = 5)
     public void Validate_AllocationSummary_AccountDetails() throws InterruptedException {
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 				try {
 					
-					ExtentTestManager.getTest().log(Status.PASS, "Left Select call centre option empty");
+					ExtentTestManager.getTest().log(Status.PASS, "validate allocation summary page");
 					//WebElement _callCentreDropdown=driver.findElement(CoreAllocationSummaryRepo.CallCentreDropdown);
-					String Expectedmessage= "Call Center Is Required";
 					
 					coreallocationsummarypage.validate_AllocationSummary_AccountDetails();
 					
-					ExtentTestManager.getTest().log(Status.PASS, "Warning Message Displayed");
+					ExtentTestManager.getTest().log(Status.PASS, "Allocation Summary Displayed");
 					screenShot = new com.Utility.ScreenShot(driver);
 				}
 				catch (AssertionError | Exception e) {
@@ -494,6 +496,25 @@ public class CoreAllocationSummary_TestClass {
 					
 				}
 			
+	@Test(priority = 6)
+    public void Validate_Downloaded_ExcelData() throws InterruptedException {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+				try {
+					
+					ExtentTestManager.getTest().log(Status.PASS, "validate downloaded excel data");
+	
+					coreallocationsummarypage.validate_DownloadIcon_Header();
+					
+					ExtentTestManager.getTest().log(Status.PASS, "Excel head validated");
+					screenShot = new com.Utility.ScreenShot(driver);
+				}
+				catch (AssertionError | Exception e) {
+					ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+					throw e;
+				}
+				Thread.sleep(3000);
+					
+				}
 		
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {

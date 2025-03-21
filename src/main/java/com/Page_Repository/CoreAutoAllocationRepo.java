@@ -75,6 +75,10 @@ public class CoreAutoAllocationRepo {
 	public static By AllocationTable = By
 			.xpath("//table[@class='rz-grid-table rz-grid-table-fixed']//th//span");
 	
+	public static By  table_content=By.xpath("//table[@class='rz-grid-table rz-grid-table-fixed']//tbody//tr//span");
+	
+	public static By  reset_Button=By.xpath("//button[@type='reset']");
+			
 	public static By AssignButton = By
 			.xpath("//button[contains(text(),'Assign')]");
 	
