@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <listeners>
+        <listener class-name="com.BasePackage.TestFilter"/>
+    </listeners>
+    
+   <!-- <test thread-count="1" name="Test">
+        <classes>
+            <class name="com.test.LoginTest.CoreLoginTest"/>
+      		<class name="com.test.LoginTest.TestAnyMethod"/>
+      		<class name="Core.Configurations.CollectionOfficerConfig_TestClass"/>
+        </classes>
+    </test>-->
+
+    <test thread-count="1" name="Test">
+        <classes>
+            <class name="CollectionAgency.Disposition.CollectionAgencyDisposition_TestClass"/>
+      		<class name="CollectionAgency.AccountAllocation.AgentAccountAllocation_TestClass"/>
+      		<class name="Core.Configurations.CollectionOfficerConfig_TestClass"/>
+        </classes>
+    </test>
+</suite>

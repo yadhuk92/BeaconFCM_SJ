@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import com.BasePackage.Base_Class;
@@ -24,13 +25,14 @@ public class CoreLoginTest extends Base_Class {
     TestListener TestListener;
     com.Utility.ScreenShot screenShot;
 
-    @BeforeSuite
+    @BeforeClass
     public void reference() {
         log = new Log();
         TestListener = new TestListener();
         Base_Class = new Base_Class();
         AllLoginCases = new Login_Class();
         screenShot = new com.Utility.ScreenShot(driver);
+        Log.info("**** " + new Object() {}.getClass().getEnclosingClass().getSimpleName() + " ****");
     }
 
     @Test

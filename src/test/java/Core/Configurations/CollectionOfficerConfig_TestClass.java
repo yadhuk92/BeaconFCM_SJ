@@ -25,6 +25,7 @@ import com.BasePackage.DownloadedExcelReader;
 import com.BasePackage.Login_Class;
 import com.Page_Repository.CoreCollectionOfficerConfiguration;
 import com.Page_Repository.UpdationofDispositionRepo;
+import com.Utility.Log;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -58,6 +59,7 @@ public class CollectionOfficerConfig_TestClass {
 		//ExcelReader = new com.Utility.ExcelReader("CollectionAgencyAgentAcAllocatP");
 		TestListener = new TestListener();
 		screenShot = new com.Utility.ScreenShot(driver);
+		Log.info("**** " + new Object() {}.getClass().getEnclosingClass().getSimpleName() + " ****");
 	}
 	
 	@BeforeMethod
@@ -68,7 +70,8 @@ public class CollectionOfficerConfig_TestClass {
 		TestListener = new TestListener();
 	    screenShot = new com.Utility.ScreenShot(driver);
         // Start a new ExtentTest for the current test method
-        extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Core-Collection Officer Config...");
+        extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Core-Collection Officer Configuration");
+        Log.info("****" + method.getName() + "****");
     }
 	
 	 @Test(priority = 1)

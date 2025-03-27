@@ -24,6 +24,7 @@ import com.BasePackage.Base_Class;
 import com.BasePackage.DBUtils;
 import com.BasePackage.Login_Class;
 import com.Page_Repository.DispositionMasterPageRepo;
+import com.Utility.Log;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -53,6 +54,7 @@ public class AgentAccountAllocation_TestClass {
 
 	public void SetUp() throws Exception {
 		
+		Log.info("**** " + new Object() {}.getClass().getEnclosingClass().getSimpleName() + " ****");
 		baseclass = new Base_Class();
 		corelogin = new Login_Class();
 		String CoreUserName = Base_Class.configloader().getProperty("CoreUserName");
@@ -72,7 +74,8 @@ public class AgentAccountAllocation_TestClass {
 	    // Update the ScreenShot object with the new driver
 	    screenShot = new com.Utility.ScreenShot(driver);
         // Start a new ExtentTest for the current test method
-        extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Collection Agency-Agent Acc Allocat");
+        extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Collection Agency-Agent Account Allocation");
+        Log.info("****" + method.getName() + "****");
     }
 	
 	@Test(priority = 1)

@@ -62,7 +62,7 @@ public class DBUtils {
 			 */
         	
 			
-			  List<Object> inputParams = Arrays.asList("","John Doe", "john.doe@example.com",9876543210L);
+			  List<Object> inputParams = Arrays.asList("IBU0000028","John Doe", "john.doe@example.com",9876543210L);
 			  List<Integer> outputTypes = Arrays.asList(Types.VARCHAR,Types.VARCHAR,Types.VARCHAR);
 			  
 			  List<Object> results =ExecuteAnyOracleSQLStoredProcedure("HOUserIDGenerator", inputParams, outputTypes);
@@ -246,4 +246,3 @@ public class DBUtils {
     } 
     
 }
-

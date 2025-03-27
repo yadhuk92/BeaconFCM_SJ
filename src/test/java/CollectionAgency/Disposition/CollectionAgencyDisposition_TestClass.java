@@ -27,6 +27,7 @@ import com.BasePackage.DBUtils;
 import com.BasePackage.Login_Class;
 import com.Page_Repository.CollectionAgencyDispositionRepo;
 import com.Page_Repository.DispositionMasterPageRepo;
+import com.Utility.Log;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -54,6 +55,7 @@ public class CollectionAgencyDisposition_TestClass {
 
 	public void SetUp() throws Exception {
 		
+		Log.info("**** " + new Object() {}.getClass().getEnclosingClass().getSimpleName() + " ****");
 		baseclass = new Base_Class();
 		corelogin = new Login_Class();
 		String CoreUserName = Base_Class.configloader().getProperty("CoreUserName");
@@ -62,7 +64,7 @@ public class CollectionAgencyDisposition_TestClass {
 		Login_Class.CoreLogin(); 
 		driver = baseclass.getDriver(); // Retrieve the driver instance
 		collectionagencydispositionPage = new CollectionAgencyDispositionPage(driver);
-		ExcelReader = new com.Utility.ExcelReader("CollectionAgencyDispositionPage");
+		ExcelReader = new com.Utility.ExcelReader("CollectionAgencyDisposition");
 		TestListener = new TestListener();
 		screenShot = new com.Utility.ScreenShot(driver);
 	}
@@ -74,6 +76,7 @@ public class CollectionAgencyDisposition_TestClass {
 	    screenShot = new com.Utility.ScreenShot(driver);
         // Start a new ExtentTest for the current test method
         extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Collection Agency Disposition");
+        Log.info("****" + method.getName() + "****");
     }
 	
 	@Test(priority = 1)
