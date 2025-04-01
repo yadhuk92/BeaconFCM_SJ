@@ -118,7 +118,7 @@ public class LoginbannerPageTest extends Base_Class{
 	    }
 	 //Verify Fields and Buttons on Login Banner Confi Page
 	    @Test(priority=2)
-	    public void FieldsandButtonsAreCorrect() throws Throwable {
+	    public void VerifyFieldsandButtonsonManualAllocationPage() throws Throwable {
 	    	
 	    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
 	    	 loginbanner.waitForSpinnerToDisappear(driver, PageRepository.spinner);	 
@@ -147,7 +147,7 @@ public class LoginbannerPageTest extends Base_Class{
 		    }
 	  //Verify Mandatory Fields Warning
       @Test(priority=3)
-        public void MandatoryFieldsWarning() throws InterruptedException {
+        public void MandatoryFieldsWarning_SubmitWithoutUserType_SubmitWithoutBannerType_SubmitWithoutSection() throws InterruptedException {
         	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
  //       	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner)); 
            try 
@@ -177,7 +177,7 @@ public class LoginbannerPageTest extends Base_Class{
        //Click on Usertypedropdown and validate the dropdown values
         
         @Test(priority=4)
-        public void SelectInternalUserType() throws Throwable {
+        public void SelectUserType() throws Throwable {
  //       	System.out.println("Test1");
        try {
   //  	   System.out.println("Test2");
@@ -208,7 +208,7 @@ public class LoginbannerPageTest extends Base_Class{
                }
 	// Select Banner Type(Information)
        @Test (priority=5)
-        public void SelectInformationtype() throws InterruptedException {
+        public void SelectBannerType() throws InterruptedException {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(120));
         	try
         	{
@@ -234,7 +234,7 @@ public class LoginbannerPageTest extends Base_Class{
      
        //select Header1 from Section dropdown
         @Test(priority=6)
-        public void SelectHeader1() throws InterruptedException {
+        public void SelectSection() throws InterruptedException {
         	
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(200));
         	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
@@ -261,7 +261,7 @@ public class LoginbannerPageTest extends Base_Class{
         }      	
         //Enter Heading
        @Test(priority=7,dataProvider="TestData")
-        public void InputHeadingField(Map<Object, Object> testdata) {
+        public void EnterHeading(Map<Object, Object> testdata) {
         	try {
         		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
         			// Step 2: Retrieve the "AlphaNumericInput" data from the test data
@@ -293,7 +293,7 @@ public class LoginbannerPageTest extends Base_Class{
         
         //Enter Details
         @Test(priority=8,dataProvider= "TestData")
-        public void InputDetailField( Map<Object,Object> testdata) {
+        public void EnterDetails( Map<Object,Object> testdata) {
         	try
         	{
         		if(testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
@@ -323,7 +323,7 @@ public class LoginbannerPageTest extends Base_Class{
        //Submit the details by clicking on Submit button
         //(Usertype=Internal user,bannertype=Information,Section=Header1)
        @Test(priority=9)
-        public void Clicksubmitbutton() throws InterruptedException {
+        public void SubmitData() throws InterruptedException {
         	try
         	{
         	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -342,7 +342,7 @@ public class LoginbannerPageTest extends Base_Class{
  //Verify Data Post Logout(Usertype=Internal user,bannertype=Information,Section=Header1)
         
       @Test(priority=10)
-        public void CheckdataPostLogout() throws Throwable {
+        public void VerifyDataPostLogout() throws Throwable {
 
         	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(300));
         	 loginbanner.waitForSpinnerToDisappear(driver, PageRepository.spinner);	
@@ -379,7 +379,7 @@ public class LoginbannerPageTest extends Base_Class{
   
   //Click on usertype=> select internal user
        @Test(priority=11)
-       public void selectinternaluser() throws Throwable {
+       public void NavigationToLoginBannerConfiguration_SelectUserType() throws Throwable {
    
     	   try
     	   {
@@ -430,7 +430,7 @@ public class LoginbannerPageTest extends Base_Class{
         
   //Select hyperlink from banner type dropdown
        @Test(priority=12)
-        public void Selecthyperlink() throws Throwable {
+        public void SelectHyperlinkfromBannerType() throws Throwable {
         	WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
         	try
         	{
@@ -458,7 +458,7 @@ public class LoginbannerPageTest extends Base_Class{
         
 // select link1 from section dropdown
        @Test(priority=13)
-        public void Selectlink1() throws Throwable {
+        public void SelectLlink1fromSection() throws Throwable {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
         	loginbanner.waitForSpinnerToDisappear(driver, PageRepository.spinner);
         	try
@@ -488,7 +488,7 @@ public class LoginbannerPageTest extends Base_Class{
         
 //Input Headerlink
        @Test(priority=14,dataProvider="TestData")
-        public void InputHeaderLink( Map<Object,Object> testdata) {
+        public void EnterHeading1( Map<Object,Object> testdata) {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
         	try
         	{
@@ -513,7 +513,7 @@ public class LoginbannerPageTest extends Base_Class{
         
       //Input Detaillink
        @Test(priority=15,dataProvider="TestData")
-        public void InputDetailLink( Map<Object,Object> testdata)throws Throwable {
+        public void EnterDetails1( Map<Object,Object> testdata)throws Throwable {
         	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
         	try
         	{
@@ -541,7 +541,7 @@ public class LoginbannerPageTest extends Base_Class{
         
        @Test(priority=16)
         
-        public void ClickonLink1PostLogout() throws Throwable {
+        public void SubmitData_VerifyDataPostLogoutForhyperlink() throws Throwable {
         	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(90));
  //       	wait.until(ExpectedConditions.invisibilityOfElementLocated(PageRepository.spinner));
         	
@@ -605,7 +605,7 @@ public class LoginbannerPageTest extends Base_Class{
  //Test case-1. Select "internal user" from 'User Type'.2. Select "hyperlink" from 'Banner Type'. 3. Enter "link1" in 'Section'.4. Click on 'Search'.
   //Search entered details for link1      
         @Test(priority=17)
-        public void VerifyInputdataUsingSearch2() throws Throwable {
+        public void SearchExistingConfigurations1() throws Throwable {
 
     	try
         	{
@@ -687,7 +687,7 @@ public class LoginbannerPageTest extends Base_Class{
  //Search entered details for Header1      
         
     @Test(priority=18)
-    public void VerifydataUsingSearch1() throws Throwable {
+    public void SearchExistingConfigurations2() throws Throwable {
     	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
     	loginbanner.waitForSpinnerToDisappear(driver, PageRepository.spinner);
     	try
@@ -748,7 +748,7 @@ public class LoginbannerPageTest extends Base_Class{
     
 //Modify data in 'Heading' and 'Details' fields and submit for Internal user
        @Test(priority=19,dataProvider="TestData")
-   public void modifydata_link1( Map<Object,Object> testdata) throws Throwable {
+   public void EditandUpdateData( Map<Object,Object> testdata) throws Throwable {
    	WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(100));
    	loginbanner.waitForSpinnerToDisappear(driver, PageRepository.spinner);
 	   try
@@ -989,7 +989,7 @@ catch(AssertionError|Exception e) {
    
  //Submit Without Detail field
    @Test(priority=22,dataProvider="TestData")
-   public void SubmitWithoutDetailField(Map<Object,Object>testdata) throws Throwable {
+   public void SubmitWithoutDetails(Map<Object,Object>testdata) throws Throwable {
    try
 	   {
 	   System.out.println("SubmitWithoutDetailField");
@@ -1034,7 +1034,7 @@ catch(AssertionError|Exception e) {
    
 //Select "callcentre user" from the 'User Type' dropdown.  
    @Test(priority=23)
-   public void SelectCallCenter() throws Throwable {
+   public void SelectUserType1() throws Throwable {
  
 	   try
 	   {
@@ -1070,7 +1070,7 @@ catch(AssertionError|Exception e) {
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select Information from banner type dropdown 3.Select Header1 from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit   
    
   @Test(priority=24,dataProvider="TestData")
-  public void SubmitCallCentreData1(Map<Object,Object>testdata) throws Throwable {
+  public void SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(30));
 	   
 	   try
@@ -1148,7 +1148,7 @@ catch(AssertionError|Exception e) {
 //7.Logout and Verify the data on login page of Call Centre user
   
   @Test(priority=25,dataProvider="TestData")
-  public void VerifydataPostLogoutCC1(Map<Object,Object>testdata) throws Throwable {
+  public void VerifydataPostLogoutForCallCentre(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
 	   loginbanner.waitForSpinnerToDisappear(driver, PageRepository.spinner);
 	   
@@ -1214,7 +1214,7 @@ catch(AssertionError|Exception e) {
 //Test case-1.Select "Call Centre" from Usertype dropdown 2.Select "Hyperlink" from banner type dropdown 3.Select "link1" from Section dropdown 4.Enter Heading details.5.Enter Details  6.Click on Submit  
  @Test(priority=26,dataProvider="TestData")
   
-public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
+public void NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre(Map<Object,Object>testdata) throws Throwable {
   
 	   try
 	   {
@@ -1314,7 +1314,7 @@ public void SubmitCallCentreData2(Map<Object,Object>testdata) throws Throwable {
 
 @Test(priority=27,dataProvider="TestData")
 
-public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable {
+public void VerifydataPostLogoutForCallCentre2(Map<Object,Object>testdata) throws Throwable {
 	   WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(90));
 	   loginbanner.waitForSpinnerToDisappear(driver, PageRepository.spinner);
 	   
@@ -1387,7 +1387,7 @@ public void VerifydataPostLogoutCC2(Map<Object,Object>testdata) throws Throwable
 
 @Test(priority=28,dataProvider="TestData")
 
-public void ModifydataforCallCentre( Map<Object,Object> testdata) throws Throwable {
+public void ModifyandUpdatedataforCallCentre( Map<Object,Object> testdata) throws Throwable {
 
   try
   {
@@ -1567,7 +1567,7 @@ Thread.sleep(3000);
   
 @Test(priority=30,dataProvider="TestData")
 
-public void SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable {
+public void NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForAgencyUser(Map<Object,Object>testdata) throws Throwable {
 
    try
 	   {
