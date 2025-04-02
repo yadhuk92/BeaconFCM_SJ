@@ -110,6 +110,7 @@ public class CoreAllocationSummaryPage {
 	}
 
 	// In the Allocation Summary page, validate the warning  message without selecting any option -AM
+	
 	public String  Search_Without_Selecting_CallCentreDropdown() throws InterruptedException {
 			    
 		// Initialize WebDriverWait and wait for the element to become visible
@@ -210,7 +211,10 @@ public class CoreAllocationSummaryPage {
 		String downloadPath = "C:\\Users\\User\\ambika.yogesh\\Downloads\\"; // Modify based on system
 
 		// Wait for the file with dynamic name (DashBoard_*.xlsx)
-		File downloadedFile = waitForFileDownload(downloadPath, "DashBoard_", ".xlsx", 20);
+		File downloadedFile = waitForFileDownload(downloadPath, "DashBoard_*", ".xlsx", 20);
+		
+		// ✅ Get the latest downloaded .xls file
+       // File latestFile = FileHandler.getLatestExcelFile();
 
 		if (downloadedFile == null) {
 			Log.info("File not downloaded");
