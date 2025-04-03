@@ -282,7 +282,7 @@ public class CollectionOfficerConfig_TestClass {
 	 @Test(priority = 11)
 	    public void other_branch_user_is_not_showing_My_Desk_Unassigned_accounts_Tile() throws ClassNotFoundException, IOException, InterruptedException, SQLException {
 		 try {
-		 corecollectionofficerconfigpage.createHOUser();
+		 corecollectionofficerconfigpage.createHOUser(userId); 
 		 ExtentTestManager.getTest().log(Status.PASS, "A new 'Other Branch User' was created with login credentials, and successfully logged into the application using those credentials.");
 		 driver = baseclass.getDriver(); // Update the driver
 		 drivers.add(driver);

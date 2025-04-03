@@ -864,7 +864,7 @@ public class CollectionOfficerConfiguration_MainClass extends Base_Class {
 	    	    return errorMessage;
 	    }
 	    
-	    public void createHOUser() throws IOException, InterruptedException, ClassNotFoundException, SQLException {
+	    public void createHOUser(String userid) throws IOException, InterruptedException, ClassNotFoundException, SQLException {
 	    	Log.info("Starting HO User creation process...");
 
 	        String loginUserId;
@@ -877,7 +877,7 @@ public class CollectionOfficerConfiguration_MainClass extends Base_Class {
 	        loginUserId = properties.getProperty("HO_User_ID");
 
 	        Log.info("Preparing input parameters for stored procedure...");
-	        List<Object> inputParams = Arrays.asList(UserIDInDashboard,loginUserId, "John Doe", "john.doe@example.com", 9876543210L);
+	        List<Object> inputParams = Arrays.asList(userid,loginUserId, "John Doe", "john.doe@example.com", 9876543210L);
 	        List<Integer> outputTypes = Arrays.asList(Types.VARCHAR, Types.VARCHAR, Types.VARCHAR);
 
 	        Log.info("Executing stored procedure 'HOUserIDGenerator'...");
