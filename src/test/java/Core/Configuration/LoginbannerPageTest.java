@@ -1,5 +1,6 @@
 package Core.Configuration;
 import java.awt.Window;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
@@ -14,6 +15,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -27,6 +30,7 @@ import com.Page_Repository.LoginBannerConfiRepo;
 import com.Page_Repository.LoginPageRepo;
 import com.Utility.Log;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
@@ -1899,8 +1903,23 @@ public void VerifyModifiedDataforAgencyUser( Map<Object,Object> testdata) throws
 	Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
 	throw e;
 	}
-	}
+}
 
+@AfterMethod 
+public void takeScreenshotOnFailure(ITestResult result) throws IOException {
+	    // Check if the test case failed
+	    if (result.getStatus() == ITestResult.FAILURE) {
+	        String methodName = result.getMethod().getMethodName();
+	        try {
+	            // Take the screenshot for the failed test
+	            File image = screenShot.takeScreenShot(methodName, "Failure");
+	            extenttest.log(Status.INFO, "Screenshot of failure: ",
+	                    MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
+	        } catch (IOException e) {
+	            System.err.println("Failed to capture screenshot: " + e.getMessage());
+	        }
+	    }
+	}
 
 
 
