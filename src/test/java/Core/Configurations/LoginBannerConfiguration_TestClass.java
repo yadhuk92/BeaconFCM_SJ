@@ -60,7 +60,7 @@ public class LoginBannerConfiguration_TestClass extends Base_Class{
 		public void reference() throws Exception {
 			baseclass = new Base_Class();
 			CoreAppLogin = new Login_Class();
-			ExcelReader = new com.Utility.ExcelReader("Login_banner_confi");
+			ExcelReader = new com.Utility.ExcelReader("Core_LoginBannerConfig");
 			log = new Log();
 			TestListener = new TestListener();
 			CoreAppLogin.CoreLogin();
