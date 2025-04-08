@@ -2,9 +2,8 @@ package Core.CallCenterRoleManagement;
 
 import java.io.File;
 
-
-import Core.AddNewAgentMethods.AddNewAgentPage;
-import Core.CallCenterRoleManagementMethods.CallCenterRoleManagementPage;
+import Core.AddNewAgentMethods.AddNewAgentPage_MainClass;
+import Core.CallCenterRoleManagementMethods.CallCenterRoleManagementPage_MainClass;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.ParseException;
@@ -61,7 +60,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.DataProvider;
 import com.aventstack.extentreports.ExtentTest;
 
-public class CallCenterRoleManagement_Test extends Base_Class {
+public class CallCenterRoleManagement_TestClass extends Base_Class {
 	Log log;
 	Base_Class Base_Class;
 	com.Utility.ExcelReader ExcelReader;
@@ -72,8 +71,8 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 	ExtentTest extenttest;
 	Login_Class corelogin;
 	Login_Class AllLoginCases;
-	CallCenterRoleManagementPage CallCenterRoleManagementPage;
-	AddNewAgentPage AddNewAgentPage;
+	CallCenterRoleManagementPage_MainClass CallCenterRoleManagementPage_MainClass;
+	AddNewAgentPage_MainClass AddNewAgentPage_MainClass;
 	CallCenterRoleManagementRepo CallCenterRoleManagementRepo;
 
 	@BeforeSuite
@@ -94,7 +93,7 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		corelogin.CallCenterLogin();
 		driver = baseclass.getDriver(); // Retrieve the driver instance
 		screenShot = new com.Utility.ScreenShot(driver);
-		CallCenterRoleManagementPage = new CallCenterRoleManagementPage(driver);
+		CallCenterRoleManagementPage_MainClass = new CallCenterRoleManagementPage_MainClass(driver);
 	}
 
 	@BeforeMethod
@@ -111,8 +110,8 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		try {
 			System.out.println(" ************** Login_to_Beacon_FCM_call_centre_application 1 *****************");
 			System.out.println();
-		
-			CallCenterRoleManagementPage.VerifyTheText();
+
+			CallCenterRoleManagementPage_MainClass.VerifyTheText();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -131,13 +130,12 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		try {
 			System.out.println(" ************** Navigation_to_Role_Management 2 *****************");
 			System.out.println();
-			CallCenterRoleManagementPage.clickSecurityManagement();
-			CallCenterRoleManagementPage.clickRoleManagement();
-			CallCenterRoleManagementPage.WaitLoader();
-			CallCenterRoleManagementPage.RoleManagementHeaderIsDisplayed();
-			CallCenterRoleManagementPage.AddNewRoleIsDisplayed();
-			CallCenterRoleManagementPage.checkURL();
-			
+			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
+			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.RoleManagementHeaderIsDisplayed();
+			CallCenterRoleManagementPage_MainClass.AddNewRoleIsDisplayed();
+			CallCenterRoleManagementPage_MainClass.checkURL();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -157,7 +155,7 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		try {
 			System.out.println(" ************** Verify_Role_Management_Fields_and_Buttons 3 *****************");
 			System.out.println();
-			CallCenterRoleManagementPage.RoleManagementFieldsVerification();
+			CallCenterRoleManagementPage_MainClass.RoleManagementFieldsVerification();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -176,10 +174,10 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		try {
 			System.out.println(" ************** Add_New_Role_Open_Permission_Popup 4 *****************");
 			System.out.println();
-			CallCenterRoleManagementPage.clickAddNewRole();
-			CallCenterRoleManagementPage.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.clickAddNewRole();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
 			Common.fluentWait("Wait Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
-			CallCenterRoleManagementPage.FunctionalityPopUPVerification();
+			CallCenterRoleManagementPage_MainClass.FunctionalityPopUPVerification();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -198,10 +196,10 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 			System.out.println(" ************** Save_Role_Without_Name 5 *****************");
 			System.out.println();
 			Common.fluentWait("Role Name ", CallCenterRoleManagementRepo.RoleName);
-			CallCenterRoleManagementPage.SelectFunctionalities();
+			CallCenterRoleManagementPage_MainClass.SelectFunctionalities();
 			ExtentTestManager.getTest().log(Status.PASS, "Selected the all Functionalities");
-			CallCenterRoleManagementPage.clickSave();
-			CallCenterRoleManagementPage.isDisplayedRoleName();
+			CallCenterRoleManagementPage_MainClass.clickSave();
+			CallCenterRoleManagementPage_MainClass.isDisplayedRoleName();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -223,8 +221,8 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 			System.out.println();
 			driver.findElement(CallCenterRoleManagementRepo.Cancel).click();
 			ExtentTestManager.getTest().log(Status.PASS, "Cancel buttom clicked successfully");
-			CallCenterRoleManagementPage.WaitLoader();
-			CallCenterRoleManagementPage.RoleManagementHeader();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.RoleManagementHeader();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -245,18 +243,18 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 			System.out.println(" ************** Add_Role_with_Valid_Data 7 *****************");
 			System.out.println();
 
-			CallCenterRoleManagementPage.clickSecurityManagement();
-			CallCenterRoleManagementPage.clickRoleManagement();
-			CallCenterRoleManagementPage.WaitLoader();
-			CallCenterRoleManagementPage.clickAddNewRole();
+			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
+			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.clickAddNewRole();
 			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
-			CallCenterRoleManagementPage.AddRoleName7();
-			CallCenterRoleManagementPage.SelectFunctionalities();
+			CallCenterRoleManagementPage_MainClass.AddRoleName7();
+			CallCenterRoleManagementPage_MainClass.SelectFunctionalities();
 			ExtentTestManager.getTest().log(Status.PASS, "Selected the all Functionalities");
-			CallCenterRoleManagementPage.clickSave();
-			CallCenterRoleManagementPage.IsRecordSavedSuccessfully();
-			CallCenterRoleManagementPage.WaitLoader();
-			CallCenterRoleManagementPage.RoleManagemnentHeader();
+			CallCenterRoleManagementPage_MainClass.clickSave();
+			CallCenterRoleManagementPage_MainClass.IsRecordSavedSuccessfully();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.RoleManagemnentHeader();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -276,9 +274,9 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		try {
 			System.out.println(" ************** Search_for_Existing_Role 8 *****************");
 			System.out.println();
-			CallCenterRoleManagementPage.SearchFunction7();
-			CallCenterRoleManagementPage.WaitLoader();
-			CallCenterRoleManagementPage.ActionMenuDisplayed();
+			CallCenterRoleManagementPage_MainClass.SearchFunction7();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.ActionMenuDisplayed();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -298,11 +296,11 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		try {
 			System.out.println(" ************** Edit_Existing_Role_via_Action_Menu 9  *****************");
 			System.out.println();
-			CallCenterRoleManagementPage.clickAction();
-			CallCenterRoleManagementPage.clickEdit();
-			CallCenterRoleManagementPage.WaitLoader();
-			CallCenterRoleManagementPage.RolePermissionPopUp();
-			CallCenterRoleManagementPage.SelectFunctionalitiesSelectedornot();
+			CallCenterRoleManagementPage_MainClass.clickAction();
+			CallCenterRoleManagementPage_MainClass.clickEdit();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.RolePermissionPopUp();
+			CallCenterRoleManagementPage_MainClass.SelectFunctionalitiesSelectedornot();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -321,14 +319,14 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		try {
 			System.out.println(" ************** Update_Role_Functionalities 10 *****************");
 			System.out.println();
-			CallCenterRoleManagementPage.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
 			ExtentTestManager.getTest().log(Status.PASS, "edit the functionality started");
 			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
-			CallCenterRoleManagementPage.DeSelectFunctionalities();
+			CallCenterRoleManagementPage_MainClass.DeSelectFunctionalities();
 			ExtentTestManager.getTest().log(Status.PASS, "Edited the functionality  deselected");
-			CallCenterRoleManagementPage.clickSave();
-			CallCenterRoleManagementPage.RecordUpdatedSuccessfully();
-			CallCenterRoleManagementPage.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.clickSave();
+			CallCenterRoleManagementPage_MainClass.RecordUpdatedSuccessfully();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -339,24 +337,27 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		}
 
 	}
-
-	@Test(priority = 11)
-	public void Readd_Existing_Role(ITestContext context) throws InterruptedException, IOException, ParseException {
+	@Test(priority = 12)
+	public void Readd_Existing_Role(ITestContext context) throws Throwable {
 
 		try {
 			System.out.println(" ************** Readd_Existing_Role 11 *****************");
 			System.out.println();
-			CallCenterRoleManagementPage.checkIsDisplayed();
-			CallCenterRoleManagementPage.clickSecurityManagement();
-			CallCenterRoleManagementPage.clickRoleManagement();
-			CallCenterRoleManagementPage.clickAddNewRole();
-			CallCenterRoleManagementPage.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.LogintoCallCenter();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.checkIsDisplayed();
+			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
+			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.clickAddNewRole();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
 			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
-			CallCenterRoleManagementPage.addRoleName7();
-			CallCenterRoleManagementPage.SelectFunctionalities();
+			CallCenterRoleManagementPage_MainClass.addRoleName7();
+			CallCenterRoleManagementPage_MainClass.SelectFunctionalities();
 			ExtentTestManager.getTest().log(Status.PASS, "Selected the all Functionalities");
-			CallCenterRoleManagementPage.clickSave();
-			CallCenterRoleManagementPage.LevelExist();
+			CallCenterRoleManagementPage_MainClass.clickSave();
+			CallCenterRoleManagementPage_MainClass.LevelExist();
+			CallCenterRoleManagementPage_MainClass.checkIsDisplayed();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -367,28 +368,30 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		}
 
 	}
+	
 
-	@Test(priority = 12)
+	@Test(priority = 11)
 	public void Error_Guessing_Functionality_Not_Selected(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
 			System.out.println(" ************** Error_Guessing_Functionality_Not_Selected 12 *****************");
 			System.out.println();
-			Thread.sleep(2000);
-			CallCenterRoleManagementPage.checkIsDisplayed();
-			CallCenterRoleManagementPage.clickSecurityManagement();
-			CallCenterRoleManagementPage.clickRoleManagement();
-			CallCenterRoleManagementPage.WaitLoader();
+			Thread.sleep(2000);CallCenterRoleManagementPage_MainClass.checkIsDisplayed();
+			CallCenterRoleManagementPage_MainClass.LogintoCallCenter();
+		
+			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
+			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
 			Common.fluentWait("SecurityManagement", CallCenterRoleManagementRepo.Next);
 			Thread.sleep(4000);
-			CallCenterRoleManagementPage.clickAddNewRole();
-			CallCenterRoleManagementPage.WaitLoader();
+			CallCenterRoleManagementPage_MainClass.clickAddNewRole();
+			CallCenterRoleManagementPage_MainClass.WaitLoader();
 			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
 			Thread.sleep(5000);
-			CallCenterRoleManagementPage.EnterRoleName();
-			CallCenterRoleManagementPage.clickSave();
-			CallCenterRoleManagementPage.PleaseSelectFunctionality();
+			CallCenterRoleManagementPage_MainClass.EnterRoleName();
+			CallCenterRoleManagementPage_MainClass.clickSave();
+			CallCenterRoleManagementPage_MainClass.PleaseSelectFunctionality();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -400,7 +403,7 @@ public class CallCenterRoleManagement_Test extends Base_Class {
 		}
 
 	}
-
+	
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
 		// Check if the test case failed

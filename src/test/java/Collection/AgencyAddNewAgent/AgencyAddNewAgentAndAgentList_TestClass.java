@@ -1,4 +1,4 @@
-package Core.AgencyAddNewAgent;
+package Collection.AgencyAddNewAgent;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,9 +30,9 @@ import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
 import com.listeners.TestListener;
 
-import Core.AddNewAgentMethods.AddNewAgentPage;
+import Core.AddNewAgentMethods.AddNewAgentPage_MainClass;
 
-public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
+public class AgencyAddNewAgentAndAgentList_TestClass extends Base_Class {
 	Log log;
 	Base_Class Base_Class;
 	com.Utility.ExcelReader ExcelReader;
@@ -43,7 +43,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 	ExtentTest extenttest;
 	Login_Class corelogin;
 	Login_Class AllLoginCases;
-	AddNewAgentPage AddNewAgentPage;
+	AddNewAgentPage_MainClass AddNewAgentPage_MainClass;
 
 
 
@@ -65,7 +65,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		corelogin.CollectionAgencyLogin();
 		driver = baseclass.getDriver(); // Retrieve the driver instance
 		screenShot = new com.Utility.ScreenShot(driver);
-		AddNewAgentPage = new AddNewAgentPage(driver);
+		AddNewAgentPage_MainClass = new AddNewAgentPage_MainClass(driver);
 	}
 
 	@BeforeMethod
@@ -82,13 +82,13 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("********** Verify_AgentList_Navigation 1   ***********");
 			System.out.println();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAgentList();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.WaitNext();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAgentList();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.WaitNext();
 			Thread.sleep(4000);
-			AddNewAgentPage.AgentManagementDisplay();
+			AddNewAgentPage_MainClass.AgentManagementDisplay();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -106,13 +106,13 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			throws InterruptedException, IOException, ParseException {
 
 		try {
-//			AddNewAgentPage.WaitLoader();
+//			AddNewAgentPage_MainClass.WaitLoader();
 			System.out.println("********** VerifythefieldsandbuttonsinAgentlistpage2   ***********");
 			System.out.println();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAgentList();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.AgentListPageIsDisplayed();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAgentList();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.AgentListPageIsDisplayed();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -132,10 +132,10 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("********** Addnewagentpagenavigation3   ***********");
 			System.out.println();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAddNewAgent();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.AddNewAgentIsDisplayed();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAddNewAgent();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.AddNewAgentIsDisplayed();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -155,7 +155,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("********** Verify_Fields_Buttons_AddNewAgentPage 4   ***********");
 			System.out.println();
-			AddNewAgentPage.AddNewAgentPageFieldsVerification();
+			AddNewAgentPage_MainClass.AddNewAgentPageFieldsVerification();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -176,7 +176,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			System.out.println("********** VerifyDateofJoiningfieldonpageload 5  ***********");
 			System.out.println();
 			Common.fluentWait("Agent Management ", AgentListPageRepo.AgentManagement);
-			AddNewAgentPage.DateOfJoiningField();
+			AddNewAgentPage_MainClass.DateOfJoiningField();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -196,8 +196,8 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("********** Addnewagentpageclosebuttonfunctionality 6  ***********");
 			System.out.println();
-			AddNewAgentPage.clickClose();
-			AddNewAgentPage.WaitLoader();
+			AddNewAgentPage_MainClass.clickClose();
+			AddNewAgentPage_MainClass.WaitLoader();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -217,12 +217,12 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			System.out.println("**********  SubmitaddnewagentwithoutMandatoryFields 7  ***********");
 			System.out.println();
 			Common.fluentWait("Agent Management", AgentListPageRepo.AgentManagement);
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAddNewAgent();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.AddNewAgentIsDisplayed();
-			AddNewAgentPage.clickSubmit();
-			AddNewAgentPage.ErrorMandatoryField();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAddNewAgent();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.AddNewAgentIsDisplayed();
+			AddNewAgentPage_MainClass.clickSubmit();
+			AddNewAgentPage_MainClass.ErrorMandatoryField();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -242,7 +242,7 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("********** InvalidPhoneNumberFormat 8  ***********");
 			System.out.println();
-			AddNewAgentPage.InvalidPhoneNumber();
+			AddNewAgentPage_MainClass.InvalidPhoneNumber();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -261,12 +261,12 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("**********  SubmitValidNewAgentDetails 9 ***********");
 			System.out.println();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAddNewAgent();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.ClearAddNewAgent();
-			AddNewAgentPage.CreateNewAgent9();
-			AddNewAgentPage.isUserCreatedSuccessfully();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAddNewAgent();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.ClearAddNewAgent();
+			AddNewAgentPage_MainClass.CreateNewAgent9();
+			AddNewAgentPage_MainClass.isUserCreatedSuccessfully();
 
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -286,14 +286,14 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("**********  SubmitValidNewAgentDetailswithexistingAgentcode 10 ***********");
 			System.out.println();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAddNewAgent();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.Fillthedetails10();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAddNewAgent();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.Fillthedetails10();
 			Common.fluentWait("AlreadyUserExist", AgentListPageRepo.AlreadyUserExist);
-			AddNewAgentPage.AlreadyUserExistDisplayed();
-			AddNewAgentPage.WaitLoader();
+			AddNewAgentPage_MainClass.AlreadyUserExistDisplayed();
+			AddNewAgentPage_MainClass.WaitLoader();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -314,14 +314,14 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			System.out.println("**********  SubmitWithPastDateofJoining 11  ***********");
 			System.out.println();
 			Thread.sleep(4000);
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAddNewAgent();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.ClearAddNewAgent();
-			AddNewAgentPage.AddNewAgentWithPastDateofJoining();			
-			AddNewAgentPage.clickSubmit();
-			AddNewAgentPage.isUserCreatedSuccessfully();		
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAddNewAgent();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.ClearAddNewAgent();
+			AddNewAgentPage_MainClass.AddNewAgentWithPastDateofJoining();			
+			AddNewAgentPage_MainClass.clickSubmit();
+			AddNewAgentPage_MainClass.isUserCreatedSuccessfully();		
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -341,14 +341,14 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("********** SubmitWithFutureDateofJoining 18  ***********");
 			System.out.println();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAddNewAgent();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.ClearAddNewAgent();
-			AddNewAgentPage.AddNewAgentWithFutureDate();			
-			AddNewAgentPage.clickSubmit();
-			AddNewAgentPage.isUserCreatedSuccessfully();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAddNewAgent();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.ClearAddNewAgent();
+			AddNewAgentPage_MainClass.AddNewAgentWithFutureDate();			
+			AddNewAgentPage_MainClass.clickSubmit();
+			AddNewAgentPage_MainClass.isUserCreatedSuccessfully();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -369,12 +369,12 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			System.out.println();
 			Common.fluentWait("AgentManagement", AgentListPageRepo.AgentManagement);
 			
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAgentList();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.Search1();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.GetTheDetailsforValidUser();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAgentList();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.Search1();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.GetTheDetailsforValidUser();
 			
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -396,12 +396,12 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			System.out.println("********** SearchAgentbyInvalidUsername 20  ***********");
 			System.out.println();
 			Common.fluentWait("Agent Management", AgentListPageRepo.AgentManagement);
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAgentList();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.searchInvalidUser();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.IsNoRecordToDisplay();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAgentList();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.searchInvalidUser();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.IsNoRecordToDisplay();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -421,13 +421,13 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 	
 			System.out.println("**********  ToggleAgentActiveStatusintodeactivate 21 ***********");
 			System.out.println();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAgentList();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.SearchUser();
-			AddNewAgentPage.WaitLoader();	
-			AddNewAgentPage.clickActionClickAndAvtivateDectivate();
-			AddNewAgentPage.SatusChanged();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAgentList();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.SearchUser();
+			AddNewAgentPage_MainClass.WaitLoader();	
+			AddNewAgentPage_MainClass.clickActionClickAndAvtivateDectivate();
+			AddNewAgentPage_MainClass.SatusChanged();
 	
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -447,10 +447,10 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("**********  Searchandconfirmtheuserisdeactivatedornot 22 ***********");
 			System.out.println();
-			AddNewAgentPage.WaitLoader();	
-			AddNewAgentPage.SearchUserWithIsActive();	
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.InactiveStatus();
+			AddNewAgentPage_MainClass.WaitLoader();	
+			AddNewAgentPage_MainClass.SearchUserWithIsActive();	
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.InactiveStatus();
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -469,8 +469,8 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("********** ToggleAgentInactiveStatusintoactive 23  ***********");
 			System.out.println();
-			AddNewAgentPage.clickActionClickAndAvtivateDectivate();
-			AddNewAgentPage.SatusChanged();
+			AddNewAgentPage_MainClass.clickActionClickAndAvtivateDectivate();
+			AddNewAgentPage_MainClass.SatusChanged();
 	
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -490,17 +490,17 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("********** ResetPasswordFunctionality 30  ***********");
 			System.out.println();Thread.sleep(10000);
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAddNewAgent();
-			AddNewAgentPage.WaitLoader();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAddNewAgent();
+			AddNewAgentPage_MainClass.WaitLoader();
 			Thread.sleep(4000);
-			AddNewAgentPage.creatNewAgent();			
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.isUserCreatedSuccessfully();
+			AddNewAgentPage_MainClass.creatNewAgent();			
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.isUserCreatedSuccessfully();
 			Common.fluentWait("Action", AgentListPageRepo.Action);
-			AddNewAgentPage.clickAction();
-			AddNewAgentPage.clickResetPassword();
-			AddNewAgentPage.PasswordReserStatus();
+			AddNewAgentPage_MainClass.clickAction();
+			AddNewAgentPage_MainClass.clickResetPassword();
+			AddNewAgentPage_MainClass.PasswordReserStatus();
 			
 			
 		} catch (AssertionError | Exception e) {
@@ -523,11 +523,11 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			System.out.println("**********  VerifythefieldsandbuttonsinEditoptioninagentlistpage 31 ***********");
 			System.out.println();
 			Common.fluentWait("Action", AgentListPageRepo.Action);	
-			AddNewAgentPage.clickAction();
-			AddNewAgentPage.clickEdit();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.EditAgentVerification();
-			AddNewAgentPage.GetAttributeAndVerify();
+			AddNewAgentPage_MainClass.clickAction();
+			AddNewAgentPage_MainClass.clickEdit();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.EditAgentVerification();
+			AddNewAgentPage_MainClass.GetAttributeAndVerify();
 			
 	
 		} catch (AssertionError | Exception e) {
@@ -547,12 +547,12 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 		try {
 			System.out.println("**********  Editagentnameandsubmit 32  ***********");
 			System.out.println();
-			AddNewAgentPage.clearAndSendUsername();
-			AddNewAgentPage.clickUpdate();
+			AddNewAgentPage_MainClass.clearAndSendUsername();
+			AddNewAgentPage_MainClass.clickUpdate();
 //			check old code if failed
-			AddNewAgentPage.isUserUpdated();
-			AddNewAgentPage.WaitLoader();
-			AddNewAgentPage.verifyUpdatedUser();
+			AddNewAgentPage_MainClass.isUserUpdated();
+			AddNewAgentPage_MainClass.WaitLoader();
+			AddNewAgentPage_MainClass.verifyUpdatedUser();
 			
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
@@ -570,12 +570,12 @@ public class AgencyAddNewAgentAndAgentList_Test extends Base_Class {
 			throws InterruptedException, IOException, ParseException {
 
 		try {
-			AddNewAgentPage.WaitLoader();
+			AddNewAgentPage_MainClass.WaitLoader();
 			System.out.println("**********  Editagentnameandsubmit 33  ***********");
 			System.out.println();
-			AddNewAgentPage.clickAgentManagement();
-			AddNewAgentPage.clickAgentList();
-			AddNewAgentPage.verifyUpdatedUser();
+			AddNewAgentPage_MainClass.clickAgentManagement();
+			AddNewAgentPage_MainClass.clickAgentList();
+			AddNewAgentPage_MainClass.verifyUpdatedUser();
 	
 	
 		} catch (AssertionError | Exception e) {

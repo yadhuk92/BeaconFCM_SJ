@@ -7,8 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.BasePackage.Base_Class;
@@ -16,7 +20,8 @@ import com.BasePackage.Base_Class;
 import oracle.jdbc.OracleTypes;
 
 public class DBUtils {
-
+	public static double OverDue;
+	public static double OutStanding;
     public static String fetchSingleValueFromDB(String query) 
     		throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
@@ -304,10 +309,91 @@ public class DBUtils {
         }
         return result;
     }
+    //query is account number
+    public static String executeSQLStatement_GridQuery(String query) 
+            throws SQLException, ClassNotFoundException, IOException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String result = null;
+
+        try {
+            // Establish the database connection
+            con = Base_Class.OracleDBConnection();
+
+            // Prepare the SQL statement
+            pstmt = con.prepareStatement(query);
+            // Query to get total outstanding
+            String queryTotalOutstanding = "SELECT total_outstanding FROM mst_account WHERE account_no = '" + query + "'";
+            ResultSet rs1 = pstmt.executeQuery(queryTotalOutstanding);
+
+            double totalOutstanding = 0;
+            if (rs1.next()) {
+                totalOutstanding = rs1.getDouble("total_outstanding");
+                OutStanding =totalOutstanding;
+                System.out.println("Total Outstanding: " + totalOutstanding);
+            }
+
+            // Query to get total overdue
+            String queryTotalOverdue = "SELECT (prn_overdue + int_overdue + charges_due) AS total_due FROM mst_account WHERE account_no = '" + query + "'";
+            ResultSet rs2 = pstmt.executeQuery(queryTotalOverdue);
+
+            double totalDue = 0;
+            if (rs2.next()) {
+                totalDue = rs2.getDouble("total_due");
+                OverDue =totalDue;
+                System.out.println("Total Due: " + totalDue);
+            }
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e; // Rethrow exception to handle it further up the chain
+        } finally {
+            // Close resources
+            if (rs != null) {
+                rs.close();
+            }
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }    
     
-    
-    
-    
+    public static String executeSQLStatement_PastDate(String date,String Account) 
+            throws SQLException, ClassNotFoundException, IOException, ParseException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+//        String result = null;
+        String result = "Update Failed";
+        try {
+            // Establish database connection
+            con = Base_Class.OracleDBConnection();
+
+            // Update SQL query: Automatically sets `next_action_date` to yesterday
+            String query = "UPDATE trn_account_followup SET next_action_date = SYSDATE - 1 WHERE account_no = ?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, Account);
+
+            // Execute update
+            int rowsUpdated = pstmt.executeUpdate();
+            result = (rowsUpdated > 0) ? "Update Successful" : "Update Failed";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new SQLException("Error executing SQL: " + e.getMessage());
+        } finally {
+            // Close resources
+            if (pstmt != null) pstmt.close();
+            if (con != null) con.close();
+        }
+        return result;
+    }
+
     
     
     
