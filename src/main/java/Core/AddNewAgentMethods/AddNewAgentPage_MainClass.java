@@ -30,7 +30,7 @@ import com.Utility.Log;
 import com.aventstack.extentreports.Status;
 import com.extentReports.ExtentTestManager;
 
-public class AddNewAgentPage extends Base_Class {
+public class AddNewAgentPage_MainClass extends Base_Class {
 	private WebDriver driver;
 	public static String AgentCode10;
 	public static String Username18;
@@ -44,10 +44,10 @@ public class AddNewAgentPage extends Base_Class {
 	public static String TenurityCode;
 
 // Constructor
-	public AddNewAgentPage(WebDriver driver) {
+	public AddNewAgentPage_MainClass(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this); // Initialize WebElements
-		Log.info("AddNewAgentPage initialized.");
+		Log.info("AddNewAgentPage_MainClass initialized.");
 	}
 
 	public void clickAgentManagement() {
@@ -316,7 +316,7 @@ public class AddNewAgentPage extends Base_Class {
 
 	public void AgentListPageIsDisplayed() throws IOException {
 		String Text = driver.findElement(AgentListPageRepo.AgencyName).getText();
-		String CoreUserName = AddNewAgentPage.configloader().getProperty("CoreUserName_Agency");
+		String CoreUserName = AddNewAgentPage_MainClass.configloader().getProperty("CoreUserName_Agency");
 		if (Text.contains(CoreUserName)) {
 			ExtentTestManager.getTest().log(Status.PASS, "Agency name displayed");
 		} else {
