@@ -83,6 +83,11 @@ public class AgencyAccountAllocation_Repository {
     public static By WarningMsgForEmptySearchValue=By.xpath("//p[text()='Please select either agency or date']");
     public static By FirstCollectionAgencyName=By.xpath("//*[@class='rz-dropdown-panel rz-popup']/div[2]/ul/li[1]");
     
+    public static By CloseButton=By.xpath("/html/body/div[1]/div[2]/div[1]/div[1]/a");
+    public static By PreviousPage=By.xpath("/html/body/div/div[2]/div[1]/div[2]/div[4]/div/div");
+    public static By Allocated=By.xpath("(//*[@class='rz-dropdown-panel rz-popup']/div/ul/li[1])[2]");
+    public static By DeAllocateButton=By.xpath("//button[text()='De-Allocate']");
+    
 	
 
 }

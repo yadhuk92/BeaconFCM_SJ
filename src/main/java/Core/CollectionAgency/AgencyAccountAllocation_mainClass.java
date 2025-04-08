@@ -523,6 +523,14 @@ public boolean isExcelFileNameValid(String Allocation_List ) {
     return files != null && files.length > 0;
 }
 
+//Method to check previous page displayed
+
+public boolean isAgencyAllocationPageDisplayed() {
+	WebElement wb = driver.findElement(Page_Repository.PreviousPage);
+	wb.isDisplayed();
+    return true;
+}
+
 
 
 public static void waitForSpinnerToStop(WebDriver driver, By spinnerLocator) {
