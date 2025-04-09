@@ -104,8 +104,12 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 			properties.setProperty("BCOpassword", Password);
 			properties.store(output, "Updated Config File");
 			System.out.println("Config file updated successfully!");
+			ExtentTestManager.getTest().log(Status.PASS, "Config file updated successfully!");
+
 		} catch (IOException e) {
 			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, "Config file update failed");
+
 		}
 	}
 
@@ -143,8 +147,12 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		try (FileOutputStream output = new FileOutputStream(CONFIG_FILE_PATH)) {
 			properties.store(output, "Updated Config File");
 			System.out.println("Config file updated successfully!");
+			ExtentTestManager.getTest().log(Status.PASS, "Config file updated successfully!");
+
 		} catch (IOException e) {
 			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, "Unable to save config file");
+
 		}
 	}
 
@@ -289,12 +297,10 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 					9876543210L);
 //	List<Object> inputParams = Arrays.asList(null, "John Doe", "john.doe@example.com", 9876543210L);
 			List<Integer> outputTypes = Arrays.asList(Types.VARCHAR, Types.VARCHAR, Types.VARCHAR);
-
 			List<Object> results = DBUtils.ExecuteAnyOracleSQLStoredProcedure("Core_BranchUserIDGenerator", inputParams,
 					outputTypes);
 			System.out.println("Generated User ID: " + results.get(0));
 			String Username = (String) results.get(0);
-
 			System.out.println("Default Password: " + results.get(1));
 			String Password = (String) results.get(1);
 			System.out.println("Status Message: " + results.get(2));
@@ -429,7 +435,6 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		String LoginBannerQuery = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=2 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
 		String CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
 		// System.out.println("BANNER_DETAILS: " + CORE_LOGIN_BANNER_DETAILS);
-
 		Common.fluentWait("Core login Banner",
 				LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
 		driver.findElement(LoginPageRepo.UserNameField).sendKeys(CallCenterUserName);
@@ -751,14 +756,11 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		DBUtils.executeSQLStatement(query1);
 		String query2 = "DELETE FROM mst_col_agency_acc_allocated WHERE ALLOCATED_DATE = TRUNC(SYSDATE)";
 		DBUtils.executeSQLStatement(query2);
-
 //	use code
 		String query = "DELETE FROM mst_branch_acc_allocated WHERE ALLOCATED_DATE = TRUNC(SYSDATE)";
 		DBUtils.executeSQLStatement(query);
-
 		String query3 = " delete from mst_branch_acc_allocated ";
 		DBUtils.executeSQLStatement(query3);
-
 		String query4 = "delete from br_user_account_link";
 		DBUtils.executeSQLStatement(query4);
 	}
@@ -1182,9 +1184,11 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 			click(MyDeskDashboardRepo.Search, "search");
 //	MyDeskDashboardPage_MainClass.DPDDaysOperatorShouldNotBeEmpty();
 			driver.findElement(MyDeskDashboardRepo.secondInput).sendKeys(negativeValueStr);
+			ExtentTestManager.getTest().log(Status.PASS, "BVA validations are done");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, "BVA validations are failed");
 		}
 	}
 
@@ -1303,7 +1307,7 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to download File ");
 		}
 	}
-	
+
 	public void EnterallfieldsinLoanAtRisk() {
 		Common.fluentWait("EnterallfieldsinLoanAtRisk", MyDeskDashboardRepo.EnterallfieldsinLoanAtRisk);
 		if (driver.findElement(MyDeskDashboardRepo.EnterallfieldsinLoanAtRisk).isDisplayed()) {
@@ -1312,6 +1316,7 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to display Enter all fields in Loan At Risk ");
 		}
 	}
+
 	public void SavedSuccessfully() {
 		Common.fluentWait("SavedSuccessfully", MyDeskDashboardRepo.SavedSuccessfully);
 		if (driver.findElement(MyDeskDashboardRepo.SavedSuccessfully).isDisplayed()) {
@@ -1385,6 +1390,55 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 			e.printStackTrace();
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to select My Desk ");
 			System.out.println("Error message " + e.getMessage());
+		}
+	}
+
+	public void FilterAllocationBCO() {
+		try {
+			click(MyDeskDashboardRepo.AllocationTypeofAccountDropDown, "AllocationTypeofAccountDropDown");
+			click(MyDeskDashboardRepo.Allocated, "Allocated");
+			click(MyDeskDashboardRepo.AssignedToDropDown, "AssignedTo");
+			SelectBCOUser();
+
+			click(MyDeskDashboardRepo.Search, "Search");
+			WaitLoader();
+			// Wait for the element if it's there
+			List<WebElement> noRecords = driver.findElements(MyDeskDashboardRepo.NoRecordsToDisplay);
+			if (!noRecords.isEmpty() && noRecords.get(0).isDisplayed()) {
+				click(MyDeskDashboardRepo.reset, "reset");
+				WaitLoader();
+				FilterUnallocatedAccountsDownBCO();
+			}
+			ExtentTestManager.getTest().log(Status.PASS, "Filter allocation done successfully");
+
+		} catch (Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL, " check failed due to exception: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	public void FilterUnallocatedAccountsDownBCO() {
+		try {
+			click(MyDeskDashboardRepo.AllocationTypeofAccountDropDown, "AllocationTypeofAccountDropDown");
+			click(MyDeskDashboardRepo.NotAllocated, "NotAllocated");
+
+			ExtentTestManager.getTest().log(Status.PASS, "not allocated accounts selected ");
+
+			click(MyDeskDashboardRepo.Search, "Search");
+			WaitLoader();
+			click(MyDeskDashboardRepo.SelectAccount, "SelectAccount");
+			AccountName = driver.findElement(MyDeskDashboardRepo.SelectAccountName).getText();
+			click(MyDeskDashboardRepo.ReassignTo, "ReassignTo");
+			SelectBCOUser();
+			ExtentTestManager.getTest().log(Status.PASS, "click done on locator Selected Agency");
+			click(MyDeskDashboardRepo.Assign, "Assign");
+			// assigned successfully
+			Assignedsuccessfully();
+			WaitLoader();
+			ExtentTestManager.getTest().log(Status.PASS, "Filter allocation done successfully of unallocated ");
+		} catch (Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL, " check failed due to exception: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -1471,6 +1525,7 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		click1(MyDeskDashboardRepo.SMACate1);
 
 		click1(MyDeskDashboardRepo.SMACate2);
+		ExtentTestManager.getTest().log(Status.PASS, "selected all the types of SMA accounts");
 
 	}
 
@@ -1488,16 +1543,20 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 			WebElement currentDate = driver.findElement(By.xpath(xpath));
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].click();", currentDate);
+			ExtentTestManager.getTest().log(Status.PASS, "Current date for Action from selected");
+
 			click(MyDeskDashboardRepo.ActionDateto);
 			String xpath2 = "//div[@class='rz-datepicker rz-popup']//table//tbody/tr/td/span[@class='rz-state-default' and text()='"
 					+ today + "']";
 			WebElement currentDate2 = driver.findElement(By.xpath(xpath));
 			JavascriptExecutor js1 = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].click();", currentDate2);
-
+			ExtentTestManager.getTest().log(Status.PASS, "Current date for Action To selected");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, "Faied to select the current date");
+
 		}
 
 	}
@@ -1539,19 +1598,26 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 	}
 
 	public void getTotalAccount() throws Exception, SQLException, IOException {
-		count = driver.findElement(MyDeskDashboardRepo.TotalAccountSelected).getText();
-		if (count.contains("0")) {
-			String query = "DELETE FROM mst_branch_acc_allocated WHERE ALLOCATED_DATE = TRUNC(SYSDATE)";
-			DBUtils.executeSQLStatement(query);
-			clickMyDesk();
-			clickDashboard();
-			WaitLoader();
-			clickUnassignedAccountsSMA();
-			WaitLoader();
-			Common.fluentWait("Dashboard", MyDeskDashboardRepo.Download);
-			WaitLoader();
+		try {
+			count = driver.findElement(MyDeskDashboardRepo.TotalAccountSelected).getText();
+			if (count.contains("0")) {
+				String query = "DELETE FROM mst_branch_acc_allocated WHERE ALLOCATED_DATE = TRUNC(SYSDATE)";
+				DBUtils.executeSQLStatement(query);
+				clickMyDesk();
+				clickDashboard();
+				WaitLoader();
+				clickUnassignedAccountsSMA();
+				WaitLoader();
+				Common.fluentWait("Dashboard", MyDeskDashboardRepo.Download);
+				WaitLoader();
+			}
+			ExtentTestManager.getTest().log(Status.PASS, "Total account selected " + count);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, "Total account selected");
+
 		}
-		ExtentTestManager.getTest().log(Status.PASS, "Total account selected " + count);
 	}
 
 	public void getTotalAccountAllocation() throws Exception, SQLException, IOException {
@@ -1614,8 +1680,10 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 
 			// Open the Excel file and read content
 			readExcelFile(downloadedFile);
+			ExtentTestManager.getTest().log(Status.PASS, "File download done ");
 		} else {
 			System.out.println("❌ File download failed!");
+			ExtentTestManager.getTest().log(Status.FAIL, "File download failed!");
 		}
 		readExcelFile(downloadedFile);
 	}
@@ -1634,11 +1702,12 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 				}
 				System.out.println();
 			}
-
+			ExtentTestManager.getTest().log(Status.PASS, "Downloaded Excel File read completed ");
 			workbook.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("❌ Error reading the Excel file.");
+			ExtentTestManager.getTest().log(Status.FAIL, "Downloaded Excel File read failed ");
 		}
 	}
 
@@ -1673,6 +1742,7 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 			File excelFile = getLatestFile(downloadDir, ".xlsx");
 			if (excelFile != null) {
 				System.out.println("Downloaded file: " + excelFile.getName());
+				ExtentTestManager.getTest().log(Status.PASS, "Downloaded file: " + excelFile.getName());
 				readExcelAndValidate(excelFile);
 			} else {
 				System.out.println("No Excel file found in the download directory.");
@@ -1682,6 +1752,7 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 			e.printStackTrace();
 
 			System.out.println("Error message " + e.getMessage());
+			ExtentTestManager.getTest().log(Status.FAIL, "No Excel file found in the download directory.");
 		}
 	}
 
@@ -1697,12 +1768,15 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 					System.out.println(item);
 				}
 				storeColumnData(columnData1, "column1.txt"); // Store for later comparison
+				ExtentTestManager.getTest().log(Status.PASS, "Downloaded file: ");
 			} else {
 				System.out.println("No Excel file found in the download directory.");
+				ExtentTestManager.getTest().log(Status.FAIL, "No Excel file found in the download directory.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Error message: " + e.getMessage());
+			ExtentTestManager.getTest().log(Status.FAIL, "No Excel file found in the download directory.");
 		}
 	}
 
@@ -1735,6 +1809,7 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Error message: " + e.getMessage());
+			ExtentTestManager.getTest().log(Status.FAIL, "No Excel file found in the download directory.");
 		}
 	}
 
@@ -1753,6 +1828,7 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 				latestFile = file;
 			}
 		}
+		ExtentTestManager.getTest().log(Status.PASS, "latest file present in the directory returned");
 		return latestFile;
 	}
 
@@ -1783,8 +1859,10 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 	public static void compareColumns(List<String> col1, List<String> col2) {
 		if (col1.equals(col2)) {
 			System.out.println("✅ Columns match!");
+			ExtentTestManager.getTest().log(Status.PASS, "Columns match!");
 		} else {
 			System.out.println("❌ Columns do NOT match.");
+			ExtentTestManager.getTest().log(Status.FAIL, "Columns do NOT match.");
 		}
 	}
 
@@ -1901,21 +1979,22 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 	}
 
 	public void isNOTDisplayed(By locator, String elementName) {
-		 try {
-		        List<WebElement> elements = driver.findElements(locator);
+		try {
+			List<WebElement> elements = driver.findElements(locator);
 
-		        if (elements.isEmpty()) {
-		            ExtentTestManager.getTest().log(Status.PASS, elementName + " is not displayed, as expected.");
-		        } else if (!elements.get(0).isDisplayed()) {
-		            ExtentTestManager.getTest().log(Status.PASS, elementName + " is present but hidden (not displayed), as expected.");
-		        } else {
-		            ExtentTestManager.getTest().log(Status.FAIL, elementName + " is visible but should not be.");
-		        }
-		    } catch (Exception e) {
-		        ExtentTestManager.getTest().log(Status.FAIL,
-		                elementName + " check failed due to exception: " + e.getMessage());
-		        e.printStackTrace();
-		    }
+			if (elements.isEmpty()) {
+				ExtentTestManager.getTest().log(Status.PASS, elementName + " is not displayed, as expected.");
+			} else if (!elements.get(0).isDisplayed()) {
+				ExtentTestManager.getTest().log(Status.PASS,
+						elementName + " is present but hidden (not displayed), as expected.");
+			} else {
+				ExtentTestManager.getTest().log(Status.FAIL, elementName + " is visible but should not be.");
+			}
+		} catch (Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL,
+					elementName + " check failed due to exception: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	public void isDisplayedActive(By locator, String elementName) {
@@ -2007,11 +2086,12 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 
 			click(MyDeskDashboardRepo.Search, "Search");
 			WaitLoader();
-			if (driver.findElement(MyDeskDashboardRepo.NoRecordsToDisplay).isDisplayed()) {
+			// Wait for the element if it's there
+			List<WebElement> noRecords = driver.findElements(MyDeskDashboardRepo.NoRecordsToDisplay);
+			if (!noRecords.isEmpty() && noRecords.get(0).isDisplayed()) {
 				click(MyDeskDashboardRepo.reset, "reset");
 				WaitLoader();
 				FilterUnallocatedAccountsDown();
-
 			}
 		} catch (Exception e) {
 			ExtentTestManager.getTest().log(Status.FAIL, " check failed due to exception: " + e.getMessage());
@@ -2066,9 +2146,12 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		Matcher matcher = pattern.matcher(value);
 
 		if (matcher.find()) { // Check if there's a match before accessing group(1)
+			ExtentTestManager.getTest().log(Status.PASS, "Match found!");
 			return matcher.group(1); // Extract and return the number
+
 		} else {
 			System.out.println("No match found!"); // Debugging statement
+			ExtentTestManager.getTest().log(Status.FAIL, "No match found!");
 			return "0"; // Or handle this case appropriately
 		}
 
@@ -2083,9 +2166,11 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		Matcher matcher = pattern.matcher(value);
 
 		if (matcher.find()) { // Check if there's a match before accessing group(1)
+			ExtentTestManager.getTest().log(Status.PASS, "Account count Match found!");
 			return matcher.group(1); // Extract and return the number
 		} else {
 			System.out.println("No match found!"); // Debugging statement
+			ExtentTestManager.getTest().log(Status.FAIL, "Account count No match found!");
 			return "0"; // Or handle this case appropriately
 		}
 
@@ -2111,186 +2196,191 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		}
 
 		// Step 3: Read data from Excel
-	
+
 		String filePath = getLatestExcelFile(downloadPath);
 		if (filePath == null) {
-		    System.out.println("❌ No Excel file found in Downloads.");
-		    return;
+			System.out.println("❌ No Excel file found in Downloads.");
+			return;
 		}
 		List<String> excelData = readExcelData(filePath);
 
-	    // Step 3: Print Web Table Data
-	    System.out.println("\n🔹 Web Table Data:");
-	    for (String data : webTableData) {
-	        System.out.println(data);
-	    }
+		// Step 3: Print Web Table Data
+		System.out.println("\n🔹 Web Table Data:");
+		for (String data : webTableData) {
+			System.out.println(data);
+		}
 
-	    // Step 4: Print Excel Data
-	    System.out.println("\n📄 Excel Data:");
-	    for (String data : excelData) {
-	        System.out.println(data);
-	    }
+		// Step 4: Print Excel Data
+		System.out.println("\n📄 Excel Data:");
+		for (String data : excelData) {
+			System.out.println(data);
+		}
 		// Step 4: Compare Web Table Data with Excel Data
 		if (excelData.containsAll(webTableData)) {
 			System.out.println("✅ Data matches!");
+			ExtentTestManager.getTest().log(Status.PASS, "Data matches with Excel");
 		} else {
 			System.out.println("❌ Data does not match.");
+			ExtentTestManager.getTest().log(Status.FAIL, "Data matches with Excel");
 		}
 		for (int i = 0; i < webTableData.size(); i++) {
-		    String[] webParts = webTableData.get(i).split(" ");
-		    String[] excelParts = excelData.get(i).split(" ");
+			String[] webParts = webTableData.get(i).split(" ");
+			String[] excelParts = excelData.get(i).split(" ");
 
-		    if (!webParts[0].equals(excelParts[0]) || 
-		        !webParts[1].equalsIgnoreCase(excelParts[1]) ||
-		        !webParts[2].equals(excelParts[2])) {
-		        System.out.println("❌ Mismatch at row " + i);
-		    }
+			if (!webParts[0].equals(excelParts[0]) || !webParts[1].equalsIgnoreCase(excelParts[1])
+					|| !webParts[2].equals(excelParts[2])) {
+				System.out.println("❌ Mismatch at row " + i);
+			}
 		}
 	}
+
 	public int compareDataWithExcelDownload() throws InterruptedException, IOException {
-		
-	        // Path to your downloaded Excel file
-	       
 
-	        // Expected column names
-	        String[] expectedColumns = {
-	            "Zone", "Region", "Branch", "Loan No", "Customer Name", 
-	            "Loan Amount", "Outstanding Amount", "SMA Category", "NPA Category", 
-	            "DPD", "Sector", "Scheme Type", "Scheme", "Assigned To",	"Assignee ID",	"Assignee Name"
+		// Path to your downloaded Excel file
 
-	        };
-	        String filePath = getLatestExcelFile(downloadPath);
-			if (filePath == null) {
-			    System.out.println("❌ No Excel file found in Downloads.");
+		// Expected column names
+		String[] expectedColumns = { "Zone", "Region", "Branch", "Loan No", "Customer Name", "Loan Amount",
+				"Outstanding Amount", "SMA Category", "NPA Category", "DPD", "Sector", "Scheme Type", "Scheme",
+				"Assigned To", "Assignee ID", "Assignee Name"
+
+		};
+		String filePath = getLatestExcelFile(downloadPath);
+		if (filePath == null) {
+			System.out.println("❌ No Excel file found in Downloads.");
 //			    return;
+		}
+		// Read the Excel file
+		FileInputStream fis = new FileInputStream(new File(filePath));
+		Workbook workbook = WorkbookFactory.create(fis);
+		Sheet sheet = workbook.getSheetAt(0); // Read the first sheet
+		Row headerRow = sheet.getRow(0); // First row contains headers
+
+		// Iterate through header cells and validate
+		Iterator<Cell> cellIterator = headerRow.cellIterator();
+		int index = 0;
+		boolean isValid = true;
+
+		while (cellIterator.hasNext()) {
+			Cell cell = cellIterator.next();
+			String columnName = cell.getStringCellValue().trim(); // Read cell value
+
+			if (index >= expectedColumns.length || !columnName.equals(expectedColumns[index])) {
+				System.out.println("Mismatch at column " + (index + 1) + ": Expected '" + expectedColumns[index]
+						+ "', Found '" + columnName + "'");
+				isValid = false;
 			}
-	        // Read the Excel file
-	        FileInputStream fis = new FileInputStream(new File(filePath));
-	        Workbook workbook = WorkbookFactory.create(fis);
-	        Sheet sheet = workbook.getSheetAt(0); // Read the first sheet
-	        Row headerRow = sheet.getRow(0); // First row contains headers
+			index++;
+		}
 
-	        // Iterate through header cells and validate
-	        Iterator<Cell> cellIterator = headerRow.cellIterator();
-	        int index = 0;
-	        boolean isValid = true;
+		// Close workbook and file stream
+		workbook.close();
+		fis.close();
 
-	        while (cellIterator.hasNext()) {
-	            Cell cell = cellIterator.next();
-	            String columnName = cell.getStringCellValue().trim(); // Read cell value
+		if (isValid) {
+			System.out.println("Column names are correct!");
+			ExtentTestManager.getTest().log(Status.PASS, "Column names are correct!");
+		} else {
+			System.out.println("Column names do not match!");
+			ExtentTestManager.getTest().log(Status.FAIL, "Column names do not match!");
+		}
 
-	            if (index >= expectedColumns.length || !columnName.equals(expectedColumns[index])) {
-	                System.out.println("Mismatch at column " + (index + 1) + ": Expected '" 
-	                                    + expectedColumns[index] + "', Found '" + columnName + "'");
-	                isValid = false;
-	            }
-	            index++;
-	        }
+		// how many rows
 
-	        // Close workbook and file stream
-	        workbook.close();
-	        fis.close();
+		int rowCount = sheet.getLastRowNum(); // Total number of rows (excluding header)
+		System.out.println("Total Number of Rows (excluding header): " + rowCount);
 
-	        if (isValid) {
-	            System.out.println("Column names are correct!");
-	        } else {
-	            System.out.println("Column names do not match!");
-	        }
-	        
-	   // how many rows
-	       
+		// contains SMA Accounts
+		boolean isValidColumn = true;
 
-	        int rowCount = sheet.getLastRowNum(); // Total number of rows (excluding header)
-	        System.out.println("Total Number of Rows (excluding header): " + rowCount);
-	        
-	   // contains SMA Accounts
-	        boolean isValidColumn = true;
+		// Iterate through rows starting from row index 1 (to skip header)
+		for (int i = 1; i <= rowCount; i++) {
+			Row row = sheet.getRow(i);
+			if (row == null)
+				continue; // Skip if the row is empty
 
-	        // Iterate through rows starting from row index 1 (to skip header)
-	        for (int i = 1; i <= rowCount; i++) {
-	            Row row = sheet.getRow(i);
-	            if (row == null) continue; // Skip if the row is empty
+			Cell smaCell = row.getCell(7); // Column H (index starts from 0)
 
-	            Cell smaCell = row.getCell(7); // Column H (index starts from 0)
+			if (smaCell != null && smaCell.getCellType() == CellType.STRING) {
+				String smaValue = smaCell.getStringCellValue().trim();
 
-	            if (smaCell != null && smaCell.getCellType() == CellType.STRING) {
-	                String smaValue = smaCell.getStringCellValue().trim();
-	                
-	                // Check if value contains "SMA"
-	                if (!smaValue.startsWith("SMA")) {
-	                    System.out.println("Invalid value at row " + (i + 1) + ": " + smaValue);
-	                    isValidColumn = false;
-	                }
-	            } else {
-	                System.out.println("Empty or invalid cell at row " + (i + 1));
-	                isValidColumn = false;
-	            }
-	        }
-
-	        // Close workbook and file stream
-	        workbook.close();
-	        fis.close();
-
-	        if (isValidColumn) {
-	            System.out.println("All values in Column H are valid SMA values.");
-	        } else {
-	            System.out.println("There are invalid values in Column H.");
-	        }
-	        
-	        return rowCount;
-	    }
-	public  void checkExcelDataFormats() {
-		 String filePath;
-		
-			filePath = getLatestExcelFile(downloadPath);
-		
-			if (filePath == null) {
-			    System.out.println("❌ No Excel file found in Downloads.");
-			    return;
+				// Check if value contains "SMA"
+				if (!smaValue.startsWith("SMA")) {
+					System.out.println("Invalid value at row " + (i + 1) + ": " + smaValue);
+					isValidColumn = false;
+				}
+			} else {
+				System.out.println("Empty or invalid cell at row " + (i + 1));
+				isValidColumn = false;
 			}
-        try (FileInputStream fis = new FileInputStream(new File(filePath));
-             Workbook workbook = new XSSFWorkbook(fis)) {
+		}
 
-            Sheet sheet = workbook.getSheetAt(0); // Read first sheet
-            System.out.println("📄 Checking Data Formats in Excel...");
+		// Close workbook and file stream
+		workbook.close();
+		fis.close();
 
-            for (Row row : sheet) {
-                for (Cell cell : row) {
-                    CellType cellType = cell.getCellType(); // Get data type
+		if (isValidColumn) {
+			System.out.println("All values in Column H are valid SMA values.");
+			ExtentTestManager.getTest().log(Status.PASS, "All values in Column H are valid SMA values.");
+		} else {
+			System.out.println("There are invalid values in Column H.");
+			ExtentTestManager.getTest().log(Status.FAIL, "There are invalid values in Column H.");
+		}
 
-                    // Print cell data & format
+		return rowCount;
+	}
+
+	public void checkExcelDataFormats() {
+		String filePath;
+
+		filePath = getLatestExcelFile(downloadPath);
+
+		if (filePath == null) {
+			System.out.println("❌ No Excel file found in Downloads.");
+			ExtentTestManager.getTest().log(Status.FAIL, " No Excel file found in Downloads.");
+			return;
+		}
+		try (FileInputStream fis = new FileInputStream(new File(filePath)); Workbook workbook = new XSSFWorkbook(fis)) {
+
+			Sheet sheet = workbook.getSheetAt(0); // Read first sheet
+			System.out.println("📄 Checking Data Formats in Excel...");
+
+			for (Row row : sheet) {
+				for (Cell cell : row) {
+					CellType cellType = cell.getCellType(); // Get data type
+
+					// Print cell data & format
 //                    System.out.print("[" + cell.toString() + "] - Format: ");
-                    switch (cellType) {
-                        case STRING:
-                            System.out.println("TEXT");
-                            break;
-                        case NUMERIC:
-                            if (DateUtil.isCellDateFormatted(cell)) {
-                                System.out.println("DATE");
-                            } else {
-                                System.out.println("NUMBER");
-                            }
-                            break;
-                        case BOOLEAN:
-                            System.out.println("BOOLEAN");
-                            break;
-                        case FORMULA:
-                            System.out.println("FORMULA");
-                            break;
-                        case BLANK:
-                            System.out.println("BLANK");
-                            break;
-                        default:
-                            System.out.println("UNKNOWN FORMAT");
-                    }
-                }
+					switch (cellType) {
+					case STRING:
+						System.out.println("TEXT");
+						break;
+					case NUMERIC:
+						if (DateUtil.isCellDateFormatted(cell)) {
+							System.out.println("DATE");
+						} else {
+							System.out.println("NUMBER");
+						}
+						break;
+					case BOOLEAN:
+						System.out.println("BOOLEAN");
+						break;
+					case FORMULA:
+						System.out.println("FORMULA");
+						break;
+					case BLANK:
+						System.out.println("BLANK");
+						break;
+					default:
+						System.out.println("UNKNOWN FORMAT");
+					}
+				}
 //                System.out.println("------------------------");
-            }
-        } catch (IOException e) {
-            System.out.println("❌ Error reading Excel file: " + e.getMessage());
-        }
-    }
-	
+			}
+		} catch (IOException e) {
+			System.out.println("❌ Error reading Excel file: " + e.getMessage());
+		}
+	}
+
 	public static List<String> readExcelData(String filePath) {
 		List<String> data = new ArrayList<>();
 		try (FileInputStream fis = new FileInputStream(new File(filePath)); Workbook workbook = new XSSFWorkbook(fis)) {
@@ -2328,10 +2418,12 @@ public class MyDeskDashboardPage_MainClass extends Base_Class {
 		ExtentTestManager.getTest().log(Status.PASS, "No.of record found are" + value);
 		return value;
 	}
-public String countFromBCOLoanAtRiskGrid() {
-	String count = driver.findElement(MyDeskDashboardRepo.GridAccount).getText();
-	return count;
-}
+
+	public String countFromBCOLoanAtRiskGrid() {
+		String count = driver.findElement(MyDeskDashboardRepo.GridAccount).getText();
+		return count;
+	}
+
 	public int checktheCount(int ExpectedValue, int ValueFromApplication) {
 
 		return ExpectedValue - ValueFromApplication;
@@ -2535,8 +2627,8 @@ public String countFromBCOLoanAtRiskGrid() {
 		}
 
 		// Verify expected headers (Example: "Name", "Age", "City")
-		String[] expectedHeaders = { "", "Customer Name", "Account No", "Amount", "Prn Due", "Int Due", "Total Due",
-				"Total Outstanding", "Assigned To", "Assignee Name", "Loan Type", "Address", "Action" }; // Modify as
+		String[] expectedHeaders = { "", "CUSTOMER NAME", "ACCOUNT NO", "AMOUNT", "PRN DUE", "INT DUE", "TOTAL DUE",
+				"TOTAL OUTSTANDING", "ASSIGNED TO", "ASSIGNEE NAME", "LOAN TYPE", "ADDRESS", "ACTION" }; // Modify as
 																											// needed
 		boolean allHeadersMatch = true;
 
@@ -2620,34 +2712,43 @@ public String countFromBCOLoanAtRiskGrid() {
 	}
 
 	public void SaveDisposition(String date) {
-		click(MyDeskDashboardRepo.NextActionOwner, "NextActionOwner");
-		WaitLoader();
-		click(MyDeskDashboardRepo.NextActionOwnerValue, "NextActionOwnerValue");
+		try {
+			click(MyDeskDashboardRepo.NextActionOwner, "NextActionOwner");
+			WaitLoader();
+			click(MyDeskDashboardRepo.NextActionOwnerValue, "NextActionOwnerValue");
+			ExtentTestManager.getTest().log(Status.PASS, "Next Action Owner selected");
 
-		click(MyDeskDashboardRepo.Disposition, "Disposition");
-		WaitLoader();
-		click(MyDeskDashboardRepo.NewBeaconIDs, "DispositionValue");
-		WaitLoader();
-		click(MyDeskDashboardRepo.SubDisposition, "SubDisposition");
-		WaitLoader();
-		click(MyDeskDashboardRepo.NewProduc, "SubDispositionValue");
-
-		// select the date
-		click(MyDeskDashboardRepo.NextActionDateCalender, "NextActionDateCalender");
+			click(MyDeskDashboardRepo.Disposition, "Disposition");
+			WaitLoader();
+			click(MyDeskDashboardRepo.NewBeaconIDs, "DispositionValue");
+			WaitLoader();
+			ExtentTestManager.getTest().log(Status.PASS, "Disposition selected");
+			click(MyDeskDashboardRepo.SubDisposition, "SubDisposition");
+			WaitLoader();
+			click(MyDeskDashboardRepo.NewProduc, "SubDispositionValue");
+			ExtentTestManager.getTest().log(Status.PASS, "Sub Disposition Value selected");
+			// select the date
+			click(MyDeskDashboardRepo.NextActionDateCalender, "NextActionDateCalender");
 
 //		By Date = By.xpath("(//*[contains(text(),'" + date + "')])[7]");
-		By Date = By.xpath(
-				"//div[@class='rz-datepicker rz-popup']//table//tbody/tr/td/span[@class='rz-state-default' and text()='"
-						+ date + "']");
-		click(Date, "Date");
-		driver.findElement(MyDeskDashboardRepo.Remarks).sendKeys("Comment");
-		// code for date
-		click(MyDeskDashboardRepo.Save, "Save");
-		WaitLoader();
-		click(MyDeskDashboardRepo.close, "close");
+			By Date = By.xpath(
+					"//div[@class='rz-datepicker rz-popup']//table//tbody/tr/td/span[@class='rz-state-default' and text()='"
+							+ date + "']");
+			click(Date, "Date");
+			driver.findElement(MyDeskDashboardRepo.Remarks).sendKeys("Comment");
+			// code for date
+			click(MyDeskDashboardRepo.Save, "Save");
+			WaitLoader();
+			click(MyDeskDashboardRepo.close, "close");
 
-		SavedSuccessfully();
-		WaitLoader();
+			SavedSuccessfully();
+			ExtentTestManager.getTest().log(Status.PASS, "Disposition completed");
+			WaitLoader();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, "Disposition failed");
+		}
 	}
 
 	public void SelectDate(String date) {
@@ -2665,43 +2766,43 @@ public String countFromBCOLoanAtRiskGrid() {
 	}
 
 	public void SaveDispositionBCO(String date) {
-		click(MyDeskDashboardRepo.NextActionOwner, "NextActionOwner");
-		WaitLoader();
-		click(MyDeskDashboardRepo.NextActionOwnerValue, "NextActionOwnerValue");
-
-		click(MyDeskDashboardRepo.Disposition, "Disposition");
-		WaitLoader();
-		click(MyDeskDashboardRepo.NewBeaconIDs, "DispositionValue");
-		WaitLoader();
-		click(MyDeskDashboardRepo.SubDisposition, "SubDisposition");
-		WaitLoader();
-		click(MyDeskDashboardRepo.NewProduc, "SubDispositionValue");
-
-		// select the date
-		click(MyDeskDashboardRepo.NextActionDateCalender, "NextActionDateCalender");
-
-//		By Date = By.xpath("(//*[contains(text(),'" + date + "')])[7]");
-		By Date = By.xpath(
-				"//div[@class='rz-datepicker rz-popup']//table//tbody/tr/td/span[@class='rz-state-default' and text()='"
-						+ date + "']");
-		click(Date, "Date");
-		driver.findElement(MyDeskDashboardRepo.Remarks).sendKeys("Comment");
-		// code for date
-		click(MyDeskDashboardRepo.Save, "Save");
-
-//		click(MyDeskDashboardRepo.close, "close");
-
-		SavedSuccessfully();
-		WaitLoader();
+		try {
+			click(MyDeskDashboardRepo.NextActionOwner, "NextActionOwner");
+			WaitLoader();
+			click(MyDeskDashboardRepo.NextActionOwnerValue, "NextActionOwnerValue");
+			ExtentTestManager.getTest().log(Status.PASS, "Next Action Owner selected");
+			click(MyDeskDashboardRepo.Disposition, "Disposition");
+			WaitLoader();
+			click(MyDeskDashboardRepo.NewBeaconIDs, "DispositionValue");
+			WaitLoader();
+			ExtentTestManager.getTest().log(Status.PASS, "Disposition selected");
+			click(MyDeskDashboardRepo.SubDisposition, "SubDisposition");
+			WaitLoader();
+			click(MyDeskDashboardRepo.NewProduc, "SubDispositionValue");
+			ExtentTestManager.getTest().log(Status.PASS, "Sub Disposition Value selected");
+			// select the date
+			click(MyDeskDashboardRepo.NextActionDateCalender, "NextActionDateCalender");
+			By Date = By.xpath(
+					"//div[@class='rz-datepicker rz-popup']//table//tbody/tr/td/span[@class='rz-state-default' and text()='"
+							+ date + "']");
+			click(Date, "Date");
+			driver.findElement(MyDeskDashboardRepo.Remarks).sendKeys("Comment");			
+			click(MyDeskDashboardRepo.Save, "Save");
+		click(MyDeskDashboardRepo.close, "close");
+			SavedSuccessfully();
+			WaitLoader();
+			ExtentTestManager.getTest().log(Status.PASS, "Disposition completed");
+		} catch (Exception e) {		
+			e.printStackTrace();
+			ExtentTestManager.getTest().log(Status.FAIL, "Disposition failed");
+		}
 	}
 
 	public void FilterNotAllocation() {
 		try {
 			click(MyDeskDashboardRepo.AllocationTypeofAccountDropDown, "AllocationTypeofAccountDropDown");
 			click(MyDeskDashboardRepo.NotAllocated, "NotAllocated");
-
 			ExtentTestManager.getTest().log(Status.PASS, "click done on locator Not Allocated");
-
 			click(MyDeskDashboardRepo.Search, "Search");
 		} catch (Exception e) {
 			ExtentTestManager.getTest().log(Status.FAIL, " check failed due to exception: " + e.getMessage());
@@ -2778,6 +2879,7 @@ public String countFromBCOLoanAtRiskGrid() {
 			// assigned successfully
 			Assignedsuccessfully();
 			WaitLoader();
+			ExtentTestManager.getTest().log(Status.PASS, "Allocvation completed");
 		} catch (Exception e) {
 			ExtentTestManager.getTest().log(Status.FAIL, " check failed due to exception: " + e.getMessage());
 			e.printStackTrace();
@@ -2857,13 +2959,15 @@ public String countFromBCOLoanAtRiskGrid() {
 			System.out.println("Error message " + e.getMessage());
 		}
 	}
-	public String getLatestExcelFile(String folderPath) {
-	    File dir = new File(folderPath);
-	    File[] files = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".xlsx"));
-	    if (files == null || files.length == 0) return null;
 
-	    Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
-	    return files[0].getAbsolutePath();
+	public String getLatestExcelFile(String folderPath) {
+		File dir = new File(folderPath);
+		File[] files = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".xlsx"));
+		if (files == null || files.length == 0)
+			return null;
+
+		Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+		return files[0].getAbsolutePath();
 	}
 
 }
