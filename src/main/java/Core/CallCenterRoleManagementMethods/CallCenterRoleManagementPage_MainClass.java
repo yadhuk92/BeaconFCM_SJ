@@ -248,6 +248,7 @@ public class CallCenterRoleManagementPage_MainClass extends Base_Class {
 	public void clickAddNewRole() {
 		try {
 			Common.fluentWait("AddNewRole", CallCenterRoleManagementRepo.AddNewRole);
+			Thread.sleep(2000);
 			driver.findElement(CallCenterRoleManagementRepo.AddNewRole).click();
 			ExtentTestManager.getTest().log(Status.PASS, "Add New Role buttom clicked successfully");
 		} catch (Exception e) {
@@ -547,6 +548,8 @@ public class CallCenterRoleManagementPage_MainClass extends Base_Class {
 	public void EnterRoleName() {
 		try {
 			String Rolename12 = RoleNameGenrator();
+			driver.findElement(CallCenterRoleManagementRepo.RoleName).clear();
+			Thread.sleep(2000);
 			driver.findElement(CallCenterRoleManagementRepo.RoleName).sendKeys("Rolename12");
 			ExtentTestManager.getTest().log(Status.PASS, "Role Name entered in the search");
 		} catch (Exception e) {

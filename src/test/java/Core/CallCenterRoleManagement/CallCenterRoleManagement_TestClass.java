@@ -3,6 +3,7 @@ package Core.CallCenterRoleManagement;
 import java.io.File;
 
 
+
 import Core.AddNewAgentMethods.AddNewAgentPage_MainClass;
 import Core.CallCenterRoleManagementMethods.CallCenterRoleManagementPage_MainClass;
 import java.io.FileInputStream;
@@ -82,6 +83,7 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 		TestListener = new TestListener();
 		Base_Class = new Base_Class();
 		screenShot = new com.Utility.ScreenShot(driver);
+		
 	}
 
 	@BeforeTest
@@ -103,7 +105,8 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Call Center Role Management Test");
 
 	}
-
+	
+	
 	@Test(priority = 1)
 	public void Login_to_Beacon_FCM_call_centre_application(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
@@ -134,6 +137,7 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
 			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
 			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			Common.fluentWait("Next", CallCenterRoleManagementRepo.Next);
 			CallCenterRoleManagementPage_MainClass.RoleManagementHeaderIsDisplayed();
 			CallCenterRoleManagementPage_MainClass.AddNewRoleIsDisplayed();
 			CallCenterRoleManagementPage_MainClass.checkURL();
@@ -247,6 +251,7 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
 			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
 			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			Common.fluentWait("Next", CallCenterRoleManagementRepo.Next);
 			CallCenterRoleManagementPage_MainClass.clickAddNewRole();
 			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
 			CallCenterRoleManagementPage_MainClass.AddRoleName7();
@@ -328,6 +333,7 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 			CallCenterRoleManagementPage_MainClass.clickSave();
 			CallCenterRoleManagementPage_MainClass.RecordUpdatedSuccessfully();
 			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.ActionMenu);
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -338,18 +344,19 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 		}
 
 	}
-	@Test(priority = 12)
+	@Test(priority = 11)
 	public void Readd_Existing_Role(ITestContext context) throws Throwable {
 
 		try {
 			System.out.println(" ************** Readd_Existing_Role 11 *****************");
 			System.out.println();
-			CallCenterRoleManagementPage_MainClass.LogintoCallCenter();
+//			CallCenterRoleManagementPage_MainClass.LogintoCallCenter();
 			CallCenterRoleManagementPage_MainClass.WaitLoader();
-			CallCenterRoleManagementPage_MainClass.checkIsDisplayed();
+//			CallCenterRoleManagementPage_MainClass.checkIsDisplayed();
 			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
 			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
 			CallCenterRoleManagementPage_MainClass.WaitLoader();
+			Common.fluentWait("Next", CallCenterRoleManagementRepo.Next);
 			CallCenterRoleManagementPage_MainClass.clickAddNewRole();
 			CallCenterRoleManagementPage_MainClass.WaitLoader();
 			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
@@ -371,25 +378,26 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 	}
 	
 
-	@Test(priority = 11)
+	@Test(priority = 12)
 	public void Error_Guessing_Functionality_Not_Selected(ITestContext context)
 			throws InterruptedException, IOException, ParseException {
 
 		try {
 			System.out.println(" ************** Error_Guessing_Functionality_Not_Selected 12 *****************");
-			System.out.println();
-			Thread.sleep(2000);CallCenterRoleManagementPage_MainClass.checkIsDisplayed();
-			CallCenterRoleManagementPage_MainClass.LogintoCallCenter();
-		
-			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
-			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
-			CallCenterRoleManagementPage_MainClass.WaitLoader();
-			Common.fluentWait("SecurityManagement", CallCenterRoleManagementRepo.Next);
-			Thread.sleep(4000);
-			CallCenterRoleManagementPage_MainClass.clickAddNewRole();
-			CallCenterRoleManagementPage_MainClass.WaitLoader();
+//			System.out.println();
+//			Thread.sleep(2000);CallCenterRoleManagementPage_MainClass.checkIsDisplayed();
+////		CallCenterRoleManagementPage_MainClass.LogintoCallCenter();
+//		
+//			CallCenterRoleManagementPage_MainClass.clickSecurityManagement();
+//			CallCenterRoleManagementPage_MainClass.clickRoleManagement();
+//			CallCenterRoleManagementPage_MainClass.WaitLoader();
+//			Common.fluentWait("SecurityManagement", CallCenterRoleManagementRepo.Next);
+//			Thread.sleep(4000);
+//			CallCenterRoleManagementPage_MainClass.clickAddNewRole();
+//			CallCenterRoleManagementPage_MainClass.WaitLoader();
 			Common.fluentWait("Functionality Checkbox", CallCenterRoleManagementRepo.FunctionalityCheckbox);
 			Thread.sleep(5000);
+			CallCenterRoleManagementPage_MainClass.SelectFunctionalities();			
 			CallCenterRoleManagementPage_MainClass.EnterRoleName();
 			CallCenterRoleManagementPage_MainClass.clickSave();
 			CallCenterRoleManagementPage_MainClass.PleaseSelectFunctionality();
@@ -405,9 +413,29 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 
 	}
 	
+//	@AfterMethod
+//	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
+//		// Check if the test case failed
+//		if (result.getStatus() == ITestResult.FAILURE) {
+//			String methodName = result.getMethod().getMethodName();
+//			try {
+//				// Take the screenshot for the failed test
+//				File image = screenShot.takeScreenShot(methodName, "Failure");
+//
+//				ExtentTestManager.getTest().fail("Screenshot of failure: ",
+//						MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
+//			} catch (IOException e) {
+//				System.err.println("Failed to capture screenshot: " + e.getMessage());
+//			}
+//		}
+//		ExtentManager.getInstance().flush();
+//	}
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
-		// Check if the test case failed
+		// Get the class and package name from the result
+		Class<?> testClass = result.getMethod().getRealClass();
+		String packageName = testClass.getPackage().getName();
+
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String methodName = result.getMethod().getMethodName();
 			try {
@@ -415,16 +443,18 @@ public class CallCenterRoleManagement_TestClass extends Base_Class {
 				File image = screenShot.takeScreenShot(methodName, "Failure");
 
 				ExtentTestManager.getTest().fail("Screenshot of failure: ",
-						MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
+					MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
 			} catch (IOException e) {
 				System.err.println("Failed to capture screenshot: " + e.getMessage());
 			}
 		}
-	}
 
+		// ✅ Fix: Call getInstance(packageName)
+		ExtentManager.getInstance().flush();
+	}
 	@AfterClass
 	public void afterclass() {
-		ExtentManager.getInstance().flush();
+//		ExtentManager.getInstance().flush();
 		// Close the browser
 		if (driver != null) {
 			driver.quit();
