@@ -17,6 +17,7 @@
         <classes>
             <class name="Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass"/>
       		<class name="Core.AlertsandNotifications.AlertsTemplateManagement_TestClass"/>
+      		<class name="Core.AlertsandNotifications.AlertsNotificationManagement_TestClass"/>
         </classes>
     </test>
 </suite>
