@@ -10,6 +10,7 @@ import java.util.Properties;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -54,7 +55,7 @@ public class Base_Class {
 	 * props.getProperty("Browser"); System.out.println("Browser Name: " + Browser);
 	 */
 
-	public void SetUp() throws IOException, InterruptedException {
+	public void SetUp() throws IOException, InterruptedException, Exception {
 		
 		String Browser = configloader().getProperty("Browser");
 		String Url = configloader().getProperty("URL");
@@ -117,6 +118,14 @@ public class Base_Class {
 		return connection;
 		
 	}
+	
+	public static void moveToElementAndClick(WebDriver driver, By locator) throws InterruptedException {
+		Thread.sleep(2000);
+        WebElement element = driver.findElement(locator); 
+        JavascriptExecutor js = (JavascriptExecutor) driver;       
+        js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);           
+        js.executeScript("arguments[0].click();", element);
+    }
 	
 	public static  void click(By element) throws InterruptedException {
 
