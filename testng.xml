@@ -15,9 +15,8 @@
 
     <test thread-count="1" name="Test">
         <classes>
-            <class name="CollectionAgency.Disposition.CollectionAgencyDisposition_TestClass"/>
-      		<class name="CollectionAgency.AccountAllocation.AgentAccountAllocation_TestClass"/>
-      		<class name="Core.Configurations.CollectionOfficerConfig_TestClass"/>
+            <class name="Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass"/>
+      		<class name="Core.AlertsandNotifications.AlertsTemplateManagement_TestClass"/>
         </classes>
     </test>
 </suite>
