@@ -41,7 +41,15 @@ public class Base_Class {
 		return properties;
 	}
 
-	public void SetUp() throws IOException, InterruptedException {
+	
+	public static Properties ReadFromPropertiesFile(String path) throws IOException {
+		FileInputStream File = new FileInputStream(".\\src\\test\\resources\\" + path);
+		Properties properties = new Properties();
+		properties.load(File);
+		return properties;
+	}
+
+	public void SetUp() throws IOException, InterruptedException, Exception {
 		
 		String Browser = configloader().getProperty("Browser");
 		String Url = configloader().getProperty("URL");
@@ -165,6 +173,8 @@ public class Base_Class {
 		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait2.until(ExpectedConditions.presenceOfElementLocated(element)).sendKeys(Value);
 	}
+	
+
 	
 	public void SelectActiveDropdown(By by, String value) throws InterruptedException {
 
