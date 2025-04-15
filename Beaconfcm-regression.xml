@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Beacon FCM Regression Automation Suite">
+	<listeners>
+		<listener class-name="com.BasePackage.TestNGXML_Listener"></listener>
+	</listeners>
+
+	<test thread-count="5" name="Core - alerts and notifications">
+		<classes>
+			<class name="Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass" />
+			<class name="Core.AlertsandNotifications.AlertsTemplateManagement_TestClass"/>
+      		<class name="Core.AlertsandNotifications.AlertsNotificationManagement_TestClass"/>
+      		<class name="Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass"/>
+		</classes>
+	</test>
+
+	<!--<test thread-count="5" name="Complaints Test">
+		<classes>
+			<class name="myBank.Test.MyBank_RegisterComplaint" />
+		</classes>
+	</test>-->
+
+	<!--<test thread-count="5" name="User Management">
+		<classes>
+			<class name="adminPortal.Test.AdminPortal_UserManagement" />
+		</classes>
+	</test>-->
+
+	<!--<test thread-count="5" name="News : Add News, Remove, Modify">
+		<classes>
+			<class name="adminPortal.Test.AdminPortal_NewsManagement" />
+			<class name="myBank.Test.MyBank_NewsManagement" />
+		</classes>
+	</test>-->
+
+	<!--<test thread-count="5" name="Feedback/ Complaints">
+		<classes>
+			<class name="myBank.Test.MyBank_FeedBack_Complaint_Creation" />
+			<class name="adminPortal.Test.AdminPortal_FeedBackComplaints" />
+			<class name="myBank.Test.MyBank_FeedBack_Complaint_Confirmation" />
+		</classes>
+	</test>-->
+
+</suite> <!-- Suite -->

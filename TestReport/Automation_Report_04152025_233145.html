@@ -1,0 +1,3663 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='EEEE, MMMM dd, yyyy, hh:mm a '('zzz')''/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>Automation_Report_04152025_233145.html</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent dark default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>Automation_Report_04152025_233145.html</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Tuesday, April 15, 2025, 11:31 PM (IST)</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.5</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>local_offer</i> Category
+				</a>
+				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>CoreAlertsPlaceholderManagement</a></li>
+					<li><a href='#'>CoreAlertsTemplateManagement</a></li>
+					<li><a href='#'>CoreAlertsNotificationManagement</a></li>
+					<li><a href='#'>CoreAlertsMaskAccountandMaskingAuthorization</a></li>
+					<li class='divider'></li>
+					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
+				</ul>
+			</div>
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>57</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>188</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Insert_New_Entry_All_Valid_Fields</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:31 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:31 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:31 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+353ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsPlaceholderManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:31:45 PM</td>
+					<td class='step-details'>An INSERT query was prepared with valid data for all fields.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:31:47 PM</td>
+					<td class='step-details'>The query was executed successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:31:47 PM</td>
+					<td class='step-details'>The data was committed to the database.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:31:47 PM</td>
+					<td class='step-details'>The record has been successfully inserted into the Alt_Template_Placeholders table. SP execution message : Deleted entry from ALT_TEMPLATE_PLACEHOLDERS and inserted new entry successfully. and Value = CUST_NAME</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>Successful_Login</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:31 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:31 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:32 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 4s+952ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsPlaceholderManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:32:55 PM</td>
+					<td class='step-details'>Successfully navigated to the login page.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:32:55 PM</td>
+					<td class='step-details'>Entered valid username and password.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:32:55 PM</td>
+					<td class='step-details'>Clicked the login button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:32:55 PM</td>
+					<td class='step-details'>User has successfully logged into the Core application.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>Access_Alerts_and_Notifications</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:32 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:32 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+161ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsPlaceholderManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:03 PM</td>
+					<td class='step-details'>Observed the left-side menu for "Alerts and Notifications".</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:03 PM</td>
+					<td class='step-details'>Clicked on "Alerts and Notifications".</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>Access_Placeholder_Management</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 2s+973ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsPlaceholderManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:09 PM</td>
+					<td class='step-details'>Located "Placeholder Management" under Alerts and Notifications.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:09 PM</td>
+					<td class='step-details'>Clicked on "Placeholder Management".</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:09 PM</td>
+					<td class='step-details'>User is successfully navigated to the Placeholder Management page.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>Pagination_Controls_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+91ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsPlaceholderManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:17 PM</td>
+					<td class='step-details'>User scrolls to the bottom of the placeholder details table.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:17 PM</td>
+					<td class='step-details'>Pagination controls are verified as present.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:17 PM</td>
+					<td class='step-details'>Pagination controls are visible and operational.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>Paginate_to_Next_Page</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 4s+906ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsPlaceholderManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:25 PM</td>
+					<td class='step-details'>User clicks on the "Next Page" button</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:25 PM</td>
+					<td class='step-details'>observes the table content.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:25 PM</td>
+					<td class='step-details'>The next set of records is displayed successfully.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>Paginate_to_Previous_Page</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 4s+847ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsPlaceholderManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:28 PM</td>
+					<td class='step-details'>The "Previous Page" button is clicked.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:33 PM</td>
+					<td class='step-details'>The table content is observed.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:33 PM</td>
+					<td class='step-details'>The previous set of records is displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>Search_Placeholder</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+143ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsPlaceholderManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:36 PM</td>
+					<td class='step-details'>Entered a placeholder name in the search field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:41 PM</td>
+					<td class='step-details'>Clicked the search button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:41 PM</td>
+					<td class='step-details'>Observed the table content.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:33:41 PM</td>
+					<td class='step-details'>The table updated to show records matching the search criteria.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>Test_Login_with_Valid_Credentials</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:33 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:34 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 11s+826ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:34:56 PM</td>
+					<td class='step-details'>Entered a valid username.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:34:56 PM</td>
+					<td class='step-details'>Entered a valid password.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:34:56 PM</td>
+					<td class='step-details'>Clicked the login button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:34:56 PM</td>
+					<td class='step-details'>The user successfully logged into the Core application.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='10'>
+					<div class='test-heading'>
+						<span class='test-name'>Display_Alerts_and_Notifications_Menu_Option</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:34 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:34 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+79ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:04 PM</td>
+					<td class='step-details'>Verified the page after login.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:04 PM</td>
+					<td class='step-details'>"Alerts and Notifications" menu is visible.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='11'>
+					<div class='test-heading'>
+						<span class='test-name'>Access_Alerts_and_Notifications_Page</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+167ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:07 PM</td>
+					<td class='step-details'>Clicked on the "Alerts and Notifications" menu.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:07 PM</td>
+					<td class='step-details'>Application displays all related sub-menus under the "Alerts and Notifications" menu.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='12'>
+					<div class='test-heading'>
+						<span class='test-name'>Navigate_to_Template_Management</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 35s+14ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:45 PM</td>
+					<td class='step-details'>Clicked on the "Template Management" option.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:45 PM</td>
+					<td class='step-details'>User successfully navigated to the Template Management page.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='13'>
+					<div class='test-heading'>
+						<span class='test-name'>Interact_with_Template_Management_Fields</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+638ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:49 PM</td>
+					<td class='step-details'>Interacted with Notification Type, Current Status, and Category fields.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:54 PM</td>
+					<td class='step-details'>Applied filter based on selected values.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:54 PM</td>
+					<td class='step-details'>Filtered templates are displayed successfully.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='14'>
+					<div class='test-heading'>
+						<span class='test-name'>Clear_Input_Field_Test</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:35 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+197ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:58 PM</td>
+					<td class='step-details'>Entered value in Notification Type.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:58 PM</td>
+					<td class='step-details'>Clicked the cross button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:35:58 PM</td>
+					<td class='step-details'>The field is cleared.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='15'>
+					<div class='test-heading'>
+						<span class='test-name'>Display_Template_Details_Table</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+237ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:01 PM</td>
+					<td class='step-details'>Verified the table structure.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:01 PM</td>
+					<td class='step-details'>The table displays the Template Name, Status, Last Modified Date, along with options to Edit, View, and View History.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='16'>
+					<div class='test-heading'>
+						<span class='test-name'>Test_Template_Pagination</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+70ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:09 PM</td>
+					<td class='step-details'>Navigated through table pages.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:09 PM</td>
+					<td class='step-details'>Pagination is working correctly, displaying the appropriate number of records per page.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='17'>
+					<div class='test-heading'>
+						<span class='test-name'>SMS_Template_Body_Character_Limit</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 14s+203ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:26 PM</td>
+					<td class='step-details'>"Attempted to enter more characters."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:26 PM</td>
+					<td class='step-details'>Only 160 characters are allowed; an indicator is displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='18'>
+					<div class='test-heading'>
+						<span class='test-name'>Additional_Fields_for_Email_or_Notice</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+253ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:30 PM</td>
+					<td class='step-details'>"Selected Email.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:31 PM</td>
+					<td class='step-details'>"Observed additional fields."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:31 PM</td>
+					<td class='step-details'>The 'Subject' field is available for Email, and there is no character limit for the Body.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='19'>
+					<div class='test-heading'>
+						<span class='test-name'>Add_New_Template</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 7s+857ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:36 PM</td>
+					<td class='step-details'>"Entered mandatory fields."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:36 PM</td>
+					<td class='step-details'>"Clicked 'Save'."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:42 PM</td>
+					<td class='step-details'>Pop-up closed, success message displayed, and template listed."</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='20'>
+					<div class='test-heading'>
+						<span class='test-name'>Save_New_Template</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+710ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:46 PM</td>
+					<td class='step-details'>Pop-up closed, success message displayed, and template listed."</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='21'>
+					<div class='test-heading'>
+						<span class='test-name'>View_Template_Details</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 3s+110ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:52 PM</td>
+					<td class='step-details'>Clicked the View button for a template.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:36:52 PM</td>
+					<td class='step-details'>Details displayed as created.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='22'>
+					<div class='test-heading'>
+						<span class='test-name'>Edit_Existing_Template</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:36 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:37 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 32s+844ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:37:08 PM</td>
+					<td class='step-details'>"Clicked the Edit button."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:37:13 PM</td>
+					<td class='step-details'>"Edited the fields."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:37:13 PM</td>
+					<td class='step-details'>"Entered a reason for editing."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:37:23 PM</td>
+					<td class='step-details'>"Saved the changes."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:37:28 PM</td>
+					<td class='step-details'>"Changes saved, and reason recorded."</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='23'>
+					<div class='test-heading'>
+						<span class='test-name'>View_Template_History</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:37 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:37 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:37 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+821ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsTemplateManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:37:37 PM</td>
+					<td class='step-details'>Clicked 'View History'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:37:37 PM</td>
+					<td class='step-details'>Pop-up displays history, fields, and remarks.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='24'>
+					<div class='test-heading'>
+						<span class='test-name'>Test_Login_with_Valid_Credentials</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:37 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:37 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:38 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 4s+990ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:38:48 PM</td>
+					<td class='step-details'>Entered a valid username.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:38:48 PM</td>
+					<td class='step-details'>Entered a valid password.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:38:48 PM</td>
+					<td class='step-details'>Clicked the login button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:38:48 PM</td>
+					<td class='step-details'>The user successfully logged into the Core application.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='25'>
+					<div class='test-heading'>
+						<span class='test-name'>Display_Alerts_and_Notifications_Menu_Option</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:38 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:38 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:38 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+55ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:38:56 PM</td>
+					<td class='step-details'>Verified the page after login.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:38:56 PM</td>
+					<td class='step-details'>"Alerts and Notifications" menu is visible.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='26'>
+					<div class='test-heading'>
+						<span class='test-name'>Access_Alerts_and_Notifications_Page</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:38 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:38 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:38 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+156ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:38:59 PM</td>
+					<td class='step-details'>Clicked on the "Alerts and Notifications" menu.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:38:59 PM</td>
+					<td class='step-details'>Application displays all related sub-menus under the "Alerts and Notifications" menu.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='27'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Notification_Management_Menu_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 16s+792ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:19 PM</td>
+					<td class='step-details'>Clicked on the Notification Management menu.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:19 PM</td>
+					<td class='step-details'>The Notification Management menu was displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='28'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Notification_Management_Type_Fields</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+246ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:22 PM</td>
+					<td class='step-details'>Checked for the 'Notification Management type' field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:22 PM</td>
+					<td class='step-details'>Checked if the option 'SMS' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:22 PM</td>
+					<td class='step-details'>Checked if the option 'Email' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:22 PM</td>
+					<td class='step-details'>The 'SMS' and 'Email' options were correctly displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='29'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Category_Fields</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+224ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:25 PM</td>
+					<td class='step-details'>Checked for the 'Category' field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:25 PM</td>
+					<td class='step-details'>Checked if the option 'Promotion' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:25 PM</td>
+					<td class='step-details'>Checked if the option 'Notification' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:25 PM</td>
+					<td class='step-details'>The 'Promotion' and 'Notification' options were correctly displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='30'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Schedule_Type_Fields</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+278ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:28 PM</td>
+					<td class='step-details'>Checked for the 'Schedule type' field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:28 PM</td>
+					<td class='step-details'>Checked if the option 'One time' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:28 PM</td>
+					<td class='step-details'>Checked if the option 'Daily' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:28 PM</td>
+					<td class='step-details'>Checked if the option 'Weekly' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:28 PM</td>
+					<td class='step-details'>Checked if the option 'Monthly' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:28 PM</td>
+					<td class='step-details'>The 'One time', 'Daily', 'Weekly', and 'Monthly' options were correctly displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='31'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Status_Fields</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+210ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:32 PM</td>
+					<td class='step-details'>Checked for the 'Status' field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:32 PM</td>
+					<td class='step-details'>Checked if the option 'Active' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:32 PM</td>
+					<td class='step-details'>Checked if the option 'Inactive' was available.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:32 PM</td>
+					<td class='step-details'>The 'Active' and 'Inactive' options were correctly displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='32'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Schedule_Type_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+45ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:35 PM</td>
+					<td class='step-details'>Checked if the 'Schedule type' column was displayed.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:35 PM</td>
+					<td class='step-details'>The 'Schedule type' column was visible and correctly labeled.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='33'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Template_Name_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+40ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:38 PM</td>
+					<td class='step-details'>Checked if the 'Template name' column was displayed.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:38 PM</td>
+					<td class='step-details'>The 'Template name' column was visible and correctly labeled.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='34'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Schedule_Start_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+143ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:41 PM</td>
+					<td class='step-details'>Checked if the 'Schedule start' column was displayed in dd/mm/yyyy format.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:41 PM</td>
+					<td class='step-details'>The 'Schedule start' column was visible and correctly formatted as dd/mm/yyyy.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='35'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Schedule_End_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+135ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:44 PM</td>
+					<td class='step-details'>Checked if the 'Schedule end' column was displayed in dd/mm/yyyy format.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:44 PM</td>
+					<td class='step-details'>The 'Schedule end' column was visible and correctly formatted as dd/mm/yyyy.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='36'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Time_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+39ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:47 PM</td>
+					<td class='step-details'>Checked if the 'Time' column was displayed.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:47 PM</td>
+					<td class='step-details'>The 'Time' column was visible.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='37'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Recurrence_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+41ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:50 PM</td>
+					<td class='step-details'>Checked if the 'Recurrence' column was displayed.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:50 PM</td>
+					<td class='step-details'>The 'Recurrence' column was visible.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='38'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Day_of_Week_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+44ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:53 PM</td>
+					<td class='step-details'>Checked if the 'Day of week' column was displayed.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:53 PM</td>
+					<td class='step-details'>The 'Day of week' column was visible.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='39'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Day_of_Month_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+39ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:56 PM</td>
+					<td class='step-details'>Checked if the 'Day of month' column was displayed.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:56 PM</td>
+					<td class='step-details'>The 'Day of month' column was visible.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='40'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Status_Column_Display</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:39 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+43ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:59 PM</td>
+					<td class='step-details'>Checked if the 'Status' column was displayed.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:59 PM</td>
+					<td class='step-details'>The 'Status' column was visible.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='41'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_the_pagination</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+84ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:02 PM</td>
+					<td class='step-details'>Verified if the pagination controls functionality was available or not.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:02 PM</td>
+					<td class='step-details'>Pagination was available.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='42'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_the_functionality_of_search_button</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+133ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:06 PM</td>
+					<td class='step-details'>Entered a keyword in the search box.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:11 PM</td>
+					<td class='step-details'>Clicked on the search button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:11 PM</td>
+					<td class='step-details'>Verified the search results.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:11 PM</td>
+					<td class='step-details'>Search results relevant to the entered keyword were displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='43'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_the_functionality_of_cross_button_in_input_fields</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+162ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:14 PM</td>
+					<td class='step-details'>Clicked on the cross button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:14 PM</td>
+					<td class='step-details'>Verified that the field was cleared and the focus remained.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:14 PM</td>
+					<td class='step-details'>The input field was cleared, and the focus remained on the field.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='44'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Configure_Button_Click</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+268ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:17 PM</td>
+					<td class='step-details'>Clicked on the 'Configure' button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:17 PM</td>
+					<td class='step-details'>Verified if the template selection interface opened.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:17 PM</td>
+					<td class='step-details'>Clicking the 'Configure' button opened the template selection interface.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='45'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_UI_Elements_Presence</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+149ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:25 PM</td>
+					<td class='step-details'>Verified the presence of the Notification Management Type dropdown.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:25 PM</td>
+					<td class='step-details'>Verified the presence of the Template Name dropdown.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:25 PM</td>
+					<td class='step-details'>Verified the presence of the View Template button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:25 PM</td>
+					<td class='step-details'>All elements were present: Notification Management Type dropdown, Template Name dropdown, and View Template button.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='46'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify_Edit_Button_Functionality</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 25s+528ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsNotificationManagement</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:53 PM</td>
+					<td class='step-details'>Navigated to the relevant section.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:54 PM</td>
+					<td class='step-details'>Clicked on the 'Edit' button of a row.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:54 PM</td>
+					<td class='step-details'>Verified if the editing interface opened correctly.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:40:54 PM</td>
+					<td class='step-details'>The editing interface opened for the selected row.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='47'>
+					<div class='test-heading'>
+						<span class='test-name'>Login_and_Navigate_to_Mask_Account_Window</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:40 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:42 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 18s+110ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:05 PM</td>
+					<td class='step-details'>Successfully logged into the core application.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:11 PM</td>
+					<td class='step-details'>Navigated to Alerts and Notifications from the left-side menu.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:16 PM</td>
+					<td class='step-details'>Opened the Mask Account window.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:16 PM</td>
+					<td class='step-details'>The Mask Account window is displayed successfully.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='48'>
+					<div class='test-heading'>
+						<span class='test-name'>Mask_Account_with_Valid_Details</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:42 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:42 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:42 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 23s+555ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:25 PM</td>
+					<td class='step-details'>Entered a valid account number in the account number field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:33 PM</td>
+					<td class='step-details'>Clicked on the 'Get' button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:33 PM</td>
+					<td class='step-details'>Selected 'MASK' from the Status field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:33 PM</td>
+					<td class='step-details'>Selected 'All Account Life' radio button for the masking period.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:33 PM</td>
+					<td class='step-details'>Entered a reason.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:34 PM</td>
+					<td class='step-details'>Clicked on the 'Save' button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:34 PM</td>
+					<td class='step-details'>Confirmed in the popup by clicking 'OK'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:43 PM</td>
+					<td class='step-details'>The success message 'Masking saved successfully.' was displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='49'>
+					<div class='test-heading'>
+						<span class='test-name'>Approve_Masking_Request</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:42 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:42 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:44 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 35s+859ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:43:47 PM</td>
+					<td class='step-details'>The user logged in as another user.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:43:53 PM</td>
+					<td class='step-details'>The user clicked on "Alerts and Notification" in the left-side menu.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:44:02 PM</td>
+					<td class='step-details'>The user accessed "Mask Authorization."</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:44:07 PM</td>
+					<td class='step-details'>The user entered the masked account number and clicked the "Search" button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:44:12 PM</td>
+					<td class='step-details'>The user selected the account from the output grid.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:44:12 PM</td>
+					<td class='step-details'>The user clicked the "Approval" button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:44:22 PM</td>
+					<td class='step-details'>The success message "Request approved successfully." is displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='50'>
+					<div class='test-heading'>
+						<span class='test-name'>Validate_Masked_Account_in_Notification_Management</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:44 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:44 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:46 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 4s+791ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:45:50 PM</td>
+					<td class='step-details'>Clicked on Alerts and Notification in the left-side menu.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:45:50 PM</td>
+					<td class='step-details'>Clicked on Notification Management.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:24 PM</td>
+					<td class='step-details'>Clicked on the Configure button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:24 PM</td>
+					<td class='step-details'>Selected the Notification Type and Template.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:30 PM</td>
+					<td class='step-details'>Entered the Masked Account Number and clicked on the Validate button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:30 PM</td>
+					<td class='step-details'>A warning message, "Masked Account Number," was displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='51'>
+					<div class='test-heading'>
+						<span class='test-name'>Unmask_Account</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:46 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:46 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:46 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 20s+619ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:36 PM</td>
+					<td class='step-details'>Entered the Masked Account Number in the Mask Account window.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:40 PM</td>
+					<td class='step-details'>Clicked on the Get button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:43 PM</td>
+					<td class='step-details'>Selected UNMASK from the Status field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:43 PM</td>
+					<td class='step-details'>Entered the Reason.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:43 PM</td>
+					<td class='step-details'>Clicked on the Save button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:44 PM</td>
+					<td class='step-details'>Confirmed in the popup by clicking OK.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:53 PM</td>
+					<td class='step-details'>A success message, "Masking saved successfully," was displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='52'>
+					<div class='test-heading'>
+						<span class='test-name'>Approve_Unmask_Request</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:46 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:46 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:48 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 59s+259ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:48:07 PM</td>
+					<td class='step-details'>Logged in as another user.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:48:12 PM</td>
+					<td class='step-details'>Clicked on Alerts and Notification in the left-side menu.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:48:36 PM</td>
+					<td class='step-details'>Clicked on Mask Authorization.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:48:41 PM</td>
+					<td class='step-details'>Entered the Unmasked Account Number and clicked on the Search button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:48:46 PM</td>
+					<td class='step-details'>Selected the Account Number from the output grid.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:48:46 PM</td>
+					<td class='step-details'>Clicked on the Approval button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:48:56 PM</td>
+					<td class='step-details'>A success message, "Request approved successfully," was displayed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='53'>
+					<div class='test-heading'>
+						<span class='test-name'>Account_Number_Field_BVA_Validations</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:48 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:48 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:49 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 23s+478ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:04 PM</td>
+					<td class='step-details'>Clicked on Alerts and Notification in the left-side menu.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:07 PM</td>
+					<td class='step-details'>Clicked on Mask Authorization.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:22 PM</td>
+					<td class='step-details'>Checked the string length for Max, Max-1, and Max+1 in the Account Number field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:22 PM</td>
+					<td class='step-details'>Inputs with Max and Max-1 length were allowed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='54'>
+					<div class='test-heading'>
+						<span class='test-name'>Account_Number_Field_ECP_Validations</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:49 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:49 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:49 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 15s+552ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:41 PM</td>
+					<td class='step-details'>Tested the Account Number field with alphabetic, numeric, and alphanumeric inputs.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:41 PM</td>
+					<td class='step-details'>Only Numeric inputs were allowed.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='55'>
+					<div class='test-heading'>
+						<span class='test-name'>Enter_Invalid_Account_Number</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:49 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:49 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:49 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 8s+353ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:49 PM</td>
+					<td class='step-details'>Entered an invalid account number.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:49 PM</td>
+					<td class='step-details'>Clicked on the Get button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:49:52 PM</td>
+					<td class='step-details'>An error message indicated an invalid account number.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='56'>
+					<div class='test-heading'>
+						<span class='test-name'>Leave_Account_Number_Empty</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:50 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:50 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:50 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+237ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:05 PM</td>
+					<td class='step-details'>Did not enter an account number.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:05 PM</td>
+					<td class='step-details'>Clicked on the Get button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:05 PM</td>
+					<td class='step-details'>An error message prompted to enter an account number.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='57'>
+					<div class='test-heading'>
+						<span class='test-name'>Confirm_Masking_Without_Reason</span>
+						<span class='test-time'>Tuesday, April 15, 2025, 11:50 PM (IST)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Tuesday, April 15, 2025, 11:50 PM (IST)</span>
+	<span class='label end-time'>Tuesday, April 15, 2025, 11:50 PM (IST)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 11s+166ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:16 PM</td>
+					<td class='step-details'>Entered the account number.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:24 PM</td>
+					<td class='step-details'>Clicked on Get button</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:24 PM</td>
+					<td class='step-details'>Selected MASK from the Status field.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:24 PM</td>
+					<td class='step-details'>Selected 'All Account Life' radio button for the masking period.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:25 PM</td>
+					<td class='step-details'>Did not enter a Reason.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:25 PM</td>
+					<td class='step-details'>Clicked on the Save button.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:25 PM</td>
+					<td class='step-details'>An error message prompted to enter a Reason.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<div id='category-view' class='view hide'>
+
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+				
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Categories</h3>
+			<ul id='category-collection' class='category-collection'>
+				
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>CoreAlertsPlaceholderManagement</span>
+						<span class='category-status right'>
+							<span class='label pass'>8</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 8</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:31 PM (IST)</td>
+										<td class='linked' test-id='1'>Insert_New_Entry_All_Valid_Fields</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:31 PM (IST)</td>
+										<td class='linked' test-id='2'>Successful_Login</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:32 PM (IST)</td>
+										<td class='linked' test-id='3'>Access_Alerts_and_Notifications</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:33 PM (IST)</td>
+										<td class='linked' test-id='4'>Access_Placeholder_Management</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:33 PM (IST)</td>
+										<td class='linked' test-id='5'>Pagination_Controls_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:33 PM (IST)</td>
+										<td class='linked' test-id='6'>Paginate_to_Next_Page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:33 PM (IST)</td>
+										<td class='linked' test-id='7'>Paginate_to_Previous_Page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:33 PM (IST)</td>
+										<td class='linked' test-id='8'>Search_Placeholder</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>CoreAlertsTemplateManagement</span>
+						<span class='category-status right'>
+							<span class='label pass'>15</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 15</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:33 PM (IST)</td>
+										<td class='linked' test-id='9'>Test_Login_with_Valid_Credentials</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:34 PM (IST)</td>
+										<td class='linked' test-id='10'>Display_Alerts_and_Notifications_Menu_Option</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:35 PM (IST)</td>
+										<td class='linked' test-id='11'>Access_Alerts_and_Notifications_Page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:35 PM (IST)</td>
+										<td class='linked' test-id='12'>Navigate_to_Template_Management</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:35 PM (IST)</td>
+										<td class='linked' test-id='13'>Interact_with_Template_Management_Fields</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:35 PM (IST)</td>
+										<td class='linked' test-id='14'>Clear_Input_Field_Test</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:36 PM (IST)</td>
+										<td class='linked' test-id='15'>Display_Template_Details_Table</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:36 PM (IST)</td>
+										<td class='linked' test-id='16'>Test_Template_Pagination</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:36 PM (IST)</td>
+										<td class='linked' test-id='17'>SMS_Template_Body_Character_Limit</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:36 PM (IST)</td>
+										<td class='linked' test-id='18'>Additional_Fields_for_Email_or_Notice</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:36 PM (IST)</td>
+										<td class='linked' test-id='19'>Add_New_Template</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:36 PM (IST)</td>
+										<td class='linked' test-id='20'>Save_New_Template</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:36 PM (IST)</td>
+										<td class='linked' test-id='21'>View_Template_Details</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:36 PM (IST)</td>
+										<td class='linked' test-id='22'>Edit_Existing_Template</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:37 PM (IST)</td>
+										<td class='linked' test-id='23'>View_Template_History</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>CoreAlertsNotificationManagement</span>
+						<span class='category-status right'>
+							<span class='label pass'>23</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 23</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:37 PM (IST)</td>
+										<td class='linked' test-id='24'>Test_Login_with_Valid_Credentials</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:38 PM (IST)</td>
+										<td class='linked' test-id='25'>Display_Alerts_and_Notifications_Menu_Option</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:38 PM (IST)</td>
+										<td class='linked' test-id='26'>Access_Alerts_and_Notifications_Page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='27'>Verify_Notification_Management_Menu_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='28'>Verify_Notification_Management_Type_Fields</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='29'>Verify_Category_Fields</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='30'>Verify_Schedule_Type_Fields</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='31'>Verify_Status_Fields</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='32'>Verify_Schedule_Type_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='33'>Verify_Template_Name_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='34'>Verify_Schedule_Start_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='35'>Verify_Schedule_End_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='36'>Verify_Time_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='37'>Verify_Recurrence_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='38'>Verify_Day_of_Week_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='39'>Verify_Day_of_Month_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:39 PM (IST)</td>
+										<td class='linked' test-id='40'>Verify_Status_Column_Display</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:40 PM (IST)</td>
+										<td class='linked' test-id='41'>Verify_the_pagination</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:40 PM (IST)</td>
+										<td class='linked' test-id='42'>Verify_the_functionality_of_search_button</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:40 PM (IST)</td>
+										<td class='linked' test-id='43'>Verify_the_functionality_of_cross_button_in_input_fields</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:40 PM (IST)</td>
+										<td class='linked' test-id='44'>Verify_Configure_Button_Click</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:40 PM (IST)</td>
+										<td class='linked' test-id='45'>Verify_UI_Elements_Presence</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:40 PM (IST)</td>
+										<td class='linked' test-id='46'>Verify_Edit_Button_Functionality</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>CoreAlertsMaskAccountandMaskingAuthorization</span>
+						<span class='category-status right'>
+							<span class='label pass'>11</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 11</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:40 PM (IST)</td>
+										<td class='linked' test-id='47'>Login_and_Navigate_to_Mask_Account_Window</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:42 PM (IST)</td>
+										<td class='linked' test-id='48'>Mask_Account_with_Valid_Details</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:42 PM (IST)</td>
+										<td class='linked' test-id='49'>Approve_Masking_Request</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:44 PM (IST)</td>
+										<td class='linked' test-id='50'>Validate_Masked_Account_in_Notification_Management</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:46 PM (IST)</td>
+										<td class='linked' test-id='51'>Unmask_Account</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:46 PM (IST)</td>
+										<td class='linked' test-id='52'>Approve_Unmask_Request</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:48 PM (IST)</td>
+										<td class='linked' test-id='53'>Account_Number_Field_BVA_Validations</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:49 PM (IST)</td>
+										<td class='linked' test-id='54'>Account_Number_Field_ECP_Validations</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:49 PM (IST)</td>
+										<td class='linked' test-id='55'>Enter_Invalid_Account_Number</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:50 PM (IST)</td>
+										<td class='linked' test-id='56'>Leave_Account_Number_Empty</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Tuesday, April 15, 2025, 11:50 PM (IST)</td>
+										<td class='linked' test-id='57'>Confirm_Masking_Without_Reason</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='category-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- category view -->
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>57</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>188</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Tuesday, April 15, 2025, 11:31 PM (IST)</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Tuesday, April 15, 2025, 11:50 PM (IST)</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 18m 47s+210ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>OS</td>
+								<td>Windows</td>
+							</tr>
+							<tr>
+								<td>AUT</td>
+								<td>QA</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+			<div class='col s6'>
+				<div class='card-panel dashboard-categories'>
+					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Passed</th>
+							<th>Failed</th>
+							<th>Others</th>
+							<th>Passed %</th>
+						</tr>
+						<tr>
+							<td>CoreAlertsPlaceholderManagement</td>
+							<td>8</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>CoreAlertsTemplateManagement</td>
+							<td>15</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>CoreAlertsNotificationManagement</td>
+							<td>23</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>CoreAlertsMaskAccountandMaskingAuthorization</td>
+							<td>11</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 57,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 0,
+				
+				passChild: 188,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				exceptionsChild: 0,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>
