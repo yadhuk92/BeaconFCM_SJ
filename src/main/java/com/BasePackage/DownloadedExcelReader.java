@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -597,6 +598,82 @@ public class DownloadedExcelReader {
         workbook.close();
         return false; // No match found
     }
+	
+	public static Map<String, Object> getACCountAndOutBalInLakhs() throws IOException {
+	    Map<String, Object> result = new HashMap<>();
+	    int acCount = 0;
+	    double outBalSum = 0.0;
+
+	    String userHome = System.getProperty("user.home");
+	    String downloadDir = userHome + File.separator + "Downloads";
+
+	    File latestFile = getLatestFileFromDir(downloadDir);
+	    if (latestFile == null) {
+	        System.out.println("No Excel file found.");
+	        return result;
+	    }
+
+	    FileInputStream fis = new FileInputStream(latestFile);
+	    Workbook workbook = new XSSFWorkbook(fis);
+	    Sheet sheet = workbook.getSheetAt(0); // Assumes first sheet
+
+	    Row headerRow = sheet.getRow(0); // Adjust if header is in a different row
+	    if (headerRow == null) {
+	        workbook.close();
+	        fis.close();
+	        System.out.println("Header row not found.");
+	        return result;
+	    }
+
+	    int acNumberCol = -1;
+	    int outBalCol = -1;
+
+	    for (Cell cell : headerRow) {
+	        if (cell.getCellType() == CellType.STRING) {
+	        	String colName = cell.getStringCellValue().trim();
+	            if (colName.equals("AC_Number")) {
+	                acNumberCol = cell.getColumnIndex();
+	            } else if (colName.equals("OUT_Bal")) {
+	                outBalCol = cell.getColumnIndex();
+	            }
+	        }
+	    }
+
+	    if (acNumberCol == -1 || outBalCol == -1) {
+	        workbook.close();
+	        fis.close();
+	        System.out.println("Required columns not found.");
+	        return result;
+	    }
+
+	    for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+	        Row row = sheet.getRow(i);
+	        if (row == null) continue;
+
+	        // Count AC Numbers
+	        Cell acCell = row.getCell(acNumberCol);
+	        if (acCell != null && acCell.getCellType() != CellType.BLANK) {
+	            acCount++;
+	        }
+
+	        // Sum OUT_Bal if non-zero
+	        Cell outBalCell = row.getCell(outBalCol);
+	        if (outBalCell != null && outBalCell.getCellType() == CellType.NUMERIC) {
+	            double value = outBalCell.getNumericCellValue();
+	            if (value != 0) {
+	                outBalSum += value;
+	            }
+	        }
+	    }
+
+	    workbook.close();
+	    fis.close();
+
+	    result.put("TotalACNumbers", acCount);
+	    result.put("TotalOutBalInLakhs", Math.round(outBalSum / 100000.0 * 100.0) / 100.0); // Rounded to 2 decimals
+
+	    return result;
+	}
 	
 	
 }

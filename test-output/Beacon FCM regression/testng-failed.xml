@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Beacon FCM regression]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Core - collection agency - Agent Account Allocation module(failed)">
+    <classes>
+      <class name="Core.CollectionAgency.AgentAccountAllocation_TestClass">
+        <methods>
+          <include name="SetDPDValue"/>
+          <include name="VerifyAllocatedListButtonispresent"/>
+          <include name="zoneandRegionDropdownDependencyTest"/>
+          <include name="SMACategoryActivation"/>
+          <include name="zoneDropdownBasicFunctionality"/>
+          <include name="DownloadExcelButtonEnabledOnlyWhenSelected_ValidateDataExcelFilename"/>
+          <include name="OutputGridDataVerification"/>
+          <include name="SearchButtonBasicFunctionality"/>
+          <include name="AssetCategoryDropdownBasicFunctionality"/>
+          <include name="AllocateButtonFunctionality"/>
+          <include name="ResetButtonClearFilters"/>
+          <include name="DeleteDataInDB"/>
+          <include name="AgencyNameDropdownBasicFunctionality"/>
+          <include name="DownloadExcelDisabledWhenNoSelection"/>
+          <include name="VerifyDeallocatedAccountsFunctionality"/>
+          <include name="ActionDateFromPicker"/>
+          <include name="testUpdateProperties"/>
+          <include name="reference"/>
+          <include name="SearchButtonFunctionality"/>
+          <include name="InvalidSearchwithEmptyFields"/>
+          <include name="takeScreenshotOnFailure"/>
+          <include name="VerifyAllocatedAccountsInDBTable"/>
+          <include name="RegionandBranchDependency"/>
+          <include name="AccountTypeDropdownBasicFunctionality"/>
+          <include name="NavigationToAgencyAccountAllocation"/>
+          <include name="AllocationDateNonEditability"/>
+          <include name="CloseAllocatedListPopup"/>
+          <include name="AfterClass"/>
+          <include name="ValidateOutputColumnsInGrid"/>
+          <include name="ExtentTestManagerStartTest"/>
+          <include name="VerifyPopupOpenswhenclickonAllocatedListbutton"/>
+          <include name="LogInToApp"/>
+          <include name="UpdateDataInDB"/>
+          <include name="ActionDateToPicker"/>
+          <include name="NPACategoryActivation"/>
+        </methods>
+      </class> <!-- Core.CollectionAgency.AgentAccountAllocation_TestClass -->
+    </classes>
+  </test> <!-- Core - collection agency - Agent Account Allocation module(failed) -->
+</suite> <!-- Failed suite [Beacon FCM regression] -->

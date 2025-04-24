@@ -5,8 +5,9 @@
   <meta charset='utf-8'>
   <title>TestNG reports</title>
 
-    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
-    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="testng-reports.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type='text/javascript'>
@@ -23,22 +24,23 @@
   <body>
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
         <span>All suites</span>
-        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
-          <img class="collapse-all-icon" src="collapseall.gif">
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
           </img> <!-- collapse-all-icon -->
         </a> <!-- collapse-all-link -->
       </div> <!-- navigator-suite-header -->
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" class="navigator-link" panel-name="suite-Default_suite">
-              <span class="suite-name border-failed">Default suite</span>
+            <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" class="navigator-link">
+              <span class="suite-name border-passed">Beacon FCM Regression Automation Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -48,37 +50,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\yadhukrishnan.p\AppData\Local\Temp\testng-eclipse--1509673446\testng-customsuite.xml</span>
+                  <a href="#" panel-name="test-xml-Beacon_FCM_Regression_Automation_Suite" class="navigator-link ">
+                    <span>C:\Users\yadhukrishnan.p\Documents\GitHub\BeaconFCM_SJ\Beaconfcm-regression.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="testlist-Default_suite">
+                  <a href="#" panel-name="testlist-Beacon_FCM_Regression_Automation_Suite" class="navigator-link ">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="group-Default_suite">
+                  <a href="#" panel-name="group-Beacon_FCM_Regression_Automation_Suite" class="navigator-link ">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="times-Default_suite">
+                  <a href="#" panel-name="times-Beacon_FCM_Regression_Automation_Suite" class="navigator-link ">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="reporter-Default_suite">
+                  <a href="#" panel-name="reporter-Beacon_FCM_Regression_Automation_Suite" class="navigator-link ">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="ignored-methods-Default_suite">
+                  <a href="#" panel-name="ignored-methods-Beacon_FCM_Regression_Automation_Suite" class="navigator-link ">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="chronological-Default_suite">
+                  <a href="#" panel-name="chronological-Beacon_FCM_Regression_Automation_Suite" class="navigator-link ">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -91,21 +93,61 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">9 methods,   9 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" class="hide-methods passed suite-Beacon_FCM_Regression_Automation_Suite"> (hide)</a> <!-- hide-methods passed suite-Beacon_FCM_Regression_Automation_Suite -->
+                      <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" class="show-methods passed suite-Beacon_FCM_Regression_Automation_Suite"> (show)</a> <!-- show-methods passed suite-Beacon_FCM_Regression_Automation_Suite -->
                     </span>
-                    <div class="method-list-content failed suite-Default_suite">
+                    <div class="method-list-content passed suite-Beacon_FCM_Regression_Automation_Suite">
                       <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test" hash-for-method="Navigation_to_User_Management_Page({Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonen...)">Navigation_to_User_Management_Page({Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonen...)</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Successful_Account_Allocation_to_My_accounts_in_my_desk">Successful_Account_Allocation_to_My_accounts_in_my_desk</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Default_suite -->
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Validate_Data_Execution_for_Bank_Allocation_Summary_in_database">Validate_Data_Execution_for_Bank_Allocation_Summary_in_database</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Verify_Accounts_in_Todays_Branch_Allocation_Summary({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)">Verify_Accounts_in_Todays_Branch_Allocation_Summary({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Verify_Accounts_in_Yesterdays_date({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)">Verify_Accounts_in_Yesterdays_date({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Verify_Download_Functionality_as_Excel">Verify_Download_Functionality_as_Excel</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Verify_Grid_Details_Accuracy({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)">Verify_Grid_Details_Accuracy({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Verify_branch_user_able_to_Login_with_Valid_Credentials">Verify_branch_user_able_to_Login_with_Valid_Credentials</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution">Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Beacon_FCM_Regression_Automation_Suite" title="Core.SummaryReports.BankAllocationSummary_TestClass" class="method navigator-link" hash-for-method="Verify_zone_user_able_to_allocate_accounts_to_branch({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)">Verify_zone_user_able_to_allocate_accounts_to_branch({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Beacon_FCM_Regression_Automation_Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -116,163 +158,325 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-failed">
+        <div panel-name="suite-Beacon_FCM_Regression_Automation_Suite" class="panel Beacon_FCM_Regression_Automation_Suite">
+          <div class="suite-Beacon_FCM_Regression_Automation_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test</span>
+              <img src="passed.png"/>
+              <span class="class-name">Core.SummaryReports.BankAllocationSummary_TestClass</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="Navigation_to_User_Management_Page({Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonen...)">
-                  </a> <!-- Navigation_to_User_Management_Page({Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonen...) -->
-                  <span class="method-name">Navigation_to_User_Management_Page</span>
-                  <span class="parameters">({Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonenumber=8089889900, Run=Yes, Testrole=NewrolePlaywright}, org.testng.TestRunner@6d9f7a80)</span>
-                  <div class="stack-trace">java.lang.NullPointerException
-	at Core.SecurityManagement.UserManagement_Page.CoreUserManagement_HO_User_Creation(UserManagement_Page.java:801)
-	at Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(CoreUserManagement_HO_User_Creation_Test.java:82)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1246)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1171)
-	at org.testng.TestNG.run(TestNG.java:1066)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-
-</div> <!-- stack-trace -->
+                  <a name="Successful_Account_Allocation_to_My_accounts_in_my_desk">
+                  </a> <!-- Successful_Account_Allocation_to_My_accounts_in_my_desk -->
+                  <span class="method-name">Successful_Account_Allocation_to_My_accounts_in_my_desk</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Validate_Data_Execution_for_Bank_Allocation_Summary_in_database">
+                  </a> <!-- Validate_Data_Execution_for_Bank_Allocation_Summary_in_database -->
+                  <span class="method-name">Validate_Data_Execution_for_Bank_Allocation_Summary_in_database</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Verify_Accounts_in_Todays_Branch_Allocation_Summary({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)">
+                  </a> <!-- Verify_Accounts_in_Todays_Branch_Allocation_Summary({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...) -->
+                  <span class="method-name">Verify_Accounts_in_Todays_Branch_Allocation_Summary</span>
+                  <span class="parameters">({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=<, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary})</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Verify_Accounts_in_Yesterdays_date({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)">
+                  </a> <!-- Verify_Accounts_in_Yesterdays_date({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...) -->
+                  <span class="method-name">Verify_Accounts_in_Yesterdays_date</span>
+                  <span class="parameters">({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=<, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary})</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Verify_Download_Functionality_as_Excel">
+                  </a> <!-- Verify_Download_Functionality_as_Excel -->
+                  <span class="method-name">Verify_Download_Functionality_as_Excel</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Verify_Grid_Details_Accuracy({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)">
+                  </a> <!-- Verify_Grid_Details_Accuracy({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...) -->
+                  <span class="method-name">Verify_Grid_Details_Accuracy</span>
+                  <span class="parameters">({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=<, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary})</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Verify_branch_user_able_to_Login_with_Valid_Credentials">
+                  </a> <!-- Verify_branch_user_able_to_Login_with_Valid_Credentials -->
+                  <span class="method-name">Verify_branch_user_able_to_Login_with_Valid_Credentials</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution">
+                  </a> <!-- Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution -->
+                  <span class="method-name">Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Verify_zone_user_able_to_allocate_accounts_to_branch({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)">
+                  </a> <!-- Verify_zone_user_able_to_allocate_accounts_to_branch({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...) -->
+                  <span class="method-name">Verify_zone_user_able_to_allocate_accounts_to_branch</span>
+                  <span class="parameters">({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=<, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary})</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-failed -->
-        </div> <!-- panel Default_suite -->
-        <div panel-name="test-xml-Default_suite" class="panel">
+          </div> <!-- suite-Beacon_FCM_Regression_Automation_Suite-class-passed -->
+        </div> <!-- panel Beacon_FCM_Regression_Automation_Suite -->
+        <div panel-name="test-xml-Beacon_FCM_Regression_Automation_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\yadhukrishnan.p\AppData\Local\Temp\testng-eclipse--1509673446\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\yadhukrishnan.p\Documents\GitHub\BeaconFCM_SJ\Beaconfcm-regression.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
-  &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;Beacon FCM Regression Automation Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.BasePackage.TestNGXML_Listener&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;test thread-count=&quot;1&quot; name=&quot;Core - Summary reports - Bank allocation summary&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test&quot;/&gt;
+      &lt;class name=&quot;Core.SummaryReports.BankAllocationSummary_TestClass&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Default test --&gt;
-&lt;/suite&gt; &lt;!-- Default suite --&gt;
+  &lt;/test&gt; &lt;!-- Core - Summary reports - Bank allocation summary --&gt;
+&lt;/suite&gt; &lt;!-- Beacon FCM Regression Automation Suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-Default_suite" class="panel">
+        <div panel-name="testlist-Beacon_FCM_Regression_Automation_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for Default suite</span>
+            <span class="header-content">Tests for Beacon FCM Regression Automation Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Default test (1 class)</span>
+                <span class="test-name">Core - Summary reports - Bank allocation summary (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-Default_suite" class="panel">
+        <div panel-name="group-Beacon_FCM_Regression_Automation_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for Default suite</span>
+            <span class="header-content">Groups for Beacon FCM Regression Automation Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-Default_suite" class="panel">
+        <div panel-name="times-Beacon_FCM_Regression_Automation_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for Default suite</span>
+            <span class="header-content">Times for Beacon FCM Regression Automation Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_Default_suite');
-function tableData_Default_suite() {
+suiteTableInitFunctions.push('tableData_Beacon_FCM_Regression_Automation_Suite');
+function tableData_Beacon_FCM_Regression_Automation_Suite() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(9);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'Navigation_to_User_Management_Page')
-data.setCell(0, 2, 'Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test')
-data.setCell(0, 3, 186502);
-window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
+data.setCell(0, 1, 'Verify_zone_user_able_to_allocate_accounts_to_branch')
+data.setCell(0, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(0, 3, 171435);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'Verify_Accounts_in_Todays_Branch_Allocation_Summary')
+data.setCell(1, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(1, 3, 120742);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'Verify_branch_user_able_to_Login_with_Valid_Credentials')
+data.setCell(2, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(2, 3, 77246);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'Successful_Account_Allocation_to_My_accounts_in_my_desk')
+data.setCell(3, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(3, 3, 66216);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'Verify_Download_Functionality_as_Excel')
+data.setCell(4, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(4, 3, 12737);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'Verify_Grid_Details_Accuracy')
+data.setCell(5, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(5, 3, 9636);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'Verify_Accounts_in_Yesterdays_date')
+data.setCell(6, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(6, 3, 4475);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'Validate_Data_Execution_for_Bank_Allocation_Summary_in_database')
+data.setCell(7, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(7, 3, 3633);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution')
+data.setCell(8, 2, 'Core.SummaryReports.BankAllocationSummary_TestClass')
+data.setCell(8, 3, 3627);
+window.suiteTableData['Beacon_FCM_Regression_Automation_Suite']= { tableData: data, tableDiv: 'times-div-Beacon_FCM_Regression_Automation_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
-              <div id="times-div-Default_suite">
-              </div> <!-- times-div-Default_suite -->
+              <span class="suite-total-time">Total running time: 7 minutes</span>
+              <div id="times-div-Beacon_FCM_Regression_Automation_Suite">
+              </div> <!-- times-div-Beacon_FCM_Regression_Automation_Suite -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-Default_suite" class="panel">
+        <div panel-name="reporter-Beacon_FCM_Regression_Automation_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for Default suite</span>
+            <span class="header-content">Reporter output for Beacon FCM Regression Automation Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-Default_suite" class="panel">
+        <div panel-name="ignored-methods-Beacon_FCM_Regression_Automation_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-Default_suite" class="panel">
+        <div panel-name="chronological-Beacon_FCM_Regression_Automation_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test</div> <!-- chronological-class-name -->
-              <div class="configuration-suite before">
-                <span class="method-name">reference</span>
+              <div class="chronological-class-name">Core.SummaryReports.BankAllocationSummary_TestClass</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">SetUp</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-suite before -->
+              </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">ExtentTestManagerStartTest(public void Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Mana...)</span>
-                <span class="method-start">1390 ms</span>
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_zone_user_able_to_allocate_ac...)</span>
+                <span class="method-start">1572 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">Navigation_to_User_Management_Page({Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonen...)</span>
-                <span class="method-start">1406 ms</span>
+                <span class="method-name">Verify_zone_user_able_to_allocate_accounts_to_branch({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)</span>
+                <span class="method-start">1746 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">takeScreenshotOnFailure([TestResult name=Navigation_to_User_Management_Page status=FAILURE method=CoreUserManagement_HO_User...)</span>
-                <span class="method-start">187910 ms</span>
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Verify_zone_user_able_to_allocate_accounts_to_branch status=SUCCESS method=BankAllo...)</span>
+                <span class="method-start">173184 ms</span>
               </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_branch_user_able_to_Login_wit...)</span>
+                <span class="method-start">173188 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Verify_branch_user_able_to_Login_with_Valid_Credentials</span>
+                <span class="method-start">173189 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Verify_branch_user_able_to_Login_with_Valid_Credentials status=SUCCESS method=BankA...)</span>
+                <span class="method-start">250437 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Successful_Account_Allocation_to_My_...)</span>
+                <span class="method-start">250438 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Successful_Account_Allocation_to_My_accounts_in_my_desk</span>
+                <span class="method-start">250439 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Successful_Account_Allocation_to_My_accounts_in_my_desk status=SUCCESS method=BankA...)</span>
+                <span class="method-start">316656 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Validate_Data_Execution_for_Bank_All...)</span>
+                <span class="method-start">316657 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Validate_Data_Execution_for_Bank_Allocation_Summary_in_database</span>
+                <span class="method-start">316658 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Validate_Data_Execution_for_Bank_Allocation_Summary_in_database status=SUCCESS meth...)</span>
+                <span class="method-start">320292 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_Accounts_in_Todays_Branch_All...)</span>
+                <span class="method-start">320429 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Verify_Accounts_in_Todays_Branch_Allocation_Summary({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)</span>
+                <span class="method-start">320430 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Verify_Accounts_in_Todays_Branch_Allocation_Summary status=SUCCESS method=BankAlloc...)</span>
+                <span class="method-start">441173 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_Accounts_in_Yesterdays_date(j...)</span>
+                <span class="method-start">441289 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Verify_Accounts_in_Yesterdays_date({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)</span>
+                <span class="method-start">441290 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Verify_Accounts_in_Yesterdays_date status=SUCCESS method=BankAllocationSummary_Test...)</span>
+                <span class="method-start">445766 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_the_tables_DW_BRANCH_ALLOCATI...)</span>
+                <span class="method-start">445767 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution</span>
+                <span class="method-start">445768 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD...)</span>
+                <span class="method-start">449396 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_Grid_Details_Accuracy(java.ut...)</span>
+                <span class="method-start">449474 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Verify_Grid_Details_Accuracy({AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOp...)</span>
+                <span class="method-start">449476 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Verify_Grid_Details_Accuracy status=SUCCESS method=BankAllocationSummary_TestClass....)</span>
+                <span class="method-start">459113 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_Download_Functionality_as_Exc...)</span>
+                <span class="method-start">459114 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Verify_Download_Functionality_as_Excel</span>
+                <span class="method-start">459115 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">takeScreenshotOnFailure([TestResult name=Verify_Download_Functionality_as_Excel status=SUCCESS method=BankAllocationSummary_...)</span>
+                <span class="method-start">471853 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">471854 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
     </div> <!-- wrapper -->
   </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
 </html>

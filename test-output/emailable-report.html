@@ -1,58 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title>TestNG Report</title><style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}</style></head><body><table><tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr><tr><th colspan="7">Default suite</th></tr><tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">187,460</td><td></td><td></td></tr></table><table><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test</td><td><a href="#m0">takeScreenshotOnFailure</a></td><td rowspan="1">1737737275838</td><td rowspan="1">0</td></tr><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test</td><td><a href="#m1">Navigation_to_User_Management_Page</a></td><td rowspan="1">1737737089334</td><td rowspan="1">186502</td></tr><tr><th colspan="4">Default test &#8212; skipped (configuration methods)</th></tr><tr class="skippedeven"><td rowspan="1">Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test</td><td><a href="#m2">AfterClass</a></td><td rowspan="1">1737737275840</td><td rowspan="1">0</td></tr></tbody></table><h2>Default test</h2><h3 id="m0">Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test#takeScreenshotOnFailure</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[TestResult name=Navigation_to_User_Management_Page status=FAILURE method=CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(java.util.Map, org.testng.ITestContext)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e] output={null}]</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
-	at com.Utility.ScreenShot.takeScreenShot(ScreenShot.java:29)
-	at Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.takeScreenshotOnFailure(CoreUserManagement_HO_User_Creation_Test.java:102)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:514)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:215)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:707)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1246)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1171)
-	at org.testng.TestNG.run(TestNG.java:1066)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p><h3 id="m1">Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test#Navigation_to_User_Management_Page</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>{Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonenumber=8089889900, Run=Yes, Testrole=NewrolePlaywright}</td><td>org.testng.TestRunner@6d9f7a80</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.NullPointerException
-	at Core.SecurityManagement.UserManagement_Page.CoreUserManagement_HO_User_Creation(UserManagement_Page.java:801)
-	at Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(CoreUserManagement_HO_User_Creation_Test.java:82)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1246)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1171)
-	at org.testng.TestNG.run(TestNG.java:1066)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p><h3 id="m2">Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test#AfterClass</h3><table class="result"></table><p class="totop"><a href="#summary">back to summary</a></p></body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="8">Beacon FCM Regression Automation Suite</th></tr>
+<tr><td><a href="#t0">Core - Summary reports - Bank allocation summary</a></td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">475,453</td><td></td><td></td></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Beacon FCM Regression Automation Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Core - Summary reports - Bank allocation summary &#8212; passed</th></tr><tr class="passedeven"><td rowspan="9">Core.SummaryReports.BankAllocationSummary_TestClass</td><td><a href="#m0">Successful_Account_Allocation_to_My_accounts_in_my_desk</a></td><td rowspan="1">1745492469287</td><td rowspan="1">66216</td></tr><tr class="passedeven"><td><a href="#m1">Validate_Data_Execution_for_Bank_Allocation_Summary_in_database</a></td><td rowspan="1">1745492535506</td><td rowspan="1">3633</td></tr><tr class="passedeven"><td><a href="#m2">Verify_Accounts_in_Todays_Branch_Allocation_Summary</a></td><td rowspan="1">1745492539278</td><td rowspan="1">120742</td></tr><tr class="passedeven"><td><a href="#m3">Verify_Accounts_in_Yesterdays_date</a></td><td rowspan="1">1745492660138</td><td rowspan="1">4475</td></tr><tr class="passedeven"><td><a href="#m4">Verify_Download_Functionality_as_Excel</a></td><td rowspan="1">1745492677963</td><td rowspan="1">12737</td></tr><tr class="passedeven"><td><a href="#m5">Verify_Grid_Details_Accuracy</a></td><td rowspan="1">1745492668324</td><td rowspan="1">9636</td></tr><tr class="passedeven"><td><a href="#m6">Verify_branch_user_able_to_Login_with_Valid_Credentials</a></td><td rowspan="1">1745492392037</td><td rowspan="1">77246</td></tr><tr class="passedeven"><td><a href="#m7">Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution</a></td><td rowspan="1">1745492664616</td><td rowspan="1">3627</td></tr><tr class="passedeven"><td><a href="#m8">Verify_zone_user_able_to_allocate_accounts_to_branch</a></td><td rowspan="1">1745492220594</td><td rowspan="1">171435</td></tr></tbody>
+</table>
+<h2>Core - Summary reports - Bank allocation summary</h2><h3 id="m0">Core.SummaryReports.BankAllocationSummary_TestClass#Successful_Account_Allocation_to_My_accounts_in_my_desk</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">Core.SummaryReports.BankAllocationSummary_TestClass#Validate_Data_Execution_for_Bank_Allocation_Summary_in_database</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">Core.SummaryReports.BankAllocationSummary_TestClass#Verify_Accounts_in_Todays_Branch_Allocation_Summary</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=&lt;, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">Core.SummaryReports.BankAllocationSummary_TestClass#Verify_Accounts_in_Yesterdays_date</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=&lt;, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">Core.SummaryReports.BankAllocationSummary_TestClass#Verify_Download_Functionality_as_Excel</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">Core.SummaryReports.BankAllocationSummary_TestClass#Verify_Grid_Details_Accuracy</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=&lt;, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">Core.SummaryReports.BankAllocationSummary_TestClass#Verify_branch_user_able_to_Login_with_Valid_Credentials</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">Core.SummaryReports.BankAllocationSummary_TestClass#Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">Core.SummaryReports.BankAllocationSummary_TestClass#Verify_zone_user_able_to_allocate_accounts_to_branch</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=&lt;, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary}</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>

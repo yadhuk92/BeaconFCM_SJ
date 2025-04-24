@@ -15,13 +15,13 @@ public class TestFilter implements IMethodInterceptor {
         List<IMethodInstance> selectedMethods = new ArrayList<>();
         LinkedHashMap<String, Boolean> testClassesToRun = getTestClassesFromExcel(".\\Testcases\\TestCases.xlsx", "Sheet1");
 
-		/*
-		 * System.out.println("===== Test Cases from Excel ====="); for
-		 * (Map.Entry<String, Boolean> entry : testClassesToRun.entrySet()) {
-		 * System.out.println("Class: " + entry.getKey() + " | RunFlag: " +
-		 * (entry.getValue() ? "Yes" : "No")); }
-		 * System.out.println("===================================================");
-		 */
+		
+		  System.out.println("===== Test Cases from Excel ====="); for
+		  (Map.Entry<String, Boolean> entry : testClassesToRun.entrySet()) {
+		  System.out.println("Class: " + entry.getKey() + " | RunFlag: " +
+		  (entry.getValue() ? "Yes" : "No")); }
+		  System.out.println("===================================================");
+		 
 
         // Iterate in the order of Excel file
         for (String className : testClassesToRun.keySet()) {

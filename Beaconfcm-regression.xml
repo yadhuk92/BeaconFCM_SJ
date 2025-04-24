@@ -13,32 +13,17 @@
       		<class name="Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass"/>
 		</classes>
 	</test>
-
-	<!--<test thread-count="5" name="Complaints Test">
-		<classes>
-			<class name="myBank.Test.MyBank_RegisterComplaint" />
-		</classes>
-	</test>-->
-
-	<!--<test thread-count="5" name="User Management">
-		<classes>
-			<class name="adminPortal.Test.AdminPortal_UserManagement" />
-		</classes>
-	</test>-->
-
-	<!--<test thread-count="5" name="News : Add News, Remove, Modify">
-		<classes>
-			<class name="adminPortal.Test.AdminPortal_NewsManagement" />
-			<class name="myBank.Test.MyBank_NewsManagement" />
-		</classes>
-	</test>-->
-
-	<!--<test thread-count="5" name="Feedback/ Complaints">
-		<classes>
-			<class name="myBank.Test.MyBank_FeedBack_Complaint_Creation" />
-			<class name="adminPortal.Test.AdminPortal_FeedBackComplaints" />
-			<class name="myBank.Test.MyBank_FeedBack_Complaint_Confirmation" />
-		</classes>
-	</test>-->
+	
+	<test thread-count="1" name="Core - collection agency - Agent Account Allocation module">
+        <classes>
+            <class name="Core.CollectionAgency.AgentAccountAllocation_TestClass"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Core - Summary reports - Bank allocation summary">
+        <classes>
+            <class name="Core.SummaryReports.BankAllocationSummary_TestClass"/>
+        </classes>
+    </test>
 
 </suite> <!-- Suite -->

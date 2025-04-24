@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<suite name="Beacon FCM regression">
     <listeners>
         <listener class-name="com.BasePackage.TestFilter"/>
     </listeners>
-    
-   <!-- <test thread-count="1" name="Test">
-        <classes>
-            <class name="com.test.LoginTest.CoreLoginTest"/>
-      		<class name="com.test.LoginTest.TestAnyMethod"/>
-      		<class name="Core.Configurations.CollectionOfficerConfig_TestClass"/>
-        </classes>
-    </test>-->
 
-    <test thread-count="1" name="Test">
+    <!--<test thread-count="1" name="Alerts module">
         <classes>
             <class name="Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass"/>
       		<class name="Core.AlertsandNotifications.AlertsTemplateManagement_TestClass"/>
       		<class name="Core.AlertsandNotifications.AlertsNotificationManagement_TestClass"/>
         </classes>
+    </test>-->
+    
+    <test thread-count="1" name="Core - collection agency - Agent Account Allocation module">
+        <classes>
+            <class name="Core.CollectionAgency.AgentAccountAllocation_TestClass"/>
+        </classes>
     </test>
+    
+   <!-- <test thread-count="1" name="Core - Summary reports - Bank allocation summary">
+        <classes>
+            <class name="Core.SummaryReports.BankAllocationSummary_TestClass"/>
+        </classes>
+    </test>-->
+    
 </suite>

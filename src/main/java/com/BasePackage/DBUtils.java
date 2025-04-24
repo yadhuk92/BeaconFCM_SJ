@@ -199,6 +199,12 @@ public class DBUtils {
         Connection conn = null;
         CallableStatement stmt = null;
         List<Object> outputValues = new ArrayList<>();
+        
+        
+        // Handle null input
+           if (inputParams == null) {
+               inputParams = new ArrayList<>();
+           }
 
         try {
             // Establish database connection using Base_Class method
