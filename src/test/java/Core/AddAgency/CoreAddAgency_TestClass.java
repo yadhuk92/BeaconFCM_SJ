@@ -2,6 +2,8 @@ package Core.AddAgency;
 
 import java.io.File;
 
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,17 +34,14 @@ import java.time.LocalDate;
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
 import com.BasePackage.DBUtils;
-import com.BasePackage.DownloadedExcelReader;
-import com.BasePackage.DownloadedExcelReader.DataSummary;
+
 import com.BasePackage.ExecuteStoredProcedure;
 import com.BasePackage.Login_Class;
 import com.Page_Repository.AddAgencyPageRepo;
 import com.Page_Repository.AgentListPageRepo;
-import com.Page_Repository.CoreAllocationSummaryRepo;
-import com.Page_Repository.CoreAutoAllocationRepo;
-import com.Page_Repository.CoreManualAllocationRepo;
+
 import com.Page_Repository.DispositionMasterPageRepo;
-import com.Utility.ExcelReaderNew;
+
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -55,7 +54,7 @@ import Core.CallCentre.CoreAutoAllocationPage;
 import Core.CallCentre.CoreAutoAllocationPage.ProcedureResult;
 import Core.CallCentre.CoreManualAllocationPage;
 import Core.MyDesk.Dashboard.MyDeskDashboardPage_MainClass;
-import Core.AddAgencyManagement.AddAgencyPage;
+import Core.AddAgencyManagement.AddAgencyPage_MainClass;
 import bsh.ParseException;
 import jdk.internal.org.jline.utils.Log;
 //updated code
@@ -65,13 +64,14 @@ public class CoreAddAgency_TestClass {
 	private List<WebDriver> drivers = new ArrayList<>();
 	private static String accountNumberFromExcel;
 	Base_Class baseclass;
-	com.Utility.ExcelReader ExcelReader;
+	
+	static com.Utility.ExcelReader ExcelReader;
 	WebDriver driver;
 	TestListener TestListener;
 	com.Utility.ScreenShot screenShot;
 	ExtentTest extenttest;
 	Login_Class callcenterlogin;
-	AddAgencyPage addagencypage;
+	AddAgencyPage_MainClass addagencypage;
 	CoreManualAllocationPage coremanualallocationpage;
 	CoreAllocationSummaryPage coreallocationsummarypage;
 
@@ -85,8 +85,8 @@ public class CoreAddAgency_TestClass {
 		
 		driver = baseclass.getDriver(); // Retrieve the driver instance
 		coremanualallocationpage = new CoreManualAllocationPage(driver);
-		addagencypage=new AddAgencyPage(driver);
-		ExcelReader = new com.Utility.ExcelReader("Core_Manual_Allocation");
+		addagencypage=new AddAgencyPage_MainClass(driver);
+		ExcelReader = new com.Utility.ExcelReader("AddAgency");
 		TestListener = new TestListener();
 		screenShot = new com.Utility.ScreenShot(driver);
 	}
@@ -435,49 +435,15 @@ public class CoreAddAgency_TestClass {
 
 	}
 
-//	@Test(priority = 12, enabled = true, dataProvider = "TestData")
-//	public void verify_region_drop_down_loads_based_on_the_selected_zone_and_allows_multi_select(
-//			Map<Object, Object> testdata) throws InterruptedException {
-//
-//		try {
-//			System.out.println(" ************** 14  *****************");
-//			System.out.println();
-//			String Zone = testdata.get("Zone").toString();
-//			String Region = testdata.get("Region").toString();
-//			addagencypage.click(AddAgencyPageRepo.ClearZone, "ClearZone");
-//			addagencypage.WaitLoader();
-//			addagencypage.click(AddAgencyPageRepo.Zone, "zone");
-//			String customLabelZone = Zone;
-//			String customLabelRegion = Region;
-//			By customizedLocatorZone = By.xpath(String.format(AddAgencyPageRepo.SelectUserTC, customLabelZone));
-//			By customizedLocatorRegion = By.xpath(String.format(AddAgencyPageRepo.SelectUserTC, customLabelRegion));
-//			addagencypage.click(customizedLocatorZone, "customizedLocatorZone");
-//			addagencypage.WaitLoader();
-//			addagencypage.isDisplayed(AddAgencyPageRepo.Region, "Region is Mandatory field");
-//			addagencypage.click(AddAgencyPageRepo.Region, "Region");
-//			addagencypage.VerifyReagion(Region);
-//
-//			addagencypage.click(customizedLocatorRegion, "customizedLocatorRegion");
-//			addagencypage.WaitLoader();
-//		}
-//
-//		catch (AssertionError | Exception e) {
-//			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-//			throw e;
-//		}
-//
-//	}
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = true, dataProvider = "TestData")
 	public void verify_region_drop_down_loads_based_on_the_selected_zone_and_allows_multi_select(
-			) throws InterruptedException {
+			Map<Object, Object> testdata) throws InterruptedException {
 
 		try {
 			System.out.println(" ************** 14  *****************");
 			System.out.println();
-//			String Zone = testdata.get("Zone").toString();
-//			String Region = testdata.get("Region").toString();
-			String Zone = "Ahmedabad";
-			String Region ="Indore";
+			String Zone = testdata.get("Zone").toString();
+			String Region = testdata.get("Region").toString();
 			addagencypage.click(AddAgencyPageRepo.ClearZone, "ClearZone");
 			addagencypage.WaitLoader();
 			addagencypage.click(AddAgencyPageRepo.Zone, "zone");
@@ -501,6 +467,7 @@ public class CoreAddAgency_TestClass {
 		}
 
 	}
+
 	@Test(priority = 13, enabled = true)
 	public void verify_scheme_type_drop_down_is_mandatory_allows_multi_select_and_loads_correctly()
 			throws InterruptedException {
@@ -1119,19 +1086,19 @@ public class CoreAddAgency_TestClass {
 		}
 	}
 
-	@DataProvider(name = "TestData")
-	public static Object[][] gettestdate() throws IOException {
+	 @DataProvider(name = "TestData")
+		public static Object[][] gettestdate() throws IOException {
+		 ExcelReader = new com.Utility.ExcelReader("AddAgency");
+			Object[][] objectarry = null;
+			java.util.List<Map<String, String>> completedata = com.Utility.ExcelReader.getdata();
 
-		Object[][] objectarry = null;
-		java.util.List<Map<String, String>> completedata = com.Utility.ExcelReader.getdata();
+			objectarry = new Object[completedata.size()][1];
 
-		objectarry = new Object[completedata.size()][1];
-
-		for (int i = 0; i < completedata.size(); i++) {
-			objectarry[i][0] = completedata.get(i);
+			for (int i = 0; i < completedata.size(); i++) {
+				objectarry[i][0] = completedata.get(i);
+			}
+			return objectarry;
 		}
-		return objectarry;
-	}
 
 	@AfterSuite
 	public void afterEachTest() {

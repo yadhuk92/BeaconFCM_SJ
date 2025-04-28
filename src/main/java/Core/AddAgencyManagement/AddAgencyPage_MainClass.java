@@ -50,7 +50,7 @@ import Core.MyDesk.Dashboard.MyDeskDashboardPage_MainClass;
 
 import java.sql.Connection;
 
-public class AddAgencyPage extends Base_Class {
+public class AddAgencyPage_MainClass extends Base_Class {
 
 	private WebDriver driver;
 
@@ -62,7 +62,7 @@ public class AddAgencyPage extends Base_Class {
 	public static String CollectionAgency_BANNER_DETAILS;
 	public static String CallCentre_BANNER_DETAILS;
 
-	public AddAgencyPage(WebDriver driver) {
+	public AddAgencyPage_MainClass(WebDriver driver) {
 		Log.info("Initializing Agency Management Page...");
 		this.driver = driver;
 		Log.info("WebDriver instance assigned.");

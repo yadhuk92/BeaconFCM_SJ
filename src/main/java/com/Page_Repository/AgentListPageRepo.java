@@ -88,6 +88,7 @@ public class AgentListPageRepo {
 //Calender
 	public static By PreveousMonth = By.xpath("//*[contains(@class,'datepicker-prev-icon')]]");
 	public static By NextMonth = By.xpath("//*[contains(@class,'datepicker-next-icon')]");
+	public static By AgencyUser;
 	
 	
 	
