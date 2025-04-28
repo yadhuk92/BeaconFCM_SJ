@@ -49,10 +49,7 @@ import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
 import com.listeners.TestListener;
 
-import Core.CallCentre.CoreAllocationSummaryPage;
-import Core.CallCentre.CoreAutoAllocationPage;
-import Core.CallCentre.CoreAutoAllocationPage.ProcedureResult;
-import Core.CallCentre.CoreManualAllocationPage;
+
 import Core.MyDesk.Dashboard.MyDeskDashboardPage_MainClass;
 import Core.AddAgencyManagement.AddAgencyPage_MainClass;
 import bsh.ParseException;
@@ -72,8 +69,7 @@ public class CoreAddAgency_TestClass {
 	ExtentTest extenttest;
 	Login_Class callcenterlogin;
 	AddAgencyPage_MainClass addagencypage;
-	CoreManualAllocationPage coremanualallocationpage;
-	CoreAllocationSummaryPage coreallocationsummarypage;
+	
 
 	@BeforeSuite
 
@@ -84,7 +80,7 @@ public class CoreAddAgency_TestClass {
 		callcenterlogin.CoreLogin();
 		
 		driver = baseclass.getDriver(); // Retrieve the driver instance
-		coremanualallocationpage = new CoreManualAllocationPage(driver);
+		
 		addagencypage=new AddAgencyPage_MainClass(driver);
 		ExcelReader = new com.Utility.ExcelReader("AddAgency");
 		TestListener = new TestListener();
@@ -96,7 +92,7 @@ public class CoreAddAgency_TestClass {
 		baseclass = new Base_Class();
 		driver = baseclass.getDriver();
 		drivers.add(driver);
-		coremanualallocationpage = new CoreManualAllocationPage(driver);
+		
 		callcenterlogin = new Login_Class();
 		// Update the ScreenShot object with the new driver
 		screenShot = new com.Utility.ScreenShot(driver);

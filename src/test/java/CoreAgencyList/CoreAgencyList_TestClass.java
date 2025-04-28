@@ -47,7 +47,7 @@ import Core.CallCenterRoleManagementMethods.CallCenterRoleManagementPage_MainCla
 public class CoreAgencyList_TestClass extends Base_Class {
 	Log log;
 	Base_Class Base_Class;
-	com.Utility.ExcelReaderNew ExcelReader;
+	com.Utility.ExcelReader ExcelReader;
 	Base_Class baseclass;
 	WebDriver driver;
 	TestListener TestListener;
@@ -76,7 +76,7 @@ public class CoreAgencyList_TestClass extends Base_Class {
 
 	@BeforeTest
 	public void SetUp() throws Exception {
-		ExcelReader = new com.Utility.ExcelReaderNew("CallCenter");
+		ExcelReader = new com.Utility.ExcelReader("CallCenter");
 		baseclass = new Base_Class();
 		TestListener = new TestListener();
 		// baseclass.SetUp();
