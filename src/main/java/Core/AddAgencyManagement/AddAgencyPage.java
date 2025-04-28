@@ -93,7 +93,7 @@ public class AddAgencyPage extends Base_Class {
 		Log.info(
 				"Verifying PAN Number, GST Number, Constitution Type, Collection Agency Name fields displayed as expected.");
 		
-		
+		Common.fluentWait("zone", AddAgencyPageRepo.Zone);
 		Log.info("Clicked on Add Agency  sub Menu. ");
 		isDisplayed(AddAgencyPageRepo.PANNumber, "PANNumber");
 		isDisplayed(AddAgencyPageRepo.CollectionAgencyName, "CollectionAgencyName");
