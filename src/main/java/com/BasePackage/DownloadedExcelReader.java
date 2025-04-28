@@ -11,9 +11,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class DownloadedExcelReader {
 	
@@ -671,6 +673,83 @@ public class DownloadedExcelReader {
 
 	    result.put("TotalACNumbers", acCount);
 	    result.put("TotalOutBalInLakhs", Math.round(outBalSum / 100000.0 * 100.0) / 100.0); // Rounded to 2 decimals
+
+	    return result;
+	}
+	
+	public static Map<String, Object> extractACSummaryDetails() throws IOException {
+	    Map<String, Object> result = new HashMap<>();
+	    int acCount = 0;
+	    double totalOutstanding = 0.0;
+	    Set<String> initialCategories = new HashSet<>();
+
+	    String userHome = System.getProperty("user.home");
+	    String downloadDir = userHome + File.separator + "Downloads";
+
+	    File latestFile = getLatestFileFromDir(downloadDir);
+	    if (latestFile == null) {
+	        System.out.println("No Excel file found.");
+	        return result;
+	    }
+
+	    FileInputStream fis = new FileInputStream(latestFile);
+	    Workbook workbook = new XSSFWorkbook(fis);
+	    Sheet sheet = workbook.getSheetAt(0);
+
+	    Row headerRow = sheet.getRow(0);
+	    if (headerRow == null) {
+	        workbook.close();
+	        fis.close();
+	        System.out.println("Header row not found.");
+	        return result;
+	    }
+
+	    int acCol = -1;
+	    int outCol = -1;
+	    int categoryCol = -1;
+
+	    for (Cell cell : headerRow) {
+	        if (cell.getCellType() == CellType.STRING) {
+	            String col = cell.getStringCellValue().trim();
+	            if (col.equals("AC_Number")) acCol = cell.getColumnIndex();
+	            else if (col.equals("Total_outstanding")) outCol = cell.getColumnIndex();
+	            else if (col.equals("Initial_Account_Category")) categoryCol = cell.getColumnIndex();
+	        }
+	    }
+
+	    if (acCol == -1 || outCol == -1 || categoryCol == -1) {
+	        workbook.close();
+	        fis.close();
+	        System.out.println("Required columns not found.");
+	        return result;
+	    }
+
+	    for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+	        Row row = sheet.getRow(i);
+	        if (row == null) continue;
+
+	        Cell acCell = row.getCell(acCol);
+	        if (acCell != null && acCell.getCellType() != CellType.BLANK) {
+	            acCount++;
+	        }
+
+	        Cell outCell = row.getCell(outCol);
+	        if (outCell != null && outCell.getCellType() == CellType.NUMERIC) {
+	            totalOutstanding += outCell.getNumericCellValue();
+	        }
+
+	        Cell catCell = row.getCell(categoryCol);
+	        if (catCell != null && catCell.getCellType() == CellType.STRING) {
+	            initialCategories.add(catCell.getStringCellValue().trim());
+	        }
+	    }
+
+	    workbook.close();
+	    fis.close();
+
+	    result.put("TotalACNumbers", acCount);
+	    result.put("InitialAccountCategories", new ArrayList<>(initialCategories));
+	    result.put("TotalOutstandingInLakhs", Math.round(totalOutstanding / 100000.0 * 100.0) / 100.0);
 
 	    return result;
 	}

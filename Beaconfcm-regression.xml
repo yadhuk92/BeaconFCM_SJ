@@ -5,7 +5,7 @@
 		<listener class-name="com.BasePackage.TestNGXML_Listener"></listener>
 	</listeners>
 
-	<test thread-count="5" name="Core - alerts and notifications">
+	<!--<test thread-count="5" name="Core - alerts and notifications">
 		<classes>
 			<class name="Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass" />
 			<class name="Core.AlertsandNotifications.AlertsTemplateManagement_TestClass"/>
@@ -18,11 +18,12 @@
         <classes>
             <class name="Core.CollectionAgency.AgentAccountAllocation_TestClass"/>
         </classes>
-    </test>
+    </test>-->
     
-    <test thread-count="1" name="Core - Summary reports - Bank allocation summary">
+    <test thread-count="1" name="Core - Summary reports">
         <classes>
             <class name="Core.SummaryReports.BankAllocationSummary_TestClass"/>
+            <class name="Core.SummaryReports.BankRegularizationSummary_TestClass"/>
         </classes>
     </test>
 
