@@ -326,7 +326,7 @@ public void InputvalueintoQuestionfield(Map<Object, Object> testdata) throws Thr
 	Thread.sleep(3000);
 }
 @Test(priority=10)
-public void ExpectedAnswerTypeField_Values() throws Throwable {
+public void ExpectedAnswerTypeFieldValues() throws Throwable {
 	try
 	{
 		click(Repository.Field_ExpectedAnsType);
@@ -346,7 +346,7 @@ public void ExpectedAnswerTypeField_Values() throws Throwable {
 }
 
 @Test(priority=11)
-public void ValuesField_NonEditablecheck() throws Throwable {
+public void ValuesFieldNonEditablecheck() throws Throwable {
 	try
 	{
 		ExtentTestManager.getTest().log(Status.PASS, "Select \"Textbox\"from \"Expected answer type\"dropdown -Check Values field is non editable ");
@@ -408,7 +408,7 @@ public void ValuesField_NonEditablecheck() throws Throwable {
 }
 
 @Test(priority=12)
-public void ValuesField_Editablecheck() throws Throwable {
+public void ValuesFieldEditablecheck() throws Throwable {
 	try
 	{
 		ExtentTestManager.getTest().log(Status.PASS, "Select \"Dropdown\"from \"Expected answer type\"dropdown -Check Values field is editable ");
@@ -429,8 +429,52 @@ public void ValuesField_Editablecheck() throws Throwable {
 	}
 	Thread.sleep(3000);
 }
+@Test(priority=13,dataProvider="TestData")
+public void ValuesFieldCommaSeperationCheck(Map<Object, Object> testdata)throws Throwable {
+	try
+	{
+		ExtentTestManager.getTest().log(Status.PASS, "Select Dropdown from Expected answer type");
+		ExtentTestManager.getTest().log(Status.PASS, "Enter values in the Values field with comma seperated");
+        click(Repository.Field_Value);
+		if(testdata.get("Run").toString().equalsIgnoreCase("Yes"))
+		{
+		    String Values = (testdata.get("Values").toString());
+			System.out.println(Values);
+			
+			MainClass.SendValues(Values);
+		}
+	}
+		catch(AssertionError|Exception e) {
+			
+			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+	        throw e;
+		}
+		Thread.sleep(3000);
+	}
 
+@Test(priority=14)
+public void ExpectedAnswerTypeFieldSelect() throws Throwable{
+	try
+	{
+		click(Repository.ClearIcon);
+		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
+	    click(Repository.Field_ExpectedAnsType);
+	    WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
+	    ExtentTestManager.getTest().log(Status.PASS, "Select \"Textbox\" from Expected answer type dropdown");
+	    click(Repository.textbox);
 
+	}
+	catch(AssertionError|Exception e) {
+			
+			String testName = new Object(){}.getClass().getEnclosingMethod().getName(); // Dynamically fetch test method name
+	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed in method: " + testName + " --> " + e.getMessage());
+	        Log.info("****Test Failed in method: " + testName + " --> " + e.getMessage());
+	        throw e;
+		}
+		Thread.sleep(3000);
+	}
 
 @AfterMethod 
 public void takeScreenshotOnFailure(ITestResult result) throws IOException {

@@ -40,5 +40,8 @@ public class ViewTemplateList_Repository {
     public static By percentageField=By.xpath("//li[@aria-label='>Percentage field']");
     
     public static By ClearIcon=By.xpath("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/form/div/div[3]/div/div[2]/div/div/i");
+    public static By Field_ParentQuestion=By.xpath("//*[contains(text(),'Parent Question')]//following::label[1]");
+    public static By Field_ParentValue=By.xpath("//*[contains(text(),'Parent Value')]//following::label[1]");
+   
 }
 

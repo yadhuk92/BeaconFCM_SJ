@@ -211,6 +211,12 @@ public boolean presenceofExpectedAnswerTypeFieldsvalues() {
 return true;	
 	
 }
+public String SendValues(String Values) {
+	WebElement wb=driver.findElement(Page_Repository.Field_Value);
+	wb.clear();
+	wb.sendKeys(Values);
+	return Values;
+}
 public boolean NonEditablilityOfField_Values() {
 	WebElement wb=driver.findElement(Page_Repository.Field_Value);
 	return!wb.isEnabled();
@@ -222,4 +228,14 @@ public boolean EditablilityOfField_Values() {
 	wb.isEnabled();
 	return true;
 }
+public boolean isParentQuestionFieldEmpty() {
+	WebElement wb=driver.findElement(Page_Repository.Field_ParentQuestion);
+    wb.getAttribute("value").isEmpty();
+    return true;
+	}
+public boolean isParentValueFieldEmpty() {
+	WebElement wb=driver.findElement(Page_Repository.Field_ParentValue);
+     wb.getAttribute("value").isEmpty();
+     return true;
+	}
 }
