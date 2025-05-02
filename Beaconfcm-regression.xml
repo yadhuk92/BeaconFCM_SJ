@@ -4,8 +4,30 @@
 	<listeners>
 		<listener class-name="com.BasePackage.TestNGXML_Listener"></listener>
 	</listeners>
+	
+	<test thread-count="1" name="Core - Disposition">
+        <classes>
+            <class name="Core.Disposition.Disposition_Master_Test"/>
+            <class name="Core.Disposition.Updation_Of_Disposition_Test"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Core - Call centre">
+        <classes>
+            <class name="Core.CallCentre.AutoAllocation_TestClass"/>
+            <class name="Core.CallCentre.ManualAllocation_TestClass"/>
+            <class name="Core.CallCentre.RegularizationSummary_TestClass"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Core - Configurations">
+        <classes>
+            <class name="Core.Configurations.CollectionOfficerConfig_TestClass"/>
+            <class name="Core.Configurations.LoginBannerConfiguration_TestClass"/>
+        </classes>
+    </test>
 
-	<!--<test thread-count="5" name="Core - alerts and notifications">
+	<test thread-count="1" name="Core - alerts and notifications">
 		<classes>
 			<class name="Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass" />
 			<class name="Core.AlertsandNotifications.AlertsTemplateManagement_TestClass"/>
@@ -14,16 +36,46 @@
 		</classes>
 	</test>
 	
-	<test thread-count="1" name="Core - collection agency - Agent Account Allocation module">
+	<test thread-count="1" name="Core - collection agency - Agency Account Allocation module">
         <classes>
-            <class name="Core.CollectionAgency.AgentAccountAllocation_TestClass"/>
+            <class name="Core.CollectionAgency.AgencyAccountAllocation_TestClass"/>
         </classes>
-    </test>-->
+    </test>
     
     <test thread-count="1" name="Core - Summary reports">
         <classes>
             <class name="Core.SummaryReports.BankAllocationSummary_TestClass"/>
             <class name="Core.SummaryReports.BankRegularizationSummary_TestClass"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Collection agency - Agent account allocation">
+        <classes>
+            <class name="CollectionAgency.AccountAllocation.AgentAccountAllocation_TestClass"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Collection agency - Security management">
+        <classes>
+            <class name="com.CollectionAgency.SecurityManagement.RoleManagement_Test"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Collection agency - Agent management">
+        <classes>
+            <class name="com.CollectionAgency.AgentManagement.AddNewAgentAndAgentList"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Collection agency - Collection agency">
+        <classes>
+            <class name="CollectionAgency.Disposition.CollectionAgencyDisposition_TestClass"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Call centre - Security management">
+        <classes>
+            <class name="CallCentre.SecurityManagement.RoleManagement_TestClass"/>
         </classes>
     </test>
 

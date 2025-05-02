@@ -1,7 +1,5 @@
 package Core.CollectionAgency;
 
-import static org.junit.Assert.fail;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -27,7 +25,6 @@ import org.testng.annotations.Test;
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
 import com.BasePackage.Login_Class;
-import com.BasePackage.PropertiesFileUtil;
 import com.Page_Repository.CoreCollectionAgencyAgencyAccountAllocationRepo;
 import com.Page_Repository.LoginPageRepo;
 import com.Utility.Log;
@@ -39,7 +36,7 @@ import com.extentReports.ExtentTestManager;
 import com.listeners.TestListener;
 
 
-public class AgentAccountAllocation_TestClass extends Base_Class {
+public class AgencyAccountAllocation_TestClass extends Base_Class {
 	public String HOUserID;
 	public String HOUserPassword;
 	
@@ -56,7 +53,7 @@ public class AgentAccountAllocation_TestClass extends Base_Class {
 	Log log;
 	TestListener TestListener;
 	com.Utility.ScreenShot screenShot;
-	AgentAccountAllocation_TestClass collectionAgency;
+	AgencyAccountAllocation_TestClass collectionAgency;
 	AgencyAccountAllocation_mainClass CollectionAgency;
 
 	CoreCollectionAgencyAgencyAccountAllocationRepo PageRepository;
@@ -200,13 +197,13 @@ public void NavigationToAgencyAccountAllocation() throws Throwable {
 	try
 	{
 		
-   	  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
-   	  CollectionAgency.waitForSpinnerToStop(driver, PageRepository.spinner);
+   	  //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+   	  AgencyAccountAllocation_mainClass.waitForSpinnerToStop(driver, CoreCollectionAgencyAgencyAccountAllocationRepo.spinner);
    	 
     	ExtentTestManager.getTest().log(Status.PASS, "Click on Collection Agency main menu");
 		CollectionAgency.clickCollectionAgencyMenu();
 		
-		 WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(90));
+		 //WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(90));
 		 ExtentTestManager.getTest().log(Status.PASS, "Click on Agency Account Allocation sub menu");
 		 CollectionAgency.clickAgencyAccountAllocationMenu();
 		
@@ -226,15 +223,15 @@ public void NavigationToAgencyAccountAllocation() throws Throwable {
 public void AccountTypeDropdownBasicFunctionality() throws Throwable {
 	try
 	{
-	CollectionAgency.waitForSpinnerToStop(driver, PageRepository.spinner);
+	AgencyAccountAllocation_mainClass.waitForSpinnerToStop(driver, CoreCollectionAgencyAgencyAccountAllocationRepo.spinner);
 
-		Common.fluentWait("TypesOfAccdrp", PageRepository.TypesOfAccdrp); 
-		click(PageRepository.TypesOfAccdrp);
+		Common.fluentWait("TypesOfAccdrp", CoreCollectionAgencyAgencyAccountAllocationRepo.TypesOfAccdrp); 
+		click(CoreCollectionAgencyAgencyAccountAllocationRepo.TypesOfAccdrp);
 		
 		//WebDriverWait wait4 = new WebDriverWait(driver, Duration.ofSeconds(90));
 		   ExtentTestManager.getTest().log(Status.PASS, "Verify visibility of the 'Types of Account' dropdown");
 			CollectionAgency.isTypesOfAccountDropdownVisible();
-			WebDriverWait wait5 = new WebDriverWait(driver, Duration.ofSeconds(90));
+			//WebDriverWait wait5 = new WebDriverWait(driver, Duration.ofSeconds(90));
 			 ExtentTestManager.getTest().log(Status.PASS, "Allocated and Not Allocated option should be listed");
 			 CollectionAgency.ValuesOfTypesOfDropdown();
 
@@ -260,14 +257,14 @@ public void AssetCategoryDropdownBasicFunctionality() throws Throwable {
 		ExtentTestManager.getTest().log(Status.PASS, "Verify visibility of the 'Asset Category' dropdown.");
 		CollectionAgency.isAssetCategoryvisible();
 		
-		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
+		//WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
 		CollectionAgency.clickassetCategory();
 		
-		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
+		//WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
 		ExtentTestManager.getTest().log(Status.PASS, "Select NPA from 'Asset Category' dropdown.");
 		CollectionAgency.SelectNPA();
 		
-		CollectionAgency.waitForSpinnerToStop(driver, PageRepository.spinner);
+		AgencyAccountAllocation_mainClass.waitForSpinnerToStop(driver, CoreCollectionAgencyAgencyAccountAllocationRepo.spinner);
 		Thread.sleep(1000);
 		CollectionAgency.cancelAssetValue();
 		
@@ -289,21 +286,21 @@ Thread.sleep(3000);
 public void SMACategoryActivation() throws Throwable {
 	try
 	{
-		CollectionAgency.waitForSpinnerToStop(driver, PageRepository.spinner);
+		AgencyAccountAllocation_mainClass.waitForSpinnerToStop(driver, CoreCollectionAgencyAgencyAccountAllocationRepo.spinner);
 		
 		ExtentTestManager.getTest().log(Status.PASS, "Verify activation of 'SMA Category' dropdown.");
-		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
-		click(PageRepository.SMAdropdown);
+		//WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(90));
+		click(CoreCollectionAgencyAgencyAccountAllocationRepo.SMAdropdown);
 		
 		ExtentTestManager.getTest().log(Status.PASS, "Select 'sma0', 'sma1', 'sma2'.");
-		WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
-		click (PageRepository.SMA0);
+		//WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(90));
+		click (CoreCollectionAgencyAgencyAccountAllocationRepo.SMA0);
 		
-		WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
-		click(PageRepository.SMA1);
+		//WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(60));
+		click(CoreCollectionAgencyAgencyAccountAllocationRepo.SMA1);
 		
-		WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
-		click(PageRepository.SMA2);
+		//WebDriverWait wait3=new WebDriverWait(driver,Duration.ofSeconds(60));
+		click(CoreCollectionAgencyAgencyAccountAllocationRepo.SMA2);
 			
 	}
 
