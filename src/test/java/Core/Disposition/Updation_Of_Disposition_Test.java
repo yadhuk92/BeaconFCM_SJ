@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -15,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -25,8 +29,10 @@ import java.lang.reflect.Method;
 
 import com.BasePackage.Base_Class;
 import com.BasePackage.Login_Class;
+import com.BasePackage.SeleniumLogToFile;
 import com.Page_Repository.DispositionMasterPageRepo;
 import com.Page_Repository.UpdationofDispositionRepo;
+import com.Utility.Log;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -35,7 +41,7 @@ import com.extentReports.ExtentTestManager;
 import Core.Disposition.UpdationofDispositionPage;
 import com.listeners.TestListener;
 
-public class Updation_Of_Disposition_Test {
+public class Updation_Of_Disposition_Test extends Base_Class {
 	
 	UpdationofDispositionPage updationofdispositionMasterPage;
 	Base_Class baseclass;
@@ -45,12 +51,21 @@ public class Updation_Of_Disposition_Test {
 	com.Utility.ScreenShot screenShot;
 	ExtentTest extenttest;
 	Login_Class corelogin;
+	public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLUE_BOLD = "\u001B[1;34m";
 	
-	@BeforeTest
+	@BeforeClass
 	public void SetUp() throws Exception {
-		
 		baseclass = new Base_Class();
-		
+		corelogin = new Login_Class();
+		SeleniumLogToFile.startLogging();
+		Login_Class.CoreLogin();
+		driver = baseclass.getDriver();
+		if (driver == null) {
+		    throw new RuntimeException("WebDriver is not initialized!");
+		} else {
+			System.out.println("Driver is not null");
+		}
 		updationofdispositionMasterPage = new UpdationofDispositionPage(driver);
 		TestListener = new TestListener();
 		screenShot = new com.Utility.ScreenShot(driver);
@@ -59,9 +74,11 @@ public class Updation_Of_Disposition_Test {
 	
 	@BeforeMethod
     public void setupTest(Method method) throws Exception {
-		System.out.println("Before method in updation of disposition");
+		//System.out.println("Before method in updation of disposition");
         // Start a new ExtentTest for the current test method
         extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Updation of Disposition");
+        Log.info(ANSI_BLUE_BOLD + "****** " + method.getName() + " ******" + ANSI_RESET);
+        System.out.println(ANSI_BLUE_BOLD + "****** " + method.getName() + " ******" + ANSI_RESET);
     }
 	
 	@Test(priority = 1)
@@ -69,9 +86,9 @@ public class Updation_Of_Disposition_Test {
 		System.out.println("Test priority 1 in updation of disposition");
 		//extenttest = ExtentTestManager.startTest("Updation of disposition module test cases").assignCategory("Updation of Disposition");
 		ExcelReader = new com.Utility.ExcelReader("Updation_of_Disposition");
-		corelogin = new Login_Class();
-		driver = baseclass.getDriver();
-		corelogin.CoreLogin();
+		//corelogin = new Login_Class();
+		//driver = baseclass.getDriver();
+		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 		try {
 		updationofdispositionMasterPage.navigateToUpdationOfDisposition();
@@ -380,7 +397,12 @@ public class Updation_Of_Disposition_Test {
 		        String actualdateformat = date.replace("-", "/");
 		        String userName = username.getText();
 		        String userId = userid.getText();
-		       
+		        
+		        LocalDate currentDate1 = LocalDate.now();
+		        // Format the date (e.g., 2025-05-06 to 06-May-2025)
+		        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+		        String formattedDate2 = currentDate1.format(formatter1);
+		        String actualdateformat1 = formattedDate2.replace("-", "/");
 		        
 		 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
 		 updationofdispositionMasterPage.enterAccountNumber();
@@ -388,11 +410,11 @@ public class Updation_Of_Disposition_Test {
 		 updationofdispositionMasterPage.clickSearchButton();
 		 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
 		 wait.until(ExpectedConditions.visibilityOfElementLocated(UpdationofDispositionRepo.transactiondetails));
-		 Assert.assertTrue(updationofdispositionMasterPage.isTransactionDisplayedWithExpectedDetails(formattedDate,Actionowner), 
+		 Assert.assertTrue(updationofdispositionMasterPage.isTransactionDisplayedWithExpectedDetails(formattedDate2,Actionowner), 
                  "The newly added interaction details are not displayed as expected.");
 		 // Verify all interaction details
 		 updationofdispositionMasterPage.verifyInteractionDetails(Disposition, Subdisposition, 
-				 Remarks, userName, userId, Actionowner, actualdateformat);
+				 Remarks, userName, userId, Actionowner, actualdateformat1);
 	        }
 			 ExtentTestManager.getTest().log(Status.PASS, "Displays newly added interaction details with transaction date plus next action owner as heading and shows Disposition, Sub disposition, Remarks, Action done by, User EIN, Next Action Owner, Next Action Date details");
 			 }
@@ -403,7 +425,7 @@ public class Updation_Of_Disposition_Test {
 			 Thread.sleep(3000);
 	    }
 	
-	@AfterClass
+	 /*@AfterMethod
 	 public void takeScreenshotOnFailure(ITestResult result) throws IOException {
 		    // Check if the test case failed
 		    if (result.getStatus() == ITestResult.FAILURE) {
@@ -425,7 +447,36 @@ public class Updation_Of_Disposition_Test {
 			        if (driver != null) {
 			            driver.quit();
 			        }
-		}
+		}*/
+	 
+	 @AfterMethod
+	 public void takeScreenshotOnFailure(ITestResult result) {
+	     if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+	         try {
+	             // Take screenshot only if driver session is still active
+	             TakesScreenshot ts = (TakesScreenshot) driver;
+	             File src = ts.getScreenshotAs(OutputType.FILE);
+	             FileUtils.copyFile(src, new File("./screenshots/" + result.getName() + ".png"));
+	             
+	         } catch (Exception e) {
+	             System.out.println("Screenshot capture failed: " + e.getMessage());
+	         }
+	     }
+
+	 }
+	 
+	 @AfterClass
+	 public void CloseBrowser() {
+		 ExtentManager.getInstance().flush();
+		// Quit driver after screenshot
+	     if (driver != null) {
+	         try {
+	             driver.quit();
+	         } catch (Exception e) {
+	             System.out.println("Driver quit failed: " + e.getMessage());
+	         }
+	     }
+	 }
 	 
 	 @DataProvider(name = "TestData")
 		public static Object[][] gettestdate() throws IOException {

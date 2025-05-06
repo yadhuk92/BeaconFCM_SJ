@@ -1,0 +1,165 @@
+========== Console Log Started ==========
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+[INFO ] 2025-05-06 11:05:33.286 [main] Log - Driver has initialized successfully for chrome browser
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+[INFO ] 2025-05-06 11:06:36.290 [main] Log - Title is displayed: BeaconICnRM
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+[INFO ] 2025-05-06 11:06:36.852 [main] Log - Default URL: /Home
+Default URL is already /Home. No action taken.
+[INFO ] 2025-05-06 11:06:37.016 [main] Log - Entered IBU0000028 in user name field
+[INFO ] 2025-05-06 11:06:37.130 [main] Log - Entered ses@987 in password field
+[INFO ] 2025-05-06 11:06:37.248 [main] Log - Clicked on login button
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+[INFO ] 2025-05-06 11:06:42.447 [main] Log - Entered IBU0000028 in user name field
+[INFO ] 2025-05-06 11:06:42.530 [main] Log - Entered ses@987 in password field
+[INFO ] 2025-05-06 11:06:42.616 [main] Log - Clicked on login button
+[INFO ] 2025-05-06 11:06:42.617 [main] Log - Clicked on already login yes button and logged in again with valid credentials
+[INFO ] 2025-05-06 11:07:03.107 [main] Log - Exception in SomeErrorOccuredHandling: Expected condition failed: waiting for element to be clickable: By.xpath: //span[@style='color:red' and text()='Some error occurred.'] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.14'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.116, chrome: {chromedriverVersion: 135.0.7049.114 (63fd8a7d9d0..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57418}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57418/devtoo..., se:cdpVersion: 135.0.7049.116, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4ba56e88e68fd0a4e8f3b78ab2ebbd41
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+[INFO ] 2025-05-06 11:07:07.983 [main] Log - UserID in Dashboard: IBU0000028
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+[INFO ] 2025-05-06 11:07:08.640 [main] Log - Org Name: Mumbai, Org Type Name: Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+Driver is not null
+[INFO ] 2025-05-06 11:07:09.308 [main] Log - UpdationofDispositionPage initialized.
+Before class in updation of disposition
+Directory already exists: C:\Users\yadhukrishnan.p\Documents\GitHub\BeaconFCM_SJ\TestReport\
+[INFO ] 2025-05-06 11:07:09.428 [main] Log - [1;34m****** Open_Updation_of_Disposition_Screen ******[0m
+[1;34m****** Open_Updation_of_Disposition_Screen ******[0m
+Test priority 1 in updation of disposition
+[INFO ] 2025-05-06 11:07:09.464 [main] Log - Clicking on the Disposition.
+[INFO ] 2025-05-06 11:07:09.567 [main] Log - Successfully clicked on the Disposition.
+[INFO ] 2025-05-06 11:07:09.585 [main] Log - Clicking on the Updation of Disposition.
+[INFO ] 2025-05-06 11:07:09.751 [main] Log - Successfully clicked on the Updation of Disposition.
+[INFO ] 2025-05-06 11:07:23.160 [main] Log - [1;34m****** Account_Number_Field__ECP_Validations ******[0m
+[1;34m****** Account_Number_Field__ECP_Validations ******[0m
+Not able to enter the account number.
+[INFO ] 2025-05-06 11:07:23.343 [main] Log - Should not possible to type Alphabets and special characters in account number field.
+Not able to enter the account number.
+[INFO ] 2025-05-06 11:07:23.439 [main] Log - Should not possible to type Alphabets and special characters in account number field.
+[INFO ] 2025-05-06 11:07:26.579 [main] Log - [1;34m****** Attempt_to_Enter_More_than_25_Characters ******[0m
+[1;34m****** Attempt_to_Enter_More_than_25_Characters ******[0m
+Not able to enter the account number.
+[INFO ] 2025-05-06 11:07:26.696 [main] Log - Entry is restricted to 25 characters.
+[INFO ] 2025-05-06 11:07:29.831 [main] Log - [1;34m****** Enter_Invalid_Account_Number_and_Search ******[0m
+[1;34m****** Enter_Invalid_Account_Number_and_Search ******[0m
+Account number entered successfully.
+[INFO ] 2025-05-06 11:07:30.008 [main] Log - Account number entered successfully.
+[INFO ] 2025-05-06 11:07:53.263 [main] Log - [1;34m****** Search_with_Empty_Account_Number_Field ******[0m
+[1;34m****** Search_with_Empty_Account_Number_Field ******[0m
+[INFO ] 2025-05-06 11:08:08.881 [main] Log - [1;34m****** Enter_invalid_Account_Number_which_is_user_not_assigned_branches_and_Search ******[0m
+[1;34m****** Enter_invalid_Account_Number_which_is_user_not_assigned_branches_and_Search ******[0m
+Connected to the database!
+User Branch Account Number: 1109004406096934
+Account number entered successfully.
+[INFO ] 2025-05-06 11:08:18.029 [main] Log - Account number entered successfully.
+[INFO ] 2025-05-06 11:08:44.683 [main] Log - [1;34m****** Enter_Valid_Account_Number_and_Search ******[0m
+[1;34m****** Enter_Valid_Account_Number_and_Search ******[0m
+Connected to the database!
+User Branch Account Number: 1109004405911909
+Account number entered successfully.
+[INFO ] 2025-05-06 11:08:46.255 [main] Log - Account number entered successfully.
+[INFO ] 2025-05-06 11:09:09.312 [main] Log - [1;34m****** Add_New_Interaction_Details__All_Fields_Missing_Validation ******[0m
+[1;34m****** Add_New_Interaction_Details__All_Fields_Missing_Validation ******[0m
+[INFO ] 2025-05-06 11:09:14.724 [main] Log - [1;34m****** Add_New_Interaction_Details__Disposition_Missing_Validation ******[0m
+[1;34m****** Add_New_Interaction_Details__Disposition_Missing_Validation ******[0m
+[INFO ] 2025-05-06 11:09:20.387 [main] Log - [1;34m****** Add_New_Interaction_Details__Sub_Disposition_Missing_Validation ******[0m
+[1;34m****** Add_New_Interaction_Details__Sub_Disposition_Missing_Validation ******[0m
+[INFO ] 2025-05-06 11:09:31.427 [main] Log - [1;34m****** Add_New_Interaction_Details__NextAction_Date_Missing_Validation ******[0m
+[1;34m****** Add_New_Interaction_Details__NextAction_Date_Missing_Validation ******[0m
+[INFO ] 2025-05-06 11:09:37.248 [main] Log - [1;34m****** Add_New_Interaction_Details__Remark_Missing_Validation ******[0m
+[1;34m****** Add_New_Interaction_Details__Remark_Missing_Validation ******[0m
+[INFO ] 2025-05-06 11:09:55.613 [main] Log - [1;34m****** Add_New_Interaction_Details__Successful_Form_Submission ******[0m
+[1;34m****** Add_New_Interaction_Details__Successful_Form_Submission ******[0m
+[INFO ] 2025-05-06 11:10:17.973 [main] Log - [1;34m****** Verify_successfully_saved_interaction_in_history_of_interaction_details_section ******[0m
+[1;34m****** Verify_successfully_saved_interaction_in_history_of_interaction_details_section ******[0m
+[INFO ] 2025-05-06 11:10:18.196 [main] Log - Account number entered using the previously fetched value.
+PASSED: Open_Updation_of_Disposition_Screen
+PASSED: Account_Number_Field__ECP_Validations({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+PASSED: Attempt_to_Enter_More_than_25_Characters({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+PASSED: Enter_Invalid_Account_Number_and_Search({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+PASSED: Search_with_Empty_Account_Number_Field
+PASSED: Enter_invalid_Account_Number_which_is_user_not_assigned_branches_and_Search
+PASSED: Enter_Valid_Account_Number_and_Search
+PASSED: Add_New_Interaction_Details__All_Fields_Missing_Validation
+PASSED: Add_New_Interaction_Details__Disposition_Missing_Validation({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+PASSED: Add_New_Interaction_Details__Sub_Disposition_Missing_Validation({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+PASSED: Add_New_Interaction_Details__NextAction_Date_Missing_Validation({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+PASSED: Add_New_Interaction_Details__Remark_Missing_Validation({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+PASSED: Add_New_Interaction_Details__Successful_Form_Submission({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+FAILED: Verify_successfully_saved_interaction_in_history_of_interaction_details_section({AccountNumberwithmorethan25characters=12345678901234500000000000000, ActionOwner=Internal User, Date=18, Disposition=My bank, Interactiondetailsdate=18-Dec-2024, InvalidAccountNumber=1231232123123210000000000, InvalidAccountNumbers=abcdefgh | !@#$%^&*(), Remarks=test, Run=Yes, Subdisposition=android, TestScenario=Updation_of_Disposition})
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[contains(text(),'06/May/2025')] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.14'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.116, chrome: {chromedriverVersion: 135.0.7049.114 (63fd8a7d9d0..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57418}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57418/devtoo..., se:cdpVersion: 135.0.7049.116, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4ba56e88e68fd0a4e8f3b78ab2ebbd41
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.Disposition.UpdationofDispositionPage.verifyInteractionDetails(UpdationofDispositionPage.java:312)
+	at Core.Disposition.Updation_Of_Disposition_Test.Verify_successfully_saved_interaction_in_history_of_interaction_details_section(Updation_Of_Disposition_Test.java:416)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+
+
+===============================================
+    Default test
+    Tests run: 14, Failures: 1, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 14, Passes: 13, Failures: 1, Skips: 0
+===============================================
+

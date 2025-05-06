@@ -3,10 +3,15 @@ package Core.Disposition;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,6 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -26,7 +32,10 @@ import java.lang.reflect.Method;
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
 import com.BasePackage.Login_Class;
+import com.BasePackage.SeleniumLogToFile;
 import com.Page_Repository.DispositionMasterPageRepo;
+import com.Page_Repository.LoginBannerConfiguratonPageRepo;
+import com.Utility.Log;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -36,100 +45,69 @@ import Core.Disposition.DispositionMasterPage;
 import com.listeners.TestListener;
 //import com.testautomation.pages.AllScenarios_Disposition_masterModule;
 
-public class Disposition_Master_Test {
+public class Disposition_Master_Test extends Base_Class {
 
-	com.Utility.ExcelReader ExcelReader;
-	Base_Class baseclass;
 	WebDriver driver;
+	Base_Class baseclass;
+	com.Utility.ExcelReader ExcelReader;
 	TestListener TestListener;
 	com.Utility.ScreenShot screenShot;
 	DispositionMasterPage dispositionMasterPage;
 	ExtentTest extenttest;
-	Login_Class corelogin;
-	
-	@BeforeTest
+	Login_Class CoreAppLogin;
+	DispositionMasterPageRepo DispositionMasterPageRepo;
+	//private List<WebDriver> drivers = new ArrayList<>();
+	public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLUE_BOLD = "\u001B[1;34m";
+    
+	@BeforeClass
 	public void SetUp() throws Exception {
-		ExcelReader = new com.Utility.ExcelReader("Disposition_master");
 		baseclass = new Base_Class();
+		CoreAppLogin = new Login_Class();
+		//SeleniumLogToFile.startLogging();
+		ExcelReader = new com.Utility.ExcelReader("Disposition_master");
 		TestListener = new TestListener();
-		
+		Login_Class.CoreLogin();
+		driver = baseclass.getDriver();
+		if (driver == null) {
+		    throw new RuntimeException("WebDriver is not initialized!");
+		} else {
+			System.out.println("Driver is not null");
+		}
 		screenShot = new com.Utility.ScreenShot(driver);
 		dispositionMasterPage = new DispositionMasterPage(driver);
 		System.out.println("Before class in disposition master");
+		DispositionMasterPageRepo = new DispositionMasterPageRepo();
 	}
 	
 	@BeforeMethod
     public void setupTest(Method method) throws Exception {
-		
-        // Start a new ExtentTest for the current test method
         extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Disposition master");
-        System.out.println("Before method in disposition master");
+        Log.info(ANSI_BLUE_BOLD + "****** " + method.getName() + " ******" + ANSI_RESET);
+        System.out.println(ANSI_BLUE_BOLD + "****** " + method.getName() + " ******" + ANSI_RESET);
     }
 
 	@Test(priority = 1)
 	public void Verify_Disposition_Master_Navigation() throws Exception {
-		System.out.println("Test priority 1 in disposition master");
-		//ExcelReader = new com.Utility.ExcelReader("Disposition_master");
-		//extenttest = ExtentTestManager.startTest("Disposition master module test cases").assignCategory("Disposition master");
-		corelogin = new Login_Class();
-		driver = baseclass.getDriver();
-		corelogin.CoreLogin();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-		 
-		 //extenttest = ExtentTestManager.startTest("Verify Disposition Master Navigation");
-		
 		try {
-			//extenttest.log(Status.INFO, "Step 1: Hover over the 'Disposition' main menu");
-		// Step 1: Hover over the "Disposition" main menu
-		Actions actions = new Actions(driver);
-		actions.moveToElement(dispositionMasterPage.getDispositionMainMenu()).perform();
-		//extenttest.log(Status.PASS, "Hovered over the 'Disposition' main menu successfully.");
-		//extenttest.log(Status.INFO, "Step 2: Waiting for the 'Disposition Master' sub-menu to be visible");
-		// Step 2: Wait until "Disposition Master" sub-menu is visible
-		//WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(60));
-		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(DispositionMasterPageRepo.dispositionMasterSubMenu));
-		Assert.assertNotNull(element, "Disposition Master sub-menu not found in DOM");
-		//extenttest.log(Status.PASS, "'Disposition Master' sub-menu is visible.");
-		// Step 3: Click the "Disposition Master" sub-menu
-		// Scroll into view and ensure visibility
-		//extenttest.log(Status.INFO, "Step 3: Clicking the 'Disposition Master' sub-menu");
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView(true);", element);
-
-		// Click the sub-menu
-		try {
-			element.click();
-			//extenttest.log(Status.PASS, "Clicked 'Disposition Master' sub-menu using standard click.");
-		} catch (ElementNotInteractableException e) {
-			js.executeScript("arguments[0].click();", element);
-			//extenttest.log(Status.WARNING, "'Disposition Master' sub-menu was not interactable; used JavaScript click instead.");
-		}
-
-
-		// Step 4: Verify that the Disposition is displayed
-		//extenttest.log(Status.INFO, "Step 4: Verifying the Disposition window is displayed");
-		 Assert.assertTrue(dispositionMasterPage.isDispositionDisplayed(),
-		            "Disposition window is not displayed.");
-		 //extenttest.log(Status.PASS, "Disposition window is displayed successfully.");
-
-		// Step 5: Verify that the Sub-Disposition is displayed
-		 //extenttest.log(Status.INFO, "Step 5: Verifying the Sub-Disposition tab is displayed");
-		Assert.assertTrue(dispositionMasterPage.isSubDispositionDisplayed(),
-				"Sub-Disposition window is not displayed.");
-		//extenttest.log(Status.PASS, "Sub-Disposition tab is displayed successfully.");
-		// Step 6: Verify the last link address
-		//extenttest.log(Status.INFO, "Step 6: Verifying the URL contains 'Admin/DispositionMaster'");
-		String currentUrl = driver.getCurrentUrl();
-		//extenttest.log(Status.INFO, "Current URL: " + currentUrl);
-		System.out.println("Current URL: " + currentUrl); // Log the URL for debugging
-		String expectedUrlPart = "Admin/DispositionMaster";
-		Assert.assertTrue(currentUrl.contains(expectedUrlPart),
-				"The last link address does not match. Expected: " + expectedUrlPart);
+			Common.fluentWait("DispositionMainMenu", DispositionMasterPageRepo.dispositionMainMenu);
+			Base_Class.click(DispositionMasterPageRepo.dispositionMainMenu);
 		
+			Common.fluentWait("dispositionMasterSubMenu", DispositionMasterPageRepo.dispositionMasterSubMenu);
+			Base_Class.click(DispositionMasterPageRepo.dispositionMasterSubMenu);
+	
+			Common.waitForSpinnerToDisappear("Spinner", DispositionMasterPageRepo.spinner);
+			Thread.sleep(5000);
+			Common.fluentWait("dispositionMasterSubMenu", DispositionMasterPageRepo.paginationNextButton);
 		
-		
-		ExtentTestManager.getTest().log(Status.PASS, "Disposition master window opens, displaying Disposition and Sub Disposition tabs. Should show last link address as Admin/DispositionMaster.");
+			String currentUrl = driver.getCurrentUrl();
+			extenttest.log(Status.INFO, "Current URL: " + currentUrl);
+			System.out.println("Current URL: " + currentUrl); // Log the URL for debugging
+			String expectedUrlPart = "Admin/DispositionMaster";
+			Assert.assertTrue(currentUrl.contains(expectedUrlPart),
+					"The last link address does not match. Expected: " + expectedUrlPart);
+			
+			ExtentTestManager.getTest().log(Status.PASS, "Disposition master window opens, displaying Disposition and Sub Disposition tabs. Should show last link address as Admin/DispositionMaster.");
 		}
 		
 		catch (AssertionError | Exception e) {
@@ -1266,35 +1244,36 @@ public class Disposition_Master_Test {
 			 }
 			 Thread.sleep(3000);
 	    }
-	   
-	 @AfterClass
-	 public void takeScreenshotOnFailure(ITestResult result) throws IOException {
-		    // Check if the test case failed
-		    if (result.getStatus() == ITestResult.FAILURE) {
-		        String methodName = result.getMethod().getMethodName();
-		        try {
-		            // Take the screenshot for the failed test
-		            File image = screenShot.takeScreenShot(methodName, "Failure");
-		            
-//		            ExtentTestManager.getTest()
-//	                .fail("Screenshot of failure: ",
-//	                      MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
-		            
-		            extenttest.log(Status.INFO, "Screenshot of failure: ",
-		                    MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
-		            
-		        } catch (IOException e) {
-		            System.err.println("Failed to capture screenshot: " + e.getMessage());
-		        }
-		    }
-		    
-		    ExtentManager.getInstance().flush();
-			  // Close the browser
-			        if (driver != null) {
-			            driver.quit();
-			        }
-		}
 	 
+	 @AfterMethod
+	 public void takeScreenshotOnFailure(ITestResult result) {
+	     if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+	         try {
+	             // Take screenshot only if driver session is still active
+	             TakesScreenshot ts = (TakesScreenshot) driver;
+	             File src = ts.getScreenshotAs(OutputType.FILE);
+	             FileUtils.copyFile(src, new File("./screenshots/" + result.getName() + ".png"));
+	             
+	         } catch (Exception e) {
+	             System.out.println("Screenshot capture failed: " + e.getMessage());
+	         }
+	     }
+
+	 }
+	 
+	 @AfterClass
+	 public void CloseBrowser() {
+		 ExtentManager.getInstance().flush();
+		// Quit driver after screenshot
+	     if (driver != null) {
+	         try {
+	             driver.quit();
+	         } catch (Exception e) {
+	             System.out.println("Driver quit failed: " + e.getMessage());
+	         }
+	     }
+	 }
+
 	 @DataProvider(name = "TestData")
 		public static Object[][] gettestdate() throws IOException {
 
@@ -1308,14 +1287,5 @@ public class Disposition_Master_Test {
 			}
 			return objectarry;
 		}
-	 
-	 /*@AfterSuite
-	 public void afterEachTest() {
-	     ExtentManager.getInstance().flush();
-	  // Close the browser
-	        if (driver != null) {
-	            driver.quit();
-	        }
-	 }*/
 
 }
