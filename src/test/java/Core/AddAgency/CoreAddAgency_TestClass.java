@@ -4,6 +4,7 @@ import java.io.File;
 
 
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +78,7 @@ public class CoreAddAgency_TestClass {
 
 		baseclass = new Base_Class();
 		callcenterlogin = new Login_Class();
-		callcenterlogin.CoreLogin();
+		callcenterlogin.CoreLogin_HO();
 		
 		driver = baseclass.getDriver(); // Retrieve the driver instance
 		
@@ -97,7 +98,7 @@ public class CoreAddAgency_TestClass {
 		// Update the ScreenShot object with the new driver
 		screenShot = new com.Utility.ScreenShot(driver);
 		// Start a new ExtentTest for the current test method
-		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Call Centre ManualAllocation");
+		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Core Add Agency");
 	}
 	@Test(priority = 1, enabled = true)
 	public void Login_to_CoreWithHO_User() throws InterruptedException {
@@ -733,7 +734,7 @@ public class CoreAddAgency_TestClass {
 
 		try {
 			System.out.println(" ************** 24 *****************");
-			System.out.println();
+			System.out.println();Thread.sleep(2000);
 			addagencypage.click(AddAgencyPageRepo.Submit, "Submit");
 			addagencypage.isDisplayed(AddAgencyPageRepo.EmpanelmentExpiryDate, "EmpanelmentExpiryDate");
 

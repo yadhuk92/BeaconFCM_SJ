@@ -209,7 +209,176 @@ public class Login_Class extends Base_Class {
 			 * (driver != null) { driver.quit(); Log.info("Driver session closed."); } }
 			 */
 	}
+	public static void CoreLogin_HO() throws Exception {
+		try {
+			AppType = "Core";
+			String Browser = configloader().getProperty("Browser");
+			String CoreAppUrl = configloader().getProperty("CoreApplicationUrl");
+			CoreUserName = configloader().getProperty("CoreUserName_HO");
+			CoreUserPassword = configloader().getProperty("CoreUserPassword_HO");
 
+			// Initialize WebDriver based on browser type
+			switch (Browser.toUpperCase()) {
+			case "CHROME":
+				ChromeOptions options = new ChromeOptions();
+				// Enable insecure downloads by setting Chrome preferences
+				Map<String, Object> prefs = new HashMap<>();
+				prefs.put("profile.default_content_setting_values.automatic_downloads", 1); // Allow automatic downloads
+				prefs.put("profile.default_content_setting_values.mixed_script", 1); // Allow insecure content globally
+				prefs.put("profile.default_content_settings.popups", 0); // Block popups
+				prefs.put("download.prompt_for_download", false); // Disable download prompt
+				// prefs.put("download.default_directory", "C:\\Users\\pinku.peter\\Downloads");
+				// // Set download directory
+				String userHome = System.getProperty("user.home"); // Gets the user's home directory
+				String downloadDirectory = userHome + File.separator + "Downloads";
+				prefs.put("download.default_directory", downloadDirectory); // Set the dynamic download directory
+				options.setExperimentalOption("prefs", prefs);
+
+				// Add necessary arguments
+				options.addArguments("--allow-running-insecure-content"); // Allow insecure content
+				options.addArguments("--ignore-certificate-errors"); // Ignore SSL certificate errors
+				options.addArguments("--disable-extensions");
+				options.addArguments("--start-maximized");
+				options.addArguments("--disable-popup-blocking");
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver(options);
+				break;
+			case "FIREFOX":
+				WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver();
+				break;
+			default:
+				throw new IllegalArgumentException("The Driver is not defined for browser: " + Browser);
+			}
+
+			driver.manage().window().maximize();
+			driver.manage().deleteAllCookies();
+			// ExtentTestManager.getTest().log(Status.INFO, Browser + " opened
+			// successfully!");
+			Log.info("Driver has initialized successfully for " + Browser + " browser");
+
+			// Load the application URL
+			driver.get(CoreAppUrl);
+			Common.setDriver(driver);
+
+			String LoginBannerQuery = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=1 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
+			CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
+			// System.out.println("BANNER_DETAILS: " + CORE_LOGIN_BANNER_DETAILS);
+
+			Common.fluentWait("Core login Banner",
+					LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
+
+			// ExtentTestManager.getTest().log(Status.INFO, CoreAppUrl + " loaded
+			// successfully!");
+			Thread.sleep(9000);
+
+			Pagetitle = driver.getTitle();
+			Log.info("Title is displayed: " + Pagetitle);
+
+			// Perform login actions
+			Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+			Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+			Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+			// Fetch the default URL from the database
+			String query = "select Default_URL from acc_users where user_id = '" + CoreUserName + "'";
+			String defaultURL = DBUtils.fetchSingleValueFromDB(query);
+			Log.info("Default URL: " + defaultURL);
+
+			// Check if the default URL is null or empty
+			if (defaultURL == null || defaultURL.trim().isEmpty()) {
+				// If the default URL is null or empty, update it to '/Home'
+				String updateQuery = "UPDATE acc_users SET Default_URL = '/Home' WHERE user_id = '" + CoreUserName
+						+ "'";
+				DBUtils.executeSQLStatement(updateQuery);
+			} else if ("/Home".equals(defaultURL)) {
+				// If the default URL is already '/Home', no action is needed
+				System.out.println("Default URL is already /Home. No action taken.");
+			}
+
+			driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+			// ExtentTestManager.getTest().log(Status.INFO, "Entered " + CoreUserName + " in
+			// user name field");
+			Log.info("Entered " + CoreUserName + " in user name field");
+			driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+			// ExtentTestManager.getTest().log(Status.INFO, "Entered " + CoreUserPassword +
+			// " in password field");
+			Log.info("Entered " + CoreUserPassword + " in password field");
+			driver.findElement(LoginPageRepo.LoginButton).click();
+			Log.info("Clicked on login button");
+			// ExtentTestManager.getTest().log(Status.INFO, "Clicked on login button");
+
+			try {
+				WebElement clickableElement = Common.waitForElementToBeClickable(driver,
+						LoginPageRepo.AlreadyLoginPopupYesButton, Duration.ofSeconds(20));
+
+				if (clickableElement != null) {
+					// Perform the desired action on the element
+					clickableElement.click();
+					// driver.findElement(LoginPageRepo.AlreadyLoginPopupYesButton).click();
+					Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+
+					Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+					Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+					Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+					driver.findElement(LoginPageRepo.UserNameField).sendKeys(CoreUserName);
+					Log.info("Entered " + CoreUserName + " in user name field");
+					driver.findElement(LoginPageRepo.PasswordField).sendKeys(CoreUserPassword);
+					Log.info("Entered " + CoreUserPassword + " in password field");
+					driver.findElement(LoginPageRepo.LoginButton).click();
+					Log.info("Clicked on login button");
+
+					Log.info("Clicked on already login yes button and logged in again with valid credentials");
+				} else {
+					System.out.println("Element not clickable within the timeout.");
+				}
+			} catch (Exception e) {
+				System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
+				System.out.println("Already login pop up not appeared");
+			}
+
+			// Redirect to the module selection page
+			// if (Common.waitForElementToBeClickable(driver,
+			// LoginPageRepo.GoCollectionButton, Duration.ofSeconds(30)) != null) {
+			/*
+			 * if (defaultURL == null) {
+			 * System.out.println("Entered into module selection page if condition");
+			 * Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+			 * Common.fluentWait("SetAsDefaultRadioButton",
+			 * LoginPageRepo.SetAsDefaultRadioButton);
+			 * Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
+			 * Thread.sleep(3000);
+			 * //driver.findElement(LoginPageRepo.GoCollectionButton).click();
+			 * ForLoopClick(LoginPageRepo.GoCollectionButton);
+			 * Log.info("Clicked on Go collection button"); } else {
+			 * Log.info("Module selection page not appeared"); }
+			 */
+
+			// Handling some error occurred case here
+			SomeErrorOccuredHandling();
+
+			// Fetch and display user organization details
+			Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
+			String UserIDInDashboard = driver.findElement(LoginPageRepo.UserIDInDashboard).getText();
+			Log.info("UserID in Dashboard: " + UserIDInDashboard);
+
+			GetUserORGDetailsFromDB(UserIDInDashboard);
+			Log.info("Org Name: " + orgName + ", Org Type Name: " + orgTypeName);
+
+			Common.fluentWait("UserORGDetails", LoginPageRepo.getORGDetailsinLoginLandingPage(orgName, orgTypeName));
+
+		} catch (Exception e) {
+			Log.error("An error occurred in CoreLogin: " + e.getMessage());
+			e.printStackTrace();
+			// ExtentTestManager.getTest().log(Status.ERROR, "An error occurred: " +
+			// e.getMessage());
+			throw e; // Optionally re-throw to let the calling method handle it
+		} /*
+			 * finally { // Ensure the WebDriver quits properly to avoid resource leaks if
+			 * (driver != null) { driver.quit(); Log.info("Driver session closed."); } }
+			 */
+	}
 	public static void GetUserORGDetailsFromDB(String UserID) throws SQLException, ClassNotFoundException, IOException {
 		Connection con = null;
 		CallableStatement cstmt = null;

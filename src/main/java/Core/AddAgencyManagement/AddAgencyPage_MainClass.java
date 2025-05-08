@@ -626,8 +626,10 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		}
 	}
 
-	public void ClearPanAndSubmit() {
+	public void ClearPanAndSubmit() throws InterruptedException {
+		Thread.sleep(3000);
 		driver.findElement(AddAgencyPageRepo.PanField).clear();
+		Thread.sleep(1000);
 		Validate_PAN_NewNumber();
 		click(AddAgencyPageRepo.Submit, "Submit");
 		 By loader = By.xpath("//*[@class='spinner']");
@@ -661,7 +663,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			WaitLoader();
 			String text = driver.findElement(AddAgencyPageRepo.Usercreatedsuccessfully).getText();
 
-			Pattern pattern = Pattern.compile("AGY\\d+"); // Matches User ID (IBU0001573)
+			Pattern pattern = Pattern.compile("AGY\\d+"); 
 			Matcher matcher = pattern.matcher(text);
 
 			String userId = "";
