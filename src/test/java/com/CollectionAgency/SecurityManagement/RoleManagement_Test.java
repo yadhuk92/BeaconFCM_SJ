@@ -7,13 +7,12 @@ import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.testng.ITestContext;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.BasePackage.Base_Class;
 import com.BasePackage.Login_Class;
-import com.CollectionAgency.SecurityManagement.RoleManagement;
 import com.Utility.FakerValue;
 import com.Utility.Log;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -34,7 +33,7 @@ public class  RoleManagement_Test extends Base_Class {
 	private static By userDropDown = By.xpath("//button[@class='btn dropdown-toggle']");
 	private static By L_signout = By.xpath("//a[text()='Logout']");
 	
-	@BeforeSuite
+	@BeforeClass
 	public void reference() {
 		
 		CollectionAgencyLogin = new Login_Class();

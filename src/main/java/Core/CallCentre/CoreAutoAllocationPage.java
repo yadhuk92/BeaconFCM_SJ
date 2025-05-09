@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.BasePackage.Base_Class;
+import com.BasePackage.Common;
 import com.BasePackage.DownloadedExcelReader;
 import com.BasePackage.DownloadedExcelReader.DataSummary;
 import com.Page_Repository.CoreAutoAllocationRepo;
@@ -380,6 +381,7 @@ public class CoreAutoAllocationPage {
     	Thread.sleep(1000);
     	Log.info("Waiting for the spinner to disappear...");
     	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+    	Common.fluentWait("CoreAutoAllocationRepo.ZoneDropDownWithAll", CoreAutoAllocationRepo.ZoneDropDownWithAll);
     	Log.info("Spinner disappeared successfully.");
     	Log.info("Checking if the current URL ends with 'CallCentre/AutoAllocationConfiguration'...");
         boolean isPageLoaded = driver.getCurrentUrl().endsWith("CallCentre/AutoAllocationConfiguration");
@@ -556,8 +558,8 @@ public class CoreAutoAllocationPage {
         
         try {
             // Wait for the 'All' value in the Zone dropdown to be present
-            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(CoreAutoAllocationRepo.zone));
-            
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(CoreAutoAllocationRepo.ZoneDropDownWithAll));
+            Common.fluentWait("CoreAutoAllocationRepo.zone", CoreAutoAllocationRepo.ZoneDropDownWithAll);
             String expectedText = "All";
             try {
                 // Wait for the expected text to be present in the element
@@ -704,6 +706,7 @@ public class CoreAutoAllocationPage {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
             wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
             Log.info("Locating the Asset Category field...");
+            Common.fluentWait("CoreAutoAllocationRepo.assetCategory", CoreAutoAllocationRepo.assetCategory);
             WebElement assetCategory = driver.findElement(CoreAutoAllocationRepo.assetCategory); 
             Log.info("Asset Category field located successfully.");
 
@@ -817,6 +820,7 @@ public class CoreAutoAllocationPage {
             Log.info("'Select All' option in NPA Category located successfully.");
 
             Log.info("Clicking the 'Select All' option...");
+            Common.fluentWait("npaCategoryselectall", CoreAutoAllocationRepo.npaCategoryselectall);
             npaCategoryselectall.click();
             Log.info("'Select All' option clicked successfully.");
 

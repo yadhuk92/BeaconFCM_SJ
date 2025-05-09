@@ -29,7 +29,7 @@ public class UpdationofDispositionRepo {
 	public static By subdispositionDropdown = By.xpath("(//div[@onmousedown='Radzen.activeElement = null'])[3]");
 	public static By errorMessage5 = By.xpath("//span[contains(text(),'Select Next Action Date')]");
 	public static By datepicker = By.xpath("//input[@placeholder='DD-MM-YYYY']");
-	public static By day(String day) {
+	public static By day(int day) {
         return By.xpath("//span[@class='rz-state-default' and contains(text(),'" + day + "')]");
     }
 	public static By errorMessage6 = By.xpath("//span[contains(text(),'Remarks is required')]");

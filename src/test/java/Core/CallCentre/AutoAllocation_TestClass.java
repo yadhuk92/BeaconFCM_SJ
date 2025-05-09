@@ -12,22 +12,24 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.lang.reflect.Method;
 import java.time.Duration;
 import com.BasePackage.Base_Class;
+import com.BasePackage.Common;
 import com.BasePackage.DBUtils;
 import com.BasePackage.DownloadedExcelReader.DataSummary;
 import com.BasePackage.ExecuteStoredProcedure;
 import com.BasePackage.Login_Class;
+import com.BasePackage.SeleniumLogToFile;
 import com.Page_Repository.CoreAutoAllocationRepo;
 import com.Page_Repository.DispositionMasterPageRepo;
+import com.Utility.Log;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -71,6 +73,7 @@ public class AutoAllocation_TestClass {
 	
 	@BeforeMethod
     public void setupTest(Method method) {
+		SeleniumLogToFile.startLogging();
 		 baseclass = new Base_Class();
 		    driver = baseclass.getDriver();
 		    drivers.add(driver);
@@ -80,6 +83,7 @@ public class AutoAllocation_TestClass {
 		    screenShot = new com.Utility.ScreenShot(driver);
         // Start a new ExtentTest for the current test method
         extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Call Centre AutoAllocation");
+        Log.info("****" + method.getName() + "****");
     }
 	
 	@Test(priority = 1)
@@ -353,7 +357,7 @@ public class AutoAllocation_TestClass {
     @Test(priority = 13)
     public void Select_NPA_and_SMA_Category_Checkbox() throws InterruptedException {
     	try {
-    	callcenteraccountfiltrationPage.selectAllInAssetCategory(); 
+    	callcenteraccountfiltrationPage.selectAllInAssetCategory();
     	ExtentTestManager.getTest().log(Status.PASS, "Clicked on the Asset Category dropdown.");
     	ExtentTestManager.getTest().log(Status.PASS, "Selected NPA Category from the dropdown.");
     	ExtentTestManager.getTest().log(Status.PASS, "Verified the presence of SMA Category in the dropdown");
@@ -691,6 +695,7 @@ public class AutoAllocation_TestClass {
 		 ExtentTestManager.getTest().log(Status.PASS, "Clicked the Search button successfully.");
 	        // Verify expected result
 		 WebElement gridDataRow = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAutoAllocationRepo.griddatarow));
+		 Common.fluentWait("griddatarow", CoreAutoAllocationRepo.griddatarow);
 		 boolean areResultsDisplayed = gridDataRow.isDisplayed();
 	        Assert.assertTrue(areResultsDisplayed, "Total accounts allocated via Auto Allocation should be displayed.");
 	        ExtentTestManager.getTest().log(Status.PASS, "Verified that the Total Accounts and Amount Allocated via Auto Allocation are displayed in the grid.");
@@ -961,7 +966,7 @@ public class AutoAllocation_TestClass {
 			return objectarry;
 		}
 	 
-	 @AfterSuite
+	 @AfterClass
 	 public void afterEachTest() {
 	     ExtentManager.getInstance().flush();
 	  // Close all tracked browser instances

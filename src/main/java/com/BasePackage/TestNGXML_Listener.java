@@ -15,6 +15,7 @@ public class TestNGXML_Listener implements ITestListener {
 	@Override
 	public void onStart(ITestContext contextStart) {
 	System.out.println("Execution Started for TestCase: "+contextStart.getName());
+	System.out.println("Calling startLogging...");
 	SeleniumLogToFile.startLogging();
 	}
 

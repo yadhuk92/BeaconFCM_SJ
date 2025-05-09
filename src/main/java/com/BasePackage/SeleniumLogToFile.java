@@ -13,6 +13,7 @@ public class SeleniumLogToFile {
 
     public static void startLogging() {
         try {
+        	System.out.println("SeleniumLogToFile logging started...");
             // Timestamp for file name
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
             String logDir = "logs";

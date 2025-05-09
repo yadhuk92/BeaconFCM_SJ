@@ -7,12 +7,12 @@
 	
 	<test thread-count="1" name="Core - Disposition">
         <classes>
-            <!--<class name="Core.Disposition.Disposition_Master_Test"/>-->
+            <class name="Core.Disposition.Disposition_Master_Test"/>
             <class name="Core.Disposition.Updation_Of_Disposition_Test"/>
         </classes>
     </test>
     
-    <!--<test thread-count="1" name="Core - Call centre">
+    <test thread-count="1" name="Core - Call centre">
         <classes>
             <class name="Core.CallCentre.AutoAllocation_TestClass"/>
             <class name="Core.CallCentre.ManualAllocation_TestClass"/>
@@ -77,6 +77,6 @@
         <classes>
             <class name="CallCentre.SecurityManagement.RoleManagement_TestClass"/>
         </classes>
-    </test>-->
+    </test>
 
 </suite> <!-- Suite -->

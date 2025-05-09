@@ -16,12 +16,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+import org.testng.annotations.AfterClass;
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
 import com.BasePackage.Login_Class;
@@ -61,7 +60,7 @@ public class AgencyAccountAllocation_TestClass extends Base_Class {
 	ExtentTest extenttest;
 	Login_Class CoreAppLogin;
 	
-	@BeforeSuite
+	@BeforeClass
 	public void reference() throws Exception {
 	
 		baseclass = new Base_Class();
@@ -1177,7 +1176,7 @@ public void takeScreenshotOnFailure(ITestResult result) throws IOException {
 		}
 		
 		
-	@AfterSuite
+	@AfterClass
 		public void AfterClass() {
 		     ExtentManager.getInstance().flush();
 		  // Close the browser

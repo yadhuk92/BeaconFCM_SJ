@@ -28,6 +28,7 @@ import org.testng.annotations.Test;
 import java.lang.reflect.Method;
 
 import com.BasePackage.Base_Class;
+import com.BasePackage.Common;
 import com.BasePackage.Login_Class;
 import com.BasePackage.SeleniumLogToFile;
 import com.Page_Repository.DispositionMasterPageRepo;
@@ -337,7 +338,15 @@ public class Updation_Of_Disposition_Test extends Base_Class {
 			 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
 			 
-			 String date = testdata.get("Date").toString(); 
+			 //String date = testdata.get("Date").toString(); 
+			 
+			 LocalDate currentDate = LocalDate.now();
+			 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+			 String formattedDate = currentDate.format(formatter);
+			 String dayStr = formattedDate.split("-")[0];
+			 int day = Integer.parseInt(dayStr);
+			 int date = day + 2;
+			 System.out.println("EnterNextActionDate: " + date);
 			 
 			 updationofdispositionMasterPage.enterNextActionDate(date);
 		        updationofdispositionMasterPage.clickSaveButton();
@@ -403,18 +412,24 @@ public class Updation_Of_Disposition_Test extends Base_Class {
 		        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
 		        String formattedDate2 = currentDate1.format(formatter1);
 		        String actualdateformat1 = formattedDate2.replace("-", "/");
+		        System.out.println("formattedDate2: "+formattedDate2);
+		        System.out.println("actualdateformat1: "+actualdateformat1);
+		        
+		        String day = formattedDate2.split("-")[0];
+		        System.out.println("Day: " + day);
 		        
 		 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
 		 updationofdispositionMasterPage.enterAccountNumber();
 		 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
 		 updationofdispositionMasterPage.clickSearchButton();
 		 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-		 wait.until(ExpectedConditions.visibilityOfElementLocated(UpdationofDispositionRepo.transactiondetails));
+		 //wait.until(ExpectedConditions.visibilityOfElementLocated(UpdationofDispositionRepo.transactiondetails));
+		 Common.fluentWait("transactiondetails", UpdationofDispositionRepo.transactiondetails);
 		 Assert.assertTrue(updationofdispositionMasterPage.isTransactionDisplayedWithExpectedDetails(formattedDate2,Actionowner), 
                  "The newly added interaction details are not displayed as expected.");
 		 // Verify all interaction details
 		 updationofdispositionMasterPage.verifyInteractionDetails(Disposition, Subdisposition, 
-				 Remarks, userName, userId, Actionowner, actualdateformat1);
+				 Remarks, userName, userId, Actionowner, day);
 	        }
 			 ExtentTestManager.getTest().log(Status.PASS, "Displays newly added interaction details with transaction date plus next action owner as heading and shows Disposition, Sub disposition, Remarks, Action done by, User EIN, Next Action Owner, Next Action Date details");
 			 }
