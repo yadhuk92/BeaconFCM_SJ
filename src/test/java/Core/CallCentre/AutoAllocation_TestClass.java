@@ -20,6 +20,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.time.LocalDate;
+
 import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
 import com.BasePackage.DBUtils;
@@ -333,7 +335,12 @@ public class AutoAllocation_TestClass {
     	ExtentTestManager.getTest().log(Status.PASS, "Clicked on the Effect Date field.");
         if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
           	
-    		String date = testdata.get("effectDate").toString();
+    		//String date = testdata.get("effectDate").toString();
+    		
+    		LocalDate currentDate = LocalDate.now();
+    		int dayint = currentDate.getDayOfMonth();
+    		String date = String.valueOf(dayint);
+    		System.out.println("Day as String: " + date);
 
     		 // Step 2: Select a date from the date picker
     		callcenteraccountfiltrationPage.selectDateFromDatePicker(date);
@@ -905,15 +912,20 @@ public class AutoAllocation_TestClass {
 		 try {
 		 if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
 				// Step 1: Execute stored procedure and get the result
-			        String fromdate = testdata.get("effectDate").toString();
-			        String todate = testdata.get("effectDate").toString();
+			        //String fromdate = testdata.get("effectDate").toString();
+			        LocalDate currentDate = LocalDate.now();
+		    		int dayint = currentDate.getDayOfMonth();
+		    		String fromdate = String.valueOf(dayint);
+		    		System.out.println("fromdate: " + fromdate);
+			        
+			        //String todate = testdata.get("effectDate").toString();
 		 
 	        // Step 1: Click on Get Download History button
 			        callcenteraccountfiltrationPage.clickGetDownloadHistory();
 			        ExtentTestManager.getTest().log(Status.PASS, "'Get Download History' button clicked successfully.");
 	        // Step 2: Select From Date and To Date
 			        callcenteraccountfiltrationPage.enterFromDate(fromdate);
-			        callcenteraccountfiltrationPage.enterToDate(todate);
+			        callcenteraccountfiltrationPage.enterToDate(fromdate);
 			        ExtentTestManager.getTest().log(Status.PASS, "'From Date' and 'To Date' values selected successfully.");
 		 }
 	        // Step 3: Click Search button

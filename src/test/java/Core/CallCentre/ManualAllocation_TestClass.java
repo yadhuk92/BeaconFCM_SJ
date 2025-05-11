@@ -22,6 +22,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.time.LocalDate;
+
 import com.BasePackage.Base_Class;
 import com.BasePackage.DBUtils;
 import com.BasePackage.DownloadedExcelReader;
@@ -1144,7 +1146,13 @@ public class ManualAllocation_TestClass {
 			    public void Select_Date_in_Next_Action_Date_DatePicker(Map<Object, Object> testdata) throws InterruptedException {
 			    	try {
 			    	if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
-			    		String value = testdata.get("ActionDate").toString();
+			    		//String value = testdata.get("ActionDate").toString();
+			    		
+			    		LocalDate currentDate = LocalDate.now();
+			    		int dayint = currentDate.getDayOfMonth();
+			    		String value = String.valueOf(dayint);
+			    		System.out.println("Day as String: " + value);
+			    		
 			        // Select date using the date picker and assert
 			    		coremanualallocationpage.selectNextActionDate(value);
 			    		ExtentTestManager.getTest().log(Status.PASS, "Selected "+value+" using the \"Next Action Date\" date picker.");  	
