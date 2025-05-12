@@ -1247,17 +1247,19 @@ public class Disposition_Master_Test extends Base_Class {
 	 
 	 @AfterMethod
 	 public void takeScreenshotOnFailure(ITestResult result) {
-	     if (result.getStatus() == ITestResult.FAILURE && driver != null) {
-	         try {
-	             // Take screenshot only if driver session is still active
-	             TakesScreenshot ts = (TakesScreenshot) driver;
-	             File src = ts.getScreenshotAs(OutputType.FILE);
-	             FileUtils.copyFile(src, new File("./screenshots/" + result.getName() + ".png"));
-	             
-	         } catch (Exception e) {
-	             System.out.println("Screenshot capture failed: " + e.getMessage());
-	         }
-	     }
+		 if (result.getStatus() == ITestResult.FAILURE) {
+		        String methodName = result.getMethod().getMethodName();
+		        try {
+		            // Take the screenshot for the failed test
+		            File image = screenShot.takeScreenShot(methodName, "Failure");
+		            
+		            extenttest.log(Status.INFO, "Screenshot of failure: ",
+		                    MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
+		            
+		        } catch (IOException e) {
+		            System.err.println("Failed to capture screenshot: " + e.getMessage());
+		        }
+		    }
 
 	 }
 	 
