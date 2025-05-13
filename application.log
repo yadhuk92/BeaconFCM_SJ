@@ -1,0 +1,40 @@
+[INFO ] 2025-05-13 14:30:24.401 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-05-13 14:31:19.063 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2025-05-13 14:31:20.561 [main] Log - Default URL: /Home
+[INFO ] 2025-05-13 14:31:20.811 [main] Log - Entered IBU0001635 in user name field
+[INFO ] 2025-05-13 14:31:20.985 [main] Log - Entered ses@987 in password field
+[INFO ] 2025-05-13 14:31:21.145 [main] Log - Clicked on login button
+[INFO ] 2025-05-13 14:31:31.098 [main] Log - Entered IBU0001635 in user name field
+[INFO ] 2025-05-13 14:31:31.186 [main] Log - Entered ses@987 in password field
+[INFO ] 2025-05-13 14:31:31.267 [main] Log - Clicked on login button
+[INFO ] 2025-05-13 14:31:31.267 [main] Log - Clicked on already login yes button and logged in again with valid credentials
+[INFO ] 2025-05-13 14:31:51.769 [main] Log - Exception in SomeErrorOccuredHandling: Expected condition failed: waiting for element to be clickable: By.xpath: //span[@style='color:red' and text()='Some error occurred.'] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\VIJAYA~1.A\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64623}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64623/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1ccb850feb62d07a256990e4752f5792
+[INFO ] 2025-05-13 14:31:51.871 [main] Log - UserID in Dashboard: IBU0001635
+[INFO ] 2025-05-13 14:31:53.280 [main] Log - Org Name: Mumbai, Org Type Name: Zone/CO
+[INFO ] 2025-05-13 14:31:53.340 [main] Log - Initializing Q&A Form View Page...
+[INFO ] 2025-05-13 14:31:53.341 [main] Log - WebDriver instance assigned.
+[INFO ] 2025-05-13 14:31:53.342 [main] Log - Initializing Web elements using PageFactory...
+[INFO ] 2025-05-13 14:31:53.349 [main] Log - Web elements initialized using PageFactory.
+[INFO ] 2025-05-13 14:31:53.349 [main] Log - Q&A Form View Page initialization completed.
+[INFO ] 2025-05-13 14:32:05.301 [main] Log - Starting navigation to the Q&A Form View Main Menu..
+[INFO ] 2025-05-13 14:32:07.845 [main] Log - Clicked on Q&A Form View Main Menu. 
+[INFO ] 2025-05-13 14:32:07.846 [main] Log - Navigating to View Template List submenu.
+[INFO ] 2025-05-13 14:32:07.990 [main] Log - Clicked on View Template sub Menu. 
+[INFO ] 2025-05-13 14:32:12.711 [main] Log - Step:01 verify Create New button is present in the page
+[INFO ] 2025-05-13 14:32:12.713 [main] Log - Step:02 click on the Create New Button
+[INFO ] 2025-05-13 14:32:12.715 [main] Log - Expected Result: User is navigated to the Template creation page
+[INFO ] 2025-05-13 14:32:45.187 [main] Log - Verifying Template Name,Question,Expected Answer Type,Values,Parent Question,Parent Value,Is Mandatory (Checkbox),Add Button,Clear Button,Cancel Button fields displayed as expected.
+[INFO ] 2025-05-13 14:32:45.188 [main] Log - Clicked on Template Creation Page. 
+[INFO ] 2025-05-13 14:32:45.235 [main] Log - TemplateName is displayed.
+[INFO ] 2025-05-13 14:32:45.283 [main] Log - Question is displayed.
+[ERROR] 2025-05-13 14:33:15.346 [main] Log - Error verifying element: ExpectedAnswerType - Expected condition failed: waiting for presence of element located by: By.xpath: //*[@id="-ZLKN9yVv0"]/label (tried for 30 second(s) with 500 milliseconds interval)
+[INFO ] 2025-05-13 14:33:15.559 [main] Log - Verify the columns showing in the grid section
+[INFO ] 2025-05-13 14:33:15.770 [main] Log - verify the Mandatory Field Validation
+[INFO ] 2025-05-13 14:33:15.902 [main] Log - Expected Result: Mandatory field validatiopn should be displayed in UI
+[INFO ] 2025-05-13 14:33:16.101 [main] Log - Entering  Template Name
+[INFO ] 2025-05-13 14:33:16.302 [main] Log - Entered value into Template Name field: Sample Template

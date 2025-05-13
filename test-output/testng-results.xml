@@ -1,283 +1,466 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="9" passed="9" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="3" failed="5" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-04-24T16:26:58 IST" name="Beacon FCM Regression Automation Suite" finished-at="2025-04-24T16:34:54 IST" duration-ms="475453">
+  <suite started-at="2025-05-13T14:31:53 IST" name="Default suite" finished-at="2025-05-13T14:33:16 IST" duration-ms="82944">
     <groups>
     </groups>
-    <test started-at="2025-04-24T16:26:58 IST" name="Core - Summary reports - Bank allocation summary" finished-at="2025-04-24T16:34:54 IST" duration-ms="475453">
-      <class name="Core.SummaryReports.BankAllocationSummary_TestClass">
-        <test-method is-config="true" signature="SetUp()[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:26:58 IST" name="SetUp" finished-at="2025-04-24T16:26:58 IST" duration-ms="26" status="PASS">
+    <test started-at="2025-05-13T14:31:53 IST" name="Default test" finished-at="2025-05-13T14:33:16 IST" duration-ms="82944">
+      <class name="CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass">
+        <test-method is-config="true" signature="SetUp()[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:30:21 IST" name="SetUp" finished-at="2025-05-13T14:31:53 IST" duration-ms="92155" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SetUp -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:27:00 IST" name="setupTest" finished-at="2025-04-24T16:27:00 IST" duration-ms="173" status="PASS">
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:31:53 IST" name="setupTest" finished-at="2025-05-13T14:31:53 IST" duration-ms="310" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_zone_user_able_to_allocate_accounts_to_branch(java.util.Map) throws java.lang.Exception]]>
+                <![CDATA[public void CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.Execute_the_Deletion_Query() throws java.lang.Throwable]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method signature="Verify_zone_user_able_to_allocate_accounts_to_branch(java.util.Map)[pri:1, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:27:00 IST" name="Verify_zone_user_able_to_allocate_accounts_to_branch" data-provider="TestData" finished-at="2025-04-24T16:29:52 IST" duration-ms="171435" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=<, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary}]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="Execute_the_Deletion_Query()[pri:1, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:31:53 IST" name="Execute_the_Deletion_Query" finished-at="2025-05-13T14:32:05 IST" duration-ms="11468" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_zone_user_able_to_allocate_accounts_to_branch -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:29:52 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:29:52 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- Execute_the_Deletion_Query -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:05 IST" name="takeScreenshotOnFailure" finished-at="2025-05-13T14:32:05 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Verify_zone_user_able_to_allocate_accounts_to_branch status=SUCCESS method=BankAllocationSummary_TestClass.Verify_zone_user_able_to_allocate_accounts_to_branch(java.util.Map)[pri:1, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
+                <![CDATA[[TestResult name=Execute_the_Deletion_Query status=SUCCESS method=CoreQAFormViewTemplateList_TestClass.Execute_the_Deletion_Query()[pri:1, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:29:52 IST" name="setupTest" finished-at="2025-04-24T16:29:52 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:05 IST" name="setupTest" finished-at="2025-05-13T14:32:05 IST" duration-ms="5" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_branch_user_able_to_Login_with_Valid_Credentials() throws java.lang.Exception]]>
+                <![CDATA[public void CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.Login_to_CoreWithHO_User() throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method signature="Verify_branch_user_able_to_Login_with_Valid_Credentials()[pri:2, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:29:52 IST" name="Verify_branch_user_able_to_Login_with_Valid_Credentials" finished-at="2025-04-24T16:31:09 IST" duration-ms="77246" status="PASS">
+        <test-method signature="Login_to_CoreWithHO_User()[pri:2, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:05 IST" name="Login_to_CoreWithHO_User" finished-at="2025-05-13T14:32:05 IST" duration-ms="56" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_branch_user_able_to_Login_with_Valid_Credentials -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:31:09 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:31:09 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- Login_to_CoreWithHO_User -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:05 IST" name="takeScreenshotOnFailure" finished-at="2025-05-13T14:32:05 IST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Verify_branch_user_able_to_Login_with_Valid_Credentials status=SUCCESS method=BankAllocationSummary_TestClass.Verify_branch_user_able_to_Login_with_Valid_Credentials()[pri:2, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
+                <![CDATA[[TestResult name=Login_to_CoreWithHO_User status=SUCCESS method=CoreQAFormViewTemplateList_TestClass.Login_to_CoreWithHO_User()[pri:2, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:31:09 IST" name="setupTest" finished-at="2025-04-24T16:31:09 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:05 IST" name="setupTest" finished-at="2025-05-13T14:32:05 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Successful_Account_Allocation_to_My_accounts_in_my_desk() throws java.lang.InterruptedException]]>
+                <![CDATA[public void CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.AccesQAFormViewTemplateList() throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method signature="Successful_Account_Allocation_to_My_accounts_in_my_desk()[pri:3, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:31:09 IST" name="Successful_Account_Allocation_to_My_accounts_in_my_desk" finished-at="2025-04-24T16:32:15 IST" duration-ms="66216" status="PASS">
+        <test-method signature="AccesQAFormViewTemplateList()[pri:3, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:05 IST" name="AccesQAFormViewTemplateList" finished-at="2025-05-13T14:32:08 IST" duration-ms="2713" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[User is not navigated to the Q&A Template Page expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: User is not navigated to the Q&A Template Page expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertTrue(Assert.java:45)
+at CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.AccesQAFormViewTemplateList(CoreQAFormViewTemplateList_TestClass.java:188)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:764)
+at org.testng.TestRunner.run(TestRunner.java:585)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+at org.testng.TestNG.runSuites(TestNG.java:1069)
+at org.testng.TestNG.run(TestNG.java:1037)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Successful_Account_Allocation_to_My_accounts_in_my_desk -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:32:15 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:32:15 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- AccesQAFormViewTemplateList -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:08 IST" name="takeScreenshotOnFailure" finished-at="2025-05-13T14:32:08 IST" duration-ms="267" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Successful_Account_Allocation_to_My_accounts_in_my_desk status=SUCCESS method=BankAllocationSummary_TestClass.Successful_Account_Allocation_to_My_accounts_in_my_desk()[pri:3, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
+                <![CDATA[[TestResult name=AccesQAFormViewTemplateList status=FAILURE method=CoreQAFormViewTemplateList_TestClass.AccesQAFormViewTemplateList()[pri:3, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:32:15 IST" name="setupTest" finished-at="2025-04-24T16:32:15 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:08 IST" name="setupTest" finished-at="2025-05-13T14:32:08 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Validate_Data_Execution_for_Bank_Allocation_Summary_in_database() throws java.io.IOException,java.lang.InterruptedException]]>
+                <![CDATA[public void CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.NavigatetoTemplatecreationpage() throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method signature="Validate_Data_Execution_for_Bank_Allocation_Summary_in_database()[pri:4, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:32:15 IST" name="Validate_Data_Execution_for_Bank_Allocation_Summary_in_database" finished-at="2025-04-24T16:32:19 IST" duration-ms="3633" status="PASS">
+        <test-method signature="NavigatetoTemplatecreationpage()[pri:4, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:08 IST" name="NavigatetoTemplatecreationpage" finished-at="2025-05-13T14:32:44 IST" duration-ms="36646" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id="dvbody"]/form/div/div/div/div[1]/div/div/div[2]/div/div/button[2] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\VIJAYA~1.A\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64623}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64623/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1ccb850feb62d07a256990e4752f5792]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id="dvbody"]/form/div/div/div/div[1]/div/div/div[2]/div/div/button[2] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\VIJAYA~1.A\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64623}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64623/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1ccb850feb62d07a256990e4752f5792
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+at com.BasePackage.Base_Class.click(Base_Class.java:134)
+at Core.QAFormViewTemplateList.CoreQAFormViewTemplateList_MainClass.NavigatetoTemplatecreationpage(CoreQAFormViewTemplateList_MainClass.java:92)
+at CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.NavigatetoTemplatecreationpage(CoreQAFormViewTemplateList_TestClass.java:218)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:764)
+at org.testng.TestRunner.run(TestRunner.java:585)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+at org.testng.TestNG.runSuites(TestNG.java:1069)
+at org.testng.TestNG.run(TestNG.java:1037)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Validate_Data_Execution_for_Bank_Allocation_Summary_in_database -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:32:19 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:32:19 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- NavigatetoTemplatecreationpage -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:44 IST" name="takeScreenshotOnFailure" finished-at="2025-05-13T14:32:45 IST" duration-ms="192" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Validate_Data_Execution_for_Bank_Allocation_Summary_in_database status=SUCCESS method=BankAllocationSummary_TestClass.Validate_Data_Execution_for_Bank_Allocation_Summary_in_database()[pri:4, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
+                <![CDATA[[TestResult name=NavigatetoTemplatecreationpage status=FAILURE method=CoreQAFormViewTemplateList_TestClass.NavigatetoTemplatecreationpage()[pri:4, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:32:19 IST" name="setupTest" finished-at="2025-04-24T16:32:19 IST" duration-ms="1" status="PASS">
+        <test-method signature="Validate_Fields_From_TemplateCreation_Page()[pri:5, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:45 IST" name="Validate_Fields_From_TemplateCreation_Page" finished-at="2025-05-13T14:33:15 IST" duration-ms="30163" status="FAIL">
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //*[@id="-ZLKN9yVv0"]/label (tried for 30 second(s) with 500 milliseconds interval)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //*[@id="-ZLKN9yVv0"]/label (tried for 30 second(s) with 500 milliseconds interval)
+at Core.QAFormViewTemplateList.CoreQAFormViewTemplateList_MainClass.isDisplayed(CoreQAFormViewTemplateList_MainClass.java:60)
+at Core.QAFormViewTemplateList.CoreQAFormViewTemplateList_MainClass.VerifyrequiredFileds(CoreQAFormViewTemplateList_MainClass.java:111)
+at CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.Validate_Fields_From_TemplateCreation_Page(CoreQAFormViewTemplateList_TestClass.java:250)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:764)
+at org.testng.TestRunner.run(TestRunner.java:585)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+at org.testng.TestNG.runSuites(TestNG.java:1069)
+at org.testng.TestNG.run(TestNG.java:1037)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //*[@id="-ZLKN9yVv0"]/label (tried for 30 second(s) with 500 milliseconds interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+at Core.QAFormViewTemplateList.CoreQAFormViewTemplateList_MainClass.isDisplayed(CoreQAFormViewTemplateList_MainClass.java:46)
+... 28 more
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="-ZLKN9yVv0"]/label"}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1ccb850feb62d07a256990e4752f5792, findElement {using=xpath, value=//*[@id="-ZLKN9yVv0"]/label}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\VIJAYA~1.A\AppData...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64623}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64623/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1ccb850feb62d07a256990e4752f5792
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:171)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:168)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+... 29 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Validate_Fields_From_TemplateCreation_Page -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:32:45 IST" name="setupTest" finished-at="2025-05-13T14:32:45 IST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_Accounts_in_Todays_Branch_Allocation_Summary(java.util.Map) throws java.lang.Exception]]>
+                <![CDATA[public void CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.Validate_Fields_From_TemplateCreation_Page() throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method signature="Verify_Accounts_in_Todays_Branch_Allocation_Summary(java.util.Map)[pri:5, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:32:19 IST" name="Verify_Accounts_in_Todays_Branch_Allocation_Summary" data-provider="TestData" finished-at="2025-04-24T16:34:20 IST" duration-ms="120742" status="PASS">
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:15 IST" name="takeScreenshotOnFailure" finished-at="2025-05-13T14:33:15 IST" duration-ms="197" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=<, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Verify_Accounts_in_Todays_Branch_Allocation_Summary -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:20 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:34:20 IST" duration-ms="0" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Verify_Accounts_in_Todays_Branch_Allocation_Summary status=SUCCESS method=BankAllocationSummary_TestClass.Verify_Accounts_in_Todays_Branch_Allocation_Summary(java.util.Map)[pri:5, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
+                <![CDATA[[TestResult name=Validate_Fields_From_TemplateCreation_Page status=FAILURE method=CoreQAFormViewTemplateList_TestClass.Validate_Fields_From_TemplateCreation_Page()[pri:5, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:20 IST" name="setupTest" finished-at="2025-04-24T16:34:20 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:15 IST" name="setupTest" finished-at="2025-05-13T14:33:15 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_Accounts_in_Yesterdays_date(java.util.Map) throws java.io.IOException,java.lang.InterruptedException]]>
+                <![CDATA[public void CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.verify_the_columns_showing_in_the_grid_section() throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method signature="Verify_Accounts_in_Yesterdays_date(java.util.Map)[pri:6, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:20 IST" name="Verify_Accounts_in_Yesterdays_date" data-provider="TestData" finished-at="2025-04-24T16:34:24 IST" duration-ms="4475" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=<, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary}]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="verify_the_columns_showing_in_the_grid_section()[pri:6, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:15 IST" name="verify_the_columns_showing_in_the_grid_section" finished-at="2025-05-13T14:33:15 IST" duration-ms="46" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Following columns are not Displayed on the Grid Section expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Following columns are not Displayed on the Grid Section expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertTrue(Assert.java:45)
+at CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.verify_the_columns_showing_in_the_grid_section(CoreQAFormViewTemplateList_TestClass.java:286)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:764)
+at org.testng.TestRunner.run(TestRunner.java:585)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+at org.testng.TestNG.runSuites(TestNG.java:1069)
+at org.testng.TestNG.run(TestNG.java:1037)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_Accounts_in_Yesterdays_date -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:24 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:34:24 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- verify_the_columns_showing_in_the_grid_section -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:15 IST" name="takeScreenshotOnFailure" finished-at="2025-05-13T14:33:15 IST" duration-ms="160" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Verify_Accounts_in_Yesterdays_date status=SUCCESS method=BankAllocationSummary_TestClass.Verify_Accounts_in_Yesterdays_date(java.util.Map)[pri:6, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
+                <![CDATA[[TestResult name=verify_the_columns_showing_in_the_grid_section status=FAILURE method=CoreQAFormViewTemplateList_TestClass.verify_the_columns_showing_in_the_grid_section()[pri:6, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:24 IST" name="setupTest" finished-at="2025-04-24T16:34:24 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:15 IST" name="setupTest" finished-at="2025-05-13T14:33:15 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution() throws java.io.IOException,java.lang.InterruptedException]]>
+                <![CDATA[public void CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.verify_the_Mandatory_Filed_Validation() throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method signature="Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution()[pri:7, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:24 IST" name="Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution" finished-at="2025-04-24T16:34:28 IST" duration-ms="3627" status="PASS">
+        <test-method signature="verify_the_Mandatory_Filed_Validation()[pri:8, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:15 IST" name="verify_the_Mandatory_Filed_Validation" finished-at="2025-05-13T14:33:15 IST" duration-ms="148" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Following columns are not Displayed on the Grid Section expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Following columns are not Displayed on the Grid Section expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertTrue(Assert.java:45)
+at CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.verify_the_Mandatory_Filed_Validation(CoreQAFormViewTemplateList_TestClass.java:318)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:764)
+at org.testng.TestRunner.run(TestRunner.java:585)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+at org.testng.TestNG.runSuites(TestNG.java:1069)
+at org.testng.TestNG.run(TestNG.java:1037)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:28 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:34:28 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- verify_the_Mandatory_Filed_Validation -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:15 IST" name="takeScreenshotOnFailure" finished-at="2025-05-13T14:33:16 IST" duration-ms="175" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution status=SUCCESS method=BankAllocationSummary_TestClass.Verify_the_tables_DW_BRANCH_ALLOCATIONS_SUMMARY_and_DW_BRANCH_ALLOCATIONS_DASHBOARD_are_updated_after_the_package_execution()[pri:7, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
+                <![CDATA[[TestResult name=verify_the_Mandatory_Filed_Validation status=FAILURE method=CoreQAFormViewTemplateList_TestClass.verify_the_Mandatory_Filed_Validation()[pri:8, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:28 IST" name="setupTest" finished-at="2025-04-24T16:34:28 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:16 IST" name="setupTest" finished-at="2025-05-13T14:33:16 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_Grid_Details_Accuracy(java.util.Map) throws java.lang.InterruptedException]]>
+                <![CDATA[public void CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass.Validate_Value_Into_Template_Name_Field() throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method signature="Verify_Grid_Details_Accuracy(java.util.Map)[pri:8, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:28 IST" name="Verify_Grid_Details_Accuracy" data-provider="TestData" finished-at="2025-04-24T16:34:37 IST" duration-ms="9636" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{AllocateTo=Branch, AssetCategory=SMA Category, Branch=Amaravati, OsBalanceAmount=10000, OsBalanceOperator=<, Region=Mumbai I, Run=Yes, SMACategory=SMA 0 (01-30 Days), TestScenario=CoreBankAllocationSummary}]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="Validate_Value_Into_Template_Name_Field()[pri:9, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:16 IST" name="Validate_Value_Into_Template_Name_Field" finished-at="2025-05-13T14:33:16 IST" duration-ms="204" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_Grid_Details_Accuracy -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:37 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:34:37 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- Validate_Value_Into_Template_Name_Field -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:16 IST" name="takeScreenshotOnFailure" finished-at="2025-05-13T14:33:16 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Verify_Grid_Details_Accuracy status=SUCCESS method=BankAllocationSummary_TestClass.Verify_Grid_Details_Accuracy(java.util.Map)[pri:8, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
+                <![CDATA[[TestResult name=Validate_Value_Into_Template_Name_Field status=SUCCESS method=CoreQAFormViewTemplateList_TestClass.Validate_Value_Into_Template_Name_Field()[pri:9, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:37 IST" name="setupTest" finished-at="2025-04-24T16:34:37 IST" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Core.SummaryReports.BankAllocationSummary_TestClass.Verify_Download_Functionality_as_Excel() throws java.lang.InterruptedException]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupTest -->
-        <test-method signature="Verify_Download_Functionality_as_Excel()[pri:9, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:37 IST" name="Verify_Download_Functionality_as_Excel" finished-at="2025-04-24T16:34:50 IST" duration-ms="12737" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Verify_Download_Functionality_as_Excel -->
-        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:50 IST" name="takeScreenshotOnFailure" finished-at="2025-04-24T16:34:50 IST" duration-ms="0" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Verify_Download_Functionality_as_Excel status=SUCCESS method=BankAllocationSummary_TestClass.Verify_Download_Functionality_as_Excel()[pri:9, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:Core.SummaryReports.BankAllocationSummary_TestClass@49139829]" started-at="2025-04-24T16:34:50 IST" name="afterEachTest" finished-at="2025-04-24T16:34:54 IST" duration-ms="3576" status="PASS">
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass@765d7657]" started-at="2025-05-13T14:33:16 IST" name="afterEachTest" finished-at="2025-05-13T14:33:17 IST" duration-ms="757" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterEachTest -->
-      </class> <!-- Core.SummaryReports.BankAllocationSummary_TestClass -->
-    </test> <!-- Core - Summary reports - Bank allocation summary -->
-  </suite> <!-- Beacon FCM Regression Automation Suite -->
+      </class> <!-- CoreQAFormViewTemplateList.CoreQAFormViewTemplateList_TestClass -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
