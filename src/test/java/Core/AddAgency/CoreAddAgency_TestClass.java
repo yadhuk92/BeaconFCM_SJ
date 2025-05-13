@@ -22,8 +22,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
@@ -72,7 +74,7 @@ public class CoreAddAgency_TestClass {
 	AddAgencyPage_MainClass addagencypage;
 	
 
-	@BeforeSuite
+	@BeforeClass
 
 	public void SetUp() throws Exception {
 
@@ -1076,7 +1078,7 @@ public class CoreAddAgency_TestClass {
 
 				extenttest.log(Status.INFO, "Screenshot of failure: ",
 						MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
-
+				ExtentManager.getInstance().flush();
 			} catch (IOException e) {
 				System.err.println("Failed to capture screenshot: " + e.getMessage());
 			}
@@ -1097,9 +1099,9 @@ public class CoreAddAgency_TestClass {
 			return objectarry;
 		}
 
-	@AfterSuite
+	@AfterClass
 	public void afterEachTest() {
-		ExtentManager.getInstance().flush();
+		
 		// Close all tracked browser instances
 		for (WebDriver driverInstance : drivers) {
 			if (driverInstance != null) {
