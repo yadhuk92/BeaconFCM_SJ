@@ -1,6 +1,7 @@
 package com.BasePackage;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +10,10 @@ import java.time.Duration;
 import java.util.Properties;
 import java.util.Random;
 
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -271,5 +276,30 @@ public class Base_Class {
 	    
 	     return randomWord.toString();
 	 }
+	public static void writeData(String sheetName, int rowNum, int cellNum, String value) throws IOException {
+		String filePath = System.getProperty("user.dir") + "/src/test/resources/TestData.xlsx";
+	    FileInputStream fis = new FileInputStream(filePath);
+	    XSSFWorkbook workbook = new XSSFWorkbook(fis);
+	    XSSFSheet sheet = workbook.getSheet(sheetName);
 
+	    XSSFRow row = sheet.getRow(rowNum);
+	    if (row == null) {
+	        row = sheet.createRow(rowNum);
+	    }
+
+	    XSSFCell cell = row.getCell(cellNum);
+	    if (cell == null) {
+	        cell = row.createCell(cellNum);
+	    }
+
+	    cell.setCellValue(value);
+
+	    fis.close();
+
+	    FileOutputStream fos = new FileOutputStream(filePath);
+	    workbook.write(fos);
+	    fos.close();
+	    workbook.close();
+	}
+	
 }

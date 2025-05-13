@@ -92,7 +92,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 	public void VerifyrequiredFileds() {
 		Log.info(
 				"Verifying PAN Number, GST Number, Constitution Type, Collection Agency Name fields displayed as expected.");
-		
+
 		Common.fluentWait("zone", AddAgencyPageRepo.Zone);
 		Log.info("Clicked on Add Agency  sub Menu. ");
 		isDisplayed(AddAgencyPageRepo.PANNumber, "PANNumber");
@@ -290,8 +290,8 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			e.printStackTrace();
 			ExtentTestManager.getTest().log(Status.FAIL, "Unable to select " + elementName);
 			System.out.println("Error message " + e.getMessage());
-			 // Re-throw the exception so TestNG marks the test as failed
-	        throw new RuntimeException(e);
+			// Re-throw the exception so TestNG marks the test as failed
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -338,7 +338,8 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		System.out.println("MobileNumber " + MobileNumber);
 		driver.findElement(AddAgencyPageRepo.ContactNumberinput).sendKeys(MobileNumber);
 		ExtentTestManager.getTest().log(Status.PASS, "Invalid Contact Number sent");
-		click(AddAgencyPageRepo.ModeOfCollection, "ModeOfCollection");Thread.sleep(2000);
+		click(AddAgencyPageRepo.ModeOfCollection, "ModeOfCollection");
+		Thread.sleep(2000);
 		InvalidContactNumberSuccessfully();
 
 	}
@@ -422,14 +423,15 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Mismatch in dropdown symbols.");
 		}
 	}
+
 	public void verifyDropdownSymbolsConstirutionType() {
 		// Step 1: Expected symbols
 		List<String> expectedSymbols = Arrays.asList("Proprietorship", "Partnership Firm", "Company", "Other");
 
 		// Step 2: Wait for the dropdown list to appear
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("(//ul[contains(@class,'-dropdown-items rz-dropdown-list')])[last()]")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("(//ul[contains(@class,'-dropdown-items rz-dropdown-list')])[last()]")));
 
 		// Step 3: Get the last 5 dropdown <li> elements using XPath
 		List<WebElement> options = driver.findElements(By.xpath(
@@ -459,7 +461,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			ExtentTestManager.getTest().log(Status.FAIL, "Dropdown Elements of Constitution type mismatched");
 		}
 	}
-	
+
 	public void InvalidContactNumberSuccessfully() {
 		Common.fluentWait("InvalidContactNumber", AddAgencyPageRepo.InvalidContactNumber);
 		if (driver.findElement(AddAgencyPageRepo.InvalidContactNumber).isDisplayed()) {
@@ -564,7 +566,8 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		try {
 			Thread.sleep(2000);
 			navigateAgencyManagement();
-			click(AddAgencyPageRepo.AgencyList, "AgencyList");Common.fluentWait("Action", AddAgencyPageRepo.Action);
+			click(AddAgencyPageRepo.AgencyList, "AgencyList");
+			Common.fluentWait("Action", AddAgencyPageRepo.Action);
 			String UsedPanNumber = driver.findElement(AddAgencyPageRepo.AlreadyUsedPAN).getText();
 			navigateAgencyManagement();
 			navigateToAddAgencyOption();
@@ -576,6 +579,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			Log.info("Entering  valid  Collection Agency Name.");
 			WebElement PANField = driver.findElement(AddAgencyPageRepo.ConsultaionNameField);
 			AgencyName = generateRandomAgencyName(3);
+			writeData("AddAgencyList", 1, 6, AgencyName);
 			PANField.sendKeys(AgencyName);
 			Log.info("Entered valid   Collection Agency Name");
 			click(AddAgencyPageRepo.Zone, "zone");
@@ -617,7 +621,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 
 			SendKeys(AddAgencyPageRepo.Remarks, "Remarks comment");
 			click(AddAgencyPageRepo.Submit, "Submit");
-
+			Thread.sleep(3000);
 			PANNumberalreadyexists();
 
 		} catch (Exception e) {
@@ -627,12 +631,13 @@ public class AddAgencyPage_MainClass extends Base_Class {
 	}
 
 	public void ClearPanAndSubmit() throws InterruptedException {
+		click(AddAgencyPageRepo.PanField, "PanField");
 		Thread.sleep(3000);
 		driver.findElement(AddAgencyPageRepo.PanField).clear();
 		Thread.sleep(1000);
 		Validate_PAN_NewNumber();
 		click(AddAgencyPageRepo.Submit, "Submit");
-		 By loader = By.xpath("//*[@class='spinner']");
+		By loader = By.xpath("//*[@class='spinner']");
 		isDisplayed(loader, "Loader is  displayed");
 		WaitLoader();
 		Common.fluentWait("Action", AddAgencyPageRepo.Action);
@@ -640,7 +645,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 				"Add New Agency is  displayed sucessfully the page is navigated to the Agency list page");
 		ExtentTestManager.getTest().log(Status.PASS, "Agency List page displayed");
 	}
-	
+
 	public void VerifyAgencyList() {
 		String AgencyUser = driver.findElement(AddAgencyPageRepo.AgencyNameTable).getText();
 		if (AgencyUser.contains(AgencyName)) {
@@ -648,10 +653,9 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		} else {
 			ExtentTestManager.getTest().log(Status.FAIL, "New agency not shown in Agency List");
 		}
-		
-		
-		
+
 	}
+
 	public void GetNewAgencyUserCredentials() throws InterruptedException {
 		try {
 
@@ -663,7 +667,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			WaitLoader();
 			String text = driver.findElement(AddAgencyPageRepo.Usercreatedsuccessfully).getText();
 
-			Pattern pattern = Pattern.compile("AGY\\d+"); 
+			Pattern pattern = Pattern.compile("AGY\\d+");
 			Matcher matcher = pattern.matcher(text);
 
 			String userId = "";

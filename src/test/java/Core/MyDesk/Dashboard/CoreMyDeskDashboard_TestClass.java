@@ -58,13 +58,11 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 	CallCenterRoleManagementRepo CallCenterRoleManagementRepo;
 	MyDeskDashboardPage_MainClass MyDeskDashboardPage_MainClass;
 
-	
 	public static String ZoneCoreUserName;
 	public static String AccountNo102;
 	public static String CountFromTheGRIDBCOloanAtRisk;
 	public static String tileCount;
-	
-	
+
 	@BeforeSuite
 	public void reference() {
 		log = new Log();
@@ -89,11 +87,11 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 	@BeforeMethod
 	public void setupTest(Method method) throws Exception {
 		// Start a new ExtentTest for the current test method
-		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Call Center Role Management Test");
-
+		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Core My Desk Dashboard");
+		System.out.println("Method Name :" + method.getName());
 	}
 
-	@Test(priority = 1 , enabled = true)
+	@Test(priority = 1, enabled = true)
 	public void Creating_a_core_Zone_user_with_the_mydesk_functionality_enabled_role(ITestContext context)
 			throws Throwable {
 
@@ -388,10 +386,14 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.NewAccounts, "NewAccounts");
 
 			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccounts, "UnassignedAccounts");
-			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsSMA, "UnassignedAccountsSMA");
-			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsFTNPA, "UnassignedAccountsFTNPA");
-			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsNPA, "UnassignedAccountsNPA");
-			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsMTNPA, "UnassignedAccountsMTNPA");
+			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsSMA,
+					"UnassignedAccountsSMA");
+			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsFTNPA,
+					"UnassignedAccountsFTNPA");
+			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsNPA,
+					"UnassignedAccountsNPA");
+			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsMTNPA,
+					"UnassignedAccountsMTNPA");
 
 		}
 
@@ -414,10 +416,14 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			System.out.println();
 //only all tiles and having some count
 			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccounts, "UnassignedAccounts");
-			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsSMA, "UnassignedAccountsSMA");
-			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsFTNPA, "UnassignedAccountsFTNPA");
-			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsNPA, "UnassignedAccountsNPA");
-			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsMTNPA, "UnassignedAccountsMTNPA");
+			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsSMA,
+					"UnassignedAccountsSMA");
+			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsFTNPA,
+					"UnassignedAccountsFTNPA");
+			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsNPA,
+					"UnassignedAccountsNPA");
+			MyDeskDashboardPage_MainClass.isDisplayed(MyDeskDashboardRepo.UnassignedAccountsMTNPA,
+					"UnassignedAccountsMTNPA");
 			MyDeskDashboardPage_MainClass.CheckCount("Unassigned Accounts", "SMA");
 			MyDeskDashboardPage_MainClass.CheckCount("Unassigned Accounts", "FTNPA");
 			MyDeskDashboardPage_MainClass.CheckCount("Unassigned Accounts", "NPA");
@@ -536,7 +542,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocateToDropdown, "AllocateToDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.BranchUser, "BranchUser");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Allocate, "Allocate");
-			MyDeskDashboardPage_MainClass.isAccountAllocatedSuccessfully();MyDeskDashboardPage_MainClass.WaitLoader();
+			MyDeskDashboardPage_MainClass.isAccountAllocatedSuccessfully();
+			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.clickMyDesk();
 //			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.clickDashboard();
@@ -575,7 +582,6 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Search, "Search");
 			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.getTotalAccountAllocation();
-		
 
 		}
 
@@ -588,9 +594,9 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			throw e;
 		}
 	}
+
 	@Test(priority = 17, enabled = true)
-	public void View_allocated_list_of_Branch(ITestContext context)
-			throws Throwable {
+	public void View_allocated_list_of_Branch(ITestContext context) throws Throwable {
 
 		try {
 			System.out.println(" ************** 38 *****************");
@@ -605,8 +611,7 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.close, "close");
 			String query = "DELETE FROM mst_branch_acc_allocated WHERE ALLOCATED_DATE = TRUNC(SYSDATE)";
 			DBUtils.executeSQLStatement(query);
-			
-			
+
 		}
 
 		catch (AssertionError | Exception e) {
@@ -618,6 +623,7 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			throw e;
 		}
 	}
+
 	@Test(priority = 18, enabled = true)
 	public void Allocate_SMA_Accounts_to_Call_Centre(ITestContext context) throws Throwable {
 
@@ -634,7 +640,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.ExcelReadAndStoreForCompare();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocateToDropdown, "AllocateToDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallcenterUser, "CallCenter");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown, "SelectCallCenterDropdown");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown,
+					"SelectCallCenterDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenter, "SelectCallCenter");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Allocate, "Allocate");
 			MyDeskDashboardPage_MainClass.isAccountAllocatedSuccessfully();
@@ -644,7 +651,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocatedDropdown, "AllocatedDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallCenter, "CallCenter");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown, "SelectCallCenterDropdown");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown,
+					"SelectCallCenterDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterNew, "SelectCallCenter");
 			MyDeskDashboardPage_MainClass.SelectCurrentDate();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Search, "Search");
@@ -811,9 +819,9 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			throw e;
 		}
 	}
+
 	@Test(priority = 23, enabled = true)
-	public void View_allocated_list_of_collection_agency(ITestContext context)
-			throws Throwable {
+	public void View_allocated_list_of_collection_agency(ITestContext context) throws Throwable {
 
 		try {
 			System.out.println(" ************** 37 *****************");
@@ -842,9 +850,7 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.Filedownloadedsuccessfully();
 			MyDeskDashboardPage_MainClass.checkNewExcelDownloadedorNot(incount);
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.close, "close");
-			
-			
-			
+
 		}
 
 		catch (AssertionError | Exception e) {
@@ -856,6 +862,7 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			throw e;
 		}
 	}
+
 	@Test(priority = 24, enabled = true)
 	public void Verify_the_accounts_allocated_to_agency_is_correctly_reflected_to_the_selected_agencies_bucket_list(
 			ITestContext context) throws Throwable {
@@ -898,10 +905,6 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			throw e;
 		}
 	}
-
-	
-
-	
 
 	@Test(priority = 25, enabled = true)
 	public void Boundary_Value_for_Parameters(ITestContext context) throws Throwable {
@@ -1014,7 +1017,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			Common.fluentWait("Dashboard", MyDeskDashboardRepo.Download);// ************ not showing accounts
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocateToDropdown, "AllocateToDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallcenterUser, "CallCenter");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown, "SelectCallCenterDropdown");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown,
+					"SelectCallCenterDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenter, "SelectCallCenter");
 			MyDeskDashboardPage_MainClass.getTotalAccount();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Allocate, "Allocate");
@@ -1025,7 +1029,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocatedDropdown, "AllocatedDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallCenter, "CallCenter");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown, "SelectCallCenterDropdown");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown,
+					"SelectCallCenterDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterNew, "SelectCallCenter");
 			MyDeskDashboardPage_MainClass.SelectCurrentDate();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Search, "Search");
@@ -1070,7 +1075,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			Common.fluentWait("Dashboard", MyDeskDashboardRepo.Download);
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocateToDropdown, "AllocateToDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallcenterUser, "CallCenter");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown, "SelectCallCenterDropdown");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown,
+					"SelectCallCenterDropdown");
 			MyDeskDashboardPage_MainClass.getTotalAccount();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenter, "SelectCallCenter");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Allocate, "Allocate");
@@ -1081,7 +1087,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocatedDropdown, "AllocatedDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallCenter, "CallCenter");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown, "SelectCallCenterDropdown");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown,
+					"SelectCallCenterDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterNew, "SelectCallCenter");
 			MyDeskDashboardPage_MainClass.SelectCurrentDate();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Search, "Search");
@@ -1126,7 +1133,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			Common.fluentWait("Dashboard", MyDeskDashboardRepo.Download);
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocateToDropdown, "AllocateToDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallcenterUser, "CallCenter");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown, "SelectCallCenterDropdown");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown,
+					"SelectCallCenterDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenter, "SelectCallCenter");
 			MyDeskDashboardPage_MainClass.getTotalAccount();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Allocate, "Allocate");
@@ -1137,7 +1145,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocatedDropdown, "AllocatedDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallCenter, "CallCenter");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown, "SelectCallCenterDropdown");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterDropdown,
+					"SelectCallCenterDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.SelectCallCenterNew, "SelectCallCenter");
 			MyDeskDashboardPage_MainClass.SelectCurrentDate();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Search, "Search");
@@ -1157,13 +1166,14 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			throw e;
 		}
 	}
+
 	@Test(priority = 30, enabled = true)
 	public void Correct_Columns_in_Downloaded_Excel(ITestContext context) throws Throwable {
 
 		try {
 			System.out.println(" ************** 45 *****************");
 			System.out.println();
-			//*************** need to implement
+			// *************** need to implement
 		}
 
 		catch (AssertionError | Exception e) {
@@ -1175,8 +1185,8 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			throw e;
 		}
 	}
-	//should start from the 31
-	
+	// should start from the 31
+
 	@Test(priority = 31, enabled = true)
 	public void SMA_Tile_Default_Display_in_the_Branch_User_Login(ITestContext context) throws Throwable {
 ////46
@@ -3189,9 +3199,7 @@ public class CoreMyDeskDashboard_TestClass extends Base_Class {
 			throw e;
 		}
 	}
-	
-	
-	
+
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
 		// Check if the test case failed

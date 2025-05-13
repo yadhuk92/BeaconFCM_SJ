@@ -66,6 +66,27 @@ public class ExcelReader {
 		return completedata;	
 
 	}
+	public static String readCellData(String sheetName, int rowNum, int cellNum) throws IOException {
+	    String filePath = System.getProperty("user.dir") + "/src/test/resources/TestData.xlsx"; // Update if needed
+	    FileInputStream fis = new FileInputStream(filePath);
+	    XSSFWorkbook workbook = new XSSFWorkbook(fis);
+	    XSSFSheet sheet = workbook.getSheet(sheetName);
 
+	    XSSFRow row = sheet.getRow(rowNum);
+	    if (row == null) {
+	        workbook.close();
+	        return null;
+	    }
+
+	    XSSFCell cell = row.getCell(cellNum);
+	    if (cell == null) {
+	        workbook.close();
+	        return null;
+	    }
+
+	    String value = cell.toString(); // Or use cell.getStringCellValue() if strictly string
+	    workbook.close();
+	    return value;
+	}
 
 }

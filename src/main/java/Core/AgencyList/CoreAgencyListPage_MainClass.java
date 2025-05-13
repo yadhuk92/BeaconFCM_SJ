@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,7 +37,7 @@ public class CoreAgencyListPage_MainClass extends Base_Class {
 	static String downloadPath = System.getProperty("user.home") + File.separator + "Downloads"; // Set download
 	public static String PanNumber;
 	public static String AgencyUserName;
-	public static String BeforeDeEmpanelAgencyUserName;	
+	public static String BeforeDeEmpanelAgencyUserName;
 	public static String Username;
 	public static String Password;
 	public static String UsernameNew;
@@ -57,7 +59,7 @@ public class CoreAgencyListPage_MainClass extends Base_Class {
 
 	public void isDisplayed(By locator, String elementName) {
 		try {
-			Thread.sleep(2000);
+			
 			WebElement element = driver.findElement(locator);
 			if (element.isDisplayed()) {
 				ExtentTestManager.getTest().log(Status.PASS, elementName + " is displayed.");
@@ -119,6 +121,7 @@ public class CoreAgencyListPage_MainClass extends Base_Class {
 		js.executeScript("arguments[0].click();", currentDate);
 		ExtentTestManager.getTest().log(Status.PASS, "Current date for Action from selected");
 	}
+
 	public void SelectDateForAcctivatedate() {
 		String today = String.valueOf(LocalDate.now().getDayOfMonth());
 
@@ -132,6 +135,7 @@ public class CoreAgencyListPage_MainClass extends Base_Class {
 		js.executeScript("arguments[0].click();", currentDate);
 		ExtentTestManager.getTest().log(Status.PASS, "Current date for Action from selected");
 	}
+
 	public void click(By locator, String elementName) {
 		try {
 			Common.fluentWait(elementName, locator);
@@ -150,6 +154,16 @@ public class CoreAgencyListPage_MainClass extends Base_Class {
 		}
 	}
 
+	    public  String generateRandomString(int length) {
+	        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	        StringBuilder result = new StringBuilder();
+	        Random random = new Random();
+	        for (int i = 0; i < length; i++) {
+	            result.append(characters.charAt(random.nextInt(characters.length())));
+	        }
+	        return result.toString();
+	    }
+	
 	public void IsElementEnabled(By locator, String elementName) {
 		try {
 //		Common.fluentWait(elementName, locator);
@@ -196,41 +210,70 @@ public class CoreAgencyListPage_MainClass extends Base_Class {
 
 	public void GetCurrentStatus() {
 		try {
-		String AgencyStatus = driver.findElement(CoreAgencyListRepo.CurrentStatus).getAttribute("value");
-		if (AgencyStatus.contains("Active")) {
-			System.out.println("Status is active.");
-			ExtentTestManager.getTest().log(Status.PASS, "Agency Status is active.");
-		} else {
-			System.out.println("Status is Deactive.");
-			ExtentTestManager.getTest().log(Status.PASS,  "Agency status is Deactive.");
-		}
+			String AgencyStatus = driver.findElement(CoreAgencyListRepo.CurrentStatus).getAttribute("value");
+			if (AgencyStatus.contains("Active")) {
+				System.out.println("Status is active.");
+				ExtentTestManager.getTest().log(Status.PASS, "Agency Status is active.");
+			} else {
+				System.out.println("Status is Deactive.");
+				ExtentTestManager.getTest().log(Status.PASS, "Agency status is Deactive.");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			ExtentTestManager.getTest().log(Status.FAIL, "Unable to select " );
+			ExtentTestManager.getTest().log(Status.FAIL, "Unable to select ");
 			System.out.println("Error message " + e.getMessage());
 		}
 
 	}
-public String StatusAgency() {
-	String AgencyStatus = driver.findElement(CoreAgencyListRepo.CurrentStatus).getAttribute("value");
-	return AgencyStatus;
-	
-}
-public void CheckAgencyStatusandMakeItActive() {
-	Common.fluentWait("submit", CoreAgencyListRepo.submit);
-	String status =StatusAgency();
-	if(status.contains("Deactive")) {
-		ExtentTestManager.getTest().log(Status.PASS, "Agency Status is Deactive");
-		click(CoreAgencyListRepo.ActivateDate, "ActivateDate");
-		SelectDateForAcctivatedate();
-		 click(CoreAgencyListRepo.submit, "submit");
-		 StatusChanged();
+
+	public String StatusAgency() {
+		String AgencyStatus = driver.findElement(CoreAgencyListRepo.CurrentStatus).getAttribute("value");
+		return AgencyStatus;
+
 	}
-	else {
-		ExtentTestManager.getTest().log(Status.PASS, "Agency Status is Active");
+
+	public void CheckAgencyStatusandMakeItActive() {
+		Common.fluentWait("submit", CoreAgencyListRepo.submit);
+		String status = StatusAgency();
+		if (status.contains("Deactive")) {
+			ExtentTestManager.getTest().log(Status.PASS, "Agency Status is Deactive");
+			click(CoreAgencyListRepo.ActivateDate, "ActivateDate");
+			SelectDateForAcctivatedate();
+			click(CoreAgencyListRepo.submit, "submit");
+			StatusChanged();
+			WaitLoader();
+		} else {
+			ExtentTestManager.getTest().log(Status.PASS, "Agency Status is Active");
+		}
 	}
-}
+
+	public void CheckAgencyStatusandMakeItActiveNew() {
+		Common.fluentWait("submit", CoreAgencyListRepo.submit);
+		String status = StatusAgency();
+		if (status.contains("Deactive")) {
+			ExtentTestManager.getTest().log(Status.PASS, "Agency Status is Deactive");
+			click(CoreAgencyListRepo.ActivateDate, "ActivateDate");
+			SelectDateForAcctivatedate();
+			click(CoreAgencyListRepo.submit, "submit");
+			StatusChanged();
+			WaitLoader();
+			click(CoreAgencyListRepo.Action, "Action");
+			click(CoreAgencyListRepo.ActivateDate, "ActivateDate");
+			WaitLoader();
+			Common.fluentWait("submit", CoreAgencyListRepo.submit);
+		} else {
+			ExtentTestManager.getTest().log(Status.PASS, "Agency Status is Active");
+		}
+	}
+
+	public void MakeAgencyStatusDeactive() {
+		click(CoreAgencyListRepo.DeactivateDate, "DeactivateDate");
+		SelectDateForAcctivatedate();click(CoreAgencyListRepo.DeactivateDate, "DeactivateDate");
+		click(CoreAgencyListRepo.submit, "submit");
+		StatusChanged();
+	}
+
 	public void AgencyNameVerification() {
 		WebElement inputElement = driver.findElement(By.name("Name")); // or use By.id("1GfnFuCCB6k_b1_300")
 
@@ -322,19 +365,20 @@ public void CheckAgencyStatusandMakeItActive() {
 		}
 
 	}
+
 	public void SaveAgencyName() {
-		
+
 		BeforeDeEmpanelAgencyUserName = driver.findElement(CoreAgencyListRepo.AgencyNameFromList).getText();
 	}
-public void IsAgencyDisplayedAfterDeEmpanel() {
-	String AfterDeEmpanelAgencyUserName = driver.findElement(CoreAgencyListRepo.AgencyNameFromList).getText();
-	if(AfterDeEmpanelAgencyUserName.equalsIgnoreCase(BeforeDeEmpanelAgencyUserName)) {
-		ExtentTestManager.getTest().log(Status.PASS, "Agency Name not shown in the list after the DeEmpanelment");
+
+	public void IsAgencyDisplayedAfterDeEmpanel() {
+		String AfterDeEmpanelAgencyUserName = driver.findElement(CoreAgencyListRepo.AgencyNameFromList).getText();
+		if (AfterDeEmpanelAgencyUserName.equalsIgnoreCase(BeforeDeEmpanelAgencyUserName)) {
+			ExtentTestManager.getTest().log(Status.PASS, "Agency Name not shown in the list after the DeEmpanelment");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Agency Name shown in the list after the DeEmpanelment");
+		}
 	}
-	else {
-		ExtentTestManager.getTest().log(Status.FAIL, "Agency Name shown in the list after the DeEmpanelment");
-	}
-}
 
 	public void VerifySystemID(String ID) {
 		String SystemID = driver.findElement(CoreAgencyListRepo.SystemID).getText();
@@ -394,7 +438,46 @@ public void IsAgencyDisplayedAfterDeEmpanel() {
 			e.printStackTrace();
 		}
 	}
+	public void IsPrefilledByValue(By locator, String elementName) {
+	    try {
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+	        WebElement element = driver.findElement(locator);
+	        
+	        // Use JS to get value of disabled input
+	        String value = (String) js.executeScript("return arguments[0].value;", element);
 
+	        if (!value.isEmpty()) {
+	            ExtentTestManager.getTest().log(Status.PASS,
+	                elementName + " Element is displayed and has prefilled value: " + value);
+	        } else {
+	            ExtentTestManager.getTest().log(Status.FAIL,
+	                elementName + " Element is displayed but has no prefilled value");
+	        }
+	    } catch (Exception e) {
+	        ExtentTestManager.getTest().log(Status.FAIL,
+	            elementName + " check failed due to exception: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	}
+	public void verifyPrefilledDropdownText(By locator ,String elementName) {
+	    try {
+	        WebElement element = driver.findElement(locator);
+	        String actualText = element.getText().trim();
+
+	        if (!actualText.isEmpty()) {
+	            ExtentTestManager.getTest().log(Status.PASS,
+	                " Element is displayed and has prefilled value: " + actualText);
+	        } else {
+	            ExtentTestManager.getTest().log(Status.FAIL,
+	               " Element is displayed but has no prefilled value");
+	        }
+
+	    } catch (Exception e) {
+	        ExtentTestManager.getTest().log(Status.FAIL,
+	           " dropdown value check failed due to exception: " + e.getMessage());
+	        System.out.println( e.getMessage());
+	    }
+	}
 	public void UpdateAdress(String update) {
 		try {
 			driver.findElement(CoreAgencyListRepo.Address).clear();
@@ -430,7 +513,7 @@ public void IsAgencyDisplayedAfterDeEmpanel() {
 		}
 
 	}
-	
+
 	public void RecordDeempaneledSuccessfully() {
 		Common.fluentWait("RecordDeempaneledSuccessfully", CoreAgencyListRepo.RecordDeempaneledSuccessfully);
 		if (driver.findElement(CoreAgencyListRepo.RecordDeempaneledSuccessfully).isDisplayed()) {
@@ -439,12 +522,21 @@ public void IsAgencyDisplayedAfterDeEmpanel() {
 			ExtentTestManager.getTest().log(Status.FAIL, "Record not Deempaneled Successfully");
 		}
 	}
+
 	public void RecordUpdatedSuccessfully() {
 		Common.fluentWait("RecordUpdatedSuccessfully", CoreAgencyListRepo.RecordUpdatedSuccessfully);
 		if (driver.findElement(CoreAgencyListRepo.RecordUpdatedSuccessfully).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Record Updated Successfully");
 		} else {
 			ExtentTestManager.getTest().log(Status.FAIL, "Record not Updated Successfully");
+		}
+	}
+	public void InvalidUsername() {
+		Common.fluentWait("InvalidUsername", CoreAgencyListRepo.InvalidUsername);
+		if (driver.findElement(CoreAgencyListRepo.InvalidUsername).isDisplayed()) {
+			ExtentTestManager.getTest().log(Status.PASS, "Invalid Username displyed Successfully");
+		} else {
+			ExtentTestManager.getTest().log(Status.FAIL, "Invalid Username not displayed Successfully");
 		}
 	}
 	public void DeEmpanelmentdaterequired() {
@@ -455,48 +547,43 @@ public void IsAgencyDisplayedAfterDeEmpanel() {
 			ExtentTestManager.getTest().log(Status.FAIL, "De Empanelment date required not Displayed");
 		}
 	}
+
 	public void StatusChanged() {
 		Common.fluentWait("StatusChanged", CoreAgencyListRepo.StatusChanged);
-		if (driver.findElement(CoreAgencyListRepo.RecordUpdatedSuccessfully).isDisplayed()) {
+		if (driver.findElement(CoreAgencyListRepo.StatusChanged).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Status Changed Successfully");
 		} else {
 			ExtentTestManager.getTest().log(Status.FAIL, "Status Changed Successfully");
 		}
 	}
+
 	public void GetUserCredentials() throws InterruptedException {
-		try {
-
-			WaitLoader();
-			ExtentTestManager.getTest().log(Status.PASS, "operation done successfully");
-			click(MyDeskDashboardRepo.Action);
-			click(MyDeskDashboardRepo.ResetPassword);
-			WaitLoader();
-			String text = driver.findElement(MyDeskDashboardRepo.passwordresetsuccessfully).getText();
-
-			Pattern pattern = Pattern.compile("AGY\\d+"); // Matches User ID (IBU0001573)
-			Matcher matcher = pattern.matcher(text);
-
-			String userId = "";
-			if (matcher.find()) {
-				userId = matcher.group();
-			}
-
-			// Extract the password (last word in the message)
-			String[] words = text.split(" ");
-			String password = words[words.length - 1]; // Last word is the password
-
-			// Print extracted credentials
-			System.out.println("Extracted User ID: " + userId);
-			System.out.println("Extracted Password: " + password);
-			Username = userId;
-			Password = password;
-
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			ExtentTestManager.getTest().log(Status.FAIL, "BCO search operation failed");
-		}
+		//			WaitLoader();
+		//			ExtentTestManager.getTest().log(Status.PASS, "operation done successfully");
+		//			click(MyDeskDashboardRepo.Action);
+		//			click(MyDeskDashboardRepo.ResetPassword);
+		//			WaitLoader();
+					String text = driver.findElement(MyDeskDashboardRepo.passwordresetsuccessfully).getText();
+		
+					Pattern pattern = Pattern.compile("AGY\\d+"); // Matches User ID (IBU0001573)
+					Matcher matcher = pattern.matcher(text);
+		
+					String userId = "";
+					if (matcher.find()) {
+						userId = matcher.group();
+					}
+		
+					// Extract the password (last word in the message)
+					String[] words = text.split(" ");
+					String password = words[words.length - 1]; // Last word is the password
+		
+					// Print extracted credentials
+					System.out.println("Extracted User ID: " + userId);
+					System.out.println("Extracted Password: " + password);
+					Username = userId;
+					Password = password;
 	}
+
 	public void GetUserCredentialsNew() throws InterruptedException {
 		try {
 
@@ -531,8 +618,24 @@ public void IsAgencyDisplayedAfterDeEmpanel() {
 			ExtentTestManager.getTest().log(Status.FAIL, "BCO search operation failed");
 		}
 	}
+public void Logout() {
+	click(CoreAgencyListRepo.profiledropdownbutton, "profiledropdownbutton");
+	click(CoreAgencyListRepo.Logout, "Logout");
+	
+}
+public void SwitchToNewTab(String firstWindowHandle) {
+	 Set<String> allTabs = driver.getWindowHandles();
+     for (String tab : allTabs) {
+         if (!tab.equals(firstWindowHandle)) {
+             driver.switchTo().window(tab);  // Switch to new tab
+             break;
+         }
+     }
+}
 	public void LoginNewlyCreatedAgency()
 			throws IOException, InterruptedException, ClassNotFoundException, SQLException {
+		 
+		
 		String URL = configloader().getProperty("CollectionAgencyApplicationUrl");
 		String UserID = Username;
 		String password = Password;
@@ -541,8 +644,7 @@ public void IsAgencyDisplayedAfterDeEmpanel() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 //		js.executeScript("document.querySelector('.tooltip').remove();");
 
-		moveToElementAndClick(driver, MyDeskDashboardRepo.profiledropdownbutton);
-		moveToElementAndClick(driver, MyDeskDashboardRepo.Logout);
+	
 		driver.get(URL);
 		String LoginBannerQuery = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=2 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
 		String CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
