@@ -1,0 +1,311 @@
+========== Console Log Started for Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass ==========
+ Method Started: Insert_New_Entry_All_Valid_Fields
+Connected to the database!
+Search Value: CUST_NAME
+Execution Message: Deleted entry from ALT_TEMPLATE_PLACEHOLDERS and inserted new entry successfully.
+[32m 	***Method passed: Insert_New_Entry_All_Valid_Fields ******[0m
+ Method Started: Successful_Login
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Exception occurred while waiting for the element: Expected condition failed: waiting for element to be clickable: By.xpath: //span[text()='Yes' and @class='rz-button-text'] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.14'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60775}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60775/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: dcf0a0250e7927a81ebe1c78064e4f98
+Already login pop up not appeared
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+[32m 	***Method passed: Successful_Login ******[0m
+ Method Started: Access_Alerts_and_Notifications
+[32m 	***Method passed: Access_Alerts_and_Notifications ******[0m
+ Method Started: Access_Placeholder_Management
+[32m 	***Method passed: Access_Placeholder_Management ******[0m
+ Method Started: Pagination_Controls_Display
+First Row Data: {{customer name}}
+CUST_NAME
+27-07-2023
+[32m 	***Method passed: Pagination_Controls_Display ******[0m
+ Method Started: Paginate_to_Next_Page
+[32m 	***Method passed: Paginate_to_Next_Page ******[0m
+ Method Started: Paginate_to_Previous_Page
+[32m 	***Method passed: Paginate_to_Previous_Page ******[0m
+ Method Started: Search_Placeholder
+[32m 	***Method passed: Search_Placeholder ******[0m
+All browser instances have been closed.
+ Method Started: Test_Login_with_Valid_Credentials
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+[32m 	***Method passed: Test_Login_with_Valid_Credentials ******[0m
+ Method Started: Display_Alerts_and_Notifications_Menu_Option
+[32m 	***Method passed: Display_Alerts_and_Notifications_Menu_Option ******[0m
+ Method Started: Access_Alerts_and_Notifications_Page
+[32m 	***Method passed: Access_Alerts_and_Notifications_Page ******[0m
+ Method Started: Navigate_to_Template_Management
+[32m 	***Method passed: Navigate_to_Template_Management ******[0m
+ Method Started: Interact_with_Template_Management_Fields
+[32m 	***Method passed: Interact_with_Template_Management_Fields ******[0m
+ Method Started: Clear_Input_Field_Test
+[32m 	***Method passed: Clear_Input_Field_Test ******[0m
+ Method Started: Display_Template_Details_Table
+[32m 	***Method passed: Display_Template_Details_Table ******[0m
+ Method Started: Test_Template_Pagination
+[32m 	***Method passed: Test_Template_Pagination ******[0m
+ Method Started: SMS_Template_Body_Character_Limit
+[32m 	***Method passed: SMS_Template_Body_Character_Limit ******[0m
+ Method Started: Additional_Fields_for_Email_or_Notice
+[32m 	***Method passed: Additional_Fields_for_Email_or_Notice ******[0m
+ Method Started: Add_New_Template
+Connected to the database!
+Connected to the database!
+[32m 	***Method passed: Add_New_Template ******[0m
+ Method Started: Save_New_Template
+[32m 	***Method passed: Save_New_Template ******[0m
+ Method Started: View_Template_Details
+[32m 	***Method passed: View_Template_Details ******[0m
+ Method Started: Edit_Existing_Template
+[32m 	***Method passed: Edit_Existing_Template ******[0m
+ Method Started: View_Template_History
+[32m 	***Method passed: View_Template_History ******[0m
+All browser instances have been closed.
+ Method Started: Test_Login_with_Valid_Credentials
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+[32m 	***Method passed: Test_Login_with_Valid_Credentials ******[0m
+ Method Started: Display_Alerts_and_Notifications_Menu_Option
+[32m 	***Method passed: Display_Alerts_and_Notifications_Menu_Option ******[0m
+ Method Started: Access_Alerts_and_Notifications_Page
+[32m 	***Method passed: Access_Alerts_and_Notifications_Page ******[0m
+ Method Started: Verify_Notification_Management_Menu_Display
+[32m 	***Method passed: Verify_Notification_Management_Menu_Display ******[0m
+ Method Started: Verify_Notification_Management_Type_Fields
+[32m 	***Method passed: Verify_Notification_Management_Type_Fields ******[0m
+ Method Started: Verify_Category_Fields
+[32m 	***Method passed: Verify_Category_Fields ******[0m
+ Method Started: Verify_Schedule_Type_Fields
+[32m 	***Method passed: Verify_Schedule_Type_Fields ******[0m
+ Method Started: Verify_Status_Fields
+[32m 	***Method passed: Verify_Status_Fields ******[0m
+ Method Started: Verify_Schedule_Type_Column_Display
+[32m 	***Method passed: Verify_Schedule_Type_Column_Display ******[0m
+ Method Started: Verify_Template_Name_Column_Display
+[32m 	***Method passed: Verify_Template_Name_Column_Display ******[0m
+ Method Started: Verify_Schedule_Start_Column_Display
+[32m 	***Method passed: Verify_Schedule_Start_Column_Display ******[0m
+ Method Started: Verify_Schedule_End_Column_Display
+[32m 	***Method passed: Verify_Schedule_End_Column_Display ******[0m
+ Method Started: Verify_Time_Column_Display
+[32m 	***Method passed: Verify_Time_Column_Display ******[0m
+ Method Started: Verify_Recurrence_Column_Display
+[32m 	***Method passed: Verify_Recurrence_Column_Display ******[0m
+ Method Started: Verify_Day_of_Week_Column_Display
+[32m 	***Method passed: Verify_Day_of_Week_Column_Display ******[0m
+ Method Started: Verify_Day_of_Month_Column_Display
+[32m 	***Method passed: Verify_Day_of_Month_Column_Display ******[0m
+ Method Started: Verify_Status_Column_Display
+[32m 	***Method passed: Verify_Status_Column_Display ******[0m
+ Method Started: Verify_the_pagination
+[32m 	***Method passed: Verify_the_pagination ******[0m
+ Method Started: Verify_the_functionality_of_search_button
+[32m 	***Method passed: Verify_the_functionality_of_search_button ******[0m
+ Method Started: Verify_the_functionality_of_cross_button_in_input_fields
+[32m 	***Method passed: Verify_the_functionality_of_cross_button_in_input_fields ******[0m
+ Method Started: Verify_Configure_Button_Click
+[32m 	***Method passed: Verify_Configure_Button_Click ******[0m
+ Method Started: Verify_UI_Elements_Presence
+[32m 	***Method passed: Verify_UI_Elements_Presence ******[0m
+ Method Started: Verify_Edit_Button_Functionality
+[32m 	***Method passed: Verify_Edit_Button_Functionality ******[0m
+All browser instances have been closed.
+ Method Started: Login_and_Navigate_to_Mask_Account_Window
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+Connected to the database!
+Query executed successfully. Rows affected: 1
+[32m 	***Method passed: Login_and_Navigate_to_Mask_Account_Window ******[0m
+ Method Started: Mask_Account_with_Valid_Details
+[32m 	***Method passed: Mask_Account_with_Valid_Details ******[0m
+ Method Started: Approve_Masking_Request
+Connected to the database!
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+Fluent wait started for: Approval button
+Fluent wait ended element is clickable: Approval button
+ForLoopWaitPlusClick: Element clicked
+ 	Method failed: Approve_Masking_Request
+ Method Started: Validate_Masked_Account_in_Notification_Management
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+[32m 	***Method passed: Validate_Masked_Account_in_Notification_Management ******[0m
+ Method Started: Unmask_Account
+[32m 	***Method passed: Unmask_Account ******[0m
+ Method Started: Approve_Unmask_Request
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+Fluent wait started for: Approval button
+Fluent wait ended element is clickable: Approval button
+ForLoopWaitPlusClick: Element clicked
+ 	Method failed: Approve_Unmask_Request
+ Method Started: Account_Number_Field_BVA_Validations
+[32m 	***Method passed: Account_Number_Field_BVA_Validations ******[0m
+ Method Started: Account_Number_Field_ECP_Validations
+[32m 	***Method passed: Account_Number_Field_ECP_Validations ******[0m
+ Method Started: Enter_Invalid_Account_Number
+ 	Method failed: Enter_Invalid_Account_Number
+ Method Started: Leave_Account_Number_Empty
+[32m 	***Method passed: Leave_Account_Number_Empty ******[0m
+ Method Started: Confirm_Masking_Without_Reason
+ 	Method failed: Confirm_Masking_Without_Reason
+All browser instances have been closed.
+Execution Completed for TestCase: Core - alerts and notifications
+Execution Started for TestCase: Core - collection agency - Agency Account Allocation module
+Calling startLogging for class: Core.CollectionAgency.AgencyAccountAllocation_TestClass
+SeleniumLogToFile logging started for class: Core.CollectionAgency.AgencyAccountAllocation_TestClass

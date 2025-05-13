@@ -15,6 +15,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.BasePackage.Base_Class;
+import com.BasePackage.Common;
 import com.BasePackage.DBUtils;
 import com.BasePackage.PropertiesFileUtil;
 import com.Page_Repository.CoreAlertsMaskAccountAndMaskingAuthorizationRepo;
@@ -128,15 +131,19 @@ private WebDriver driver;
 
     public void selectMaskStatus(String value) {
     	Log.info("Waiting for Mask Status dropdown to be visible...");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
-        WebElement statusFieldDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.statusFieldDropdown));
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
+        //WebElement statusFieldDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.statusFieldDropdown));
 
+        Common.fluentWait("statusFieldDropdown", CoreAlertsMaskAccountAndMaskingAuthorizationRepo.statusFieldDropdown);
+        WebElement statusFieldDropdown = driver.findElement(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.statusFieldDropdown);
         Log.info("Clicking on Mask Status dropdown...");
         statusFieldDropdown.click();
 
         Log.info("Waiting for dropdown value: " + value + " to be visible...");
-        WebElement Dropdownvalues = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.Dropdownvalues(value)));
-
+        //WebElement Dropdownvalues = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.Dropdownvalues(value)));
+        
+        Common.fluentWait("Drop down values", CoreAlertsMaskAccountAndMaskingAuthorizationRepo.Dropdownvalues(value));
+        WebElement Dropdownvalues = driver.findElement(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.Dropdownvalues(value));
         Log.info("Selecting dropdown value: " + value);
         Dropdownvalues.click();
 
@@ -326,7 +333,9 @@ private WebDriver driver;
         WebElement approvalButton = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.approvalButton));
 
         Log.info("Clicking on Approval button...");
-        approvalButton.click();
+        //approvalButton.click();
+        Common.fluentWait("Approval button", CoreAlertsMaskAccountAndMaskingAuthorizationRepo.approvalButton);
+        Base_Class.ForLoopClick(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.approvalButton);
 
         Log.info("Request approval process completed successfully.");
     }
@@ -337,10 +346,11 @@ private WebDriver driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
 
         try {
-            WebElement approvalSuccessMessage = wait.until(
+            /*WebElement approvalSuccessMessage = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.approvalsuccessMessage)
-            );
-
+            );*/
+            Common.fluentWait("Approval success message", CoreAlertsMaskAccountAndMaskingAuthorizationRepo.approvalsuccessMessage);
+            WebElement approvalSuccessMessage = driver.findElement(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.approvalsuccessMessage);
             Log.info("Approval success message displayed: " + approvalSuccessMessage.getText());
             return approvalSuccessMessage.getText();
         } catch (Exception e) {
@@ -594,9 +604,11 @@ private WebDriver driver;
     public String getErrorMessage() {
     	Log.info("Waiting for the error message to be visible...");
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
-        WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.errorMessage));
-
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
+        //WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.errorMessage));
+        
+        Common.fluentWait("errorMessage", CoreAlertsMaskAccountAndMaskingAuthorizationRepo.errorMessage);
+        WebElement errorMessage = driver.findElement(CoreAlertsMaskAccountAndMaskingAuthorizationRepo.errorMessage);
         Log.info("Error message is visible. Retrieving text...");
         String errorText = errorMessage.getText();
 

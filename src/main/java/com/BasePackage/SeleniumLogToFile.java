@@ -11,7 +11,7 @@ public class SeleniumLogToFile {
     private static PrintStream originalOut = System.out;
     private static PrintStream originalErr = System.err;
 
-    public static void startLogging() {
+    /*public static void startLogging() {
         try {
         	System.out.println("SeleniumLogToFile logging started...");
             // Timestamp for file name
@@ -41,7 +41,36 @@ public class SeleniumLogToFile {
             originalErr.println("Logging setup failed:");
             e.printStackTrace(originalErr);
         }
+    }*/
+    
+    public static void startLogging(String className) {
+        try {
+            System.out.println("SeleniumLogToFile logging started for class: " + className);
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String logDir = "logs";
+            new File(logDir).mkdirs(); // Ensure the directory exists
+            String logFilePath = logDir + "/" + className + "_" + timestamp + ".txt";
+
+            PrintStream fileOut = new PrintStream(new FileOutputStream(logFilePath, false));
+            System.setOut(fileOut);
+            System.setErr(fileOut);
+
+            LogManager.getLogManager().reset();
+            logger.setLevel(Level.ALL);
+
+            FileHandler fileHandler = new FileHandler(logFilePath, true);
+            fileHandler.setFormatter(new SimpleFormatter());
+            logger.addHandler(fileHandler);
+
+            logger.info("========== Selenium Test Log Started for " + className + " ==========");
+            System.out.println("========== Console Log Started for " + className + " ==========");
+
+        } catch (Exception e) {
+            originalErr.println("Logging setup failed:");
+            e.printStackTrace(originalErr);
+        }
     }
+
 
     // Custom logging methods
     public static void info(String message) {

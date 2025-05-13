@@ -1,0 +1,289 @@
+========== Console Log Started for Core.CollectionAgency.AgencyAccountAllocation_TestClass ==========
+ Method Started: testUpdateProperties
+Connected to the database!
+Generated User ID: null
+Default Password: null
+Default Password: UserIDFromPropertiesFile exist in acc_users table. Core HO user creation aborted.
+java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:208)
+	at java.base/java.util.ImmutableCollections$MapN.<init>(ImmutableCollections.java:1186)
+	at java.base/java.util.Map.of(Map.java:1373)
+	at Core.CollectionAgency.AgencyAccountAllocation_mainClass.executeHOUserCreation(AgencyAccountAllocation_mainClass.java:99)
+	at Core.CollectionAgency.AgencyAccountAllocation_TestClass.testUpdateProperties(AgencyAccountAllocation_TestClass.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+[32m 	***Method passed: testUpdateProperties ******[0m
+ Method Started: UpdateDataInDB
+Connected to the database!
+Query executed successfully. Rows affected: 174007
+[32m 	***Method passed: UpdateDataInDB ******[0m
+ Method Started: DeleteDataInDB
+Connected to the database!
+Query executed successfully. Rows affected: 414
+Connected to the database!
+Query executed successfully. Rows affected: 13
+Connected to the database!
+Query executed successfully. Rows affected: 3
+[32m 	***Method passed: DeleteDataInDB ******[0m
+ Method Started: LogInToApp
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Head office
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+[32m 	***Method passed: LogInToApp ******[0m
+ Method Started: NavigationToAgencyAccountAllocation
+Spinner has stopped appearing.
+Fluent wait started for: Collection Agency menu to display
+Fluent wait ended element is clickable: Collection Agency menu to display
+Fluent wait started for:  Agency Account Allocation menu to display
+Fluent wait ended element is clickable:  Agency Account Allocation menu to display
+[32m 	***Method passed: NavigationToAgencyAccountAllocation ******[0m
+ Method Started: AccountTypeDropdownBasicFunctionality
+Spinner has stopped appearing.
+Fluent wait started for: TypesOfAccdrp
+Fluent wait ended element is clickable: TypesOfAccdrp
+Fluent wait started for: NotAllocatedValue
+Fluent wait ended element is clickable: NotAllocatedValue
+[32m 	***Method passed: AccountTypeDropdownBasicFunctionality ******[0m
+ Method Started: AssetCategoryDropdownBasicFunctionality
+Fluent wait started for: AssetCategory
+Fluent wait ended element is clickable: AssetCategory
+Fluent wait started for: NPA Category
+Fluent wait ended element is clickable: NPA Category
+Spinner has stopped appearing.
+[32m 	***Method passed: AssetCategoryDropdownBasicFunctionality ******[0m
+ Method Started: SMACategoryActivation
+Spinner has stopped appearing.
+[32m 	***Method passed: SMACategoryActivation ******[0m
+ Method Started: NPACategoryActivation
+Spinner has stopped appearing.
+[32m 	***Method passed: NPACategoryActivation ******[0m
+ Method Started: zoneDropdownBasicFunctionality
+Fluent wait started for: Zone drop down
+Fluent wait ended element is clickable: Zone drop down
+Fluent wait started for: zone_co
+Fluent wait ended element is clickable: zone_co
+Fluent wait started for: zoneMumbai
+Fluent wait ended element is clickable: zoneMumbai
+Spinner has stopped appearing.
+[32m 	***Method passed: zoneDropdownBasicFunctionality ******[0m
+ Method Started: zoneandRegionDropdownDependencyTest
+Spinner is still visible. Waiting...
+Spinner has stopped appearing.
+[32m 	***Method passed: zoneandRegionDropdownDependencyTest ******[0m
+ Method Started: RegionandBranchDependency
+Fluent wait started for: branchSearch
+Fluent wait ended element is clickable: branchSearch
+Spinner has stopped appearing.
+[32m 	***Method passed: RegionandBranchDependency ******[0m
+ Method Started: SetDPDValue
+********test dpd*************
+250
+Connected to the database!
+Query executed successfully. Rows affected: 20
+250
+Fluent wait started for: DPDValue
+Fluent wait ended element is clickable: DPDValue
+[32m 	***Method passed: SetDPDValue ******[0m
+ Method Started: SearchButtonFunctionality
+Spinner has stopped appearing.
+[32m 	***Method passed: SearchButtonFunctionality ******[0m
+ Method Started: OutputGridDataVerification
+13
+13
+250
+Connected to the database!
+13
+13
+17,47,306.00
+1747306.00
+250
+Connected to the database!
+1747306
+1747306
+[32m 	***Method passed: OutputGridDataVerification ******[0m
+ Method Started: AllocationDateNonEditability
+Date Value: 13-05-2025
+13-05-2025
+13-05-2025
+[32m 	***Method passed: AllocationDateNonEditability ******[0m
+ Method Started: AllocateButtonFunctionality
+>qwer
+qwer
+Spinner has stopped appearing.
+[32m 	***Method passed: AllocateButtonFunctionality ******[0m
+ Method Started: VerifyAllocatedAccountsInDBTable
+Connected to the database!
+Account count: 13
+Sum of outstanding amount: 1747306
+Status message: Records retrieved successfully.
+13
+1747306
+13
+1747306.00
+[32m 	***Method passed: VerifyAllocatedAccountsInDBTable ******[0m
+ Method Started: VerifyAllocatedListButtonispresent
+[32m 	***Method passed: VerifyAllocatedListButtonispresent ******[0m
+ Method Started: VerifyPopupOpenswhenclickonAllocatedListbutton
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifyPopupOpenswhenclickonAllocatedListbutton ******[0m
+ Method Started: AgencyNameDropdownBasicFunctionality
+Fluent wait started for: Agency Name drop down field
+Fluent wait ended element is clickable: Agency Name drop down field
+Fluent wait started for: Agency Name Search field
+Fluent wait ended element is clickable: Agency Name Search field
+Fluent wait started for: Agency Name Search field
+Fluent wait ended element is clickable: Agency Name Search field
+Fluent wait started for: Allocated agency
+Fluent wait ended element is clickable: Allocated agency
+[32m 	***Method passed: AgencyNameDropdownBasicFunctionality ******[0m
+ Method Started: ActionDateFromPicker
+13-05-2025
+[32m 	***Method passed: ActionDateFromPicker ******[0m
+ Method Started: ActionDateToPicker
+13-05-2025
+[32m 	***Method passed: ActionDateToPicker ******[0m
+ Method Started: SearchButtonBasicFunctionality
+[32m 	***Method passed: SearchButtonBasicFunctionality ******[0m
+ Method Started: ValidateOutputColumnsInGrid
+[32m 	***Method passed: ValidateOutputColumnsInGrid ******[0m
+ Method Started: DownloadExcelButtonEnabledOnlyWhenSelected_ValidateDataExcelFilename
+Fluent wait started for: Check box
+Fluent wait ended element is clickable: Check box
+Fluent wait started for: Checkbox
+Fluent wait ended element is clickable: Checkbox
+Fluent wait started for: DownloadInExcelButton
+Fluent wait ended element is clickable: DownloadInExcelButton
+Download directory for testing purpose: C:\Users\yadhukrishnan.p\Downloads
+isFileNameValid for testing purpose: true
+[32m 	***Method passed: DownloadExcelButtonEnabledOnlyWhenSelected_ValidateDataExcelFilename ******[0m
+ Method Started: ResetButtonClearFilters
+[32m 	***Method passed: ResetButtonClearFilters ******[0m
+ Method Started: DownloadExcelDisabledWhenNoSelection
+[32m 	***Method passed: DownloadExcelDisabledWhenNoSelection ******[0m
+ Method Started: InvalidSearchwithEmptyFields
+[32m 	***Method passed: InvalidSearchwithEmptyFields ******[0m
+ Method Started: CloseAllocatedListPopup
+Fluent wait started for: CloseButton
+Fluent wait ended element is clickable: CloseButton
+Fluent wait started for: PreviousPage
+Fluent wait ended element is clickable: PreviousPage
+Fluent wait started for: PreviousPage
+Fluent wait ended element is clickable: PreviousPage
+[32m 	***Method passed: CloseAllocatedListPopup ******[0m
+ Method Started: VerifyDeallocatedAccountsFunctionality
+Fluent wait started for: TypesOfAccdrp
+Fluent wait ended element is clickable: TypesOfAccdrp
+Fluent wait started for: Allocated
+Fluent wait ended element is clickable: Allocated
+Fluent wait started for: AssetCategory
+Fluent wait ended element is clickable: AssetCategory
+Fluent wait started for: NPA Category
+Fluent wait ended element is clickable: NPA Category
+Spinner has stopped appearing.
+Fluent wait started for: NPAdropdown
+Fluent wait ended element is clickable: NPAdropdown
+Fluent wait started for: SubStandard
+Fluent wait ended element is clickable: SubStandard
+Fluent wait started for: D1
+Fluent wait ended element is clickable: D1
+Fluent wait started for: D2
+Fluent wait ended element is clickable: D2
+Fluent wait started for: D3
+Fluent wait ended element is clickable: D3
+Fluent wait started for: LossAsset
+Fluent wait ended element is clickable: LossAsset
+Fluent wait started for: zone_co
+Fluent wait ended element is clickable: zone_co
+Fluent wait started for: zoneMumbai
+Fluent wait ended element is clickable: zoneMumbai
+Spinner has stopped appearing.
+Fluent wait started for: regiondropdown
+Fluent wait ended element is clickable: regiondropdown
+Fluent wait started for: regionMumbai1
+Fluent wait ended element is clickable: regionMumbai1
+Spinner is still visible. Waiting...
+Spinner has stopped appearing.
+Fluent wait started for: branchdropdown
+Fluent wait ended element is clickable: branchdropdown
+Fluent wait started for: branchSearch
+Fluent wait ended element is clickable: branchSearch
+Fluent wait started for: branchSearch
+Fluent wait ended element is clickable: branchSearch
+Fluent wait started for: AmravatiBranch
+Fluent wait ended element is clickable: AmravatiBranch
+Spinner has stopped appearing.
+Fluent wait started for: branchdropdown
+Fluent wait ended element is clickable: branchdropdown
+Fluent wait started for: DPDDropdown
+Fluent wait ended element is clickable: DPDDropdown
+Fluent wait started for: equalOperator
+Fluent wait ended element is clickable: equalOperator
+Fluent wait started for: DPDValue
+Fluent wait ended element is clickable: DPDValue
+250
+Fluent wait started for: DPDValue
+Fluent wait ended element is clickable: DPDValue
+Fluent wait started for: searchButton
+Fluent wait ended element is clickable: searchButton
+Spinner has stopped appearing.
+Fluent wait started for: SelectCollectionAgency
+Fluent wait ended element is clickable: SelectCollectionAgency
+Fluent wait started for: FirstCollectionAgencyName
+Fluent wait ended element is clickable: FirstCollectionAgencyName
+>qwer
+qwer
+Fluent wait started for: DeAllocateButton
+Fluent wait ended element is clickable: DeAllocateButton
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifyDeallocatedAccountsFunctionality ******[0m
+Execution Completed for TestCase: Core - collection agency - Agency Account Allocation module
+Execution Started for TestCase: Core - Summary reports
+Calling startLogging for class: Core.SummaryReports.BankAllocationSummary_TestClass
+SeleniumLogToFile logging started for class: Core.SummaryReports.BankAllocationSummary_TestClass

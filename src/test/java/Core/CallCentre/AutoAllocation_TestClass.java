@@ -75,7 +75,7 @@ public class AutoAllocation_TestClass {
 	
 	@BeforeMethod
     public void setupTest(Method method) {
-		SeleniumLogToFile.startLogging();
+		//SeleniumLogToFile.startLogging();
 		 baseclass = new Base_Class();
 		    driver = baseclass.getDriver();
 		    drivers.add(driver);

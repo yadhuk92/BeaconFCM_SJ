@@ -1,0 +1,686 @@
+<html>
+<head>
+<title>TestNG:  Core - Configurations</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Core - Configurations</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>42/5/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon May 12 23:15:38 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>2146 seconds (2146655 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SelectUserType1()'><b>SelectUserType1</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[text()=&apos;Reset&apos;]&quot;}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d8ede9cc61dd624ee26ebbed4ed63fb2, findElement {using=xpath, value=//button[text()=&apos;Reset&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.clickResetbutton(LoginBannerConfiguration_MainClass.java:179)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.SelectUserType1(LoginBannerConfiguration_TestClass.java:1044)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1313938961", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1313938961'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[text()=&apos;Reset&apos;]&quot;}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d8ede9cc61dd624ee26ebbed4ed63fb2, findElement {using=xpath, value=//button[text()=&apos;Reset&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at jdk.internal.reflect.GeneratedConstructorAccessor26.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.clickResetbutton(LoginBannerConfiguration_MainClass.java:179)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.SelectUserType1(LoginBannerConfiguration_TestClass.java:1044)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>0</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.VerifydataPostLogoutForCallCentre()'><b>VerifydataPostLogoutForCallCentre</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[@class=&apos;btn dropdown-toggle&apos;]&quot;}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d8ede9cc61dd624ee26ebbed4ed63fb2, findElement {using=xpath, value=//button[@class=&apos;btn dropdown-toggle&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.Clickprofiledropdown(LoginBannerConfiguration_MainClass.java:200)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.VerifydataPostLogoutForCallCentre(LoginBannerConfiguration_TestClass.java:1164)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1007595772", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1007595772'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//button[@class=&apos;btn dropdown-toggle&apos;]&quot;}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d8ede9cc61dd624ee26ebbed4ed63fb2, findElement {using=xpath, value=//button[@class=&apos;btn dropdown-toggle&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at jdk.internal.reflect.GeneratedConstructorAccessor26.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.Clickprofiledropdown(LoginBannerConfiguration_MainClass.java:200)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.VerifydataPostLogoutForCallCentre(LoginBannerConfiguration_TestClass.java:1164)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>2</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SubmitWithoutDetails()'><b>SubmitWithoutDetails</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//textarea[@name=&apos;Heading&apos;]&quot;}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d8ede9cc61dd624ee26ebbed4ed63fb2, findElement {using=xpath, value=//textarea[@name=&apos;Heading&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.headerlink(LoginBannerConfiguration_MainClass.java:246)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.SubmitWithoutDetails(LoginBannerConfiguration_TestClass.java:1005)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace643347314", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace643347314'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//textarea[@name=&apos;Heading&apos;]&quot;}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d8ede9cc61dd624ee26ebbed4ed63fb2, findElement {using=xpath, value=//textarea[@name=&apos;Heading&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at jdk.internal.reflect.GeneratedConstructorAccessor26.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.headerlink(LoginBannerConfiguration_MainClass.java:246)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.SubmitWithoutDetails(LoginBannerConfiguration_TestClass.java:1005)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>0</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre()'><b>SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//label[text()=&apos;Banner Type&apos;]/following-sibling::div[@onmousedown=&apos;Radzen.activeElement = null&apos;]&quot;}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d8ede9cc61dd624ee26ebbed4ed63fb2, findElement {using=xpath, value=//label[text()=&apos;Banner Type&apos;]/following-sibling::div[@onmousedown=&apos;Radzen.activeElement = null&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.clickBannertypedropdown(LoginBannerConfiguration_MainClass.java:114)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre(LoginBannerConfiguration_TestClass.java:1082)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1564044599", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1564044599'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//label[text()=&apos;Banner Type&apos;]/following-sibling::div[@onmousedown=&apos;Radzen.activeElement = null&apos;]&quot;}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d8ede9cc61dd624ee26ebbed4ed63fb2, findElement {using=xpath, value=//label[text()=&apos;Banner Type&apos;]/following-sibling::div[@onmousedown=&apos;Radzen.activeElement = null&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at jdk.internal.reflect.GeneratedConstructorAccessor26.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.clickBannertypedropdown(LoginBannerConfiguration_MainClass.java:114)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre(LoginBannerConfiguration_TestClass.java:1082)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>0</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SubmitWithoutHeading()'><b>SubmitWithoutHeading</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //span[text()=&apos;Configurations&apos;] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at com.BasePackage.Base_Class.click(Base_Class.java:134)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.clickOnConfigurationMenu(LoginBannerConfiguration_MainClass.java:32)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.SubmitWithoutHeading(LoginBannerConfiguration_TestClass.java:914)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1508589060", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1508589060'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //span[text()=&apos;Configurations&apos;] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60639}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60639/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8ede9cc61dd624ee26ebbed4ed63fb2
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at com.BasePackage.Base_Class.click(Base_Class.java:134)
+	at Core.Configurations.LoginBannerConfiguration_MainClass.clickOnConfigurationMenu(LoginBannerConfiguration_MainClass.java:32)
+	at Core.Configurations.LoginBannerConfiguration_TestClass.SubmitWithoutHeading(LoginBannerConfiguration_TestClass.java:914)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>1238</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Test_Save_Configurations_Functionality()'><b>Test_Save_Configurations_Functionality</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>11</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.ModifydataforAgencyUser()'><b>ModifydataforAgencyUser</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>6</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Test_Collection_Officer_Configurations_Page_Parameters()'><b>Test_Collection_Officer_Configurations_Page_Parameters</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Test_Failed_Save_Configurations_without_Selections()'><b>Test_Failed_Save_Configurations_without_Selections</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SearchDataForAgencyUser()'><b>SearchDataForAgencyUser</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>37</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SubmitData()'><b>SubmitData</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>7</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.NavigationToLoginBannerConfiguration_SelectUserType()'><b>NavigationToLoginBannerConfiguration_SelectUserType</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>29</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForAgencyUser()'><b>NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForAgencyUser</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>42</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.MandatoryFieldsWarning_SubmitWithoutUserType_SubmitWithoutBannerType_SubmitWithoutSection()'><b>MandatoryFieldsWarning_SubmitWithoutUserType_SubmitWithoutBannerType_SubmitWithoutSection</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SelectHyperlinkfromBannerType()'><b>SelectHyperlinkfromBannerType</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>7</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SelectUserType()'><b>SelectUserType</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Verify_My_Desk_Branch_Attention_Required_Tile()'><b>Verify_My_Desk_Branch_Attention_Required_Tile</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>16</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Test_Collection_Officer_Configurations_Page_Basic_Accessibility()'><b>Test_Collection_Officer_Configurations_Page_Basic_Accessibility</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SelectSection()'><b>SelectSection</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.EnterHeading1()'><b>EnterHeading1</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>0</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SearchExistingConfigurations2()'><b>SearchExistingConfigurations2</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>25</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.EnterDetails1()'><b>EnterDetails1</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>0</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.EnterHeading()'><b>EnterHeading</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>0</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.VerifyFieldsandButtonsonManualAllocationPage()'><b>VerifyFieldsandButtonsonManualAllocationPage</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.VerifyDataPostLogout()'><b>VerifyDataPostLogout</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>10</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Verify_My_Desk_Unassigned_accounts_Tile()'><b>Verify_My_Desk_Unassigned_accounts_Tile</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>35</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.VerifyModifieddataforCallCentre()'><b>VerifyModifieddataforCallCentre</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>8</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SubmitData_VerifyDataPostLogoutForhyperlink()'><b>SubmitData_VerifyDataPostLogoutForhyperlink</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>13</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Test_Uncheck_Collection_Officer_Functionality()'><b>Test_Uncheck_Collection_Officer_Functionality</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>101</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.EnterDetails()'><b>EnterDetails</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>0</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.EditandUpdateData()'><b>EditandUpdateData</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>31</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Test_Reset_Functionality()'><b>Test_Reset_Functionality</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>9</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.other_branch_user_is_not_showing_My_Desk_Branch_Attention_Required_Tile()'><b>other_branch_user_is_not_showing_My_Desk_Branch_Attention_Required_Tile</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>16</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Test_Search_Functionality()'><b>Test_Search_Functionality</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>23</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.VerifydataPostLogoutForCallCentre2()'><b>VerifydataPostLogoutForCallCentre2</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>8</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.VerifyModifiedDataforAgencyUser()'><b>VerifyModifiedDataforAgencyUser</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>18</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SelectBannerType()'><b>SelectBannerType</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre()'><b>NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>44</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.VerifyPostLogoutdataAgencyUser()'><b>VerifyPostLogoutdataAgencyUser</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>7</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SelectLlink1fromSection()'><b>SelectLlink1fromSection</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>9</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.NavigationToLoginBannerConfigurationPage()'><b>NavigationToLoginBannerConfigurationPage</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.SearchExistingConfigurations1()'><b>SearchExistingConfigurations1</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass</td>
+<td></td>
+<td>37</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.VerifyUpdatedDataPostLogout()'><b>VerifyUpdatedDataPostLogout</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>8</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Add_core_users_to_mst_employee_table()'><b>Add_core_users_to_mst_employee_table</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.LoginBannerConfiguration_TestClass.ModifyandUpdatedataforCallCentre()'><b>ModifyandUpdatedataforCallCentre</b><br>Test class: Core.Configurations.LoginBannerConfiguration_TestClass<br>Parameters: {AgencyUpdatedDetail1=https://www.grammarly.com/, AgencyUpdatedHeader1=Agency header_1, AgencyUserDetail1=AgencyDetails1, AgencyUserHeader1=AgencyHeader1, AlphaNumericInput=TestAutomation1001, CallCenterDetailLink1=https://www.zoho.com/calendar/personal-calendar.html, CallCenterDetailtext=CallCentre01, CallCenterHeaderLink1=Link_1, CallCenterHeadingtext=CallCentre01, CallCenterModifiedDetail=https://chatgpt.com/, CallCenterModifiedHeader=CallCentre, DetailField=Detail10, Detailfield1link=https://www.google.com/, Headerfield1link=Link_1, HeadingField=Header10, Modifiedlink1=https://www.grammarly.com/, Run=Yes, TestScenario=Login_banner_confi}</td>
+<td></td>
+<td>45</td>
+<td>Core.Configurations.LoginBannerConfiguration_TestClass@65f095f8</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.other_branch_user_is_not_showing_My_Desk_Unassigned_accounts_Tile()'><b>other_branch_user_is_not_showing_My_Desk_Unassigned_accounts_Tile</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>87</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+<tr>
+<td title='Core.Configurations.CollectionOfficerConfig_TestClass.Test_Excel_Download_Functionality()'><b>Test_Excel_Download_Functionality</b><br>Test class: Core.Configurations.CollectionOfficerConfig_TestClass</td>
+<td></td>
+<td>14</td>
+<td>Core.Configurations.CollectionOfficerConfig_TestClass@34f7cfd9</td></tr>
+</table><p>
+</body>
+</html>

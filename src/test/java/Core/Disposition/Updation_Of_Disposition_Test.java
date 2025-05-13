@@ -59,7 +59,7 @@ public class Updation_Of_Disposition_Test extends Base_Class {
 	public void SetUp() throws Exception {
 		baseclass = new Base_Class();
 		corelogin = new Login_Class();
-		SeleniumLogToFile.startLogging();
+		//SeleniumLogToFile.startLogging();
 		Login_Class.CoreLogin();
 		driver = baseclass.getDriver();
 		if (driver == null) {

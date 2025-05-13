@@ -1,0 +1,66 @@
+========== Console Log Started for com.CollectionAgency.SecurityManagement.RoleManagement_Test ==========
+ Method Started: RUNALL
+Connected to the database!
+BANNER_DETAILS: https://beaconbugzilla.speridian.com/enter_bug.cgi
+Fluent wait started for: https://beaconbugzilla.speridian.com/enter_bug.cgi
+Fluent wait ended element is clickable: https://beaconbugzilla.speridian.com/enter_bug.cgi
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: SecurityManagementMenu
+Fluent wait ended element is clickable: SecurityManagementMenu
+Fluent wait started for: RoleManagementOption
+Fluent wait ended element is clickable: RoleManagementOption
+Fluent wait started for: Next Btn
+Fluent wait ended element is clickable: Next Btn
+http://192.168.32.33:8597/Collection/Admin/LevelPermissions---CurrentUrl
+Fluent wait started for: AddNewRoleBtn
+Fluent wait ended element is clickable: AddNewRoleBtn
+Fluent wait started for: checkbox
+Fluent wait ended element is clickable: checkbox
+Fluent wait started for: CloseBtn
+Fluent wait ended element is clickable: CloseBtn
+Fluent wait started for: Next Btn
+Fluent wait ended element is clickable: Next Btn
+Fluent wait started for: AddNewRoleBtn
+Fluent wait ended element is clickable: AddNewRoleBtn
+Fluent wait started for: checkbox
+Fluent wait ended element is clickable: checkbox
+Fluent wait started for: RolePermissionSave
+Fluent wait ended element is clickable: RolePermissionSave
+Fluent wait started for: Next Btn
+Fluent wait ended element is clickable: Next Btn
+Fluent wait started for: AddNewRoleBtn
+Fluent wait ended element is clickable: AddNewRoleBtn
+Fluent wait started for: checkbox
+Fluent wait ended element is clickable: checkbox
+Fluent wait started for: CloseBtn
+Fluent wait ended element is clickable: CloseBtn
+Fluent wait started for: SupportRequestStatusCheckbox
+Fluent wait ended element is clickable: SupportRequestStatusCheckbox
+Fluent wait started for: SupportRequestStatusCheckbox
+Fluent wait ended element is clickable: SupportRequestStatusCheckbox
+Fluent wait started for: SupportRequestStatusCheckbox
+Fluent wait ended element is clickable: SupportRequestStatusCheckbox
+Fluent wait started for: RolePermissionSave
+Fluent wait ended element is clickable: RolePermissionSave
+Fluent wait started for: RoleNameSuccessMsg
+Error during fluent wait: Expected condition failed: waiting for element to be clickable: By.xpath: //p[.= 'Record Saved Successfully'] (tried for 600 second(s) with 5 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.14'
+Driver info: driver.version: unknown
+*** Test execution TC_ProcessSheet_CollectionAgency failed...
+ 	Method failed: RUNALL
+Execution Completed for TestCase: Collection agency - Security management
+Execution Started for TestCase: Collection agency - Agent management
+Calling startLogging for class: com.CollectionAgency.AgentManagement.AddNewAgentAndAgentList
+SeleniumLogToFile logging started for class: com.CollectionAgency.AgentManagement.AddNewAgentAndAgentList

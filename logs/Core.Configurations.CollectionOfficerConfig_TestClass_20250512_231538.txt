@@ -1,0 +1,355 @@
+========== Console Log Started for Core.Configurations.CollectionOfficerConfig_TestClass ==========
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+ Method Started: Add_core_users_to_mst_employee_table
+Connected to the database!
+Message: Success: Employee IBU0000028 inserted successfully.
+[32m 	***Method passed: Add_core_users_to_mst_employee_table ******[0m
+ Method Started: Test_Collection_Officer_Configurations_Page_Basic_Accessibility
+[32m 	***Method passed: Test_Collection_Officer_Configurations_Page_Basic_Accessibility ******[0m
+ Method Started: Test_Collection_Officer_Configurations_Page_Parameters
+[32m 	***Method passed: Test_Collection_Officer_Configurations_Page_Parameters ******[0m
+ Method Started: Test_Search_Functionality
+[32m 	***Method passed: Test_Search_Functionality ******[0m
+ Method Started: Test_Save_Configurations_Functionality
+Connected to the database!
+0
+Connected to the database!
+1
+[32m 	***Method passed: Test_Save_Configurations_Functionality ******[0m
+ Method Started: Test_Excel_Download_Functionality
+[32m 	***Method passed: Test_Excel_Download_Functionality ******[0m
+ Method Started: Test_Failed_Save_Configurations_without_Selections
+[32m 	***Method passed: Test_Failed_Save_Configurations_without_Selections ******[0m
+ Method Started: Test_Reset_Functionality
+[32m 	***Method passed: Test_Reset_Functionality ******[0m
+ Method Started: Verify_My_Desk_Unassigned_accounts_Tile
+[32m 	***Method passed: Verify_My_Desk_Unassigned_accounts_Tile ******[0m
+ Method Started: Verify_My_Desk_Branch_Attention_Required_Tile
+[32m 	***Method passed: Verify_My_Desk_Branch_Attention_Required_Tile ******[0m
+ Method Started: other_branch_user_is_not_showing_My_Desk_Unassigned_accounts_Tile
+Connected to the database!
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Kolkata
+Org Type Name = Zone/CO
+[32m 	***Method passed: other_branch_user_is_not_showing_My_Desk_Unassigned_accounts_Tile ******[0m
+ Method Started: other_branch_user_is_not_showing_My_Desk_Branch_Attention_Required_Tile
+[32m 	***Method passed: other_branch_user_is_not_showing_My_Desk_Branch_Attention_Required_Tile ******[0m
+ Method Started: Test_Uncheck_Collection_Officer_Functionality
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+[32m 	***Method passed: Test_Uncheck_Collection_Officer_Functionality ******[0m
+All browser instances have been closed.
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+ Method Started: NavigationToLoginBannerConfigurationPage
+Fluent wait started for: Configuration menu to display
+Fluent wait ended element is clickable: Configuration menu to display
+Fluent wait started for: LoginBannerConfi to display
+Fluent wait ended element is clickable: LoginBannerConfi to display
+http://192.168.32.33:8599/Configurations/loginBannerConfiguration
+[32m 	***Method passed: NavigationToLoginBannerConfigurationPage ******[0m
+ Method Started: VerifyFieldsandButtonsonManualAllocationPage
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifyFieldsandButtonsonManualAllocationPage ******[0m
+ Method Started: MandatoryFieldsWarning_SubmitWithoutUserType_SubmitWithoutBannerType_SubmitWithoutSection
+[32m 	***Method passed: MandatoryFieldsWarning_SubmitWithoutUserType_SubmitWithoutBannerType_SubmitWithoutSection ******[0m
+ Method Started: SelectUserType
+[32m 	***Method passed: SelectUserType ******[0m
+ Method Started: SelectBannerType
+[32m 	***Method passed: SelectBannerType ******[0m
+ Method Started: SelectSection
+[32m 	***Method passed: SelectSection ******[0m
+ Method Started: EnterHeading
+Header10
+[32m 	***Method passed: EnterHeading ******[0m
+ Method Started: EnterDetails
+[32m 	***Method passed: EnterDetails ******[0m
+ Method Started: SubmitData
+[32m 	***Method passed: SubmitData ******[0m
+ Method Started: VerifyDataPostLogout
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifyDataPostLogout ******[0m
+ Method Started: NavigationToLoginBannerConfiguration_SelectUserType
+Fluent wait started for: LoginHyperlink2Banner
+Fluent wait ended element is clickable: LoginHyperlink2Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Spinner is still visible. Waiting...
+Spinner has stopped appearing.
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Fluent wait started for: Configuration menu to display
+Fluent wait ended element is clickable: Configuration menu to display
+Fluent wait started for: LoginBannerConfi to display
+Fluent wait ended element is clickable: LoginBannerConfi to display
+Spinner has stopped appearing.
+[32m 	***Method passed: NavigationToLoginBannerConfiguration_SelectUserType ******[0m
+ Method Started: SelectHyperlinkfromBannerType
+[32m 	***Method passed: SelectHyperlinkfromBannerType ******[0m
+ Method Started: SelectLlink1fromSection
+Spinner has stopped appearing.
+[32m 	***Method passed: SelectLlink1fromSection ******[0m
+ Method Started: EnterHeading1
+[32m 	***Method passed: EnterHeading1 ******[0m
+ Method Started: EnterDetails1
+[32m 	***Method passed: EnterDetails1 ******[0m
+ Method Started: SubmitData_VerifyDataPostLogoutForhyperlink
+Spinner has stopped appearing.
+[32m 	***Method passed: SubmitData_VerifyDataPostLogoutForhyperlink ******[0m
+ Method Started: SearchExistingConfigurations1
+Fluent wait started for: LoginHyperlink2Banner
+Fluent wait ended element is clickable: LoginHyperlink2Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Spinner is still visible. Waiting...
+Spinner has stopped appearing.
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Fluent wait started for: Configuration menu to display
+Fluent wait ended element is clickable: Configuration menu to display
+Fluent wait started for: LoginBannerConfi to display
+Fluent wait ended element is clickable: LoginBannerConfi to display
+Spinner has stopped appearing.
+[32m 	***Method passed: SearchExistingConfigurations1 ******[0m
+ Method Started: SearchExistingConfigurations2
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+[32m 	***Method passed: SearchExistingConfigurations2 ******[0m
+ Method Started: EditandUpdateData
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+https://www.grammarly.com/
+[32m 	***Method passed: EditandUpdateData ******[0m
+ Method Started: VerifyUpdatedDataPostLogout
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifyUpdatedDataPostLogout ******[0m
+ Method Started: SubmitWithoutHeading
+Fluent wait started for: LoginHyperlink2Banner
+Fluent wait ended element is clickable: LoginHyperlink2Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Spinner has stopped appearing.
+Fluent wait started for: AccountCategoryLabelInDashboard
+Error during fluent wait: Expected condition failed: waiting for element to be clickable: By.xpath: //span[@class='rz-column-title' and text()='Account Category'] (tried for 600 second(s) with 5 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.14'
+Driver info: driver.version: unknown
+Fluent wait started for: Configuration menu to display
+Error during fluent wait: Expected condition failed: waiting for element to be clickable: By.xpath: //span[text()='Configurations'] (tried for 600 second(s) with 5 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.14'
+Driver info: driver.version: unknown
+ 	Method failed: SubmitWithoutHeading
+ Method Started: SubmitWithoutDetails
+SubmitWithoutDetailField
+ 	Method failed: SubmitWithoutDetails
+ Method Started: SelectUserType1
+ 	Method failed: SelectUserType1
+ Method Started: SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre
+ 	Method failed: SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre
+ Method Started: VerifydataPostLogoutForCallCentre
+Spinner has stopped appearing.
+ 	Method failed: VerifydataPostLogoutForCallCentre
+ Method Started: NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre
+Fluent wait started for: LoginHyperlink2Banner
+Fluent wait ended element is clickable: LoginHyperlink2Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Spinner is still visible. Waiting...
+Spinner is still visible. Waiting...
+Spinner has stopped appearing.
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Fluent wait started for: Configuration menu to display
+Fluent wait ended element is clickable: Configuration menu to display
+Fluent wait started for: LoginBannerConfi to display
+Fluent wait ended element is clickable: LoginBannerConfi to display
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+[32m 	***Method passed: NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre ******[0m
+ Method Started: VerifydataPostLogoutForCallCentre2
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifydataPostLogoutForCallCentre2 ******[0m
+ Method Started: ModifyandUpdatedataforCallCentre
+Fluent wait started for: LoginHyperlink2Banner
+Fluent wait ended element is clickable: LoginHyperlink2Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Spinner has stopped appearing.
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Fluent wait started for: Configuration menu to display
+Fluent wait ended element is clickable: Configuration menu to display
+Fluent wait started for: LoginBannerConfi to display
+Fluent wait ended element is clickable: LoginBannerConfi to display
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+CallCentre
+https://chatgpt.com/
+[32m 	***Method passed: ModifyandUpdatedataforCallCentre ******[0m
+ Method Started: VerifyModifieddataforCallCentre
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifyModifieddataforCallCentre ******[0m
+ Method Started: NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForAgencyUser
+Fluent wait started for: LoginHyperlink2Banner
+Fluent wait ended element is clickable: LoginHyperlink2Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Spinner is still visible. Waiting...
+Spinner has stopped appearing.
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Fluent wait started for: Configuration menu to display
+Fluent wait ended element is clickable: Configuration menu to display
+Fluent wait started for: LoginBannerConfi to display
+Fluent wait ended element is clickable: LoginBannerConfi to display
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+[32m 	***Method passed: NavigationToLoginBannerConfig_SelectUserType_SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForAgencyUser ******[0m
+ Method Started: VerifyPostLogoutdataAgencyUser
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifyPostLogoutdataAgencyUser ******[0m
+ Method Started: SearchDataForAgencyUser
+Fluent wait started for: LoginHyperlink2Banner
+Fluent wait ended element is clickable: LoginHyperlink2Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Spinner is still visible. Waiting...
+Spinner has stopped appearing.
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Fluent wait started for: Configuration menu to display
+Fluent wait ended element is clickable: Configuration menu to display
+Fluent wait started for: LoginBannerConfi to display
+Fluent wait ended element is clickable: LoginBannerConfi to display
+Spinner has stopped appearing.
+Spinner has stopped appearing.
+[32m 	***Method passed: SearchDataForAgencyUser ******[0m
+ Method Started: ModifydataforAgencyUser
+Spinner has stopped appearing.
+Agency header_1
+https://www.grammarly.com/
+[32m 	***Method passed: ModifydataforAgencyUser ******[0m
+ Method Started: VerifyModifiedDataforAgencyUser
+Spinner has stopped appearing.
+[32m 	***Method passed: VerifyModifiedDataforAgencyUser ******[0m
+Execution Completed for TestCase: Core - Configurations
+Execution Started for TestCase: Core - alerts and notifications
+Calling startLogging for class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass
+SeleniumLogToFile logging started for class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass

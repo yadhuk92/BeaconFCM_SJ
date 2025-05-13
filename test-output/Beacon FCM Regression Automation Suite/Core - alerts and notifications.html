@@ -1,0 +1,584 @@
+<html>
+<head>
+<title>TestNG:  Core - alerts and notifications</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Core - alerts and notifications</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>53/4/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon May 12 23:51:25 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>1561 seconds (1561851 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Confirm_Masking_Without_Reason()'><b>Confirm_Masking_Without_Reason</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass<br>Parameters: {InvalidAccountNumber=1234, NotificationType=EMAIL, Reason=Test, Run=Yes, Status=Mask, Status2=Unmask, Template=Email 2, TestScenario=CoreAlertsMaskAcAndMaskingAutho}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //label[text()=&apos;Status&apos;]//following-sibling::div (tried for 180 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61040}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61040/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 308cdea491c84638bcb8d495a51c94ff
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.selectMaskStatus(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:135)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Confirm_Masking_Without_Reason(AlertsMaskAccountAndMaskingAuthorization_TestClass.java:380)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1784687924", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1784687924'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //label[text()=&apos;Status&apos;]//following-sibling::div (tried for 180 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61040}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61040/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 308cdea491c84638bcb8d495a51c94ff
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.selectMaskStatus(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:135)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Confirm_Masking_Without_Reason(AlertsMaskAccountAndMaskingAuthorization_TestClass.java:380)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>181</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Approve_Unmask_Request()'><b>Approve_Unmask_Request</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass</td>
+<td><div><pre>java.lang.RuntimeException: Approval success message not displayed within the expected time. Please try again.
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getapprovalSuccessMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:353)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Approve_Unmask_Request(AlertsMaskAccountAndMaskingAuthorization_TestClass.java:266)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //p[text()=&apos;Request approved successfully.&apos;] (tried for 180 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61040}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61040/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 308cdea491c84638bcb8d495a51c94ff
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getapprovalSuccessMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:345)
+	... 29 more
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace306048520", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace306048520'><pre>java.lang.RuntimeException: Approval success message not displayed within the expected time. Please try again.
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getapprovalSuccessMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:353)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Approve_Unmask_Request(AlertsMaskAccountAndMaskingAuthorization_TestClass.java:266)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //p[text()=&apos;Request approved successfully.&apos;] (tried for 180 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61040}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61040/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 308cdea491c84638bcb8d495a51c94ff
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getapprovalSuccessMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:345)
+	... 29 more
+</pre></div></td>
+<td>251</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Enter_Invalid_Account_Number()'><b>Enter_Invalid_Account_Number</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass<br>Parameters: {InvalidAccountNumber=1234, NotificationType=EMAIL, Reason=Test, Run=Yes, Status=Mask, Status2=Unmask, Template=Email 2, TestScenario=CoreAlertsMaskAcAndMaskingAutho}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //p[text()=&apos;Invalid account.&apos;] (tried for 180 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61040}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61040/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 308cdea491c84638bcb8d495a51c94ff
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getErrorMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:603)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Enter_Invalid_Account_Number(AlertsMaskAccountAndMaskingAuthorization_TestClass.java:336)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1424195333", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1424195333'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //p[text()=&apos;Invalid account.&apos;] (tried for 180 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61040}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61040/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 308cdea491c84638bcb8d495a51c94ff
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getErrorMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:603)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Enter_Invalid_Account_Number(AlertsMaskAccountAndMaskingAuthorization_TestClass.java:336)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>185</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Approve_Masking_Request()'><b>Approve_Masking_Request</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass</td>
+<td><div><pre>java.lang.RuntimeException: Approval success message not displayed within the expected time. Please try again.
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getapprovalSuccessMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:353)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Approve_Masking_Request(AlertsMaskAccountAndMaskingAuthorization_TestClass.java:161)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //p[text()=&apos;Request approved successfully.&apos;] (tried for 180 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60962}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60962/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8e4d6e988565ef5f4648cc08c8e09dc
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getapprovalSuccessMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:345)
+	... 29 more
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1733234692", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1733234692'><pre>java.lang.RuntimeException: Approval success message not displayed within the expected time. Please try again.
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getapprovalSuccessMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:353)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Approve_Masking_Request(AlertsMaskAccountAndMaskingAuthorization_TestClass.java:161)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //p[text()=&apos;Request approved successfully.&apos;] (tried for 180 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows Server 2016&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.14&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60962}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60962/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d8e4d6e988565ef5f4648cc08c8e09dc
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_MainClass.getapprovalSuccessMessage(AlertsMaskAccountAndMaskingAuthorization_MainClass.java:345)
+	... 29 more
+</pre></div></td>
+<td>276</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Validate_Masked_Account_in_Notification_Management()'><b>Validate_Masked_Account_in_Notification_Management</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass<br>Parameters: {InvalidAccountNumber=1234, NotificationType=EMAIL, Reason=Test, Run=Yes, Status=Mask, Status2=Unmask, Template=Email 2, TestScenario=CoreAlertsMaskAcAndMaskingAutho}</td>
+<td></td>
+<td>85</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.SMS_Template_Body_Character_Limit()'><b>SMS_Template_Body_Character_Limit</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass<br>Parameters: {Category=Notification, Categoryfortemplatecreation=Promotions, CurrentStatus=Active, EditInitialStatusfortemplatemodify=Inactive, EditReason=Test, InitialStatusfortemplatecreation=Active, NotificationType=SMS, NotificationTypefortemplatecreation=EMAIL, Run=Yes, TemplateBody=Automation testing improves software quality by identifying defects early. Selenium with Java helps in UI testing, ensuring reliability and efficiency in development., TemplateNamefortemplatecreation=Test, TestScenario=AlertsTemplateManagement}</td>
+<td></td>
+<td>7</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_the_pagination()'><b>Verify_the_pagination</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.View_Template_History()'><b>View_Template_History</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass.Insert_New_Entry_All_Valid_Fields()'><b>Insert_New_Entry_All_Valid_Fields</b><br>Test class: Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass@223aa2f7</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Display_Alerts_and_Notifications_Menu_Option()'><b>Display_Alerts_and_Notifications_Menu_Option</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Interact_with_Template_Management_Fields()'><b>Interact_with_Template_Management_Fields</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass<br>Parameters: {Category=Notification, Categoryfortemplatecreation=Promotions, CurrentStatus=Active, EditInitialStatusfortemplatemodify=Inactive, EditReason=Test, InitialStatusfortemplatecreation=Active, NotificationType=SMS, NotificationTypefortemplatecreation=EMAIL, Run=Yes, TemplateBody=Automation testing improves software quality by identifying defects early. Selenium with Java helps in UI testing, ensuring reliability and efficiency in development., TemplateNamefortemplatecreation=Test, TestScenario=AlertsTemplateManagement}</td>
+<td></td>
+<td>4</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Login_and_Navigate_to_Mask_Account_Window()'><b>Login_and_Navigate_to_Mask_Account_Window</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass</td>
+<td></td>
+<td>73</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass.Access_Placeholder_Management()'><b>Access_Placeholder_Management</b><br>Test class: Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass@223aa2f7</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass.Successful_Login()'><b>Successful_Login</b><br>Test class: Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass</td>
+<td></td>
+<td>80</td>
+<td>Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass@223aa2f7</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Schedule_End_Column_Display()'><b>Verify_Schedule_End_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_the_functionality_of_search_button()'><b>Verify_the_functionality_of_search_button</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass<br>Parameters: {Run=Yes, ScheduleType=One Time, TestScenario=AlertsNotificationManagement}</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass.Paginate_to_Previous_Page()'><b>Paginate_to_Previous_Page</b><br>Test class: Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass@223aa2f7</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Category_Fields()'><b>Verify_Category_Fields</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Account_Number_Field_BVA_Validations()'><b>Account_Number_Field_BVA_Validations</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass</td>
+<td></td>
+<td>24</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Display_Alerts_and_Notifications_Menu_Option()'><b>Display_Alerts_and_Notifications_Menu_Option</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Access_Alerts_and_Notifications_Page()'><b>Access_Alerts_and_Notifications_Page</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Schedule_Type_Fields()'><b>Verify_Schedule_Type_Fields</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass.Search_Placeholder()'><b>Search_Placeholder</b><br>Test class: Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass@223aa2f7</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Leave_Account_Number_Empty()'><b>Leave_Account_Number_Empty</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass</td>
+<td></td>
+<td>13</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Display_Template_Details_Table()'><b>Display_Template_Details_Table</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Time_Column_Display()'><b>Verify_Time_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Navigate_to_Template_Management()'><b>Navigate_to_Template_Management</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Edit_Existing_Template()'><b>Edit_Existing_Template</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass<br>Parameters: {Category=Notification, Categoryfortemplatecreation=Promotions, CurrentStatus=Active, EditInitialStatusfortemplatemodify=Inactive, EditReason=Test, InitialStatusfortemplatecreation=Active, NotificationType=SMS, NotificationTypefortemplatecreation=EMAIL, Run=Yes, TemplateBody=Automation testing improves software quality by identifying defects early. Selenium with Java helps in UI testing, ensuring reliability and efficiency in development., TemplateNamefortemplatecreation=Test, TestScenario=AlertsTemplateManagement}</td>
+<td></td>
+<td>21</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass.Paginate_to_Next_Page()'><b>Paginate_to_Next_Page</b><br>Test class: Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass@223aa2f7</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Schedule_Start_Column_Display()'><b>Verify_Schedule_Start_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Notification_Management_Menu_Display()'><b>Verify_Notification_Management_Menu_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Edit_Button_Functionality()'><b>Verify_Edit_Button_Functionality</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>15</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Save_New_Template()'><b>Save_New_Template</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Status_Fields()'><b>Verify_Status_Fields</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Configure_Button_Click()'><b>Verify_Configure_Button_Click</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Day_of_Week_Column_Display()'><b>Verify_Day_of_Week_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Notification_Management_Type_Fields()'><b>Verify_Notification_Management_Type_Fields</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Account_Number_Field_ECP_Validations()'><b>Account_Number_Field_ECP_Validations</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass</td>
+<td></td>
+<td>18</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Test_Login_with_Valid_Credentials()'><b>Test_Login_with_Valid_Credentials</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>62</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Test_Login_with_Valid_Credentials()'><b>Test_Login_with_Valid_Credentials</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>64</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Schedule_Type_Column_Display()'><b>Verify_Schedule_Type_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Test_Template_Pagination()'><b>Test_Template_Pagination</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass.Pagination_Controls_Display()'><b>Pagination_Controls_Display</b><br>Test class: Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass@223aa2f7</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Template_Name_Column_Display()'><b>Verify_Template_Name_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Unmask_Account()'><b>Unmask_Account</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass<br>Parameters: {InvalidAccountNumber=1234, NotificationType=EMAIL, Reason=Test, Run=Yes, Status=Mask, Status2=Unmask, Template=Email 2, TestScenario=CoreAlertsMaskAcAndMaskingAutho}</td>
+<td></td>
+<td>7</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_the_functionality_of_cross_button_in_input_fields()'><b>Verify_the_functionality_of_cross_button_in_input_fields</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Clear_Input_Field_Test()'><b>Clear_Input_Field_Test</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Recurrence_Column_Display()'><b>Verify_Recurrence_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Additional_Fields_for_Email_or_Notice()'><b>Additional_Fields_for_Email_or_Notice</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass<br>Parameters: {Category=Notification, Categoryfortemplatecreation=Promotions, CurrentStatus=Active, EditInitialStatusfortemplatemodify=Inactive, EditReason=Test, InitialStatusfortemplatecreation=Active, NotificationType=SMS, NotificationTypefortemplatecreation=EMAIL, Run=Yes, TemplateBody=Automation testing improves software quality by identifying defects early. Selenium with Java helps in UI testing, ensuring reliability and efficiency in development., TemplateNamefortemplatecreation=Test, TestScenario=AlertsTemplateManagement}</td>
+<td></td>
+<td>4</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass.Access_Alerts_and_Notifications()'><b>Access_Alerts_and_Notifications</b><br>Test class: Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.AlertsandNotifications.AlertsPlaceholderManagement_TestClass@223aa2f7</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_UI_Elements_Presence()'><b>Verify_UI_Elements_Presence</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Status_Column_Display()'><b>Verify_Status_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass.Mask_Account_with_Valid_Details()'><b>Mask_Account_with_Valid_Details</b><br>Test class: Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass<br>Parameters: {InvalidAccountNumber=1234, NotificationType=EMAIL, Reason=Test, Run=Yes, Status=Mask, Status2=Unmask, Template=Email 2, TestScenario=CoreAlertsMaskAcAndMaskingAutho}</td>
+<td></td>
+<td>12</td>
+<td>Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass@20f5239f</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Access_Alerts_and_Notifications_Page()'><b>Access_Alerts_and_Notifications_Page</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsNotificationManagement_TestClass.Verify_Day_of_Month_Column_Display()'><b>Verify_Day_of_Month_Column_Display</b><br>Test class: Core.AlertsandNotifications.AlertsNotificationManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsNotificationManagement_TestClass@193f604a</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.Add_New_Template()'><b>Add_New_Template</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass<br>Parameters: {Category=Notification, Categoryfortemplatecreation=Promotions, CurrentStatus=Active, EditInitialStatusfortemplatemodify=Inactive, EditReason=Test, InitialStatusfortemplatecreation=Active, NotificationType=SMS, NotificationTypefortemplatecreation=EMAIL, Run=Yes, TemplateBody=Automation testing improves software quality by identifying defects early. Selenium with Java helps in UI testing, ensuring reliability and efficiency in development., TemplateNamefortemplatecreation=Test, TestScenario=AlertsTemplateManagement}</td>
+<td></td>
+<td>6</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+<tr>
+<td title='Core.AlertsandNotifications.AlertsTemplateManagement_TestClass.View_Template_Details()'><b>View_Template_Details</b><br>Test class: Core.AlertsandNotifications.AlertsTemplateManagement_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.AlertsandNotifications.AlertsTemplateManagement_TestClass@6d3a388c</td></tr>
+</table><p>
+</body>
+</html>

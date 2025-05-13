@@ -1,0 +1,98 @@
+========== Console Log Started for CollectionAgency.Disposition.CollectionAgencyDisposition_TestClass ==========
+Connected to the database!
+Query executed successfully. Rows affected: 1
+Connected to the database!
+Fluent wait started for: Core login Banner
+Fluent wait ended element is clickable: Core login Banner
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Connected to the database!
+Default URL is already /Home. No action taken.
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: AccountCategoryLabelInDashboard
+Fluent wait ended element is clickable: AccountCategoryLabelInDashboard
+Connected to the database!
+Org Name = Mumbai
+Org Type Name = Zone/CO
+Fluent wait started for: UserORGDetails
+Fluent wait ended element is clickable: UserORGDetails
+ Method Started: Login_to_core_application_and_navigate_to_agency_account_agency_menu
+[32m 	***Method passed: Login_to_core_application_and_navigate_to_agency_account_agency_menu ******[0m
+ Method Started: Truncate_mst_col_agency_acc_allocated_and_delete_data_from_trn_account_followup_where_disposition_date__today
+Connected to the database!
+TRUNCATE command executed successfully.
+Connected to the database!
+Query executed successfully. Rows affected: 0
+[32m 	***Method passed: Truncate_mst_col_agency_acc_allocated_and_delete_data_from_trn_account_followup_where_disposition_date__today ******[0m
+ Method Started: Allocating_accounts_to_collection_agency
+[32m 	***Method passed: Allocating_accounts_to_collection_agency ******[0m
+ Method Started: Fetch_a_not_allocated_account_number_in_selected_collection_agency
+Connected to the database!
+1109004406110335
+[32m 	***Method passed: Fetch_a_not_allocated_account_number_in_selected_collection_agency ******[0m
+ Method Started: Login_to_allocated_collection_agency_from_collection_agency_application
+Connected to the database!
+User ID: AGY0000286
+Password: ses@987
+Status message: Password updated for the user
+Connected to the database!
+BANNER_DETAILS: https://beaconbugzilla.speridian.com/enter_bug.cgi
+Fluent wait started for: https://beaconbugzilla.speridian.com/enter_bug.cgi
+Fluent wait ended element is clickable: https://beaconbugzilla.speridian.com/enter_bug.cgi
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Exception in handling 'Some error occurred' scenario: Expected condition failed: waiting for element to be clickable: By.xpath: //span[@style='color:red' and text()='Some error occurred.'] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.14'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53007}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53007/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 162da7d2b5ff592863f1a82c229df3dd
+[32m 	***Method passed: Login_to_allocated_collection_agency_from_collection_agency_application ******[0m
+ Method Started: Doing_Disposition_against_Agency_allocated_accounts
+[32m 	***Method passed: Doing_Disposition_against_Agency_allocated_accounts ******[0m
+ Method Started: Customer_Details_Grid_Data_Integrity
+[32m 	***Method passed: Customer_Details_Grid_Data_Integrity ******[0m
+ Method Started: Risk_Column_Data_Consistency
+[32m 	***Method passed: Risk_Column_Data_Consistency ******[0m
+ Method Started: Security_Details_View_Open_Grid
+[32m 	***Method passed: Security_Details_View_Open_Grid ******[0m
+ Method Started: Next_Action_Owner_Dropdown_Selection
+[32m 	***Method passed: Next_Action_Owner_Dropdown_Selection ******[0m
+ Method Started: Cancel_Button_Functionality_in_Add_New_Interaction_Details
+[32m 	***Method passed: Cancel_Button_Functionality_in_Add_New_Interaction_Details ******[0m
+ Method Started: Error_Guessing_Empty_Remarks_Field
+[32m 	***Method passed: Error_Guessing_Empty_Remarks_Field ******[0m
+ Method Started: Committed_Amount_Field_BVA_Validations
+[32m 	***Method passed: Committed_Amount_Field_BVA_Validations ******[0m
+ Method Started: Customer_Details_Data_Accuracy
+[32m 	***Method passed: Customer_Details_Data_Accuracy ******[0m
+ Method Started: Other_Account_Details_Grid_Validation
+[32m 	***Method passed: Other_Account_Details_Grid_Validation ******[0m
+ Method Started: Disposition_and_Sub_Disposition_Valid_Selections
+[32m 	***Method passed: Disposition_and_Sub_Disposition_Valid_Selections ******[0m
+ Method Started: Search_Functionality_Invalid_Input
+[32m 	***Method passed: Search_Functionality_Invalid_Input ******[0m
+All browser instances have been closed.
+Execution Completed for TestCase: Collection agency - Collection agency
+Execution Started for TestCase: Call centre - Security management
+Calling startLogging for class: CallCentre.SecurityManagement.RoleManagement_TestClass
+SeleniumLogToFile logging started for class: CallCentre.SecurityManagement.RoleManagement_TestClass

@@ -12,12 +12,21 @@ public class TestNGXML_Listener implements ITestListener {
 
 	}
 
-	@Override
+	/*@Override
 	public void onStart(ITestContext contextStart) {
 	System.out.println("Execution Started for TestCase: "+contextStart.getName());
 	System.out.println("Calling startLogging...");
 	SeleniumLogToFile.startLogging();
+	}*/
+	
+	@Override
+	public void onStart(ITestContext contextStart) {
+	    String className = contextStart.getAllTestMethods()[0].getTestClass().getName();
+	    System.out.println("Execution Started for TestCase: " + contextStart.getName());
+	    System.out.println("Calling startLogging for class: " + className);
+	    SeleniumLogToFile.startLogging(className);
 	}
+
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {

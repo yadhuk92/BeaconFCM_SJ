@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Beacon FCM Regression Automation Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.BasePackage.TestNGXML_Listener"/>
+  </listeners>
+  <test thread-count="5" name="Core - Configurations(failed)">
+    <classes>
+      <class name="Core.Configurations.LoginBannerConfiguration_TestClass">
+        <methods>
+          <include name="SelectBannerType_SelectSection_EnterHeading_EnterDetails_SubmitDataForcallCentre" invocation-numbers="0"/>
+          <include name="reference"/>
+          <include name="SubmitWithoutHeading" invocation-numbers="0"/>
+          <include name="SubmitWithoutDetails" invocation-numbers="0"/>
+          <include name="AfterClass"/>
+          <include name="SelectUserType1"/>
+          <include name="VerifydataPostLogoutForCallCentre" invocation-numbers="0"/>
+          <include name="ExtentTestManagerStartTest"/>
+          <include name="takeScreenshotOnFailure"/>
+        </methods>
+      </class> <!-- Core.Configurations.LoginBannerConfiguration_TestClass -->
+    </classes>
+  </test> <!-- Core - Configurations(failed) -->
+  <test thread-count="5" name="Core - alerts and notifications(failed)">
+    <classes>
+      <class name="Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass">
+        <methods>
+          <include name="setupTest"/>
+          <include name="afterEachTest"/>
+          <include name="Approve_Masking_Request"/>
+          <include name="SetUp"/>
+          <include name="Confirm_Masking_Without_Reason" invocation-numbers="0"/>
+          <include name="Enter_Invalid_Account_Number" invocation-numbers="0"/>
+          <include name="Approve_Unmask_Request"/>
+          <include name="takeScreenshotOnFailure"/>
+        </methods>
+      </class> <!-- Core.AlertsandNotifications.AlertsMaskAccountAndMaskingAuthorization_TestClass -->
+    </classes>
+  </test> <!-- Core - alerts and notifications(failed) -->
+  <test thread-count="5" name="Core - Summary reports(failed)">
+    <classes>
+      <class name="Core.SummaryReports.BankAllocationSummary_TestClass">
+        <methods>
+          <include name="setupTest"/>
+          <include name="afterEachTest"/>
+          <include name="Verify_Accounts_in_Todays_Branch_Allocation_Summary" invocation-numbers="0"/>
+          <include name="takeScreenshotOnFailure"/>
+          <include name="SetUp"/>
+          <include name="Verify_Grid_Details_Accuracy" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- Core.SummaryReports.BankAllocationSummary_TestClass -->
+    </classes>
+  </test> <!-- Core - Summary reports(failed) -->
+  <test thread-count="5" name="Collection agency - Security management(failed)">
+    <classes>
+      <class name="com.CollectionAgency.SecurityManagement.RoleManagement_Test">
+        <methods>
+          <include name="reference"/>
+          <include name="RUNALL" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.CollectionAgency.SecurityManagement.RoleManagement_Test -->
+    </classes>
+  </test> <!-- Collection agency - Security management(failed) -->
+  <test thread-count="5" name="Collection agency - Agent management(failed)">
+    <classes>
+      <class name="com.CollectionAgency.AgentManagement.AddNewAgentAndAgentList">
+        <methods>
+          <include name="Verify_ResetPassword_Functionality" invocation-numbers="0"/>
+          <include name="Verify_Fields_Buttons_EditOption_AgentListPage" invocation-numbers="0"/>
+          <include name="afterclass"/>
+          <include name="SetUp"/>
+          <include name="takeScreenshotOnFailure"/>
+          <include name="reference"/>
+          <include name="Verify_Submit_ValidNewAgentDetails_ExistingAgentCode" invocation-numbers="0"/>
+          <include name="Verify_Checking_EditedUserDetails" invocation-numbers="0"/>
+          <include name="Verify_EditAgentName_Submit" invocation-numbers="0"/>
+          <include name="Verify_SearchConfirm_UserDeactivated" invocation-numbers="0"/>
+          <include name="Verify_Submit_PastDateOfJoining" invocation-numbers="0"/>
+          <include name="Verify_Submit_ValidNewAgentDetails" invocation-numbers="0"/>
+          <include name="Verify_ToggleAgent_ActiveToDeactive" invocation-numbers="0"/>
+          <include name="Verify_SearchAgent_InvalidUsername" invocation-numbers="0"/>
+          <include name="setupTest"/>
+          <include name="Verify_Submit_FutureDateOfJoining" invocation-numbers="0"/>
+          <include name="Verify_ToggleAgent_InactiveToActive" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.CollectionAgency.AgentManagement.AddNewAgentAndAgentList -->
+    </classes>
+  </test> <!-- Collection agency - Agent management(failed) -->
+</suite> <!-- Failed suite [Beacon FCM Regression Automation Suite] -->

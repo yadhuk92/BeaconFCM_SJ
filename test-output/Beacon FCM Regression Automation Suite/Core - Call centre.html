@@ -1,0 +1,664 @@
+<html>
+<head>
+<title>TestNG:  Core - Call centre</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Core - Call centre</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>117/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon May 12 22:51:16 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>1462 seconds (1462316 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.SMA_Category_Selection()'><b>SMA_Category_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Assign_Button_Validation_Message()'><b>Assign_Button_Validation_Message</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>7</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Search_Regularization_Summary()'><b>Search_Regularization_Summary</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Download_the_regularization_summary_report_()'><b>Download_the_regularization_summary_report_</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Run_Database_Package_and_Verify_Accounts_Insertion()'><b>Run_Database_Package_and_Verify_Accounts_Insertion</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>165</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Select_Internal_User_from_Action_Owner_Dropdown()'><b>Select_Internal_User_from_Action_Owner_Dropdown</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Click_Regularization_Summary()'><b>Click_Regularization_Summary</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Deactivate_Allocation_Name()'><b>Deactivate_Allocation_Name</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>12</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Verify_Total_Account_and_Amount_in_Grid()'><b>Verify_Total_Account_and_Amount_in_Grid</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Asset_Category_SMA_and_NPA_Selection_()'><b>Asset_Category_SMA_and_NPA_Selection_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Select_To_Dropdown()'><b>Select_To_Dropdown</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Search_with_Mandatory_Fields_()'><b>Search_with_Mandatory_Fields_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Select_Disposition_Type()'><b>Select_Disposition_Type</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Verify_the_URL_after_navigating_to_the_Updation_of_Disposition_page()'><b>Verify_the_URL_after_navigating_to_the_Updation_of_Disposition_page</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Dropdown_Callcentre_Name()'><b>Dropdown_Callcentre_Name</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass<br>Parameters: {AllocateTo=Call Centre, OutstandingBalance=25000, OutstandingBalanceOperator==, Run=Yes, SelectCallCentre=CallCentre 1, TestScenario=Core_Regularization_Summary, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.To_Field_Dropdown_Selection_()'><b>To_Field_Dropdown_Selection_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Allocation_Type_Selection__Auto()'><b>Allocation_Type_Selection__Auto</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Search_with_Invalid_Account_Number()'><b>Search_with_Invalid_Account_Number</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Verify_Mandatory_Fields()'><b>Verify_Mandatory_Fields</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Validate_presence_of_fields_and_buttons_on_the_Updation_of_Disposition_page()'><b>Validate_presence_of_fields_and_buttons_on_the_Updation_of_Disposition_page</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Select_Processing_Interval_from_Dropdown()'><b>Select_Processing_Interval_from_Dropdown</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Regularization_Summary_Page_Dropdown_and_Search()'><b>Regularization_Summary_Page_Dropdown_and_Search</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Data_Verification_in_Downloaded_File()'><b>Data_Verification_in_Downloaded_File</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Select_effect_Date_from_Date_Picker()'><b>Select_effect_Date_from_Date_Picker</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Allocation_Type_Selection_Manual_allocation()'><b>Allocation_Type_Selection_Manual_allocation</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.NPA_Category_Selection()'><b>NPA_Category_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Perform_Search_with_Valid_Datas()'><b>Perform_Search_with_Valid_Datas</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Allocated_To_dropdown_mandatory_checking()'><b>Allocated_To_dropdown_mandatory_checking</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Download_the_regularization_summary_report()'><b>Download_the_regularization_summary_report</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Download_regularization_Summary()'><b>Download_regularization_Summary</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Verify_Fields_in_Add_Interaction_Details_Section()'><b>Verify_Fields_in_Add_Interaction_Details_Section</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Mandatory_Field_Validation_for_Asset_Category()'><b>Mandatory_Field_Validation_for_Asset_Category</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Successful_Login_and_Navigation()'><b>Successful_Login_and_Navigation</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>56</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Excel_Account_Count_Verification()'><b>Excel_Account_Count_Verification</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Verify_Fields_and_Buttons_on_Manual_Allocation_Page()'><b>Verify_Fields_and_Buttons_on_Manual_Allocation_Page</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Click_Search_Without_Selecting_Dropdown()'><b>Click_Search_Without_Selecting_Dropdown</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Verify_Fields_and_Buttons_on_Auto_Allocation_Page()'><b>Verify_Fields_and_Buttons_on_Auto_Allocation_Page</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Form_Submission_Without_Mandatory_Fields()'><b>Form_Submission_Without_Mandatory_Fields</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.SMA_Category_Dropdown_Selection()'><b>SMA_Category_Dropdown_Selection</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Login_to_call_centre_application_and_take_updation_of_disposition_page()'><b>Login_to_call_centre_application_and_take_updation_of_disposition_page</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>58</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Verify_Invalid_Mobile_Number_Downloaded_File()'><b>Verify_Invalid_Mobile_Number_Downloaded_File</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.OS_Balance_Field_Validation_()'><b>OS_Balance_Field_Validation_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Login_to_call_centre_application_and_take_account_filtration_pages()'><b>Login_to_call_centre_application_and_take_account_filtration_pages</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>64</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.NPA_Category_Selections()'><b>NPA_Category_Selections</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.OS_Balance_Field_Validation()'><b>OS_Balance_Field_Validation</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass<br>Parameters: {AllocateTo=Call Centre, OutstandingBalance=25000, OutstandingBalanceOperator==, Run=Yes, SelectCallCentre=CallCentre 1, TestScenario=Core_Regularization_Summary, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Sub_Menu_Regularization_Summary_Listing()'><b>Sub_Menu_Regularization_Summary_Listing</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Allocated_To_Selection__Call_Centre()'><b>Allocated_To_Selection__Call_Centre</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.SMA_Category_Selections()'><b>SMA_Category_Selections</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Verify_Downloaded_File()'><b>Verify_Downloaded_File</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Verify_Allocation_Name_Status_After_Creation()'><b>Verify_Allocation_Name_Status_After_Creation</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Search_Functionality_with_Filters()'><b>Search_Functionality_with_Filters</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Side_Menu_Call_Centre_Listing()'><b>Side_Menu_Call_Centre_Listing</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Download_File__List_of_Accounts()'><b>Download_File__List_of_Accounts</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Download_File__List_of_Accounts()'><b>Download_File__List_of_Accounts</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>7</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.To_Field_Dropdown_Selection()'><b>To_Field_Dropdown_Selection</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass<br>Parameters: {AllocateTo=Call Centre, OutstandingBalance=25000, OutstandingBalanceOperator==, Run=Yes, SelectCallCentre=CallCentre 1, TestScenario=Core_Regularization_Summary, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Perform_Search_with_Valid_Data()'><b>Perform_Search_with_Valid_Data</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>6</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Allocation_Type_Selection()'><b>Allocation_Type_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Select_SMA_and_NPA_Categories()'><b>Select_SMA_and_NPA_Categories</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Asset_category_dropdown_mandatory_checking()'><b>Asset_category_dropdown_mandatory_checking</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.OS_Balance_Field_Validation()'><b>OS_Balance_Field_Validation</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.SMA_Category_Dropdown_Selection()'><b>SMA_Category_Dropdown_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Login_to_beacon_fcm_core_application_Verify_Auto_Allocation_Page_Load()'><b>Login_to_beacon_fcm_core_application_Verify_Auto_Allocation_Page_Load</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>71</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Login_to_call_centre_application_and_take_account_filtration_page()'><b>Login_to_call_centre_application_and_take_account_filtration_page</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.NPA_Category_Dropdown_Selection()'><b>NPA_Category_Dropdown_Selection</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Download_Dialer_File()'><b>Download_Dialer_File</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>7</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Select_Call_Centre_Field_Dropdown_Selection()'><b>Select_Call_Centre_Field_Dropdown_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Allocated_To_dropdown_mandatory_checking()'><b>Allocated_To_dropdown_mandatory_checking</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Account_Number_Field_ECP_Validations()'><b>Account_Number_Field_ECP_Validations</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Validate_Downloaded_File_()'><b>Validate_Downloaded_File_</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Download_Invalid_MobileNo_Excel_File()'><b>Download_Invalid_MobileNo_Excel_File</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.SMA_Category_Dropdown_Selection_()'><b>SMA_Category_Dropdown_Selection_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Download_Excel_Functionality()'><b>Download_Excel_Functionality</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>13</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.NPA_Category_Selection()'><b>NPA_Category_Selection</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Verify_Download_History()'><b>Verify_Download_History</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Login_and_Navigation_to_Manual_Allocation_Core_Application()'><b>Login_and_Navigation_to_Manual_Allocation_Core_Application</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>66</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Mandatory_Field_Validation_for_Asset_Category_()'><b>Mandatory_Field_Validation_for_Asset_Category_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Login_and_Navigation_to_Manual_Allocation()'><b>Login_and_Navigation_to_Manual_Allocation</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>64</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Select_Sub_Disposition()'><b>Select_Sub_Disposition</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Login_to_call_centre_application()'><b>Login_to_call_centre_application</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>56</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Verify_Dialer_Downloaded_File()'><b>Verify_Dialer_Downloaded_File</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Search_with_Mandatory_Fields()'><b>Search_with_Mandatory_Fields</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>11</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Select_SMA_and_NPA_Categorie()'><b>Select_SMA_and_NPA_Categorie</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Select_Date_in_Next_Action_Date_DatePicker()'><b>Select_Date_in_Next_Action_Date_DatePicker</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Asset_Category_SMA_and_NPA_Selection()'><b>Asset_Category_SMA_and_NPA_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.NPA_Category_Dropdown_Selection()'><b>NPA_Category_Dropdown_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Add_New_Allocation_Name()'><b>Add_New_Allocation_Name</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Search_with_Valid_Account_Number()'><b>Search_with_Valid_Account_Number</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>11</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Asset_Category_SMA_and_NPA_Selection()'><b>Asset_Category_SMA_and_NPA_Selection</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.NPA_Category_Dropdown_Selection_()'><b>NPA_Category_Dropdown_Selection_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Search_for_Previously_Saved_Account_Interaction_Details()'><b>Search_for_Previously_Saved_Account_Interaction_Details</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>10</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Data_Verification_in_Downloaded_File_()'><b>Data_Verification_in_Downloaded_File_</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Create_entry_in_table_database()'><b>Create_entry_in_table_database</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>18</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Reactivate_Allocation_Name()'><b>Reactivate_Allocation_Name</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>12</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.SMA_Category_Selection_()'><b>SMA_Category_Selection_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.NPA_Category_Selection_()'><b>NPA_Category_Selection_</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Select_Call_Centre_Field_Dropdown_Selection()'><b>Select_Call_Centre_Field_Dropdown_Selection</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass<br>Parameters: {AllocateTo=Call Centre, OutstandingBalance=25000, OutstandingBalanceOperator==, Run=Yes, SelectCallCentre=CallCentre 1, TestScenario=Core_Regularization_Summary, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Asset_Category_Selection()'><b>Asset_Category_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Allocation_Type_Selections__Auto()'><b>Allocation_Type_Selections__Auto</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Asset_category_dropdown_mandatory_checking()'><b>Asset_category_dropdown_mandatory_checking</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.To_Field_Dropdown_Selection()'><b>To_Field_Dropdown_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Login_and_Navigation_to_Manual_Allocation()'><b>Login_and_Navigation_to_Manual_Allocation</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Select_NPA_and_SMA_Category_Checkbox()'><b>Select_NPA_and_SMA_Category_Checkbox</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>45</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Allocated_To_Selection_Call_Centre()'><b>Allocated_To_Selection_Call_Centre</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Verify_Downloaded_File()'><b>Verify_Downloaded_File</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Login_to_call_centre_application_and_take_account_filtration_page()'><b>Login_to_call_centre_application_and_take_account_filtration_page</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>4</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Select_Zone_from_Dropdown()'><b>Select_Zone_from_Dropdown</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>8</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Search_with_Mandatory_Fields()'><b>Search_with_Mandatory_Fields</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>12</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Perform_Search_with_Valid_Data()'><b>Perform_Search_with_Valid_Data</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>6</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Click_Regularization_Summary_()'><b>Click_Regularization_Summary_</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Allocate_to_Field_Dropdown_Selection()'><b>Allocate_to_Field_Dropdown_Selection</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Select_SMA_and_NPA_Categories()'><b>Select_SMA_and_NPA_Categories</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass</td>
+<td></td>
+<td>5</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.SMA_Category_Selection()'><b>SMA_Category_Selection</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Assign_Button_Validation_Message()'><b>Assign_Button_Validation_Message</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>16</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Validate_Downloaded_File()'><b>Validate_Downloaded_File</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+<tr>
+<td title='Core.CallCentre.AutoAllocation_TestClass.Enter_Allocation_Name_with_Alphabets()'><b>Enter_Allocation_Name_with_Alphabets</b><br>Test class: Core.CallCentre.AutoAllocation_TestClass<br>Parameters: {AllocatedTo=Call Centre, AllocationName=TestAllocation70, AllocationType=Auto Allocation, DialerFile=Dialer File - Excel, DownloadFile=List of Accounts - Excel, effectDate=12, InvalidMobileNoExcel=Invalid Mobile No - Excel, MobileNumber=A1299G465C, OutstandingBalance=12345, OutstandingBalanceOperator==, ProcessingInterval=Daily, Run=Yes, TestScenario=Call_Centre_Auto_Allocation, To=Call Centre, Zone=Mumbai}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.AutoAllocation_TestClass@2e1d27ba</td></tr>
+<tr>
+<td title='Core.CallCentre.ManualAllocation_TestClass.Enter_Remarks_and_Save_Interaction()'><b>Enter_Remarks_and_Save_Interaction</b><br>Test class: Core.CallCentre.ManualAllocation_TestClass<br>Parameters: {ActionDate=12, ActionOwnerDropdownValue=Internal User, AllocatedTo=Call Centre, AllocateTo=Call Centre, AllocationType=Manual Allocation, Alphabets=ABC, Alphanumeric=A1B2C3, Disposition=Connected, DownloadFile=List of Accounts - Excel, Numeric=123, OutstandingBalance=20000, OutstandingBalanceOperator=<, Remarks=test, Run=Yes, SelectCallCentre=CallCentre 1, SubDisposition=Moratorium, TestScenario=Core_Manual_Allocation, To=Call Centre}</td>
+<td></td>
+<td>9</td>
+<td>Core.CallCentre.ManualAllocation_TestClass@61d6015a</td></tr>
+<tr>
+<td title='Core.CallCentre.RegularizationSummary_TestClass.Allocate_to_Field_Dropdown_Selection()'><b>Allocate_to_Field_Dropdown_Selection</b><br>Test class: Core.CallCentre.RegularizationSummary_TestClass<br>Parameters: {AllocateTo=Call Centre, OutstandingBalance=25000, OutstandingBalanceOperator==, Run=Yes, SelectCallCentre=CallCentre 1, TestScenario=Core_Regularization_Summary, To=Call Centre}</td>
+<td></td>
+<td>3</td>
+<td>Core.CallCentre.RegularizationSummary_TestClass@2525ff7e</td></tr>
+</table><p>
+</body>
+</html>

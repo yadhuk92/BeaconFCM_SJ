@@ -1,0 +1,151 @@
+========== Console Log Started for CallCentre.SecurityManagement.RoleManagement_TestClass ==========
+Connected to the database!
+Fluent wait started for: CallCentre_BANNER_DETAILS
+Fluent wait ended element is clickable: CallCentre_BANNER_DETAILS
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: UserNameField
+Fluent wait ended element is clickable: UserNameField
+Fluent wait started for: PasswordField
+Fluent wait ended element is clickable: PasswordField
+Fluent wait started for: LoginButton
+Fluent wait ended element is clickable: LoginButton
+Fluent wait started for: CallcentreFullLogo
+Fluent wait ended element is clickable: CallcentreFullLogo
+ Method Started: Login_to_Beacon_FCM_call_centre_application
+ ************** Login_to_Beacon_FCM_call_centre_application 1 *****************
+
+[32m 	***Method passed: Login_to_Beacon_FCM_call_centre_application ******[0m
+ Method Started: Navigation_to_Role_Management
+ ************** Navigation_to_Role_Management 2 *****************
+
+Fluent wait started for: Security Management
+Fluent wait ended element is clickable: Security Management
+Fluent wait started for: RoleManagement
+Fluent wait ended element is clickable: RoleManagement
+Fluent wait started for: Next
+Fluent wait ended element is clickable: Next
+[32m 	***Method passed: Navigation_to_Role_Management ******[0m
+ Method Started: Verify_Role_Management_Fields_and_Buttons
+ ************** Verify_Role_Management_Fields_and_Buttons 3 *****************
+
+[32m 	***Method passed: Verify_Role_Management_Fields_and_Buttons ******[0m
+ Method Started: Add_New_Role_Open_Permission_Popup
+ ************** Add_New_Role_Open_Permission_Popup 4 *****************
+
+Fluent wait started for: AddNewRole
+Fluent wait ended element is clickable: AddNewRole
+Fluent wait started for: Wait Functionality Checkbox
+Fluent wait ended element is clickable: Wait Functionality Checkbox
+Fluent wait started for: Save button
+Fluent wait ended element is clickable: Save button
+Fluent wait started for: Cancel button
+Fluent wait ended element is clickable: Cancel button
+[32m 	***Method passed: Add_New_Role_Open_Permission_Popup ******[0m
+ Method Started: Save_Role_Without_Name
+ ************** Save_Role_Without_Name 5 *****************
+
+Fluent wait started for: Role Name 
+Fluent wait ended element is clickable: Role Name 
+Fluent wait started for: Save
+Fluent wait ended element is clickable: Save
+Fluent wait started for: Role Name 
+Fluent wait ended element is clickable: Role Name 
+[32m 	***Method passed: Save_Role_Without_Name ******[0m
+ Method Started: Cancel_New_Role_Addition
+ ************** Cancel_New_Role_Addition 6 *****************
+
+[32m 	***Method passed: Cancel_New_Role_Addition ******[0m
+ Method Started: Add_Role_with_Valid_Data
+ ************** Add_Role_with_Valid_Data 7 *****************
+
+Fluent wait started for: Security Management
+Fluent wait ended element is clickable: Security Management
+Fluent wait started for: RoleManagement
+Fluent wait ended element is clickable: RoleManagement
+Fluent wait started for: Next
+Fluent wait ended element is clickable: Next
+Fluent wait started for: AddNewRole
+Fluent wait ended element is clickable: AddNewRole
+Fluent wait started for: Functionality Checkbox
+Fluent wait ended element is clickable: Functionality Checkbox
+Role name for test case 7 callcentreroleBjuq
+Fluent wait started for: Save
+Fluent wait ended element is clickable: Save
+Fluent wait started for: RecordSavedSuccessfully
+Fluent wait ended element is clickable: RecordSavedSuccessfully
+[32m 	***Method passed: Add_Role_with_Valid_Data ******[0m
+ Method Started: Search_for_Existing_Role
+ ************** Search_for_Existing_Role 8 *****************
+
+Fluent wait started for: searchsubmit
+Fluent wait ended element is clickable: searchsubmit
+[32m 	***Method passed: Search_for_Existing_Role ******[0m
+ Method Started: Edit_Existing_Role_via_Action_Menu
+ ************** Edit_Existing_Role_via_Action_Menu 9  *****************
+
+Fluent wait started for: ActionMenu
+Fluent wait ended element is clickable: ActionMenu
+Fluent wait started for: Edit
+Fluent wait ended element is clickable: Edit
+Checkbox is already selected.
+Checkbox is already selected.
+Checkbox is already selected.
+Checkbox is already selected.
+Checkbox is already selected.
+Checkbox is already selected.
+Checkbox is already selected.
+Checkbox is already selected.
+[32m 	***Method passed: Edit_Existing_Role_via_Action_Menu ******[0m
+ Method Started: Update_Role_Functionalities
+ ************** Update_Role_Functionalities 10 *****************
+
+Fluent wait started for: Functionality Checkbox
+Fluent wait ended element is clickable: Functionality Checkbox
+Fluent wait started for: Save
+Fluent wait ended element is clickable: Save
+Fluent wait started for: RecordSavedSuccessfully
+Fluent wait ended element is clickable: RecordSavedSuccessfully
+Fluent wait started for: Functionality Checkbox
+Fluent wait ended element is clickable: Functionality Checkbox
+[32m 	***Method passed: Update_Role_Functionalities ******[0m
+ Method Started: Readd_Existing_Role
+ ************** Readd_Existing_Role 11 *****************
+
+Fluent wait started for: Security Management
+Fluent wait ended element is clickable: Security Management
+Fluent wait started for: RoleManagement
+Fluent wait ended element is clickable: RoleManagement
+Fluent wait started for: Next
+Fluent wait ended element is clickable: Next
+Fluent wait started for: AddNewRole
+Fluent wait ended element is clickable: AddNewRole
+Fluent wait started for: Functionality Checkbox
+Fluent wait ended element is clickable: Functionality Checkbox
+Fluent wait started for: RoleName7
+Fluent wait ended element is clickable: RoleName7
+Fluent wait started for: Save
+Fluent wait ended element is clickable: Save
+Fluent wait started for: LevelExistAlready
+Fluent wait ended element is clickable: LevelExistAlready
+[32m 	***Method passed: Readd_Existing_Role ******[0m
+ Method Started: Error_Guessing_Functionality_Not_Selected
+ ************** Error_Guessing_Functionality_Not_Selected 12 *****************
+Fluent wait started for: Functionality Checkbox
+Fluent wait ended element is clickable: Functionality Checkbox
+Fluent wait started for: Save
+Fluent wait ended element is clickable: Save
+Fluent wait started for: PleaseSelectFunctionality
+Fluent wait ended element is clickable: PleaseSelectFunctionality
+[32m 	***Method passed: Error_Guessing_Functionality_Not_Selected ******[0m
+Execution Completed for TestCase: Call centre - Security management
+
+===============================================
+Beacon FCM Regression Automation Suite
+Total tests run: 396, Passes: 372, Failures: 24, Skips: 0
+===============================================
+

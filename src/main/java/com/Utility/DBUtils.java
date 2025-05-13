@@ -77,15 +77,17 @@ public class DBUtils {
         }*/
     	
     	 // Example usage with a SELECT statement
-        /*String selectQuery = "SELECT column_name FROM table_name WHERE condition";
-        String selectResult = executeSQLStatement(selectQuery);
-        System.out.println("Select Query Result: " + selectResult);*/
+        String DeleteQuery = "DELETE FROM QAF_OPTION_ANSWER_DETAILS";
+        String Result = executeSQLStatement(DeleteQuery);
+        System.out.println("Delete Query Result: " + Result);
     	
-    	String CoreUserName="IBU0001521";
-    	//String CoreUserName="IBU0000028";
-    	String query ="select Default_URL from acc_users where user_id = '"+CoreUserName+"'";
-	    String defaultURL = DBUtils.fetchSingleValueFromDB(query);
-	    System.out.println("Default URL: " + defaultURL);
+		/*
+		 * String CoreUserName="IBU0001521"; //String CoreUserName="IBU0000028"; String
+		 * query
+		 * ="select Default_URL from acc_users where user_id = '"+CoreUserName+"'";
+		 * String defaultURL = DBUtils.fetchSingleValueFromDB(query);
+		 * System.out.println("Default URL: " + defaultURL);
+		 */
 
         // Example usage of executeSQLStatement with a TRUNCATE statement
 		/*
