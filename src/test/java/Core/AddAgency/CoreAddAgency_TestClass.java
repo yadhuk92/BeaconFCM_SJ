@@ -42,7 +42,7 @@ import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
 import com.listeners.TestListener;
 
-import Core.CallCentre.CoreAllocationSummaryPage;
+//import Core.CallCentre.CoreAllocationSummaryPage;
 import Core.CallCentre.CoreAutoAllocationPage;
 import Core.CallCentre.CoreAutoAllocationPage.ProcedureResult;
 import Core.CallCentre.CoreManualAllocationPage;
@@ -65,7 +65,7 @@ public class CoreAddAgency_TestClass {
 	Login_Class callcenterlogin;
 	AddAgencyPage addagencypage;
 	CoreManualAllocationPage coremanualallocationpage;
-	CoreAllocationSummaryPage coreallocationsummarypage;
+	CoreAllocationSummaryRepo coreallocationsummarypage;
 	
 	@BeforeSuite
 

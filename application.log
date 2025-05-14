@@ -1,130 +1,56 @@
-[INFO ] 2025-03-05 09:55:59.554 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2025-03-05 09:56:41.007 [main] Log - Title is displayed: BeaconICnRM
-[INFO ] 2025-03-05 09:56:41.180 [main] Log - Entered IBU0001487 in user name field
-[INFO ] 2025-03-05 09:56:41.247 [main] Log - Entered 4u75^a in password field
-[INFO ] 2025-03-05 09:56:41.325 [main] Log - Clicked on login button
-[INFO ] 2025-03-05 09:57:02.400 [main] Log - Module selection page not appeared
-[INFO ] 2025-03-05 09:57:38.869 [main] Log - UserID in Dashboard: IBU0001487
-[INFO ] 2025-03-05 09:57:39.705 [main] Log - Org Name: Mumbai, Org Type Name: Head office
-[INFO ] 2025-03-05 09:57:49.387 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 09:57:49.388 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 09:57:49.388 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 09:57:49.391 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 09:57:49.391 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 09:57:49.426 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 09:57:49.426 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 09:57:49.426 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 09:57:49.426 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 09:57:49.426 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 09:57:49.622 [main] Log - Starting navigation to the Call Centre Main Menu...
-[INFO ] 2025-03-05 09:57:49.623 [main] Log - Locating the Call Centre Main Menu element...
-[INFO ] 2025-03-05 09:57:49.637 [main] Log - Call Centre Main Menu element located successfully.
-[INFO ] 2025-03-05 09:57:49.638 [main] Log - Clicking on the Call Centre Main Menu...
-[INFO ] 2025-03-05 09:57:49.700 [main] Log - Clicked on the Call Centre Main Menu. Navigation complete.
-[INFO ] 2025-03-05 09:57:49.701 [main] Log - Starting navigation to the Manual Allocation submenu...
-[INFO ] 2025-03-05 09:57:49.701 [main] Log - Locating Manual Allocation option...
-[INFO ] 2025-03-05 09:57:49.712 [main] Log - Manual Allocation submenu element located successfully.
-[INFO ] 2025-03-05 09:57:49.713 [main] Log - Clicking on the manual allocation submenu...
-[INFO ] 2025-03-05 09:57:50.320 [main] Log - Clicked on the manual allocation submenu. Navigation complete.
-[INFO ] 2025-03-05 09:58:30.589 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 09:58:30.590 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 09:58:30.590 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 09:58:30.590 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 09:58:30.590 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 09:58:30.591 [main] Log - Starting the process to click the Search button...
-[INFO ] 2025-03-05 09:58:30.591 [main] Log - Waiting for the Search button to become visible...
-[INFO ] 2025-03-05 09:59:03.316 [main] Log - Scrolling the Search button into view...
-[INFO ] 2025-03-05 09:59:03.321 [main] Log - Search button scrolled into view.
-[INFO ] 2025-03-05 09:59:03.321 [main] Log - Waiting for 500ms to ensure smooth scrolling...
-[INFO ] 2025-03-05 09:59:03.822 [main] Log - Wait completed.
-[INFO ] 2025-03-05 09:59:03.822 [main] Log - Clicking the Search button...
-[INFO ] 2025-03-05 09:59:03.959 [main] Log - Search button clicked successfully.
-[INFO ] 2025-03-05 09:59:03.959 [main] Log - Waiting for the warning message to become visible on the page.
-[INFO ] 2025-03-05 09:59:03.959 [main] Log - WebDriverWait initialized with a timeout of 120 seconds.
-[INFO ] 2025-03-05 09:59:03.987 [main] Log - Warning message element is now visible.
-[INFO ] 2025-03-05 09:59:03.997 [main] Log - Retrieved warning message text: Asset Category Required
-[INFO ] 2025-03-05 09:59:07.014 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 09:59:07.015 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 09:59:07.015 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 09:59:07.016 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 09:59:07.016 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 09:59:07.043 [main] Log - Screen font is minimized
-[INFO ] 2025-03-05 09:59:07.044 [main] Log - Clicking Asset category dropdown
-[INFO ] 2025-03-05 09:59:07.137 [main] Log - Clicked Asset category dropdown
-[INFO ] 2025-03-05 09:59:07.155 [main] Log - Clicking NAP Dropdown
-[INFO ] 2025-03-05 09:59:07.332 [main] Log - Clicked NAP Dropdown
-[INFO ] 2025-03-05 09:59:07.333 [main] Log - Clicking SMA Dropdown
-[INFO ] 2025-03-05 09:59:07.448 [main] Log - Clicked SMA Dropdown
-[INFO ] 2025-03-05 09:59:16.849 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 09:59:16.850 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 09:59:16.850 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 09:59:16.850 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 09:59:16.850 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 09:59:16.854 [main] Log - Clicking SMA category dropdown
-[INFO ] 2025-03-05 09:59:22.946 [main] Log - Clicked SMA category dropdown
-[INFO ] 2025-03-05 09:59:22.964 [main] Log - Selecting SMA0 Dropdown
-[INFO ] 2025-03-05 09:59:23.031 [main] Log - Clicked SMA0 Dropdown
-[INFO ] 2025-03-05 09:59:23.032 [main] Log - Clicking SMA1 Dropdown
-[INFO ] 2025-03-05 09:59:23.115 [main] Log - Clicked SMA1 Dropdown
-[INFO ] 2025-03-05 09:59:23.115 [main] Log - Clicking SMA2 Dropdown
-[INFO ] 2025-03-05 09:59:23.186 [main] Log - Clicked SMA2 Dropdown
-[INFO ] 2025-03-05 09:59:26.256 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 09:59:26.257 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 09:59:26.257 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 09:59:26.257 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 09:59:26.258 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 09:59:35.264 [main] Log - Clicking SMA category dropdown
-[INFO ] 2025-03-05 09:59:35.342 [main] Log - Clicked NPA category dropdown
-[INFO ] 2025-03-05 09:59:44.588 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 09:59:44.588 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 09:59:44.589 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 09:59:44.589 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 09:59:44.589 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 09:59:53.619 [main] Log - Clicking O/S balance dropdown
-[INFO ] 2025-03-05 09:59:53.700 [main] Log - Clicked O/S Balance dropdown
-[INFO ] 2025-03-05 09:59:56.714 [main] Log - Selecting = option dropdown
-[INFO ] 2025-03-05 09:59:59.928 [main] Log - Selected = option dropdown
-[INFO ] 2025-03-05 10:00:03.037 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 10:00:03.037 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 10:00:03.037 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 10:00:03.037 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 10:00:03.037 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 10:00:06.041 [main] Log - Clicking To Field dropdown
-[INFO ] 2025-03-05 10:00:06.152 [main] Log - ClickedTo Field dropdown
-[INFO ] 2025-03-05 10:00:09.154 [main] Log - Selecting Call Center option 
-[INFO ] 2025-03-05 10:00:12.329 [main] Log - Selected Call Center option
-[INFO ] 2025-03-05 10:00:12.348 [main] Log - Starting the process to click the Search button...
-[INFO ] 2025-03-05 10:00:12.348 [main] Log - Waiting for the Search button to become visible...
-[INFO ] 2025-03-05 10:00:12.368 [main] Log - Scrolling the Search button into view...
-[INFO ] 2025-03-05 10:00:12.371 [main] Log - Search button scrolled into view.
-[INFO ] 2025-03-05 10:00:12.371 [main] Log - Waiting for 500ms to ensure smooth scrolling...
-[INFO ] 2025-03-05 10:00:12.872 [main] Log - Wait completed.
-[INFO ] 2025-03-05 10:00:12.872 [main] Log - Clicking the Search button...
-[INFO ] 2025-03-05 10:00:13.044 [main] Log - Search button clicked successfully.
-[INFO ] 2025-03-05 10:00:22.484 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 10:00:22.484 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 10:00:22.484 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 10:00:22.484 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 10:00:22.484 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 10:00:28.535 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 10:00:28.535 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 10:00:28.535 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 10:00:28.535 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 10:00:28.536 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 10:00:28.538 [main] Log - Clicking Allocate To Field dropdown
-[INFO ] 2025-03-05 10:00:28.617 [main] Log - Clicked AllocateTo Field dropdown
-[INFO ] 2025-03-05 10:00:31.618 [main] Log - Selecting Call Center option from Allocate To Field Dropdown
-[INFO ] 2025-03-05 10:00:34.767 [main] Log - Selected Call Center option
-[INFO ] 2025-03-05 10:00:34.794 [main] Log - Clicking Callcentre sub dropdown
-[INFO ] 2025-03-05 10:00:34.854 [main] Log - Clicked Callcentre sub dropdown
-[INFO ] 2025-03-05 10:00:34.854 [main] Log - Selecting Call Center1 option from Select Call Centre Field Dropdown
-[INFO ] 2025-03-05 10:00:37.982 [main] Log - Selected Call Center1 option from Select Call Centre
-[INFO ] 2025-03-05 10:00:40.987 [main] Log - Initializing CallCenterAccountFiltrationPage...
-[INFO ] 2025-03-05 10:00:40.987 [main] Log - WebDriver instance assigned.
-[INFO ] 2025-03-05 10:00:40.987 [main] Log - Initializing Web elements using PageFactory...
-[INFO ] 2025-03-05 10:00:40.988 [main] Log - Web elements initialized using PageFactory.
-[INFO ] 2025-03-05 10:00:40.988 [main] Log - CallCenterAccountFiltrationPage initialization completed.
-[INFO ] 2025-03-05 10:00:40.991 [main] Log - Clicking Assign Button
-[INFO ] 2025-03-05 10:00:41.115 [main] Log - Clicked Assign Button
-[INFO ] 2025-03-05 10:00:49.449 [main] Log - Assigned Successfully  message element is now visible.
-[INFO ] 2025-03-05 10:00:49.456 [main] Log - Retrieved Sucessful  message text: Assigned Successfully
+[INFO ] 2025-05-13 20:59:10.186 [main] Log - *** Running test method Allocation Summary...
+[INFO ] 2025-05-13 20:59:13.383 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-05-13 20:59:52.769 [main] Log - Title is displayed : BeaconICnRM
+[INFO ] 2025-05-13 20:59:53.030 [main] Log - Login to core application
+[INFO ] 2025-05-13 20:59:53.215 [main] Log - Step:01 - Entered valid User Name
+[INFO ] 2025-05-13 20:59:53.350 [main] Log - Step:02 - Entered valid Password
+[INFO ] 2025-05-13 20:59:57.489 [main] Log - Step:03 - Click on Login Button
+[INFO ] 2025-05-13 21:00:04.835 [main] Log - Expected Result: User logged in sucessfully and Dashboard visible
+[INFO ] 2025-05-13 21:00:04.910 [main] Log - TC_01 - Verify Allocation Summary Displaying as Submenu
+[INFO ] 2025-05-13 21:00:05.067 [main] Log - Step:01 - Click on the Call Centre option in the side menu.
+[INFO ] 2025-05-13 21:00:05.120 [main] Log - Expected Result: Allocation Summary submenu is displayed.
+[INFO ] 2025-05-13 21:00:05.285 [main] Log - TC_02 - Click on Allocation Summary submenu
+[INFO ] 2025-05-13 21:00:05.739 [main] Log - Step:01 - Click on the Allocation Summary submenu.
+[INFO ] 2025-05-13 21:00:05.749 [main] Log - Expected Result: Allocation Summary page is displayed.
+[INFO ] 2025-05-13 21:00:05.853 [main] Log - TC_03 - Verify Fields and Button on Allocation Summary
+[INFO ] 2025-05-13 21:00:05.889 [main] Log - Verified: Select Call Centre dropdown is displayed.
+[INFO ] 2025-05-13 21:00:05.927 [main] Log - Verified: Search button is displayed.
+[INFO ] 2025-05-13 21:00:05.928 [main] Log - Step:01 - Verified fields on Allocation Summary page.
+[INFO ] 2025-05-13 21:00:05.955 [main] Log - Expected Result: Select Call Centre dropdown and Search button are displayed.
+[INFO ] 2025-05-13 21:00:06.010 [main] Log - TC_04 - Search Without Selecting Select Call Centre drop down
+[INFO ] 2025-05-13 21:00:06.118 [main] Log - Step:01 - Ensure no option is selected in the call centre dropdown.
+[INFO ] 2025-05-13 21:00:06.215 [main] Log - Step:02 - Click on the Search button.
+[INFO ] 2025-05-13 21:00:06.253 [main] Log - Expected Result: Should show validation message "Call Center Is Required".
+[INFO ] 2025-05-13 21:00:06.356 [main] Log - TC_05 - Search with Selected Call Centre
+[INFO ] 2025-05-13 21:00:06.424 [main] Log - Select call centre dropdown displayed
+[INFO ] 2025-05-13 21:00:08.078 [main] Log - Step:01 - Select a call centre from the dropdown.
+[INFO ] 2025-05-13 21:00:08.153 [main] Log - Step:02 - Click on the Search button.
+[INFO ] 2025-05-13 21:00:08.198 [main] Log - Expected Result: Allocation summary is displayed for manual and auto allocation with monthly alloccation summary and day-wise new account details.
+[INFO ] 2025-05-13 21:00:08.295 [main] Log - TC_06 - Download Monthly Allocation Summary
+[INFO ] 2025-05-13 21:00:12.034 [main] Log - Step:01 - Click on the download icon  displayed against  the monthly allocation summary title 
+[INFO ] 2025-05-13 21:01:37.990 [main] Log - File downloaded successfully: C:\Users\kajol.gupta.SPERIDIAN\Downloads\Allocation_List_1747150293806.xlsx
+[INFO ] 2025-05-13 21:01:37.990 [main] Log - Expected Result: Allocation file downloaded successfully.
+[INFO ] 2025-05-13 21:01:38.025 [main] Log - TC_07 - Data Verification in Downloaded File
+[INFO ] 2025-05-13 21:01:38.076 [main] Log - UI Account Count: 98035
+[INFO ] 2025-05-13 21:01:38.077 [main] Log - File exists: true
+[INFO ] 2025-05-13 21:01:38.077 [main] Log - Readable: true
+[INFO ] 2025-05-13 21:01:38.077 [main] Log - Step:01 - Open the downloaded file.
+[INFO ] 2025-05-13 21:02:10.563 [main] Log - Excel Account Count: 98035
+[INFO ] 2025-05-13 21:02:10.564 [main] Log - Step:02 - Verify the data with grid data.
+[INFO ] 2025-05-13 21:02:10.564 [main] Log - Expected Result: No of accounts  in the downloaded file should matches no of accounts in the the grid data.
+[INFO ] 2025-05-13 21:02:10.630 [main] Log - TC_08 - Download Daily Allocation from Monthly Summary
+[INFO ] 2025-05-13 21:02:10.799 [main] Log - Step:01 - Click on download icon against a allocation type (manual  allocation ) uunder  monthly allocation summary.
+[INFO ] 2025-05-13 21:03:23.429 [main] Log - File downloaded successfully: C:\Users\kajol.gupta.SPERIDIAN\Downloads\Allocation_List_1747150400444.xlsx
+[INFO ] 2025-05-13 21:03:23.429 [main] Log - Expected Result: File with allocation summary for the selected allocation type should be downloaded.
+[INFO ] 2025-05-13 21:03:23.473 [main] Log - TC_09 - Data Verification in Downloaded File
+[INFO ] 2025-05-13 21:03:23.522 [main] Log - UI Account Count: 98035
+[INFO ] 2025-05-13 21:03:23.523 [main] Log - File exists: true
+[INFO ] 2025-05-13 21:03:23.523 [main] Log - Readable: true
+[INFO ] 2025-05-13 21:03:23.523 [main] Log - Step:01 - Open the downloaded file.
+[INFO ] 2025-05-13 21:03:23.523 [main] Log - Expected Result: Cust Id ,A/c Number,A/c Name should display in the downloaded file
+[INFO ] 2025-05-13 21:03:54.718 [main] Log - Excel Account Count: 98035
+[INFO ] 2025-05-13 21:03:54.719 [main] Log - Step:02 - Verify the data with grid data.
+[INFO ] 2025-05-13 21:03:54.719 [main] Log - Expected Result: Data in the downloaded file total account count should matches no of accounts in the the grid data.
+[INFO ] 2025-05-13 21:03:57.785 [main] Log - Logout
+[INFO ] 2025-05-13 21:04:10.055 [main] Log - Step:01 -  Click on 'Logout'
+[INFO ] 2025-05-13 21:04:10.087 [main] Log - Expected Result: User is logged out successfully, login screen is displayed.

@@ -1,125 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" total="1" passed="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="187460" started-at="2025-01-24T16:44:48Z" finished-at="2025-01-24T16:47:55Z">
+  <suite started-at="2025-05-13T20:59:09 IST" name="Default suite" finished-at="2025-05-13T21:04:10 IST" duration-ms="301229">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="187460" started-at="2025-01-24T16:44:48Z" finished-at="2025-01-24T16:47:55Z">
-      <class name="Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test">
-        <test-method status="PASS" signature="reference()[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="reference" is-config="true" duration-ms="453" started-at="2025-01-24T22:14:47Z" finished-at="2025-01-24T22:14:48Z">
+    <test started-at="2025-05-13T20:59:09 IST" name="Default test" finished-at="2025-05-13T21:04:10 IST" duration-ms="301229">
+      <class name="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test">
+        <test-method is-config="true" signature="reference()[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@1787f2a0]" started-at="2025-05-13T20:59:08 IST" name="reference" finished-at="2025-05-13T20:59:09 IST" duration-ms="540" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reference -->
-        <test-method status="PASS" signature="ExtentTestManagerStartTest(java.lang.reflect.Method)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="ExtentTestManagerStartTest" is-config="true" duration-ms="16" started-at="2025-01-24T22:14:49Z" finished-at="2025-01-24T22:14:49Z">
+        <test-method signature="Loan_Closure_Cash(java.util.Map,org.testng.ITestContext)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@1787f2a0]" started-at="2025-05-13T20:59:10 IST" name="Loan_Closure_Cash" data-provider="TestData" finished-at="2025-05-13T21:04:10 IST" duration-ms="300432" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(java.util.Map,org.testng.ITestContext) throws java.lang.Throwable]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ExtentTestManagerStartTest -->
-        <test-method status="FAIL" signature="Navigation_to_User_Management_Page(java.util.Map, org.testng.ITestContext)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="Navigation_to_User_Management_Page" duration-ms="186502" started-at="2025-01-24T22:14:49Z" data-provider="TestData" finished-at="2025-01-24T22:17:55Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{Email=bajithkan@gmail.com, HeadOffice=Mumbai, Name=Bajith kan, OrganizationType=Head office, Phonenumber=8089889900, Run=Yes, Testrole=NewrolePlaywright}]]>
+                <![CDATA[{Account_No=, Account_No1=, NoOfShares=, pcRegFormName=, pcRegFormPcName=, Run=Yes, TestScenario=Allocation Summary}]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@6d9f7a80]]>
+                <![CDATA[org.testng.TestRunner@270b6b5e]]>
               </value>
             </param>
           </params>
-          <exception class="java.lang.NullPointerException">
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-	at Core.SecurityManagement.UserManagement_Page.CoreUserManagement_HO_User_Creation(UserManagement_Page.java:801)
-	at Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(CoreUserManagement_HO_User_Creation_Test.java:82)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1246)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1171)
-	at org.testng.TestNG.run(TestNG.java:1066)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Navigation_to_User_Management_Page -->
-        <test-method status="FAIL" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="takeScreenshotOnFailure" is-config="true" duration-ms="0" started-at="2025-01-24T22:17:55Z" finished-at="2025-01-24T22:17:55Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Navigation_to_User_Management_Page status=FAILURE method=CoreUserManagement_HO_User_Creation_Test.Navigation_to_User_Management_Page(java.util.Map, org.testng.ITestContext)[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <exception class="java.lang.NullPointerException">
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-	at com.Utility.ScreenShot.takeScreenShot(ScreenShot.java:29)
-	at Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test.takeScreenshotOnFailure(CoreUserManagement_HO_User_Creation_Test.java:102)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:514)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:215)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:707)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:782)
-	at org.testng.TestRunner.run(TestRunner.java:632)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1246)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1171)
-	at org.testng.TestNG.run(TestNG.java:1066)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- takeScreenshotOnFailure -->
-        <test-method status="SKIP" signature="AfterClass()[pri:0, instance:Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test@7c16905e]" name="AfterClass" is-config="true" duration-ms="0" started-at="2025-01-24T22:17:55Z" finished-at="2025-01-24T22:17:55Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AfterClass -->
-      </class> <!-- Core.SecurityManagement.CoreUserManagement_HO_User_Creation_Test -->
+        </test-method> <!-- Loan_Closure_Cash -->
+      </class> <!-- Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

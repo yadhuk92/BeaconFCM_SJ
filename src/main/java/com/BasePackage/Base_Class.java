@@ -6,10 +6,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -45,13 +48,14 @@ public class Base_Class {
 	public void SetUp() throws IOException, InterruptedException {
 		
 		String Browser = configloader().getProperty("Browser");
-		String Url = configloader().getProperty("URL");
+		String Url = configloader().getProperty("CoreApplicationUrl");
 		
 		switch (Browser.toUpperCase()) {
 
 		case "CHROME":
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-extensions");
+			
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
 			break;
@@ -113,6 +117,14 @@ public class Base_Class {
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 		Thread.sleep(2000);
 
+	}
+	
+	public static void ScrollUntilElementVisible(By locator) throws InterruptedException
+	{ 
+		Thread.sleep(1000);
+		WebElement element = driver.findElement(locator);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();", element);
 	}
 	
 	public static void ForLoopClick(By ClickElement) {
@@ -240,6 +252,8 @@ public class Base_Class {
 
         return stxt;
 	}
+	
+	
 	
 	public static String generateRandomSpecialWord(int length) {
 	     // Define the special characters
