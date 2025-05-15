@@ -1,0 +1,22 @@
+[INFO ] 2025-05-15 11:13:05.472 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-05-15 11:13:51.956 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2025-05-15 11:13:53.009 [main] Log - Default URL: /Home
+[INFO ] 2025-05-15 11:13:53.248 [main] Log - Entered IBU0001640 in user name field
+[INFO ] 2025-05-15 11:13:53.429 [main] Log - Entered ses@987 in password field
+[INFO ] 2025-05-15 11:13:53.576 [main] Log - Clicked on login button
+[INFO ] 2025-05-15 11:14:33.936 [main] Log - Exception in SomeErrorOccuredHandling: Expected condition failed: waiting for element to be clickable: By.xpath: //span[@style='color:red' and text()='Some error occurred.'] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\SILPA~1.SIV\AppDat...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59371}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59371/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 12527c8cf0e3aa77aa5b62bd3cd150cb
+[INFO ] 2025-05-15 11:14:34.064 [main] Log - UserID in Dashboard: IBU0001640
+[INFO ] 2025-05-15 11:14:34.785 [main] Log - Org Name: Mumbai, Org Type Name: Head office
+[INFO ] 2025-05-15 11:14:35.550 [main] Log - ****Navigation_to_Role_Management_Page****
+[INFO ] 2025-05-15 11:14:35.564 [main] Log - ***Navigation to Role Management Page***
+[INFO ] 2025-05-15 11:14:35.574 [main] Log - Login successful !
+[INFO ] 2025-05-15 11:14:39.873 [main] Log - 1. Click on Security Management menu
+[INFO ] 2025-05-15 11:14:44.245 [main] Log - 2. Click on Role Management submenutrue
+[INFO ] 2025-05-15 11:14:48.671 [main] Log - 2. Click on Add New Role buttontrue
+[INFO ] 2025-05-15 11:14:50.379 [main] Log - ****EnterTestRole****
+[INFO ] 2025-05-15 11:14:50.562 [main] Log - Entered Role nametrue
