@@ -93,7 +93,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		Log.info(
 				"Verifying PAN Number, GST Number, Constitution Type, Collection Agency Name fields displayed as expected.");
 
-		Common.fluentWait("zone", AddAgencyPageRepo.Zone);
+		Common.fluentWaitNew("zone", AddAgencyPageRepo.Zone);
 		Log.info("Clicked on Add Agency  sub Menu. ");
 		isDisplayed(AddAgencyPageRepo.PANNumber, "PANNumber");
 		isDisplayed(AddAgencyPageRepo.CollectionAgencyName, "CollectionAgencyName");
@@ -277,7 +277,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 
 	public void click(By locator, String elementName) {
 		try {
-			Common.fluentWait(elementName, locator);
+			Common.fluentWaitNew(elementName, locator);
 			WebElement element = driver.findElement(locator);
 
 			// JavaScript Executor to move to element
@@ -463,7 +463,9 @@ public class AddAgencyPage_MainClass extends Base_Class {
 	}
 
 	public void InvalidContactNumberSuccessfully() {
-		Common.fluentWait("InvalidContactNumber", AddAgencyPageRepo.InvalidContactNumber);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement invalidContactElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AddAgencyPageRepo.InvalidContactNumber));
+		Common.fluentWaitNew("InvalidContactNumber", AddAgencyPageRepo.InvalidContactNumber);
 		if (driver.findElement(AddAgencyPageRepo.InvalidContactNumber).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS, "Invalid Contact Number displayed Successfully ");
 		} else {
@@ -503,7 +505,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 
 			navigateAgencyManagement();
 			navigateToAddAgencyOption();
-			Common.fluentWait("Zone", AddAgencyPageRepo.Zone);
+			Common.fluentWaitNew("Zone", AddAgencyPageRepo.Zone);
 			Validate_PAN_NewNumber();
 			Log.info("Entering  valid  Collection Agency Name.");
 			WebElement PANField = driver.findElement(AddAgencyPageRepo.ConsultaionNameField);
@@ -551,7 +553,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			click(AddAgencyPageRepo.Submit, "Submit");
 			isDisplayed(AddAgencyPageRepo.loader, "Loader is  displayed");
 			WaitLoader();
-			Common.fluentWait("Action", AddAgencyPageRepo.Action);
+			Common.fluentWaitNew("Action", AddAgencyPageRepo.Action);
 			isDisplayed(AddAgencyPageRepo.AddNewAgency,
 					"Add New Agency is  displayed sucessfully the page is navigated to the Agency list page");
 			ExtentTestManager.getTest().log(Status.PASS, "Agency List page displayed");
@@ -567,11 +569,11 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			Thread.sleep(2000);
 			navigateAgencyManagement();
 			click(AddAgencyPageRepo.AgencyList, "AgencyList");
-			Common.fluentWait("Action", AddAgencyPageRepo.Action);
+			Common.fluentWaitNew("Action", AddAgencyPageRepo.Action);
 			String UsedPanNumber = driver.findElement(AddAgencyPageRepo.AlreadyUsedPAN).getText();
 			navigateAgencyManagement();
 			navigateToAddAgencyOption();
-			Common.fluentWait("Zone", AddAgencyPageRepo.Zone);
+			Common.fluentWaitNew("Zone", AddAgencyPageRepo.Zone);
 			Log.info("Entering  valid  PAN Number.");
 			WebElement PANField1 = driver.findElement(AddAgencyPageRepo.PanField);
 			// it should be used one already
@@ -598,19 +600,24 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			click(AddAgencyPageRepo.ModeOfCollection, "ModeOfCollection");
 			validMobileNumber();
 			// dates
+			
 			click(AddAgencyPageRepo.DateEmpanelment, "DateEmpanelment");
 			String today = String.valueOf(LocalDate.now().getDayOfMonth());
 			SelectCurrentDate(today, "DateEmpanelment");
-
+			
+			Common.fluentWaitNew("DateEmpanelmentExpiry", AddAgencyPageRepo.DateEmpanelmentExpiry);
 			click(AddAgencyPageRepo.DateEmpanelmentExpiry, "DateEmpanelmentExpiry");
 			int year = LocalDate.now().getYear();
 			int RequiredYear = year + 3;
 			String RequiredYearString = String.valueOf(RequiredYear);
 			ChangeYear(RequiredYearString);
 			SelectCurrentDate(today, "DateEmpanelment");
+			
+			Common.fluentWaitNew("AgreementStarting", AddAgencyPageRepo.AgreementStarting);
 			click(AddAgencyPageRepo.AgreementStarting, "AgreementStarting");
-
 			SelectCurrentDate(today, "DateEmpanelment");
+			
+			Common.fluentWaitNew("AgreementEnding", AddAgencyPageRepo.AgreementEnding);
 			click(AddAgencyPageRepo.AgreementEnding, "AgreementEnding");
 			int year1 = LocalDate.now().getYear();
 			int RequiredYear1 = year1 + 1;
@@ -640,7 +647,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		By loader = By.xpath("//*[@class='spinner']");
 		isDisplayed(loader, "Loader is  displayed");
 		WaitLoader();
-		Common.fluentWait("Action", AddAgencyPageRepo.Action);
+		Common.fluentWaitNew("Action", AddAgencyPageRepo.Action);
 		isDisplayed(AddAgencyPageRepo.AddNewAgency,
 				"Add New Agency is  displayed sucessfully the page is navigated to the Agency list page");
 		ExtentTestManager.getTest().log(Status.PASS, "Agency List page displayed");
@@ -656,7 +663,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 
 	}
 
-	public void GetNewAgencyUserCredentials() throws InterruptedException {
+	public void GetNewAgencyUserCredentials() throws InterruptedException, Throwable {
 		try {
 
 			driver.findElement(AddAgencyPageRepo.AgencyName).sendKeys(AgencyName);
@@ -684,6 +691,8 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			System.out.println("Extracted Password: " + password);
 			Username = userId;
 			Password = password;
+			writeData("AddAgencyList", 1, 7, Username);
+			writeData("AddAgencyList", 1, 8, Password);
 			ExtentTestManager.getTest().log(Status.PASS, "Agency created Suceessfully");
 			ExtentTestManager.getTest().log(Status.PASS, "Username of Agency " + userId);
 			ExtentTestManager.getTest().log(Status.PASS, "Password of Agency " + password);
@@ -713,9 +722,9 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		String CORE_LOGIN_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(LoginBannerQuery);
 		// System.out.println("BANNER_DETAILS: " + CORE_LOGIN_BANNER_DETAILS);
 
-//	Common.fluentWait("Core login Banner",
+//	Common.fluentWaitNew("Core login Banner",
 //			LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
-		Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+		Common.fluentWaitNew("UserNameField", LoginPageRepo.UserNameField);
 		driver.findElement(LoginPageRepo.UserNameField).sendKeys(UserID);
 		// ExtentTestManager.getTest().log(Status.INFO, "Entered " + CoreUserName + " in
 		// user name field");
@@ -735,9 +744,9 @@ public class AddAgencyPage_MainClass extends Base_Class {
 				// driver.findElement(LoginPageRepo.AlreadyLoginPopupYesButton).click();
 				Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
 
-				Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
-				Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
-				Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+				Common.fluentWaitNew("UserNameField", LoginPageRepo.UserNameField);
+				Common.fluentWaitNew("PasswordField", LoginPageRepo.PasswordField);
+				Common.fluentWaitNew("LoginButton", LoginPageRepo.LoginButton);
 
 				driver.findElement(LoginPageRepo.UserNameField).sendKeys(UserID);
 				Log.info("Entered " + UserID + " in user name field");
@@ -763,19 +772,19 @@ public class AddAgencyPage_MainClass extends Base_Class {
 				driver.navigate().refresh();
 
 				if (AppType == "Core") {
-					Common.fluentWait("Core login Banner",
+					Common.fluentWaitNew("Core login Banner",
 							LoginPageRepo.CollectionAgencyLoginBannerDetails(CORE_LOGIN_BANNER_DETAILS));
 				} else if (AppType == "CollectionAgency") {
-					Common.fluentWait(CollectionAgency_BANNER_DETAILS,
+					Common.fluentWaitNew(CollectionAgency_BANNER_DETAILS,
 							LoginPageRepo.CollectionAgencyLoginBannerDetails(CollectionAgency_BANNER_DETAILS));
 				} else if (AppType == "CallCenter") {
-					Common.fluentWait("CallCentre_BANNER_DETAILS",
+					Common.fluentWaitNew("CallCentre_BANNER_DETAILS",
 							LoginPageRepo.CollectionAgencyLoginBannerDetails(CallCentre_BANNER_DETAILS));
 				}
 
-				Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
-				Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
-				Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+				Common.fluentWaitNew("UserNameField", LoginPageRepo.UserNameField);
+				Common.fluentWaitNew("PasswordField", LoginPageRepo.PasswordField);
+				Common.fluentWaitNew("LoginButton", LoginPageRepo.LoginButton);
 
 				driver.findElement(LoginPageRepo.UserNameField).sendKeys(UserID);
 				driver.findElement(LoginPageRepo.PasswordField).sendKeys(password);
@@ -789,9 +798,9 @@ public class AddAgencyPage_MainClass extends Base_Class {
 						clickableElement.click();
 						Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
 
-						Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
-						Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
-						Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+						Common.fluentWaitNew("UserNameField", LoginPageRepo.UserNameField);
+						Common.fluentWaitNew("PasswordField", LoginPageRepo.PasswordField);
+						Common.fluentWaitNew("LoginButton", LoginPageRepo.LoginButton);
 
 						driver.findElement(LoginPageRepo.UserNameField).sendKeys(UserID);
 						driver.findElement(LoginPageRepo.PasswordField).sendKeys(password);
@@ -825,7 +834,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 	}
 
 	public void isUserCreatedSuccessfully() {
-		Common.fluentWait("Usercreatedsuccessfully", AddAgencyPageRepo.Usercreatedsuccessfully);
+		Common.fluentWaitNew("Usercreatedsuccessfully", AddAgencyPageRepo.Usercreatedsuccessfully);
 		if (driver.findElement(AddAgencyPageRepo.Usercreatedsuccessfully).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS,
 					AddAgencyPageRepo.Usercreatedsuccessfully + "New agent added successfully");
@@ -836,7 +845,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 	}
 
 	public void PANNumberalreadyexists() {
-		Common.fluentWait("PANNumberalreadyexists", AddAgencyPageRepo.PANNumberalreadyexists);
+		Common.fluentWaitNew("PANNumberalreadyexists", AddAgencyPageRepo.PANNumberalreadyexists);
 		if (driver.findElement(AddAgencyPageRepo.PANNumberalreadyexists).isDisplayed()) {
 			ExtentTestManager.getTest().log(Status.PASS,
 					AddAgencyPageRepo.PANNumberalreadyexists + "New agent added successfully");

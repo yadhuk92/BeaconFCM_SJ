@@ -77,13 +77,10 @@ public class CoreAddAgency_TestClass {
 	@BeforeClass
 
 	public void SetUp() throws Exception {
-
 		baseclass = new Base_Class();
 		callcenterlogin = new Login_Class();
-		callcenterlogin.CoreLogin_HO();
-		
-		driver = baseclass.getDriver(); // Retrieve the driver instance
-		
+		callcenterlogin.CoreLogin_HO();		
+		driver = baseclass.getDriver(); // Retrieve the driver instance		
 		addagencypage=new AddAgencyPage_MainClass(driver);
 		ExcelReader = new com.Utility.ExcelReader("AddAgency");
 		TestListener = new TestListener();
@@ -1067,24 +1064,18 @@ public class CoreAddAgency_TestClass {
 
 	}
 
+
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
-		// Check if the test case failed
-		if (result.getStatus() == ITestResult.FAILURE) {
-			String methodName = result.getMethod().getMethodName();
-			try {
-				// Take the screenshot for the failed test
-				File image = screenShot.takeScreenShot(methodName, "Failure");
+	    if (result.getStatus() == ITestResult.FAILURE) {
+	        String methodName = result.getMethod().getMethodName();
+	        File image = screenShot.takeScreenShot(methodName, "Failure");
+	        extenttest.log(Status.INFO, "Screenshot of failure: ",
+	                MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
+	    }
 
-				extenttest.log(Status.INFO, "Screenshot of failure: ",
-						MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
-				ExtentManager.getInstance().flush();
-			} catch (IOException e) {
-				System.err.println("Failed to capture screenshot: " + e.getMessage());
-			}
-		}
+	    ExtentManager.getInstance().flush(); // Move outside the if block
 	}
-
 	 @DataProvider(name = "TestData")
 		public static Object[][] gettestdate() throws IOException {
 		 ExcelReader = new com.Utility.ExcelReader("AddAgency");

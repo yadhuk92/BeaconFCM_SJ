@@ -149,7 +149,10 @@ public class CoreAgencyList_TestClass extends Base_Class {
 
 		try {
 			System.out.println("***********  4 *************");
-
+			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.LastPageOfTheList, "LastPageOfTheList");
+			CoreAgencyListPage_MainClass.WaitLoader();
+			CoreAgencyListPage_MainClass.AgencyCount();
+			
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();

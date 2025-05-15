@@ -38,7 +38,35 @@ public class Common {
             System.out.println("Error during fluent wait: " + e.getMessage());
         }
     }
-    
+    public static void fluentWaitNew(String WebElementName, By element) {
+        try {
+            System.out.println("Fluent wait started for: " + WebElementName);
+            Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                    .withTimeout(Duration.ofMinutes(1))
+                    .ignoring(NullPointerException.class)
+                    .ignoring(StaleElementReferenceException.class)
+                    .ignoring(NoSuchElementException.class)
+                    .ignoring(ElementNotInteractableException.class)
+                    .ignoring(WebDriverException.class)
+                    .pollingEvery(Duration.ofMillis(5));
+
+            // Decide the wait strategy based on element type
+            String elementNameLower = WebElementName.toLowerCase();
+            if (elementNameLower.contains("message") || elementNameLower.contains("label") ||
+                elementNameLower.contains("text") || elementNameLower.contains("error") ||
+                elementNameLower.contains("alert") || elementNameLower.contains("notification")) {
+                
+                wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+                System.out.println("Fluent wait ended: Element is visible - " + WebElementName);
+            } else {
+                wait.until(ExpectedConditions.elementToBeClickable(element));
+                System.out.println("Fluent wait ended element is clickable: " + WebElementName);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error during fluent wait: " + e.getMessage());
+        }
+    }
     public static void waitForSpinnerToDisappear(String WebElementName, By element) {
     	if (driver == null) {
             throw new IllegalArgumentException("WebDriver instance is null");

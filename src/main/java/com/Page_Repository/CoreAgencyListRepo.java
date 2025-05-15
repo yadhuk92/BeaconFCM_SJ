@@ -35,9 +35,12 @@ public class CoreAgencyListRepo {
 	public static By Contactnumber = By.xpath("//*[@name='Contactnumber']");
 	public static By Pan = By.xpath("//*[@name='Pan']");
 	public static By NameEdit = By.xpath("//*[@name='Name']");
-	public static By ZoneEdit = By.xpath("//*[contains(text(),'Zone/CO')]/..//div[@class='rz-dropdown rz-state-disabled valid rz-clear form-control']//label");
-	public static By RegionEdit = By.xpath("//*[contains(text(),'Region')]/..//div[@class='rz-dropdown rz-state-disabled valid rz-clear form-control']");
-	public static By ProductEdit = By.xpath("//*[contains(text(),'Product Type')]/..//div[@class='rz-dropdown rz-state-disabled valid rz-clear form-control']");
+	public static By ZoneEdit = By.xpath(
+			"//*[contains(text(),'Zone/CO')]/..//div[@class='rz-dropdown rz-state-disabled valid rz-clear form-control']//label");
+	public static By RegionEdit = By.xpath(
+			"//*[contains(text(),'Region')]/..//div[@class='rz-dropdown rz-state-disabled valid rz-clear form-control']");
+	public static By ProductEdit = By.xpath(
+			"//*[contains(text(),'Product Type')]/..//div[@class='rz-dropdown rz-state-disabled valid rz-clear form-control']");
 	public static By Remarks = By.xpath("//*[@name='Remarks']");
 	public static By DateEmpanelment = By
 			.xpath("//*[contains(text(),'Date of Empanelment')]/..//input[@placeholder='DD-MM-YYYY']");
@@ -51,7 +54,7 @@ public class CoreAgencyListRepo {
 	public static By Address = By.xpath("//*[@name='Address']");
 	public static By RecordUpdatedSuccessfully = By.xpath("//*[contains(text(),'Record Updated Successfully')]");
 	public static By InvalidUsername = By.xpath("//*[contains(text(),'Invalid Username Or Password')]");
-	
+
 	public static By Close = By.xpath("//*[contains(text(),'Close')]");
 	public static By CollectionAgencyName = By.xpath("//*[contains(text(),'Collection Agency Name')]");
 	public static By Activate = By.xpath("//*[contains(text(),'Activate Date')]");
@@ -62,17 +65,22 @@ public class CoreAgencyListRepo {
 	public static By submit = By.xpath("//*[@type='submit']");
 	public static By passwordresetsuccessfully = By
 			.xpath("//*[contains(text(),'The password has been reset successfully.')]");
-	public static By StatusChanged = By.xpath("//*[contains(text(),'Status Changed')]");	
+	public static By StatusChanged = By.xpath("//*[contains(text(),'Status Changed')]");
 	public static By DeEmpanelmentPopUp = By.xpath("//*[contains(text(),'De-Empanelment')]");
 	public static By EmpaneledDate = By.xpath("//*[contains(text(),'Empaneled Date')]/..//input");
 	public static By DeEmpanelmentDate = By.xpath("//*[contains(text(),'De-empaneled Date')]/..//input");
 	public static By Remark = By.xpath("//*[contains(text(),'Remark')]/..//textarea");
 	public static By DeEmpanelmentdaterequired = By.xpath("//*[contains(text(),'De-Empanelment date is required')]");
-	public static By RecordDeempaneledSuccessfully = By.xpath("//*[contains(text(),'Record De-empaneled Successfully')]");
-public static By profiledropdownbutton  = By.xpath("//*[@class='dropdown profiledropdown']//button[@type='button']");
+	public static By RecordDeempaneledSuccessfully = By
+			.xpath("//*[contains(text(),'Record De-empaneled Successfully')]");
+	public static By profiledropdownbutton = By.xpath("//*[@class='dropdown profiledropdown']//button[@type='button']");
+
+	public static By Logout = By.xpath("//*[text()='Logout']");
+	public static By IncorrectUsername = By.xpath("//*[contains(text(),'Incorrect Username Or Password')]");
+	public static By LastPageOfTheList = By.xpath("//*[contains(text(),'>>')]");
+	public static By LastPageCount = By.xpath("//li[contains(@class, 'page-item') and contains(@class, 'active')]/span[@class='page-link']");
+	public static By TotalAgencyRecords  = By.xpath("//table/tbody/tr[10]/td[1]/span");
 	
-	public static By Logout  = By.xpath("//*[text()='Logout']");
-	public static By IncorrectUsername  = By.xpath("//*[contains(text(),'Incorrect Username Or Password')]");
 	
 
 }
