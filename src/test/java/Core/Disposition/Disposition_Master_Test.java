@@ -33,6 +33,7 @@ import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
 import com.BasePackage.Login_Class;
 import com.BasePackage.SeleniumLogToFile;
+import com.Page_Repository.BannedCustomerPageRepo;
 import com.Page_Repository.DispositionMasterPageRepo;
 import com.Page_Repository.LoginBannerConfiguratonPageRepo;
 import com.Utility.Log;
@@ -90,7 +91,7 @@ public class Disposition_Master_Test extends Base_Class {
 	@Test(priority = 1)
 	public void Verify_Disposition_Master_Navigation() throws Exception {
 		try {
-			Common.fluentWait("DispositionMainMenu", DispositionMasterPageRepo.dispositionMainMenu);
+			Common.fluentWait("DispositionMainMenu", BannedCustomerPageRepo.SecurityManagementMainMenu);
 			Base_Class.click(DispositionMasterPageRepo.dispositionMainMenu);
 		
 			Common.fluentWait("dispositionMasterSubMenu", DispositionMasterPageRepo.dispositionMasterSubMenu);
