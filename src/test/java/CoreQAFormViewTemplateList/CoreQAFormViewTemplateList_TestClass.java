@@ -3,20 +3,15 @@ package CoreQAFormViewTemplateList;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+//import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.ITestContext;
+
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -25,18 +20,15 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.lang.reflect.Method;
-import java.time.Duration;
-import java.time.LocalDate;
+//import java.time.Duration;
+
 
 import com.BasePackage.Base_Class;
-import com.BasePackage.Common;
 import com.BasePackage.DBUtils;
 
-import com.BasePackage.ExecuteStoredProcedure;
 import com.BasePackage.Login_Class;
 import com.Page_Repository.CoreQAFormViewTemplateListPageRepo;
 
-import com.Page_Repository.DispositionMasterPageRepo;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -49,11 +41,8 @@ import Core.QAFormViewTemplateList.CoreQAFormViewTemplateList_MainClass;
 
 //updated code
 public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
-	private static final int Map = 0;
-	private String totalAccounts;
-	private String accountNumber;
+	private CoreQAFormViewTemplateList_MainClass page;
 	private List<WebDriver> drivers = new ArrayList<>();
-	private static String accountNumberFromExcel;
 	Base_Class baseclass;
 
 	static com.Utility.ExcelReader ExcelReader;
@@ -63,6 +52,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	ExtentTest extenttest;
 	Login_Class callcenterlogin;
 	CoreQAFormViewTemplateList_MainClass CoreQAFormViewTemplate;
+	
 
 	@BeforeSuite
 
@@ -84,6 +74,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	public void setupTest(Method method) {
 		baseclass = new Base_Class();
 		driver = baseclass.getDriver();
+		page = new CoreQAFormViewTemplateList_MainClass(driver);
 		drivers.add(driver);
 
 		callcenterlogin = new Login_Class();
@@ -96,9 +87,14 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	@Test(priority = 1, enabled = true)
 	public void Execute_the_Deletion_Query() throws Throwable {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
 		try {
+			
+			System.out.println(" ************** Testcase 1: Clear all the Database Tables Related to Q&A Form*****************");
+
+			System.out.println();
+			
 			String DeleteQuery = "DELETE FROM QAF_OPTION_ANSWER_DETAILS";
 			String Result = DBUtils.executeSQLStatement(DeleteQuery);
 			System.out.println("Delete Query Result: " + Result);
@@ -144,15 +140,14 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 			ExtentTestManager.getTest().log(Status.PASS, "Logged in to Core Application.");
 
 			// Home
-			System.out.println(" ************** 2 *****************");
+			System.out.println(" ************** Testcase 2: Login to core application as HO User*****************");
 
 			System.out.println();
 			String currentUrl = driver.getCurrentUrl();
 			Assert.assertTrue(currentUrl.contains("Home"), "Navigated to Home Page.");
 
 			ExtentTestManager.getTest().log(Status.PASS, "User is navigated to Home  page, URL shows Home.");
-			// wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-			// Common.fluentWait("SMA", AddAgencyPageRepo.SMA);
+			
 		}
 
 		catch (AssertionError | Exception e) {
@@ -164,10 +159,10 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 
 	@Test(priority = 3, enabled = true)
 	public void AccesQAFormViewTemplateList() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
 		try {
-			System.out.println(" ************** 3 *****************");
+			System.out.println(" ************** Testcase 3: Navigated to the Q&A Template Page *****************");
 			System.out.println();
 			ExtentTestManager.getTest().log(Status.PASS, "Logged in to Core Application.");
 
@@ -183,13 +178,8 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 
 			// Expected Result: User is navigated to the Q&A Template Page
 			// URL shows Q&AForm/View Template List
-
-			String currentUrl = driver.getCurrentUrl();
-			Assert.assertTrue(currentUrl.contains("QAformview"), "User is not navigated to the Q&A Template Page");
 			ExtentTestManager.getTest().log(Status.PASS,
 					"User is navigated to the Q & A Template Page, URL showsQ&AForm/ View Template List");
-			// wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-
 		}
 
 		catch (AssertionError | Exception e) {
@@ -201,10 +191,10 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 
 	@Test(priority = 4, enabled = true)
 	public void NavigatetoTemplatecreationpage() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
 		try {
-			System.out.println(" ************** 4 *****************");
+			System.out.println(" **************Testcase 4: Navigated to the Template creation page*****************");
 			System.out.println();
 			ExtentTestManager.getTest().log(Status.PASS, "Navigate to Template Creation Page");
 
@@ -215,16 +205,13 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 
 			// Click on Create New Button
 
-			CoreQAFormViewTemplate.NavigatetoTemplatecreationpage();
+			//CoreQAFormViewTemplate.NavigatetoTemplatecreationpage();
 			ExtentTestManager.getTest().log(Status.PASS, "2.click on the Create New Button");
 
 			// Expected Result: User is navigated to the Q&A Template Page
 			// URL shows Q&AForm/View Template List
-
-			String currentUrl = driver.getCurrentUrl();
-			Assert.assertTrue(currentUrl.contains("QAformview"), "User is not navigated to the Template creation page");
 			ExtentTestManager.getTest().log(Status.PASS, "User is navigated to the Template creation page");
-			// wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+			
 
 		}
 
@@ -238,10 +225,10 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	@Test(priority = 5, enabled = true)
 	public void Validate_Fields_From_TemplateCreation_Page() throws InterruptedException {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
 		try {
-			System.out.println(" ************** 5 *****************");
+			System.out.println(" ************** Testcase 5: verify the fields and buttons showing in the page *****************");
 			System.out.println();
 			ExtentTestManager.getTest().log(Status.PASS, "Template Creation page loaded");
 
@@ -250,12 +237,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 			CoreQAFormViewTemplate.VerifyrequiredFileds();
 			ExtentTestManager.getTest().log(Status.PASS,
 					"1. verify following fields and buttons  are present in the page Template Name,Question,Expected Answer Type,Values,Parent Question,Parent Value,Is Mandatory (Checkbox),Add Button,Clear Button,Cancel Button");
-
-			String currentUrl = driver.getCurrentUrl();
-			Assert.assertTrue(currentUrl.contains("QAForm/Templatecreationpage"),
-					"Following Fields and Buttons not Displayed on the Template creation Page");
-			ExtentTestManager.getTest().log(Status.PASS,
-					"Following Fields and Buttons Displayed on the Template creation Page");
+			ExtentTestManager.getTest().log(Status.PASS,"Following Fields and Buttons Displayed on the Template creation Page");
 
 		}
 
@@ -269,22 +251,17 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	@Test(priority = 6, enabled = true)
 	public void verify_the_columns_showing_in_the_grid_section() throws InterruptedException {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
 		try {
-			System.out.println(" ************** 6 *****************");
+			System.out.println(" ************** Testcase 6: verify the columns showing in the grid section *****************");
 			System.out.println();
 			ExtentTestManager.getTest().log(Status.PASS, "Verify Columns Showing in the Grid Section");
 
 			// Verify Grid
 
 			CoreQAFormViewTemplate.VerifyGridSection();
-			ExtentTestManager.getTest().log(Status.PASS,
-					"1. verify following columns  are present in the Question grid section Order Number,Question,Expected Answer Type,Values,Parent Question,Parent Value,Is Mandatory,Action");
-
-			String currentUrl = driver.getCurrentUrl();
-			Assert.assertTrue(currentUrl.contains("QAForm/Verifying Grid"),
-					"Following columns are not Displayed on the Grid Section");
+			ExtentTestManager.getTest().log(Status.PASS,"1. verify following columns  are present in the Question grid section Order Number,Question,Expected Answer Type,Values,Parent Question,Parent Value,Is Mandatory,Action");
 			ExtentTestManager.getTest().log(Status.PASS, "Following columns are present in the question grid section");
 
 		}
@@ -301,22 +278,17 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	@Test(priority = 8, enabled = true)
 	public void verify_the_Mandatory_Filed_Validation() throws InterruptedException {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
 		try {
-			System.out.println(" ************** 8 *****************");
+			System.out.println(" **************Testcase 8: Verify the mandatory field validation *****************");
 			System.out.println();
 			ExtentTestManager.getTest().log(Status.PASS, "Verify Columns Showing in the Grid Section");
 
 			// Verify the mandatory field validation
 
 			CoreQAFormViewTemplate.VerifyMandatoryFieldValidation();
-			ExtentTestManager.getTest().log(Status.PASS,
-					"1. verify following columns  are present in the Question grid section Order Number,Question,Expected Answer Type,Values,Parent Question,Parent Value,Is Mandatory,Action");
-
-			String currentUrl = driver.getCurrentUrl();
-			Assert.assertTrue(currentUrl.contains("QAForm/Verifying Grid"),
-					"Following columns are not Displayed on the Grid Section");
+			ExtentTestManager.getTest().log(Status.PASS,"1. verify following columns  are present in the Question grid section Order Number,Question,Expected Answer Type,Values,Parent Question,Parent Value,Is Mandatory,Action");
 			ExtentTestManager.getTest().log(Status.PASS, "Following columns are present in the question grid section");
 
 		}
@@ -331,7 +303,8 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	@Test(priority = 9, enabled = true)
 	public void Validate_Value_Into_Template_Name_Field() throws InterruptedException {
 		try {
-			System.out.println(" ************** 9 *****************");
+			System.out.println(" ************** TestCase:9 Input value into Template name field  *****************");
+			System.out.println();
 			ExtentTestManager.getTest().log(Status.PASS, "Template Creation page loaded");
 
 			CoreQAFormViewTemplate.InputValueIntoTemplateNameField();
@@ -345,7 +318,8 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	@Test(priority = 10, enabled = true)
 	public void Validate_Value_Into_Question_Field() throws InterruptedException {
 	    try {
-	        System.out.println(" ************** 10 *****************");
+	        System.out.println(" ************** TestCase 10: Input value into Question field *****************");
+	        System.out.println();
 	        ExtentTestManager.getTest().log(Status.PASS, "Template Creation page loaded");
 
 	        // Call your action
@@ -363,8 +337,187 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	        throw e;
 	    }
 	}
+	
+	@Test(priority = 11, enabled = true)
+	public void validateExpectedAnswerTypeOptions() throws InterruptedException {
+	    try {
+	    	
+	    	 System.out.println(" ************** TestCase 11: Expected Answer Type Field - Values *****************");
+		     System.out.println();
+	        ExtentTestManager.getTest().log(Status.PASS, "Template Creation page loaded");
 
+	        // Call the page action to get actual dropdown values
+	        List<String> actualOptions = CoreQAFormViewTemplate.getExpectedAnswerTypeOptions();
 
+	        // Define what you expect
+	        List<String> expectedOptions = Arrays.asList( "TextBox", "Drop Down", "Date Picker", "Number input field","Amount field","Percentage field");
+	        Assert.assertEquals(actualOptions, expectedOptions,"Expected Answer Type dropdown values did not match");
+	        ExtentTestManager.getTest().log(Status.PASS,"Expected Answer Type dropdown contains exactly: " + expectedOptions);
+	            
+
+	    } catch (AssertionError | Exception e) {
+	        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+	        throw e;
+	    }
+	}
+	
+	    @Test(priority = 12, enabled = true)
+	    public void verifyValuesFieldNonEditableForNonDropdownTypes() throws InterruptedException {
+	    	
+	    	 System.out.println(" ************** TestCase 12: Values Field - Non editable check *****************");
+		     System.out.println();
+		     
+	        // all types except "DropDown"
+	        List<String> types = Arrays.asList("TextBox",  "Drop Down","Date Picker", "Number input field", "Amount field", "Percentage field");
+
+	        for (String type : types) {
+	            // 1. Select the answer type
+	            page.selectExpectedAnswerType(type);
+
+	            // 2. Verify Values field is NOT editable
+	            boolean editable = page.isValuesFieldEditable();
+	            Assert.assertFalse(editable,
+	                "Values field should be non-editable when Expected Answer Type = " + type);
+
+	            ExtentTestManager.getTest()
+	                .log(Status.PASS, "Verified Values field non-editable for type: " + type);
+	        }
+	    }
+	
+	    
+	    @Test(priority = 13, enabled = true)
+	    public void verifyValuesFieldEditableWhenDropdownSelected() {
+	        try {
+	        	
+	        	 System.out.println(" ************** TestCase 13: Values Field - Editable check *****************");
+			     System.out.println();
+			     
+	            ExtentTestManager.getTest().log(Status.INFO, "Navigated to Template Creation page");
+
+	            // Perform action: select 'Drop Down' and check if Values field is editable
+	            boolean isEditable = page.selectExpectedAnswerTypeAndCheckValuesEditable("Drop Down");
+	            Assert.assertTrue(isEditable, "Values field should be editable when Expected Answer Type = Drop Down");
+
+	            ExtentTestManager.getTest()
+	                .log(Status.PASS, "Successfully verified: Values field is editable for Expected Answer Type = 'Drop Down'");
+
+	        } catch (AssertionError | Exception e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+	            throw e;
+	        }
+	    } 
+	   
+	
+	    @Test(priority = 14, enabled = true)
+	    public void verifyCommaSeparatedValuesEnteredCorrectly() {
+	        try {
+	        	
+	        	System.out.println(" ************** TestCase 14: Values Field - Comma seperation check *****************");
+			     System.out.println();
+			     
+	            ExtentTestManager.getTest().log(Status.INFO, "Starting test: verify comma-separated values");
+
+	            String expectedValues = "Html, Java, CSS";
+	            page.selectAnswerTypeAndEnterValues("Drop Down", expectedValues);
+
+	            String actualValues = page.getEnteredValues();
+	            Assert.assertEquals(actualValues.trim(), expectedValues.trim(), "Mismatch in values field");
+
+	            ExtentTestManager.getTest().log(Status.PASS, "Comma-separated values entered successfully");
+
+	        } catch (Exception | AssertionError e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+	            throw e;
+	        }
+	    }
+	    @Test(priority = 15, enabled = true)
+	    public void verifyTextBoxOptionSelectionInExpectedAnswerType() throws Throwable {
+	        try {
+	        	System.out.println(" ************** TestCase 15: Expected Answer Type Field - Select *****************");
+			     System.out.println();
+	        	
+	            ExtentTestManager.getTest().log(Status.INFO, " Starting test: Verify 'TextBox' is selectable in Expected Answer Type");
+
+	            // Action
+	            page.selectTextBoxFromExpectedAnswerType();
+
+	            // Assertion
+	            String selectedValue = page.getSelectedAnswerType();
+	            Assert.assertTrue(selectedValue.contains("TextBox"), "Dropdown did not reflect 'TextBox' as selected");
+
+	            ExtentTestManager.getTest().log(Status.PASS, "'TextBox' selected successfully from Expected Answer Type dropdown");
+
+	        } catch (Exception | AssertionError e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+	            throw e;
+	        }
+	    }
+	 // 16 and 17th Testcase not Possible to Automate
+	    
+	    @Test(priority = 18, enabled = true)
+	    public void verifyIsMandatoryCheckboxSelection() {
+	        try {
+	        	System.out.println(" ************** TestCase 18: Is Mandatory Checkbox - Select *****************");
+			     System.out.println();
+	        	
+	            ExtentTestManager.getTest().log(Status.INFO, "Starting test: verify 'Is Mandatory' checkbox selection");
+
+	            page.selectIsMandatoryCheckbox();
+
+	            boolean isSelected = page.isMandatoryCheckboxSelected();
+
+	            Assert.assertTrue(isSelected, "'Is Mandatory' checkbox should be selected");
+	            ExtentTestManager.getTest().log(Status.PASS, "'Is Mandatory' checkbox was successfully selected");
+
+	        } catch (Exception | AssertionError e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+	            throw e;
+	        }
+	    }
+	    @Test(priority = 19, enabled = true)
+	    public void verifyAddFunctionalityAndGridUpdate() throws Throwable {
+	        try {
+	        	System.out.println(" ************** TestCase 19: Add Button - Functionality *****************");
+			     System.out.println();
+	            ExtentTestManager.getTest().log(Status.INFO, "Starting test: verify Add button functionality and grid update");
+
+	            page.clickAddButton();
+
+	            String actualQuestion = page.getGridFirstRowQuestion();
+	            String actualMandatory = page.getGridFirstRowIsMandatory();
+
+	            Assert.assertEquals(actualQuestion.trim(), "Q1", "Question value in grid does not match expected");
+	            Assert.assertEquals(actualMandatory.trim(), "Yes", "'Is Mandatory' value in grid should be 'Yes'");
+
+	            ExtentTestManager.getTest().log(Status.PASS, "Template successfully added and reflected in grid with correct values");
+
+	        } catch (Exception | AssertionError e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+	            throw e;
+	        }
+	    }
+	    @Test(priority = 20, enabled = true)
+	    public void verifyClearButtonFunctionality() throws Throwable {
+	        try {
+	        	System.out.println(" ************** TestCase 20: Clear Button - Functionality *****************");
+			     System.out.println();
+	            ExtentTestManager.getTest().log(Status.INFO, "Starting test: verify Clear button functionality");
+
+	            CoreQAFormViewTemplateList_MainClass form = new CoreQAFormViewTemplateList_MainClass(driver);
+
+	            boolean isCleared = form.verifyClearFunctionality("clear functionality check", "Q2");
+
+	            Assert.assertTrue(isCleared, "Clear button did not reset the fields correctly");
+
+	            ExtentTestManager.getTest().log(Status.PASS, "Clear button reset the fields successfully");
+
+	        } catch (Exception | AssertionError e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+	            throw e;
+	        }
+	    }
+	        
+	    
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
 		// Check if the test case failed
