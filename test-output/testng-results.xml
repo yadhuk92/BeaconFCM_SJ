@@ -1,32 +1,302 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="11" passed="11" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-05-13T20:59:09 IST" name="Default suite" finished-at="2025-05-13T21:04:10 IST" duration-ms="301229">
+  <suite started-at="2025-05-16T19:05:58 IST" name="Default suite" finished-at="2025-05-16T19:11:07 IST" duration-ms="308483">
     <groups>
     </groups>
-    <test started-at="2025-05-13T20:59:09 IST" name="Default test" finished-at="2025-05-13T21:04:10 IST" duration-ms="301229">
+    <test started-at="2025-05-16T19:05:58 IST" name="Default test" finished-at="2025-05-16T19:11:07 IST" duration-ms="308483">
       <class name="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test">
-        <test-method is-config="true" signature="reference()[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@1787f2a0]" started-at="2025-05-13T20:59:08 IST" name="reference" finished-at="2025-05-13T20:59:09 IST" duration-ms="540" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:05:59 IST" name="setUp" finished-at="2025-05-16T19:05:59 IST" duration-ms="72" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- reference -->
-        <test-method signature="Loan_Closure_Cash(java.util.Map,org.testng.ITestContext)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@1787f2a0]" started-at="2025-05-13T20:59:10 IST" name="Loan_Closure_Cash" data-provider="TestData" finished-at="2025-05-13T21:04:10 IST" duration-ms="300432" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:05:59 IST" name="setupTest" finished-at="2025-05-16T19:05:59 IST" duration-ms="276" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{Account_No=, Account_No1=, NoOfShares=, pcRegFormName=, pcRegFormPcName=, Run=Yes, TestScenario=Allocation Summary}]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@270b6b5e]]>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testLogin() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Loan_Closure_Cash -->
+        </test-method> <!-- setupTest -->
+        <test-method signature="testLogin()[pri:1, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:05:59 IST" name="testLogin" finished-at="2025-05-16T19:07:07 IST" duration-ms="67826" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLogin -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:07:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testLogin status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testLogin()[pri:1, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="setupTest" finished-at="2025-05-16T19:07:07 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testVerifyAllocationSummarySubmenu()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testVerifyAllocationSummarySubmenu()[pri:2, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="testVerifyAllocationSummarySubmenu" finished-at="2025-05-16T19:07:07 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testLogin" duration-ms="40" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testVerifyAllocationSummarySubmenu -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:07:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testVerifyAllocationSummarySubmenu status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testVerifyAllocationSummarySubmenu()[pri:2, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="setupTest" finished-at="2025-05-16T19:07:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testClickOnAllocationSummarySubmenu()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testClickOnAllocationSummarySubmenu()[pri:3, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="testClickOnAllocationSummarySubmenu" finished-at="2025-05-16T19:07:07 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testVerifyAllocationSummarySubmenu" duration-ms="413" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testClickOnAllocationSummarySubmenu -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:07:07 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testClickOnAllocationSummarySubmenu status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testClickOnAllocationSummarySubmenu()[pri:3, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method signature="testVerifyFieldsAndButtonsOnAllocationSummary()[pri:4, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="testVerifyFieldsAndButtonsOnAllocationSummary" finished-at="2025-05-16T19:07:07 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testClickOnAllocationSummarySubmenu" duration-ms="51" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testVerifyFieldsAndButtonsOnAllocationSummary -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="setupTest" finished-at="2025-05-16T19:07:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testVerifyFieldsAndButtonsOnAllocationSummary()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:07:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testVerifyFieldsAndButtonsOnAllocationSummary status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testVerifyFieldsAndButtonsOnAllocationSummary()[pri:4, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method signature="testSearchWithoutSelectingCallCentreDropdown()[pri:5, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="testSearchWithoutSelectingCallCentreDropdown" finished-at="2025-05-16T19:07:07 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testVerifyFieldsAndButtonsOnAllocationSummary" duration-ms="211" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSearchWithoutSelectingCallCentreDropdown -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="setupTest" finished-at="2025-05-16T19:07:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testSearchWithoutSelectingCallCentreDropdown()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:07:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testSearchWithoutSelectingCallCentreDropdown status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testSearchWithoutSelectingCallCentreDropdown()[pri:5, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="setupTest" finished-at="2025-05-16T19:07:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testSearchWithSelectedCallCentre()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testSearchWithSelectedCallCentre()[pri:6, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:07 IST" name="testSearchWithSelectedCallCentre" finished-at="2025-05-16T19:07:09 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testSearchWithoutSelectingCallCentreDropdown" duration-ms="1317" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSearchWithSelectedCallCentre -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:09 IST" name="setupTest" finished-at="2025-05-16T19:07:09 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testDownloadMonthlyAllocationSummary() throws java.lang.InterruptedException,java.awt.AWTException,java.io.IOException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:09 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:07:09 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testSearchWithSelectedCallCentre status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testSearchWithSelectedCallCentre()[pri:6, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method signature="testDownloadMonthlyAllocationSummary()[pri:7, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:07:09 IST" name="testDownloadMonthlyAllocationSummary" finished-at="2025-05-16T19:08:39 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testSearchWithSelectedCallCentre" duration-ms="89946" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDownloadMonthlyAllocationSummary -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:08:39 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:08:39 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testDownloadMonthlyAllocationSummary status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testDownloadMonthlyAllocationSummary()[pri:7, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:08:39 IST" name="setupTest" finished-at="2025-05-16T19:08:39 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testDataVerificationInDownloadedFile()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testDataVerificationInDownloadedFile()[pri:8, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:08:39 IST" name="testDataVerificationInDownloadedFile" finished-at="2025-05-16T19:09:12 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testDownloadMonthlyAllocationSummary" duration-ms="32979" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDataVerificationInDownloadedFile -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:09:12 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:09:12 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testDataVerificationInDownloadedFile status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testDataVerificationInDownloadedFile()[pri:8, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:09:12 IST" name="setupTest" finished-at="2025-05-16T19:09:12 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testDownloadDailyAllocationFromMonthlySummary() throws java.lang.InterruptedException,java.awt.AWTException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testDownloadDailyAllocationFromMonthlySummary()[pri:9, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:09:12 IST" name="testDownloadDailyAllocationFromMonthlySummary" finished-at="2025-05-16T19:10:25 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testDataVerificationInDownloadedFile" duration-ms="73312" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDownloadDailyAllocationFromMonthlySummary -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:10:25 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:10:25 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testDownloadDailyAllocationFromMonthlySummary status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testDownloadDailyAllocationFromMonthlySummary()[pri:9, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:10:25 IST" name="setupTest" finished-at="2025-05-16T19:10:25 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testDataVerificationInDailyDownloadedFile()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testDataVerificationInDailyDownloadedFile()[pri:10, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:10:25 IST" name="testDataVerificationInDailyDownloadedFile" finished-at="2025-05-16T19:10:54 IST" depends-on-methods="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testDownloadDailyAllocationFromMonthlySummary" duration-ms="28993" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDataVerificationInDailyDownloadedFile -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:10:54 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:10:54 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testDataVerificationInDailyDownloadedFile status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testDataVerificationInDailyDownloadedFile()[pri:10, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
+        <test-method is-config="true" signature="setupTest(java.lang.reflect.Method)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:10:54 IST" name="setupTest" finished-at="2025-05-16T19:10:54 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test.testlogout() throws java.lang.InterruptedException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testlogout()[pri:11, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:10:54 IST" name="testlogout" finished-at="2025-05-16T19:11:07 IST" duration-ms="12960" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testlogout -->
+        <test-method is-config="true" signature="takeScreenshotOnFailure(org.testng.ITestResult)[pri:0, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477]" started-at="2025-05-16T19:11:07 IST" name="takeScreenshotOnFailure" finished-at="2025-05-16T19:11:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testlogout status=SUCCESS method=All_Scenrios_Core_Allocation_Summary_Test.testlogout()[pri:11, instance:Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test@790da477] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshotOnFailure -->
       </class> <!-- Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

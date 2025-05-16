@@ -23,7 +23,7 @@ public class Login_Class extends Base_Class {
 	public static String orgName;
     public static String orgTypeName;
 	
-    public void CoreLogin() throws Exception {
+    public static void CoreLogin() throws Exception {
         try {
             String Browser = configloader().getProperty("Browser");
             String CoreAppUrl = configloader().getProperty("CoreApplicationUrl");
@@ -33,8 +33,26 @@ public class Login_Class extends Base_Class {
             // Initialize WebDriver based on browser type
             switch (Browser.toUpperCase()) {
                 case "CHROME":
+        			//String downloadPath = System.getProperty("user.home") + "/Downloads";
+
+                	Map<String, Object> prefs = new HashMap<>();
+        		   // prefs.put("download.default_directory", downloadPath); // ✅ Set download directory
+        		    prefs.put("download.prompt_for_download", false);       // ✅ Disable prompt
+        		    prefs.put("download.directory_upgrade", true);
+        		    prefs.put("safebrowsing.enabled", true);                // ✅ Keep Safe Browsing
+        		    prefs.put("safebrowsing.disable_download_protection", true);
+        		    
                     ChromeOptions options = new ChromeOptions();
+                    
+                    options.setExperimentalOption("prefs", prefs);
+                    options.addArguments("--window-size=1920,1080");
+        	        options.addArguments("--allow-running-insecure-content");
+        	        options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://192.168.32.33:8599/CallCentre/Allocationsummary");
+        	        //options.addArguments("--disable-features=InsecureDownloadWarnings");
+                    
+                    
                     options.addArguments("--disable-extensions");
+                    
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(options);
                     break;
@@ -199,7 +217,7 @@ public class Login_Class extends Base_Class {
         }
     }
 
-	public void CollectionAgencyLogin() throws Exception {
+	public static void CollectionAgencyLogin() throws Exception {
 		try {
             String Browser = configloader().getProperty("Browser");
             String CollectionAppUrl = configloader().getProperty("CollectionAgencyApplicationUrl");
@@ -425,6 +443,10 @@ public class Login_Class extends Base_Class {
                 Log.info("Driver session closed.");
             }
         }*/
+        
+       
+        
+
     }
 	
 }

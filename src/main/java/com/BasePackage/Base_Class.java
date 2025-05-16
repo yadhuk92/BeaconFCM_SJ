@@ -45,7 +45,7 @@ public class Base_Class {
 		return properties;
 	}
 
-	public void SetUp() throws IOException, InterruptedException {
+	public void SetUp() throws IOException, InterruptedException, Exception {
 		
 		String Browser = configloader().getProperty("Browser");
 		String Url = configloader().getProperty("CoreApplicationUrl");
@@ -53,12 +53,14 @@ public class Base_Class {
 		switch (Browser.toUpperCase()) {
 
 		case "CHROME":
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--disable-extensions");
 			
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(options);
-			break;
+		    ChromeOptions options = new ChromeOptions();
+		    options.addArguments("--disable-extensions");
+		    WebDriverManager.chromedriver().setup();
+		    driver = new ChromeDriver(options);
+		    
+		    break;
+		    
 		case "FIREFOX":
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();			
@@ -78,6 +80,7 @@ public class Base_Class {
 		Pagetitle = driver.getTitle();
 		Log.info("Title is displayed : "+Pagetitle);
 	}
+
 
 	public static Connection OracleDBConnection() throws IOException {
 		
@@ -270,6 +273,26 @@ public class Base_Class {
 	    
 	     return randomWord.toString();
 	 }
+	/*public WebDriver initializeDriverWithDownloadPrefs(String downloadPath) throws IOException {
+        //System.setProperty("webdriver.chrome.driver", "path/to/chromedriver"); // Update this
+		String Browser = configloader().getProperty("Browser");
+        // Preferences
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("download.default_directory", downloadPath);
+        prefs.put("download.prompt_for_download", false);
+        prefs.put("safebrowsing.enabled", true);
+        prefs.put("safebrowsing.disable_download_protection", true); // Skip 'Keep' button
+
+        // Chrome Options
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("prefs", prefs);
+
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+
+        return driver;
+    }*/
+
 	
 	public static void ExtractImportantContentFromASentenceInternalUse (WebDriver driver,String SentenceToSplit, int StartingIndex, int EndingIndex) throws ClassNotFoundException, SQLException, IOException
 	{

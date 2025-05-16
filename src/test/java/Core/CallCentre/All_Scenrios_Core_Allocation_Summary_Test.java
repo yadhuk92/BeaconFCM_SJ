@@ -1,118 +1,156 @@
 package Core.CallCentre;
+
+import java.awt.AWTException;
+import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.ITestContext;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 
 import com.BasePackage.Base_Class;
+import com.BasePackage.Login_Class;
+import com.Utility.ExcelReader;
 import com.Utility.Log;
+import com.Utility.ScreenShot;
+import com.CollectionAgency.AllocationSummary.CA_Allocation_Summary_Page;
 import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 import com.listeners.TestListener;
 
+public class All_Scenrios_Core_Allocation_Summary_Test {
 
-public class All_Scenrios_Core_Allocation_Summary_Test extends Base_Class {
-	
-	com.Utility.ExcelReader ExcelReader;
-	Base_Class Base_Class;
-	Log log;
-	TestListener TestListener;
-	com.Utility.ScreenShot screenShot;
+    Base_Class baseclass;
+    static ExcelReader excelReader;
+    WebDriver driver;
+    private List<WebDriver> drivers = new ArrayList<>();
+    TestListener testListener;
+    ScreenShot screenShot;
+    ExtentTest extentTest;
+    Core_Allocation_Summary_Page allocationSummaryPage;
 
-	Core_Allocation_Summary_Page allocationsummary = new Core_Allocation_Summary_Page();
-	
-	@BeforeSuite
-	public void reference() {
-		ExcelReader = new com.Utility.ExcelReader("Allocation_Summary");
-		log = new Log();
-		TestListener = new TestListener();
-		screenShot = new com.Utility.ScreenShot(null);
-		Base_Class = new Base_Class();
-	}
-
-	@Test(dataProvider = "TestData")
-	public void Loan_Closure_Cash(Map<Object, Object> testdata, ITestContext context)
-			throws ClassNotFoundException, InterruptedException, IOException {
-		try {
-			if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
-				ExtentTestManager.startTest(testdata.get("TestScenario").toString());
-				Log.info("*** Running test method " + testdata.get("TestScenario").toString() + "...");
-				context.setAttribute("fileName", "Login");
-
-				// Application launch
-				ExtentTestManager.startTest("Chrome Driver & Application Launch");
-				Base_Class.SetUp();
-				ExtentTestManager.endTest();
-		
-
-				// userLoginValidPaswrd
-				allocationsummary.Login();
-				
-				//TC_01 ---> VerifyAllocationSummaryDisplayingasSubmenu
-				allocationsummary.VerifyAllocationSummaryDisplayingasSubmenu();
-				
-				//TC_02 ---> ClickonAllocationSummarysubmenu
-				allocationsummary.ClickonAllocationSummarysubmenu();
-				
-				//TC_03 ---> VerifyFieldsandButtononAllocationSummary
-				allocationsummary.VerifyFieldsandButtononAllocationSummary();
-				
-				//TC_04 ---> SearchWithoutSelectingSelectCallCentredropdown
-				allocationsummary.SearchWithoutSelectingSelectCallCentredropdown();
-				
-				//TC_05 ---> SearchwithSelectedCallCentre
-				allocationsummary.SearchwithSelectedCallCentre();
-				
-				//TC_06 ---> DownloadMonthlyAllocationSummary
-				allocationsummary.DownloadMonthlyAllocationSummary();
-				
-				//TC_07 ---> DataVerificationinDownloadedFile
-				allocationsummary.DataVerificationinDownloadedFile();
-				
-				//TC_08 ---> DownloadDailyAllocationfromMonthlySummary
-				allocationsummary.DownloadDailyAllocationfromMonthlySummary();
-				
-				//TC_09 ---> DataVerificationinnDownloadedFile
-				allocationsummary.DataVerificationinnDownloadedFile();
-		
-						
-				// Sign out
-				Thread.sleep(3000);
-				allocationsummary.logout();
-
-				// EndTest
-				// ExtentTestManager.endTest();
-				ExtentManager.getInstance().flush();
-
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
-
-	@DataProvider(name = "TestData")
-	public static Object[][] gettestdate() throws IOException {
-
-		Object[][] objectarry = null;
-		java.util.List<Map<String, String>> completedata = com.Utility.ExcelReader.getdata();
-
-		objectarry = new Object[completedata.size()][1];
-
-		for (int i = 0; i < completedata.size(); i++) {
-			objectarry[i][0] = completedata.get(i);
-		}
-		return objectarry;
-	}
+    @BeforeClass
+    public void setUp() throws Exception {
+        baseclass = new Base_Class();
+        testListener = new TestListener();
+        excelReader = new ExcelReader("Core-AllocationSummary");
+		screenShot = new com.Utility.ScreenShot(driver);
+		allocationSummaryPage = new Core_Allocation_Summary_Page(driver);
+    }
 
 
+    @BeforeMethod
+    public void setupTest(Method method) throws IOException, InterruptedException, Exception {
+        driver = baseclass.getDriver();
+        drivers.add(driver);
+        allocationSummaryPage = new Core_Allocation_Summary_Page(driver);
+        screenShot = new ScreenShot(driver);
+        extentTest = ExtentTestManager.startTest(method.getName()).assignCategory("Core-AllocationSummary");
+
+    }
+
+
+    @Test(priority = 1)
+    public void testLogin() throws Exception {
+    	Login_Class.CoreLogin();  // Assuming login is in baseclass; if not, use a dedicated login class
+        extentTest.log(Status.PASS, "Login successful");
+        Log.info("Login successful");
+    }
+
+    @Test(priority = 2, dependsOnMethods = "testLogin")
+    public void testVerifyAllocationSummarySubmenu() {
+        allocationSummaryPage.VerifyAllocationSummaryDisplayingasSubmenu();
+        extentTest.log(Status.PASS, "Verified Allocation Summary submenu displayed");
+        Log.info("Verified Allocation Summary submenu displayed");
+    }
+
+    @Test(priority = 3, dependsOnMethods = "testVerifyAllocationSummarySubmenu")
+    public void testClickOnAllocationSummarySubmenu() {
+        allocationSummaryPage.ClickonAllocationSummarysubmenu();
+        extentTest.log(Status.PASS, "Clicked on Allocation Summary submenu");
+        Log.info("Clicked on Allocation Summary submenu");
+    }
+
+    @Test(priority = 4, dependsOnMethods = "testClickOnAllocationSummarySubmenu")
+    public void testVerifyFieldsAndButtonsOnAllocationSummary() {
+        allocationSummaryPage.VerifyFieldsandButtononAllocationSummary();
+        extentTest.log(Status.PASS, "Verified fields and buttons on Allocation Summary");
+        Log.info("Verified fields and buttons on Allocation Summary");
+    }
+
+    @Test(priority = 5, dependsOnMethods = "testVerifyFieldsAndButtonsOnAllocationSummary")
+    public void testSearchWithoutSelectingCallCentreDropdown() {
+        allocationSummaryPage.SearchWithoutSelectingSelectCallCentredropdown();
+        extentTest.log(Status.PASS, "Tested search without selecting Call Centre dropdown");
+        Log.info("Tested search without selecting Call Centre dropdown");
+    }
+
+    @Test(priority = 6, dependsOnMethods = "testSearchWithoutSelectingCallCentreDropdown")
+    public void testSearchWithSelectedCallCentre() {
+        allocationSummaryPage.SearchwithSelectedCallCentre();
+        extentTest.log(Status.PASS, "Tested search with selected Call Centre");
+        Log.info("Tested search with selected Call Centre");
+    }
+
+    @Test(priority = 7, dependsOnMethods = "testSearchWithSelectedCallCentre")
+    public void testDownloadMonthlyAllocationSummary() throws InterruptedException, AWTException, IOException {
+        allocationSummaryPage.DownloadMonthlyAllocationSummary();
+        extentTest.log(Status.PASS, "Downloaded Monthly Allocation Summary");
+        Log.info("Downloaded Monthly Allocation Summary");		
+        
+    }
+
+    @Test(priority = 8, dependsOnMethods = "testDownloadMonthlyAllocationSummary")
+    public void testDataVerificationInDownloadedFile() {
+        allocationSummaryPage.DataVerificationinDownloadedFile();
+        extentTest.log(Status.PASS, "Verified data in downloaded file");
+        Log.info("Verified data in downloaded file");
+    }
+
+    @Test(priority = 9, dependsOnMethods = "testDataVerificationInDownloadedFile")
+    public void testDownloadDailyAllocationFromMonthlySummary() throws InterruptedException, AWTException {
+        allocationSummaryPage.DownloadDailyAllocationfromMonthlySummary();
+        extentTest.log(Status.PASS, "Downloaded Daily Allocation from Monthly Summary");
+        Log.info("Downloaded Daily Allocation from Monthly Summary");
+    }
+
+    @Test(priority = 10, dependsOnMethods = "testDownloadDailyAllocationFromMonthlySummary")
+    public void testDataVerificationInDailyDownloadedFile() {
+        allocationSummaryPage.DataVerificationinnDownloadedFile();
+        extentTest.log(Status.PASS, "Verified data in daily downloaded file");
+        Log.info("Verified data in daily downloaded file");
+    }
+    
+    @Test(priority = 11)
+    public void testlogout() throws InterruptedException {
+        allocationSummaryPage.logout();
+        extentTest.log(Status.PASS, "Verified data in daily downloaded file");
+        Log.info("Verified data in daily downloaded file");
+    }
+
+
+    @AfterMethod
+    public void takeScreenshotOnFailure(ITestResult result) throws IOException {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String methodName = result.getMethod().getMethodName();
+            try {
+                File image = screenShot.takeScreenShot(methodName, "Failure");
+                extentTest.log(Status.FAIL, "Test Failed. Screenshot below:",
+                        MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
+            } catch (IOException e) {
+                System.err.println("Failed to capture screenshot: " + e.getMessage());
+            }
+        }
+    }
 }
-		
 
-
-
-
+ 
+    
