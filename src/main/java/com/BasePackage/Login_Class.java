@@ -8,13 +8,21 @@ import java.sql.SQLException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.Page_Repository.AddAgencyPageRepo;
 import com.Page_Repository.LoginPageRepo;
+import com.Page_Repository.MyDeskDashboardRepo;
 import com.Utility.Log;
+import com.aventstack.extentreports.Status;
+import com.extentReports.ExtentTestManager;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Login_Class extends Base_Class {
@@ -530,7 +538,117 @@ public class Login_Class extends Base_Class {
 			throw e;
 		}
 	}
+	public static void CollectionAgencyLogin(String CollectionUserName, String CollectionUserPassword) throws Exception {
+		try {
+			AppType = "CollectionAgency";
+			String Browser = configloader().getProperty("Browser");
+			String CollectionAppUrl = configloader().getProperty("CollectionAgencyApplicationUrl");
+//			String CollectionUserName = configloader().getProperty("CollectionAgencyUserName");
+//			String CollectionUserPassword = configloader().getProperty("CollectionAgencyUserPassword");
 
+			// Initialize WebDriver based on browser type
+			switch (Browser.toUpperCase()) {
+			case "CHROME":
+				ChromeOptions options = new ChromeOptions();
+				// Enable insecure downloads by setting Chrome preferences
+				Map<String, Object> prefs = new HashMap<>();
+				prefs.put("profile.default_content_setting_values.automatic_downloads", 1); // Allow automatic downloads
+				prefs.put("profile.default_content_setting_values.mixed_script", 1); // Allow insecure content globally
+				prefs.put("profile.default_content_settings.popups", 0); // Block popups
+				prefs.put("download.prompt_for_download", false); // Disable download prompt
+				// prefs.put("download.default_directory", "C:\\Users\\pinku.peter\\Downloads");
+				// // Set download directory
+				String userHome = System.getProperty("user.home"); // Gets the user's home directory
+				String downloadDirectory = userHome + File.separator + "Downloads";
+				prefs.put("download.default_directory", downloadDirectory); // Set the dynamic download directory
+				options.setExperimentalOption("prefs", prefs);
+
+				// Add necessary arguments
+				options.addArguments("--allow-running-insecure-content"); // Allow insecure content
+				options.addArguments("--ignore-certificate-errors"); // Ignore SSL certificate errors
+				options.addArguments("--disable-extensions");
+				options.addArguments("--start-maximized");
+				options.addArguments("--disable-popup-blocking");
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver(options);
+				break;
+			case "FIREFOX":
+				WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver();
+				break;
+			default:
+				throw new IllegalArgumentException("The Driver is not defined for browser: " + Browser);
+			}
+
+			driver.manage().window().maximize();
+			driver.manage().deleteAllCookies();
+			Log.info("Driver has initialized successfully for " + Browser + " browser");
+
+			// Load the application URL
+			driver.get(CollectionAppUrl);
+			Common.setDriver(driver);
+
+			String query = "select BANNER_DETAILS from SET_LOGINPAGE_BANNER_DETAILS where IS_ACTIVE=1 and banner_user_type=3 order by banner_section desc FETCH FIRST 1 ROWS ONLY";
+			CollectionAgency_BANNER_DETAILS = DBUtils.fetchSingleValueFromDB(query);
+			System.out.println("BANNER_DETAILS: " + CollectionAgency_BANNER_DETAILS);
+
+			Common.fluentWait(CollectionAgency_BANNER_DETAILS,
+					LoginPageRepo.CollectionAgencyLoginBannerDetails(CollectionAgency_BANNER_DETAILS));
+
+			Pagetitle = driver.getTitle();
+			Log.info("Title is displayed: " + Pagetitle);
+
+			// Perform login actions
+			Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+			Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+			Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+			driver.findElement(LoginPageRepo.UserNameField).sendKeys(CollectionUserName);
+			Log.info("Entered " + CollectionUserName + " in user name field");
+			driver.findElement(LoginPageRepo.PasswordField).sendKeys(CollectionUserPassword);
+			Log.info("Entered " + CollectionUserPassword + " in password field");
+			driver.findElement(LoginPageRepo.LoginButton).click();
+			Log.info("Clicked on login button");
+
+			try {
+				WebElement clickableElement = Common.waitForElementToBeClickable(driver,
+						LoginPageRepo.AlreadyLoginPopupYesButton, Duration.ofSeconds(20));
+
+				if (clickableElement != null) {
+					clickableElement.click();
+					Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
+
+					Common.fluentWait("UserNameField", LoginPageRepo.UserNameField);
+					Common.fluentWait("PasswordField", LoginPageRepo.PasswordField);
+					Common.fluentWait("LoginButton", LoginPageRepo.LoginButton);
+
+					driver.findElement(LoginPageRepo.UserNameField).sendKeys(CollectionUserName);
+					Log.info("Entered " + CollectionUserName + " in user name field");
+					driver.findElement(LoginPageRepo.PasswordField).sendKeys(CollectionUserPassword);
+					Log.info("Entered " + CollectionUserPassword + " in password field");
+					driver.findElement(LoginPageRepo.LoginButton).click();
+					Log.info("Clicked on login button");
+
+					Log.info("Clicked on already login yes button and logged in again with valid credentials");
+				} else {
+					System.out.println("Element not clickable within the timeout.");
+				}
+			} catch (Exception e) {
+				System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
+				System.out.println("Already login pop up not appeared");
+			}
+
+			SomeErrorOccuredHandling();
+
+			Thread.sleep(6000);
+
+		} catch (Exception e) {
+			Log.error("An error occurred in CoreLogin: " + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
 	public static void CallCenterLogin() throws Exception {
 		try {
 			AppType = "CallCenter";

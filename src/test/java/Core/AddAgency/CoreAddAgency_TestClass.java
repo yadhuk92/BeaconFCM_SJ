@@ -1027,7 +1027,7 @@ public class CoreAddAgency_TestClass {
 
 	@Test(priority = 37, enabled = true)
 	public void verify_that_the_username_and_password_are_displayed_after_click_on_submit_button()
-			throws InterruptedException {
+			throws Throwable {
 
 		try {
 			System.out.println(" ************** 38 *****************");

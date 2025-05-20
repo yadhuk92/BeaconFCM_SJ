@@ -333,13 +333,14 @@ public class AddAgencyPage_MainClass extends Base_Class {
 	}
 
 	public void InvalidMobileNumber() throws InterruptedException {
+		Thread.sleep(2000);
 		String MobileNumber = generateInvalidMobileNumber();
 		Thread.sleep(2000);
 		System.out.println("MobileNumber " + MobileNumber);
 		driver.findElement(AddAgencyPageRepo.ContactNumberinput).sendKeys(MobileNumber);
 		ExtentTestManager.getTest().log(Status.PASS, "Invalid Contact Number sent");
 		click(AddAgencyPageRepo.ModeOfCollection, "ModeOfCollection");
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		InvalidContactNumberSuccessfully();
 
 	}
@@ -581,7 +582,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			Log.info("Entering  valid  Collection Agency Name.");
 			WebElement PANField = driver.findElement(AddAgencyPageRepo.ConsultaionNameField);
 			AgencyName = generateRandomAgencyName(3);
-			writeData("AddAgencyList", 1, 6, AgencyName);
+//			writeData("AddAgencyList", 1, 6, AgencyName);
 			PANField.sendKeys(AgencyName);
 			Log.info("Entered valid   Collection Agency Name");
 			click(AddAgencyPageRepo.Zone, "zone");
@@ -636,7 +637,73 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			e.printStackTrace();
 		}
 	}
+	public void AddAgency() {
+		try {			
+			Thread.sleep(2000);				
+			navigateAgencyManagement();
+			navigateToAddAgencyOption();			
+			Common.fluentWaitNew("Zone", AddAgencyPageRepo.Zone);
+			Log.info("Entering  valid  PAN Number.");
+			WebElement PANField1 = driver.findElement(AddAgencyPageRepo.PanField);
+			// it should be used one already
+			Validate_PAN_NewNumber();
+			WebElement PANField = driver.findElement(AddAgencyPageRepo.ConsultaionNameField);
+			AgencyName = generateRandomAgencyName(3);
+			writeData("AddAgencyList", 1, 6, AgencyName);
+			PANField.sendKeys(AgencyName);
+			Log.info("Entered valid   Collection Agency Name");
+			click(AddAgencyPageRepo.Zone, "zone");
+			click(AddAgencyPageRepo.SelectUser, "SelectUser");
+			WaitLoader();
+			click(AddAgencyPageRepo.Region, "Region");
+			click(AddAgencyPageRepo.SelectUser, "SelectUser");
+			click(AddAgencyPageRepo.Scheme, "Scheme");
+			WaitLoader();
+			click(AddAgencyPageRepo.allscheme, "allscheme");
+			WaitLoader();
+			click(AddAgencyPageRepo.ProductType, "ProductType");
+			WaitLoader();
+			click(AddAgencyPageRepo.SelectUser, "SelectUser");
+			WaitLoader();
+			click(AddAgencyPageRepo.ModeOfCollection, "ModeOfCollection");
+			validMobileNumber();
+			// dates
+			
+			click(AddAgencyPageRepo.DateEmpanelment, "DateEmpanelment");
+			String today = String.valueOf(LocalDate.now().getDayOfMonth());
+			SelectCurrentDate(today, "DateEmpanelment");
+			
+			Common.fluentWaitNew("DateEmpanelmentExpiry", AddAgencyPageRepo.DateEmpanelmentExpiry);
+			click(AddAgencyPageRepo.DateEmpanelmentExpiry, "DateEmpanelmentExpiry");
+			int year = LocalDate.now().getYear();
+			int RequiredYear = year + 3;
+			String RequiredYearString = String.valueOf(RequiredYear);
+			ChangeYear(RequiredYearString);
+			SelectCurrentDate(today, "DateEmpanelment");
+			
+			Common.fluentWaitNew("AgreementStarting", AddAgencyPageRepo.AgreementStarting);
+			click(AddAgencyPageRepo.AgreementStarting, "AgreementStarting");
+			SelectCurrentDate(today, "DateEmpanelment");
+			
+			Common.fluentWaitNew("AgreementEnding", AddAgencyPageRepo.AgreementEnding);
+			click(AddAgencyPageRepo.AgreementEnding, "AgreementEnding");
+			int year1 = LocalDate.now().getYear();
+			int RequiredYear1 = year1 + 1;
+			String RequiredYearString1 = String.valueOf(RequiredYear1);
+			SelectDate(today, null, RequiredYearString1);
+			SelectCurrentDate(today, "DateEmpanelment");
+			// not worked last and last but one
 
+			SendKeys(AddAgencyPageRepo.Remarks, "Remarks comment");
+			click(AddAgencyPageRepo.Submit, "Submit");
+			Thread.sleep(3000);
+			
+
+		} catch (Exception e) {
+			ExtentTestManager.getTest().log(Status.FAIL, "");
+			e.printStackTrace();
+		}
+	}
 	public void ClearPanAndSubmit() throws InterruptedException {
 		click(AddAgencyPageRepo.PanField, "PanField");
 		Thread.sleep(3000);

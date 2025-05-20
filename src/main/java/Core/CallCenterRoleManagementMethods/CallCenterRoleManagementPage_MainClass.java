@@ -34,6 +34,11 @@ public class CallCenterRoleManagementPage_MainClass extends Base_Class {
 	public static String CORE_LOGIN_BANNER_DETAILS;
 	public static String CollectionAgency_BANNER_DETAILS;
 	public static String CallCentre_BANNER_DETAILS;
+	public static String orgName;
+	public static String orgTypeName;	
+	public static String CoreUserName;
+	public static String CoreUserPassword;
+
 	// Constructor
 	public CallCenterRoleManagementPage_MainClass(WebDriver driver) {
 		this.driver = driver;
