@@ -10,7 +10,7 @@ public class LoginPageRepo {
 	public static By Spinner = By.xpath("//div[@class='spinner']");
 	public static By LoginHyperlink2Banner = By.xpath("//a[text()='https://docs.google.com/spreadsheets/d/1...']");
 	public static By AlreadyLoginPopupYesButton = By.xpath("//span[text()='Yes' and @class='rz-button-text']");
-	public static By AccountCategoryLabelInDashboard = By.xpath("//span[@class='rz-column-title' and text()='Account Category']");
+	public static By AccountCategoryLabelInDashboard = By.xpath("//span[text()='Account Category']");
 	public static By UserIDInDashboard = By.xpath("//span[@class='emailuser']");
 	public static By GoCollectionButton = By.xpath("//button[@class='btn btn-primary' and text()='Go Collection']");
 	public static By SetAsDefaultRadioButton = By.xpath("//div[@class='rz-chkbox-box']");

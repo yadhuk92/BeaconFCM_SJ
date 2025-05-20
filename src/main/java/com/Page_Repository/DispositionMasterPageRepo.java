@@ -61,7 +61,8 @@ public class DispositionMasterPageRepo {
     public static By lastPageArrowButton = By.xpath("(//li[@class='page-item  '])[3]//span[contains(text(),'>>')]");
     public static By previousdoubleArrowButtons = By.xpath("//li[@class='page-item  ']//span[contains(text(),'<<')]");
     public static By spinner = By.xpath("//div[@class='spinner']");
-    public static By selectAllOptionpath = By.xpath("(//div//div[@class='rz-chkbox'])[5]");
+    //public static By selectAllOptionpath = By.xpath("(//div//div[@class='rz-chkbox'])[5]");
+    public static By selectAllOptionpath = By.xpath("(//*[contains(@id, 'popup')]/div[1]/div[1]/div[2])[4]");
     public static By outsideElement = By.xpath("//div[@class='rz-dialog-content']");
     public static By clearValueIcon = By.xpath("(//div[@class='rz-helper-hidden-accessible']//following::label//following::i)[1]");
     public static By clearvaluepath = By.xpath("(//div[@onmousedown='Radzen.activeElement = null']//div[@class='rz-helper-hidden-accessible']//input//following::i)[2]");
