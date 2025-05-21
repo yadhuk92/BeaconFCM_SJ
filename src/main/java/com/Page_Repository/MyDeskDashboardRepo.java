@@ -295,6 +295,7 @@ public class MyDeskDashboardRepo {
 	public static By GroupByDropDown  = By.xpath("//*[contains(text(),'Group By')]/..//*[contains(@class,'down')]");	
 	public static By GridAccount  = By.xpath("//table/tbody/tr/td[3]/span");	
 	public static By DownloadOffline  = By.xpath("//*[contains(text(),'download_for_offline')]");	
-	
+	public static By AgencyManagementmainmenu = By.xpath("//span[contains(text(),'Agency Management')]");
+	public static By AddAgencySubmenu = By.cssSelector("[title|=\"Add Agency\"]");
 	
 }

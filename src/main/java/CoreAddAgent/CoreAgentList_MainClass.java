@@ -55,10 +55,10 @@ import Core.CallCenterRoleManagementMethods.CallCenterRoleManagementPage_MainCla
 import Core.MyDesk.Dashboard.MyDeskDashboardPage_MainClass;
 
 import java.sql.Connection;
-import CoreAddAgent.CoreAgentList_MainCla;
+import CoreAddAgent.CoreAgentList_MainClass;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class CoreAgentList_MainCla extends Base_Class {
+public class CoreAgentList_MainClass extends Base_Class {
 
 	private static WebDriver driver;
 	CallCenterRoleManagementPage_MainClass CallCenterRoleManagementPage = new CallCenterRoleManagementPage_MainClass(
@@ -77,7 +77,7 @@ public class CoreAgentList_MainCla extends Base_Class {
 	public static String CoreUserName;
 	public static String CoreUserPassword;
 	public static String AppType;
-	public CoreAgentList_MainCla(WebDriver driver) {
+	public CoreAgentList_MainClass(WebDriver driver) {
 		Log.info("Initializing Agency Management Page...");
 		this.driver = driver;
 		Log.info("WebDriver instance assigned.");

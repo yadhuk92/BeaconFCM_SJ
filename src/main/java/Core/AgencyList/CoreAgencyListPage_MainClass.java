@@ -307,8 +307,8 @@ public class CoreAgencyListPage_MainClass extends Base_Class {
 	public void AgencyCount() {
 		String PageCount = driver.findElement(CoreAgencyListRepo.LastPageCount).getText();
 		ExtentTestManager.getTest().log(Status.PASS, "Total Number of pages " + PageCount);
-		String AgencyCount = driver.findElement(CoreAgencyListRepo.TotalAgencyRecords).getText();
-		ExtentTestManager.getTest().log(Status.PASS, "Total Number of Agency listed in the gid " + AgencyCount);
+//		String AgencyCount = driver.findElement(CoreAgencyListRepo.TotalAgencyRecords).getText();
+//		ExtentTestManager.getTest().log(Status.PASS, "Total Number of Agency listed in the gid " + AgencyCount);
 	}
 
 	public void verifyDropdownAddNewAgencyPageGrid() {

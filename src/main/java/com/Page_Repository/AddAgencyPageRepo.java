@@ -24,10 +24,14 @@ public class AddAgencyPageRepo {
 	public static By Scheme = By.xpath("//*[contains(text(),'Scheme Type')]/following-sibling::*[contains(@class,'mandatory-color')]");
 	public static By ProductType = By.xpath("//*[contains(text(),'Product Type')]/following-sibling::*[contains(@class,'mandatory-color')]");
 	public static By ContactNumber = By.xpath("//*[contains(text(),'Contact Number')]/following-sibling::*[contains(@class,'mandatory-color')]");
-	public static By DateEmpanelmentExpiry = By.xpath("//*[contains(text(),'Date of Empanelment Expiry')]/..//input");
-	public static By DateEmpanelment = By.xpath("//*[contains(text(),'Date of Empanelment')]/..//input");
-	public static By AgreementStarting = By.xpath("//*[contains(text(),'Agreement Duration Starting')]/..//input");
-	public static By AgreementEnding = By.xpath("//*[contains(text(),'Agreement Duration Ending')]/..//input");
+	//public static By DateEmpanelmentExpiry = By.xpath("//*[contains(text(),'Date of Empanelment Expiry')]/..//input");
+	public static By DateEmpanelmentExpiry = By.xpath("//input[@name='Empanelmentexpiry']");
+	//public static By DateEmpanelment = By.xpath("//*[contains(text(),'Date of Empanelment')]/..//input");
+	public static By DateEmpanelment = By.xpath("(//input[@placeholder='DD-MM-YYYY'])[1]");
+	//public static By AgreementStarting = By.xpath("//*[contains(text(),'Agreement Duration Starting')]/..//input");
+	public static By AgreementStarting = By.xpath("//input[@name='AgreementStarting']");
+	//public static By AgreementEnding = By.xpath("//*[contains(text(),'Agreement Duration Ending')]/..//input");
+	public static By AgreementEnding = By.xpath("//input[@name='AgreementEnding']");
 	public static By Remarks = By.xpath("//*[contains(text(),'Remarks')]/..//textarea");
 	public static By GST = By.xpath("//*[contains(text(),'GST Number')]/..//input");
 	public static By Constitution = By.xpath("//*[contains(text(),'Constitution Type')]/following-sibling::*");
@@ -76,9 +80,13 @@ public class AddAgencyPageRepo {
 	public void labels(String fieldName)
 	{
 		String filednames= "//label[contains(text(), '" + fieldName + "')]";
-
-	
-	 
 	}
 	
+	public static By DateOfEmpanelment_Date(String Date) {
+	    String xpathExpression;
+
+	        xpathExpression = "(//span[text()='"+Date+"'])[4]";
+
+	    return By.xpath(xpathExpression);
+	}
 }

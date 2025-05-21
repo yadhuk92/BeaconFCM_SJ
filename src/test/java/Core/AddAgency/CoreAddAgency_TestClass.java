@@ -2,9 +2,6 @@ package Core.AddAgency;
 
 import java.io.File;
 
-
-
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,11 +49,12 @@ import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
 import com.listeners.TestListener;
 
-
 import Core.MyDesk.Dashboard.MyDeskDashboardPage_MainClass;
 import Core.AddAgencyManagement.AddAgencyPage_MainClass;
+
 import bsh.ParseException;
 import jdk.internal.org.jline.utils.Log;
+
 //updated code
 public class CoreAddAgency_TestClass {
 	private String totalAccounts;
@@ -64,7 +62,7 @@ public class CoreAddAgency_TestClass {
 	private List<WebDriver> drivers = new ArrayList<>();
 	private static String accountNumberFromExcel;
 	Base_Class baseclass;
-	
+
 	static com.Utility.ExcelReader ExcelReader;
 	WebDriver driver;
 	TestListener TestListener;
@@ -72,16 +70,15 @@ public class CoreAddAgency_TestClass {
 	ExtentTest extenttest;
 	Login_Class callcenterlogin;
 	AddAgencyPage_MainClass addagencypage;
-	
 
 	@BeforeClass
 
 	public void SetUp() throws Exception {
 		baseclass = new Base_Class();
 		callcenterlogin = new Login_Class();
-		callcenterlogin.CoreLogin_HO();		
-		driver = baseclass.getDriver(); // Retrieve the driver instance		
-		addagencypage=new AddAgencyPage_MainClass(driver);
+		callcenterlogin.CoreLogin_HO();
+		driver = baseclass.getDriver(); // Retrieve the driver instance
+		addagencypage = new AddAgencyPage_MainClass(driver);
 		ExcelReader = new com.Utility.ExcelReader("AddAgency");
 		TestListener = new TestListener();
 		screenShot = new com.Utility.ScreenShot(driver);
@@ -92,13 +89,14 @@ public class CoreAddAgency_TestClass {
 		baseclass = new Base_Class();
 		driver = baseclass.getDriver();
 		drivers.add(driver);
-		
+
 		callcenterlogin = new Login_Class();
 		// Update the ScreenShot object with the new driver
 		screenShot = new com.Utility.ScreenShot(driver);
 		// Start a new ExtentTest for the current test method
 		extenttest = ExtentTestManager.startTest(method.getName()).assignCategory("Core Add Agency");
 	}
+
 	@Test(priority = 1, enabled = true)
 	public void Login_to_CoreWithHO_User() throws InterruptedException {
 
@@ -733,7 +731,8 @@ public class CoreAddAgency_TestClass {
 
 		try {
 			System.out.println(" ************** 24 *****************");
-			System.out.println();Thread.sleep(2000);
+			System.out.println();
+			Thread.sleep(2000);
 			addagencypage.click(AddAgencyPageRepo.Submit, "Submit");
 			addagencypage.isDisplayed(AddAgencyPageRepo.EmpanelmentExpiryDate, "EmpanelmentExpiryDate");
 
@@ -1026,8 +1025,7 @@ public class CoreAddAgency_TestClass {
 	}
 
 	@Test(priority = 37, enabled = true)
-	public void verify_that_the_username_and_password_are_displayed_after_click_on_submit_button()
-			throws Throwable {
+	public void verify_that_the_username_and_password_are_displayed_after_click_on_submit_button() throws Throwable {
 
 		try {
 			System.out.println(" ************** 38 *****************");
@@ -1064,35 +1062,35 @@ public class CoreAddAgency_TestClass {
 
 	}
 
-
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
-	    if (result.getStatus() == ITestResult.FAILURE) {
-	        String methodName = result.getMethod().getMethodName();
-	        File image = screenShot.takeScreenShot(methodName, "Failure");
-	        extenttest.log(Status.INFO, "Screenshot of failure: ",
-	                MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
-	    }
-
-	    ExtentManager.getInstance().flush(); // Move outside the if block
-	}
-	 @DataProvider(name = "TestData")
-		public static Object[][] gettestdate() throws IOException {
-		 ExcelReader = new com.Utility.ExcelReader("AddAgency");
-			Object[][] objectarry = null;
-			java.util.List<Map<String, String>> completedata = com.Utility.ExcelReader.getdata();
-
-			objectarry = new Object[completedata.size()][1];
-
-			for (int i = 0; i < completedata.size(); i++) {
-				objectarry[i][0] = completedata.get(i);
-			}
-			return objectarry;
+		if (result.getStatus() == ITestResult.FAILURE) {
+			String methodName = result.getMethod().getMethodName();
+			File image = screenShot.takeScreenShot(methodName, "Failure");
+			extenttest.log(Status.INFO, "Screenshot of failure: ",
+					MediaEntityBuilder.createScreenCaptureFromPath(image.getAbsolutePath()).build());
 		}
+
+		ExtentManager.getInstance().flush(); // Move outside the if block
+	}
+
+	@DataProvider(name = "TestData")
+	public static Object[][] gettestdate() throws IOException {
+		ExcelReader = new com.Utility.ExcelReader("AddAgency");
+		Object[][] objectarry = null;
+		java.util.List<Map<String, String>> completedata = com.Utility.ExcelReader.getdata();
+
+		objectarry = new Object[completedata.size()][1];
+
+		for (int i = 0; i < completedata.size(); i++) {
+			objectarry[i][0] = completedata.get(i);
+		}
+		return objectarry;
+	}
 
 	@AfterClass
 	public void afterEachTest() {
-		
+
 		// Close all tracked browser instances
 		for (WebDriver driverInstance : drivers) {
 			if (driverInstance != null) {
