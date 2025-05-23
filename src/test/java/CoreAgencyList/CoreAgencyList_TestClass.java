@@ -71,6 +71,8 @@ public class CoreAgencyList_TestClass extends Base_Class {
 	public static String CountFromTheGRIDBCOloanAtRisk;
 	public static String tileCount;
 	public static String firstWindowHandle;
+	public static String resultaddress;
+	
 
 	@BeforeClass
 	public void reference() {
@@ -487,12 +489,13 @@ public class CoreAgencyList_TestClass extends Base_Class {
 			CoreAgencyListPage_MainClass.WaitLoader();
 			String Address = testdata.get("Address").toString();
 			String RandomString =CoreAgencyListPage_MainClass.generateRandomString(3);
-			String result = Address + " " + RandomString;
+			resultaddress= Address + " " + RandomString;
+			System.out.println("resultaddress"+ resultaddress);
 			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.Action, "Action");
 			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.Edit, "Edit");
 			CoreAgencyListPage_MainClass.WaitLoader();
-			Common.fluentWait("Action", CoreAgencyListRepo.Zone);
-			CoreAgencyListPage_MainClass.UpdateAdress(result);
+			Common.fluentWait("Zone", CoreAgencyListRepo.Zone);Thread.sleep(2000);
+			CoreAgencyListPage_MainClass.UpdateAdress(resultaddress);
 			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.Update, "Update");// some times error is showing in
 																					// update need to update
 			CoreAgencyListPage_MainClass.RecordUpdatedSuccessfully();
@@ -513,9 +516,9 @@ public class CoreAgencyList_TestClass extends Base_Class {
 
 		try {
 			System.out.println("*********** 20  *************");
-			String Address = testdata.get("Address").toString();
+//			String Address = testdata.get("Address").toString();
 			Common.fluentWait("Action", CoreAgencyListRepo.Action);
-			CoreAgencyListPage_MainClass.VerifyTheAdressUpdate(Address);
+			CoreAgencyListPage_MainClass.VerifyTheAdressUpdate(resultaddress);
 		} catch (AssertionError | Exception e) {
 			String testName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -550,7 +553,17 @@ public class CoreAgencyList_TestClass extends Base_Class {
 
 		try {
 			System.out.println("*********** 22  *************");
-			String Address = testdata.get("Address").toString();
+//			String Address = testdata.get("Address").toString();
+			String AgencyName = ExcelReader.readCellData("AddAgencyList", 1, 6); // Example: Row 1, Column 3
+			System.out.println("Value from Excel: " + AgencyName);
+			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.AgencyManagementmainmenu, "AgencyManagementmainmenu");
+			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.AgencyList, "AgencyList");
+			CoreAgencyListPage_MainClass.WaitLoader();
+			Common.fluentWait("Action", CoreAgencyListRepo.Action);
+			driver.findElement(CoreAgencyListRepo.AgencyName).sendKeys(AgencyName);
+			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.Search, "Search");
+			CoreAgencyListPage_MainClass.WaitLoader();
+			String Address =resultaddress;
 			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.Action, "Action");
 			CoreAgencyListPage_MainClass.click(CoreAgencyListRepo.Edit, "Edit");
 			CoreAgencyListPage_MainClass.WaitLoader();

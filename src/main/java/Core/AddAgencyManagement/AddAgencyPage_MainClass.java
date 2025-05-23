@@ -109,7 +109,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		isDisplayed(AddAgencyPageRepo.Remarks, "Remarks");
 		isDisplayed(AddAgencyPageRepo.Close, "Close");
 		isDisplayed(AddAgencyPageRepo.Submit, "Submit");
-		isDisplayed(AddAgencyPageRepo.SaveAsDraft, "SaveAsDraft");
+//		isDisplayed(AddAgencyPageRepo.SaveAsDraft, "SaveAsDraft");
 		isDisplayed(AddAgencyPageRepo.Address, "Address");
 		isDisplayed(AddAgencyPageRepo.State, "State");
 		isDisplayed(AddAgencyPageRepo.City, "City");
@@ -583,7 +583,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			Log.info("Entering  valid  Collection Agency Name.");
 			WebElement PANField = driver.findElement(AddAgencyPageRepo.ConsultaionNameField);
 			AgencyName = generateRandomAgencyName(3);
-//			writeData("AddAgencyList", 1, 6, AgencyName);
+			writeData("AddAgencyList", 1, 6, AgencyName);
 			PANField.sendKeys(AgencyName);
 			Log.info("Entered valid   Collection Agency Name");
 			click(AddAgencyPageRepo.Zone, "zone");
@@ -663,7 +663,8 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			Validate_PAN_NewNumber();
 			WebElement PANField = driver.findElement(AddAgencyPageRepo.ConsultaionNameField);
 			AgencyName = generateRandomAgencyName(3);
-			writeData("AddAgencyList", 1, 6, AgencyName);
+//			writeData("AddAgencyList", 1, 9, AgencyName);
+			writeData("CoreAgentList", 1, 5, AgencyName);
 			PANField.sendKeys(AgencyName);
 			Log.info("Entered valid   Collection Agency Name");
 			click(AddAgencyPageRepo.Zone, "zone");

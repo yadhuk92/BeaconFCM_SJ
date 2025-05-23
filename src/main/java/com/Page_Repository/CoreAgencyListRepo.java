@@ -15,7 +15,7 @@ public class CoreAgencyListRepo {
 	public static By AgencyName = By.xpath("//*[contains(text(),'Agency Name')]/..//input");
 	public static By PANNumber = By.xpath("//*[contains(text(),'PAN Number')]/..//input");
 	public static By Zone = By.xpath(
-			"//*[contains(text(),'Zone/CO')]/following-sibling::*[contains(@class,'rz-dropdown valid rz-clear form-control')]");
+			"//*[contains(text(),'Zone/CO')]/following-sibling::*");
 	public static By Region = By.xpath(
 			"//*[contains(text(),'Region')]/following-sibling::*[contains(@class,'rz-dropdown valid rz-clear form-control')]");
 	public static By AgencyNameFromList = By.xpath("//table/tbody/tr[2]/td[2]/span");

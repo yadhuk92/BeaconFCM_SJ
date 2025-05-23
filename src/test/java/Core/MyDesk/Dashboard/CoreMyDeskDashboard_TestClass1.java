@@ -36,7 +36,7 @@ import com.listeners.TestListener;
 import Core.AddNewAgentMethods.AddNewAgentPage_MainClass;
 import Core.CallCenterRoleManagementMethods.CallCenterRoleManagementPage_MainClass;
 
-public class CoreMyDeskDashboard_TestClass1  extends Base_Class {
+public class CoreMyDeskDashboard_TestClass1 extends Base_Class {
 	Log log;
 	Base_Class Base_Class;
 	com.Utility.ExcelReader ExcelReader;
@@ -90,6 +90,7 @@ public class CoreMyDeskDashboard_TestClass1  extends Base_Class {
 			throws Throwable {
 
 		try {
+
 			String query = "DELETE FROM mst_branch_acc_allocated WHERE ALLOCATED_DATE = TRUNC(SYSDATE)";
 			DBUtils.executeSQLStatement(query);
 			String query1 = "DELETE FROM mst_callcentre_accounts WHERE ASSIGNMENT_DATE = TRUNC(SYSDATE)";
@@ -500,6 +501,11 @@ public class CoreMyDeskDashboard_TestClass1  extends Base_Class {
 	public void Download_SMA_Account_List(ITestContext context) throws Throwable {
 
 		try {
+//			MyDeskDashboardPage_MainClass.ClearDataBase();
+//			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AgencyManagementmainmenu,
+//					"AgencyManagementmainmenu");
+//			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AddAgencySubmenu, "AddAgencySubmenu");
+
 			System.out.println(" ************** 28 *****************");
 			System.out.println();
 			MyDeskDashboardPage_MainClass.clickMyDesk();
@@ -564,8 +570,8 @@ public class CoreMyDeskDashboard_TestClass1  extends Base_Class {
 			System.out.println();
 
 			MyDeskDashboardPage_MainClass.clickUnassignedAccountsSMA();
-			MyDeskDashboardPage_MainClass.WaitLoader();
-			Common.fluentWait("Dashboard", MyDeskDashboardRepo.Download);
+			MyDeskDashboardPage_MainClass.WaitLoader();Thread.sleep(2000);
+//			Common.fluentWait("Download", MyDeskDashboardRepo.Download);
 			MyDeskDashboardPage_MainClass.WaitLoader();
 //			MyDeskDashboardPage_MainClass.getTotalAccount();//		
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocatedList, "AllocatedList");
@@ -625,12 +631,16 @@ public class CoreMyDeskDashboard_TestClass1  extends Base_Class {
 
 			System.out.println(" ************** 30 *****************");
 			System.out.println();
+			MyDeskDashboardPage_MainClass.clickMyDesk();
+			MyDeskDashboardPage_MainClass.WaitLoader();
+			MyDeskDashboardPage_MainClass.clickDashboard();
+			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.clickUnassignedAccountsSMA();
 			MyDeskDashboardPage_MainClass.WaitLoader();
 			Common.fluentWait("Dashboard", MyDeskDashboardRepo.Download);
 			MyDeskDashboardPage_MainClass.WaitLoader();
 			MyDeskDashboardPage_MainClass.getTotalAccount();
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Download, "Download");
+			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.Download, "Download");	MyDeskDashboardPage_MainClass.Filedownloadedsuccessfully();
 			MyDeskDashboardPage_MainClass.ExcelReadAndStoreForCompare();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.AllocateToDropdown, "AllocateToDropdown");
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.CallcenterUser, "CallCenter");
@@ -674,7 +684,7 @@ public class CoreMyDeskDashboard_TestClass1  extends Base_Class {
 			System.out.println(" ************** 36 *****************");
 			System.out.println();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.chkbox, "chkbox");
-			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.chkbox, "chkbox");
+//			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.chkbox, "chkbox");
 			int incount = MyDeskDashboardPage_MainClass.GetInitialdownloadCount();
 			MyDeskDashboardPage_MainClass.click(MyDeskDashboardRepo.DownloadinExcel, "DownloadinExcel");
 			MyDeskDashboardPage_MainClass.Filedownloadedsuccessfully();
@@ -1179,8 +1189,7 @@ public class CoreMyDeskDashboard_TestClass1  extends Base_Class {
 			throw e;
 		}
 	}
-	
-	
+
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
 		// Check if the test case failed
@@ -1196,11 +1205,12 @@ public class CoreMyDeskDashboard_TestClass1  extends Base_Class {
 				System.err.println("Failed to capture screenshot: " + e.getMessage());
 			}
 		}
+		ExtentManager.getInstance().flush();
 	}
 
 	@AfterClass
 	public void afterclass() {
-		ExtentManager.getInstance().flush();
+
 		// Close the browser
 		if (driver != null) {
 			driver.quit();

@@ -2,7 +2,6 @@ package Core.AgentList;
 
 import java.io.File;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -211,13 +210,13 @@ public class CoreAgentList_TestClass {
 			System.out.println(" ************** 8 *****************");
 			CoreAgentList_MainCla1.CheckRole();
 			CoreAgentList_MainCla1.click(CoreAgentListRepo.AgentManagement, "AgentManagement");
-			CoreAgentList_MainCla1.click(CoreAgentListRepo.AddNewAgent, "AddNewAgent");			
+			CoreAgentList_MainCla1.click(CoreAgentListRepo.AddNewAgent, "AddNewAgent");
 
 			// add new role if null
 			CoreAgentList_MainCla1.AddAgentCode();
 			CoreAgentList_MainCla1.AddAgentName();
 			CoreAgentList_MainCla1.AddAgentPhoneNumber();
-			CoreAgentList_MainCla1.click(CoreAgentListRepo.RoleAddNewAgent, "RoleAddNewAgent");		
+			CoreAgentList_MainCla1.click(CoreAgentListRepo.RoleAddNewAgent, "RoleAddNewAgent");
 			CoreAgentList_MainCla1.click(CoreAgentListRepo.agenntrole, "agenntrole");
 			CoreAgentList_MainCla1.click(CoreAgentListRepo.Submit, "Submit");
 			CoreAgentList_MainCla1.isUserCreatedSuccessfully();
@@ -236,7 +235,8 @@ public class CoreAgentList_TestClass {
 
 		try {
 			System.out.println(" ************** 9 *****************");
-			CoreAgentList_MainCla1.UserSearch();CoreAgentList_MainCla1.WaitLoader();
+			CoreAgentList_MainCla1.UserSearch();
+			CoreAgentList_MainCla1.WaitLoader();
 			CoreAgentList_MainCla1.SearchResult();
 
 		}
@@ -268,10 +268,11 @@ public class CoreAgentList_TestClass {
 		try {
 			System.out.println(" ************** 11 *****************");
 			CoreAgentList_MainCla1.click(CoreAgentListRepo.AgencyManagement, "AgencyManagement");
-			CoreAgentList_MainCla1.click(CoreAgentListRepo.AgentList, "AgentList");
+			CoreAgentList_MainCla1.click(CoreAgentListRepo.AgentList, "AgentList");	CoreAgentList_MainCla1.WaitLoader();
 			UsernameTestData = ExcelReader.readCellData("CoreAgentList", 1, 3);
+			AgencyNameTestData = ExcelReader.readCellData("CoreAgentList", 1, 5);
 			driver.findElement(CoreAgentListRepo.UserName_HO).sendKeys(UsernameTestData);
-			AgencyNameTestData = ExcelReader.readCellData("AddAgencyList", 1, 6);
+
 			CoreAgentList_MainCla1.click(CoreAgentListRepo.AgentCode, "AgentCode");
 			CoreAgentList_MainCla1.click(CoreAgentListRepo.AgencyName, "AgencyName");
 

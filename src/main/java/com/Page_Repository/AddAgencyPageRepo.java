@@ -39,8 +39,11 @@ public class AddAgencyPageRepo {
 	public static By Close = By.xpath("//*[contains(text(),'Close')]");
 	public static By Submit = By.xpath("//*[contains(text(),'Submit')]");
 	public static By SaveAsDraft = By.xpath("//*[contains(text(),'Save As Draft')]");
-	public static By allZone = By.xpath("(//*[@class='rz-chkbox-box   '])[14]");//need to update
-	public static By allscheme = By.xpath("(//*[@class='rz-chkbox-box   '])[9]");//need to updat	
+//	public static By allZone = By.xpath("(//*[@class='rz-chkbox-box   '])[14]");//need to update
+//	public static By allscheme = By.xpath("(//*[@class='rz-chkbox-box   '])[9]");//need to updat	
+	public static By allZone = By.xpath("(//div[@class='rz-chkbox'])[last()]");
+	public static By allscheme = By.xpath("(//div[@class='rz-chkbox'])[last()]");
+	
 	public static By SelectUser  = By.xpath("(//*[@role='listbox']/..//li[1])[last()]");
 	public static String SelectUserTC  = "//*[@aria-label='%s']";
 	public static By StateValueFromUI  = By.xpath("//*[contains(text(),'State')]/..//label[contains(@class,'dropdown')]");
