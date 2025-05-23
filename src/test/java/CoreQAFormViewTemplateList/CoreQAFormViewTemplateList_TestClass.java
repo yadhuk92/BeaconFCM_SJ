@@ -4,9 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.support.ui.WebDriverWait;
@@ -52,6 +55,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	ExtentTest extenttest;
 	Login_Class callcenterlogin;
 	CoreQAFormViewTemplateList_MainClass CoreQAFormViewTemplate;
+	
 	
 
 	@BeforeSuite
@@ -516,8 +520,325 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	            throw e;
 	        }
 	    }
-	        
+	    @Test(priority = 21, enabled = true)
+    public void verifyOutputGridColumnsDisplayed() throws Throwable {
+        try {
+            System.out.println(" ************** TestCase 21: Output Grid Columns Verification *****************");
+            ExtentTestManager.getTest().log(Status.INFO, "Starting test: verify output grid column headers");
+
+            CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+
+            Assert.assertTrue(main.isGridColumnDisplayed(CoreQAFormViewTemplateListPageRepo.gridHeaderOrderNumber), "Order Number column not displayed");
+            Assert.assertTrue(main.isGridColumnDisplayed(CoreQAFormViewTemplateListPageRepo.gridHeaderQuestion), "Question column not displayed");
+            Assert.assertTrue(main.isGridColumnDisplayed(CoreQAFormViewTemplateListPageRepo.gridHeaderExpectedAnswerType), "Expected Answer Type column not displayed");
+            Assert.assertTrue(main.isGridColumnDisplayed(CoreQAFormViewTemplateListPageRepo.gridHeaderValues), "Values column not displayed");
+            Assert.assertTrue(main.isGridColumnDisplayed(CoreQAFormViewTemplateListPageRepo.gridHeaderParentQuestion), "Parent Question column not displayed");
+            Assert.assertTrue(main.isGridColumnDisplayed(CoreQAFormViewTemplateListPageRepo.gridHeaderParentValue), "Parent Value column not displayed");
+            Assert.assertTrue(main.isGridColumnDisplayed(CoreQAFormViewTemplateListPageRepo.gridHeaderIsMandatory), "Is Mandatory column not displayed");
+
+            ExtentTestManager.getTest().log(Status.PASS, "All specified grid columns are displayed correctly");
+
+        } catch (Exception | AssertionError e) {
+            ExtentTestManager.getTest().log(Status.FAIL, "Grid column test failed: " + e.getMessage());
+            throw e;
+        }
+    }
+
 	    
+	    @Test(priority = 22, enabled = true)
+	    public void verifyGridColumnsAndFirstRowValue() {
+	        try {
+	            System.out.println(" ************** TestCase 22: Grid Columns and First Row Data Verification *****************");
+	            ExtentTestManager.getTest().log(Status.INFO, "Starting test: verify output grid column headers and first row value");
+
+	            CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+
+	            // Columns to verify with display names
+	            Map<By, String> columns = new LinkedHashMap<>();
+	            columns.put(CoreQAFormViewTemplateListPageRepo.gridHeaderOrderNumber, "Order Number");
+	            columns.put(CoreQAFormViewTemplateListPageRepo.gridHeaderQuestion, "Question");
+	            columns.put(CoreQAFormViewTemplateListPageRepo.gridHeaderExpectedAnswerType, "Expected Answer Type");
+	            columns.put(CoreQAFormViewTemplateListPageRepo.gridHeaderValues, "Values");
+	            columns.put(CoreQAFormViewTemplateListPageRepo.gridHeaderParentQuestion, "Parent Question");
+	            columns.put(CoreQAFormViewTemplateListPageRepo.gridHeaderParentValue, "Parent Value");
+	            columns.put(CoreQAFormViewTemplateListPageRepo.gridHeaderIsMandatory, "Is Mandatory");
+
+	            boolean allPass = main.verifyGridColumnsAndQuestionRowValue(
+	                    columns,
+	                    CoreQAFormViewTemplateListPageRepo.gridFirstRowQuestion,"Q1");
+
+	            Assert.assertTrue(allPass, "Grid column check or Question value mismatch");
+
+	            ExtentTestManager.getTest().log(Status.PASS, "Grid columns and first row Question value verified successfully");
+
+	        } catch (Exception | AssertionError e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Grid column or value test failed: " + e.getMessage());
+	            throw e;
+	        }
+	    }
+	
+	   /* @Test(priority = 23, enabled = true)
+	    public void createMultipleQuestions() throws InterruptedException {
+	        ExtentTestManager.getTest().log(Status.INFO, "TestCase 23: Creating multiple questions Q2 and Q3 under existing template");
+
+	        CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+
+	        main.createQuestion("Q2", "TextBox", null, false);
+	        main.createQuestion("Q3", "Drop Down", "sma1, sma2", false);
+
+	        ExtentTestManager.getTest().log(Status.PASS, "Q2 and Q3 created successfully under the template");
+	        ExtentTestManager.getTest().log(Status.PASS, "Expected Result:Should be possible to create multiple questions");
+	    }*/
+		@Test(priority = 23, enabled = true)
+		public void createMultipleQuestions() throws InterruptedException {
+		    try {
+		        System.out.println(" ************** TestCase 23: Creating multiple questions Q2 and Q3 under existing template*****************");
+		        System.out.println();
+		        //ExtentTestManager.getTest().log(Status.PASS, "Template Creation page loaded");
+
+		        // Call your action
+		        CoreQAFormViewTemplate.createQuestion();
+		        ExtentTestManager.getTest().log(Status.PASS, "Clicked on Question field and entered 'Q2'");
+
+		        // Optionally, assert that the value was entered
+		        WebElement questionField2 = driver.findElement(CoreQAFormViewTemplateListPageRepo.Question);
+		        String entered2 = questionField2.getAttribute("value");
+		        ExtentTestManager.getTest().log(Status.PASS, "Question field value verified as 'Q2'");
+		        
+		        
+		       /* ExtentTestManager.getTest().log(Status.PASS, "Clicked on Question field and entered 'Q3'");
+
+		        // Optionally, assert that the value was entered
+		        WebElement questionField3 = driver.findElement(CoreQAFormViewTemplateListPageRepo.Question);
+		        String entered3 = questionField3.getAttribute("value");
+		        ExtentTestManager.getTest().log(Status.PASS, "Question field value verified as 'Q3'");*/
+
+		      ExtentTestManager.getTest().log(Status.PASS, "Expected Result: Should be possible to create multiple Question");
+		    } catch (AssertionError | Exception e) {
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+		        throw e;
+		    }
+		}
+	    
+		
+		//Testcase 24 include here
+		
+		@Test(priority = 25, enabled = true)
+		public void cancelButton() throws InterruptedException {
+		    try {
+		    	System.out.println(" ************** TestCase 27: Cancel Button - Navigation*****************");
+		        System.out.println();
+		        ExtentTestManager.getTest().log(Status.PASS, "Click on the cancel Button'");
+		        CoreQAFormViewTemplate.CancelButtonNavigation();
+		        
+		        ExtentTestManager.getTest().log(Status.PASS, "Expected Result: Page should be redirected to Q&A Template page");
+		    } catch (AssertionError | Exception e) {
+		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+		        throw e;
+		    }
+		    }
+		
+		
+		/* @Test(priority =26, enabled = true)
+		    public void verifyTemplatesListedOnLoad()throws InterruptedException {
+			 try {
+				 System.out.println(" ************** TestCase 26: Page load with all Available templates*****************");
+			        System.out.println();
+			 
+		        CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+		        main.verifyTemplateVisibleInGrid("Sample Template");  // 
+		 }
+		        catch (AssertionError | Exception e) {
+			        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
+			        throw e;
+		    }*/
+		
+		@Test(priority = 26, enabled=true)
+		public void verifyTemplatesListedOnLoad() {
+		    try {
+		    	 System.out.println(" ************** TestCase 26: Page load with all Available templates*****************");
+			        System.out.println();
+			        ExtentTestManager.getTest().log(Status.PASS,"Verify Template Grid");
+		        CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+		        main.verifyTemplateListedInGrid("Sample Template");
+		        ExtentTestManager.getTest().log(Status.PASS, "Template is listed successfully in the grid.");
+		    } catch (Exception e) {
+		        ExtentTestManager.getTest().log(Status.FAIL, "Template not listed: " + e.getMessage());
+		        Assert.fail("Template not found in grid");
+		    }
+		}
+		 
+		/* @Test(priority =27, enabled = true)
+		    public void verifyTemplateListedBasedOnSearchInput() throws Throwable {
+		        try {
+		        	System.out.println("************** TestCase 27: Template Name Search*****************");
+		            
+		        	ExtentTestManager.getTest().log(Status.INFO, "Starting test: Template Grid Verification");
+		        	CoreQAFormViewTemplateList_MainClass mainClass = new CoreQAFormViewTemplateList_MainClass(driver);
+		            
+		        	String expectedTemplateName = "Sample Template";
+		            Assert.assertTrue(mainClass.searchAndVerifyTemplateInGrid(expectedTemplateName),
+		                    "Template '" + expectedTemplateName + "' not found in the grid.");
+
+		            ExtentTestManager.getTest().log(Status.PASS, "Template '" + expectedTemplateName + "' is correctly listed in the grid");
+
+		        } catch (Exception | AssertionError e) {
+		            ExtentTestManager.getTest().log(Status.FAIL, "Template grid verification failed: " + e.getMessage());
+		            throw e;
+		        }
+		    }*/
+		 
+		 @Test(priority = 27, enabled = true)
+		 public void verifyTemplateListedBasedOnSearchInput() {
+		     try {
+		         System.out.println("************** TestCase 27: Template Name Search**************");
+
+		         String templateName = "Sample Template"; 
+
+		         CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+		         main.searchAndVerifyTemplateInGrid(templateName);
+
+		         ExtentTestManager.getTest().log(Status.PASS, "Template found in grid after search.");
+
+		     } catch (AssertionError | Exception e) {
+		         ExtentTestManager.getTest().log(Status.FAIL, "Test failed: " + e.getMessage());
+		         throw e;
+		     }
+		 }
+
+		 @Test(priority = 28, enabled = true)
+		    public void verifyGridColumnsArePresent() {
+		        try {
+		            System.out.println("************** TestCase 28: Verify Grid Columns on Q&A Template Page **************");
+
+		            // Create ExtentTest logger
+		            ExtentTestManager.getTest().log(Status.INFO, "Starting test: Verify Grid Columns on Q&A Template Page");
+
+		            // Initialize Main Class object
+		            CoreQAFormViewTemplateList_MainClass templateList = new CoreQAFormViewTemplateList_MainClass(driver);
+
+		            // Perform the check
+		            boolean result = templateList.verifyGridColumnPresence();
+
+		            // Log and assert
+		            if (result) {
+		                ExtentTestManager.getTest().log(Status.PASS, "All expected columns (Template Name, Status, Last Modified, Action) are present in the grid.");
+		            } else {
+		                ExtentTestManager.getTest().log(Status.FAIL, "One or more expected columns are missing from the grid.");
+		            }
+
+		            Assert.assertTrue(result, "Grid column verification failed.");
+
+		        } catch (Exception | AssertionError e) {
+		            ExtentTestManager.getTest().log(Status.FAIL, "Exception occurred: " + e.getMessage());
+		            throw e;
+		        }
+		    }
+		//TC 29 invalid
+			
+	 // TC 30
+		 @Test(priority = 30, enabled = true)
+		 public void verifyGreenTickForActiveTemplates() {
+			 try {
+		            System.out.println("************** TestCase 30: Active Status Column Verification **************");
+		     ExtentTestManager.startTest("Verify Green Tick for Active Templates");
+
+		     CoreQAFormViewTemplateList_MainClass mainClass = new CoreQAFormViewTemplateList_MainClass(driver);
+
+		     boolean result = mainClass.isActiveStatusIconDisplayed();
+
+		     if (result) {
+		         ExtentTestManager.getTest().pass("Green tick icon is displayed for active templates in the Status column.");
+		     } else {
+		         ExtentTestManager.getTest().fail("Green tick icon is NOT displayed for active templates in the Status column.");
+		     }
+
+		     Assert.assertTrue(result, "Green tick icon was not found for active templates.");
+		 }
+		  catch (AssertionError | Exception e) {
+	         ExtentTestManager.getTest().log(Status.FAIL, "Test failed: " + e.getMessage());
+	         throw e;
+	     }
+	 }
+
+		 
+		 @Test(priority = 31, enabled = true)
+		    public void verifyLastModifiedColumnIsVisibleForTemplate() {
+			 try {
+		            System.out.println("************** TestCase 31: Last Modified Column Verification **************");
+		        ExtentTestManager.startTest("Verify Last Modified Column, Verify that Last Modified date is displayed against the template");
+		        CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+		        main.verifyLastModifiedColumnIsDisplayed();
+	            ExtentTestManager.getTest().log(Status.PASS, "Last Modified column is displayed against the template.");
+	            
+	        } catch (AssertionError | Exception e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Verification failed: " + e.getMessage());
+	            Assert.fail("Test Failed due to: " + e.getMessage());
+	        }
+	    }
+		
+		 //TC 32
+		 @Test(priority = 32, enabled = true)
+		    public void TC_VerifyActionOptionsDisplayed() {
+			 try {
+		            System.out.println("************** TestCase 32:Action Button Options**************");
+
+		            ExtentTestManager.getTest().log(Status.INFO, "Click on the Action button Against a template");
+
+		            CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+
+
+		        boolean result = main.verifyActionOptionsDisplayed();
+		        Assert.assertTrue(result, "One or more Action button options (Edit, View, View History) are not displayed.");
+		        ExtentTestManager.getTest().log(Status.PASS, "Action button options (Edit, View, View History) are displayed.");
+	            
+	        } catch (AssertionError | Exception e) {
+	            ExtentTestManager.getTest().log(Status.FAIL, "Verification failed: " + e.getMessage());
+	            Assert.fail("Test Failed due to: " + e.getMessage());
+	        }
+	    }
+		
+		  //TC 33
+		 @Test(priority = 33, enabled = true)
+		 public void verifyEditActionOpensTemplateCreationPage() {
+			 try {
+		            System.out.println("************** TestCase 33:Edit Button functionality**************");
+		           
+		            CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+		                ExtentTestManager.getTest().log(Status.PASS, "Verify Edit Action Opens Template Creation Page");
+		                main.clickEditForFirstTemplate();
+
+		                Assert.assertTrue(main.isTemplateCreationPageLoaded(), "Template Creation page did not load correctly after clicking Edit.");
+		                
+		        } catch (AssertionError | Exception e) {
+		            ExtentTestManager.getTest().log(Status.FAIL, "Verification failed: " + e.getMessage());
+		            Assert.fail("Test Failed due to: " + e.getMessage());
+		        }
+		    }
+		 //TC 34
+		 public void testPrefilledTemplateData() {
+			    try {
+			
+			       String expectedTemplateName = "Sample Template";
+			        
+			        // Call the method to verify prefilled value
+			       CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+			        main.verifyPrefilledTemplateName(expectedTemplateName);
+			        
+			        System.out.println(" Prefilled Template Name verified successfully.");
+
+			    } catch (AssertionError ae) {
+			        System.err.println(" Assertion failed: " + ae.getMessage());
+			        Assert.fail("Assertion failure during prefilled data verification: " + ae.getMessage());
+
+			    } catch (Exception e) {
+			        System.err.println("Exception occurred: " + e.getMessage());
+			        e.printStackTrace();
+			        Assert.fail("Unexpected exception during prefilled data verification.");
+			    }
+			}
+		 
+		 
 	@AfterMethod
 	public void takeScreenshotOnFailure(ITestResult result) throws IOException {
 		// Check if the test case failed
@@ -535,6 +856,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 			}
 		}
 	}
+	
 
 	@DataProvider(name = "TestData")
 	public static Object[][] gettestdate() throws IOException {
