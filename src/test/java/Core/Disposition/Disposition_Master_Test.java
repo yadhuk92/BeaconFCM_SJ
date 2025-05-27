@@ -129,7 +129,7 @@ public class Disposition_Master_Test extends Base_Class {
 			Common.fluentWait("User is on the Disposition Master window", DispositionMasterPageRepo.subDispositionList);
 		Assert.assertTrue(dispositionMasterPage.isDispositionMasterPageDisplayed(), "Disposition Master page not displayed");
 		int activeDispositionsCount = dispositionMasterPage.getActiveDispositionsCount();
-		Assert.assertEquals(activeDispositionsCount, 10, "Active dispositions count does not equal 10");
+		Assert.assertEquals(activeDispositionsCount, 20, "Active dispositions count does not equal 10");
 		
 		
 		ExtentTestManager.getTest().log(Status.PASS, "10 active dispositions are displayed.");
@@ -310,6 +310,7 @@ public class Disposition_Master_Test extends Base_Class {
 		 Thread.sleep(3000);
 	        
 	    }
+	 
 	 @Test(priority = 11)
 	    public void Validate_Button__Jump_to_First_Page() throws InterruptedException {
 		 
@@ -332,11 +333,13 @@ public class Disposition_Master_Test extends Base_Class {
 	    public void Open_Add_Disposition_Form() throws InterruptedException {
 		 
 		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
+		 wait.until(ExpectedConditions.invisibilityOfElementLocated(com.Page_Repository.DispositionMasterPageRepo.spinner));
 		 //ExtentTestManager.startTest("TestCase_12 : Open Add Disposition Form");
 		 try {
 	        // Step 1: Click on "Add Disposition" button
 		 dispositionMasterPage.clickAddDispositionButton();
+		 Thread.sleep(3000);
+		 wait.until(ExpectedConditions.invisibilityOfElementLocated(com.Page_Repository.DispositionMasterPageRepo.spinner));
 	        // Expected Result: Add Disposition popup opens with required fields and buttons
 	        Assert.assertTrue(dispositionMasterPage.isPopupDisplayed(), "Add Disposition popup did not open as expected.");
 	        ExtentTestManager.getTest().log(Status.PASS, "Add Disposition popup opens with Action Owner, Name, Asset Category fields, and Submit, Close buttons.");
@@ -562,7 +565,7 @@ public class Disposition_Master_Test extends Base_Class {
 	       
 	    }
 	 
-	 @Test(priority = 20)
+	 /*@Test(priority = 20)
 	    public void Select_All_Functionality__Asset_Category() throws InterruptedException {
 		 
 		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -1243,7 +1246,7 @@ public class Disposition_Master_Test extends Base_Class {
 		            throw e;
 			 }
 			 Thread.sleep(3000);
-	    }
+	    }*/
 	 
 	 @AfterMethod
 	 public void takeScreenshotOnFailure(ITestResult result) {

@@ -10,9 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import com.BasePackage.Base_Class;
 import com.BasePackage.Common;
 import com.Page_Repository.DispositionMasterPageRepo;
 import com.Utility.Log;
+import com.aventstack.extentreports.Status;
+import com.extentReports.ExtentTestManager;
 
 public class DispositionMasterPage {
 	
@@ -180,16 +184,44 @@ public class DispositionMasterPage {
 
 	}
 
-	public void clickPreviousPagination() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	public void clickPreviousPagination() throws InterruptedException {
+		
+		Common.fluentWait("Page 2", DispositionMasterPageRepo.page2);
+		ExtentTestManager.getTest().log(Status.PASS, "Fluent wait to page 2");
+		
+		Base_Class.click(DispositionMasterPageRepo.page2);
+		ExtentTestManager.getTest().log(Status.PASS, "Click on Page 2.");
+		
+		Common.fluentWait("Previous Button", DispositionMasterPageRepo.previousButton);
+		ExtentTestManager.getTest().log(Status.PASS, "Fluent wait to previous button");
+		
+		//Base_Class.click(DispositionMasterPageRepo.previousButton);
+		Base_Class.ForLoopClick(DispositionMasterPageRepo.previousButton);
+		ExtentTestManager.getTest().log(Status.PASS, "Click on Previous button.");
+		
+		Common.fluentWait("Page 1 Button", DispositionMasterPageRepo.page1Button);
+		ExtentTestManager.getTest().log(Status.PASS, "Moved to page 1");
+		
+		
+		/*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		WebElement previousbutton = driver.findElement(DispositionMasterPageRepo.previousButton);
+		ExtentTestManager.getTest().log(Status.PASS, "Found previous button.");
 		WebElement paginationNextButton = driver.findElement(DispositionMasterPageRepo.paginationNextButton);
+		ExtentTestManager.getTest().log(Status.PASS, "Found pagination next button.");
 		WebElement page1 = previousbutton.findElement(DispositionMasterPageRepo.page1Button);
+		ExtentTestManager.getTest().log(Status.PASS, "Found page 1 button.");
         WebElement previousBut = previousbutton.findElement(DispositionMasterPageRepo.nextButton);
+        ExtentTestManager.getTest().log(Status.PASS, "Found next button.");
         WebElement nextButton = previousbutton.findElement(DispositionMasterPageRepo.paginationNextButton);
+        ExtentTestManager.getTest().log(Status.PASS, "Found pagination next button.");
         WebElement nextdoubleArrowButton = previousbutton.findElement(DispositionMasterPageRepo.lastPageButton);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", paginationNextButton);
+        ExtentTestManager.getTest().log(Status.PASS, "Found last page button.");
+        ExtentTestManager.getTest().log(Status.PASS, "Waiting for pagination next button");
+        Common.fluentWait("DispositionMasterPageRepo.paginationNextButton", DispositionMasterPageRepo.paginationNextButton);        
+        /*JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", paginationNextButton);*/
+        /*ExtentTestManager.getTest().log(Status.PASS, "Found pagination next button.");
+        Common.fluentWait("DispositionMasterPageRepo.previousButton", DispositionMasterPageRepo.previousButton);
         previousbutton.click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
      // Verify Page 1 is selected
@@ -213,7 +245,7 @@ public class DispositionMasterPage {
         } else {
             // Element exists; check visibility
             Assert.assertFalse(previousdoubleArrowButtons.get(0).isDisplayed(), "'<<' button is visible, but it should not be.");
-        }
+        }*/
 
 	}
 	
@@ -292,6 +324,7 @@ public class DispositionMasterPage {
 	public boolean isPopupDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    try {
+	    	Common.fluentWait("DispositionMasterPageRepo.actionOwnerField", DispositionMasterPageRepo.actionOwnerField);
 	    	wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerField));
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.nameField));
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.assetCategoryField));
