@@ -15,7 +15,8 @@ public class CoreAllocationSummaryRepo {
 	public static By allocationSummary = By.xpath("//a[text()='Allocation  Summary']");
 	public static By allocationSummaryOption = By.cssSelector("[title|=\"Allocation  Summary\"]");
 	public static By AllocationSummaryPage=By.xpath("//div[@class='dvPageheadingCaption']");
-	public static By Select_CallCentre=By.xpath("//label[contains(text(),'Select')]/following-sibling::div//label");
+	//public static By Select_CallCentre=By.xpath("//label[contains(text(),'Select')]/following-sibling::div//label");
+	public static By Select_CallCentre=By.xpath("//div[@class = 'rz-dropdown rz-clear form-control mandatory-color']");
 	public static By selectCallCenterLabel=By.xpath("//label[text()='Select Call Centre']");
 	public static By CallCentreDropdown=By.xpath("(//span[normalize-space()='CallCentre 1'])[1]");
 	public static By Search=By.xpath("//button[@type='submit']");

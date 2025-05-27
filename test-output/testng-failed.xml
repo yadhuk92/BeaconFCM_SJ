@@ -5,18 +5,19 @@
     <classes>
       <class name="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test">
         <methods>
-          <include name="testSearchWithSelectedCallCentre"/>
           <include name="takeScreenshotOnFailure"/>
           <include name="testDataVerificationInDownloadedFile"/>
           <include name="testLogin"/>
-          <include name="setUp"/>
           <include name="testVerifyFieldsAndButtonsOnAllocationSummary"/>
-          <include name="testDataVerificationInDailyDownloadedFile"/>
+          <include name="afterEachTest"/>
           <include name="setupTest"/>
-          <include name="testDownloadDailyAllocationFromMonthlySummary"/>
           <include name="testClickOnAllocationSummarySubmenu"/>
           <include name="testVerifyAllocationSummarySubmenu"/>
           <include name="testDownloadMonthlyAllocationSummary"/>
+          <include name="testSearchWithSelectedCallCentre"/>
+          <include name="setUp"/>
+          <include name="testDataVerificationInDailyDownloadedFile"/>
+          <include name="testDownloadDailyAllocationFromMonthlySummary"/>
           <include name="testSearchWithoutSelectingCallCentreDropdown"/>
         </methods>
       </class> <!-- Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test -->

@@ -1,53 +1,52 @@
-[INFO ] 2025-05-16 19:06:04.408 [main] Log - Driver has initialized successfully for chrome browser
-[INFO ] 2025-05-16 19:06:45.330 [main] Log - Title is displayed: BeaconICnRM
-[INFO ] 2025-05-16 19:06:45.590 [main] Log - Entered IBU0001487 in user name field
-[INFO ] 2025-05-16 19:06:45.700 [main] Log - Entered 4u75^a in password field
-[INFO ] 2025-05-16 19:06:45.826 [main] Log - Clicked on login button
-[INFO ] 2025-05-16 19:07:06.559 [main] Log - Module selection page not appeared
-[INFO ] 2025-05-16 19:07:06.618 [main] Log - UserID in Dashboard: IBU0001487
-[INFO ] 2025-05-16 19:07:07.174 [main] Log - Org Name: Mumbai, Org Type Name: Head office
-[INFO ] 2025-05-16 19:07:07.206 [main] Log - Login successful
-[INFO ] 2025-05-16 19:07:07.241 [main] Log - Call Centre Menu display sucessfully
-[INFO ] 2025-05-16 19:07:07.252 [main] Log - Verified Allocation Summary submenu displayed
-[INFO ] 2025-05-16 19:07:07.364 [main] Log - Click on the Call Centre sucessfully
-[INFO ] 2025-05-16 19:07:07.668 [main] Log - Click on the Allocation Summary sucessfully
-[INFO ] 2025-05-16 19:07:07.669 [main] Log - Clicked on Allocation Summary submenu
-[INFO ] 2025-05-16 19:07:07.706 [main] Log - Select Call Centre Field Display
-[INFO ] 2025-05-16 19:07:07.727 [main] Log - Search button Display
-[INFO ] 2025-05-16 19:07:07.727 [main] Log - Verified fields and buttons on Allocation Summary
-[INFO ] 2025-05-16 19:07:07.814 [main] Log - Click on the Select Call Centre Field
-[INFO ] 2025-05-16 19:07:07.902 [main] Log - Click on the Search button
-[INFO ] 2025-05-16 19:07:07.941 [main] Log - Tested search without selecting Call Centre dropdown
-[INFO ] 2025-05-16 19:07:08.037 [main] Log - Click on the Select Call Centre Field
-[INFO ] 2025-05-16 19:07:09.160 [main] Log - Call centre value selected
-[INFO ] 2025-05-16 19:07:09.229 [main] Log - Click on the Search button
-[INFO ] 2025-05-16 19:07:09.262 [main] Log - Tested search with selected Call Centre
-[INFO ] 2025-05-16 19:07:11.496 [main] Log - Step:01 - Click on the download icon  displayed against  the monthly allocation summary title 
-[INFO ] 2025-05-16 19:08:39.201 [main] Log - File downloaded successfully: C:\Users\kajol.gupta.SPERIDIAN\Downloads\Allocation_List_1747402718173.xlsx
-[INFO ] 2025-05-16 19:08:39.204 [main] Log - Expected Result: Allocation file downloaded successfully.
-[INFO ] 2025-05-16 19:08:39.210 [main] Log - Downloaded Monthly Allocation Summary
-[INFO ] 2025-05-16 19:08:39.296 [main] Log - UI Account Count: 98035
-[INFO ] 2025-05-16 19:08:39.296 [main] Log - File exists: true
-[INFO ] 2025-05-16 19:08:39.296 [main] Log - Readable: true
-[INFO ] 2025-05-16 19:08:39.296 [main] Log - Step:01 - Open the downloaded file.
-[INFO ] 2025-05-16 19:09:12.193 [main] Log - Excel Account Count: 98035
-[INFO ] 2025-05-16 19:09:12.194 [main] Log - Step:02 - Verify the data with grid data.
-[INFO ] 2025-05-16 19:09:12.195 [main] Log - Expected Result: No of accounts  in the downloaded file should matches no of accounts in the the grid data.
-[INFO ] 2025-05-16 19:09:12.195 [main] Log - Verified data in downloaded file
-[INFO ] 2025-05-16 19:09:12.386 [main] Log - Step:01 - Click on download icon against a allocation type (manual  allocation ) uunder  monthly allocation summary.
-[INFO ] 2025-05-16 19:10:25.511 [main] Log - File downloaded successfully: C:\Users\kajol.gupta.SPERIDIAN\Downloads\Allocation_List_1747402824114.xlsx
-[INFO ] 2025-05-16 19:10:25.511 [main] Log - Expected Result: File with allocation summary for the selected allocation type should be downloaded.
-[INFO ] 2025-05-16 19:10:25.511 [main] Log - Downloaded Daily Allocation from Monthly Summary
-[INFO ] 2025-05-16 19:10:25.556 [main] Log - UI Account Count: 98035
-[INFO ] 2025-05-16 19:10:25.557 [main] Log - File exists: true
-[INFO ] 2025-05-16 19:10:25.557 [main] Log - Readable: true
-[INFO ] 2025-05-16 19:10:25.557 [main] Log - Step:01 - Open the downloaded file.
-[INFO ] 2025-05-16 19:10:25.558 [main] Log - Expected Result: Cust Id ,A/c Number,A/c Name should display in the downloaded file
-[INFO ] 2025-05-16 19:10:54.505 [main] Log - Excel Account Count: 98035
-[INFO ] 2025-05-16 19:10:54.505 [main] Log - Step:02 - Verify the data with grid data.
-[INFO ] 2025-05-16 19:10:54.507 [main] Log - Expected Result: Data in the downloaded file total account count should matches no of accounts in the the grid data.
-[INFO ] 2025-05-16 19:10:54.507 [main] Log - Verified data in daily downloaded file
-[INFO ] 2025-05-16 19:10:54.512 [main] Log - Logout
-[INFO ] 2025-05-16 19:11:06.762 [main] Log - Step:01 -  Click on 'Logout'
-[INFO ] 2025-05-16 19:11:06.792 [main] Log - Expected Result: User is logged out successfully, login screen is displayed.
-[INFO ] 2025-05-16 19:11:07.470 [main] Log - Verified data in daily downloaded file
+[INFO ] 2025-05-27 11:31:57.002 [main] Log - Driver has initialized successfully for chrome browser
+[INFO ] 2025-05-27 11:32:27.166 [main] Log - Title is displayed: BeaconICnRM
+[INFO ] 2025-05-27 11:32:27.429 [main] Log - Entered IBU0001272 in user name field
+[INFO ] 2025-05-27 11:32:27.542 [main] Log - Entered ses@987 in password field
+[INFO ] 2025-05-27 11:32:27.628 [main] Log - Clicked on login button
+[INFO ] 2025-05-27 11:32:48.633 [main] Log - Module selection page not appeared
+[INFO ] 2025-05-27 11:32:48.642 [main] Log - Login successful
+[INFO ] 2025-05-27 11:32:59.789 [main] Log - Call Centre Menu display sucessfully
+[INFO ] 2025-05-27 11:32:59.799 [main] Log - Verified Allocation Summary submenu displayed
+[INFO ] 2025-05-27 11:33:04.523 [main] Log - Click on the Call Centre sucessfully
+[INFO ] 2025-05-27 11:33:04.781 [main] Log - Click on the Allocation Summary sucessfully
+[INFO ] 2025-05-27 11:33:04.782 [main] Log - Clicked on Allocation Summary submenu
+[INFO ] 2025-05-27 11:33:07.532 [main] Log - Select Call Centre Field Display
+[INFO ] 2025-05-27 11:33:07.551 [main] Log - Search button Display
+[INFO ] 2025-05-27 11:33:07.566 [main] Log - Verified fields and buttons on Allocation Summary
+[INFO ] 2025-05-27 11:33:57.767 [main] Log - Click on the Select Call Centre Field
+[INFO ] 2025-05-27 11:33:57.868 [main] Log - Click on the Search button
+[INFO ] 2025-05-27 11:33:57.927 [main] Log - Validation message found using fallback XPath (xpath2).
+[INFO ] 2025-05-27 11:33:57.968 [main] Log - Tested search without selecting Call Centre dropdown
+[INFO ] 2025-05-27 11:33:58.090 [main] Log - Clicked on Select Call Centre dropdown
+[INFO ] 2025-05-27 11:33:58.180 [main] Log - Selected 'CallCentre 1' option successfully.
+[INFO ] 2025-05-27 11:33:58.257 [main] Log - Click on the Search button
+[INFO ] 2025-05-27 11:33:58.297 [main] Log - Tested search with selected Call Centre
+[INFO ] 2025-05-27 11:34:06.813 [main] Log - Clicked using primary XPath.
+[INFO ] 2025-05-27 11:34:06.813 [main] Log - Step:01 - Click on the download icon  displayed against  the monthly allocation summary title 
+[INFO ] 2025-05-27 11:34:17.979 [main] Log - File downloaded successfully: C:\Users\kajol.gupta.SPERIDIAN\Downloads\Allocation_List_1748325856452.xlsx
+[INFO ] 2025-05-27 11:34:17.979 [main] Log - Expected Result: Allocation file downloaded successfully.
+[INFO ] 2025-05-27 11:34:17.980 [main] Log - Downloaded Monthly Allocation Summary
+[INFO ] 2025-05-27 11:34:18.042 [main] Log - Found account count using fallback XPath.
+[INFO ] 2025-05-27 11:34:18.056 [main] Log - UI Account Count: 2
+[INFO ] 2025-05-27 11:34:18.056 [main] Log - File exists: true
+[INFO ] 2025-05-27 11:34:18.056 [main] Log - Readable: true
+[INFO ] 2025-05-27 11:34:18.057 [main] Log - Step:01 - Open the downloaded file.
+[INFO ] 2025-05-27 11:34:21.774 [main] Log - Excel Account Count: 2
+[INFO ] 2025-05-27 11:34:21.774 [main] Log - Step:02 - Verify the data with grid data.
+[INFO ] 2025-05-27 11:34:21.775 [main] Log - Expected Result: No of accounts  in the downloaded file should matches no of accounts in the the grid data.
+[INFO ] 2025-05-27 11:34:21.775 [main] Log - Verified data in downloaded file
+[INFO ] 2025-05-27 11:34:21.835 [main] Log - Found element using fallback XPath.
+[INFO ] 2025-05-27 11:34:21.913 [main] Log - Step:01 - Clicked on download icon against an allocation type (manual allocation) under monthly allocation summary.
+[INFO ] 2025-05-27 11:34:40.165 [main] Log - File downloaded successfully: C:\Users\kajol.gupta.SPERIDIAN\Downloads\Allocation_List_1748325879085.xlsx
+[INFO ] 2025-05-27 11:34:40.167 [main] Log - Expected Result: File with allocation summary for the selected allocation type should be downloaded.
+[INFO ] 2025-05-27 11:34:40.168 [main] Log - Downloaded Daily Allocation from Monthly Summary
+[INFO ] 2025-05-27 11:34:40.246 [main] Log - Primary XPath not found. Found account count using fallback XPath.
+[INFO ] 2025-05-27 11:34:40.255 [main] Log - UI Account Count: 2
+[INFO ] 2025-05-27 11:34:40.255 [main] Log - File exists: true
+[INFO ] 2025-05-27 11:34:40.257 [main] Log - Readable: true
+[INFO ] 2025-05-27 11:34:40.257 [main] Log - Step:01 - Open the downloaded file.
+[INFO ] 2025-05-27 11:34:40.257 [main] Log - Expected Result: Cust Id, A/c Number, A/c Name should display in the downloaded file
+[INFO ] 2025-05-27 11:34:43.370 [main] Log - Excel Account Count: 2
+[INFO ] 2025-05-27 11:34:43.370 [main] Log - Step:02 - Verify the data with grid data.
+[INFO ] 2025-05-27 11:34:43.371 [main] Log - Expected Result: No of accounts in the downloaded file should match the grid data.
+[INFO ] 2025-05-27 11:34:43.372 [main] Log - Verified data in daily downloaded file

@@ -33,10 +33,8 @@ public class Login_Class extends Base_Class {
             // Initialize WebDriver based on browser type
             switch (Browser.toUpperCase()) {
                 case "CHROME":
-        			//String downloadPath = System.getProperty("user.home") + "/Downloads";
 
                 	Map<String, Object> prefs = new HashMap<>();
-        		   // prefs.put("download.default_directory", downloadPath); // ✅ Set download directory
         		    prefs.put("download.prompt_for_download", false);       // ✅ Disable prompt
         		    prefs.put("download.directory_upgrade", true);
         		    prefs.put("safebrowsing.enabled", true);                // ✅ Keep Safe Browsing
@@ -47,15 +45,13 @@ public class Login_Class extends Base_Class {
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--window-size=1920,1080");
         	        options.addArguments("--allow-running-insecure-content");
-        	        options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://192.168.32.33:8599/CallCentre/Allocationsummary");
-        	        //options.addArguments("--disable-features=InsecureDownloadWarnings");
-                    
-                    
+        	        options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://192.168.32.33:8599/CallCentre/Allocationsummary, http://192.168.6.205:2010/CallCentre/Allocationsummary");
                     options.addArguments("--disable-extensions");
                     
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(options);
                     break;
+                    
                 case "FIREFOX":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
@@ -144,7 +140,7 @@ public class Login_Class extends Base_Class {
                 Common.waitForSpinnerToDisappear("Loading Spinner", LoginPageRepo.Spinner);
                 Common.fluentWait("SetAsDefaultRadioButton", LoginPageRepo.SetAsDefaultRadioButton);
                 Common.fluentWait("GoCollectionButton", LoginPageRepo.GoCollectionButton);
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 //driver.findElement(LoginPageRepo.GoCollectionButton).click();
                 ForLoopClick(LoginPageRepo.GoCollectionButton);
                 Log.info("Clicked on Go collection button");
@@ -153,16 +149,17 @@ public class Login_Class extends Base_Class {
             }
 
             // Fetch and display user organization details
-            Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
-            String UserIDInDashboard = driver.findElement(LoginPageRepo.UserIDInDashboard).getText();
-            Log.info("UserID in Dashboard: " + UserIDInDashboard);
+//            Common.fluentWait("AccountCategoryLabelInDashboard", LoginPageRepo.AccountCategoryLabelInDashboard);
+//            String UserIDInDashboard = driver.findElement(LoginPageRepo.UserIDInDashboard).getText();
+//            Log.info("UserID in Dashboard: " + UserIDInDashboard);
 
-            GetUserORGDetailsFromDB(UserIDInDashboard);
-            Log.info("Org Name: " + orgName + ", Org Type Name: " + orgTypeName);
+ //           GetUserORGDetailsFromDB(UserIDInDashboard);
+ //           Log.info("Org Name: " + orgName + ", Org Type Name: " + orgTypeName);
 
-            Common.fluentWait("UserORGDetails", LoginPageRepo.getORGDetailsinLoginLandingPage(orgName, orgTypeName));
+ //           Common.fluentWait("UserORGDetails", LoginPageRepo.getORGDetailsinLoginLandingPage(orgName, orgTypeName));
 
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             Log.error("An error occurred in CoreLogin: " + e.getMessage());
             e.printStackTrace();
             //ExtentTestManager.getTest().log(Status.ERROR, "An error occurred: " + e.getMessage());
@@ -227,10 +224,23 @@ public class Login_Class extends Base_Class {
             // Initialize WebDriver based on browser type
             switch (Browser.toUpperCase()) {
                 case "CHROME":
+                	Map<String, Object> prefs = new HashMap<>();
+        		    prefs.put("download.prompt_for_download", false);       // ✅ Disable prompt
+        		    prefs.put("download.directory_upgrade", true);
+        		    prefs.put("safebrowsing.enabled", true);                // ✅ Keep Safe Browsing
+        		    prefs.put("safebrowsing.disable_download_protection", true);
+        		    
                     ChromeOptions options = new ChromeOptions();
+                    
+                    options.setExperimentalOption("prefs", prefs);
+                    options.addArguments("--window-size=1920,1080");
+        	        options.addArguments("--allow-running-insecure-content");
+        	        options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://192.168.32.33:8597/Collection/Allocationsummary");
                     options.addArguments("--disable-extensions");
+                    
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(options);
+
                     break;
                 case "FIREFOX":
                     WebDriverManager.firefoxdriver().setup();
