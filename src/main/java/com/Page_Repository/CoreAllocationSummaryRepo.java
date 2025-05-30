@@ -23,6 +23,10 @@ public class CoreAllocationSummaryRepo {
 	public static By CallCentreWarning=By.xpath("//p[contains(text(),\"Call Center Is Required\")]");
 	public static By MonthlydownloadIcon=By.xpath("(//i[@id='PY4y-UNyOU'])[1]");
 	public static By DaydownloadIcon=By.xpath("(//i[@id='Be38N5EAmE'])[1]");
+	public static By collectionAgency=By.xpath("//a[.//span[contains(text(),'Collection Agency')]]");
+	public static By agentAccountCollection = By.xpath("//a[@title = 'Agency Account Allocation']");
+
+	
 
 	
 	

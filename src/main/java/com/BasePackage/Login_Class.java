@@ -45,7 +45,7 @@ public class Login_Class extends Base_Class {
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--window-size=1920,1080");
         	        options.addArguments("--allow-running-insecure-content");
-        	        options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://192.168.32.33:8599/CallCentre/Allocationsummary, http://192.168.6.205:2010/CallCentre/Allocationsummary");
+        	        options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://192.168.32.33:8599/CallCentre/Allocationsummary, http://192.168.6.205:4122/CallCentre/Allocationsummary");
                     options.addArguments("--disable-extensions");
                     
                     WebDriverManager.chromedriver().setup();

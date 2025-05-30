@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 
 public class CollectionAgency_AllocationSummaryPageRepo {
 	
-	//public static By dashboardMenu = By.xpath("//span[@class='text nav-text' and text()='Dash board']");
-	public static By dashboardMenu = By.xpath("//a[.//span[contains(text(),'Dashboard')]]");
+	public static By dashboardMenu = By.xpath("//span[@class='text nav-text' and text()='Dash board']");
+	//public static By dashboardMenu = By.xpath("//a[.//span[contains(text(),'Dashboard')]]");
 
 	//a[.//span[contains(text(),'Dashboard')]]
 	public static By allocationSummaryLink = By.xpath("//a[@class='dropdown-item' and @href='/Collection/Allocationsummary']");
@@ -76,7 +76,7 @@ public class CollectionAgency_AllocationSummaryPageRepo {
 	public static By NotAllocated = By.xpath("//li[@aria-label='>Not Allocated']");
 	public static By Search = By.xpath("//button[contains(text(), 'Search')]");
 	public static By collectionAgent = By.xpath("/html/body/div/div[2]/div[1]/div[5]/div/div/div/div[1]/div[1]/div/div");
-	public static By collectionAgentDropdown = By.xpath("//li[@aria-label='>AGENT USER']");
+	public static By collectionAgentDropdown = By.xpath("//li[@aria-label='>Agent 5']");
 	public static By allocateAgent = By.xpath("(//button[normalize-space()='Allocate'])[1]");
 	public static By viewGrid = By.xpath("//div[@class='card-wrapper']");
 

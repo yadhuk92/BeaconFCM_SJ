@@ -3,24 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test">
+      <class name="com.test.CollectionAgency_AllocationSummary.All_Scenrios_CollectionAgency_Allocation_Summary_Test">
         <methods>
           <include name="takeScreenshotOnFailure"/>
-          <include name="testDataVerificationInDownloadedFile"/>
-          <include name="testLogin"/>
-          <include name="testVerifyFieldsAndButtonsOnAllocationSummary"/>
-          <include name="afterEachTest"/>
           <include name="setupTest"/>
-          <include name="testClickOnAllocationSummarySubmenu"/>
-          <include name="testVerifyAllocationSummarySubmenu"/>
-          <include name="testDownloadMonthlyAllocationSummary"/>
-          <include name="testSearchWithSelectedCallCentre"/>
-          <include name="setUp"/>
-          <include name="testDataVerificationInDailyDownloadedFile"/>
-          <include name="testDownloadDailyAllocationFromMonthlySummary"/>
-          <include name="testSearchWithoutSelectingCallCentreDropdown"/>
+          <include name="afterEachTest"/>
+          <include name="testDownloadedFileFormat"/>
+          <include name="testGridColumnsDisplay"/>
+          <include name="SetUp"/>
+          <include name="testDownloadAccountDetails"/>
         </methods>
-      </class> <!-- Core.CallCentre.All_Scenrios_Core_Allocation_Summary_Test -->
+      </class> <!-- com.test.CollectionAgency_AllocationSummary.All_Scenrios_CollectionAgency_Allocation_Summary_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

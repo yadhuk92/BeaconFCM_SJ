@@ -2,6 +2,7 @@ package com.Utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.TimeoutException;
 
 public class Log {
 
