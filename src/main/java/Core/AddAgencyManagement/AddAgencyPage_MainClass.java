@@ -340,7 +340,7 @@ public class AddAgencyPage_MainClass extends Base_Class {
 		Common.fluentWait("MobileNumber", AddAgencyPageRepo.ContactNumberinput);
 		driver.findElement(AddAgencyPageRepo.ContactNumberinput).sendKeys(MobileNumber);
 		ExtentTestManager.getTest().log(Status.PASS, "Invalid Contact Number sent");
-		click(AddAgencyPageRepo.ModeOfCollection, "ModeOfCollection");
+		click(AddAgencyPageRepo.Remarks, "Remarks");
 		Thread.sleep(8000);
 		InvalidContactNumberSuccessfully();
 
@@ -603,43 +603,78 @@ public class AddAgencyPage_MainClass extends Base_Class {
 			validMobileNumber();
 			// dates
 			
-			Common.fluentWait("DateEmpanelment", AddAgencyPageRepo.DateEmpanelment);
+//			Common.fluentWait("DateEmpanelment", AddAgencyPageRepo.DateEmpanelment);
+//			click(AddAgencyPageRepo.DateEmpanelment, "DateEmpanelment");
+//			String today = String.valueOf(LocalDate.now().getDayOfMonth());
+//			Common.fluentWait("DateOfEmpanelment_Date", AddAgencyPageRepo.DateOfEmpanelment_Date(today));
+//			SelectCurrentDate(today, "DateEmpanelment");
+//			
+//			Common.fluentWait("DateEmpanelmentExpiry", AddAgencyPageRepo.DateEmpanelmentExpiry);
+//			//click(AddAgencyPageRepo.DateEmpanelmentExpiry, "DateEmpanelmentExpiry");
+//			Base_Class.click(AddAgencyPageRepo.DateEmpanelmentExpiry);
+//			Thread.sleep(3000);
+//			Common.fluentWait("DateOfEmpanelment_Date", AddAgencyPageRepo.DateOfEmpanelment_Date(today));
+//			int year = LocalDate.now().getYear();
+//			int RequiredYear = year + 3;
+//			String RequiredYearString = String.valueOf(RequiredYear);
+//			ChangeYear(RequiredYearString);
+//			SelectCurrentDate(today, "DateEmpanelment");
+//			click(AddAgencyPageRepo.DateOfEmpanelment_Date(today),"Click on DateOfEmpanelment_Date");
+//			
+//			Common.fluentWait("AgreementStarting", AddAgencyPageRepo.AgreementStarting);
+//			click(AddAgencyPageRepo.AgreementStarting, "AgreementStarting");
+//			Thread.sleep(3000);
+//			Common.fluentWait("DateOfEmpanelment_Date", AddAgencyPageRepo.DateOfEmpanelment_Date(today));
+//			//SelectCurrentDate(today, "DateEmpanelment");
+//			click(AddAgencyPageRepo.DateOfEmpanelment_Date(today),"Click on agreement starting Date");
+//			
+//			Common.fluentWait("AgreementEnding", AddAgencyPageRepo.AgreementEnding);
+//			click(AddAgencyPageRepo.AgreementEnding, "AgreementEnding");
+//			Thread.sleep(3000);
+//			Common.fluentWait("DateOfEmpanelment_Date", AddAgencyPageRepo.DateOfEmpanelment_Date(today));
+//			int year1 = LocalDate.now().getYear();
+//			int RequiredYear1 = year1 + 1;
+//			String RequiredYearString1 = String.valueOf(RequiredYear1);
+//			SelectDate(today, null, RequiredYearString1);
+//			//SelectCurrentDate(today, "DateEmpanelment");
+//			click(AddAgencyPageRepo.DateOfEmpanelment_Date(today),"Click on agreement ending Date");
+//			// not worked last and last but one
+
 			click(AddAgencyPageRepo.DateEmpanelment, "DateEmpanelment");
 			String today = String.valueOf(LocalDate.now().getDayOfMonth());
-			Common.fluentWait("DateOfEmpanelment_Date", AddAgencyPageRepo.DateOfEmpanelment_Date(today));
+			Thread.sleep(2000);
 			SelectCurrentDate(today, "DateEmpanelment");
 			
-			Common.fluentWait("DateEmpanelmentExpiry", AddAgencyPageRepo.DateEmpanelmentExpiry);
-			//click(AddAgencyPageRepo.DateEmpanelmentExpiry, "DateEmpanelmentExpiry");
 			Base_Class.click(AddAgencyPageRepo.DateEmpanelmentExpiry);
 			Thread.sleep(3000);
-			Common.fluentWait("DateOfEmpanelment_Date", AddAgencyPageRepo.DateOfEmpanelment_Date(today));
+			
 			int year = LocalDate.now().getYear();
 			int RequiredYear = year + 3;
 			String RequiredYearString = String.valueOf(RequiredYear);
 			ChangeYear(RequiredYearString);
 			SelectCurrentDate(today, "DateEmpanelment");
-			click(AddAgencyPageRepo.DateOfEmpanelment_Date(today),"Click on DateOfEmpanelment_Date");
 			
-			Common.fluentWait("AgreementStarting", AddAgencyPageRepo.AgreementStarting);
+			
+			
 			click(AddAgencyPageRepo.AgreementStarting, "AgreementStarting");
-			Thread.sleep(3000);
-			Common.fluentWait("DateOfEmpanelment_Date", AddAgencyPageRepo.DateOfEmpanelment_Date(today));
-			//SelectCurrentDate(today, "DateEmpanelment");
-			click(AddAgencyPageRepo.DateOfEmpanelment_Date(today),"Click on agreement starting Date");
+			Thread.sleep(3000);		
+			SelectCurrentDate(today, "DateEmpanelment");
 			
-			Common.fluentWait("AgreementEnding", AddAgencyPageRepo.AgreementEnding);
+		
 			click(AddAgencyPageRepo.AgreementEnding, "AgreementEnding");
 			Thread.sleep(3000);
-			Common.fluentWait("DateOfEmpanelment_Date", AddAgencyPageRepo.DateOfEmpanelment_Date(today));
+		
 			int year1 = LocalDate.now().getYear();
 			int RequiredYear1 = year1 + 1;
 			String RequiredYearString1 = String.valueOf(RequiredYear1);
-			SelectDate(today, null, RequiredYearString1);
-			//SelectCurrentDate(today, "DateEmpanelment");
-			click(AddAgencyPageRepo.DateOfEmpanelment_Date(today),"Click on agreement ending Date");
-			// not worked last and last but one
-
+			ChangeYear(RequiredYearString1);
+			SelectCurrentDate(today, "DateEmpanelment");
+			
+			
+			
+			
+			
+			
 			Common.fluentWait("Remarks", AddAgencyPageRepo.Remarks);
 			SendKeys(AddAgencyPageRepo.Remarks, "Remarks comment");
 			click(AddAgencyPageRepo.Submit, "Submit");
