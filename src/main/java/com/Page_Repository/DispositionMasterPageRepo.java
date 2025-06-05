@@ -38,11 +38,14 @@ public class DispositionMasterPageRepo {
 	public static By actionOwnerField = By.xpath("//label[contains(text(),'Action Owner')]//following::div[1]");
 	public static By nameField = By.xpath("(//input[@name='Name'])[1]");
 	//public static By assetCategoryField = By.xpath("(//label[contains(text(),'Asset Category')]//following::div//div[@class='rz-helper-hidden-accessible']//input//following::label)[1]");
-	public static By assetCategoryField = By.xpath("(//label[contains(text(),'Asset Category')]");
+	public static By assetCategoryField = By.xpath("//label[text()='Asset Category']/following::span[text()='Select'][1]");
 	public static By submitButton = By.xpath("//button[contains(text(),'Submit')]");
 	public static By closeButton = By.xpath("//div[@class='rz-dialog-titlebar']//a");
 	public static By nameErrorMessage = By.xpath("//div[contains(text(),'Name Required')]");
-	public static By errorMessage = By.xpath("//div[@class='rz-growl-item']//p[contains(text(),'This Disposition Already Exist')]");
+	//public static By errorMessage = By.xpath("//div[@class='rz-growl-item']//p[contains(text(),'This Disposition Already Exist')]");
+	//public static By errorMessage = By.xpath("//p[contains(text(),'This Disposition Already Exist')]");
+	public static By errorMessage = By.xpath("//*[contains(text(),'Disposition Already Exist')]");
+	
 	public static By editButton = By.xpath("(//div[@class='morebtnmenu']//button//span//following::ul//li//button[contains(text(),'Edit')])[1]");
 	public static By actionOwnerDropdowninpop = By.xpath("(//div//div[@class='rz-helper-hidden-accessible']//following::label)[1]");
 	public static By nameFieldinpop = By.xpath("(//div//div//following::label)[3]//following::input[1]");
@@ -53,7 +56,8 @@ public class DispositionMasterPageRepo {
 	public static By errorMessageforsubdispostion = By.xpath("//div[@class='rz-growl-message']//p[contains(text(),'This Sub-Disposition Already Exist')]");
 	public static By dispositionRow = By.xpath("//div[@class='rz-data-grid-data']//table//tr[@class='rz-datatable-even  ']//span[@title='Online Banking Issues']");
 	public static By actionOwner = By.xpath("(//div[@class='rz-data-grid-data']//table//tr[@class='rz-datatable-even  '])[1]//span[@title='']");
-	public static By statusIcon = By.xpath("(//div[@class='rz-data-grid-data']//tr[contains(@class, 'rz-datatable-even')]//i[@style='color:green'])[1]");
+	//public static By statusIcon = By.xpath("(//div[@class='rz-data-grid-data']//tr[contains(@class, 'rz-datatable-even')]//i[@style='color:green'])[1]");
+	public static By statusIcon = By.xpath("(//i[contains(@class, 'rzi') and text()='check_circle' and contains(@style, 'color:green')])[1]");		
 	public static By activateDeactivateOption = By.xpath("(//button[contains(text(),'Activate/De-activate')])[1]");
 	public static By searchButton = By.xpath("(//div//button[contains(text(),'Search')])[1]");
 	public static By subpopupactionOwnerDropdown = By.xpath("(//div[@onmousedown='Radzen.activeElement = null']//div[@class='rz-helper-hidden-accessible']//input[@name='Action_owner'])[1]");
@@ -66,8 +70,8 @@ public class DispositionMasterPageRepo {
     public static By lastPageArrowButton = By.xpath("(//li[@class='page-item  '])[3]//span[contains(text(),'>>')]");
     public static By previousdoubleArrowButtons = By.xpath("//li[@class='page-item  ']//span[contains(text(),'<<')]");
     public static By spinner = By.xpath("//div[@class='spinner']");
-    //public static By selectAllOptionpath = By.xpath("(//div//div[@class='rz-chkbox'])[5]");
     public static By selectAllOptionpath = By.xpath("(//*[contains(@id, 'popup')]/div[1]/div[1]/div[2])[4]");
+    
     public static By outsideElement = By.xpath("//div[@class='rz-dialog-content']");
     public static By clearValueIcon = By.xpath("(//div[@class='rz-helper-hidden-accessible']//following::label//following::i)[1]");
     public static By clearvaluepath = By.xpath("(//div[@onmousedown='Radzen.activeElement = null']//div[@class='rz-helper-hidden-accessible']//input//following::i)[2]");
@@ -126,7 +130,13 @@ public class DispositionMasterPageRepo {
     public static By dispositionOption(String disposition) {
         return By.xpath("//div[@class='rz-multiselect-items-wrapper']//ul//li[@aria-label='" + disposition + "']");
     }
-    public static By successPopup = By.xpath("//div[@class='rz-growl-item']//div//span[contains(text(),'Success ')]");
+    //public static By successPopup = By.xpath("//div[@class='rz-growl-item']//div//span[contains(text(),'Success ')]");
+    public static By successPopup = By.xpath("//span[text()='Success ']");
     public static By actionOwnerPath = By.xpath("(//label[contains(text(),'Asset Category')]//following::div//div[@class='rz-helper-hidden-accessible']//input//following::label)[1]");
     public static By popUpCloseButton = By.xpath("//div[@class='rz-dialog-titlebar']//a");
+    
+    public By FirstDisposition(String DispositionName) {
+        return By.xpath("(//span[text()='"+DispositionName+"'])[1]");
+    }
+    		
     }

@@ -325,6 +325,11 @@ public class DispositionMasterPage {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    try {
 	    	Common.fluentWait("DispositionMasterPageRepo.actionOwnerField", DispositionMasterPageRepo.actionOwnerField);
+	    	Common.fluentWait("DispositionMasterPageRepo.nameField", DispositionMasterPageRepo.nameField);
+	    	Common.fluentWait("DispositionMasterPageRepo.assetCategoryField", DispositionMasterPageRepo.assetCategoryField);
+	    	Common.fluentWait("DispositionMasterPageRepo.submitButton", DispositionMasterPageRepo.submitButton);
+	    	Common.fluentWait("DispositionMasterPageRepo.closeButton", DispositionMasterPageRepo.closeButton);
+	    	
 	    	wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerField));
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.nameField));
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.assetCategoryField));
@@ -379,9 +384,11 @@ public class DispositionMasterPage {
 
     // Method to select asset category
     public void selectAssetCategory(String category) {
+    	Common.fluentWait("DispositionMasterPageRepo.assetCategoryField", DispositionMasterPageRepo.assetCategoryField);
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     	WebElement assetCategoryElement = driver.findElement(DispositionMasterPageRepo.assetCategoryField);
         assetCategoryElement.click();
+        Common.fluentWait("Asset category as NPA Category", DispositionMasterPageRepo.assetCategoryOption(category));
         WebElement ccelement = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.assetCategoryOption(category)));
         ccelement.click();
     }
@@ -390,7 +397,9 @@ public class DispositionMasterPage {
     public void clickSubmit() {
     	Common.fluentWait("submitButton", DispositionMasterPageRepo.submitButton);
     	WebElement submitButton = driver.findElement(DispositionMasterPageRepo.submitButton);
-    	submitButton.click();
+    	//submitButton.click();
+    	
+    	Base_Class.ForLoopClick(DispositionMasterPageRepo.submitButton);
     	
     }
     
@@ -426,16 +435,20 @@ public class DispositionMasterPage {
         }
     
     public void clickActionOwnerDropdown() {
+    	Common.fluentWait("DispositionMasterPageRepo.closeButton", DispositionMasterPageRepo.closeButton);
     	WebElement popCloseButton = driver.findElement(DispositionMasterPageRepo.closeButton);
     	popCloseButton.click();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    	Common.fluentWait("DispositionMasterPageRepo.addDispositionButton", DispositionMasterPageRepo.addDispositionButton);
     	WebElement addDispositionButton = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.addDispositionButton));
     	addDispositionButton.click();
+    	Common.fluentWait("DispositionMasterPageRepo.actionOwnerField", DispositionMasterPageRepo.actionOwnerField);
     	WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.actionOwnerField));
         dropdown.click();
     }
     
     public void selectAllActionOwners() {
+    	Common.fluentWait("DispositionMasterPageRepo.selectAllOptionpath", DispositionMasterPageRepo.selectAllOptionpath);
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     	WebElement selectAllOption = driver.findElement(DispositionMasterPageRepo.selectAllOptionpath); 
     	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
@@ -504,6 +517,7 @@ public class DispositionMasterPage {
 
     // Method to verify if status is a green tick
     public boolean isStatusGreenTick() {
+    	Common.fluentWait("DispositionMasterPageRepo.statusIcon", DispositionMasterPageRepo.statusIcon);
     	WebElement statusIcon = driver.findElement(DispositionMasterPageRepo.statusIcon);
         return statusIcon.isDisplayed();
     }
@@ -522,21 +536,26 @@ public class DispositionMasterPage {
     }
     
  // Method to click the three-dot button
-    public void clickThreeDotButton() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    public void clickThreeDotButton() throws InterruptedException {
+    	Common.fluentWait("DispositionMasterPageRepo.actionColumnButton", DispositionMasterPageRepo.actionColumnButton);
+    	Base_Class.click(DispositionMasterPageRepo.actionColumnButton);
+    	/*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     	WebElement actionColumnButton = driver.findElement(DispositionMasterPageRepo.actionColumnButton);
     	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.errorMessage));
     	WebElement close = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.closeButton));
     	close.click();
     	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
-    	actionColumnButton.click();
+    	actionColumnButton.click();*/
     }
 
     // Method to click the edit button
-    public void clickEditButton() {
+    public void clickEditButton() throws InterruptedException {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-    	WebElement editButton = driver.findElement(DispositionMasterPageRepo.editButton);
-        editButton.click();
+    	/*WebElement editButton = driver.findElement(DispositionMasterPageRepo.editButton);
+        editButton.click();*/
+    	
+    	Common.fluentWait("DispositionMasterPageRepo.editButton", DispositionMasterPageRepo.editButton);
+    	Base_Class.click(DispositionMasterPageRepo.editButton);
     	wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
     }
 
@@ -554,6 +573,7 @@ public class DispositionMasterPage {
  
  // Method to click on the update button
     public void clickUpdateButton() {
+    	Common.fluentWait("DispositionMasterPageRepo.updateButton", DispositionMasterPageRepo.updateButton);
     	WebElement updateButton = driver.findElement(DispositionMasterPageRepo.updateButton);
         updateButton.click();
     }
@@ -1123,4 +1143,5 @@ public class DispositionMasterPage {
 		}
 		return true;
     }
+    
 }

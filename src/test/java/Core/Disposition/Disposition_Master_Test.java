@@ -375,6 +375,7 @@ public class Disposition_Master_Test extends Base_Class {
 	 @Test(priority = 14, dataProvider = "TestData")
 	    public void Add_Disposition__Submit_with_All_Fields_Valid(Map<Object, Object> testdata) throws InterruptedException {
 		 
+		 String name = null;
 		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		 wait.until(ExpectedConditions.invisibilityOfElementLocated(DispositionMasterPageRepo.spinner));
 			// ExtentTestManager.startTest("TestCase_14 : Add Disposition - Submit with All Fields Valid");
@@ -384,7 +385,7 @@ public class Disposition_Master_Test extends Base_Class {
 				if (testdata.get("Run").toString().equalsIgnoreCase("Yes")) {
 					
 					String actionowner = testdata.get("ActionOwner").toString();
-					String name = testdata.get("Name").toString();
+					name = testdata.get("Name").toString();
 					String assetcategory = testdata.get("AssetCategory").toString();
 					
 					dispositionMasterPage.selectActionOwner(actionowner);
@@ -402,8 +403,15 @@ public class Disposition_Master_Test extends Base_Class {
 		 dispositionMasterPage.clickSubmit();
 		// Validate the popup message
 	
-		 WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(DispositionMasterPageRepo.successPopup));
-	        Assert.assertTrue(popup.isDisplayed(), "Success popup is not displayed.");
+		 Common.fluentWait("DispositionMasterPageRepo.FirstDisposition", DispositionMasterPageRepo.FirstDisposition(name));
+		 String FirstDispositionName = driver.findElement(DispositionMasterPageRepo.FirstDisposition(name)).getText();
+		 System.out.println("The disposition name in first row is " + FirstDispositionName);
+		 
+		 Assert.assertEquals(FirstDispositionName, name, "Disposition name does not match!");
+		 
+		 /*Common.fluentWait("DispositionMasterPageRepo.successPopup", com.Page_Repository.DispositionMasterPageRepo.successPopup);
+		 WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(com.Page_Repository.DispositionMasterPageRepo.successPopup));
+	        Assert.assertTrue(popup.isDisplayed(), "Success popup is not displayed.");*/
 	      
 	        ExtentTestManager.getTest().log(Status.PASS, "Data is submitted successfully, popup closes without errors.");
 		 }
@@ -510,8 +518,8 @@ public class Disposition_Master_Test extends Base_Class {
 		        }
 		    }
 		    // Step 5: Click outside the dropdown to close it
-		 
-		 WebElement dropdown = driver.findElement(DispositionMasterPageRepo.actionOwnerPath);
+		 Common.fluentWait("DispositionMasterPageRepo.assetCategoryField", DispositionMasterPageRepo.nameField);
+		 WebElement dropdown = driver.findElement(DispositionMasterPageRepo.nameField);
 		    dropdown.click();
 	        ExtentTestManager.getTest().log(Status.PASS, "Selected values are displayed, and \"NPA Category\" is checked.");
 		 }
@@ -565,7 +573,7 @@ public class Disposition_Master_Test extends Base_Class {
 	       
 	    }
 	 
-	 /*@Test(priority = 20)
+	 @Test(priority = 20)
 	    public void Select_All_Functionality__Asset_Category() throws InterruptedException {
 		 
 		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -672,9 +680,11 @@ public class Disposition_Master_Test extends Base_Class {
 		 try { 
 	        // Step 1: Click on the three-dot button in the Action column
 		 dispositionMasterPage.clickThreeDotButton();
+		 ExtentTestManager.getTest().log(Status.PASS, "Clicked on three dot button");
 
 	        // Step 2: Click on the edit button
 		 dispositionMasterPage.clickEditButton();
+		 ExtentTestManager.getTest().log(Status.PASS, "Clicked on edit button");
 
 	        // Expected Result: Verify the Edit disposition popup is displayed with expected elements
 	        Assert.assertTrue(dispositionMasterPage.isEditPopupDisplayed(), 
@@ -705,7 +715,7 @@ public class Disposition_Master_Test extends Base_Class {
 			 Thread.sleep(3000);
 	    }
 	    
-	    @Test(priority = 26, dataProvider = "TestData")
+	    /*@Test(priority = 26, dataProvider = "TestData")
 	    public void Verify_Add_Disposition_with_Valid_Data(Map<Object, Object> testdata) throws InterruptedException  {
 	    	
 	    	try {
