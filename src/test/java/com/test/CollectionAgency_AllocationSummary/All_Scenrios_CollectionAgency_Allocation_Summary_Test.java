@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -20,7 +21,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -48,6 +52,9 @@ import com.aventstack.extentreports.Status;
 import com.extentReports.ExtentManager;
 import com.extentReports.ExtentTestManager;
 import com.listeners.TestListener;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import static org.junit.Assert.assertTrue;
 
 public class All_Scenrios_CollectionAgency_Allocation_Summary_Test {
@@ -61,6 +68,9 @@ public class All_Scenrios_CollectionAgency_Allocation_Summary_Test {
 	ExtentTest extenttest;
 	CA_Allocation_Summary_Page allocationsummary;
 	Login_Class CollectionAgencyLogin;
+
+	private String collectionWindowHandle;
+	private String coreWindowHandle = null;
 
 	@BeforeClass
 
@@ -92,7 +102,7 @@ public class All_Scenrios_CollectionAgency_Allocation_Summary_Test {
 				"Allocation Summary page should be displayed.");
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, dependsOnMethods = "testLoginAndNavigateToDashboard")
 	public void testGridColumnsDisplay() {
 		Assert.assertTrue(allocationsummary.isDateColumnDisplayed(), "Date column is not displayed.");
 		extenttest.log(Status.PASS, "Date column is displayed");
@@ -113,7 +123,7 @@ public class All_Scenrios_CollectionAgency_Allocation_Summary_Test {
 		Log.info("Values in grid displayed.");
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, dependsOnMethods = "testGridColumnsDisplay")
 	public void testDownloadAccountDetails() throws IOException, InterruptedException {
 		// Step 1: Click the download button for account details
 		allocationsummary.clickDownloadButton();
@@ -171,7 +181,7 @@ public class All_Scenrios_CollectionAgency_Allocation_Summary_Test {
 		fis.close();
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4, dependsOnMethods = "testDownloadAccountDetails")
 	public void testEmptyGridError() {
 		if (allocationsummary.isNoDataMessageDisplayed()) {
 			assertTrue("No records to display message should be displayed", true);
@@ -183,34 +193,91 @@ public class All_Scenrios_CollectionAgency_Allocation_Summary_Test {
 		}
 
 	}
-/*
-	@Test(priority = 5)
+
+	@Test(priority = 5, dependsOnMethods = "testEmptyGridError")
 	public void testAgentCretion() throws Exception {
 
 		// Step 1: Create Agent in Collection App
 
 		allocationsummary.navigateToAddAgentPage();
-		allocationsummary.createAgent("05", "Agent 5", "9999999999");
+		allocationsummary.createAgent("06", "Agent 6", "9999999999");
 		extenttest.log(Status.INFO, "Created agent successfully");
 		Log.info("Created agent successfully");
 
-		// Step 3: Login to Core System for Allocation
-		Login_Class.CoreLogin();
-		extenttest.log(Status.INFO, "Triggered Core application login");
-		Log.info("Triggered Core application login");
+		// Store collection window handle before switching
+		collectionWindowHandle = driver.getWindowHandle();
+		Log.info("Stored Collection window handle: " + collectionWindowHandle);
+
+		// Step 2: Login to Core System
+		Login_Class.CoreLoginContext(driver);// Assuming login is in baseclass; if not, use a dedicated login class
+		extenttest.log(Status.PASS, "Login successful");
+		Log.info("Login successful");
+
+		// Identify and store the Core window handle (the new window)
+		Set<String> allHandles = driver.getWindowHandles();
+		for (String handle : allHandles) {
+			if (!handle.equals(collectionWindowHandle)) {
+				coreWindowHandle = handle;
+				break;
+			}
+		}
+		if (coreWindowHandle == null) {
+			throw new IllegalStateException("Core window handle not found after login");
+		}
+		Log.info("Stored Core window handle: " + coreWindowHandle);
+
+		// Switch to Core window and click Collection Agency menu in Core app
+		driver.switchTo().window(coreWindowHandle);
+		Log.info("Switched to Core window after login");
 
 	}
 
-	@Test(priority = 6)
-	public void testAgentAllocationEndToEnd() throws Exception {
+	@Test(priority = 6, dependsOnMethods = "testAgentCretion")
+	public void testAgenyAllocationEndToEnd() throws Exception {
+		// Ensure driver is switched to Core window before allocation in Core
+		if (coreWindowHandle != null) {
+			driver.switchTo().window(coreWindowHandle);
+			Log.info("Switched to Core window for agency allocation.");
+		} else {
+			Log.error("Core window handle not found!");
+			throw new IllegalStateException("Core window handle is null.");
+		}
 
 		allocationsummary.VerifyAgencyAccountAllocationDisplayingasSubmenu();
 		allocationsummary.allocateAccounts("200000");
 		extenttest.log(Status.INFO, "Core allocation done");
 		Log.info("Core allocation done");
-		Thread.sleep(3000); // Optional pause
 
+	}
+
+	@Test(priority = 7, dependsOnMethods = "testAgenyAllocationEndToEnd")
+	public void testAgentAllocationEndToEnd() throws Exception {
+
+		// Step 1: Safely switch back to Collection window
+		Set<String> currentHandles = driver.getWindowHandles();
+
+		if (collectionWindowHandle != null && currentHandles.contains(collectionWindowHandle)) {
+			driver.switchTo().window(collectionWindowHandle);
+			Log.info("Switched back to Collection window using stored handle.");
+		} else {
+			// Fallback: Try to switch to any window with "Collection" in the title
+			boolean switched = false;
+			for (String handle : currentHandles) {
+				driver.switchTo().window(handle);
+				if (driver.getTitle().toLowerCase().contains("collection")) {
+					collectionWindowHandle = handle; // Update the handle
+					switched = true;
+					Log.info("Switched back to Collection window using title match.");
+					break;
+				}
+			}
+			if (!switched) {
+				Log.error("Unable to switch back to Collection window.");
+				throw new IllegalStateException("Collection window not found.");
+			}
+		}
 		// Step 10: Allocate Agent accounts in Collection
+		allocationsummary.VerifyAccountAllocationDisplayingasSubmenu();
 		allocationsummary.allocateAgentAccounts();
 		extenttest.log(Status.INFO, "Agent allocation completed");
 		Log.info("Agent allocation completed");
@@ -219,9 +286,8 @@ public class All_Scenrios_CollectionAgency_Allocation_Summary_Test {
 		Assert.assertTrue(allocationsummary.verifyAllocation(), "Allocation count mismatch!");
 
 	}
-*/
 
-	@Test(priority = 7)
+	@Test(priority = 8, dependsOnMethods = "testAgentAllocationEndToEnd")
 	public void testDownloadedFileFormat() throws IOException, InterruptedException {
 		// Click the expected download button
 		allocationsummary.clickFileDownloadButton();

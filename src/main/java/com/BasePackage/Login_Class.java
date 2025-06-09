@@ -6,16 +6,28 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.BasePackage.Base_Class;
+import com.Page_Repository.CollectionAgency_AllocationSummaryPageRepo;
 import com.Page_Repository.LoginPageRepo;
 import com.Utility.Log;
+import com.aventstack.extentreports.Status;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Login_Class extends Base_Class {
@@ -235,7 +247,7 @@ public class Login_Class extends Base_Class {
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--window-size=1920,1080");
         	        options.addArguments("--allow-running-insecure-content");
-        	        options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://192.168.32.33:8597/Collection/Allocationsummary");
+        	        options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://192.168.32.33:8597/Collection/Allocationsummary, http://192.168.6.205:4114/Collection/Allocationsummary");
                     options.addArguments("--disable-extensions");
                     
                     WebDriverManager.chromedriver().setup();
@@ -454,9 +466,82 @@ public class Login_Class extends Base_Class {
             }
         }*/
         
-       
+	}    
         
 
-    }
+    
+	public static void CoreLoginContext(WebDriver driver) throws Exception {
+	    try {
+	        String CoreAppUrl = configloader().getProperty("CoreApplicationUrl");
+	        String CoreUserName = configloader().getProperty("CoreUserName");
+	        String CoreUserPassword = configloader().getProperty("CoreUserPassword");
+
+	     // Save current window handle
+	        String originalWindow = driver.getWindowHandle();
+
+	        // Open a new tab via JavaScript
+	        ((JavascriptExecutor) driver).executeScript("window.open()");
+	        // Get all window handles, then switch to the new tab (last one)
+	        Set<String> windowHandles = driver.getWindowHandles();
+	        List<String> windowList = new ArrayList<>(windowHandles);
+	        String newTabHandle = windowList.get(windowList.size() - 1);
+	        driver.switchTo().window(newTabHandle);
+
+	        // Navigate to Core Application URL (from config)
+	        driver.get(CoreAppUrl);
+
+	        // Perform login using config credentials
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	        WebElement usernameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='User Name']")));
+	        usernameInput.sendKeys(CoreUserName);
+	        driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys(CoreUserPassword);
+	        driver.findElement(By.xpath("//button[@type = 'submit']")).click();
+	        
+	        try {
+                WebElement clickableElement = Common.waitForElementToBeClickable(
+                    driver, 
+                    LoginPageRepo.AlreadyLoginPopupYesButton, 
+                    Duration.ofSeconds(20)
+                );
+
+                if (clickableElement != null) {
+                    // Perform the desired action on the element
+                    clickableElement.click();
+                    //driver.findElement(LoginPageRepo.AlreadyLoginPopupYesButton).click();
+                    Common.waitForSpinnerToDisappear2(driver, "Loading Spinner", LoginPageRepo.Spinner);
+                    
+                    Common.fluentWait("UserNameField", LoginPageRepo.username);
+                    Common.fluentWait("PasswordField", LoginPageRepo.password);
+                    Common.fluentWait("LoginButton", LoginPageRepo.login);
+
+                    driver.findElement(LoginPageRepo.username).sendKeys(CoreUserName);
+                    Log.info("Entered " + CoreUserName + " in user name field");
+                    driver.findElement(LoginPageRepo.password).sendKeys(CoreUserPassword);
+                    Log.info("Entered " + CoreUserPassword + " in password field");
+                    driver.findElement(LoginPageRepo.login).click();
+                    Log.info("Clicked on login button");
+                    
+                    Log.info("Clicked on already login yes button and logged in again with valid credentials");
+                } else {
+                    System.out.println("Element not clickable within the timeout.");
+                }
+            } catch (Exception e) {
+                System.out.println("Exception occurred while waiting for the element: " + e.getMessage());
+                System.out.println("Already login pop up not appeared");
+            }
+
+	        // Add wait to ensure login completes (replace with explicit wait if needed)
+	        Thread.sleep(3000);
+
+	        // Switch back to original window
+	        driver.switchTo().window(originalWindow);
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        throw new Exception("Core login from collection context failed: " + e.getMessage());
+	    }
+	}
+
 	
 }
+

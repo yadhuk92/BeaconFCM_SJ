@@ -5,12 +5,17 @@
     <classes>
       <class name="com.test.CollectionAgency_AllocationSummary.All_Scenrios_CollectionAgency_Allocation_Summary_Test">
         <methods>
+          <include name="testAgentCretion"/>
+          <include name="testAgenyAllocationEndToEnd"/>
+          <include name="testAgentAllocationEndToEnd"/>
           <include name="takeScreenshotOnFailure"/>
           <include name="setupTest"/>
+          <include name="testEmptyGridError"/>
           <include name="afterEachTest"/>
           <include name="testDownloadedFileFormat"/>
           <include name="testGridColumnsDisplay"/>
           <include name="SetUp"/>
+          <include name="testLoginAndNavigateToDashboard"/>
           <include name="testDownloadAccountDetails"/>
         </methods>
       </class> <!-- com.test.CollectionAgency_AllocationSummary.All_Scenrios_CollectionAgency_Allocation_Summary_Test -->
