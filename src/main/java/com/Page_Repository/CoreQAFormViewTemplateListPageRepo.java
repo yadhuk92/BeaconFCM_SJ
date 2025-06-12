@@ -11,10 +11,12 @@ public class CoreQAFormViewTemplateListPageRepo {
 	       
 	        public static final By ExpectedAnswerTypeDropdown = By.xpath("//label[normalize-space(.)='Expected Answer Type']" + "/following-sibling::div[contains(@class,'rz-dropdown')]");
 	        public static By ExpectedAnswerTypeOptions = By.xpath("//li[contains(@class, 'rz-dropdown-item')]");
-	       public static final By ValuesField = By.xpath("//label[normalize-space(.)='Values']"+ "/following-sibling::input");
+	        public static By ExpectedAnswerType = By.xpath("//label[.='Expected Answer Type']//following-sibling::div");
+	       
+	        public static By Valuesfield1 = By.xpath("//label[text()='Values']/following::input[1]");
 	        //public static final By ValuesField = By.xpath("label[text()='Values']/following-sibling::input");
 	        public static By expectedAnswerTypeDropdown = By.xpath("//label[contains(@class,'rz-dropdown-label')]");
-	        public static By dropdownvalue = By.xpath("//label[text()='Expected Answer Type']/following-sibling::div//label[contains(@class,'rz-dropdown-label')]");
+	        public static By dropdownvalue = By.xpath("//li[normalize-space(.)='Drop Down']");
 	        public static By textBoxOption = By.xpath("//li[normalize-space(.)='TextBox']");
 	        public static By parentQuestion = By.xpath("//label[normalize-space(.)='Parent Question']/following-sibling::div[contains(@class,'rz-dropdown')]");
 	        public static By ParentValue = By.xpath("//label[normalize-space(.)='Parent Value']/following-sibling::div[contains(@class,'rz-dropdown')]");
@@ -53,14 +55,89 @@ public class CoreQAFormViewTemplateListPageRepo {
 	        
 	       public static By lastModifiedColumn = By.xpath("//td[contains(@class,'last-modified-column') or position()=3]");
 	       
-	       public static By actionButton = By.xpath("//div[contains(@class,'morebtnmenu')]//button[contains(@class,'morebtn')]");
+	       public static By actionButton = By.xpath("(//button[@id='dropdownMenu2'])[last()]");
 	       public static By action_Edit = By.xpath("//ul[contains(@class,'dropdown-menu')]//button[text()='Edit']");
 	       public static By action_View = By.xpath("//ul[contains(@class,'dropdown-menu')]//button[text()='View']");
 	       public static By action_ViewHistory = By.xpath("//ul[contains(@class,'dropdown-menu')]//button[contains(text(),'View History')]");
 	       
-	       public static By templateNameField = By.xpath("//input[@name='Name']");
-	       public static By updateButton = By.xpath("//button[normalize-space()='Update']");
-	      
+	       public static By templateNameField = By.xpath("(//input[@name='Name'])[1]");
+	       public static By remarkField = By.xpath("//input[@type='text' and @maxlength='100' and contains(@class, 'searchinput')]");
+	       //public static By updateButton = By.xpath("//button[normalize-space()='Update']");
+	      public static By updateButton = By.xpath("//input[@type='submit' and @value='Update']");
+
+           public static By updatedscreenexpectedAnswerTypeDropdown = By.xpath("//label[normalize-space()='Expected Answer Type']/following-sibling::div[contains(@class, 'rz-dropdown')]");
+           public static By UpdatedscreenAddQuestioncheckbox = By.xpath("//label[normalize-space()='Add Question']/preceding-sibling::div[contains(@class, 'rz-chkbox')]");
+           
+           public static By updatedscreenQuestionfieldtextbox = By.xpath("//label[normalize-space()='Question']/following-sibling::input");
+           public static By updatedscreenIsMandatory = By.xpath("//label[normalize-space()='Is Mandatory']/preceding-sibling::div//div[contains(@class,'rz-chkbox-box')]");
+           public static By updatedscreenAddbtn = By.xpath("//input[@type='submit' and @value='Add' and contains(@class, 'btn-primary')]");
+           
+          // Check this xpath after 37 test cases
+           
+           //public static By actionButtonAgainstQuestion = By.xpath("(//span[@title=\"Q1\"]/../../td)[8]//div[@class='morebtnmenu']/button");
+           public static By actionButtonAgainstQuestion = By.xpath("(//div[contains(@class, 'morebtnmenu')]/button[contains(@class, 'morebtn')])[last()]");
+           public static By ActionbuttonagainstEditbutton = By.xpath("(//ul[contains(@class,'dropdown-menu')]//button[normalize-space(text())='Edit'])[last()]");
+           public static By deleteOption = By.xpath("(//button[text()='Delete'])[last()]");
+           public static By yesButtonOnPopup = By.xpath("//button[@type='button' and contains(@class, 'rz-button') and .//span[text()='Yes']]");
+           public static By deleteSuccessMessage = By.xpath("//p[normalize-space(.)='Question deleted successfully']");
+           
+           public static By questionField =By.xpath("//label[.='Question']//following-sibling::input");
+           public static By valuesField= By.xpath("//input[@id='A23yW0BkX0' and @disabled]");
+           public static By updatebutton = By.xpath("//input[@value='Update']");
+           public static By ismandatoryuncheck = By.xpath("//label[normalize-space()='Is Mandatory']/preceding-sibling::div//div[contains(@class,'rz-chkbox-box')]");
+         //  public static By ExpectedTypedropdown1 = By.xpath("//label[.='Expected Answer Type']/following-sibling::div");)
+           public static By Datepickerdropdown = By.xpath("//li[@role='option']/span[normalize-space(.)='Date Picker']");
+           public static By successToastMessage = By.xpath("//*[contains(text(),'Template Updated Successfully')]");
+           
+          // public static By cancelbtn43 = By.xpath("//input[@type='button' and @value='Cancel']");
+           public static By tickactivecheckbox = By.xpath("//label[text()='Active']/preceding-sibling::div[contains(@class,'rz-chkbox')]");
+       
+           public static By QATemplategrid =By.xpath ("//table[@class='rz-grid-table rz-grid-table-fixed']");
+           public static By QATemplategridviewbutton = By.xpath("//button[.='View']");
+           public static By ViewTemplatescreenexpectedcondition= By.xpath ("//div[.='View Template'])[2]");
+           public static By  elementofthespecificrecord = By.xpath("//div[@class='card-caption']");
+           public static By  Viewtemplateheadertile = By.xpath("//div[@class='card-caption']/span");
+           
+           public static By ViewTemplateQuestiongrid = By.xpath("//table[contains(@class, 'rz-grid-table')]");
+           public static By ViewTemplategridcancelicon = By.xpath("//a[contains(@class,'rz-dialog-titlebar-close')]");
+           public static By QATemplatetile = By.xpath("//div[@class='dvPageheadingCaption' and normalize-space()='Q&A Template']");
+           
+           //Q&A Template Page View History Xpath
+          
+           public static By Viewhistorybutton = By.xpath("//button[@class='dropdown-item' and normalize-space()='View History']");
+           //public static By templateHistoryPopupTitle = By.xpath("//div[@class='rz-dialog-titlebar']/span[contains(text(),'Template History')]");)
+           public static By templateHistoryPopupTitle = By.xpath("//div[@class='rz-dialog-titlebar']/span[contains(text(),'Template History')]");
+          
+          public static By TemplateNamewrittentext = By.xpath("(//label[normalize-space(text())='Template Name'])[1]");
+          public static By input_TemplateName_HistoryPopup = By.xpath("(//label[normalize-space(text())='Template Name'])[1]/following-sibling::input");
+          public static By col_Status = By.xpath("((//span[normalize-space(.)='Status'])[1]/../../../th)[1]");
+          public static By col_LastModified = By.xpath("((//span[normalize-space(.)='Status'])[1]/../../../th)[2]");
+          public static By col_Remark = By.xpath("((//span[normalize-space(.)='Status'])[1]/../../../th)[3]");
+          
+          //TC 53
+          public static By historyGridRow = By.xpath("//div[@class='rz-datatable-scrollable-body']//table//tbody//tr");
+          public static By statusCell = By.xpath(".//td[1]");  // relative to row
+          public static By lastModifiedCell = By.xpath(".//td[2]");
+          public static By remarkCell = By.xpath(".//td[3]");
+          
+          //TC 54
+        
+          public static By statusIconImg = By.xpath(".//td[1]//img");  // relative to each row, image inside Status column
+          
+          public static By templateNameSearchField = By.xpath("//input[@placeholder='Template Name']");
+          public static By templateSearchButton = By.xpath("//button[normalize-space()='Search']");
+          
+          
+          
+          public static By questionTypeOption(String fieldType) {
+        	   String  typeXpath = "//li[@role='option']/span[text()='"+fieldType+"']";
+        	   return By.xpath(typeXpath);
+           }
+           public static By actionButtonAgainstQuestion(String questionName) {
+        	   String  typeXpath = "(//span[@title='"+questionName+"']/../../td)[8]//div[@class='morebtnmenu']/button";
+        	   return By.xpath(typeXpath);
+           }  
+           
+           
 }
-		
 

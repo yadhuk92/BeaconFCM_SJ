@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,13 +30,9 @@ public class CoreQAFormViewTemplateList_MainClass extends Base_Class {
 	 CoreQAFormViewTemplateList_MainClass page;
 	 
 	public CoreQAFormViewTemplateList_MainClass(WebDriver driver) {
-		//Log.info("Initializing Q&A Form View Page...");
 		this.driver = driver;
-		//Log.info("WebDriver instance assigned.");
-		//Log.info("Initializing Web elements using PageFactory...");
 		PageFactory.initElements(driver, this);
-		//Log.info("Web elements initialized using PageFactory.");
-		//Log.info("Q&A Form View Page initialization completed.");
+		
 	}
 	public void WaitLoader() {
 		By loader = By.xpath("//*[@class='spinner']");
@@ -50,6 +47,16 @@ public class CoreQAFormViewTemplateList_MainClass extends Base_Class {
 			Log.info("Loader did not appear, proceeding without delay.");
 		}
 	}
+	public void waitForSpinnerToDisappear() {
+	    try {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class='spinner']")));
+	        System.out.println("Spinner has disappeared.");
+	    } catch (Exception e) {
+	        System.out.println("Spinner did not disappear: " + e.getMessage());
+	    }
+	}
+	
 	public void isDisplayed(By locator, String fieldName) {
 	    try {
 	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -106,7 +113,7 @@ public class CoreQAFormViewTemplateList_MainClass extends Base_Class {
 			isDisplayed(CoreQAFormViewTemplateListPageRepo.TemplateName, "TemplateName");
 			isDisplayed(CoreQAFormViewTemplateListPageRepo.Question, "Question");
 			isDisplayed(CoreQAFormViewTemplateListPageRepo.ExpectedAnswerTypeDropdown, "ExpectedAnswerType");
-			isDisplayed(CoreQAFormViewTemplateListPageRepo.ValuesField, "Values");
+			isDisplayed(CoreQAFormViewTemplateListPageRepo.Valuesfield1, "Values");
 			isDisplayed(CoreQAFormViewTemplateListPageRepo.parentQuestion, "parentQuestion");
 			isDisplayed(CoreQAFormViewTemplateListPageRepo.ParentValue, "ParentValue");
 			isDisplayed(CoreQAFormViewTemplateListPageRepo.IsMandatory, "IsMandatory");
@@ -173,43 +180,134 @@ public List<String> getExpectedAnswerTypeOptions() {
     Log.info("Actual Expected Answer Type options: " + options);
     return options;
 }
-public void selectExpectedAnswerType(String type) throws InterruptedException  {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-    WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.ExpectedAnswerTypeDropdown));      
-    new Select(dropdown).selectByVisibleText(type);
-    Log.info("Selected Expected Answer Type: " + type);
-}
+//public void selectExpectedAnswerType(String type) throws InterruptedException  {
+//	//waitForSpinnerToDisappear();
+//	click(CoreQAFormViewTemplateListPageRepo.ExpectedAnswerType);
+//    click(CoreQAFormViewTemplateListPageRepo.textBoxOption);
+//  
+//  /*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//  wait.until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.textBoxOption));
+//
+//    WebElement dropdowntextbox = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.textBoxOption));      
+//   dropdowntextbox.click();*/
+//    Log.info("Selected Expected Answer Type: " + type);
+//}
+//
+//
+//public boolean isValuesFieldNonEditable() {
+//    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//  
+//    WebElement valuesInput = wait.until(ExpectedConditions.presenceOfElementLocated(CoreQAFormViewTemplateListPageRepo.Valuesfield1));
+//    boolean enabled = valuesInput.isEnabled();
+//    boolean readOnly = valuesInput.getAttribute("readonly") != null;
+//    Log.info("Values field – enabled: " + enabled + ", readonly attr present: " + readOnly);
+//    return !enabled || readOnly;
+//}
+public void verifyValuesFieldNonEditableForTextBox() {
+    try {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-public boolean isValuesFieldEditable() {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    WaitLoader();
-    WebElement valuesInput = wait.until(ExpectedConditions.presenceOfElementLocated(CoreQAFormViewTemplateListPageRepo.ValuesField));
-    boolean enabled = valuesInput.isEnabled();
-    boolean readOnly = valuesInput.getAttribute("readonly") != null;
-    Log.info("Values field – enabled: " + enabled + ", readonly attr present: " + readOnly);
-    return enabled && !readOnly;
+        // Click on Expected Answer Type dropdown
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.ExpectedAnswerType));
+        dropdown.click();
+
+        // Wait for and select the TextBox option — retry if needed
+        boolean optionSelected = false;
+        for (int i = 0; i < 3; i++) { // Retry logic
+            try {
+                wait.until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.textBoxOption));
+                WebElement textBox = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.textBoxOption));
+                textBox.click();
+                optionSelected = true;
+                break;
+            } catch (Exception e) {
+                Thread.sleep(1000); // wait before retry
+                dropdown.click();  // re-click to reopen dropdown
+            }
+        }
+
+        if (!optionSelected) {
+            throw new AssertionError("Failed to select TextBox option after multiple attempts.");
+        }
+
+        Log.info("Selected Expected Answer Type: TextBox");
+
+        // Check Values field is non-editable
+        WebElement valuesInput = wait.until(ExpectedConditions.presenceOfElementLocated(CoreQAFormViewTemplateListPageRepo.Valuesfield1));
+        boolean enabled = valuesInput.isEnabled();
+        boolean readOnly = valuesInput.getAttribute("readonly") != null;
+
+        //Log.info("Values field – enabled: " + enabled + ", readonly: " + readOnly);
+
+        if (enabled && !readOnly) {
+            throw new AssertionError("Values field should be non-editable for TextBox but it is editable.");
+        }
+
+        System.out.println("Test Passed: Values field is non-editable for TextBox.");
+
+    } catch (Exception e) {
+        throw new AssertionError("Test failed during 'Values field non-editable check for TextBox': " + e.getMessage(), e);
     }
-
-public boolean selectExpectedAnswerTypeAndCheckValuesEditable(String answerType) {
+}
+/*public boolean selectExpectedAnswerTypeAndCheckValuesEditable(String answerType) throws InterruptedException {
+	click(CoreQAFormViewTemplateListPageRepo.ExpectedAnswerType);
+    click(CoreQAFormViewTemplateListPageRepo.dropdownvalue);
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.dropdownvalue));
-    dropdown.click();
     Log.info("Clicked Expected Answer Type dropdown");
 
-   // WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.DropdownOption(answerType)));
-    //option.click();
-    //Log.info("Selected Expected Answer Type: " + answerType);
-
-    WebElement valuesInput = wait.until(ExpectedConditions.presenceOfElementLocated(CoreQAFormViewTemplateListPageRepo.ValuesField));
+    WebElement valuesInput = wait.until(ExpectedConditions.presenceOfElementLocated(CoreQAFormViewTemplateListPageRepo.Valuesfield1));
         
     boolean enabled = valuesInput.isEnabled();
     boolean readOnly = valuesInput.getAttribute("readonly") != null;
 
     Log.info("Values field editable? enabled=" + enabled + ", readonly=" + readOnly);
     return enabled && !readOnly;
+}*/
+
+public void verifyValuesFieldIsEditableWhenDropDownSelected() {
+    try {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        // Step 1: Click on the Expected Answer Type dropdown
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.ExpectedAnswerType));
+        dropdown.click();
+        Log.info("Clicked on Expected Answer Type dropdown.");
+
+        // Step 2: Wait for and click the "Drop Down" option
+        for (int attempt = 0; attempt < 3; attempt++) {
+            try {
+                WebElement dropDownOption = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.dropdownvalue));
+                dropDownOption.click();
+                Log.info("Selected 'Drop Down' option from dropdown.");
+                break;
+            } catch (Exception e) {
+                Thread.sleep(1000); // retry if not clickable
+                dropdown.click(); // re-open dropdown
+            }
+        }
+
+        // Step 3: Wait for the Values field
+        WebElement valuesField = wait.until(ExpectedConditions.presenceOfElementLocated(CoreQAFormViewTemplateListPageRepo.Valuesfield1));
+        Thread.sleep(1000); // wait for state update
+
+        // Step 4: Check if editable
+        boolean isEnabled = valuesField.isEnabled();
+        boolean isReadOnly = valuesField.getAttribute("readonly") != null;
+
+       // Log.info("Values field – enabled: " + isEnabled + ", readonly attr present: " + isReadOnly);
+
+        if (!isEnabled || isReadOnly) {
+            throw new AssertionError("Values field should be editable when Expected Answer Type = Drop Down");
+        }
+
+        System.out.println("Test Passed: Values field is editable when 'Drop Down' is selected.");
+
+    } catch (Exception e) {
+        throw new AssertionError("Test failed during 'Drop Down editable check': " + e.getMessage(), e);
+    }
 }
 
-
+//TC 14
 public void selectAnswerTypeAndEnterValues(String answerType, String commaSeparatedValues) {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
@@ -239,7 +337,7 @@ public void selectAnswerTypeAndEnterValues(String answerType, String commaSepara
 
     // Step 3: Enter comma-separated values
     WebElement valuesField = wait.until(ExpectedConditions.visibilityOfElementLocated(
-        CoreQAFormViewTemplateListPageRepo.ValuesField));
+        CoreQAFormViewTemplateListPageRepo.Valuesfield1));
     valuesField.clear();
     valuesField.sendKeys(commaSeparatedValues);
     Log.info("Entered values: " + commaSeparatedValues);
@@ -247,7 +345,7 @@ public void selectAnswerTypeAndEnterValues(String answerType, String commaSepara
 
 public String getEnteredValues() {
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-    WebElement valuesField = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.ValuesField));
+    WebElement valuesField = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.Valuesfield1));
     return valuesField.getAttribute("value");
 }
 
@@ -308,27 +406,19 @@ public String getTextBoxValue(By locator) throws InterruptedException {
 }
 
 public boolean verifyClearFunctionality(String templateName, String question) throws InterruptedException {
-	// Enter Template Name and Question
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	WebElement questionField = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.Question));
 questionField.clear();
 questionField.sendKeys("Q2");
 Log.info("Entered value into Question field: Q2");
 
-    // Click Clear button
 WebElement clearbutton = driver.findElement(CoreQAFormViewTemplateListPageRepo.clearbtn);
 clearbutton.click();
-//Wait for fields to clear
 Thread.sleep(2000);
-
-// Fetch values after clearing
-//String templateAfterClear = getTextBoxValue(CoreQAFormViewTemplateListPageRepo.TemplateName);
 String questionAfterClear = getTextBoxValue(CoreQAFormViewTemplateListPageRepo.Question);
-
-
-// Return true if all fields are cleared and checkbox is unselected
 return questionAfterClear.isEmpty();
 }
+
 //TC 21: output grid column verification
 public boolean isGridColumnDisplayed(By columnLocator) throws InterruptedException {
         try {
@@ -391,18 +481,7 @@ public boolean verifyGridColumnsAndQuestionRowValue(Map<By, String> columnsToVer
     }
 }
 
-//TC 23:Create multiple questions
-//public void createQuestion(String questionText, String expectedAnswerType, String values, boolean isMandatory) throws InterruptedException {
-    //enterText(CoreQAFormViewTemplateListPageRepo.Question, questionText);
-    //selectDropdownByVisibleText(CoreQAFormViewTemplateListPageRepo.ExpectedAnswerTypeDropdown, expectedAnswerType);
 
-    //if (expectedAnswerType.equalsIgnoreCase("Drop Down") && values != null) {
-       // enterText(CoreQAFormViewTemplateListPageRepo.inputValues, values);
-    //}
-
-    //if (isMandatory) {
-        //click(CoreQAFormViewTemplateListPageRepo.IsMandatory);
-    //}
 public void createQuestion() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement questionField2 = wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.Question));
@@ -411,102 +490,64 @@ public void createQuestion() throws InterruptedException {
         click (CoreQAFormViewTemplateListPageRepo.ExpectedAnswerTypeDropdown);
         click (CoreQAFormViewTemplateListPageRepo.textBoxOption);
         click(CoreQAFormViewTemplateListPageRepo.Addbtn);
-        /*WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(30));
-        WebElement questionField3= wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.Question));
-        questionField3.clear();
-        questionField3.sendKeys("Q3");
-        click (CoreQAFormViewTemplateListPageRepo.ExpectedAnswerTypeDropdown);
-        click (CoreQAFormViewTemplateListPageRepo.textBoxOption);
-    click(CoreQAFormViewTemplateListPageRepo.Addbtn);*/
-   
+        
 }
 //  Tc: 26 Cancel Button - Navigation
 public void CancelButtonNavigation() throws InterruptedException {
 	Log.info("verify the Cancel Button Navigation");
 	WebElement cancelButton = driver.findElement(CoreQAFormViewTemplateListPageRepo.Cancel);
 	cancelButton.click();
+	 waitForSpinnerToDisappear();
 }
-	//TC 26: Page loads with all available Template
-	
-/*public void verifyTemplateVisibleInGrid(String templateName) {
+	//TC 27: Page loads with all available Template
+
+public void verifyTemplateVisibleInGrid() {
+    String templateName = "Sample Template";
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
+
+    // Wait for the grid to be visible
     wait.until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.templateGrid));
-    WaitLoader();
-    List<WebElement> nameCells = getDriver().findElements(CoreQAFormViewTemplateListPageRepo.templateNameCells);
+
+    // Wait for spinner to disappear
+    waitForSpinnerToDisappear();
+
+    // Now wait until the grid contains the expected template name
     boolean found = false;
+    long endTime = System.currentTimeMillis() + 30000; // 30 seconds timeout
 
-    for (WebElement cell : nameCells) {
-        String gridName = cell.getText().trim();
-        if (gridName.equalsIgnoreCase(templateName)) {
-            System.out.println("Template '" + templateName + "' found in the grid.");
-            found = true;
-            break;
+    while (System.currentTimeMillis() < endTime) {
+        List<WebElement> nameCells = getDriver().findElements(CoreQAFormViewTemplateListPageRepo.templateNameCells);
+        for (WebElement cell : nameCells) {
+            String name = cell.getText().trim();
+            if (name.equalsIgnoreCase(templateName)) {
+                System.out.println("Template '" + templateName + "' found in the grid.");
+                found = true;
+                break;
+            }
         }
+
+        if (found) break;
+
+        try {
+            Thread.sleep(1000); // wait a bit before rechecking
+        } catch (InterruptedException ignored) {}
     }
 
-    if (!found) {
-        System.out.println("Template '" + templateName + "' was NOT found in the grid.");
-        assert false : "Template not found in grid";
-    }
-}*/
-public void verifyTemplateListedInGrid(String templateName) {
-    WaitLoader(); // Wait for grid to be ready
-    By templateInGrid = By.xpath("//table//td[contains(text(),'" + templateName + "')]");
-    WebElement element = waitVisibility(templateInGrid);
-    if (!element.isDisplayed()) {
-        throw new AssertionError("Template not found in grid");
-    }
+    assert found : "Template '" + templateName + "' not found in the grid.";
 }
-
-//TC 27 template name - Manual search
-/*public Boolean searchAndVerifyTemplateInGrid(String expectedTemplateName) throws InterruptedException {
-    // Enter Template Name
-    WebElement templateNameInput = getDriver().findElement(CoreQAFormViewTemplateListPageRepo.templatesearchNameInput);
-    templateNameInput.clear();
-    templateNameInput.sendKeys(expectedTemplateName);
-    System.out.println("Entered template name: " + expectedTemplateName);
-
-    // Click Search
-    getDriver().findElement(CoreQAFormViewTemplateListPageRepo.searchButton).click();
-    System.out.println("Clicked on Search button");
-
-    // Wait for results
-    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.templateNameCells));
-
-    List<WebElement> rows = getDriver().findElements(CoreQAFormViewTemplateListPageRepo.templateNameCells);
-
-    System.out.println("Templates listed in grid:");
-    for (WebElement row : rows) {
-        System.out.println("-> " + row.getText().trim());
-    }
-
-    boolean found = rows.stream()
-            .anyMatch(cell -> cell.getText().trim().equalsIgnoreCase(expectedTemplateName.trim()));
-
-    if (found) {
-        System.out.println(" Template '" + expectedTemplateName + "' is displayed in the grid.");
-    } else {
-        System.out.println("Template '" + expectedTemplateName + "' is NOT displayed in the grid.");
-        throw new AssertionError("Template not found based on search input.");
-    }
-    //Thread.sleep(1000); 
-	return false;
-}*/
+	
 
 public void searchAndVerifyTemplateInGrid(String templateName) {
     System.out.println("Searching and verifying template in grid for: " + templateName);
 
     try {
         // Enter the template name into the search box
+    	 
         enterText(CoreQAFormViewTemplateListPageRepo.searchButton, templateName);
         System.out.println("Entered template name in search box: " + templateName);
         click(CoreQAFormViewTemplateListPageRepo.searchButton);
-        
-        WaitLoader();
-        // Optional: Wait for loading to complete or results to refresh
-        //waitForElementVisible(CoreQAFormViewTemplateListPageRepo.templateNameCells);
-
+        waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.templateNameCells);
+        //ElementDisplayed(CoreQAFormViewTemplateListPageRepo.templateNameCells);
         // Fetch the name from the first row of the grid
         String actualTemplateName = GetElementText(CoreQAFormViewTemplateListPageRepo.templateNameCells);
         System.out.println("Template listed in grid: " + actualTemplateName);
@@ -578,18 +619,35 @@ public boolean verifyActionOptionsDisplayed() throws InterruptedException {
 
     return isEditDisplayed && isViewDisplayed && isViewHistoryDisplayed;
 }
-
+public static void JavascriptClick(By by, WebDriver driver) {
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	js.executeScript("arguments[0].click();", driver.findElement(by));
+}
 //TC 33 Edit Button Functionality
 public void clickEditForFirstTemplate() throws InterruptedException {
-	try {
+	  //try {
 	 WaitLoader();
     click(CoreQAFormViewTemplateListPageRepo.actionButton);
-    waitVisibility(CoreQAFormViewTemplateListPageRepo.action_Edit);
+    //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("ul.dropdown-menu.show")));
+   //wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElement(CoreQAFormViewTemplateListPageRepo.action_Edit)));
+   //click(CoreQAFormViewTemplateListPageRepo.action_Edit);
+    JavascriptClick(CoreQAFormViewTemplateListPageRepo.action_Edit, driver);
+    Thread.sleep(Duration.ofSeconds(10));
+  
+   
+   /*try {
+ 
     click(CoreQAFormViewTemplateListPageRepo.action_Edit);
-} catch (Exception e) {
-    throw new AssertionError("Edit option not found or clickable: " + e.getMessage());
-}
-}
+} 
+   catch (Exception clickEx) {
+       WebElement editButton = driver.findElement(CoreQAFormViewTemplateListPageRepo.action_Edit);
+       ((JavascriptExecutor) driver).executeScript("arguments[0].click();", editButton);
+   }
+	  } catch (Exception e) {
+	        throw new AssertionError("Edit option not found or clickable: " + e.getMessage());
+	    }*/
+	}
 public boolean isTemplateCreationPageLoaded() {
     waitVisibility(CoreQAFormViewTemplateListPageRepo.templateNameField);
     return ElementDisplayed(CoreQAFormViewTemplateListPageRepo.templateNameField) &&
@@ -604,7 +662,496 @@ public void verifyPrefilledTemplateName(String expectedTemplateName) {
     
     Assert.assertEquals(actualValue, expectedTemplateName, "Template Name is not prefilled correctly.");
 }
+
+//Tc 35 Template Edit Page-Template name Update
+public void updateTemplateName(String newName, String remark) throws InterruptedException {
+    try {
+        // Wait for template name field to be clickable and clear it
+        Common.fluentWait("Template Name Field", CoreQAFormViewTemplateListPageRepo.templateNameField);
+        WebElement nameField = driver.findElement(CoreQAFormViewTemplateListPageRepo.templateNameField);
+        nameField.clear();
+        nameField.sendKeys(newName);
+
+        // Enter remark
+        Common.fluentWait("Remark Field", CoreQAFormViewTemplateListPageRepo.remarkField);
+        WebElement remarkField = driver.findElement(CoreQAFormViewTemplateListPageRepo.remarkField);
+        remarkField.clear();
+        remarkField.sendKeys(remark);
+
+        // Click update button
+        Common.fluentWait("Update Button", CoreQAFormViewTemplateListPageRepo.updateButton);
+        WebElement updateBtn = driver.findElement(CoreQAFormViewTemplateListPageRepo.updateButton);
+        updateBtn.click();
+
+        System.out.println("Template name updated to: " + newName);
+    } catch (Exception e) {
+        System.err.println("Error while updating template name: " + e.getMessage());
+        throw e;
+    }
 }
+//TC 36
+/*public void addQuestionToUpdatedTemplate(String questionText) throws InterruptedException {
+
+    // Check the 'Add Question' checkbox
+    click(CoreQAFormViewTemplateListPageRepo.UpdatedscreenAddQuestioncheckbox);
+
+    // Enter the question text
+    input(CoreQAFormViewTemplateListPageRepo.updatedscreenQuestionfieldtextbox, questionText);
+
+    // Select 'TextBox' from the Expected Answer Type dropdown
+    click(CoreQAFormViewTemplateListPageRepo.updatedscreenexpectedAnswerTypeDropdown);
+    selectDropdownByVisibleText("TextBox"); // assuming a method exists or update this with proper dropdown selection
+
+    // Tick the 'Is Mandatory' checkbox
+    click(CoreQAFormViewTemplateListPageRepo.updatedscreenIsMandatory);
+
+    // Click on Add button
+    click(CoreQAFormViewTemplateListPageRepo.updatedscreenAddbtn);
+}
+
+// Placeholder dropdown selection method, adapt as per actual implementation
+private void selectDropdownByVisibleText(String visibleText) throws InterruptedException {
+    By dropdownOption = By.xpath("//li[normalize-space()='" + visibleText + "']");
+    click(dropdownOption);
+}*/
+
+//36
+public boolean performAddQuestionFlow(String questionText, String expectedAnswerType) {
+    try {
+       // click(CoreQAFormViewTemplateListPageRepo.UpdatedscreenAddQuestioncheckbox);
+    	Thread.sleep(Duration.ofSeconds(10));
+        input(CoreQAFormViewTemplateListPageRepo.updatedscreenQuestionfieldtextbox, questionText);
+        click(CoreQAFormViewTemplateListPageRepo.updatedscreenexpectedAnswerTypeDropdown);
+        JavascriptClick(CoreQAFormViewTemplateListPageRepo.questionTypeOption(expectedAnswerType), driver);
+
+        click(CoreQAFormViewTemplateListPageRepo.updatedscreenIsMandatory);
+        click(CoreQAFormViewTemplateListPageRepo.updatedscreenAddbtn);
+
+       return true;
+
+    } catch (Exception e) {
+        System.out.println("Exception in performAddQuestionFlow: " + e.getMessage());
+        return false;
+    }
+}
+
+//37 xpath check return wait.until 
+public boolean deleteQuestionFromTemplate() {
+    try {
+        // Click action button
+    	JavascriptClick(CoreQAFormViewTemplateListPageRepo.actionButtonAgainstQuestion, driver);
+        Log.info("Clicked action button against a question");
+
+        // Click delete option
+        //Thread.sleep(Duration.ofSeconds(10));
+        click(CoreQAFormViewTemplateListPageRepo.deleteOption);
+        Log.info("Clicked Delete option from action menu");
+
+        // Confirm deletion by clicking 'Yes'
+        click(CoreQAFormViewTemplateListPageRepo.yesButtonOnPopup);
+        Log.info("Confirmed deletion by clicking Yes");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.deleteSuccessMessage)).isDisplayed();
+    } catch (Exception e) {
+        Log.error("Error while deleting question: " + e.getMessage());
+        return false;
+    }
+}
+
+//38 Template Edit Page -Edit Question Data Prefill check
+/*public void verifyPrefilledQuestionEditForm(
+        String expectedTemplateName,
+        String expectedQuestion,
+        String expectedAnswerType,
+        String expectedValues,
+        String expectedParentQuestion,
+        String expectedParentValue,
+        String expectedOrderNumber,
+        boolean expectedMandatory
+    ) {
+        // Step 1: Click action button and edit
+        click(CoreQAFormViewTemplateListPageRepo.actionButton);
+        wait(1000);
+        click(CoreQAFormViewTemplateListPageRepo.action_Edit);
+        wait(1500);
+
+        // Step 2: Verify each field
+        Assert.assertEquals(getAttributeValue(CoreQAFormViewTemplateListPageRepo.templateNameField, "value"), expectedTemplateName, "Template Name mismatch");
+        Assert.assertEquals(getAttributeValue(CoreQAFormViewTemplateListPageRepo.questionField, "value"), expectedQuestion, "Question mismatch");
+        Assert.assertEquals(getText(CoreQAFormViewTemplateListPageRepo.expectedAnswerTypeDropdown), expectedAnswerType, "Expected Answer Type mismatch");
+        Assert.assertEquals(getAttributeValue(CoreQAFormViewTemplateListPageRepo.valuesField, "value"), expectedValues, "Values field mismatch");
+        Assert.assertEquals(getText(CoreQAFormViewTemplateListPageRepo.parentQuestionDropdown), expectedParentQuestion, "Parent Question mismatch");
+        Assert.assertEquals(getText(CoreQAFormViewTemplateListPageRepo.parentValueDropdown), expectedParentValue, "Parent Value mismatch");
+        Assert.assertEquals(getAttributeValue(CoreQAFormViewTemplateListPageRepo.orderNumberField, "value"), expectedOrderNumber, "Order Number mismatch");
+        Assert.assertEquals(isElementSelected(CoreQAFormViewTemplateListPageRepo.isMandatoryCheckbox), expectedMandatory, "Is Mandatory checkbox mismatch");
+    }*/
+public boolean verifyPrefilledTemplateName1(String expectedTemplateName) {
+    try {
+        WebElement templateField = driver.findElement(CoreQAFormViewTemplateListPageRepo.templateNameField);
+        String actualValue = templateField.getAttribute("value");
+        Log.info("Actual Template Name: " + actualValue);
+        return actualValue.equals(expectedTemplateName);
+    } catch (Exception e) {
+        Log.error("Error verifying prefilled template name: " + e.getMessage());
+        return false;
+    }
+}
+
+//39
+public void editTemplateQuestionAndVerifyUpdate(String newQuestionText) throws InterruptedException {
+	
+	Thread.sleep(Duration.ofSeconds(5));
+	 click(CoreQAFormViewTemplateListPageRepo.actionButtonAgainstQuestion);
+	 Thread.sleep(Duration.ofSeconds(5));
+    JavascriptClick(CoreQAFormViewTemplateListPageRepo.ActionbuttonagainstEditbutton, driver);
+    
+    Thread.sleep(Duration.ofSeconds(5));
+    clear(CoreQAFormViewTemplateListPageRepo.questionField);
+    input(CoreQAFormViewTemplateListPageRepo.questionField, newQuestionText);
+    Thread.sleep(Duration.ofSeconds(5));
+
+    click(CoreQAFormViewTemplateListPageRepo.expectedAnswerTypeDropdown);
+    click(CoreQAFormViewTemplateListPageRepo.Datepickerdropdown);
+    click (CoreQAFormViewTemplateListPageRepo.ismandatoryuncheck);
+
+    click(CoreQAFormViewTemplateListPageRepo.updatebutton);
+
+    boolean isSuccessDisplayed = ElementDisplayed(CoreQAFormViewTemplateListPageRepo.successToastMessage);
+    Assert.assertTrue(isSuccessDisplayed, "Success message not displayed after update.");
+}
+
+//40,
+
+public void markTemplateInactive() throws Exception {
+    click(CoreQAFormViewTemplateListPageRepo.Cancel);
+    click (CoreQAFormViewTemplateListPageRepo.searchButton);
+    click(CoreQAFormViewTemplateListPageRepo.actionButton);
+    click(CoreQAFormViewTemplateListPageRepo.action_Edit);
+
+    // Check and untick the 'Active' checkbox if currently ticked
+    WebElement checkbox = driver.findElement(CoreQAFormViewTemplateListPageRepo.tickactivecheckbox);
+    String checkboxClass = checkbox.getAttribute("class");
+    if (checkboxClass.contains("rz-state-active")) {
+        click(CoreQAFormViewTemplateListPageRepo.tickactivecheckbox);
+    } else {
+        System.out.println("Checkbox already unticked");
+    }
+
+    click(CoreQAFormViewTemplateListPageRepo.updatebutton);
+}
+
+//TC 41 
+public void markTemplateActive() throws Exception {
+	Thread.sleep(1000);
+    click(CoreQAFormViewTemplateListPageRepo.Cancel);
+    click (CoreQAFormViewTemplateListPageRepo.searchButton);
+    click(CoreQAFormViewTemplateListPageRepo.actionButton);
+    click(CoreQAFormViewTemplateListPageRepo.action_Edit);
+ // Wait for the checkbox to appear fresh after the page load
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    WebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(CoreQAFormViewTemplateListPageRepo.tickactivecheckbox));
+    
+    // Re-locate it again just before use to avoid staleness
+    checkbox = driver.findElement(CoreQAFormViewTemplateListPageRepo.tickactivecheckbox);
+    String checkboxClass = checkbox.getAttribute("class");
+    
+    if (!checkboxClass.contains("rz-state-active")) {
+        click(CoreQAFormViewTemplateListPageRepo.tickactivecheckbox);
+    } else {
+        System.out.println("Checkbox already ticked");
+    }
+
+    click(CoreQAFormViewTemplateListPageRepo.updatebutton);
+    //waitForSpinnerToDisappear();
+}
+
+// TC 42
+public void clickCancelButtonOnEditPage() {
+    try {
+       waitForSpinnerToDisappear();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.Cancel));
+        wait.until(ExpectedConditions.elementToBeClickable(CoreQAFormViewTemplateListPageRepo.Cancel));
+        click(CoreQAFormViewTemplateListPageRepo.Cancel);
+        System.out.println("Clicked on Cancel button.");
+    } catch (Exception e) {
+        throw new AssertionError("Cancel button click failed: " + e.getMessage());
+    }
+}
+public boolean isQATemplatePageLoaded() {
+    try {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CoreQAFormViewTemplateListPageRepo.searchButton));
+        return ElementDisplayed(CoreQAFormViewTemplateListPageRepo.searchButton);
+    } catch (Exception e) {
+        System.out.println("Q&A Template page not loaded: " + e.getMessage());
+        return false;
+    }
+}
+
+//43 
+
+public void verifyIsActiveStatusReflectedInGrid(String templateName, boolean shouldBeActive) {
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.QATemplategrid);
+    List<WebElement> templates = driver.findElements(CoreQAFormViewTemplateListPageRepo.QATemplategrid);
+
+    for (WebElement row : templates) {
+        if (row.getText().equals(templateName)) {
+            WebElement statusElement = row.findElement(By.xpath("following-sibling::td[normalize-space()='"
+                    + (shouldBeActive ? "Yes" : "No") + "']"));
+            if (statusElement.isDisplayed()) {
+                System.out.println("Status correctly reflected in grid: " + (shouldBeActive ? "Active" : "Inactive"));
+            } else {
+                Assert.fail("Status not reflected as expected in grid.");
+            }
+            return;
+        }
+    }
+    Assert.fail("Template with name '" + templateName + "' not found in grid.");
+}
+
+private void waitForElementToBeVisible(By qATemplategrid) {
+	// TODO Auto-generated method stub
+	
+}
+//TC 44
+public void clickViewButtonOnTemplate() throws InterruptedException {
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.actionButton);
+    click(CoreQAFormViewTemplateListPageRepo.actionButton);
+
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.QATemplategridviewbutton);
+    click(CoreQAFormViewTemplateListPageRepo.QATemplategridviewbutton);
+
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.ViewTemplatescreenexpectedcondition);
+    boolean isViewPageDisplayed = ElementDisplayed(CoreQAFormViewTemplateListPageRepo.ViewTemplatescreenexpectedcondition);
+
+    if (!isViewPageDisplayed) {
+        Assert.fail("View Template page did not open.");
+    }
+}
+
+//TC 45
+
+public void verifyTemplateNameOnViewPage() {
+    // Get expected template name from the grid
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.elementofthespecificrecord);
+    String expectedTemplateName = getText(CoreQAFormViewTemplateListPageRepo.elementofthespecificrecord).trim();
+
+    // Wait for View Template screen to load
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.ViewTemplatescreenexpectedcondition);
+
+    // Get actual template name from the View page
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.Viewtemplateheadertile);
+    String actualTemplateName = getText(CoreQAFormViewTemplateListPageRepo.Viewtemplateheadertile).trim();
+
+    // Validate template name
+    if (!actualTemplateName.equals(expectedTemplateName)) {
+        Assert.fail("Template name mismatch. Expected: " + expectedTemplateName + ", but found: " + actualTemplateName);
+    }
+}
+
+//TC 46
+public void verifyViewTemplateGridHeaders() {
+
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.gridHeaderOrderNumber);
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.gridHeaderQuestion);
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.gridHeaderExpectedAnswerType);
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.gridHeaderValues);
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.gridHeaderParentQuestion);
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.gridHeaderParentValue);
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.gridHeaderIsMandatory);
+}
+
+//TC 47
+public boolean verifyGridQuestionDisplayed() {
+    try {
+    	 waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.ViewTemplateQuestiongrid);
+        String questionText = getText(CoreQAFormViewTemplateListPageRepo.ViewTemplateQuestiongrid).trim();
+        System.out.println("Grid Question Cell Text: " + questionText);
+        return !questionText.isEmpty();
+    } catch (Exception e) {
+        System.out.println("Exception while verifying grid question: " + e.getMessage());
+        return false;
+    }
+}
+
+//TC 48
+public void verifyCloseButtonRedirectsToQATemplatePage() throws InterruptedException {
+    System.out.println("******** Test Case: Close button functionality ********");
+
+    // Wait for close icon to be clickable and click it
+    click(CoreQAFormViewTemplateListPageRepo.ViewTemplategridcancelicon);
+   
+    // Wait for Q&A Template title to be visible after redirection
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.QATemplatetile);
+    boolean isRedirected = ElementDisplayed(CoreQAFormViewTemplateListPageRepo.QATemplatetile);
+
+    if (isRedirected) {
+        System.out.println("Successfully redirected to Q&A Template Page.");
+    } else {
+        System.out.println(" Redirection to Q&A Template Page failed.");
+    }
+}
+
+//TC 49 View History Button Functionality
+public void verifyViewHistoryPopup() throws InterruptedException {
+   
+    click(CoreQAFormViewTemplateListPageRepo.actionButton);
+    click(CoreQAFormViewTemplateListPageRepo.Viewhistorybutton);
+
+    // Verify the Template History popup title
+    boolean isPopupDisplayed = ElementDisplayed(CoreQAFormViewTemplateListPageRepo.templateHistoryPopupTitle);
+    if (isPopupDisplayed) {
+        System.out.println("Template History popup is displayed successfully.");
+    } else {
+        System.out.println("Template History popup is NOT displayed.");
+    }
+
+    assert isPopupDisplayed : "Template History popup not displayed after clicking View History.";
+}
+
+//TC 50 View History -Template Name field presence
+
+public void verifyTemplateNameFieldPresence() {
+    boolean isPresent = ElementDisplayed(CoreQAFormViewTemplateListPageRepo.TemplateNamewrittentext);
+
+    if (isPresent) {
+        System.out.println("Template Name field is displayed as expected.");
+    } else {
+        System.out.println("Template Name field is NOT displayed.");
+    }
+
+    assert isPresent : "Template Name field should be present in the popup.";
+}
+
+
+
+//TC 51 View history -Template Name field data prefiled
+
+public void verifyTemplateNameIsPrefilled(String expectedTemplateName) {
+    System.out.println("Verifying prefilled Template Name in Template History popup...");
+
+    String actualValue = driver.findElement(CoreQAFormViewTemplateListPageRepo.input_TemplateName_HistoryPopup).getAttribute("value");
+
+    System.out.println("Expected Template Name: " + expectedTemplateName);
+    System.out.println("Actual Template Name in field: " + actualValue);
+
+    assert actualValue.equals(expectedTemplateName) : "Template Name is not prefilled correctly!";
+}
+
+//TC 52
+public void verifyTemplateHistoryGridColumns() {
+    System.out.println("Verifying grid columns in Template History popup...");
+
+    boolean isStatusDisplayed = driver.findElement(CoreQAFormViewTemplateListPageRepo.col_Status).isDisplayed();
+    boolean isLastModifiedDisplayed = driver.findElement(CoreQAFormViewTemplateListPageRepo.col_LastModified).isDisplayed();
+    boolean isRemarkDisplayed = driver.findElement(CoreQAFormViewTemplateListPageRepo.col_Remark).isDisplayed();
+
+    assert isStatusDisplayed : "Status column is not displayed.";
+    assert isLastModifiedDisplayed : "Last Modified column is not displayed.";
+    assert isRemarkDisplayed : "Remark column is not displayed.";
+
+    System.out.println("All expected columns are present: Status, Last Modified, Remark");
+}
+
+//TC 53
+public void verifyTemplateHistoryGridData() {
+
+    waitForElementToBeVisible(CoreQAFormViewTemplateListPageRepo.historyGridRow);
+
+    // Validate at least one row is visible
+    List<WebElement> rows = driver.findElements(CoreQAFormViewTemplateListPageRepo.historyGridRow);
+    if (rows.size() > 0) {
+        System.out.println("Grid rows are visible. Validating column data...");
+        
+        for (WebElement row : rows) {
+            String status = row.findElement(CoreQAFormViewTemplateListPageRepo.statusCell).getText().trim();
+            String modifiedDate = row.findElement(CoreQAFormViewTemplateListPageRepo.lastModifiedCell).getText().trim();
+            String remark = row.findElement(CoreQAFormViewTemplateListPageRepo.remarkCell).getText().trim();
+
+            System.out.println("Row => Status: " + status + " | Last Modified: " + modifiedDate + " | Remark: " + remark);
+            
+            if (status.isEmpty() || modifiedDate.isEmpty()) {
+                throw new AssertionError("Grid row has missing data.");
+            }
+        }
+    } else {
+        throw new AssertionError("No grid rows found in Template History popup.");
+    }
+}
+
+//TC 54
+
+public void verifyTemplateStatusIconsInHistoryGrid() {
+  
+    List<WebElement> rows = driver.findElements(CoreQAFormViewTemplateListPageRepo.historyGridRow);
+    
+    if (rows.size() == 0) {
+        throw new AssertionError("No rows found in the Template History grid.");
+    }
+
+    for (WebElement row : rows) {
+        WebElement statusIcon = row.findElement(CoreQAFormViewTemplateListPageRepo.statusIconImg);
+        String iconSrc = statusIcon.getAttribute("src");
+
+        System.out.println("Icon source: " + iconSrc);
+
+        if (iconSrc.contains("green-check") || iconSrc.contains("greentick") || iconSrc.contains("success")) {
+            System.out.println(" Active status confirmed (green tick).");
+        } else if (iconSrc.contains("red-cross") || iconSrc.contains("redx") || iconSrc.contains("fail")) {
+            System.out.println("Inactive status confirmed (red cross).");
+        } else {
+            throw new AssertionError("Unrecognized status icon: " + iconSrc);
+        }
+    }
+}
+
+//TC 55
+public void verifyLastModifiedColumnInTemplateHistory() {
+   
+    List<WebElement> rows = driver.findElements(CoreQAFormViewTemplateListPageRepo.historyGridRow);
+
+    if (rows.isEmpty()) {
+        throw new AssertionError("No rows found in the Template History grid.");
+    }
+
+    for (WebElement row : rows) {
+        WebElement lastModifiedCell = row.findElement(CoreQAFormViewTemplateListPageRepo.lastModifiedCell);
+        String modifiedText = lastModifiedCell.getText().trim();
+        System.out.println("Last Modified Value: " + modifiedText);
+
+        if (modifiedText.isEmpty()) {
+            throw new AssertionError("Last Modified value is empty for one or more rows.");
+        }
+
+    }
+}
+
+//TC 56
+
+public void verifyOtherTemplateNameSearchFunctionality(String templateName) throws InterruptedException {
+    System.out.println("Searching for template: " + templateName);
+
+    clear(CoreQAFormViewTemplateListPageRepo.templateNameSearchField);
+    input(CoreQAFormViewTemplateListPageRepo.templateNameSearchField, templateName);
+    click(CoreQAFormViewTemplateListPageRepo.templateSearchButton);
+    WaitLoader();
+
+    // Verify grid result
+    List<WebElement> rows = driver.findElements(CoreQAFormViewTemplateListPageRepo.historyGridRow);
+    if (rows.isEmpty()) {
+        throw new AssertionError("No results found for template name: " + templateName);
+    }
+
+    System.out.println("Results found for template: " + templateName);
+}
+}
+
+
+
+
+
 
 
 
