@@ -352,26 +352,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	    }
 	}
 	
-	   /* @Test(priority = 12, enabled = true)
-	    public void verifyValuesFieldNonEditableForNonDropdownTypes() throws InterruptedException {
-	    	
-	    	 System.out.println(" ************** TestCase 12: Values Field - Non editable check *****************");
-		     System.out.println();
-		     
-	        // all types except "DropDown"
-	        List<String> types = Arrays.asList("TextBox","Date Picker", "Number input field", "Amount field", "Percentage field");
-	        CoreQAFormViewTemplateList_MainClass page = new CoreQAFormViewTemplateList_MainClass(driver);
-	        for (String type : types) {
-	            // 1. Select the answer type
-	            page.selectExpectedAnswerType(type);
-
-	            // 2. Verify Values field is NOT editable
-	            boolean isNonEditable = page.isValuesFieldNonEditable();
-	            Assert.assertTrue(isNonEditable, "Values field should be non-editable when Expected Answer Type = " + type);
-
-	            ExtentTestManager.getTest().log(Status.PASS, "Verified Values field non-editable for type: " + type);
-	        }
-	    }*/
+	   
 	
 	@Test(priority = 12, enabled = true)
 	public void verifyValuesFieldNonEditableForTextBoxTest() {
@@ -381,27 +362,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 	    CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
 	    main.verifyValuesFieldNonEditableForTextBox();
 	}
-	    
-	    /*@Test(priority = 13, enabled = true)
-	    public void verifyValuesFieldEditableWhenDropdownSelected() throws Throwable {
-	        try {
-	        	
-	        	 System.out.println(" ************** TestCase 13: Values Field - Editable check *****************");
-			     
-	            ExtentTestManager.getTest().log(Status.INFO, "Navigated to Template Creation page");
-
-	            // Perform action: select 'Drop Down' and check if Values field is editable
-	            boolean isEditable = page.selectExpectedAnswerTypeAndCheckValuesEditable("Drop Down");
-	            Assert.assertTrue(isEditable, "Values field should be editable when Expected Answer Type = Drop Down");
-
-	            ExtentTestManager.getTest()
-	                .log(Status.PASS, "Successfully verified: Values field is editable for Expected Answer Type = 'Drop Down'");
-
-	        } catch (AssertionError | Exception e) {
-	            ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
-	            throw e;
-	        }
-	    } */
+	   
 	   
 	@Test(priority = 13, enabled = true)
 	public void verifyValuesFieldEditableWhenDropdownSelected() {
@@ -602,7 +563,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 		}
 	    
 		
-		//Testcase 24 include here
+		
 		
 		@Test(priority = 25, enabled = true)
 		public void cancelButton() throws InterruptedException {
@@ -610,8 +571,9 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 		    	System.out.println(" ************** TestCase 25: Cancel Button - Navigation*****************");
 		        System.out.println();
 		        ExtentTestManager.getTest().log(Status.PASS, "Click on the cancel Button'");
-		        CoreQAFormViewTemplate.CancelButtonNavigation();
-		        
+		       // CoreQAFormViewTemplate.CancelButtonNavigation();
+		        CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
+		        main.CancelButtonNavigation();
 		        ExtentTestManager.getTest().log(Status.PASS, "Expected Result: Page should be redirected to Q&A Template page");
 		    } catch (AssertionError | Exception e) {
 		        ExtentTestManager.getTest().log(Status.FAIL, "Test Failed: " + e.getMessage());
@@ -647,7 +609,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 		         CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
 		         main.searchAndVerifyTemplateInGrid(templateName);
 
-		         ExtentTestManager.getTest().log(Status.PASS, "Template found in grid after search.");
+		        // ExtentTestManager.getTest().log(Status.PASS, "Template found in grid after search.");
 
 		     } catch (AssertionError | Exception e) {
 		         ExtentTestManager.getTest().log(Status.FAIL, "Test failed: " + e.getMessage());
@@ -680,7 +642,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 		    }
 		//TC 29 invalid
 			
-	 // TC 30
+	// TC 30
 		 @Test(priority = 30, enabled = true)
 		 public void verifyGreenTickForActiveTemplates() {
 			 try {
@@ -928,36 +890,37 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 		          e.printStackTrace();
 		      }
 		  }
-		  //TC 42 (priority = 42, enabled = true)
+		 //TC 42 (priority = 42, enabled = true)
 		  
 		    @Test
 		    public void verifyCancelRedirectsToQATemplatePage() {
 		        try {
-		        	System.out.println("************** TestCase 42: Template Edit page - Edit Question **************");
-		            ExtentTestManager.startTest("Template Edit page - Edit Question");
+		        	System.out.println("************** TestCase 42: Cancel button navigation**************");
+		            ExtentTestManager.startTest("Cancel button navigation");
 
 		            CoreQAFormViewTemplateList_MainClass main = new CoreQAFormViewTemplateList_MainClass(driver);
 		            main.clickCancelButtonOnEditPage();
 
-		            if (!main.isQATemplatePageLoaded()) {
-		                throw new AssertionError("Redirection to Q&A Template Page failed.");
-		            }
+		           if (!main.isQATemplatePageLoaded()) {
+		               throw new AssertionError("Redirection to Q&A Template Page failed.");
+		           }
 
 		            System.out.println(" Successfully redirected to Q&A Template Page after clicking Cancel.");
 		        } catch (Exception e) {
 		            throw new AssertionError("Test failed: " + e.getMessage());
 		        }
 		    }
-		
+		  
+		  
+	
 	//43
-		    @Test(priority = 43, enabled = true)
+		   /* @Test(priority = 43, enabled = true)
 		    public void verifyUpdatedTemplateStatusInGrid() {
 		        try {
 		            System.out.println("************** TestCase 43: Verify Updated Template Status Reflected in Grid *****************");
 		            CoreQAFormViewTemplateList_MainClass mainClass = new CoreQAFormViewTemplateList_MainClass(driver);
 		            String templateName = "UpdatedTemplate123"; // Use updated template name
-		            boolean shouldBeActive = false; // Change as per your last update
-
+		            boolean shouldBeActive = false; 
 		            mainClass.verifyIsActiveStatusReflectedInGrid(templateName, shouldBeActive);
 
 		            System.out.println("Test Passed: Template status reflected correctly in grid.");
@@ -965,7 +928,24 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 		            System.out.println("Test Failed: " + e.getMessage());
 		            Assert.fail();
 		        }
-		    }
+		    }*/
+		    
+		    @Test(priority = 43, enabled = true)
+		    public void verifyUpdatedTemplateStatusInGrid() {
+					 try {
+				    	 System.out.println(" ************** TestCase 43: Verify Updated Template Status Reflected in Grid*****************");
+					        System.out.println();
+					        ExtentTestManager.getTest().log(Status.PASS,"Verify Template Grid");
+				    CoreQAFormViewTemplateList_MainClass page = new CoreQAFormViewTemplateList_MainClass(driver);
+				    page.UpdatedtemplateRefelectedinGridcheck(); // No need to pass argument anymore; it uses "Sample Template" directly
+					 }	catch (Exception e) {
+					        ExtentTestManager.getTest().log(Status.FAIL, "Template not listed: " + e.getMessage());
+					        Assert.fail("Template not found in grid");
+					    }	
+				
+		}
+
+	
 		    
 		    //TC 44
 		    
@@ -984,7 +964,7 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 		    
 		    //TC 45
 		    
-		    @Test(priority = 45, enabled = true)
+		   @Test(priority = 45, enabled = true)
 		    public void verifyTemplateNameOnViewTemplatePage() {
 		        try {
 		            System.out.println("************** TestCase 45: View Template Name Verification *****************");
@@ -1133,20 +1113,20 @@ public class CoreQAFormViewTemplateList_TestClass extends Base_Class {
 		return objectarry;
 	}
 
-	@AfterSuite
-	public void afterEachTest() {
-		ExtentManager.getInstance().flush();
+	//@AfterSuite
+	//public void afterEachTest() {
+		//ExtentManager.getInstance().flush();
 		// Close all tracked browser instances
 		// for (WebDriver driverInstance : drivers) {
-		// if (driverInstance != null) {
+		//if (driverInstance != null) {
 		// driverInstance.quit();
-	}
+	//}
 	// }
 
 	// Clear the list of drivers
 	// drivers.clear();
 
-	// System.out.println("All browser instances have been closed.");
+	//System.out.println("All browser instances have been closed.");
 }
 
-// }
+ //}

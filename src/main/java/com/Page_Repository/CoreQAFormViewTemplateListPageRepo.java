@@ -14,7 +14,7 @@ public class CoreQAFormViewTemplateListPageRepo {
 	        public static By ExpectedAnswerType = By.xpath("//label[.='Expected Answer Type']//following-sibling::div");
 	       
 	        public static By Valuesfield1 = By.xpath("//label[text()='Values']/following::input[1]");
-	        //public static final By ValuesField = By.xpath("label[text()='Values']/following-sibling::input");
+	      
 	        public static By expectedAnswerTypeDropdown = By.xpath("//label[contains(@class,'rz-dropdown-label')]");
 	        public static By dropdownvalue = By.xpath("//li[normalize-space(.)='Drop Down']");
 	        public static By textBoxOption = By.xpath("//li[normalize-space(.)='TextBox']");
@@ -23,7 +23,9 @@ public class CoreQAFormViewTemplateListPageRepo {
 	        public static By  IsMandatory= By.xpath("//div[@class='my-form-group form-group pr-0']//label[text()='Is Mandatory']");
 			public static By Addbtn  = By.xpath("//input[@type='submit' and @value='Add']");
 	        public static By clearbtn = By.xpath("//input[@type='button' and @value='Clear']");
-	        public static By Cancel = By.xpath("//input[@type='button' and @value='Cancel']");
+	        //public static By Cancel = By.xpath("//input[@type='button' and @value='Cancel']");
+	        
+	        public static By Cancel = By.xpath("//input[@value='Cancel']");
 	        public static By TemplateCreationGrid = By.xpath("//*[@id=\"dvbody\"]/div[3]/div");
 	        public static By isMandatoryCheckbox = By.xpath("//div[label[text()='Is Mandatory']]//div[contains(@class,'rz-chkbox-box')]");
 	        public static By addButton = By.xpath("//input[@type='submit' and @value='Add']");
@@ -37,8 +39,10 @@ public class CoreQAFormViewTemplateListPageRepo {
 	        public static By gridHeaderParentQuestion = By.xpath("//table[contains(@class, 'rz-grid-table')]//th[.//span[normalize-space()='Parent Question']]");
 	        public static By gridHeaderParentValue = By.xpath("//table[contains(@class, 'rz-grid-table')]//th[.//span[normalize-space()='Parent Value']]");
 	        public static By gridHeaderIsMandatory = By.xpath("//table[contains(@class, 'rz-grid-table')]//th[.//span[normalize-space()='Is Mandatory']]");
-	    
-	        
+	       
+	        public static By loader = By.xpath("//*[@class='spinner']");
+	        public static By successMessage = By.xpath("//*[contains(text(),'Template Updated Successfully')]");
+	       
 	        public static By templateGrid = By.xpath("//table[contains(@class,'table')]");
 	        public static By templateNameCells = By.xpath("//table[contains(@class,'table')]//tbody//tr//td[1]");
 	       
@@ -72,8 +76,8 @@ public class CoreQAFormViewTemplateListPageRepo {
            public static By updatedscreenIsMandatory = By.xpath("//label[normalize-space()='Is Mandatory']/preceding-sibling::div//div[contains(@class,'rz-chkbox-box')]");
            public static By updatedscreenAddbtn = By.xpath("//input[@type='submit' and @value='Add' and contains(@class, 'btn-primary')]");
            
-          // Check this xpath after 37 test cases
-           
+         
+           public static By QuestionAction = By.xpath("(//button[@id='dropdownMenu3'])[last()]");
            //public static By actionButtonAgainstQuestion = By.xpath("(//span[@title=\"Q1\"]/../../td)[8]//div[@class='morebtnmenu']/button");
            public static By actionButtonAgainstQuestion = By.xpath("(//div[contains(@class, 'morebtnmenu')]/button[contains(@class, 'morebtn')])[last()]");
            public static By ActionbuttonagainstEditbutton = By.xpath("(//ul[contains(@class,'dropdown-menu')]//button[normalize-space(text())='Edit'])[last()]");
@@ -90,12 +94,16 @@ public class CoreQAFormViewTemplateListPageRepo {
            public static By successToastMessage = By.xpath("//*[contains(text(),'Template Updated Successfully')]");
            
           // public static By cancelbtn43 = By.xpath("//input[@type='button' and @value='Cancel']");
-           public static By tickactivecheckbox = By.xpath("//label[text()='Active']/preceding-sibling::div[contains(@class,'rz-chkbox')]");
+          public static By tickactivecheckbox = By.xpath("//label[text()='Active']/preceding-sibling::div[contains(@class,'rz-chkbox')]");
+           //public static By tickactivecheckbox = By.xpath("(//label[text()='Active']/preceding-sibling::div[contains(@class,'rz-chkbox')]//div)[2]");
+           
        
            public static By QATemplategrid =By.xpath ("//table[@class='rz-grid-table rz-grid-table-fixed']");
            public static By QATemplategridviewbutton = By.xpath("//button[.='View']");
-           public static By ViewTemplatescreenexpectedcondition= By.xpath ("//div[.='View Template'])[2]");
-           public static By  elementofthespecificrecord = By.xpath("//div[@class='card-caption']");
+           //public static By ViewTemplatescreenexpectedcondition= By.xpath ("//div[.='View Template'])[2]");
+           public static By ViewTemplatescreenexpectedcondition = By.xpath("//div[@class='dvPageheadingCaption' and normalize-space(text())='View Template']");
+           //public static By  elementofthespecificrecord = By.xpath("//div[@class='card-caption']");
+           public static By elementofthespecificrecord = By.xpath("//div[@class='card-caption']/span[normalize-space(text())='UpdatedTemplate123']");
            public static By  Viewtemplateheadertile = By.xpath("//div[@class='card-caption']/span");
            
            public static By ViewTemplateQuestiongrid = By.xpath("//table[contains(@class, 'rz-grid-table')]");
@@ -116,17 +124,18 @@ public class CoreQAFormViewTemplateListPageRepo {
           
           //TC 53
           public static By historyGridRow = By.xpath("//div[@class='rz-datatable-scrollable-body']//table//tbody//tr");
-          public static By statusCell = By.xpath(".//td[1]");  // relative to row
-          public static By lastModifiedCell = By.xpath(".//td[2]");
-          public static By remarkCell = By.xpath(".//td[3]");
+          public static By statusCell = By.xpath("//span[@class='rz-column-title' and contains(., 'Status')]");  // relative to row
+          public static By lastModifiedCell = By.xpath("(//table[contains(@class,'rz-grid-table')]//tbody/tr[last()]/td[2]//span[@class='rz-cell-data'])");
+          public static By remarkCell = By.xpath("//span[@class='rz-column-title' and contains(normalize-space(.), 'Remark')]");
           
           //TC 54
         
-          public static By statusIconImg = By.xpath(".//td[1]//img");  // relative to each row, image inside Status column
+          public static By statusIconImg = By.xpath("//i[@class='rzi d-inline-flex justify-content-center align-items-center' and contains(text(), 'check_circle')]");  
           
           public static By templateNameSearchField = By.xpath("//input[@placeholder='Template Name']");
-          public static By templateSearchButton = By.xpath("//button[normalize-space()='Search']");
+          public static By templateSearchButton = By.xpath("//input[@type='submit' and @value='Search']");
           
+          public static By activestatustoastmessage = By.xpath("//p[normalize-space(text())='Template Updated Successfully.']");
           
           
           public static By questionTypeOption(String fieldType) {
